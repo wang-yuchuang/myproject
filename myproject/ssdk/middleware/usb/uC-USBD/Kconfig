@@ -1,0 +1,17 @@
+comment "USB Device Class Driver Options"
+
+config USB_DEVICE_HID
+    bool "USB Device Class Driver for Human Interface Device"
+    default n
+
+config USB_DEVICE_MSC
+    bool "USB Device Class Driver for Mass Storage Device"
+    default n
+
+config USB_DEVICE_FB
+    bool "USB Device Class Driver for Fast Boot Device"
+    default n
+
+config USB_DEVICE_CDC_ACM
+    bool "USB Device Class Driver for USB Serial Device"
+    default n

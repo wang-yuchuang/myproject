@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<board_info>
+	<platform>taishan</platform>
+	<board>d3</board>
+	<core>sf</core>
+	<arch>arm</arch>
+	<gic>VIC1</gic>
+</board_info>

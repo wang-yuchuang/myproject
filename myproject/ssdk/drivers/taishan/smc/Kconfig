@@ -1,0 +1,8 @@
+config SDRV_SMC
+    bool "Taishan SMC Driver Support"
+    select SMC
+    select RTC
+    select SEC_RTC
+    select PMU
+    select SDRV_PMU
+    default n

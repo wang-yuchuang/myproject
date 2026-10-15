@@ -1,0 +1,5 @@
+menuconfig SIMPLE_BOOT_SPLASH
+    bool "simple boot splash application"
+    default n
+    help
+      Simple boot splash for BMU05 industrial board - displays static image.

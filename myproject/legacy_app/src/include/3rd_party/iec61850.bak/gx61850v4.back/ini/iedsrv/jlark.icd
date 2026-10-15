@@ -1,0 +1,908 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--SCL xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.iec.ch/61850/2003/SCL"-->
+<SCL xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ext="http://www.lgom.com.cn" xmlns="http://www.iec.ch/61850/2003/SCL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.iec.ch/61850/2003/SCL
+E:\SCLschema\SCL.xsd">
+	<Header version="1.1" toolID="GX_ICD_NAKE" id="GX_ICD" nameStructure="IEDName">
+		<History>
+			<Hitem version="1.0" revision="0" what="在线监测系统 ICD文件" when="2015-04-23"/>
+		</History>
+	</Header>
+	<Communication>
+		<SubNetwork type="8-MMS" name="MMS">
+			<ConnectedAP iedName="JLARK" apName="S1">
+				<Address>
+					<P type="OSI-AP-Title">1,3,9999,33</P>
+					<P type="OSI-AE-Qualifier">33</P>
+					<P type="OSI-PSEL">00 00 00 01</P>
+					<P type="OSI-SSEL">00 01</P>
+					<P type="OSI-TSEL">00 01</P>
+					<P type="IP-SUBNET">255.255.255.0</P>
+					<P type="IP">192.168.1.21</P>
+				</Address>
+			</ConnectedAP>
+		</SubNetwork>
+	</Communication>
+	<IED name="JLARK" desc="" type="" manufacturer="配置" configVersion="v1.00">
+		<Services>
+			<DynAssociation/>
+			<GetDirectory/>
+			<GetDataObjectDefinition/>
+			<DataObjectDirectory/>
+			<GetDataSetValue/>
+			<SetDataSetValue/>
+			<DataSetDirectory/>
+			<ConfDataSet max="16" maxAttributes="512"/>
+			<ReadWrite/>
+			<ConfReportControl max="16"/>
+			<GetCBValues/>
+			<ReportSettings optFields="Dyn" bufTime="Fix" cbName="Conf" trgOps="Dyn" rptID="Dyn" intgPd="Dyn" datSet="Dyn"/>
+			<FileHandling/>
+			<ConfLNs fixPrefix="true" fixLnInst="true"/>
+		</Services>
+		<AccessPoint name="S1" clock="false">
+			<Server desc="61850" timeout="30">
+				<Authentication/>
+				<LDevice inst="MONT" desc="自定义装置">
+					<LN0 lnType="GEXIN_LLN0" lnClass="LLN0" inst="">
+						<DataSet name="ds01Din">
+							<FCDA ldInst="MONT" lnClass="GGIO" lnInst="1" doName="Ind1" fc="ST"/>
+							<FCDA ldInst="MONT" lnClass="GGIO" lnInst="1" doName="Ind2" fc="ST"/>
+							<FCDA ldInst="MONT" lnClass="GGIO" lnInst="1" doName="Ind3" fc="ST"/>
+							<FCDA ldInst="MONT" lnClass="GGIO" lnInst="1" doName="Ind4" fc="ST"/>
+							<FCDA ldInst="MONT" lnClass="GGIO" lnInst="1" doName="Ind5" fc="ST"/>
+							<FCDA ldInst="MONT" lnClass="GGIO" lnInst="1" doName="Ind6" fc="ST"/>
+							<FCDA ldInst="MONT" lnClass="GGIO" lnInst="1" doName="Ind7" fc="ST"/>
+							<FCDA ldInst="MONT" lnClass="GGIO" lnInst="1" doName="Ind8" fc="ST"/>
+							<FCDA ldInst="MONT" lnClass="GGIO" lnInst="1" doName="Ind9" fc="ST"/>
+							<FCDA ldInst="MONT" lnClass="GGIO" lnInst="1" doName="Ind10" fc="ST"/>
+							<FCDA ldInst="MONT" lnClass="GGIO" lnInst="1" doName="Ind11" fc="ST"/>
+							<FCDA ldInst="MONT" lnClass="GGIO" lnInst="1" doName="Ind12" fc="ST"/>
+							<FCDA ldInst="MONT" lnClass="GGIO" lnInst="1" doName="Ind13" fc="ST"/>
+							<FCDA ldInst="MONT" lnClass="GGIO" lnInst="1" doName="Ind14" fc="ST"/>
+							<FCDA ldInst="MONT" lnClass="GGIO" lnInst="1" doName="Ind15" fc="ST"/>
+						</DataSet>
+						<DataSet name="ds01Ain">
+							<FCDA ldInst="MONT" lnClass="GGIO" lnInst="2" doName="AnInd1" fc="MX"/>
+							<FCDA ldInst="MONT" lnClass="GGIO" lnInst="2" doName="AnInd2" fc="MX"/>
+							<FCDA ldInst="MONT" lnClass="GGIO" lnInst="2" doName="AnInd3" fc="MX"/>
+							<FCDA ldInst="MONT" lnClass="GGIO" lnInst="2" doName="AnInd4" fc="MX"/>
+							<FCDA ldInst="MONT" lnClass="GGIO" lnInst="2" doName="AnInd5" fc="MX"/>
+							<FCDA ldInst="MONT" lnClass="GGIO" lnInst="2" doName="AnInd6" fc="MX"/>
+							<FCDA ldInst="MONT" lnClass="GGIO" lnInst="2" doName="AnInd7" fc="MX"/>
+							<FCDA ldInst="MONT" lnClass="GGIO" lnInst="2" doName="AnInd8" fc="MX"/>
+							<FCDA ldInst="MONT" lnClass="GGIO" lnInst="2" doName="AnInd9" fc="MX"/>
+							<FCDA ldInst="MONT" lnClass="GGIO" lnInst="2" doName="AnInd10" fc="MX"/>
+							<FCDA ldInst="MONT" lnClass="GGIO" lnInst="2" doName="AnInd11" fc="MX"/>
+							<FCDA ldInst="MONT" lnClass="GGIO" lnInst="2" doName="AnInd12" fc="MX"/>
+							<FCDA ldInst="MONT" lnClass="GGIO" lnInst="2" doName="AnInd13" fc="MX"/>
+							<FCDA ldInst="MONT" lnClass="GGIO" lnInst="2" doName="AnInd14" fc="MX"/>
+							<FCDA ldInst="MONT" lnClass="GGIO" lnInst="2" doName="AnInd15" fc="MX"/>
+							<FCDA ldInst="MONT" lnClass="GGIO" lnInst="2" doName="AnInd16" fc="MX"/>
+							<FCDA ldInst="MONT" lnClass="GGIO" lnInst="2" doName="AnInd17" fc="MX"/>
+							<FCDA ldInst="MONT" lnClass="GGIO" lnInst="2" doName="AnInd18" fc="MX"/>
+						</DataSet>
+						<ReportControl name="brcb01Din" desc="" datSet="ds01Din" intgPd="20000" rptID="MONT/LLN0$BR$brcb01Din" confRev="1" buffered="true" bufTime="0">
+							<TrgOps dchg="true" qchg="true" dupd="false" period="false"/>
+							<OptFields seqNum="true" timeStamp="true" dataSet="true" reasonCode="true" entryID="true"/>
+							<RptEnabled max="12"/>
+						</ReportControl>
+						<ReportControl name="urcb01Ain" desc="" datSet="ds01Ain" intgPd="20000" rptID="MONT/LLN0$RP$urcb01Ain" confRev="1" buffered="false">
+							<TrgOps dchg="true" qchg="true" dupd="false" period="true"/>
+							<OptFields seqNum="true" timeStamp="true" dataSet="true" reasonCode="true"/>
+							<RptEnabled max="12"/>
+						</ReportControl>
+						<DOI name="Mod" desc="Mode">
+							<DAI name="stVal">
+								<Val>1</Val>
+							</DAI>
+							<DAI name="ctlModel">
+								<Val>0</Val>
+							</DAI>
+						</DOI>
+						<DOI name="Beh" desc="Behaviour">
+							<DAI name="stVal">
+								<Val>1</Val>
+							</DAI>
+						</DOI>
+						<DOI name="Health" desc="Health">
+							<DAI name="stVal">
+								<Val>1</Val>
+							</DAI>
+						</DOI>
+						<DOI name="NamPlt" desc="Name Plate">
+							<DAI name="dU">
+								<Val>Name Plate</Val>
+							</DAI>
+							<DAI name="ldNs">
+								<Val>IEC 61850-7-4:2003</Val>
+							</DAI>
+						</DOI>
+					</LN0>
+					<LN inst="1" lnClass="LPHD" lnType="GEXIN_LPHD">
+						<DOI name="Proxy">
+							<DAI name="stVal">
+								<Val>0</Val>
+							</DAI>
+						</DOI>
+						<DOI name="PhyHealth">
+							<DAI name="stVal">
+								<Val>1</Val>
+							</DAI>
+						</DOI>
+						<DOI name="PhyNam">
+							<DAI name="vendor">
+								<Val>hang zhou ge xin</Val>
+							</DAI>
+							<DAI name="hwRev">
+								<Val>1.00</Val>
+							</DAI>
+						</DOI>
+					</LN>
+					<LN inst="1" lnClass="GGIO" lnType="GEXIN_GGIO1">
+						<DOI name="Ind1" desc="一段进线开关状态">
+							<DAI name="dU">
+								<Val>一段进线开关状态</Val>
+							</DAI>
+						</DOI>
+						<DOI name="Ind2" desc="一段刀闸状态">
+							<DAI name="dU">
+								<Val>一段刀闸状态</Val>
+							</DAI>
+						</DOI>
+						<DOI name="Ind3" desc="二段进线开关状态">
+							<DAI name="dU">
+								<Val>二段进线开关状态</Val>
+							</DAI>
+						</DOI>
+						<DOI name="Ind4" desc="二段刀闸状态">
+							<DAI name="dU">
+								<Val>二段刀闸状态</Val>
+							</DAI>
+						</DOI>
+						<DOI name="Ind5" desc="母联开关状态">
+							<DAI name="dU">
+								<Val>母联开关状态</Val>
+							</DAI>
+						</DOI>
+						<DOI name="Ind6" desc="交流变电源异常">
+							<DAI name="dU">
+								<Val>交流变电源异常</Val>
+							</DAI>
+						</DOI>
+						<DOI name="Ind7" desc="PLC装置异常（失电异常）">
+							<DAI name="dU">
+								<Val>PLC装置异常（失电异常）</Val>
+							</DAI>
+						</DOI>
+						<DOI name="Ind8" desc="故障">
+							<DAI name="dU">
+								<Val>故障</Val>
+							</DAI>
+						</DOI>
+						<DOI name="Ind9" desc="一段进线开关跳闸">
+							<DAI name="dU">
+								<Val>一段进线开关跳闸</Val>
+							</DAI>
+						</DOI>
+						<DOI name="Ind10" desc="二段进线开关跳闸">
+							<DAI name="dU">
+								<Val>二段进线开关跳闸</Val>
+							</DAI>
+						</DOI>
+						<DOI name="Ind11" desc="母联开关跳闸">
+							<DAI name="dU">
+								<Val>母联开关跳闸</Val>
+							</DAI>
+						</DOI>
+						<DOI name="Ind12" desc="备用电源投入">
+							<DAI name="dU">
+								<Val>备用电源投入</Val>
+							</DAI>
+						</DOI>
+						<DOI name="Ind13" desc="操作电源失电">
+							<DAI name="dU">
+								<Val>操作电源失电</Val>
+							</DAI>
+						</DOI>
+						<DOI name="Ind14" desc="S一段开关量总报警">
+							<DAI name="dU">
+								<Val>S一段开关量总报警</Val>
+							</DAI>
+						</DOI>
+						<DOI name="Ind15" desc="S二段开关量总报警">
+							<DAI name="dU">
+								<Val>S二段开关量总报警</Val>
+							</DAI>
+						</DOI>
+					</LN>
+					<LN inst="2" lnClass="GGIO" lnType="GEXIN_GGIO2">
+						<DOI name="AnInd1" desc="一段AB线电压">
+							<DAI name="dU">
+								<Val>一段AB线电压</Val>
+							</DAI>
+						</DOI>
+						<DOI name="AnInd2" desc="一段BC线电压">
+							<DAI name="dU">
+								<Val>一段BC线电压</Val>
+							</DAI>
+						</DOI>
+						<DOI name="AnInd3" desc="一段CA线电压">
+							<DAI name="dU">
+								<Val>一段CA线电压</Val>
+							</DAI>
+						</DOI>
+						<DOI name="AnInd4" desc="二段AB线电压">
+							<DAI name="dU">
+								<Val>二段AB线电压</Val>
+							</DAI>
+						</DOI>
+						<DOI name="AnInd5" desc="二段BC线电压">
+							<DAI name="dU">
+								<Val>二段BC线电压</Val>
+							</DAI>
+						</DOI>
+						<DOI name="AnInd6" desc="二段CA线电压">
+							<DAI name="dU">
+								<Val>二段CA线电压</Val>
+							</DAI>
+						</DOI>
+						<DOI name="AnInd7" desc="一段A相电压">
+							<DAI name="dU">
+								<Val>一段A相电压</Val>
+							</DAI>
+						</DOI>
+						<DOI name="AnInd8" desc="一段B相电压">
+							<DAI name="dU">
+								<Val>一段B相电压</Val>
+							</DAI>
+						</DOI>
+						<DOI name="AnInd9" desc="一段C相电压">
+							<DAI name="dU">
+								<Val>一段C相电压</Val>
+							</DAI>
+						</DOI>
+						<DOI name="AnInd10" desc="一段A相电流">
+							<DAI name="dU">
+								<Val>一段A相电流</Val>
+							</DAI>
+						</DOI>
+						<DOI name="AnInd11" desc="一段B相电流">
+							<DAI name="dU">
+								<Val>一段B相电流</Val>
+							</DAI>
+						</DOI>
+						<DOI name="AnInd12" desc="一段C相电流">
+							<DAI name="dU">
+								<Val>一段C相电流</Val>
+							</DAI>
+						</DOI>
+						<DOI name="AnInd13" desc="二段A相电压">
+							<DAI name="dU">
+								<Val>二段A相电压</Val>
+							</DAI>
+						</DOI>
+						<DOI name="AnInd14" desc="二段B相电压">
+							<DAI name="dU">
+								<Val>二段B相电压</Val>
+							</DAI>
+						</DOI>
+						<DOI name="AnInd15" desc="二段C相电压">
+							<DAI name="dU">
+								<Val>二段C相电压</Val>
+							</DAI>
+						</DOI>
+						<DOI name="AnInd16" desc="二段A相电流">
+							<DAI name="dU">
+								<Val>二段A相电流</Val>
+							</DAI>
+						</DOI>
+						<DOI name="AnInd17" desc="二段B相电流">
+							<DAI name="dU">
+								<Val>二段B相电流</Val>
+							</DAI>
+						</DOI>
+						<DOI name="AnInd18" desc="二段C相电流">
+							<DAI name="dU">
+								<Val>二段C相电流</Val>
+							</DAI>
+						</DOI>
+					</LN>
+				</LDevice>
+			</Server>
+		</AccessPoint>
+	</IED>
+	<DataTypeTemplates>
+		<!--逻辑节点定义-->
+		<LNodeType id="GEXIN_LLN0" lnClass="LLN0">
+			<DO desc="Mode" type="CN_INC_Mod" name="Mod"/>
+			<DO desc="Behaviour" type="CN_INS_Beh" name="Beh"/>
+			<DO desc="Health" type="CN_INS_Health" name="Health"/>
+			<DO desc="Name Plate" type="CN_LPL_LN0" name="NamPlt"/>
+		</LNodeType>
+		<LNodeType id="GEXIN_LPHD" lnClass="LPHD">
+			<DO name="PhyNam" type="CN_DPL" desc="物理装置铭牌"/>
+			<DO name="PhyHealth" type="CN_INS_Health" desc="物理装置健康状况"/>
+			<DO name="Proxy" type="CN_SPS" desc="说明该逻辑节点是否为代理"/>
+		</LNodeType>
+		<LNodeType id="GEXIN_GGIO1" desc="" lnClass="GGIO">
+			<DO name="Mod" type="CN_INC_Mod" desc="模式"/>
+			<DO name="Beh" type="CN_INS_Beh" desc="性能"/>
+			<DO name="Health" type="CN_INS_Health" desc="健康状况"/>
+			<DO name="NamPlt" type="CN_LPL" desc="铭牌"/>
+			<DO name="Ind1" type="CN_SPS" desc="一段进线开关状态"/>
+			<DO name="Ind2" type="CN_SPS" desc="一段刀闸状态"/>
+			<DO name="Ind3" type="CN_SPS" desc="二段进线开关状态"/>
+			<DO name="Ind4" type="CN_SPS" desc="二段刀闸状态"/>
+			<DO name="Ind5" type="CN_SPS" desc="母联开关状态"/>
+			<DO name="Ind6" type="CN_SPS" desc="交流变电源异常"/>
+			<DO name="Ind7" type="CN_SPS" desc="PLC装置异常（失电异常）"/>
+			<DO name="Ind8" type="CN_SPS" desc="故障"/>
+			<DO name="Ind9" type="CN_SPS" desc="一段进线开关跳闸"/>
+			<DO name="Ind10" type="CN_SPS" desc="二段进线开关跳闸"/>
+			<DO name="Ind11" type="CN_SPS" desc="母联开关跳闸"/>
+			<DO name="Ind12" type="CN_SPS" desc="备用电源投入"/>
+			<DO name="Ind13" type="CN_SPS" desc="操作电源失电"/>
+			<DO name="Ind14" type="CN_SPS" desc="S一段开关量总报警"/>
+			<DO name="Ind15" type="CN_SPS" desc="S二段开关量总报警"/>
+		</LNodeType>
+		<LNodeType id="GEXIN_GGIO2" desc="" lnClass="GGIO">
+			<DO name="Mod" type="CN_INC_Mod" desc="模式"/>
+			<DO name="Beh" type="CN_INS_Beh" desc="性能"/>
+			<DO name="Health" type="CN_INS_Health" desc="健康状况"/>
+			<DO name="NamPlt" type="CN_LPL" desc="铭牌"/>
+			<DO name="AnInd1" type="CN_MV" desc="一段AB线电压"/>
+			<DO name="AnInd2" type="CN_MV" desc="一段BC线电压"/>
+			<DO name="AnInd3" type="CN_MV" desc="一段CA线电压"/>
+			<DO name="AnInd4" type="CN_MV" desc="二段AB线电压"/>
+			<DO name="AnInd5" type="CN_MV" desc="二段BC线电压"/>
+			<DO name="AnInd6" type="CN_MV" desc="二段CA线电压"/>
+			<DO name="AnInd7" type="CN_MV" desc="一段A相电压"/>
+			<DO name="AnInd8" type="CN_MV" desc="一段B相电压"/>
+			<DO name="AnInd9" type="CN_MV" desc="一段C相电压"/>
+			<DO name="AnInd10" type="CN_MV" desc="一段A相电流"/>
+			<DO name="AnInd11" type="CN_MV" desc="一段B相电流"/>
+			<DO name="AnInd12" type="CN_MV" desc="一段C相电流"/>
+			<DO name="AnInd13" type="CN_MV" desc="二段A相电压"/>
+			<DO name="AnInd14" type="CN_MV" desc="二段B相电压"/>
+			<DO name="AnInd15" type="CN_MV" desc="二段C相电压"/>
+			<DO name="AnInd16" type="CN_MV" desc="二段A相电流"/>
+			<DO name="AnInd17" type="CN_MV" desc="二段B相电流"/>
+			<DO name="AnInd18" type="CN_MV" desc="二段C相电流"/>
+		</LNodeType>
+		<!--数据对象定义-->
+		<DOType id="CN_SPS" cdc="SPS" desc="单点状态信息类">
+			<DA bType="BOOLEAN" name="stVal" fc="ST" dchg="true"/>
+			<DA qchg="true" bType="Quality" name="q" fc="ST"/>
+			<DA bType="Timestamp" name="t" fc="ST"/>
+			<DA bType="Unicode255" name="dU" fc="DC"/>
+		</DOType>
+		<DOType id="CN_SPS_EX" cdc="SPS" desc="扩展单点状态信息类">
+			<DA bType="BOOLEAN" name="stVal" fc="ST" dchg="true"/>
+			<DA qchg="true" bType="Quality" name="q" fc="ST"/>
+			<DA bType="Timestamp" name="t" fc="ST"/>
+			<DA bType="Unicode255" name="dU" fc="DC"/>
+			<DA bType="VisString255" name="dataNs" fc="EX">
+				<Val>GDCC MODEL:2011</Val>
+			</DA>
+		</DOType>
+		<DOType id="CN_ORG" cdc="ORG">
+			<DA name="setSrcRef" bType="VisString255" fc="SP"/>
+		</DOType>
+		<DOType id="CN_INS" cdc="INS" desc="整数状态">
+			<DA bType="INT32" name="stVal" fc="ST" dchg="true"/>
+			<DA qchg="true" bType="Quality" name="q" fc="ST"/>
+			<DA bType="Timestamp" name="t" fc="ST"/>
+			<DA bType="Unicode255" name="dU" fc="DC"/>
+		</DOType>
+		<DOType id="CN_INS_EX" cdc="INS" desc="扩展整数状态">
+			<DA bType="INT32" name="stVal" fc="ST" dchg="true"/>
+			<DA qchg="true" bType="Quality" name="q" fc="ST"/>
+			<DA bType="Timestamp" name="t" fc="ST"/>
+			<DA bType="Unicode255" name="dU" fc="DC"/>
+			<DA bType="VisString255" name="dataNs" fc="EX">
+				<Val>GDCC MODEL:2011</Val>
+			</DA>
+		</DOType>
+		<DOType id="CN_INS_Beh" cdc="INS" desc="整数状态类(用于数据对象Beh)">
+			<DA bType="INT32" type="Beh" name="stVal" fc="ST" dchg="true"/>
+			<DA qchg="true" bType="Quality" name="q" fc="ST"/>
+			<DA bType="Timestamp" name="t" fc="ST"/>
+		</DOType>
+		<DOType id="CN_INS_Health" cdc="INS" desc="整数状态类(用于数据对象Health)">
+			<DA bType="INT32" type="Health" name="stVal" fc="ST" dchg="true"/>
+			<DA qchg="true" bType="Quality" name="q" fc="ST"/>
+			<DA bType="Timestamp" name="t" fc="ST"/>
+		</DOType>
+		<DOType id="CN_ENS" cdc="ENS" desc="整数状态类(用于数据对象EEhealth)">
+			<DA bType="Enum" type="Health" name="stVal" fc="ST" dchg="true"/>
+			<DA qchg="true" bType="Quality" name="q" fc="ST"/>
+			<DA bType="Timestamp" name="t" fc="ST"/>
+		</DOType>
+		<DOType id="CN_MV" cdc="MV" desc="测量值">
+			<DA bType="Struct" type="CN_AnalogueValue" name="mag" fc="MX" dchg="true"/>
+			<DA qchg="true" bType="Quality" name="q" fc="MX"/>
+			<DA bType="Timestamp" name="t" fc="MX"/>
+			<DA bType="Struct" type="CN_Units" name="units" fc="CF"/>
+			<DA bType="Unicode255" name="dU" fc="DC"/>
+		</DOType>
+		<DOType id="CN_MV_EX" cdc="MV" desc="扩展测量值">
+			<DA bType="Struct" type="CN_AnalogueValue" name="mag" fc="MX" dchg="true"/>
+			<DA qchg="true" bType="Quality" name="q" fc="MX"/>
+			<DA bType="Timestamp" name="t" fc="MX"/>
+			<DA bType="Struct" type="CN_Units" name="units" fc="CF"/>
+			<DA bType="Unicode255" name="dU" fc="DC"/>
+			<DA bType="VisString255" name="dataNs" fc="EX">
+				<Val>GDCC MODEL:2011</Val>
+			</DA>
+		</DOType>
+		<DOType id="CN_MV_I" cdc="MV" desc="整数测量值">
+			<DA bType="Struct" type="CN_AnalogueValue_I" name="mag" fc="MX" dchg="true"/>
+			<DA qchg="true" bType="Quality" name="q" fc="MX"/>
+			<DA bType="Timestamp" name="t" fc="MX"/>
+			<DA bType="Struct" type="CN_Units" name="units" fc="CF"/>
+			<DA bType="Unicode255" name="dU" fc="DC"/>
+		</DOType>
+		<DOType id="CN_CMV" cdc="CMV" desc="复数测量值（不包含相位）">
+			<DA bType="Struct" type="CN_Vector" name="cVal" fc="MX" dchg="true"/>
+			<DA qchg="true" bType="Quality" name="q" fc="MX"/>
+			<DA bType="Timestamp" name="t" fc="MX"/>
+			<DA bType="Struct" type="CN_Units" name="units" fc="CF"/>
+			<DA bType="Unicode255" name="dU" fc="DC"/>
+		</DOType>
+		<DOType id="CN_CMV_A" cdc="CMV" desc="复数测量值（包含相位)">
+			<DA bType="Struct" type="CN_Vector_A" name="cVal" fc="MX" dchg="true"/>
+			<DA qchg="true" bType="Quality" name="q" fc="MX"/>
+			<DA bType="Timestamp" name="t" fc="MX"/>
+			<DA bType="Struct" type="CN_Units" name="units" fc="CF"/>
+			<DA bType="Unicode255" name="dU" fc="DC"/>
+		</DOType>
+		<DOType id="CN_BCR" cdc="BCR">
+			<DA name="actVal" bType="INT32" dchg="true" fc="ST"/>
+			<DA name="q" bType="Quality" qchg="true" fc="ST"/>
+			<DA name="t" bType="Timestamp" fc="ST"/>
+			<DA name="pulsQty" bType="FLOAT32" fc="CF"/>
+		</DOType>
+		<DOType id="CN_WYE" cdc="WYE" desc="三相对地（不包含相位）">
+			<SDO type="CN_CMV" name="phsA"/>
+			<SDO type="CN_CMV" name="phsB"/>
+			<SDO type="CN_CMV" name="phsC"/>
+			<DA bType="Unicode255" name="dU" fc="DC"/>
+		</DOType>
+		<DOType id="CN_WYE_A" cdc="WYE" desc="三相对地(包含相位)">
+			<SDO type="CN_CMV_A" name="phsA"/>
+			<SDO type="CN_CMV_A" name="phsB"/>
+			<SDO type="CN_CMV_A" name="phsC"/>
+			<DA bType="Unicode255" name="dU" fc="DC"/>
+		</DOType>
+		<DOType id="CN_HWYE" cdc="HWYE" desc="谐波(不包含相位)">
+			<DA qchg="true" bType="Quality" name="q" fc="MX"/>
+			<DA bType="Timestamp" name="t" fc="MX"/>
+			<DA bType="Struct" count="51" type="CN_Vector" name="phsAHar" fc="MX"/>
+			<DA bType="Struct" count="51" type="CN_Vector" name="phsBHar" fc="MX"/>
+			<DA bType="Struct" count="51" type="CN_Vector" name="phsCHar" fc="MX"/>
+			<DA bType="INT16U" name="numHar" fc="CF" dchg="true"/>
+			<DA bType="INT16U" name="numCyc" fc="CF" dchg="true"/>
+			<DA bType="INT16U" name="evalTm" fc="CF" dchg="true"/>
+			<DA bType="FLOAT32" name="frequency" fc="CF" dchg="true"/>
+			<DA bType="VisString255" name="d" fc="DC"/>
+			<DA bType="Unicode255" name="dU" fc="DC"/>
+		</DOType>
+		<DOType id="CN_HWYE_A" cdc="HWYE" desc="谐波(包含相位)">
+			<DA qchg="true" bType="Quality" name="q" fc="MX"/>
+			<DA bType="Timestamp" name="t" fc="MX"/>
+			<DA bType="Struct" count="51" type="CN_Vector_A" name="phsAHar" fc="MX"/>
+			<DA bType="Struct" count="51" type="CN_Vector_A" name="phsBHar" fc="MX"/>
+			<DA bType="Struct" count="51" type="CN_Vector_A" name="phsCHar" fc="MX"/>
+			<DA bType="INT16U" name="numHar" fc="CF" dchg="true"/>
+			<DA bType="INT16U" name="numCyc" fc="CF" dchg="true"/>
+			<DA bType="INT16U" name="evalTm" fc="CF" dchg="true"/>
+			<DA bType="FLOAT32" name="frequency" fc="CF" dchg="true"/>
+			<DA bType="VisString255" name="d" fc="DC"/>
+			<DA bType="Unicode255" name="dU" fc="DC"/>
+		</DOType>
+		<DOType id="CN_HMV" cdc="HMV" desc="测量值(不包含相位)">
+			<DA qchg="true" bType="Quality" name="q" fc="MX"/>
+			<DA bType="Timestamp" name="t" fc="MX"/>
+			<DA bType="Struct" count="51" type="CN_Vector" name="har" fc="MX" dchg="true"/>
+			<DA bType="INT16U" name="numHar" fc="CF" dchg="true"/>
+			<DA bType="INT16U" name="numCyc" fc="CF" dchg="true"/>
+			<DA bType="INT16U" name="evalTm" fc="CF"/>
+			<DA bType="FLOAT32" name="frequency" fc="CF"/>
+			<DA bType="VisString255" name="d" fc="DC"/>
+			<DA bType="Unicode255" name="dU" fc="DC"/>
+		</DOType>
+		<DOType id="CN_HMV_A" cdc="HMV" desc="测量值(包含相位)">
+			<DA qchg="true" bType="Quality" name="q" fc="MX"/>
+			<DA bType="Timestamp" name="t" fc="MX"/>
+			<DA bType="Struct" count="51" type="CN_Vector_A" name="har" fc="MX" dchg="true"/>
+			<DA bType="INT16U" name="numHar" fc="CF" dchg="true"/>
+			<DA bType="INT16U" name="numCyc" fc="CF" dchg="true"/>
+			<DA bType="INT16U" name="evalTm" fc="CF"/>
+			<DA bType="FLOAT32" name="frequency" fc="CF"/>
+			<DA bType="VisString255" name="d" fc="DC"/>
+			<DA bType="Unicode255" name="dU" fc="DC"/>
+		</DOType>
+		<DOType id="CN_HST" cdc="HST" desc="柱状图">
+			<DA bType="Struct" count="51" type="CN_AnalogueValue_I" name="hstVal" fc="ST" dchg="true" dupd="true"/>
+			<DA bType="Quality" qchg="true" name="q" fc="ST"/>
+			<DA bType="Timestamp" name="t" fc="ST"/>
+			<DA bType="INT16U" name="numPts" fc="CF" dchg="true"/>
+			<DA bType="Struct" count="51" type="CN_AnalogueValue" name="hstRangeC" fc="CF" dchg="true"/>
+			<DA bType="Struct" type="CN_Units" name="xUnits" fc="CF" dchg="true"/>
+			<DA bType="Struct" type="CN_Units" name="yUnits" fc="CF" dchg="true"/>
+			<DA bType="INT16U" name="maxPts" fc="CF"/>
+			<DA bType="VisString255" name="xD" fc="DC"/>
+			<DA bType="VisString255" name="d" fc="DC"/>
+			<DA bType="Unicode255" name="dU" fc="DC"/>
+		</DOType>
+		<DOType id="CN_SEQ" cdc="SEQ" desc="序分量值">
+			<SDO type="CN_CMV" name="c1"/>
+			<SDO type="CN_CMV" name="c2"/>
+			<SDO type="CN_CMV" name="c3"/>
+			<DA bType="Enum" type="seqT" name="seqT" fc="MX"/>
+			<DA bType="Unicode255" name="dU" fc="DC"/>
+		</DOType>
+		<DOType id="CN_DEL" cdc="DEL" desc="三相系统相对相地测量值">
+			<SDO type="CN_CMV" name="phsAB"/>
+			<SDO type="CN_CMV" name="phsBC"/>
+			<SDO type="CN_CMV" name="phsCA"/>
+			<DA bType="Unicode255" name="dU" fc="DC"/>
+		</DOType>
+		<DOType id="CN_HDEL" cdc="HDEL" desc="三相系统相对相地测量值">
+			<DA qchg="true" bType="Quality" name="q" fc="MX"/>
+			<DA bType="Timestamp" name="t" fc="MX"/>
+			<DA bType="Struct" count="51" type="CN_Vector" name="phsABHar" fc="MX"/>
+			<DA bType="Struct" count="51" type="CN_Vector" name="phsBCHar" fc="MX"/>
+			<DA bType="Struct" count="51" type="CN_Vector" name="phsCAHar" fc="MX"/>
+			<DA bType="INT16U" name="numHar" fc="CF" dchg="true"/>
+			<DA bType="INT16U" name="numCyc" fc="CF" dchg="true"/>
+			<DA bType="INT16U" name="evalTm" fc="CF" dchg="true"/>
+			<DA bType="FLOAT32" name="frequency" fc="CF" dchg="true"/>
+			<DA bType="Unicode255" name="dU" fc="DC"/>
+		</DOType>
+		<DOType id="CN_SPC" cdc="SPC" desc="可控的单点">
+			<DA bType="Struct" type="CN_SBOw_Oper_SDPC" name="SBOw" fc="CO"/>
+			<DA bType="Struct" type="CN_SBOw_Oper_SDPC" name="Oper" fc="CO"/>
+			<DA bType="Struct" type="CN_Cancel_SDPC" name="Cancel" fc="CO"/>
+			<DA bType="BOOLEAN" name="stVal" fc="ST" dchg="true"/>
+			<DA qchg="true" bType="Quality" name="q" fc="ST"/>
+			<DA bType="Timestamp" name="t" fc="ST"/>
+			<DA bType="Enum" type="ctlModel" name="ctlModel" fc="CF"/>
+			<DA bType="Unicode255" name="dU" fc="DC"/>
+		</DOType>
+		<DOType id="CN_SPC_DC" cdc="SPC" desc="可控的单点(复归)">
+			<DA bType="Struct" type="CN_SBOw_Oper_SDPC" name="Oper" fc="CO"/>
+			<DA bType="BOOLEAN" name="stVal" fc="ST" dchg="true"/>
+			<DA qchg="true" bType="Quality" name="q" fc="ST"/>
+			<DA bType="Timestamp" name="t" fc="ST"/>
+			<DA bType="Enum" type="ctlModel" name="ctlModel" fc="CF"/>
+			<DA bType="Unicode255" name="dU" fc="DC"/>
+		</DOType>
+		<DOType id="CN_APC_DC" cdc="APC" desc="模拟量控制">
+			<DA bType="Struct" type="CN_SBOw_Oper_ADPC" name="Oper" fc="CO"/>
+			<DA bType="Struct" type="CN_AnalogueValue" name="stVal" fc="MX" dchg="true"/>
+			<DA qchg="true" bType="Quality" name="q" fc="MX"/>
+			<DA bType="Timestamp" name="t" fc="MX"/>
+			<DA bType="Enum" type="ctlModel" name="ctlModel" fc="CF"/>
+			<DA bType="Unicode255" name="dU" fc="DC"/>
+		</DOType>
+		<DOType id="CN_DPC" cdc="DPC" desc="可控的双点">
+			<DA bType="Struct" type="CN_SBOw_Oper_SDPC" name="SBOw" fc="CO"/>
+			<DA bType="Struct" type="CN_SBOw_Oper_SDPC" name="Oper" fc="CO"/>
+			<DA bType="Struct" type="CN_Cancel_SDPC" name="Cancel" fc="CO"/>
+			<DA bType="Dbpos" type="Dbpos" name="stVal" fc="ST" dchg="true"/>
+			<DA qchg="true" bType="Quality" name="q" fc="ST"/>
+			<DA bType="Timestamp" name="t" fc="ST"/>
+			<DA bType="Enum" type="ctlModel" name="ctlModel" fc="CF"/>
+			<DA bType="Unicode255" name="dU" fc="DC"/>
+		</DOType>
+		<DOType id="CN_ASG_SG" cdc="ASG" desc="模拟定值(定值组)">
+			<DA bType="Struct" type="CN_AnalogueValue" name="setMag" fc="SG"/>
+			<DA bType="Struct" type="CN_Units" name="units" fc="CF"/>
+			<DA bType="Struct" type="CN_ScaledValueConfig" name="sVC" fc="CF"/>
+			<DA bType="Struct" type="CN_AnalogueValue" name="minVal" fc="CF"/>
+			<DA bType="Struct" type="CN_AnalogueValue" name="maxVal" fc="CF"/>
+			<DA bType="Struct" type="CN_AnalogueValue" name="stepSize" fc="CF"/>
+			<DA bType="Unicode255" name="dU" fc="DC"/>
+		</DOType>
+		<DOType id="CN_ENG" cdc="ENG" desc="模拟定值">
+			<DA bType="Struct" type="CN_AnalogueValue" name="setVal" fc="SP" dchg="true"/>
+			<DA bType="Struct" type="CN_Units" name="units" fc="CF"/>
+			<DA bType="Unicode255" name="dU" fc="DC"/>
+		</DOType>
+		<DOType id="CN_ING" cdc="ING" desc="模拟定值">
+			<DA bType="Struct" type="CN_AnalogueValue" name="setVal" fc="SP" dchg="true"/>
+			<DA bType="Struct" type="CN_Units" name="units" fc="CF"/>
+			<DA bType="Unicode255" name="dU" fc="DC"/>
+		</DOType>
+		<DOType id="CN_ING_I" cdc="ING" desc="模拟定值">
+			<DA bType="Struct" type="CN_AnalogueValue_I" name="setVal" fc="SP" dchg="true"/>
+			<DA bType="Struct" type="CN_Units" name="units" fc="CF"/>
+			<DA bType="Unicode255" name="dU" fc="DC"/>
+		</DOType>
+		<DOType id="CN_SPG" cdc="SPG" desc="模拟定值">
+			<DA bType="Struct" type="CN_AnalogueValue" name="setVal" fc="SP" dchg="true"/>
+			<DA bType="Struct" type="CN_Units" name="units" fc="CF"/>
+			<DA bType="Unicode255" name="dU" fc="DC"/>
+		</DOType>
+		<DOType id="CN_ASG_SP" cdc="ASG" desc="模拟定值(取代)">
+			<DA bType="Struct" type="CN_AnalogueValue" name="setMag" fc="SP"/>
+			<DA bType="Struct" type="CN_Units" name="units" fc="CF"/>
+			<DA bType="Unicode255" name="dU" fc="DC"/>
+		</DOType>
+		<DOType id="CN_INC_Mod" cdc="INC" desc="可控整数状态(模式)">
+			<DA bType="Enum" type="Mod" name="stVal" fc="ST" dchg="true"/>
+			<DA qchg="true" bType="Quality" name="q" fc="ST"/>
+			<DA bType="Timestamp" name="t" fc="ST"/>
+			<DA bType="Enum" type="ctlModel" name="ctlModel" fc="CF"/>
+		</DOType>
+		<DOType id="CN_LPL_LN0" cdc="LPL" desc="逻辑节点铭牌(LN0)">
+			<DA bType="VisString255" name="vendor" fc="DC"/>
+			<DA bType="VisString255" name="swRev" fc="DC"/>
+			<DA bType="VisString255" name="d" fc="DC"/>
+			<DA bType="Unicode255" name="dU" fc="DC"/>
+			<DA bType="VisString255" name="configRev" fc="DC"/>
+			<DA bType="VisString255" name="ldNs" fc="EX"/>
+		</DOType>
+		<DOType id="CN_LPL" cdc="LPL" desc="逻辑节点铭牌">
+			<DA bType="VisString255" name="vendor" fc="DC"/>
+			<DA bType="VisString255" name="swRev" fc="DC"/>
+			<DA bType="VisString255" name="d" fc="DC"/>
+			<DA bType="Unicode255" name="dU" fc="DC"/>
+		</DOType>
+		<DOType id="CN_DPL" cdc="DPL" desc="设备铭牌">
+			<DA bType="VisString255" name="vendor" fc="DC"/>
+			<DA bType="VisString255" name="hwRev" fc="DC"/>
+			<DA bType="VisString255" name="swRev" fc="DC"/>
+			<DA bType="VisString255" name="serNum" fc="DC"/>
+			<DA bType="VisString255" name="model" fc="DC"/>
+			<DA bType="VisString255" name="location" fc="DC"/>
+		</DOType>
+		<!--数据属性定义-->
+		<DAType id="CN_AnalogueValue">
+			<BDA bType="FLOAT32" name="f"/>
+		</DAType>
+		<DAType id="CN_AnalogueValue_I">
+			<BDA bType="INT32" name="i"/>
+		</DAType>
+		<DAType id="CN_RangeConfig">
+			<BDA bType="Struct" type="CN_AnalogueValue" name="hhLim"/>
+			<BDA bType="Struct" type="CN_AnalogueValue" name="hLim"/>
+			<BDA bType="Struct" type="CN_AnalogueValue" name="lLim"/>
+			<BDA bType="Struct" type="CN_AnalogueValue" name="llLim"/>
+			<BDA bType="Struct" type="CN_AnalogueValue" name="min"/>
+			<BDA bType="Struct" type="CN_AnalogueValue" name="max"/>
+		</DAType>
+		<DAType id="CN_Vector_A">
+			<BDA bType="Struct" type="CN_AnalogueValue" name="mag"/>
+			<BDA bType="Struct" type="CN_AnalogueValue" name="ang"/>
+		</DAType>
+		<DAType id="CN_Vector">
+			<BDA bType="Struct" type="CN_AnalogueValue" name="mag"/>
+		</DAType>
+		<DAType id="CN_SBOw_Oper_SDPC">
+			<BDA bType="BOOLEAN" name="ctlVal"/>
+			<BDA bType="Struct" type="CN_Originator" name="origin"/>
+			<BDA bType="INT8U" name="ctlNum"/>
+			<BDA bType="Timestamp" name="T"/>
+			<BDA bType="BOOLEAN" name="Test"/>
+			<BDA bType="Check" name="Check"/>
+		</DAType>
+		<DAType id="CN_SBOw_Oper_ADPC">
+			<BDA bType="Struct" type="CN_AnalogueValue" name="ctlVal"/>
+			<BDA bType="Struct" type="CN_Originator" name="origin"/>
+			<BDA bType="INT8U" name="ctlNum"/>
+			<BDA bType="Timestamp" name="T"/>
+			<BDA bType="BOOLEAN" name="Test"/>
+			<BDA bType="Check" name="Check"/>
+		</DAType>
+		<DAType id="CN_Cancel_SDPC">
+			<BDA bType="BOOLEAN" name="ctlVal"/>
+			<BDA bType="Struct" type="CN_Originator" name="origin"/>
+			<BDA bType="INT8U" name="ctlNum"/>
+			<BDA bType="Timestamp" name="T"/>
+			<BDA bType="BOOLEAN" name="Test"/>
+			<BDA bType="Check" name="Check"/>
+		</DAType>
+		<DAType id="CN_SBOw_Oper_INC">
+			<BDA bType="INT32" name="ctlVal"/>
+			<BDA bType="Struct" type="CN_Originator" name="origin"/>
+			<BDA bType="INT8U" name="ctlNum"/>
+			<BDA bType="Timestamp" name="T"/>
+			<BDA bType="BOOLEAN" name="Test"/>
+			<BDA bType="Check" name="Check"/>
+		</DAType>
+		<DAType id="CN_Cancel_INC">
+			<BDA bType="INT32" name="ctlVal"/>
+			<BDA bType="Struct" type="CN_Originator" name="origin"/>
+			<BDA bType="INT8U" name="ctlNum"/>
+			<BDA bType="Timestamp" name="T"/>
+			<BDA bType="BOOLEAN" name="Test"/>
+		</DAType>
+		<DAType id="CN_SBOw_Oper_BSC">
+			<BDA bType="Tcmd" name="ctlVal"/>
+			<BDA bType="Struct" type="CN_Originator" name="origin"/>
+			<BDA bType="INT8U" name="ctlNum"/>
+			<BDA bType="Timestamp" name="T"/>
+			<BDA bType="BOOLEAN" name="Test"/>
+			<BDA bType="Check" name="Check"/>
+		</DAType>
+		<DAType id="CN_Cancel_BSC">
+			<BDA bType="Tcmd" name="ctlVal"/>
+			<BDA bType="Struct" type="CN_Originator" name="origin"/>
+			<BDA bType="INT8U" name="ctlNum"/>
+			<BDA bType="Timestamp" name="T"/>
+			<BDA bType="BOOLEAN" name="Test"/>
+		</DAType>
+		<DAType id="CN_ScaledValueConfig">
+			<BDA bType="FLOAT32" name="scaleFactor"/>
+			<BDA bType="FLOAT32" name="offset"/>
+		</DAType>
+		<DAType id="CN_Originator">
+			<BDA bType="Enum" type="orCategory" name="orCat"/>
+			<BDA bType="Octet64" name="orIdent"/>
+		</DAType>
+		<DAType id="CN_PulseConfig">
+			<BDA bType="Enum" type="PulseConfigCmdQual" name="cmdQual"/>
+			<BDA bType="INT32U" name="onDur"/>
+			<BDA bType="INT32U" name="offDur"/>
+			<BDA bType="INT32U" name="numPls"/>
+		</DAType>
+		<DAType id="CN_Units">
+			<BDA bType="Enum" type="SIUnit" name="SIUnit"/>
+			<BDA bType="Enum" type="multiplier" name="multiplier"/>
+		</DAType>
+		<EnumType id="PulseConfigCmdQual">
+			<EnumVal ord="0">pulse</EnumVal>
+			<EnumVal ord="1">persistent</EnumVal>
+		</EnumType>
+		<EnumType id="ctlModel">
+			<EnumVal ord="0">status-only</EnumVal>
+			<EnumVal ord="1">direct-with-normal-security</EnumVal>
+			<EnumVal ord="2">sbo-with-normal-security</EnumVal>
+			<EnumVal ord="3">direct-with-enhanced-security</EnumVal>
+			<EnumVal ord="4">sbo-with-enhanced-security</EnumVal>
+		</EnumType>
+		<EnumType id="sboClass">
+			<EnumVal ord="0">operate-once</EnumVal>
+			<EnumVal ord="1">operate-many</EnumVal>
+		</EnumType>
+		<EnumType id="orCategory">
+			<EnumVal ord="0">not-supported</EnumVal>
+			<EnumVal ord="1">bay-control</EnumVal>
+			<EnumVal ord="2">station-control</EnumVal>
+			<EnumVal ord="3">remote-control</EnumVal>
+			<EnumVal ord="4">automatic-bay</EnumVal>
+			<EnumVal ord="5">automatic-station</EnumVal>
+			<EnumVal ord="6">automatic-remote</EnumVal>
+			<EnumVal ord="7">maintenance</EnumVal>
+			<EnumVal ord="8">process</EnumVal>
+		</EnumType>
+		<EnumType id="angidCMV">
+			<EnumVal ord="0">V</EnumVal>
+			<EnumVal ord="1">A</EnumVal>
+			<EnumVal ord="2">other</EnumVal>
+		</EnumType>
+		<EnumType id="angid">
+			<EnumVal ord="0">Va</EnumVal>
+			<EnumVal ord="1">Vb</EnumVal>
+			<EnumVal ord="2">Vc</EnumVal>
+			<EnumVal ord="3">Aa</EnumVal>
+			<EnumVal ord="4">Ab</EnumVal>
+			<EnumVal ord="5">Ac</EnumVal>
+			<EnumVal ord="6">Vab</EnumVal>
+			<EnumVal ord="7">Vbc</EnumVal>
+			<EnumVal ord="8">Vca</EnumVal>
+			<EnumVal ord="9">Vother</EnumVal>
+			<EnumVal ord="10">Aother</EnumVal>
+		</EnumType>
+		<EnumType id="multiplier">
+			<EnumVal ord="-24">y</EnumVal>
+			<EnumVal ord="-21">z</EnumVal>
+			<EnumVal ord="-18">a</EnumVal>
+			<EnumVal ord="-15">f</EnumVal>
+			<EnumVal ord="-12">p</EnumVal>
+			<EnumVal ord="-9">n</EnumVal>
+			<EnumVal ord="-6">μ</EnumVal>
+			<EnumVal ord="-3">m</EnumVal>
+			<EnumVal ord="-2">c</EnumVal>
+			<EnumVal ord="-1">d</EnumVal>
+			<EnumVal ord="0"/>
+			<EnumVal ord="1">da</EnumVal>
+			<EnumVal ord="2">h</EnumVal>
+			<EnumVal ord="3">k</EnumVal>
+			<EnumVal ord="6">M</EnumVal>
+			<EnumVal ord="9">G</EnumVal>
+			<EnumVal ord="12">T</EnumVal>
+			<EnumVal ord="15">P</EnumVal>
+			<EnumVal ord="18">E</EnumVal>
+			<EnumVal ord="21">Z</EnumVal>
+			<EnumVal ord="24">Y</EnumVal>
+		</EnumType>
+		<EnumType id="SIUnit">
+			<EnumVal ord="1"/>
+			<EnumVal ord="2">m</EnumVal>
+			<EnumVal ord="3">kg</EnumVal>
+			<EnumVal ord="4">s</EnumVal>
+			<EnumVal ord="5">A</EnumVal>
+			<EnumVal ord="6">K</EnumVal>
+			<EnumVal ord="7">mol</EnumVal>
+			<EnumVal ord="8">cd</EnumVal>
+			<EnumVal ord="9">deg</EnumVal>
+			<EnumVal ord="10">rad</EnumVal>
+			<EnumVal ord="11">sr</EnumVal>
+			<EnumVal ord="21">Gy</EnumVal>
+			<EnumVal ord="22">q</EnumVal>
+			<EnumVal ord="23">°C</EnumVal>
+			<EnumVal ord="24">Sv</EnumVal>
+			<EnumVal ord="25">F</EnumVal>
+			<EnumVal ord="26">C</EnumVal>
+			<EnumVal ord="27">S</EnumVal>
+			<EnumVal ord="28">H</EnumVal>
+			<EnumVal ord="29">V</EnumVal>
+			<EnumVal ord="30">ohm</EnumVal>
+			<EnumVal ord="31">J</EnumVal>
+			<EnumVal ord="32">N</EnumVal>
+			<EnumVal ord="33">Hz</EnumVal>
+			<EnumVal ord="34">lx</EnumVal>
+			<EnumVal ord="35">Lm</EnumVal>
+			<EnumVal ord="36">Wb</EnumVal>
+			<EnumVal ord="37">T</EnumVal>
+			<EnumVal ord="38">W</EnumVal>
+			<EnumVal ord="39">Pa</EnumVal>
+			<EnumVal ord="41">m2</EnumVal>
+			<EnumVal ord="42">m3</EnumVal>
+			<EnumVal ord="43">m/s</EnumVal>
+			<EnumVal ord="44">m/s2</EnumVal>
+			<EnumVal ord="45">m3/s</EnumVal>
+			<EnumVal ord="46">m/m3</EnumVal>
+			<EnumVal ord="47">M</EnumVal>
+			<EnumVal ord="48">kg/m3</EnumVal>
+			<EnumVal ord="49">m2/s</EnumVal>
+			<EnumVal ord="50">W/m K</EnumVal>
+			<EnumVal ord="51">J/K</EnumVal>
+			<EnumVal ord="52">ppm</EnumVal>
+			<EnumVal ord="53">1/s</EnumVal>
+			<EnumVal ord="54">rad/s</EnumVal>
+			<EnumVal ord="61">VA</EnumVal>
+			<EnumVal ord="62">Watts</EnumVal>
+			<EnumVal ord="63">VAr</EnumVal>
+			<EnumVal ord="64">phi</EnumVal>
+			<EnumVal ord="65">cos(phi)</EnumVal>
+			<EnumVal ord="66">Vs</EnumVal>
+			<EnumVal ord="67">V2</EnumVal>
+			<EnumVal ord="68">As</EnumVal>
+			<EnumVal ord="69">A2</EnumVal>
+			<EnumVal ord="70">A2t</EnumVal>
+			<EnumVal ord="71">VAh</EnumVal>
+			<EnumVal ord="72">Wh</EnumVal>
+			<EnumVal ord="73">VArh</EnumVal>
+			<EnumVal ord="74">V/Hz</EnumVal>
+		</EnumType>
+		<EnumType id="Dbpos">
+			<EnumVal ord="0">intermediate</EnumVal>
+			<EnumVal ord="1">off</EnumVal>
+			<EnumVal ord="2">on</EnumVal>
+			<EnumVal ord="3">bad</EnumVal>
+		</EnumType>
+		<EnumType id="Beh">
+			<EnumVal ord="1">on</EnumVal>
+			<EnumVal ord="2">blocked</EnumVal>
+			<EnumVal ord="3">test</EnumVal>
+			<EnumVal ord="4">test/blocked</EnumVal>
+			<EnumVal ord="5">off</EnumVal>
+		</EnumType>
+		<EnumType id="Mod">
+			<EnumVal ord="1">on</EnumVal>
+			<EnumVal ord="2">blocked</EnumVal>
+			<EnumVal ord="3">test</EnumVal>
+			<EnumVal ord="4">test/blocked</EnumVal>
+			<EnumVal ord="5">off</EnumVal>
+		</EnumType>
+		<EnumType id="Health">
+			<EnumVal ord="1">Ok</EnumVal>
+			<EnumVal ord="2">Warning</EnumVal>
+			<EnumVal ord="3">Alarm</EnumVal>
+		</EnumType>
+	</DataTypeTemplates>
+</SCL>

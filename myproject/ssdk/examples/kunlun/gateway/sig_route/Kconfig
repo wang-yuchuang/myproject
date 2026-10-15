@@ -1,0 +1,5 @@
+comment "Sig route Options"
+
+config TX_THREAD_PERIOD
+    int "Transmit thread period, Unit ms"
+    default 10

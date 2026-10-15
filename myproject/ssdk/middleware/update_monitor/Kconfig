@@ -1,0 +1,31 @@
+comment "update monitor for remote processer update through rpmsg"
+
+choice
+    prompt "Update Monitor Mode"
+    default UPDATE_MONITOR_NO_UPDATE
+
+config NO_UPDATE
+    bool "WDT Only"
+
+config UPDATE_FLASH
+    bool "Flash"
+    select OSPI
+    select CDNS_OSPI
+    select DISK_NOR_FLASH
+    select DISK_MAPPED
+
+config UPDATE_EMMC
+    bool "EMMC"
+    select DISK_MMC
+    select DISK_MAPPED
+endchoice
+
+config HANDOVER_OSPI1
+    bool "support_handover_ospi1"
+    depends on UPDATE_FLASH
+    default n
+
+config UM_BLOCK_IO_MODE
+    bool "block io mode"
+    depends on UPDATE_FLASH
+    default y

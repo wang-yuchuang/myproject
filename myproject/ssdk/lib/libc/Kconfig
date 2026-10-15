@@ -1,0 +1,5 @@
+comment "LIBC Options"
+
+config STD_HEAP
+    bool "Use libc std heap"
+    default n

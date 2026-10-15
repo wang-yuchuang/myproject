@@ -1,0 +1,28 @@
+comment "D9310 Core Options"
+
+config MEM_BASE
+    hex "Memory Start Address"
+    default 0x3B000000
+
+config MEM_SIZE
+    hex "Memory Size"
+    default 0x10000000
+
+config BOARD_REMAP
+    bool "Enable Kunlun board remap"
+    select SCR
+    select RESETGEN
+    select KUNLUN_RESETGEN
+    default n
+
+choice
+    prompt "board soc select"
+    default BOARD_D9_AP2
+
+    config BOARD_D9_AP1
+        bool "select board d9 STD"
+
+    config BOARD_D9_AP2
+        bool "select board d9310"
+
+endchoice

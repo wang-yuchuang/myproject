@@ -1,0 +1,4 @@
+config SDRV_SYSCNT
+    bool "Kunlun Syscnt Driver Support"
+    select TIMER
+    default n

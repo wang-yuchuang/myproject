@@ -1,0 +1,4 @@
+config SDRV_UART
+    bool "Taishan Uart Driver Support"
+    select UART
+    default n

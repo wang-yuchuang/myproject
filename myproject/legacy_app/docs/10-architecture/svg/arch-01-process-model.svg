@@ -1,0 +1,128 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 860" role="img" aria-labelledby="ttl desc" style="max-width:1160px;width:100%;height:auto;background:#fff">
+  <title id="ttl">双进程模型：syshand 与 nccu_app</title>
+  <desc id="desc">legacy_app 运行期稳态的两个常驻进程：左侧 syshand 守护进程（main() 启动自检、Main_Loop 主循环、命令分发），右侧 nccu_app 业务主进程（启动序列、主线程与 ThreadManager、事件主循环）。两进程通过中间的 System V IPC 通道配对：共享内存 key=ftok("/app",15)、命名信号量 /_semSysHandWait 与 /_semSysHandAnsw、CMD 结构体（iCmdType: 0=system()，1=popen()，99=心跳）。客户端 SDK 位于 src/publib/iBasic_Funs.c。心跳丢失 180 秒后 syshand 仅写一条日志并继续服务，不重启不退出（system-hand R1）。</desc>
+
+  <defs>
+    <marker id="arw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#5F6368"/>
+    </marker>
+    <marker id="arw-broken" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#C5221F"/>
+    </marker>
+  </defs>
+
+  <!-- ===== 标题区 ===== -->
+  <text x="40" y="40" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="22" font-weight="700" fill="#202124">双进程模型：syshand 与 nccu_app</text>
+  <text x="40" y="64" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="13" fill="#5F6368">应用启动后的运行期稳态：两个常驻进程以相同的 IPC 凭据配对，系统命令代理与应用级心跳共用一条通道。</text>
+
+  <!-- ===== 左：syshand 进程 ===== -->
+  <rect x="40" y="88" width="520" height="360" rx="10" fill="#F3E8FD" stroke="#8430CE" stroke-width="1.5"/>
+  <text x="64" y="114" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">syshand（守护进程）</text>
+  <text x="64" y="133" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">bin/syshand · src/utilities/system_hand/</text>
+  <text x="64" y="152" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">职责：BSP 扩展安装 · 系统命令代理 · 心跳监控（仅观测）</text>
+
+  <rect x="64" y="166" width="472" height="72" rx="8" fill="#F8F9FA" stroke="#DADCE0" stroke-width="1.2"/>
+  <text x="80" y="189" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">main()：PID 防重复 + 扩展安装</text>
+  <text x="80" y="208" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">写 PID 文件 → popen install.sh（扩展要求 reboot 才重启）</text>
+  <text x="80" y="227" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">smain.c:6-14 · smain.c:29-62</text>
+
+  <line x1="300" y1="238" x2="300" y2="258" stroke="#5F6368" stroke-width="1.6" marker-end="url(#arw)"/>
+
+  <rect x="64" y="260" width="472" height="88" rx="8" fill="#F8F9FA" stroke="#DADCE0" stroke-width="1.2"/>
+  <text x="80" y="283" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">Main_Loop 主循环（handler.c）</text>
+  <text x="80" y="302" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">sem_timedwait 等命令，5s 超时；任何到达的命令都算心跳</text>
+  <text x="80" y="320" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">无命令时按 10s 一格累计心跳丢失计数</text>
+  <text x="80" y="338" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">handler.c:75 · handler.c:106-108,130-131</text>
+
+  <line x1="300" y1="348" x2="300" y2="368" stroke="#5F6368" stroke-width="1.6" marker-end="url(#arw)"/>
+
+  <rect x="64" y="370" width="472" height="64" rx="8" fill="#F8F9FA" stroke="#DADCE0" stroke-width="1.2"/>
+  <text x="80" y="391" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">命令分发：switch (iCmdType)</text>
+  <text x="80" y="410" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">0 → system() 执行 · 1 → popen() 取输出 · 99 → 心跳应答</text>
+  <text x="80" y="426" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">handler.c:139-152 · handler.c:226-237,269-274</text>
+
+  <!-- ===== 右：nccu_app 进程 ===== -->
+  <rect x="600" y="88" width="520" height="360" rx="10" fill="#F3E8FD" stroke="#8430CE" stroke-width="1.5"/>
+  <text x="624" y="114" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">nccu_app（业务主进程）</text>
+  <text x="624" y="133" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">bin/nccu_app · src/main/</text>
+  <text x="624" y="152" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">单主线程 + 线程管理器；六步加载后进入事件循环</text>
+
+  <rect x="624" y="166" width="472" height="88" rx="8" fill="#F8F9FA" stroke="#DADCE0" stroke-width="1.2"/>
+  <text x="640" y="189" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">启动序列：等 syshand 就绪 → 六步加载</text>
+  <text x="640" y="208" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">轮询 syshand.run 标记，约 10.1s 未就绪即退出</text>
+  <text x="640" y="226" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">Main_LoadModuals：DPR→配置→DAI→通信→采样→上报</text>
+  <text x="640" y="244" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">main.c:316-328 · main.c:147-202</text>
+
+  <line x1="860" y1="254" x2="860" y2="274" stroke="#5F6368" stroke-width="1.6" marker-end="url(#arw)"/>
+
+  <rect x="624" y="276" width="472" height="66" rx="8" fill="#F8F9FA" stroke="#DADCE0" stroke-width="1.2"/>
+  <text x="640" y="297" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">主线程 + ThreadManager（iThread）</text>
+  <text x="640" y="316" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">RunThread_ManagerInit 注册线程监督回调</text>
+  <text x="640" y="332" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">main.c:380-383 · publib spec R4</text>
+
+  <line x1="860" y1="342" x2="860" y2="362" stroke="#5F6368" stroke-width="1.6" marker-end="url(#arw)"/>
+
+  <rect x="624" y="364" width="472" height="72" rx="8" fill="#F8F9FA" stroke="#DADCE0" stroke-width="1.2"/>
+  <text x="640" y="385" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">事件主循环（bExit 置位前）</text>
+  <text x="640" y="404" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">每轮 Do_Proc_HeartBeat → Queue_Get(100ms) → DoEvent</text>
+  <text x="640" y="424" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">main.c:416-428（心跳调用在 :424）</text>
+
+  <!-- ===== 进程 ↔ IPC 带连线 ===== -->
+  <line x1="280" y1="452" x2="280" y2="514" stroke="#5F6368" stroke-width="1.6" marker-end="url(#arw)"/>
+  <text x="272" y="486" text-anchor="end" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="11" fill="#5F6368">sem_timedwait 取命令</text>
+  <line x1="320" y1="516" x2="320" y2="454" stroke="#5F6368" stroke-width="1.6" marker-end="url(#arw)"/>
+  <text x="328" y="486" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="11" fill="#5F6368">写 iCmdRet · post(answer)</text>
+
+  <line x1="840" y1="452" x2="840" y2="514" stroke="#5F6368" stroke-width="1.6" marker-end="url(#arw)"/>
+  <text x="832" y="486" text-anchor="end" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="11" fill="#5F6368">写 CMD · post(wait)（10s 节流）</text>
+  <line x1="880" y1="516" x2="880" y2="454" stroke="#5F6368" stroke-width="1.6" marker-end="url(#arw)"/>
+  <text x="888" y="486" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="11" fill="#5F6368">trywait(answer) 等应答</text>
+
+  <!-- ===== 中：IPC 通道带 ===== -->
+  <rect x="40" y="520" width="1080" height="150" rx="8" fill="#F8F9FA" stroke="#DADCE0" stroke-width="1.2"/>
+  <text x="64" y="548" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">System V IPC —— 两端以相同凭据配对</text>
+  <line x1="400" y1="566" x2="400" y2="656" stroke="#DADCE0" stroke-width="1"/>
+  <line x1="756" y1="566" x2="756" y2="656" stroke="#DADCE0" stroke-width="1"/>
+
+  <text x="64" y="584" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">共享内存（SHM）</text>
+  <text x="64" y="608" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">key = ftok("/app", 15)</text>
+  <text x="64" y="627" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">CMD_MEM_SIZE = 1024 字节</text>
+  <text x="64" y="652" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">handler.c:16,205 · handler.h:15</text>
+
+  <text x="424" y="584" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">命名信号量 ×2</text>
+  <text x="424" y="608" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">/_semSysHandWait（命令到达）</text>
+  <text x="424" y="627" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">/_semSysHandAnsw（应答完成）</text>
+  <text x="424" y="652" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">handler.c:14-15 · handler.c:187-193</text>
+
+  <text x="780" y="584" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">CMD 命令结构体</text>
+  <text x="780" y="608" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">int iCmdType · char szCmd[512] · int iCmdRet</text>
+  <text x="780" y="627" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">0=system() · 1=popen() · 99=心跳</text>
+  <text x="780" y="652" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">handler.h:25-31 · handler.c:139-152</text>
+
+  <!-- ===== 告警：心跳丢失语义 ===== -->
+  <rect x="40" y="694" width="640" height="60" rx="8" fill="#FCE8E6" stroke="#C5221F" stroke-width="2"/>
+  <text x="60" y="715" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="13" font-weight="700" fill="#C5221F">心跳丢失 180s（18 × 10s 窗口）→ 仅写一条日志后继续服务</text>
+  <text x="60" y="734" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">不重启系统、不退出进程；计数器复位，约每 180s 一条</text>
+  <text x="60" y="748" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">handler.c:114-125 · system-hand spec R1</text>
+
+  <!-- ===== 客户端 SDK 注记 ===== -->
+  <rect x="700" y="694" width="420" height="60" rx="3" fill="#E6F4EA" stroke="#137333" stroke-width="1.5"/>
+  <rect x="700" y="694" width="4" height="60" fill="#137333"/>
+  <text x="718" y="715" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="13" font-weight="600" fill="#202124">system-hand 客户端 SDK（publib R7）</text>
+  <text x="718" y="734" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">_SYSTEM 超时 30000ms · Do_Proc_HeartBeat 10s 节流</text>
+  <text x="718" y="748" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">src/publib/iBasic_Funs.c:262,324,370-371</text>
+
+  <!-- ===== 两套心跳辨析 ===== -->
+  <text x="40" y="782" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="13" fill="#5F6368">两套心跳别混淆：本图是 syshand 的应用级心跳；app_sysmgr 的 AP↔R 跨核心跳（PING/PONG）是独立机制，边界见 system-hand spec R10。</text>
+
+  <!-- ===== 图例与来源 ===== -->
+  <rect x="40" y="806" width="14" height="14" rx="10" fill="#F3E8FD" stroke="#8430CE" stroke-width="1.5"/>
+  <text x="60" y="817" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#202124">进程</text>
+  <rect x="124" y="806" width="14" height="14" rx="8" fill="#F8F9FA" stroke="#DADCE0" stroke-width="1.2"/>
+  <text x="144" y="817" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#202124">IPC 通道</text>
+  <rect x="244" y="806" width="14" height="14" rx="3" fill="#E6F4EA" stroke="#137333" stroke-width="1.5"/>
+  <text x="264" y="817" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#202124">客户端 SDK</text>
+  <rect x="404" y="806" width="14" height="14" rx="8" fill="#FCE8E6" stroke="#C5221F" stroke-width="1.5"/>
+  <text x="424" y="817" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#202124">告警（仅记录）</text>
+  <text x="1120" y="817" text-anchor="end" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">事实核对：openspec/.code-facts-snapshot.md · 对应提交 e24d2863</text>
+</svg>

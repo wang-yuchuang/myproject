@@ -1,0 +1,3 @@
+config G2DLITE
+    bool "Taishan G2DLITE Support"
+    default n

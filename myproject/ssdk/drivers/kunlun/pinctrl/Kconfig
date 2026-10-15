@@ -1,0 +1,6 @@
+config KUNLUN_PINCTRL
+    bool "Kunlun PIN CTRL driver Support"
+    select PINCTRL
+    select GPIO
+    select KUNLUN_GPIO
+    default n

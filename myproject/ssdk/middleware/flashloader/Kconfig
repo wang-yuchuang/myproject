@@ -1,0 +1,49 @@
+comment "Flash Loader Options"
+
+config CHECK_FLASH_LOAD
+    bool "Check Flash-loading Result"
+    default n
+    help
+        Enable this to apply a data check after each flash writing.
+
+if CHECK_FLASH_LOAD
+
+config FLASHLOADER_BUFFER_SIZE
+    hex "Flash Loader Buffer Size"
+    default 0x4000
+    help
+        The size of RAM buffer used during the flash-loading process.
+        Must be the multiple of the flash block size.
+
+endif # CHECK_FLASH_LOAD
+
+config AVB_FOOTER
+    bool "Enable AVB Footer"
+    default n
+
+if AVB_FOOTER
+
+config IMG_PARTITION_SIZE
+    hex "Image Partition Size"
+    default 0x200000
+    help
+        The size of the flash partition which the image is loaded to
+        (e.g., the size of 'ospi1_safety_os_a' partition).
+
+endif # AVB_FOOTER
+
+config BPT_UPDATE
+    bool "Enable BPT Update"
+    default n
+
+config READ_BACK_BUFFER
+    bool "Enable Read Back Buffer Size"
+    default n
+
+if READ_BACK_BUFFER
+
+config READ_BACK_BUFFER_SIZE
+    hex "Read Back Buffer Size"
+    default 0x40000
+
+endif # READ_BACK_BUFFER

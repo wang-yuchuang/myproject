@@ -1,0 +1,21 @@
+menuconfig KUNLUN_CKGEN
+    bool "Kunlun Clock Generator Driver Support"
+    select CLK
+    select SC_PLL
+    default n
+
+if KUNLUN_CKGEN
+
+config SC_PLL
+    bool "SC PLL Driver"
+    default n
+
+config CLK_MONITOR
+    bool "Enable Clock Monitor"
+    default n
+
+config CLK_PARENTS_NUM
+    int
+    default 8
+
+endif # KUNLUN_CKGEN

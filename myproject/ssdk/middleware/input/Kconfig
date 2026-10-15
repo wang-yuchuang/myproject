@@ -1,0 +1,9 @@
+comment "input service config option"
+
+config INPUT_SERVICE_DUMMY_DATA
+    bool "input service dummy data cmd support"
+    default n
+
+config INPUT_PRINT_REPORT_POINT
+    bool "input service report data print"
+    default n

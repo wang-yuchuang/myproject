@@ -1,0 +1,5 @@
+config KUNLUN_PWM
+    bool "Kunlun PWM Driver"
+    select PWM
+    default n
+

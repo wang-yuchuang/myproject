@@ -1,0 +1,481 @@
+;This cmm script can flash image into the specified ospi nor flash partition
+;jtag-dloader.cmm [storage-name] [partition-name] [image-path]
+;example:
+;flash image into the partition named "os" in ospi1 nor flash
+;jtag-dloader.cmm ospi1 boot0 boot0.img
+;Note:If using partition name, you need program partition table into nor flash by usb tool before programming images.
+;placing ospi-prog.elf in the same directory with this cmm.
+;If no args for this cmm, it will pop up a window for images selection.
+
+LOCAL &arg &param_storage &param_partition_name &param_img
+ENTRY %LINE &arg
+;ENTRY &param_storage &param_partition_name &param_img
+
+LOCAL &buf_size &buf_addr &buf_end
+LOCAL &loop_count &remain
+LOCAL &cmd_buf &cmd_size &cmd_cur_sz_base &cmd_offset_base &cmd_total_sz_base &cmd_storage &cmd_partition_name &cmd_cur_sz &cmd_dl_flg_base &elf_status_base &data_base &data_size
+LOCAL &elf_file &elf_base
+LOCAL &storage
+LOCAL &dl_flag_base &ospi_prog_status &ospi_prog_ret
+LOCAL &need_sec_conf
+LOCAL &image1_offset &image1_path &image2_offset &image2_path &image3_offset &image3_path &image4_offset &image4_path &dialog &program &g_debug_port
+LOCAL &cmdtype
+
+AREA.view
+AREA.CLEAR
+
+IF "&arg"==""
+(
+	GOSUB ShowDialog
+	ENDDO
+)
+
+&arg_tmp="&arg"
+&cmdtype=FALSE()
+
+GOSUB CMDParametersType &arg
+ENTRY &cmdtype
+
+IF "&cmdtype"=="TRUE()"
+(
+	PRINT "cmdline mode"
+	GOSUB ParseCMDParameters &arg
+	ENTRY &param_storage &param_partition_name &param_img
+	PRINT "param_storage:" "&param_storage"
+	PRINT "param_partition_name:" "&param_partition_name"
+	PRINT "param_img:" "&param_img"
+	GOSUB START_PROGRAM
+)
+
+GOSUB ParseParameters &arg
+ENTRY &storage &image1_offset &image1_path &image2_offset &image2_path &image3_offset &image3_path &image4_offset &image4_path &dialog &g_debug_port &program
+&storage=&(storage)
+&g_debug_port=&(g_debug_port)
+PRINT "storage:" "&storage"
+PRINT "image1_offset:" "&image1_offset"
+PRINT "image1_path:" "&image1_path"
+PRINT "image2_path:" "&image2_path"
+PRINT "g_debug_port:" "&g_debug_port"
+PRINT "dialog:" "&dialog"
+
+IF (&dialog)&&DIALOG.EXIST(STORAGE.SEL)
+(
+	; update the dialog if the dialog exists
+	ENDDO
+)
+
+START_PROGRAM:
+GOSUB DO_SAF_CONFIG
+SYStem.Mode Attach
+&elf_file="sf.elf"
+&elf_base=0x404000
+&cmd_buf=0x1901000
+&ospi_prog_status=0x1900000
+PRINT "elf    :" "&elf_file"
+&buf_size=0x40000
+&cmd_size=108.
+;CMD buffer Begin:don't change the order of the following lines
+&cmd_cur_sz_base=&cmd_buf
+&cmd_offset_base=&cmd_cur_sz_base+8.
+&cmd_total_sz_base=&cmd_offset_base+8.
+&cmd_storage=&cmd_total_sz_base+8.
+&cmd_partition_name=&cmd_storage+8.
+&cmd_dl_flg_base=&cmd_partition_name+72.
+&elf_status_base=&cmd_dl_flg_base+8.
+&data_base=&elf_status_base+4.
+&data_size=&data_base+4.
+;CMD buffer End:don't change the order of the following lines
+&ospi_prog_ret=&ospi_prog_status+4.
+
+GOSUB LOAD_ELF
+IF "&param_storage"!=""
+(
+	PRINT "program flash in cmdline mode"
+	&storage="&param_storage"
+	PRINT "storage:" "&storage"
+	GOSUB PROGRAM_FLASH &param_img &param_partition_name
+	ENDDO
+)
+
+PRINT "image1_offset:" &image1_offset
+PRINT "image1_path:" "&image1_path"
+PRINT "image2_offset:" "&image2_offset"
+PRINT "image2_path:" "&image2_path"
+PRINT "image3_offset:" "&image3_offset"
+PRINT "image3_path:" "&image3_path"
+PRINT "image4_offset:" "&image4_offset"
+PRINT "image4_path:" "&image4_path"
+
+&image1_offset=&(image1_offset)
+&image2_offset=&(image2_offset)
+&image3_offset=&(image3_offset)
+&image4_offset=&(image4_offset)
+
+IF "&image1_offset"!=""
+(
+	GOSUB PROGRAM_FLASH &image1_path &image1_offset
+	PRINT %COLOR.GREEN "program &image1_offset done"
+)
+
+IF "&image2_offset"!=""
+(
+	GOSUB PROGRAM_FLASH &image2_path &image2_offset
+	PRINT %COLOR.GREEN "program &image2_offset done"
+)
+
+IF "&image3_offset"!=""
+(
+	GOSUB PROGRAM_FLASH &image3_path &image3_offset
+	PRINT %COLOR.GREEN "program &image3_offset done"
+)
+
+IF "&image4_offset"!=""
+(
+	GOSUB PROGRAM_FLASH &image4_path &image4_offset
+	PRINT %COLOR.GREEN "program &image4_offset done"
+)
+PRINT %COLOR.GREEN "All images program done"
+ENDDO
+
+PROGRAM_FLASH:
+	PRIVATE &to_flash_file &to_pos &load_offset &total_size
+	ENTRY &to_flash_file &to_pos
+
+	PRINT "File :" "&to_flash_file"
+	IF OS.FILE(&to_flash_file)==TRUE()
+	(
+		&load_offset=0.
+		PRINT "buf size:" &buf_size
+		&total_size=OS.FILE.SIZE(&to_flash_file)
+		&loop_count=&total_size/&buf_size
+		&remain=&total_size%&buf_size
+		PRINT "File total:" &total_size " loop count:  " &loop_count " remain    " &remain " end:0x" %HEX &buf_end
+
+		WHILE &loop_count>0
+		(
+			PRINT "loop cnt:" &loop_count
+			&loop_count=&loop_count-1.
+
+			GOSUB SET_CMD_BUF_GO &to_flash_file &to_pos &load_offset &total_size &buf_size
+			GOSUB WAIT_3S_POLL
+
+			&load_offset=&load_offset+&buf_size
+		)
+
+		IF &remain>0
+		(
+			GOSUB SET_CMD_BUF_GO &to_flash_file &to_pos &load_offset &total_size &remain
+			GOSUB WAIT_3S_POLL
+		)
+
+		PRINT %COLOR.GREEN "program complete"
+	)
+	ELSE
+	(
+		PRINT "File not exists:" &to_flash_file
+	)
+	RETURN
+
+WAIT_3S_POLL:
+	PRIVATE &prog_ret &log_buf &retry_cnt
+	WAIT 3000.ms
+
+	Break.direct
+	WAIT !STATE.RUN()
+
+	&retry_cnt = 50
+	&log_buf = Data.Long(D:&ospi_prog_ret)
+	&prog_ret = Data.Long(D:&ospi_prog_ret)
+	PRINT "status:" Data.Long(D:&ospi_prog_status)
+	WHILE Data.Long(D:&ospi_prog_status)!=1.
+	(
+		go
+		WAIT 1000.ms
+		Break.direct
+		WAIT !STATE.RUN()
+		&retry_cnt=&retry_cnt-1
+		PRINT "retry:" &retry_cnt
+		&log_buf = Data.Long(D:&ospi_prog_ret)
+		&prog_ret = Data.Long(D:&ospi_prog_ret)
+		 IF "&retry_cnt"=="0x0"
+		(
+			PRINT "log buf:" &log_buf
+			Data.dump &log_buf++0xFFF
+			Data.save.binary .\log.txt  &log_buf++0xFFF
+			ENDDO
+		)
+	)
+
+	PRINT "prog ret:" &prog_ret
+
+	IF "&prog_ret"!="0x0"
+	(
+		Data.dump &log_buf++0xFFF
+		Data.save.binary .\log.txt  &log_buf++0xFFF
+		PRINT %COLOR.RED "program nor flash fail"
+		ENDDO
+	)
+	ELSE
+	(
+		PRINT "program nor flash ok"
+	)
+	go
+	RETURN
+
+SET_CMD_BUF_GO:
+	PRIVATE &data_size_local
+	ENTRY &file_name &name &offset &total_sz &cur_sz
+
+	Break.direct
+	WAIT !STATE.RUN()
+	&buf_addr= Data.Long(D:&data_base)
+	&data_size_local= Data.Long(D:&data_size)
+	IF &data_size_local<&buf_size
+	(
+		Data.dump &log_buf++0xFFF
+		Data.save.binary .\log.txt  &log_buf++0xFFF
+		PRINT %COLOR.RED "data buffer size error"
+		PRINT %COLOR.RED "program nor flash fail"
+		ENDDO
+	)
+	&buf_end=&buf_addr+&buf_size-1.
+	PRINT "buf_addr:" &buf_addr
+
+	Data.LOAD.Binary &file_name &buf_addr--&buf_end /SKIP &offset
+
+	Data.set &cmd_dl_flg_base %Long 1.
+	Data.set &cmd_cur_sz_base %Long &cur_sz
+	Data.set &cmd_storage "&storage" 0x0
+	Data.set &cmd_partition_name "&name" 0x0
+	Data.set &cmd_offset_base %Quad &offset
+	Data.set &cmd_total_sz_base %Quad &total_sz
+
+	go
+	RETURN
+
+LOAD_ELF:
+	PRIVATE &MPU &elf_status
+
+	Break.direct
+	WAIT !STATE.RUN()
+
+	&elf_status = Data.Long(D:&elf_status_base)
+	PRINT "elf_status:" &elf_status
+	IF "&elf_status"=="0x6F707273"
+	(
+		PRINT "elf has run"
+		RETURN
+	)
+	ELSE
+	(
+		PRINT "elf has not run, load it"
+	)
+
+	Data.LOAD.ELF  &elf_file
+	Register.Set PC &elf_base
+	go
+
+	WAIT 3000.ms
+	RETURN
+
+DO_SAF_CONFIG:
+	SYSTEM.RESET
+	SYStem.JtagClock 20MHz
+	SYStem.CPU CortexR5F
+	SYStem.CONFIG.apbaccessport 0
+	SYStem.CONFIG.apbap1.base 0x2000
+	SYStem.CONFIG.debugaccessport 0
+	SYStem.CONFIG.debugap1.base 0x2000
+	SYStem.CONFIG.COREDEBUG.Base 0xF2081000
+	IF STRing.ComPare("&g_debug_port","swd")
+	(
+		SYStem.CONFIG.DEBUGPORTTYPE SWD
+	)
+	;SYStem.attach
+	;SYSTEM.MODE Prepare
+	RETURN
+
+ShowDialog:
+	LOCAL &ppf
+	&ppf=OS.PPF()
+	DIALOG
+	(&+
+		HEADER "NOR FLASH PROGRAM"
+		POS 0. 0. 30. 1.
+		LINE "SELECT STORAGE"
+		POS 0. 1. 6. 1.
+		TEXT "Storage"
+		POSX 1. 9.
+		STORAGE.SEL: COMBOBOX "ospi1,emmc1"
+		(
+		)
+
+		POSX 13. 13.
+		PROG_BUTTON:BUTTON "program flash"
+		(
+			PRIVATE &storage_sel
+			PRIVATE &image1_off &image1_p
+			PRIVATE &image2_off &image2_p
+			PRIVATE &image3_off &image3_p
+			PRIVATE &image4_off &image4_p
+			PRIVATE &dbg_port
+
+			&storage_sel=DIALOG.STRing(STORAGE.SEL)
+			&image1_off=DIALOG.STRing(IMAGE1.OffSET)
+			&image1_p=DIALOG.STRing(IMAGE1.SELECT)
+			&image2_off=DIALOG.STRing(IMAGE2.OffSET)
+			&image2_p=DIALOG.STRing(IMAGE2.SELECT)
+			&image3_off=DIALOG.STRing(IMAGE3.OffSET)
+			&image3_p=DIALOG.STRing(IMAGE3.SELECT)
+			&image4_off=DIALOG.STRing(IMAGE4.OffSET)
+			&image4_p=DIALOG.STRing(IMAGE4.SELECT)
+			&dbg_port=DIALOG.STRing(DEBUG_PORT.SEL)
+
+			PRINT "button program flash"
+			PRINT "storage select:" "&storage_sel"
+			PRINT "image1_off:" "&image1_off"
+			PRINT "image2_off:" "&image2_off"
+			PRINT "image3_off:" "&image3_off"
+			PRINT "image4_off:" "&image4_off"
+			PRINT "dbg_port:" "&dbg_port"
+
+			DO "&ppf" STORAGE_SEL=&storage_sel IMG1_OFF=&image1_off IMG1_P=&image1_p IMG2_OFF=&image2_off IMG2_P=&image2_p IMG3_OFF=&image3_off IMG3_P=&image3_p IMG4_OFF=&image4_off IMG4_P=&image4_p DEBUG_PORT=&dbg_port PROGRAM
+		)
+
+		POSX 17. 17.
+		DEBUG_PORT.SEL: COMBOBOX "jtag,swd"
+		(
+		)
+
+		POS 0. 2.5 60. 1.
+		LINE "SELECT IMAGES"
+
+		POS 0. 4. 12. 1.
+		TEXT "1-name:"
+		POSX 0. 10.
+		IMAGE1.OffSET: HOTEDIT ""
+		(
+		)
+
+		POSX 1. 33.
+		IMAGE1.SELECT:  HOTEDIT ""
+		(
+		)
+
+		POSX 1. 6.
+		IMG1_BUTTON:BUTTON "image1"
+		(
+			PRIVATE &filename
+			DIALOG.File.SELECT "*.*"
+			ENTRY %LINE &filename
+			PRINT "image1 file name:" "&filename"
+			DIALOG.Set IMAGE1.SELECT "&filename"
+		)
+
+		POS 0. 5. 12. 1.
+		TEXT "2-name:"
+		POSX 0. 10.
+		IMAGE2.OffSET: HOTEDIT ""
+		(
+		)
+
+		POSX 1. 33.
+		IMAGE2.SELECT:  HOTEDIT ""
+		(
+		)
+		POSX 1. 6.
+		IMG2_BUTTON:BUTTON "image2"
+		(
+			PRIVATE &filename
+			DIALOG.File.SELECT "*.*"
+			ENTRY %LINE &filename
+			PRINT "image2 file name:" "&filename"
+			DIALOG.Set IMAGE2.SELECT "&filename"
+		)
+
+		POS 0. 6. 12. 1.
+		TEXT "3-name:"
+		POSX 0. 10.
+		IMAGE3.OffSET: HOTEDIT ""
+		(
+		)
+
+		POSX 1. 33.
+		IMAGE3.SELECT:  HOTEDIT ""
+		(
+		)
+		POSX 1. 6.
+		IMG3_BUTTON:BUTTON "image3"
+		(
+			PRIVATE &filename
+			DIALOG.File.SELECT "*.*"
+			ENTRY %LINE &filename
+			PRINT "image3 file name:" "&filename"
+			DIALOG.Set IMAGE3.SELECT "&filename"
+		)
+
+		POS 0. 7. 12. 1.
+		TEXT "4-name:"
+		POSX 0. 10.
+		IMAGE4.OffSET: HOTEDIT ""
+		(
+		)
+
+		POSX 1. 33.
+		IMAGE4.SELECT:  HOTEDIT ""
+		(
+		)
+
+		POSX 1. 6.
+		IMG4_BUTTON:BUTTON "image4"
+		(
+			PRIVATE &filename
+			DIALOG.File.SELECT "*.*"
+			ENTRY %LINE &filename
+			PRINT "image4 file name:" "&filename"
+			DIALOG.Set IMAGE4.SELECT "&filename"
+		)
+		CLOSE "DIALOG.END"
+	)
+	RETURN
+
+ParseParameters: ;(param)
+	PRIVATE &storage_sel &dialog &program
+	PRIVATE &image1_off &image1_p
+	PRIVATE &image2_off &image2_p
+	PRIVATE &image3_off &image3_p
+	PRIVATE &image4_off &image4_p
+	ENTRY %LINE &param
+	PRIVATE &length
+	PRIVATE &debug_port
+
+	&storage_sel=STRing.SCANAndExtract("&param","STORAGE_SEL=","")
+	&image1_off=STRing.SCANAndExtract("&param","IMG1_OFF=","")
+	&image1_p=STRing.SCANAndExtract("&param","IMG1_P=","")
+	&image2_off=STRing.SCANAndExtract("&param","IMG2_OFF=","")
+	&image2_p=STRing.SCANAndExtract("&param","IMG2_P=","")
+	&image3_off=STRing.SCANAndExtract("&param","IMG3_OFF=","")
+	&image3_p=STRing.SCANAndExtract("&param","IMG3_P=","")
+	&image4_off=STRing.SCANAndExtract("&param","IMG4_OFF=","")
+	&image4_p=STRing.SCANAndExtract("&param","IMG4_P=","")
+	&debug_port=STRing.SCANAndExtract("&param","DEBUG_PORT=","")
+	&dialog=STRing.SCAN("&param","DIALOG",0.)!=-1.
+	&program=STRing.SCAN("&param","PROGRAM",0.)!=-1.
+	&length=STRing.LENgth("&param")
+
+	PRINT "args:" "&param"
+
+	RETURN "&storage_sel" "&image1_off" "&image1_p" "&image2_off" "&image2_p" "&image3_off" "&image3_p" "&image4_off" "&image4_p" &dialog "&debug_port" &program
+
+CMDParametersType:
+	PRIVATE &param &storage_sel
+	ENTRY %LINE &param
+
+	&storage_sel=STRing.SCAN("&param","STORAGE_SEL",0.)==-1.
+	RETURN &storage_sel
+
+ParseCMDParameters:
+	PRIVATE &p_param_storage &p_param_partition_name &p_param_img
+	ENTRY &p_param_storage &p_param_partition_name &p_param_img
+
+	RETURN &p_param_storage &p_param_partition_name &p_param_img

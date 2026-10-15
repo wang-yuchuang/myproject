@@ -1,0 +1,5 @@
+comment "CU Options"
+
+config PRINT_BUFFER_SIZE
+    int "Print log buffer size"
+    default 1024

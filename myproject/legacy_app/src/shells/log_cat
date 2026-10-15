@@ -1,0 +1,20 @@
+#!/bin/sh
+
+###set environmntal variables
+NCCU_RUN_PATH="/app"
+export NCCU_RUN_PATH
+
+NCCU_DATA_PATH="/data"
+export NCCU_DATA_PATH
+
+VAR_DIR="/opt/appdata/data"
+export VAR_DIR
+
+LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$NCCU_RUN_PATH/lib
+export LD_LIBRARY_PATH
+
+cd $NCCU_RUN_PATH
+
+./bin/log_view $*
+
+

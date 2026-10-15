@@ -1,0 +1,5 @@
+comment "Buffer Queue Options"
+
+config BUFFQUEUE_VRING_ALIGN
+    int "Vring buffer align"
+    default 4

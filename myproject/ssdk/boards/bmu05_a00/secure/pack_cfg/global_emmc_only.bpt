@@ -1,0 +1,214 @@
+{
+    "settings": {
+        "disk_size": "7456 MiB",
+        "disk_alignment": 4096,
+        "partitions_offset_begin": "2 MiB"
+    },
+  "partitions": [
+      {
+        "ab": true,
+        "label": "fda_spl",
+        "size": "768 KiB",
+        "guid": "auto",
+        "type_guid": "f4d05652-976a-4fa7-80c0-3df81300676a",
+        "downloadfile": "FDA.img"
+    },
+    {
+        "ab": true,
+        "label": "ddr_init_seq",
+        "size": "32 KiB",
+        "guid": "auto",
+        "type_guid": "cc0cb090-a2e4-459f-9f5f-b61daf95e39a",
+        "downloadfile": "ddr_init_seq.img"
+    },
+    {
+        "ab": true,
+        "label": "ddr_fw",
+        "size": "128 KiB",
+        "guid": "auto",
+        "type_guid": "cc0cb090-a2e4-459f-9f5f-b61daf95e39a",
+        "downloadfile": "ddr_fw.img"
+    },
+    {
+        "ab": false,
+        "label": "ddr_ioretention",
+        "size": "16 KiB",
+        "guid": "auto",
+        "type_guid": "cc0cb090-a2e4-459f-9f5f-b61daf95e39a"
+    },
+    {
+        "ab": true,
+        "label": "system_config",
+        "size": "128 KiB",
+        "guid": "auto",
+        "type_guid": "cc0cb090-a2e4-459f-9f5f-b61daf95e39a",
+        "downloadfile": ""
+    },
+    {
+        "ab": true,
+        "label": "ssystem",
+        "size": "8 MiB",
+        "guid": "auto",
+        "type_guid": "cc0cb090-a2e4-459f-9f5f-b61daf95e39a",
+        "downloadfile": "ssystem.img"
+    },
+    {
+        "ab": true,
+        "label": "hsm_fw",
+        "size": "64 KiB",
+        "guid": "auto",
+        "type_guid": "cc0cb090-a2e4-459f-9f5f-b61daf95e39a",
+        "downloadfile": ""
+    },
+    {
+        "ab": true,
+        "label": "preloader",
+        "size": "512 KiB",
+        "guid": "auto",
+        "type_guid": "cc0cb090-a2e4-459f-9f5f-b61daf95e39a",
+        "downloadfile": "preloader.img"
+    },
+    {
+        "ab": true,
+        "label": "res",
+        "size": "24 MiB",
+        "guid": "auto",
+        "type_guid": "ms_basic_data",
+        "downloadfile": "fat_res.img"
+    },
+    {
+      "ab": true,
+      "label": "atf",
+      "size": "128 KiB",
+       "guid": "auto",
+      "type_guid": "960480c2-b05f-4ef8-a160-4617f2bc8f69",
+      "downloadfile": "sml.img"
+    },
+    {
+      "ab": true,
+      "label": "tos",
+      "size": "2 MiB",
+       "guid": "auto",
+      "type_guid": "a2c659e9-8d7c-4f80-adaa-18dd6e7f7425",
+      "downloadfile": ""
+    },
+    {
+      "ab": false,
+      "label": "vbmeta",
+      "size": "64 KiB",
+      "guid": "auto",
+      "type_guid": "b598858a-5fe3-418e-b8c4-824b41f4adfc",
+      "downloadfile": "vbmeta-emmc.img"
+    },
+    {
+      "ab": true,
+      "label": "vbmeta_ota",
+      "size": "64 KiB",
+      "guid": "auto",
+      "type_guid": "b598858a-5fe3-418e-b8c4-824b41f4adfc",
+      "downloadfile": "vbmeta-ota.img"
+    },
+    {
+      "ab": true,
+      "label": "vbmeta-ssdk",
+      "size": "8 KiB",
+      "guid": "auto",
+      "type_guid": "b598858a-5fe3-418e-b8c4-824b41f4adfc",
+      "downloadfile": "vbmeta-ssdk.img"
+    },
+    {
+      "ab": true,
+      "label": "bootloader",
+      "size": "2 MiB",
+      "guid": "auto",
+      "type_guid": "4892aeb3-a45f-4c5f-875f-da3303c0795c",
+      "downloadfile": "bootloader.img"
+    },
+    {
+      "ab": true,
+      "label": "env",
+      "size": "64 KiB",
+      "guid": "auto",
+      "type_guid": "bb499290-b57e-49f6-bf41-190386693794",
+      "downloadfile": "env.img"
+    },
+    {
+      "ab": false,
+      "label": "boot",
+      "guid": "auto",
+      "size": "32 MiB",
+      "type_guid": "ebd0a0a2-b9e5-4433-87c0-68b6b72699c7",
+      "downloadfile": "boot.img"
+    },
+    {
+      "ab": false,
+      "label": "state",
+      "guid": "auto",
+      "size": "16 MiB",
+      "type_guid": "ebd0a0a2-b9e5-4433-87c0-68b6b72699c7",
+      "downloadfile": "state.img"
+    },
+    {
+      "ab": true,
+      "label": "rootfs",
+      "guid": "auto",
+      "size": "1024 MiB",
+      "type_guid": "linux_fs",
+      "downloadfile": "rootfs.img"
+    },
+    {
+      "ab": false,
+      "label": "recovery",
+      "size": "512 MiB",
+      "guid": "auto",
+      "type_guid": "0fc63daf-8483-4772-8e79-3d69d8477de4",
+      "downloadfile": "recovery.img"
+    },
+    {
+        "ab": false,
+        "label": "sdrv_update",
+        "size": "32 MiB",
+        "guid": "auto",
+        "type_guid": "4892aeb3-a45f-4c5f-875f-da3303c0755c"
+    },
+    {
+      "ab": true,
+      "label": "dtb",
+      "size": "512 KiB",
+      "guid": "auto",
+      "type_guid": "b3c54657-8b47-48bc-9792-37b7c091ae69",
+      "downloadfile": "dtb.img"
+    },
+    {
+      "ab": true,
+      "label": "dtbo",
+      "size": "512 KiB",
+      "guid": "auto",
+      "type_guid": "b3c54657-8b47-48bc-9792-37b7c091ae69",
+      "downloadfile": ""
+    },
+    {
+      "ab": true,
+      "label": "kernel",
+      "size": "28 MiB",
+      "guid": "auto",
+      "type_guid": "bb499290-b57e-49f6-bf41-190386693794",
+      "downloadfile": "kernel.img"
+    },
+    {
+      "ab": true,
+      "label": "app",
+      "size": "256 MiB",
+      "guid": "auto",
+      "type_guid": "bb499290-b57e-49f6-bf41-190386693794",
+      "downloadfile": "app.img"
+    },
+    {
+      "label": "userdata",
+      "grow": true,
+      "guid": "auto",
+      "type_guid": "0bb7e6ed-4424-49c0-9372-7fbab465ab4c",
+      "downloadfile": "userdata.img"
+    }
+    ]
+}

@@ -1,0 +1,7 @@
+if ARCH_CHIP_E3 || ARCH_CHIP_D3
+rsource "taishan/Kconfig"
+endif
+
+if ARCH_CHIP_D9 || ARCH_CHIP_G9 || ARCH_CHIP_X9
+rsource "kunlun/Kconfig"
+endif

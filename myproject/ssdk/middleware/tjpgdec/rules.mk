@@ -1,0 +1,8 @@
+LOCAL_DIR := $(GET_LOCAL_DIR)
+MODULE := $(LOCAL_DIR)
+
+GLOBAL_INCLUDES += $(LOCAL_DIR)
+MODULE_CFLAGS += -O3
+MODULE_SRCS += $(LOCAL_DIR)/tjpgd.c
+
+include $(MKROOT)/module.mk

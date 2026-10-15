@@ -1,0 +1,63 @@
+comment "pvt application config options"
+
+menuconfig PVT_APPLICATION_PRINT
+    bool "pvt application for print pvt info"
+    default n
+
+if PVT_APPLICATION_PRINT
+    config PVT_AUTO_OUT_PRT
+        bool "print pvt auto start"
+        default n
+
+    config PVT_PRINT_WAIT_TIME
+        int "print pvt info wait time"
+        default 3
+
+endif
+
+menuconfig PVT_APPLICATION_MONITOR
+    bool "pvt application for monitor temperature"
+    default n
+
+
+if PVT_APPLICATION_MONITOR
+    config PVT_MONITOR_DEV
+        int "use pvt device for temperature monitor"
+        default 0
+        help
+          "0 use safety pvt device and 1 use ap pvt device"
+
+    config PVT_MONITOR_WAIT_TIME
+        int "monitor thread wait time(s)"
+        default 3
+
+    config PVT_MONITOR_TYPE_0
+        int "monitor ins0 temperature type"
+        default 0
+        help
+          "0: monitor temperature type hyst high"
+          "1: monitor temperature type hyst low"
+
+    config PVT_MONITOR_VAL_H_0
+        int "monitor ins0 temperature high value"
+        default 90
+
+    config PVT_MONITOR_VAL_L_0
+        int "monitor ins0 temperature low value"
+        default 85
+
+    config PVT_MONITOR_TYPE_1
+        int "monitor ins1 temperature type"
+        default 0
+        help
+          "0: monitor temperature type hyst high"
+          "1: monitor temperature type hyst low"
+
+    config PVT_MONITOR_VAL_H_1
+        int "monitor ins1 temperature high value"
+        default 95
+
+    config PVT_MONITOR_VAL_L_1
+        int "monitor ins1 temperature low value"
+        default 90
+endif

@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 720" role="img" aria-labelledby="ttl desc" style="max-width:1160px;width:100%;height:auto;background:#fff">
+  <title id="ttl">syshand IPC 时序图</title>
+  <desc id="desc">nccu_app 客户端通过 System V 共享内存与命令/应答信号量调用 syshand 服务端执行系统命令：写 CMD、V 命令信号量、syshand 分派执行 system/popen/心跳、写回 iCmdRet、V 应答信号量唤醒客户端。</desc>
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7.5" markerHeight="7.5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#5F6368"/>
+    </marker>
+  </defs>
+
+  <text x="580" y="38" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="22" font-weight="700" fill="#202124">syshand IPC 时序（nccu_app ↔ syshand · System V 共享内存 + 信号量）</text>
+
+  <rect x="50" y="56" width="250" height="60" rx="8" fill="#F3E8FD" stroke="#8430CE" stroke-width="1.5"/>
+  <text x="175" y="82" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">nccu_app（客户端）</text>
+  <text x="175" y="102" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">SDK：iBasic_Funs.c · _SYSTEM</text>
+
+  <rect x="430" y="56" width="300" height="60" rx="8" fill="#FEF7E0" stroke="#F9AB00" stroke-width="1.5"/>
+  <text x="580" y="82" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">IPC 通道（System V）</text>
+  <text x="580" y="102" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">共享内存 CMD + 信号量 ×2</text>
+
+  <rect x="870" y="56" width="250" height="60" rx="8" fill="#E8F0FE" stroke="#1A73E8" stroke-width="1.5"/>
+  <text x="995" y="82" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">syshand（服务端）</text>
+  <text x="995" y="102" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">handler.c · 分发 :141-154</text>
+
+  <line x1="175" y1="116" x2="175" y2="505" stroke="#DADCE0" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <line x1="580" y1="116" x2="580" y2="505" stroke="#DADCE0" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <line x1="995" y1="116" x2="995" y2="505" stroke="#DADCE0" stroke-width="1.5" stroke-dasharray="5 4"/>
+
+  <rect x="170" y="160" width="10" height="300" rx="3" fill="#F3E8FD" stroke="#8430CE" stroke-width="1"/>
+  <rect x="575" y="160" width="10" height="310" rx="3" fill="#FEF7E0" stroke="#F9AB00" stroke-width="1"/>
+  <rect x="990" y="280" width="10" height="180" rx="3" fill="#E8F0FE" stroke="#1A73E8" stroke-width="1"/>
+  <text x="158" y="320" text-anchor="middle" transform="rotate(-90 158 320)" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">同步阻塞（超时 30000 ms）</text>
+
+  <text x="378" y="154" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="13" font-weight="600" fill="#202124">① 写共享内存 CMD</text>
+  <line x1="182" y1="168" x2="566" y2="168" stroke="#5F6368" stroke-width="1.6" marker-end="url(#arr)"/>
+  <text x="378" y="190" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">CMD { iCmdType, szCmd[512], iCmdRet }（handler.h:25-31）</text>
+
+  <text x="378" y="214" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="13" font-weight="600" fill="#202124">② V() 命令信号量 /_semSysHandWait</text>
+  <line x1="182" y1="228" x2="566" y2="228" stroke="#5F6368" stroke-width="1.6" marker-end="url(#arr)"/>
+  <text x="378" y="250" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">通知 syshand：有新命令待处理</text>
+
+  <text x="588" y="274" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="13" font-weight="600" fill="#202124">③ syshand 取命令并分派</text>
+  <line x1="590" y1="288" x2="984" y2="288" stroke="#5F6368" stroke-width="1.6" marker-end="url(#arr)"/>
+  <text x="588" y="310" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">命令分发：handler.c:139-152</text>
+
+  <line x1="995" y1="290" x2="995" y2="320" stroke="#137333" stroke-width="1.5"/>
+  <rect x="870" y="320" width="250" height="56" rx="6" fill="#E6F4EA" stroke="#137333" stroke-width="1.5"/>
+  <text x="995" y="342" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" font-weight="600" fill="#137333">执行 iCmdType</text>
+  <text x="995" y="360" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">0 = system() · 1 = popen() · 99 = 心跳</text>
+
+  <text x="588" y="391" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="13" font-weight="600" fill="#202124">④ 写回 iCmdRet</text>
+  <line x1="988" y1="405" x2="590" y2="405" stroke="#5F6368" stroke-width="1.6" marker-end="url(#arr)"/>
+  <text x="588" y="427" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">执行结果写回共享内存</text>
+
+  <text x="585" y="446" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="13" font-weight="600" fill="#202124">⑤ V() 应答信号量 /_semSysHandAnsw</text>
+  <line x1="988" y1="460" x2="184" y2="460" stroke="#5F6368" stroke-width="1.6" marker-end="url(#arr)"/>
+  <text x="585" y="482" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">客户端被唤醒，读取 iCmdRet 后返回</text>
+
+  <rect x="50" y="522" width="1060" height="34" rx="6" fill="#FEF7E0" stroke="#F9AB00" stroke-width="1"/>
+  <text x="66" y="544" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="13" fill="#5F6368">· 共享内存 key = ftok("/app", 15)；命令超时 30000 ms；两端 CMD 结构体必须完全一致，否则序列化错位</text>
+
+  <rect x="50" y="564" width="1060" height="34" rx="6" fill="#FEF7E0" stroke="#F9AB00" stroke-width="1"/>
+  <text x="66" y="586" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="13" fill="#5F6368">· 心跳：每 10s 一次，18 次（≈180s）丢失 → 仅写日志继续服务，不 reboot / 不 exit（handler.c:114-125）</text>
+
+  <rect x="50" y="608" width="1060" height="38" rx="6" fill="#FCE8E6" stroke="#C5221F" stroke-width="1.5"/>
+  <text x="66" y="633" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="13" font-weight="700" fill="#C5221F">⚠ syshand 是 OS HAL（系统命令代理 + BSP 扩展安装），不重启应用</text>
+
+  <rect x="50" y="666" width="14" height="14" rx="3" fill="#F3E8FD" stroke="#8430CE"/>
+  <text x="72" y="678" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">客户端</text>
+  <rect x="210" y="666" width="14" height="14" rx="3" fill="#FEF7E0" stroke="#F9AB00"/>
+  <text x="232" y="678" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">IPC 通道</text>
+  <rect x="370" y="666" width="14" height="14" rx="3" fill="#E8F0FE" stroke="#1A73E8"/>
+  <text x="392" y="678" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">服务端</text>
+  <rect x="530" y="666" width="14" height="14" rx="3" fill="#E6F4EA" stroke="#137333"/>
+  <text x="552" y="678" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">系统调用</text>
+  <rect x="700" y="666" width="14" height="14" rx="3" fill="#FCE8E6" stroke="#C5221F"/>
+  <text x="722" y="678" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">警示</text>
+
+  <text x="50" y="710" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">来源：src/publib/iBasic_Funs.c（_SYSTEM / Do_Proc_HeartBeat） · src/utilities/system_hand/handler.c:139-152 · handler.h:25-31</text>
+</svg>

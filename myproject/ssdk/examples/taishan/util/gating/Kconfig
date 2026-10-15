@@ -1,0 +1,19 @@
+comment "Clock and power gating examples"
+
+config POWER_GATE_EXAMPLE_E3
+    bool "E3 power gate example"
+    default n
+
+config CLOCK_GATE_EXAMPLE_E3
+    bool "E3 clock gate example"
+    depends on TAISHAN_CKGEN
+    default n
+
+config POWER_GATE_EXAMPLE_D3
+    bool "D3 power gate example"
+    default n
+
+config CLOCK_GATE_EXAMPLE_D3
+    bool "D3 clock gate example"
+    depends on TAISHAN_CKGEN
+    default n

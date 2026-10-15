@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 660" role="img" aria-labelledby="ttl desc" style="max-width:1160px;width:100%;height:auto;background:#fff">
+  <title id="ttl">legacy_app 功能地图：五大业务能力与 spec / 源码映射</title>
+  <desc id="desc">功能地图。数据主线：外部设备 → ①采集（samplers，10 编译/17 目录）→ ②处理（data-processor DPR，libdpr.so）→ ③上报（reporters，8 编译）→ 云平台/本地。④通信（comm-ports，9 个 libcomm_*.so，HAL 6 函数）作为侧翼能力带，向上支撑采集与上报；⑤平台管理（app-lifecycle + system-hand）作为底部能力带，覆盖启动链、syshand 守护与 OTA 生命周期。基础库 publib（libpub.so）为所有模块共用。每个能力对应一个 openspec 权威 spec 与一组源码目录。</desc>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L9,4 L0,8 Z" fill="#5F6368"/>
+    </marker>
+  </defs>
+
+  <!-- 标题与说明 -->
+  <text x="580" y="38" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="22" font-weight="700" fill="#202124">legacy_app 功能地图：五大业务能力与 spec / 源码映射</text>
+  <text x="580" y="63" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="13" fill="#5F6368">数据主线：设备 → 采集 → 处理 → 上报 → 云/本地；每个能力对应一个 openspec 权威 spec 与一组源码目录</text>
+
+  <!-- 外部节点：现场设备 -->
+  <rect x="15" y="145" width="115" height="70" rx="10" fill="#F1F3F4" stroke="#5F6368" stroke-width="1.5" stroke-dasharray="6 3"/>
+  <text x="72" y="172" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">现场设备</text>
+  <text x="72" y="194" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">多协议接入</text>
+
+  <!-- 主线节点 ① 采集 -->
+  <rect x="175" y="100" width="245" height="145" rx="8" fill="#E6F4EA" stroke="#137333" stroke-width="1.5"/>
+  <text x="297" y="126" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">① 采集</text>
+  <text x="297" y="146" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">data-acquisition</text>
+  <rect x="240" y="156" width="115" height="20" rx="4" fill="#FFFFFF" stroke="#137333" stroke-width="1.2"/>
+  <text x="297" y="170" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="11" fill="#137333">spec: samplers</text>
+  <text x="297" y="196" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">src/moduals/samplers/</text>
+  <text x="297" y="214" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">10 编译 · 17 目录</text>
+  <text x="297" y="234" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">src/Makefile:36-47</text>
+
+  <!-- 主线节点 ② 处理（DPR） -->
+  <rect x="465" y="100" width="245" height="145" rx="8" fill="#F3E8FD" stroke="#8430CE" stroke-width="1.5"/>
+  <text x="587" y="126" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">② 处理</text>
+  <text x="587" y="146" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">data-processing</text>
+  <rect x="512" y="156" width="150" height="20" rx="4" fill="#FFFFFF" stroke="#8430CE" stroke-width="1.2"/>
+  <text x="587" y="170" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="11" fill="#8430CE">spec: data-processor</text>
+  <text x="587" y="196" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">src/moduals/data_processor/</text>
+  <text x="587" y="214" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">dpr/ → libdpr.so · 核心枢纽</text>
+  <text x="587" y="234" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">dpr/config_mangmt.c</text>
+
+  <!-- 主线节点 ③ 上报 -->
+  <rect x="755" y="100" width="245" height="145" rx="8" fill="#E8F0FE" stroke="#1A73E8" stroke-width="1.5"/>
+  <text x="877" y="126" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">③ 上报</text>
+  <text x="877" y="146" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">data-reporting</text>
+  <rect x="817" y="156" width="120" height="20" rx="4" fill="#FFFFFF" stroke="#1A73E8" stroke-width="1.2"/>
+  <text x="877" y="170" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="11" fill="#1A73E8">spec: reporters</text>
+  <text x="877" y="196" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">src/moduals/reporters/</text>
+  <text x="877" y="214" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">8 编译 · MQTT/Modbus/IEC…</text>
+  <text x="877" y="234" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">src/Makefile:60-74</text>
+
+  <!-- 外部节点：云平台/本地 -->
+  <rect x="1050" y="145" width="100" height="70" rx="10" fill="#F1F3F4" stroke="#5F6368" stroke-width="1.5" stroke-dasharray="6 3"/>
+  <text x="1100" y="172" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">云平台</text>
+  <text x="1100" y="194" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">本地系统</text>
+
+  <!-- 主线箭头 -->
+  <line x1="132" y1="180" x2="171" y2="180" stroke="#5F6368" stroke-width="1.6" marker-end="url(#arw)"/>
+  <line x1="422" y1="172" x2="461" y2="172" stroke="#5F6368" stroke-width="1.6" marker-end="url(#arw)"/>
+  <line x1="712" y1="172" x2="751" y2="172" stroke="#5F6368" stroke-width="1.6" marker-end="url(#arw)"/>
+  <line x1="1002" y1="180" x2="1046" y2="180" stroke="#5F6368" stroke-width="1.6" marker-end="url(#arw)"/>
+
+  <!-- 侧翼能力带 ④ 通信 -->
+  <rect x="15" y="290" width="1135" height="95" rx="8" fill="#FEF7E0" stroke="#F9AB00" stroke-width="1.5"/>
+  <text x="45" y="322" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">④ 通信</text>
+  <text x="45" y="342" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">communications</text>
+  <rect x="45" y="352" width="130" height="20" rx="4" fill="#FFFFFF" stroke="#F9AB00" stroke-width="1.2"/>
+  <text x="110" y="366" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="11" fill="#B06000">spec: comm-ports</text>
+  <text x="300" y="326" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">src/comm_ports/ · 9 × libcomm_*.so（统一 HAL 6 函数，运行时 dlopen + dlsym 加载）</text>
+  <text x="300" y="348" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">comm_loader.c 统一加载 · 采集器经 COMMPORT 抽象收发，上报器经同一通道外送</text>
+  <text x="300" y="372" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">HAL_CommOpen / Accept / Read / Write / Control / Close · comm_port.h:284</text>
+  <text x="1125" y="312" text-anchor="end" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">src/Makefile:26-34</text>
+
+  <!-- 通信 → 采集 / 上报 支撑箭头 -->
+  <line x1="297" y1="288" x2="297" y2="249" stroke="#5F6368" stroke-width="1.6" marker-end="url(#arw)"/>
+  <line x1="877" y1="288" x2="877" y2="249" stroke="#5F6368" stroke-width="1.6" marker-end="url(#arw)"/>
+  <text x="308" y="272" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="11" fill="#5F6368">COMMPORT 抽象（采样收发）</text>
+  <text x="888" y="272" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="11" fill="#5F6368">传输通道（对外上报）</text>
+
+  <!-- 底部能力带 ⑤ 平台管理 -->
+  <rect x="15" y="430" width="1135" height="115" rx="8" fill="#F1F3F4" stroke="#5F6368" stroke-width="1.5"/>
+  <text x="45" y="462" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">⑤ 平台管理</text>
+  <text x="45" y="482" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">platform-management</text>
+  <rect x="45" y="492" width="145" height="20" rx="4" fill="#FFFFFF" stroke="#5F6368" stroke-width="1.2"/>
+  <text x="117" y="506" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="11" fill="#5F6368">spec: app-lifecycle</text>
+  <rect x="200" y="492" width="135" height="20" rx="4" fill="#FFFFFF" stroke="#5F6368" stroke-width="1.2"/>
+  <text x="267" y="506" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="11" fill="#5F6368">spec: system-hand</text>
+  <text x="380" y="460" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">src/shells/（app_entry → startrun → run_app 启动链）</text>
+  <text x="380" y="482" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">src/utilities/system_hand/（syshand 守护：SysV IPC + 心跳 + 命令代理）</text>
+  <text x="380" y="504" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">config/（仓库根：System.cfg · verity.conf）</text>
+  <text x="380" y="530" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">system_hand/handler.c · shells/app_entry · build.sh</text>
+  <text x="830" y="460" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">覆盖构建 → 签名 → RAUC bundle → OTA A/B 升级</text>
+  <text x="830" y="482" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">与运行时启动、优雅停止、PID 管理全生命周期</text>
+  <text x="1125" y="530" text-anchor="end" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">src/Makefile:14-16,82</text>
+
+  <!-- 图例 -->
+  <rect x="45" y="572" width="16" height="12" fill="#E6F4EA" stroke="#137333" stroke-width="1.2"/>
+  <text x="67" y="583" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#202124">采集</text>
+  <rect x="135" y="572" width="16" height="12" fill="#F3E8FD" stroke="#8430CE" stroke-width="1.2"/>
+  <text x="157" y="583" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#202124">处理</text>
+  <rect x="225" y="572" width="16" height="12" fill="#E8F0FE" stroke="#1A73E8" stroke-width="1.2"/>
+  <text x="247" y="583" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#202124">上报</text>
+  <rect x="315" y="572" width="16" height="12" fill="#FEF7E0" stroke="#F9AB00" stroke-width="1.2"/>
+  <text x="337" y="583" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#202124">通信</text>
+  <rect x="405" y="572" width="16" height="12" fill="#F1F3F4" stroke="#5F6368" stroke-width="1.2"/>
+  <text x="427" y="583" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#202124">平台管理</text>
+  <rect x="515" y="572" width="16" height="12" fill="#F1F3F4" stroke="#5F6368" stroke-width="1.2" stroke-dasharray="4 2"/>
+  <text x="537" y="583" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#202124">外部（虚线）</text>
+  <line x1="655" y1="578" x2="705" y2="578" stroke="#5F6368" stroke-width="1.6" marker-end="url(#arw)"/>
+  <text x="715" y="583" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#202124">能力间数据流</text>
+  <rect x="845" y="572" width="70" height="14" rx="4" fill="#FFFFFF" stroke="#5F6368" stroke-width="1"/>
+  <text x="880" y="583" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#5F6368">spec 徽标</text>
+  <text x="930" y="583" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#202124">= 权威 spec</text>
+
+  <!-- 底注 -->
+  <text x="45" y="622" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="13" fill="#5F6368">基础库 publib（libpub.so）为所有模块共用（spec: publib，src/publib/，src/Makefile:14）</text>
+  <text x="45" y="645" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="13" fill="#5F6368">需求断言与验收细节以 openspec/specs/ 各 spec 的 R1..Rn 为准，本图只做导航。</text>
+</svg>

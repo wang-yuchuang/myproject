@@ -1,0 +1,6 @@
+comment "audio application"
+
+config AUDIO_MANAGER_TEST
+    bool "audio manager test"
+    depends on AUDIO_MANAGER
+    default n

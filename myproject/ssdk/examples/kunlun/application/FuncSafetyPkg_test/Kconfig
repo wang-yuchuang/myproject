@@ -1,0 +1,4 @@
+config FuncSafetyPkg_TEST
+    bool "Funcsafety package test"
+    depends on FuncSafetyPkg
+    default n

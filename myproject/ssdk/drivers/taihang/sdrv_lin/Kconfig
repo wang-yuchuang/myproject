@@ -1,0 +1,5 @@
+config SDRV_LIN
+    bool "Taihang semidrive Lin driver Support"
+    select LIN
+    select SDRV_UART
+    default n

@@ -1,0 +1,5 @@
+comment "SPI Example Application Options"
+
+config TAISHAN_SPI_DEMO
+    bool "Taishan SPI Example Application"
+    default n

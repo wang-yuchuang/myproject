@@ -1,0 +1,31 @@
+comment "DISK Options"
+
+config DISK_RAM
+    bool "Use block device disk ram"
+    default n
+
+config DISK_MMC
+    bool "Use block device disk mmc"
+    default n
+
+config DISK_NOR_FLASH
+    bool "Use block device disk nor flash"
+    default n
+
+config DISK_NOR_FLASH_BYTES_API_SUPPORT
+    bool "Disk nor flash bytes api which not need block aligned access config"
+    depends on DISK_NOR_FLASH
+    default y
+
+config DISK_USB
+    bool "Use block device disk usb"
+    depends on USB_HOST_MSC
+    default y
+
+config DISK_MAPPED
+    bool "Use mapped disk"
+    default n
+
+config DISK_NAME
+    string "disk name for mount file system"
+    default "norflash0"

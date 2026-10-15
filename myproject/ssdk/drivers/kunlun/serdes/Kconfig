@@ -1,0 +1,18 @@
+menuconfig  SERDES_KUNLUN_PLATFORM
+    bool "serdes Driver Options"
+    select SERDES
+    select I2C
+    default n
+
+
+if SERDES_KUNLUN_PLATFORM
+config SERDES_TI9XX
+    bool "serdes ti9xx Driver"
+    select SERDES
+    default n
+
+config SERDES_MAX967XX
+    bool "serdes max967xx Driver"
+    select SERDES
+    default n
+endif

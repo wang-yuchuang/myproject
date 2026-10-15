@@ -1,0 +1,3 @@
+config SUPPORT_LOG_TIMESTAMP
+    bool "semidrive log timestamp support"
+    default n

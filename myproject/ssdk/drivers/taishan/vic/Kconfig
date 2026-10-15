@@ -1,0 +1,30 @@
+menuconfig SDRV_VIC
+    bool "Taishan vic Driver Support"
+    select IRQ
+    default n
+
+if SDRV_VIC
+
+config VIC_IRQ_INTERRUPT_MODE
+    bool "VIC vectored IRQ interrupt mode"
+    default n
+
+config VIC_1_0
+    bool "VIC hardware version 1.0"
+    default y
+
+config VIC_INT_NEST_ERRATA
+    bool "Enable VIC interrupt nesting errata"
+    default n
+    depends on VIC_1_0
+
+config VIC_INT_NEST_AUTO_ENABLE
+    bool "Automatically enable irq nesting by system"
+    default n
+
+config VIC_INT_NEST_MAX_CNT
+    int "VIC maximum allowed interupt nesting counter"
+    default 16
+    depends on VIC_INT_NEST_AUTO_ENABLE
+
+endif # SDRV_VIC

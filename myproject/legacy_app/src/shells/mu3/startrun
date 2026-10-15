@@ -1,0 +1,104 @@
+#!/bin/sh
+
+###added by Jimmy for fault check: if mmcblk0p1 is a file, should remove it before mount
+if [ -f "/media/mmcblk0p1" ]; then
+    rm /media/mmcblk0p1 -f
+fi
+
+#now handle USB update
+EXTENS_MARK_FILE="/var/.ext_mark"
+IS_NEED_CALIBTATE=0
+
+#added by Jimmy 20201107 because app_update need libpub
+NCCU_RUN_PATH="/app"
+export NCCU_RUN_PATH
+NCCU_DATA_PATH="/data"
+export NCCU_DATA_PATH
+LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/lib:$NCCU_RUN_PATH/lib
+export LD_LIBRARY_PATH
+
+#added by Jimmy for solving the app_update reported error
+export QTDIR=/usr/lib/qt4
+export TSDIR=/usr/lib/tslib
+export PATH=$TSDIR/bin:$PATH
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$TSDIR/lib:$QTDIR/lib
+export TSLIB_CONSOLEDEVICE=none
+export TSLIB_FBDEVICE=/dev/fb0
+export QT_QWS_FONTDIR=$QTDIR/lib/fonts
+export QT_PLUGIN_PATH=$QTDIR/plugins/
+
+function wait_appupdt_exe_done()
+{
+    FILENAME_APPUDDT_FLAG="/opt/appdata/data/firmwareupdt.flag"
+    if [ -f $FILENAME_APPUDDT_FLAG ]; then
+        wait=1
+        while [ $wait -le 300 ] #max wait 30sec
+        do
+            if [ ! -f $FILENAME_APPUDDT_FLAG ]; then
+                #echo "app_udate done........"
+                break
+            #else
+            #    echo "waiting app update.........."
+            fi
+            let wait++
+            usleep 100000
+        done
+    #else
+    #    echo "app_udate flag not found, so continue........"
+    fi
+}
+echo "[BOOT] mu3/startrun: entered, EXTENS_MARK_FILE=$EXTENS_MARK_FILE"
+if [ -f $EXTENS_MARK_FILE ]; then
+    echo "[BOOT] mu3/startrun: EXTENS_MARK_FILE exists, skip upgrade detection"
+    echo
+    echo Finished reboot, now staring app...
+    echo
+    rm $EXTENS_MARK_FILE -f
+else
+    echo "[BOOT] mu3/startrun: EXTENS_MARK_FILE not found, checking USB/SD..."
+    sleep 5 #added by Jimmy 20240619 for udisk recognition problem
+    IS_FOUND_UPDTFILE=0
+    IS_USBDISK_DEV_FILE_EXIST=`ls /dev/sd* 2>/dev/null | wc -l`
+    IS_SDCARD_DEV_FILE_EXIST=`ls /dev/mmcblk[1-9]* 2>/dev/null | wc -l`
+    echo "[BOOT] mu3/startrun: USB devs=$IS_USBDISK_DEV_FILE_EXIST, SD devs=$IS_SDCARD_DEV_FILE_EXIST"
+    # echo     
+    if [ $IS_USBDISK_DEV_FILE_EXIST -gt 0 ]; then
+        #jimmy: as long as dev detected should be able to calibrate
+        IS_NEED_CALIBTATE=1
+        USBDISK_DIR=`/bin/mount | grep '/media/sd' | cut -d ' ' -f 3`
+        if [[ -n $USBDISK_DIR ]]; then
+            IS_FOUND_UPDTFILE=11111
+        fi
+    fi
+    if [ $IS_SDCARD_DEV_FILE_EXIST -gt 0 ]; then
+        #jimmy: as long as dev detected should be able to calibrate
+        IS_NEED_CALIBTATE=1
+        SDCARD_DIR=`/bin/mount | grep '/media/mmc' | cut -d ' ' -f 3`
+        if [[ -n $SDCARD_DIR ]]; then
+            IS_FOUND_UPDTFILE=22222
+        fi
+    fi
+
+    echo "[BOOT] mu3/startrun: IS_FOUND_UPDTFILE=$IS_FOUND_UPDTFILE, IS_NEED_CALIBTATE=$IS_NEED_CALIBTATE"
+    if [ $IS_FOUND_UPDTFILE -gt 0 ]; then
+        echo
+        echo "Now found USB/SD device (1111-USB, 2222-SD) -> ($IS_FOUND_UPDTFILE), please wait for upgrading..."
+        echo
+        echo "[BOOT] mu3/startrun: running app_update (upgrade mode)"
+        /app/bin/app_update
+    elif [ $IS_NEED_CALIBTATE -gt 0 ]; then
+        echo
+        echo "Now find USB/SD device, but not sure for update file, will still entering updating..."
+        echo
+        echo "[BOOT] mu3/startrun: running app_update (calibration mode)"
+        /app/bin/app_update
+    else
+        echo "[BOOT] mu3/startrun: no upgrade device, proceed to wait_appupdt_exe_done"
+        wait_appupdt_exe_done
+    fi
+fi
+
+# // LJH240730 IMMU3 debug
+# /app/run_app -debug
+echo "[BOOT] mu3/startrun: calling /app/run_app"
+/app/run_app

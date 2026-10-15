@@ -1,0 +1,35 @@
+menuconfig KUNLUN_SND
+    bool "Kunlun Sound Driver Support"
+    select SND
+    default n
+
+if KUNLUN_SND
+
+config SDRV_I2S_MC
+    bool "SDRV I2S MC Driver"
+    default n
+
+config SDRV_SPDIF
+    bool "SDRV SPDIF Driver"
+    default n
+
+config CDNS_I2S_SC
+    bool "CDNS I2S SC Driver"
+    default n
+
+config CODEC
+    select SND
+    bool "CODEC Driver"
+    default n
+
+config CODEC_AK4619
+    bool "Codec Ak4619 Driver"
+    default n
+    depends on CODEC
+
+config CODEC_TLV320
+    bool "Codec Tlv320 Driver"
+    default n
+    depends on CODEC
+
+endif # KUNLUN_SND

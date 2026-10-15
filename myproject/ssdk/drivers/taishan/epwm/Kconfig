@@ -1,0 +1,12 @@
+menuconfig SDRV_EPWM
+    bool "Taishan EPWM Driver Support"
+    select PWM
+    default n
+
+if SDRV_EPWM
+
+config SDRV_EPWM_LITE
+    bool "Taishan Lite EPWM Driver Support"
+    default n
+
+endif # SDRV_EPWM

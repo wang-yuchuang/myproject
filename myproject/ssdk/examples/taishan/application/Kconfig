@@ -1,0 +1,75 @@
+comment "Application Options"
+
+menuconfig APP_EMIRROR
+    bool "e-mirror application"
+    select GUI_LVGL
+    default n
+
+if APP_EMIRROR
+rsource "emirror/Kconfig"
+endif # APP_EMIRROR
+
+menuconfig APP_CLUSTER
+    bool "cluster application"
+    select GUI_LVGL
+    default n
+
+if APP_CLUSTER
+rsource "cluster/Kconfig"
+endif # APP_CLUSTER
+
+menuconfig APP_CONTROLPANEL
+    bool "control panel application"
+    select GUI_LVGL
+    default n
+
+if APP_CONTROLPANEL
+rsource "controlpanel/Kconfig"
+endif # APP_CONTROLPANEL
+
+menuconfig APP_QT_CLUSTER
+    bool "qt cluster application"
+    default n
+
+if APP_QT_CLUSTER
+rsource "qt_app/Kconfig"
+endif # APP_QT_CLUSTER
+
+menuconfig APP_MJPEG_DEC
+    bool "mjpeg dec application"
+    select MJPEG
+    default n
+
+if APP_MJPEG_DEC
+rsource "mjpeg_dec/Kconfig"
+endif # APP_MJPEG_DEC
+
+menuconfig APP_MP3_DEC
+    bool "mp3 dec application"
+    depends on CODEC
+    depends on SND
+    depends on DMA
+    select MP3_DEC
+    default n
+
+menuconfig APP_BOOTANIMATION
+    bool "boot animation application"
+    select MJPEG
+    default n
+
+if APP_BOOTANIMATION
+rsource "bootanimation/Kconfig"
+endif # APP_BOOTANIMATION
+
+menuconfig APP_LAUNCHER
+    bool "launcher application"
+    default n
+
+if APP_LAUNCHER
+rsource "launcher/Kconfig"
+endif # APP_LAUNCHER
+
+menuconfig APP_CAM_PRE
+    bool "camera preview support"
+    default n
+

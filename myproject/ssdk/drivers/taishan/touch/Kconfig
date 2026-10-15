@@ -1,0 +1,4 @@
+config TOUCH_GOODIX
+    bool "Goodix Touch Driver Support"
+    select TOUCH
+    default n

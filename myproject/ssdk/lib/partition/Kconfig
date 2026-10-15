@@ -1,0 +1,5 @@
+comment "partition lib"
+
+config PARTITION_BLOCK_IO_MODE
+    bool "Partition Block IO Mode"
+    default y

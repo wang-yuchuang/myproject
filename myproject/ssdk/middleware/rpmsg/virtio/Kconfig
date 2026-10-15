@@ -1,0 +1,9 @@
+comment "Rpmsg shm Options"
+
+config SHM_BUFF_NUM
+    int "Rpmsg share memory buffer number"
+    default 256
+
+config SHM_PAYLOAD_SIZE
+    int "Rpmsg share memory payload size"
+    default 512

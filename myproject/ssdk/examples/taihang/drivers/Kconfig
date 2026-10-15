@@ -1,0 +1,19 @@
+comment "Taihang Driver Example Options"
+
+config SDRV_LIN_DEMO
+    bool "Taihang SemiDrive Lin example"
+    select SDRV_LIN
+    default n
+
+if SDRV_LIN_DEMO
+rsource "sdrv_lin/Kconfig"
+endif # SDRV_LIN_DEMO
+
+config SDRV_UART_DEMO
+    bool "Taihang SemiDrive Uart example"
+    select SDRV_UART
+    default n
+
+if SDRV_UART_DEMO
+rsource "sdrv_uart/Kconfig"
+endif # SDRV_UART_DEMO

@@ -1,0 +1,7 @@
+comment "Taishan PMU Demo Options"
+
+config TAISHAN_PMU_DEMO
+    bool "Taishan pmu demo"
+    select PMU
+    select SDRV_PMU
+    default n

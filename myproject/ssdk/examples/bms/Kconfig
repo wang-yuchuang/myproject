@@ -1,0 +1,6 @@
+comment "Application Options"
+
+rsource "Functions/Kconfig"
+rsource "Logics/Kconfig"
+rsource "BSPSys/Kconfig"
+rsource "Addition/Kconfig"

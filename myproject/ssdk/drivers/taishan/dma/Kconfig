@@ -1,0 +1,16 @@
+menuconfig SDRV_DMA
+    bool "Taishan DMA Driver Support"
+	select DMA
+    default n
+
+if SDRV_DMA
+
+config SDRV_DMA_USE_LBC
+     bool "Load lli description using DMA local buffer"
+     default n
+
+config SDRV_DMA_1_0
+    bool "Semidrive DMA hardware version 1.0"
+    default y
+
+endif # SDRV_DMA

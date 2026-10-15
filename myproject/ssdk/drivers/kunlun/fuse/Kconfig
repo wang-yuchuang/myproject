@@ -1,0 +1,4 @@
+config KUNLUN_FUSE
+    bool "Kunlun FUSE Driver Support"
+    select FUSE
+    default n

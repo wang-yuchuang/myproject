@@ -1,0 +1,77 @@
+/**
+ * @file lvds_kd070_serdes_1024x600_lcd.c
+ * @brief display subsystem source file.
+ *
+ * @copyright Copyright (c) 2019-2029 Semidrive Semiconductor.
+ *            All rights reserved.
+ */
+#include <sdm_panel.h>
+#include <disp_panels.h>
+#include <ds90ub9xx.h>
+
+static struct display_timing timing = {
+    .hactive = 800,
+    .hfront_porch = 210,
+    .hback_porch = 36,
+    .hsync_len = 10,
+    .vactive = 480,
+    .vfront_porch = 22,
+    .vback_porch = 21,
+    .vsync_len = 2,
+    .dsp_clk_pol = LCM_POLARITY_FALLING,
+    .de_pol      = LCM_POLARITY_HIGH_ACTIVE,
+    .vsync_pol   = LCM_POLARITY_HIGH_ACTIVE,
+    .hsync_pol   = LCM_POLARITY_HIGH_ACTIVE,
+
+    .map_format = LVDS_MAP_FORMAT_JEIDA,
+};
+
+static int panel_post_begin(struct sdm_panel_info * panel_info)
+{
+    return 0;
+}
+
+static int panel_post_end(struct sdm_panel_info * panel_info)
+{
+    int ret = 0;
+    LOGD("%s enter\n", __func__);
+
+    i2c_adap_dev_t *adap = panel_info->serdes->adap;
+    uint32_t ser_addr = panel_info->serdes->ser_addr;
+    uint32_t des_addr = panel_info->serdes->des_addr;
+
+    //OLDI_DUAL:Single-pixel mode,MAPSEL: OpenLDI Bit Mapping
+    ds90ub9xx_write_reg(adap, ser_addr, 0x4f, 0x40);
+
+    //COAX:Enable FPD-Link III for coaxial cabling
+    ds90ub9xx_write_reg(adap, ser_addr, 0x5b, 0x20);
+
+    ds90ub9xx_write_reg(adap, ser_addr, 0x03, 0x08);
+    ds90ub9xx_write_reg(adap, ser_addr, 0x17, 0x9e);
+
+    //ds90ub9xx_write_reg(adap, des_addr, 0x49, 0x02);//set MAPSEL low
+#ifndef BACKLIGHT_GPIO
+        ret = ds90ub94x_948_gpio_config(adap, ser_addr, des_addr, GPIO0, OUTPUT, DES_PORT0);
+        if (ret < 0)
+            LOGE("%s backlight GPIO0 config error !\n", __func__);
+#endif
+
+    LOGD("%s down\n", __func__);
+    return 0;
+}
+
+struct sdm_panel lvds_lmt070_serdes_800x480_lcd = {
+    .panel_name = "lvds_lmt070_serdes_800x480_lcd",
+    .if_type = IF_TYPE_LVDS,
+    .cmd_intf = IF_TYPE_NONE,
+    .cmd_data = NULL,
+    .width_mm = 154,
+    .height_mm = 86,
+    .fps = 60,
+    .display_timing = &timing,
+    .sis_num = 0,
+    .sis = NULL,
+    .rtos_screen = NULL,
+    .panel_post_begin = panel_post_begin,
+    .panel_post_end = panel_post_end,
+};

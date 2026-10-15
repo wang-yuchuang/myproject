@@ -1,0 +1,3 @@
+menuconfig VPU_DEV_API
+    bool "kunlun VPU coda & wave api"
+    default n

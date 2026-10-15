@@ -1,0 +1,16 @@
+config KUNLUN_GPIO
+    bool "Kunlun GPIO Driver Support"
+    select GPIO
+    default n
+
+config TCA9539
+    bool "TCA9539 I/O Expander Driver Support"
+    depends on I2C
+    select GPIO
+    default n
+
+config TCA6408
+    bool "TC6408 I/O Expander Driver Support"
+    depends on I2C
+    select GPIO
+    default n

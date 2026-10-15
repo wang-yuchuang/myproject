@@ -1,0 +1,69 @@
+comment "slimfs Library Options"
+
+config FLASH_SECTOR_START
+    int "slimfs storage medium start sector number"
+    default 0
+
+config FLASH_PARTITION
+    string "slimfs storage medium partition name"
+    default "slimfs"
+
+config SLIMFS_MAGIC_NUMBER
+    string "slimfs magic number"
+    default "SDRV_FS"
+
+config SLIMFS_OS_TYPE
+    int "slimfs running os type"
+    default 2
+    help
+      0: os type baremetal
+      1: os type lk
+      2: os type SSDK
+
+config SLIMFS_INIT_BLOCK_TYPE
+    bool "slimfs init with block type"
+    default false
+
+config SLIMFS_SLOT32_NUM
+    int "slimfs slot32 number"
+    default 200
+
+config SLIMFS_SLOT64_NUM
+    int "slimfs slot64 number"
+    default 1000
+
+config SLIMFS_SLOT128_NUM
+    int "slimfs slot128 number"
+    default 1
+
+config SLIMFS_SLOT256_NUM
+    int "slimfs slot256 number"
+    default 1
+
+config SLIMFS_SLOT512_NUM
+    int "slimfs slot512 number"
+    default 1
+
+config SLIMFS_SLOT1K_NUM
+    int "slimfs slot1k number"
+    default 1
+
+config SLIMFS_SLOT2K_NUM
+    int "slimfs slot2k number"
+    default 1
+
+config SLIMFS_SLOT4K_NUM
+    int "slimfs slot4k number"
+    default 1
+
+config SLIMFS_SLOT8K_NUM
+    int "slimfs slot8k number"
+    default 1
+
+config SLIMFS_SLOT16K_NUM
+    int "slimfs slot16k number"
+    default 1
+
+config SLIMFS_SLOT32K_NUM
+    int "slimfs slot32k number"
+    default 1

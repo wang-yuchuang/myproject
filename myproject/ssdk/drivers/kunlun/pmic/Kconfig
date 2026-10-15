@@ -1,0 +1,7 @@
+config PMIC
+    bool "pmic Support"
+    default n
+
+config PMIC_LP875XX
+    bool "pmic lp875xx driver Support"
+    default n

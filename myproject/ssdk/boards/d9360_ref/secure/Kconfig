@@ -1,0 +1,28 @@
+comment "D9 Secure Core Options"
+
+config MEM_BASE
+    hex "Memory Start Address"
+    default 0x3B000000
+
+config MEM_SIZE
+    hex "Memory Size"
+    default 0x10000000
+
+config BOARD_REMAP
+    bool "Enable Kunlun board remap"
+    select SCR
+    select RESETGEN
+    select KUNLUN_RESETGEN
+    default n
+
+config FIREWALL_DISABLE
+    bool "disable firewall function"
+	default y
+
+config EARLYCOPY
+    bool "early copy"
+    default n
+
+config SUPPORT_STR_MODE
+    bool "support str mode"
+    default n

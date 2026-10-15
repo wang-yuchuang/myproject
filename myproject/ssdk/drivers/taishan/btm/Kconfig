@@ -1,0 +1,4 @@
+config SDRV_BTM
+    bool "Taishan BTM Driver Support"
+    select TIMER
+    default n

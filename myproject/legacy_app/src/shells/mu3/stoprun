@@ -1,0 +1,29 @@
+#!/bin/sh
+VAR_DIR="/opt/appdata/data" #NCCU board
+export VAR_DIR
+
+#kill qt
+killall -9 app_update
+killall -9 nccu_ui
+
+#set PID files
+APP_PID_FILE=$VAR_DIR/nccu.pid
+SYSHAND_PID_FILE=$VAR_DIR/syshand.pid
+
+#add by Jimmy Wu: kill syshand
+if [ -f $SYSHAND_PID_FILE ];  then
+	kill `cat $SYSHAND_PID_FILE`
+	rm -f $SYSHAND_PID_FILE
+	echo The syshand now is being stoppped...
+	echo 
+fi
+
+if [ -f $APP_PID_FILE ];  then
+	kill `cat $APP_PID_FILE`
+	rm -f $APP_PID_FILE
+	echo The nccu_app now is being stoppped...
+	echo 
+fi
+
+
+

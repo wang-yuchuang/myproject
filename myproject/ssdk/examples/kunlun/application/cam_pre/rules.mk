@@ -1,0 +1,15 @@
+LOCAL_DIR := $(GET_LOCAL_DIR)
+
+MODULE := $(LOCAL_DIR)
+MODULE_CFLAGS += -D_CONFIG_OS_SSDK_
+
+MODULE_CFLAGS += $(CFLAGS)
+CFLAGS :=
+
+MODULE_SRCS += $(LOCAL_DIR)/cam_test.c
+
+ifeq ($(CONFIG_KUNLUN_CAMERA_SERVICE), y)
+MODULE_SRCS += $(LOCAL_DIR)/scs_test.c
+endif
+
+include $(MKROOT)/module.mk

@@ -1,0 +1,146 @@
+comment "Reboot Options"
+
+config KUNLUN_REBOOT
+    bool "Kunlun Device"
+    select MEM_IMAGE
+    default n
+
+config TAISHAN_REBOOT
+    bool "Taishan Device"
+    select PARTITION
+    select DISK
+    select RESETGEN
+    select SCR
+    default n
+
+if TAISHAN_REBOOT
+choice
+    prompt "Select SP Split/Lockstep"
+    default SP_SPLIT_MODE
+
+    config SP_SPLIT_MODE
+        bool "Split Mode"
+
+    config SP_LOCKSTEP_MODE
+        bool "Lockstep Mode"
+endchoice
+
+choice
+    prompt "Select SX Split/Lockstep"
+    default SX_SPLIT_MODE
+
+    config SX_SPLIT_MODE
+        bool "Split Mode"
+
+    config SX_LOCKSTEP_MODE
+        bool "Lockstep Mode"
+endchoice
+
+choice
+    prompt "Select Boot device"
+    default REBOOT_DISK_NORFLASH
+
+    config REBOOT_DISK_NORFLASH
+        bool "Boot From Norflash0"
+        select OSPI
+        select TAISHAN_XSPI
+        select DISK_NOR_FLASH
+
+    config REBOOT_DISK_MMC0
+        bool "Boot From MMC0"
+        select MMC
+        select SEHC
+        select DISK_MMC
+
+    config REBOOT_DISK_MMC1
+        bool "Boot From MMC1"
+        select MMC
+        select SEHC
+        select DISK_MMC
+endchoice
+
+if SP_LOCKSTEP_MODE
+config SP_MEM_BASE
+    hex "SP Memory Base"
+    default 0x700000
+
+config SP_MEM_LEN
+    int "SP Memory Length(kB)"
+    default 512
+
+config SP_PT_NAME
+    string "SP Partition Name"
+    default "sp0"
+endif #SP_LOCKSTEP_MODE
+
+if SX_LOCKSTEP_MODE
+config SX_MEM_BASE
+    hex "SX Memory Base"
+    default 0x600000
+
+config SX_MEM_LEN
+    int "SX Memory Length(kB)"
+    default 512
+
+config SX_PT_NAME
+    string "SX Partition Name"
+    default "sx0"
+endif #SX_LOCKSTEP_MODE
+
+if SP_SPLIT_MODE
+config SP0_MEM_BASE
+    hex "SP0 Memory Base"
+    default 0x700000
+
+config SP0_MEM_LEN
+    int "SP0 Memory Length(kB)"
+    default 512
+
+config SP0_PT_NAME
+    string "SP0 Partition Name"
+    default "sp0"
+
+config SP1_MEM_BASE
+    hex "SP1 Memory Base"
+    default 0x780000
+
+config SP1_MEM_LEN
+    int "SP1 Memory Length(kB)"
+    default 512
+
+config SP1_PT_NAME
+    string "SP1 Partition Name"
+    default "sp1"
+endif #SP_SPLIT_MODE
+
+if SX_SPLIT_MODE
+config SX0_MEM_BASE
+    hex "SX0 Memory Base"
+    default 0x600000
+
+config SX0_MEM_LEN
+    int "SX0 Memory Length(kB)"
+    default 512
+
+config SX0_PT_NAME
+    string "SX0 Partition Name"
+    default "sx0"
+
+config SX1_MEM_BASE
+    hex "SX1 Memory Base"
+    default 0x680000
+
+config SX1_MEM_LEN
+    int "SX1 Memory Length(kB)"
+    default 512
+
+config SX1_PT_NAME
+    string "SX1 Partition Name"
+    default "sx1"
+
+endif #SX_SPLIT_MODE
+endif #TAISHAN_REBOOT
+
+config TAISHAN_REBOOT_GLOBAL
+    bool "Taishan Global Reboot"
+    default n

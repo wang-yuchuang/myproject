@@ -1,0 +1,6 @@
+comment "boot animation application"
+
+config LOOP_LOGO
+    bool "loop openning logo"
+    depends on BOOT_ANIMATION
+    default n

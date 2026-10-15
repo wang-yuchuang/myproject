@@ -1,0 +1,5 @@
+comment "RTC Demo Options"
+
+config SDRV_RTC_DEMO
+    bool "Taishan RTC demo"
+    default n

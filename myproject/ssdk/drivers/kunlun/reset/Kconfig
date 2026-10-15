@@ -1,0 +1,4 @@
+config KUNLUN_RESETGEN
+    bool "Kunlun reset gen Driver Support"
+    select RESETGEN
+    default n

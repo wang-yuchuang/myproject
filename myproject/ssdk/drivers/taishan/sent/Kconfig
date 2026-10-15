@@ -1,0 +1,6 @@
+config SDRV_SENT
+    bool "Taishan SENT Driver Support"
+    select TIMER
+    select SDRV_ETIMER
+    select CHECKSUM
+    default n

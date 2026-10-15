@@ -1,0 +1,18 @@
+comment "Rpmsg Driver Options"
+
+menuconfig RPMSG_VIRTIO
+    bool "Rpmsg over share memory"
+    default y
+
+if RPMSG_VIRTIO
+rsource "virtio/Kconfig"
+endif # RPMSG_VIRTIO
+
+menuconfig RPMSG_IPCC
+    bool "Rpmsg over mailbox"
+    select BUFFQUEUE
+    default y
+
+if RPMSG_IPCC
+rsource "ipcc/Kconfig"
+endif # RPMSG_IPCC

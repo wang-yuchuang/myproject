@@ -1,0 +1,200 @@
+#!/bin/sh
+
+###set environmntal variables
+NCCU_RUN_PATH="/app"
+TRACE_LOG="/opt/appdata/log/trace.log"
+#NCCU_RUN_PATH="/var"
+#NCCU_RUN_PATH=$PWD
+export NCCU_RUN_PATH
+
+NCCU_DATA_PATH="/data"
+export NCCU_DATA_PATH
+
+LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/lib:$NCCU_RUN_PATH/lib:$NCCU_RUN_PATH/comm_port:$NCCU_RUN_PATH/extensions
+export LD_LIBRARY_PATH
+
+EXTENS_MARK_FILE="/var/.ext_mark"
+export EXTENS_MARK_FILE
+
+#log4c debug
+#export SD_DEBUG=1
+
+#goto the current dir
+cd $NCCU_RUN_PATH
+echo "[BOOT] run_app: entered, NCCU_RUN_PATH=$NCCU_RUN_PATH"
+
+#Added By John For 61850
+export GX_ROOT=/home/root/gx61850v4
+export PATH=$PATH:$GX_ROOT/bin
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$GX_ROOT/lib
+
+#echo "!!!Run /home/root/gx61850v4/bin/iedsrv &!!!"
+
+# /home/root/gx61850v4/bin/iedsrv &
+#识别运行环境，之前是识别/home/drive目录是否存在，现改为使用识别主机名，hostname
+#VAR_DIR=/opt/appdata/data 改为 /opt/appdata/data
+HOSTNAME="$(hostname)"
+case "$HOSTNAME" in
+    bmu*)    # 匹配以 bmu 开头的主机名
+        VAR_DIR="/opt/appdata/data"
+        ;;
+    *)
+        VAR_DIR="."
+        ;;
+esac
+
+echo "[BOOT] run_app: HOSTNAME=$HOSTNAME, VAR_DIR=$VAR_DIR"
+mkdir -p "$(dirname "$TRACE_LOG")"
+
+# App 可写目录（/opt/appdata 从 data 分区绑定挂载）
+mkdir -p /opt/appdata/log
+mkdir -p /opt/appdata/config
+mkdir -p /opt/appdata/data
+# 首次启动复制默认配置（幂等）
+[ -d /app/config ] && cp -rn /app/config/* /opt/appdata/config/ 2>/dev/null || true
+
+export VAR_DIR
+
+function do_touchscreen_calibrate()
+{
+	#added by Jimmy for emergency calibtation purpose
+	/usr/lib/tslib/bin/ts_calibrate&	
+	#added by Jimmy to light on LCD
+	echo 8 > /sys/class/backlight/backlight/brightness
+	#sleep 10 #wait max 10 seconds, or else will quit
+	#killall -9 ts_calibrate	
+	max_wait=15
+	IS_CALIB_STARTED=0
+	#IS_DEV_EXISTED=`cat /proc/bus/input/devices`
+	sleep 1
+	while((max_wait>=0))
+	do
+		IS_CALIB_QUIT=`ps | grep ts_calibrate | grep -v grep | wc -l`
+		###echo The LCD is:$IS_DEV_EXISTED
+		if [ "$IS_CALIB_QUIT" -eq 0 ]
+		then
+			if [ $IS_CALIB_STARTED -gt 0 ]
+			then
+				echo "-----------Touch screen Calibration Finished----------"
+				break
+			else
+				if [ $max_wait -gt 10 ]
+				then
+					#jimmy note: need restart it in case there is error
+					/usr/lib/tslib/bin/ts_calibrate&
+				else
+					echo "-----------Touch screen Calibration Cancelled!!!----------"
+					break
+				fi
+			fi
+		else
+			IS_CALIB_STARTED=1
+		fi
+		sleep 1
+		let max_wait--
+	done
+
+	###!!!do NOT forget to kill it if user skipped the calibration process
+	IS_CALIB_QUIT=`ps | grep ts_calibrate | grep -v grep | wc -l`
+	if [ "$IS_CALIB_QUIT" -gt 0 ]; then
+		killall -9 ts_calibrate
+	fi
+}
+
+########### add extensions to LD path (no cp to /usr/lib, rootfs RO) ######
+test -e /app/extensions/log4crc && cp -f /app/extensions/log4crc /opt/appdata/config/log4crc 2>/dev/null || true
+# 如果 /opt/appdata/config/log4crc 不存在，兜底拷贝到 /etc
+test -e /opt/appdata/config/log4crc || { test -e /app/extensions/log4crc && cp -f /app/extensions/log4crc /etc/log4crc 2>/dev/null || true; }
+echo "extensions lib path: $NCCU_RUN_PATH/extensions"
+
+#added by Jimmy 20190322: set LCD to max brightness level
+#Jimmy 20210816: put it into APP for controlling
+###echo 8 > /sys/class/backlight/backlight/brightness
+
+#install USB serial driver, added by Jimmy 20190419
+RTN=`lsmod | grep usb_wwan`
+KERNELVERSION=`uname -r |awk -F'-' '{print $1}'`
+if [ "$RTN" = "" ]
+then
+	if [ -e /lib/modules/${KERNELVERSION}/usb_wwan.ko ];then insmod /lib/modules/${KERNELVERSION}/usb_wwan.ko;fi
+	if [ -e /lib/modules/${KERNELVERSION}/option.ko ];then insmod /lib/modules/${KERNELVERSION}/option.ko;fi
+	
+fi
+
+#set PID files
+APP_PID_FILE=$VAR_DIR/nccu.pid
+SYSHAND_PID_FILE=$VAR_DIR/syshand.pid
+
+echo "[BOOT] run_app: checking syshand"
+if pidof syshand >/dev/null 2>&1; then
+    echo
+	echo "!!!!!!!The syshand is ALREADY running!!!!!!!!"
+    echo
+    # syshand 已在运行，确保 syshand.run 标记文件存在（nccu_app 需要）
+    test -e /opt/appdata/data/syshand.run || touch /opt/appdata/data/syshand.run
+else
+	./bin/syshand &  
+    SYSHAND_PID=$!
+    sleep 1
+    echo
+    echo "Starting SYSTEM_HANDLER, PID = $SYSHAND_PID"
+    echo "$SYSHAND_PID" > "$SYSHAND_PID_FILE"
+    echo "[BOOT] run_app: syshand started, PID=$SYSHAND_PID"
+    echo
+	
+fi
+
+#wait install done
+IS_EXT_INSTALLING=`ps | grep /app/extensions/install.sh | grep -v grep`
+if [[ -n "$IS_EXT_INSTALLING" ]]; then
+	wait=1
+	while [ $wait -le 50 ]
+	do
+		IS_EXT_INSTALLING=`ps | grep /app/extensions/install.sh | grep -v grep`
+		if [[ -z "$IS_EXT_INSTALLING" ]]; then
+			echo "install ext done........"
+			#when done, just sleep 1 sec more
+			sleep 1
+			break
+		else
+			echo "installing ext.........."
+		fi
+		let wait++
+		usleep 100000
+	done
+fi
+
+echo "[BOOT] run_app: checking syshand alive (ps)"
+IS_SYSHAND_ALIVE=`ps | grep bin/syshand | grep -v grep`
+if [[ -z "$IS_SYSHAND_ALIVE" ]]; then
+	echo "[BOOT] run_app: syshand NOT alive, exiting!"
+exit 0;
+fi
+
+echo "[BOOT] run_app: checking syshand PID file"
+if ! [ -f $SYSHAND_PID_FILE ]; then
+	###if sys_hand has exited, so we need quit
+	echo "[BOOT] run_app: PID file missing, exiting!"
+exit 0;
+fi
+
+if ps | grep -q '[n]ccu_app'; then
+echo "[BOOT] run_app: checking nccu_app already running"
+    echo
+	echo "The application is already running. Please stop it and then restart."
+	echo
+fi
+
+echo "[BOOT] run_app: starting nccu_app"
+echo "LD_LIBRARY_PATH 当前值: $LD_LIBRARY_PATH"
+echo "app start: ./bin/nccu_app  -pid=$APP_PID_FILE &"
+./bin/nccu_app -pid=$APP_PID_FILE &
+# ./bin/nccu_app -pid=$APP_PID_FILE >>$TRACE_LOG 2>>$TRACE_LOG &
+NCCU_PID=$!
+echo "[BOOT] run_app: nccu_app launched, PID=$NCCU_PID"
+
+
+
+
+
+

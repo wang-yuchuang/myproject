@@ -1,0 +1,6 @@
+comment "ARM GIC Driver Options"
+
+config ARM_GIC
+    bool "ARM GIC Driver"
+    select IRQ
+    default n

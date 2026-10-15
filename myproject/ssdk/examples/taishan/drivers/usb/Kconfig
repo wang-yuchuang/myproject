@@ -1,0 +1,38 @@
+comment "USB Example Application Options"
+
+config USB_DEMO_OTG
+    bool "USB OTG HID Example Application Support"
+    depends on USB_OTG && USB_HOST_HID && USB_DEVICE_HID
+    default n
+
+choice
+    prompt "USB Device Example Application type"
+    depends on !USB_DEMO_OTG
+    default USBD_DEMO_NONE
+
+config USBD_DEMO_NONE
+    bool "USB Device Example Application Close"
+
+config USBD_DEMO_HID
+    bool "USB Device HID Example Application Support"
+    depends on USB_DEVICE_HID
+
+config USBD_DEMO_MSC
+    bool "USB Device MSC Example Application Support"
+    depends on USB_DEVICE_MSC
+
+config USBD_DEMO_FB
+    bool "USB Device FastBoot Example Application Support"
+    depends on USB_DEVICE_FB
+
+config USBD_DEMO_CDC_ACM
+    bool "USB Device Serial Example Application Support"
+    depends on USB_DEVICE_CDC_ACM
+
+endchoice
+
+config USBH_DEMO_HID_MSC
+    bool "USB Host HID + MSC Example Application Support"
+    depends on !USB_DEMO_OTG
+    depends on USB_HOST_HID && USB_HOST_MSC
+    default n

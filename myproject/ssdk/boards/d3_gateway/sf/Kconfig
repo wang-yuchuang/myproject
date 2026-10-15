@@ -1,0 +1,64 @@
+comment "D3 SF Core Options"
+
+config MEM_BASE
+    hex "Memory Start Address"
+    default 0x404000
+
+config MEM_SIZE
+    hex "Memory Size"
+    range 0 IRAM_LIMIT
+    default 0x1FBC00
+
+config IRAM_NONE_ECC_BASE
+    hex "IRAM NONE-ECC Base Address"
+    default 0x800000
+
+config IRAM_NONE_ECC_SIZE
+    hex "IRAM NONE-ECC Size"
+    default 0x80000
+
+menuconfig CORE_SHM
+    bool "Inter-core Share Memory Support"
+    default y
+
+if CORE_SHM
+    config CORE_SHM_BASE
+        hex "Inter-core Share Memory Start Address"
+        default 0x5FFC00
+
+    config CORE_SHM_SIZE
+        hex "Inter-core Share Memory Size"
+        default 0x400
+endif
+
+config EARLYCOPY
+    bool "Early Copy sections from LMA to VMA"
+    default y
+
+config CLOCK_OVER_DRIVE_MODE
+    bool "Clock over drive mode"
+    default n
+
+config BOARD_DEBUG
+    bool "Enable CR5 debug"
+    select CORE_DEBUG
+    select TAISHAN_CORE_DEBUG
+    default n
+
+config FIX_LDO_1V8
+    bool "Fix internal 1.8V LDO output"
+    default y
+
+config XIP_MODE
+    bool "Run in XIP mode"
+    default n
+
+config RAM_BASE
+    hex "RAM base for XIP mode"
+    depends on XIP_MODE
+    default 0x404000
+
+config RAM_SIZE
+    hex "RAM size for XIP mode"
+    depends on XIP_MODE
+    default 0x1FC000

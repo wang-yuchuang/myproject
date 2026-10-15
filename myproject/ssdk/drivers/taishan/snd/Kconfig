@@ -1,0 +1,35 @@
+menuconfig TAISHAN_SND
+    bool "Taishan Sound Driver Support"
+    select SND
+    default n
+
+if TAISHAN_SND
+
+config SACI_I2S
+    bool "SACI I2S Driver"
+    default n
+
+config SACI_SLAVE
+    bool "SACI hardware slave bug fix"
+    default n
+    depends on SACI_I2S
+
+config SACI_PDM
+    bool "SACI PDM Driver"
+    default n
+
+config CODEC
+    bool "CODEC Driver"
+    default n
+
+config CODEC_AK4619
+    bool "Codec Ak4619 Driver"
+    default n
+    depends on CODEC
+
+config CODEC_TLV320
+    bool "Codec Tlv320 Driver"
+    default n
+    depends on CODEC
+
+endif # TAISHAN_SND

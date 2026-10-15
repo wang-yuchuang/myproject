@@ -1,0 +1,29 @@
+comment "LVGL gui engine"
+
+config LVGL_SDRV_DISPLAY
+    bool "SDRV LVGL support display"
+    select DISPSS
+    default n
+
+config LVGL_SDRV_DECODER_PNG
+    bool "SDRV LVGL support png decoder"
+    select DECODER_LODEPNG
+    default n
+
+config LVGL_SDRV_DECODER_JPG
+    bool "SDRV LVGL support jpg decoder"
+    select TJPGDEC
+    default n
+
+config LVGL_SDRV_FAT_FS
+    bool "SDRV LVGL support fat fs"
+    default n
+
+config LVGL_SDRV_GPU
+    bool "SDRV LVGL support GPU"
+    select G2DLITE
+    default n
+
+config LVGL_SDRV_INPUT
+    bool "SDRV LVGL support touch"
+    default n

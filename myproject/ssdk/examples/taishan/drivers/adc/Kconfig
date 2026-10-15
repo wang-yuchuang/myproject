@@ -1,0 +1,12 @@
+comment "ADC Example Application Options"
+
+config KUNLUN_ADC_DEMO
+    bool "Kunlun ADC Example Application"
+    default n
+	depends on KUNLUN_ADC
+
+config TAISHAN_ADC_DEMO
+    bool "Taishan ADC Example Application"
+    select SCR
+    default n
+	depends on TAISHAN_ADC

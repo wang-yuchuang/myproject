@@ -1,0 +1,31 @@
+comment "launcher application"
+
+config AUTO_START_BOOT_ANIMATION
+    bool "auto start boot animation"
+    depends on APP_LAUNCHER_DEBUG
+    depends on BOOT_ANIMATION
+    default n
+
+config AUTO_START_FASTAVM
+    bool "auto start fastavm"
+    depends on APP_LAUNCHER_DEBUG
+    depends on FASTAVM
+    default n
+
+config AUTO_START_CLUSTER
+    bool "auto start cluster"
+    depends on APP_LAUNCHER_DEBUG
+    depends on CLUSTER
+    default n
+
+config AUTO_START_CONTROL_PANEL
+    bool "auto start controlpanel"
+    depends on APP_LAUNCHER_DEBUG
+    depends on CONTROL_PANEL
+    default n
+
+config AUTO_START_EMIRROR
+    bool "auto start emirror"
+    depends on APP_LAUNCHER_DEBUG
+    depends on EMIRROR
+    default n

@@ -1,0 +1,5 @@
+comment "Ring Buffer Options"
+
+config ERING_BUFFER
+    bool "Support Enhance Ring Buffer"
+    default n

@@ -1,0 +1,172 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 980" role="img" aria-labelledby="ttl desc" style="max-width:1160px;width:100%;height:auto;background:#fff">
+  <title id="ttl">设备-参数模型（概念 ER）</title>
+  <desc id="desc">概念 ER：DeviceModel（设备型号定义，device_model.h:7-12）1—N Device（设备实例，nDeviceId 即 DevId，device_model.h:160-182）1—N Param（参数，nParamId 即 ParamId，device_model.h:113-129）。配置全部由 SQLite /app/config/System.cfg 经 Cfg_Parse_* ×12 回调加载（R1，config_mangmt.c）。参数按 emParamType 分为三类：PARAM_TYPE_STATUS 状态量（采集读取，emDataSrc=SA/CA/LS，device_model.h:61-66）、PARAM_TYPE_CONTROL 控制量（可下发，controlableExpression，device_model.h:68-72）、PARAM_TYPE_SETTING 设置量（可配置，bNeedSave/bNeedSyncSampler/varValDefault，device_model.h:74-81）。值结构：PARAM_VAL_GET 含 nGetSize（调用前必填）与 val（dai_model.h:130-139）；PARAMETER.ReadValue 为回读值（device_model.h:122）。写入经 Check_ParamValue 校验大小与范围（config_mangmt.c:149-221）。跨模块访问两套通道：DPR 内部 Intern_Get（GETTYPE_*，10 种）/ Intern_Set（SETTYPE_*，13 种，dataprocessor_model.h:36-97）；reporters 侧 DAI（DAITYPE_STAT_PARAMVALUE_R / SETT_PARAMVALUE_RW / CTRL_PARAMVALUE_RW / READBACK_VAL，dai_model.h:20-23）。同一 (DevId, ParamId) 在两通道下语义一致，但契约是两套接口。</desc>
+
+  <defs>
+    <marker id="arw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#5F6368"/>
+    </marker>
+    <marker id="arw-broken" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#C5221F"/>
+    </marker>
+  </defs>
+
+  <!-- ===== 标题 ===== -->
+  <text x="16" y="36" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="22" font-weight="700" fill="#202124">设备-参数模型（概念 ER）</text>
+
+  <!-- ===== 副标题注记 ===== -->
+  <rect x="16" y="54" width="1128" height="34" rx="8" fill="#F8F9FA" stroke="#DADCE0" stroke-width="1.2"/>
+  <text x="580" y="76" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="13" fill="#5F6368">三层模型：DeviceModel（型号定义）→ Device（设备实例，DevId）→ Param（参数，ParamId），全部配置由 SQLite System.cfg 加载（R1）</text>
+
+  <!-- ===== Row A：实体层 ===== -->
+  <!-- 存储圆柱：SQLite System.cfg -->
+  <path d="M 24 130 A 85 14 0 0 0 194 130 L 194 238 A 85 14 0 0 1 24 238 Z" fill="#F1F3F4" stroke="#5F6368" stroke-width="1.5"/>
+  <ellipse cx="109" cy="130" rx="85" ry="14" fill="#F1F3F4" stroke="#5F6368" stroke-width="1.5"/>
+  <text x="109" y="162" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">SQLite System.cfg</text>
+  <text x="109" y="184" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">配置权威源（R1）</text>
+  <text x="109" y="204" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">Cfg_Parse_* ×12 回调</text>
+  <text x="109" y="224" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">载入 CHARGER 内存模型</text>
+  <text x="109" y="246" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">config_mangmt.c</text>
+
+  <!-- 存储 → DeviceModel -->
+  <line x1="194" y1="182" x2="230" y2="182" stroke="#5F6368" stroke-width="1.6" marker-end="url(#arw)"/>
+  <text x="214" y="172" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="11" fill="#5F6368">加载</text>
+
+  <!-- DeviceModel -->
+  <rect x="234" y="112" width="260" height="140" rx="8" fill="#E6F4EA" stroke="#137333" stroke-width="1.5"/>
+  <text x="364" y="136" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">DeviceModel · 设备型号</text>
+  <rect x="246" y="148" width="26" height="15" rx="3" fill="#137333"/>
+  <text x="259" y="159.5" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="9.5" font-weight="600" fill="#FFFFFF">PK</text>
+  <text x="280" y="160" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">nDevModelId</text>
+  <text x="246" y="182" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">szDevModelName[32]</text>
+  <text x="246" y="202" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">参数经 pBelonged_DevModel 挂靠</text>
+  <text x="246" y="222" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">GetDevModel_ById 查找</text>
+  <text x="364" y="246" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">device_model.h:7-12 · config_mangmt.c:81</text>
+
+  <!-- DeviceModel 1—N Device -->
+  <line x1="494" y1="182" x2="530" y2="182" stroke="#5F6368" stroke-width="1.6" marker-end="url(#arw)"/>
+  <text x="514" y="172" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="11" fill="#5F6368">1 — N</text>
+
+  <!-- Device -->
+  <rect x="534" y="112" width="260" height="140" rx="8" fill="#E6F4EA" stroke="#137333" stroke-width="1.5"/>
+  <text x="664" y="136" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">Device · 设备实例</text>
+  <rect x="546" y="148" width="26" height="15" rx="3" fill="#137333"/>
+  <text x="559" y="159.5" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="9.5" font-weight="600" fill="#FFFFFF">PK</text>
+  <text x="580" y="160" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">nDeviceId（DevId）</text>
+  <text x="546" y="182" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">pBelonged_DevModel</text>
+  <text x="546" y="202" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">pBelonged_Sampler</text>
+  <text x="546" y="222" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">params_Status/Control/Setting</text>
+  <text x="664" y="246" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">device_model.h:160-182</text>
+
+  <!-- Device 1—N Param -->
+  <line x1="794" y1="182" x2="830" y2="182" stroke="#5F6368" stroke-width="1.6" marker-end="url(#arw)"/>
+  <text x="814" y="172" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="11" fill="#5F6368">1 — N</text>
+
+  <!-- Param -->
+  <rect x="834" y="112" width="260" height="140" rx="8" fill="#E6F4EA" stroke="#137333" stroke-width="1.5"/>
+  <text x="964" y="136" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">Param · 参数</text>
+  <rect x="846" y="148" width="26" height="15" rx="3" fill="#137333"/>
+  <text x="859" y="159.5" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="9.5" font-weight="600" fill="#FFFFFF">PK</text>
+  <text x="880" y="160" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">nParamId（ParamId）</text>
+  <text x="846" y="182" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">emParamType：三分类（见下）</text>
+  <text x="846" y="202" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">currValue / lastValue</text>
+  <text x="846" y="222" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">ReadValue（回读值）</text>
+  <text x="964" y="246" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">device_model.h:26-52 / 113-129</text>
+
+  <!-- ===== Row B：参数分类（Param 扇出） ===== -->
+  <line x1="964" y1="252" x2="226" y2="296" stroke="#5F6368" stroke-width="1.6" marker-end="url(#arw)"/>
+  <line x1="964" y1="252" x2="586" y2="296" stroke="#5F6368" stroke-width="1.6" marker-end="url(#arw)"/>
+  <line x1="964" y1="252" x2="946" y2="296" stroke="#5F6368" stroke-width="1.6" marker-end="url(#arw)"/>
+  <text x="480" y="272" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="11" fill="#5F6368">按 emParamType 分类</text>
+
+  <rect x="70" y="300" width="300" height="130" rx="8" fill="#E8F0FE" stroke="#1A73E8" stroke-width="1.5"/>
+  <text x="220" y="324" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">PARAM_TYPE_STATUS · 状态量</text>
+  <text x="84" y="348" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">语义：采集读取，被动刷新</text>
+  <text x="84" y="368" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">emDataSrc：SA 采样 / CA 表达式 / LS 逻辑</text>
+  <text x="84" y="388" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">equalExpression 计算当前值</text>
+  <text x="84" y="414" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">device_model.h:61-66 · 刷新见 R5</text>
+
+  <rect x="430" y="300" width="300" height="130" rx="8" fill="#E8F0FE" stroke="#1A73E8" stroke-width="1.5"/>
+  <text x="580" y="324" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">PARAM_TYPE_CONTROL · 控制量</text>
+  <text x="444" y="348" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">语义：可下发，作用于 sampler</text>
+  <text x="444" y="368" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">controlableExpression → bCtrlSetAble</text>
+  <text x="444" y="388" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">无表达式时默认可控（R5）</text>
+  <text x="444" y="414" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">device_model.h:68-72</text>
+
+  <rect x="790" y="300" width="300" height="130" rx="8" fill="#E8F0FE" stroke="#1A73E8" stroke-width="1.5"/>
+  <text x="940" y="324" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">PARAM_TYPE_SETTING · 设置量</text>
+  <text x="804" y="348" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">语义：可配置，可保存 / 可同步</text>
+  <text x="804" y="368" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">bNeedSave / bNeedSyncSampler</text>
+  <text x="804" y="388" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">varValDefault 默认值</text>
+  <text x="804" y="414" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">device_model.h:74-81</text>
+
+  <!-- ===== Row C：值结构 + 校验 ===== -->
+  <rect x="24" y="470" width="360" height="140" rx="8" fill="#F8F9FA" stroke="#DADCE0" stroke-width="1.5"/>
+  <text x="204" y="494" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">Check_ParamValue · 写入校验</text>
+  <text x="38" y="518" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">① 大小：nValueSize ≠ 实际 → SIZE(1)</text>
+  <text x="38" y="538" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">　 BLOB 向后兼容 → OK_BUT_HAS_EXEPT(255)</text>
+  <text x="38" y="558" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">② 范围：LONG/ULONG/ENUM/FLOAT 限幅</text>
+  <text x="38" y="578" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">　 fMaxLimit / fMinLimit，越界 → RANGE(2)</text>
+  <text x="38" y="600" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">config_mangmt.c:149-221 · device_model.h:39-40</text>
+
+  <rect x="420" y="470" width="190" height="140" rx="8" fill="#F3E8FD" stroke="#8430CE" stroke-width="1.5"/>
+  <text x="515" y="494" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">ReadValue</text>
+  <text x="432" y="518" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">PARAMETER.ReadValue</text>
+  <text x="432" y="538" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">控制 / 设置回读值</text>
+  <text x="432" y="558" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">GETTYPE_READBACK_VAR</text>
+  <text x="432" y="578" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">DAITYPE_READBACK_VAL</text>
+  <text x="432" y="600" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">device_model.h:122</text>
+
+  <rect x="646" y="470" width="420" height="140" rx="8" fill="#F3E8FD" stroke="#8430CE" stroke-width="1.5"/>
+  <text x="856" y="494" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">PARAM_VAL_GET · DAI 读值结构</text>
+  <text x="660" y="518" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">nGetSize：调用前必填（缓冲区大小陷阱）</text>
+  <text x="660" y="538" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">val：VAR_VALUE（无效时为最后有效值）</text>
+  <text x="660" y="558" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">nValueAttribute：VALID / DISPLAY / CTRLSETABLE</text>
+  <text x="660" y="578" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">tmRefresh：最近刷新时间</text>
+  <text x="660" y="600" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">dai_model.h:130-139</text>
+
+  <!-- ===== Row C ← Row D 连线 ===== -->
+  <line x1="204" y1="660" x2="204" y2="614" stroke="#5F6368" stroke-width="1.6" marker-end="url(#arw)"/>
+  <text x="216" y="642" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="11" fill="#5F6368">写路径：Intern_Set 下发前校验</text>
+  <line x1="856" y1="660" x2="856" y2="614" stroke="#5F6368" stroke-width="1.6" marker-end="url(#arw)"/>
+  <text x="868" y="642" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="11" fill="#5F6368">读值：返回 PARAM_VAL_GET</text>
+  <line x1="500" y1="660" x2="520" y2="614" stroke="#5F6368" stroke-width="1.6" marker-end="url(#arw)"/>
+  <line x1="676" y1="660" x2="578" y2="614" stroke="#5F6368" stroke-width="1.6" marker-end="url(#arw)"/>
+
+  <!-- ===== Row D：访问通道 ===== -->
+  <rect x="24" y="660" width="520" height="150" rx="8" fill="#F8F9FA" stroke="#DADCE0" stroke-width="1.5"/>
+  <text x="284" y="684" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">Intern_Get / Intern_Set · DPR 内部通道（R6）</text>
+  <text x="44" y="708" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">寻址：(nDevId, nParamId) → GetParam_ByPR 定位</text>
+  <text x="44" y="730" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">GETTYPE_*：SP_VAR / CL_VAR / ST_VAR / READBACK_VAR …</text>
+  <text x="44" y="752" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">（INTERGET_TYPE 10 种，9 种有 handler）</text>
+  <text x="44" y="774" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">SETTYPE_*：13 种，经 INTER_QUEUE_CMD 排队执行</text>
+  <text x="44" y="796" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">dataprocessor_model.h:36-48 / 68-86 / 94-97</text>
+
+  <rect x="616" y="660" width="520" height="150" rx="8" fill="#F8F9FA" stroke="#DADCE0" stroke-width="1.5"/>
+  <text x="876" y="684" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">DAI · reporters 访问通道</text>
+  <text x="636" y="708" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">寻址：nArg1 / nArg2 约定 (DevId, ParamId)</text>
+  <text x="636" y="728" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">DAITYPE_STAT_PARAMVALUE_R（状态 · 只读）</text>
+  <text x="636" y="748" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">DAITYPE_SETT_PARAMVALUE_RW（设置 · 读写）</text>
+  <text x="636" y="768" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">DAITYPE_CTRL_PARAMVALUE_RW（控制 · 下发）</text>
+  <text x="636" y="788" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">DAITYPE_READBACK_VAL（回读）· 详见 30-interfaces/dai.md</text>
+  <text x="636" y="804" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">dai_model.h:20-23 / 141-147</text>
+
+  <!-- ===== 关键注记 ===== -->
+  <rect x="140" y="838" width="880" height="36" rx="8" fill="#F8F9FA" stroke="#DADCE0" stroke-width="1.2"/>
+  <text x="580" y="861" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="13" fill="#5F6368">同一 (DevId, ParamId) 在不同通道（Intern_* vs DAI）下语义一致，但契约是两套接口</text>
+
+  <!-- ===== 图例 ===== -->
+  <rect x="24" y="896" width="18" height="12" rx="3" fill="#E6F4EA" stroke="#137333" stroke-width="1.2"/>
+  <text x="48" y="906" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#202124">设备实体</text>
+  <rect x="130" y="896" width="18" height="12" rx="3" fill="#E8F0FE" stroke="#1A73E8" stroke-width="1.2"/>
+  <text x="154" y="906" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#202124">参数类型</text>
+  <rect x="236" y="896" width="18" height="12" rx="3" fill="#F3E8FD" stroke="#8430CE" stroke-width="1.2"/>
+  <text x="260" y="906" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#202124">值结构</text>
+  <rect x="326" y="896" width="18" height="12" rx="3" fill="#F1F3F4" stroke="#5F6368" stroke-width="1.2"/>
+  <text x="350" y="906" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#202124">存储</text>
+  <rect x="400" y="896" width="18" height="12" rx="3" fill="#F8F9FA" stroke="#DADCE0" stroke-width="1.2"/>
+  <text x="424" y="906" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#202124">函数 / 接口通道</text>
+
+  <!-- ===== 来源脚注 ===== -->
+  <text x="16" y="946" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">来源：src/include/data_model/device_model.h · src/include/data_model/dai_model.h · src/include/data_model/dataprocessor_model.h · src/moduals/data_processor/dpr/config_mangmt.c（提交 507729a5）</text>
+</svg>

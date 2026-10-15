@@ -1,0 +1,36 @@
+menu "Arch Type"
+rsource "arch/Kconfig"
+endmenu
+
+menu "Board Common Features"
+rsource "boards/Kconfig"
+endmenu
+
+menu "RTOS Features"
+rsource "rtos/Kconfig"
+endmenu
+
+menu "Device Drivers"
+rsource "drivers/Kconfig"
+endmenu
+
+menu "Library Routines"
+rsource "lib/Kconfig"
+endmenu
+
+menu "Middleware Routines"
+rsource "middleware/Kconfig"
+endmenu
+
+menu "Driver and Application Examples"
+rsource "examples/Kconfig"
+endmenu
+
+menu "Tester Routines"
+orsource "test/Kconfig"
+endmenu
+
+menu "Validation Options"
+orsource "validation/Kconfig"
+endmenu
+

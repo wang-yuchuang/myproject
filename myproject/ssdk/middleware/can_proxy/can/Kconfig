@@ -1,0 +1,9 @@
+comment "Can Driver Options"
+
+menuconfig SUPPORT_CAN_SDDRV
+    bool "support can sddrv for kunlun"
+    default n
+
+menuconfig CAN_BAUDRATE_500K
+    bool "support can baudrate 500k"
+    default n

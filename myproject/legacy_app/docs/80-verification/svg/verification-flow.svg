@@ -1,0 +1,146 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 760" role="img" aria-labelledby="ttl desc" style="max-width:1160px;width:100%;height:auto;background:#fff">
+  <title id="ttl">验证流程（构建 → 部署 → 运行 → 验收）</title>
+  <desc id="desc">从源码构建、工厂烧录、上电启动到功能验收与回滚的全流程。当前异常点：冷重启后 app 无人启动（启动责任真空），需 OTA 安装钩子或人工 /app/app_entry /app &amp; 拉起；验收不通过则回退到另一槽或人工排查。事实基线：openspec/.code-facts-snapshot.md（2026-09-17）。</desc>
+  <defs>
+    <marker id="arw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#5F6368"/>
+    </marker>
+    <marker id="arw-broken" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#C5221F"/>
+    </marker>
+  </defs>
+
+  <text x="580" y="40" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="22" font-weight="700" fill="#202124">验证流程（构建 → 部署 → 运行 → 验收）</text>
+
+  <!-- 阶段带 -->
+  <rect x="24" y="70" width="652" height="160" rx="8" fill="#F1F3F4" fill-opacity="0.45" stroke="#5F6368" stroke-width="1.2"/>
+  <text x="40" y="96" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">构建</text>
+  <rect x="692" y="70" width="444" height="160" rx="8" fill="#FEF7E0" fill-opacity="0.45" stroke="#F9AB00" stroke-width="1.2"/>
+  <text x="708" y="96" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">烧录</text>
+  <rect x="24" y="262" width="1112" height="190" rx="8" fill="#F3E8FD" fill-opacity="0.45" stroke="#8430CE" stroke-width="1.2"/>
+  <text x="40" y="288" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">运行</text>
+  <rect x="24" y="482" width="1112" height="190" rx="8" fill="#E6F4EA" fill-opacity="0.45" stroke="#137333" stroke-width="1.2"/>
+  <text x="40" y="510" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">验收</text>
+
+  <!-- 构建：源码 -->
+  <rect x="44" y="118" width="130" height="64" rx="6" fill="#F1F3F4" stroke="#5F6368" stroke-width="1.5"/>
+  <text x="109" y="142" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">源码</text>
+  <text x="109" y="160" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">~40 模块</text>
+  <text x="109" y="176" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">仓库 src/</text>
+
+  <!-- 构建：build.sh -->
+  <rect x="204" y="118" width="150" height="64" rx="6" fill="#F1F3F4" stroke="#5F6368" stroke-width="1.5"/>
+  <text x="279" y="142" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">./build.sh</text>
+  <text x="279" y="160" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">编译+签名+verity</text>
+  <text x="279" y="176" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">build.sh:22-29</text>
+
+  <!-- 构建：产物 x2 -->
+  <rect x="394" y="92" width="210" height="58" rx="6" fill="#F1F3F4" stroke="#5F6368" stroke-width="1.5"/>
+  <text x="499" y="114" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">app-&lt;ver&gt;.img</text>
+  <text x="499" y="136" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">pkg/ · 工厂烧录用</text>
+  <rect x="394" y="162" width="210" height="58" rx="6" fill="#F1F3F4" stroke="#5F6368" stroke-width="1.5"/>
+  <text x="499" y="184" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">app-&lt;ver&gt;.raucb</text>
+  <text x="499" y="206" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">remote_pkg/ · OTA bundle</text>
+
+  <!-- 烧录 -->
+  <rect x="716" y="118" width="160" height="64" rx="6" fill="#FEF7E0" stroke="#F9AB00" stroke-width="1.5"/>
+  <text x="796" y="142" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">工厂烧录</text>
+  <text x="796" y="160" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">PAC · app 分区</text>
+  <text x="796" y="176" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">D9APPMD1 · 256MB</text>
+
+  <rect x="906" y="118" width="120" height="64" rx="6" fill="#FEF7E0" stroke="#F9AB00" stroke-width="1.5"/>
+  <text x="966" y="142" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">上电</text>
+  <text x="966" y="160" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">init.d S91/S92</text>
+  <text x="966" y="176" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">snapshot :217-244</text>
+
+  <!-- 运行：决策1 -->
+  <polygon points="175,312 265,360 175,408 85,360" fill="#F3E8FD" stroke="#8430CE" stroke-width="1.5"/>
+  <text x="175" y="356" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">冷重启后</text>
+  <text x="175" y="376" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">app 被启动？</text>
+  <text x="175" y="428" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">snapshot :226-229</text>
+
+  <!-- 运行：真空标注框 -->
+  <rect x="570" y="316" width="420" height="100" rx="6" fill="#FCE8E6" stroke="#C5221F" stroke-width="1.5" stroke-dasharray="6 3"/>
+  <text x="582" y="338" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="13" font-weight="600" fill="#C5221F">当前为否 —— 启动责任真空</text>
+  <text x="582" y="358" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">S92app_mount 只挂载不启动；run_app()(:454-456) 是死代码</text>
+  <text x="582" y="376" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">冷重启后需人工：/app/app_entry /app &amp;</text>
+  <text x="582" y="398" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">snapshot :226-229 · lifecycle.md「谁在今天真的会启动它」</text>
+
+  <!-- 运行：运行就绪 -->
+  <rect x="330" y="328" width="200" height="64" rx="6" fill="#F3E8FD" stroke="#8430CE" stroke-width="1.5"/>
+  <text x="430" y="352" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">运行就绪</text>
+  <text x="430" y="370" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">syshand.run + 6 步加载</text>
+  <text x="430" y="386" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">main.c:147-202 · :314-326</text>
+
+  <!-- 验收：功能验收 -->
+  <rect x="44" y="530" width="210" height="64" rx="6" fill="#E6F4EA" stroke="#137333" stroke-width="1.5"/>
+  <text x="149" y="554" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">功能验收</text>
+  <text x="149" y="572" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">采集/处理/上报/通信</text>
+  <text x="149" y="588" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">spec ## Test Definition</text>
+
+  <!-- 验收：决策2 -->
+  <polygon points="375,517 465,562 375,607 285,562" fill="#E6F4EA" stroke="#137333" stroke-width="1.5"/>
+  <text x="375" y="567" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">通过？</text>
+
+  <!-- 终态：通过 -->
+  <rect x="530" y="522" width="240" height="54" rx="18" fill="#E6F4EA" stroke="#137333" stroke-width="1.5"/>
+  <text x="650" y="546" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">MARK_GOOD / 归档</text>
+  <text x="650" y="564" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">app_sysmgr (BSP) · snapshot :223</text>
+
+  <!-- 终态：回退 -->
+  <rect x="530" y="592" width="240" height="54" rx="18" fill="#FCE8E6" stroke="#C5221F" stroke-width="1.5"/>
+  <text x="650" y="616" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">回滚到另一槽 / 人工排查</text>
+  <text x="650" y="634" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">RAUC slot · 人工处置</text>
+
+  <!-- 注释框 -->
+  <rect x="810" y="505" width="310" height="140" rx="6" fill="#F8F9FA" stroke="#DADCE0" stroke-width="1.2" stroke-dasharray="6 3"/>
+  <text x="822" y="529" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="13" font-weight="600" fill="#202124">验收项来源 = 各 spec 的</text>
+  <text x="822" y="549" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="13" font-weight="600" fill="#202124">## Test Definition 段</text>
+  <text x="822" y="567" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">comm-ports / publib / data-processor /</text>
+  <text x="822" y="585" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">reporters</text>
+  <text x="822" y="602" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">设专段；app-lifecycle 内嵌 Test 场景，</text>
+  <text x="822" y="619" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">system-hand 为 White-box Test Ready。</text>
+  <text x="822" y="640" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">openspec/specs/*/spec.md</text>
+
+  <!-- 连线 -->
+  <path d="M174,150 L204,150" fill="none" stroke="#5F6368" stroke-width="1.6" marker-end="url(#arw)"/>
+  <path d="M354,150 L374,150 L374,121 L394,121" fill="none" stroke="#5F6368" stroke-width="1.6" marker-end="url(#arw)"/>
+  <path d="M354,150 L374,150 L374,191 L394,191" fill="none" stroke="#5F6368" stroke-width="1.6" marker-end="url(#arw)"/>
+  <path d="M604,121 L660,121 L660,142 L716,142" fill="none" stroke="#5F6368" stroke-width="1.6" marker-end="url(#arw)"/>
+  <path d="M604,191 L660,191 L660,158 L716,158" fill="none" stroke="#5F6368" stroke-width="1.6" marker-end="url(#arw)"/>
+  <path d="M876,150 L906,150" fill="none" stroke="#5F6368" stroke-width="1.6" marker-end="url(#arw)"/>
+  <path d="M966,182 L966,236 L175,236 L175,312" fill="none" stroke="#5F6368" stroke-width="1.6" marker-end="url(#arw)"/>
+  <path d="M265,360 L330,360" fill="none" stroke="#5F6368" stroke-width="1.6" marker-end="url(#arw)"/>
+  <path d="M570,360 L530,360" fill="none" stroke="#C5221F" stroke-width="1.6" stroke-dasharray="7 4" marker-end="url(#arw-broken)"/>
+  <path d="M430,392 L430,468 L149,468 L149,530" fill="none" stroke="#5F6368" stroke-width="1.6" marker-end="url(#arw)"/>
+  <path d="M254,562 L285,562" fill="none" stroke="#5F6368" stroke-width="1.6" marker-end="url(#arw)"/>
+  <path d="M450,562 L490,562" fill="none" stroke="#5F6368" stroke-width="1.6"/>
+  <path d="M490,562 L490,549 L530,549" fill="none" stroke="#5F6368" stroke-width="1.6" marker-end="url(#arw)"/>
+  <path d="M490,562 L490,619 L530,619" fill="none" stroke="#C5221F" stroke-width="1.6" stroke-dasharray="7 4" marker-end="url(#arw-broken)"/>
+
+  <!-- 线上标签 -->
+  <text x="297" y="348" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="11" fill="#5F6368">是 (OTA)</text>
+  <text x="505" y="540" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="11" fill="#5F6368">是</text>
+  <text x="505" y="640" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="11" fill="#C5221F">否</text>
+
+  <!-- 图例 -->
+  <path d="M44,696 L84,696" fill="none" stroke="#5F6368" stroke-width="1.6" marker-end="url(#arw)"/>
+  <text x="92" y="700" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#202124">正常流</text>
+  <path d="M180,696 L220,696" fill="none" stroke="#C5221F" stroke-width="1.6" stroke-dasharray="7 4" marker-end="url(#arw-broken)"/>
+  <text x="228" y="700" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#202124">回退/真空流</text>
+  <polygon points="336,688 348,696 336,704 324,696" fill="#F3E8FD" stroke="#8430CE" stroke-width="1.5"/>
+  <text x="356" y="700" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#202124">决策</text>
+  <rect x="404" y="688" width="40" height="16" rx="8" fill="#E6F4EA" stroke="#137333" stroke-width="1.5"/>
+  <text x="452" y="700" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#202124">终态</text>
+  <rect x="44" y="716" width="16" height="12" fill="#F1F3F4" stroke="#5F6368" stroke-width="1.2"/>
+  <text x="66" y="726" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#202124">构建</text>
+  <rect x="118" y="716" width="16" height="12" fill="#FEF7E0" stroke="#F9AB00" stroke-width="1.2"/>
+  <text x="140" y="726" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#202124">烧录</text>
+  <rect x="192" y="716" width="16" height="12" fill="#F3E8FD" stroke="#8430CE" stroke-width="1.2"/>
+  <text x="214" y="726" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#202124">运行</text>
+  <rect x="266" y="716" width="16" height="12" fill="#E6F4EA" stroke="#137333" stroke-width="1.2"/>
+  <text x="288" y="726" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#202124">验收</text>
+  <rect x="340" y="716" width="16" height="12" fill="#FCE8E6" stroke="#C5221F" stroke-width="1.2"/>
+  <text x="362" y="726" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#202124">失败/回退</text>
+  <text x="1116" y="726" text-anchor="end" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">来源：build.sh · src/main/main.c · src/shells · .code-facts-snapshot.md（2026-09-17）</text>
+</svg>

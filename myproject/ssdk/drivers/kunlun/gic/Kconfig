@@ -1,0 +1,12 @@
+menuconfig ARM_GIC
+    bool "ARM GIC Driver"
+    select IRQ
+    default n
+
+if ARM_GIC
+
+config INTERRUPT_NESTING
+    bool "Support interrupt nesting"
+    default n
+
+endif # ARM_GIC

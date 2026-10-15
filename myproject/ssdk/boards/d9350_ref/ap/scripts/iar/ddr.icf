@@ -1,0 +1,28 @@
+define region RAM_region =
+    mem:[from MEMBASE to MEMBASE + MEMSIZE - 1];
+
+define block _DATA with alignment = 4 { section .data };
+define block STACK with size = CONFIG_ARCH_STACK_SIZE, alignment = 4096 { section .stack };
+define block TLB with size = CONFIG_ARCH_TLB_SIZE, alignment = 65536 { section .tlb };
+define block BSS with alignment = 4096 { section .bss };
+define block COMMANDS { section .commands };
+define block RODATA with alignment = 4 { section .rodata };
+define block DATA {
+    block _DATA,
+    block COMMANDS
+};
+
+define block HEAP with alignment = 4,
+    expanding size { section .heap };
+
+place at start of RAM_region { section .boot };
+place in RAM_region { section .text  };
+place in RAM_region { block TLB };
+place in RAM_region { block STACK };
+place in RAM_region { zi };
+place in RAM_region { section SemiDrive };
+place in RAM_region { block DATA };
+place in RAM_region { block BSS };
+place in RAM_region { block RODATA };
+place in RAM_region { block HEAP };
+place in RAM_region { readonly };

@@ -1,0 +1,13 @@
+comment "board Options"
+
+choice
+    prompt "Select target board"
+    default AM_BOARD_X9_MS
+
+config AM_BOARD_X9_MS
+    bool "X9_MS Board Support"
+
+config AM_BOARD_X9_REF
+    bool "X9_REF Board Support"
+
+endchoice

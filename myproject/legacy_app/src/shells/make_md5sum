@@ -1,0 +1,29 @@
+#!/bin/sh
+
+SRC_FILE=$1
+
+DST_FILE=$2
+
+
+var=`md5sum -b $SRC_FILE`
+
+# varTmp1=${var:1:6}
+# varTmp2=${var:13:10}
+# varTmp3=${var:20:8}
+varTmp1=$(echo "$var" | cut -c 2-7)     
+varTmp2=$(echo "$var" | cut -c 14-23)    
+varTmp3=$(echo "$var" | cut -c 21-28)   
+varID1="4da1"
+varID2="f2c5"
+#added by Jimmy 20210531 to avoid wrongly upgrade for N3XX-XB,n3ge-Customer Site
+# 发布市场 n3ge 生产的是n3xx
+varID3="n3ge"
+
+varSum=${varTmp2}${varID1}${varTmp3}${varID2}${varTmp1}${varID3}
+
+echo "The MD5 of '$1' is:"
+echo "$varSum"
+
+echo "$varSum" >> $DST_FILE
+
+exit 0;

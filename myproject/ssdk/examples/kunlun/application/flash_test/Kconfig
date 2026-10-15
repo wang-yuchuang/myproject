@@ -1,0 +1,6 @@
+comment "OSPI2 NOR XIP Flash Test Support"
+
+config FLASH_TEST_CMD
+    bool "OSPI2 NOR XIP Erase/Write Min-verify Example Cmd"
+    depends on FLASH_TEST
+    default y

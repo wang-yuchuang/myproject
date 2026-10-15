@@ -1,0 +1,20 @@
+BasedOnStyle: LLVM
+IndentWidth: 4
+UseTab: Never
+BreakBeforeBraces: Linux
+AllowShortIfStatementsOnASingleLine: false
+IndentCaseLabels: false
+IncludeBlocks: Regroup
+IncludeCategories:
+  - Regex:           '^<(std|string)'
+    Priority:        -1
+  - Regex:           '^<'
+    Priority:        -1
+  - Regex:           '^"'
+    Priority:        1
+ForEachMacros: [
+  list_for_every,
+  list_for_every_safe,
+  list_for_every_entry,
+  list_for_every_entry_safe,
+]

@@ -1,0 +1,12 @@
+menuconfig TAISHAN_XSPI
+    bool "TAISHAN XSPI Driver Support"
+    select OSPI
+    default n
+
+if TAISHAN_XSPI
+
+config XSPI_Z1_TEST
+    bool "XSPI Z1 TEST"
+    default n
+
+endif # TAISHAN_XSPI

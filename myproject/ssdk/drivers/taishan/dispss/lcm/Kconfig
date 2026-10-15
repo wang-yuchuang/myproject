@@ -1,0 +1,51 @@
+comment "LCM Driver Options"
+
+menuconfig LVDS_800X600_LCD
+    bool "lvds_800x600_lcd driver"
+    default n
+    depends on DISPSS
+
+menuconfig HDMI_ADV_800X600_LCD
+    bool "hdmi_adv_800x600_lcd driver"
+    default n
+    depends on DISPSS
+
+menuconfig RGB_1280X800_LCD
+    bool "rgb_1280x720_lcd driver"
+    default n
+    depends on DISPSS
+
+menuconfig RGB_800X600_LCD_Z1
+    bool "rgb_800x600_lcd_z1 driver"
+    default n
+    depends on DISPSS
+
+menuconfig LVDS_1440X540_LCD
+    bool "lvds_1440x540_lcd driver"
+    default n
+    depends on DISPSS
+
+menuconfig LVDS_1280X768_LCD
+    bool "lvds_1280x768_lcd driver"
+    default n
+    depends on DISPSS
+
+menuconfig RGB_480X272_LCD
+    bool "rgb_480x272_lcd driver"
+    default n
+    depends on DISPSS
+
+menuconfig LVDS_LT9211_TO_MIPI_480x1920_LCD
+    bool "lvds_lt9211_to_mipi_480x1920_lcd driver"
+    default n
+    depends on DISPSS
+
+menuconfig LVDS_1920X1080_LCD
+    bool "lvds_1920x1080_lcd driver"
+    default n
+    depends on DISPSS
+
+menuconfig LVDS_LT9211_1PORT_TO_2PORT_1920x720_LCD
+    bool "lvds_lt9211_1port_to_2port_1920x720_lcd driver"
+    default n
+    depends on DISPSS

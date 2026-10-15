@@ -1,0 +1,6 @@
+comment "Core Debug Options"
+
+config TAISHAN_CORE_DEBUG
+    bool "Taishan Core Debug Driver"
+    select SCR
+    default n

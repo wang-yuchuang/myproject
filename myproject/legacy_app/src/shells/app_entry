@@ -1,0 +1,64 @@
+#!/bin/sh
+# app_entry — App 分区唯一入口脚本
+#
+# 调用方（两条路径必须行为一致）:
+#   1. boot : BSP /etc/init.d/S92app_mount 的 start) 分支
+#             执行: /app/app_entry /app &
+#   2. OTA  : /usr/lib/rauc/app-post-install 的 start_app()
+#             执行: "$APP_POINT/app_entry" "$APP_POINT" &
+#
+# 本脚本负责:
+#   1. 幂等守卫：nccu_app 已在运行时直接退出，避免重复实例
+#   2. 清理上次异常退出残留的 PID 标记（liveness-aware）
+#   3. 写 PID 到 /var/run/app.pid（供 S92app_mount stop 使用）
+#   4. 注册 SIGTERM 信号处理器，优雅退出
+#   5. 调用 startrun 启动 app 业务
+
+echo "$0: Init system driver config before running app."
+APP_SHELL_PATH=$1
+
+# 幂等守卫：nccu_app 已在运行时直接退出，避免 "boot 与 OTA 重叠" 或 restart 产生第二实例。
+if pidof nccu_app >/dev/null 2>&1; then
+    echo "[BOOT] app_entry: nccu_app already running, skip duplicate start"
+    exit 0
+fi
+
+# ── 清理上次异常退出残留的运行标记 ────────────────────────────────
+# 为什么必须清理：/app/run_app 见到 nccu.pid 就 exit 1 拒绝启动。该文件位于持久化的
+# /opt/appdata/data，异常退出（未经 stoprun，例如整机重启或 OTA 强杀）后会让后续每次
+# 启动永久失败。两条调用路径到达本脚本时进程都已终止：OTA 由 app-post-install 的
+# stop_app() 执行 `pkill -9 app_entry syshand nccu_app`（:159-164）并用 fuser -k 兜底；
+# boot 则是全新启动。
+# 为什么仍要逐进程核对：整机重启后 PID 会被回收复用，仅用 kill -0 会把恰好占用该 PID
+# 的无关进程误判为存活，从而保留死文件；反之若将来在应用仍在运行时调用本脚本，盲删
+# syshand.pid 会让后续 stoprun 静默失效并遗留 System V 共享内存/信号量。
+# syshand.run 不在此删除：syshand 每次启动都会在 InitThis 中重建它（handler.c:220），
+# 因此保留陈旧副本无害；删除反而可能与 syshand 自身的创建时序竞争。
+VAR_DIR="/opt/appdata/data"
+
+cleanup_stale_pid() {  # $1=pidfile  $2=expected /proc/<pid>/comm
+    [ -f "$1" ] || return 0
+    pid=$(cat "$1" 2>/dev/null)
+    if [ -n "$pid" ] && kill -0 "$pid" 2>/dev/null \
+       && [ "$(cat "/proc/$pid/comm" 2>/dev/null)" = "$2" ]; then
+        echo "[BOOT] app_entry: $1 -> pid $pid ($2) alive, keeping it"
+    else
+        echo "[BOOT] app_entry: removing stale $1 (pid='$pid')"
+        rm -f "$1"
+    fi
+}
+cleanup_stale_pid "$VAR_DIR/nccu.pid"    nccu_app
+cleanup_stale_pid "$VAR_DIR/syshand.pid" syshand
+# .syscmd_locker 不删除：它是 iBasic_Funs.c:31 的 flock 目标，内核在持有者退出时自动
+# 释放 flock，残留文件不会阻塞任何后续加锁；反之 unlink 会让新进程在新 inode 上加锁，
+# 与仍存活的旧持有者形成"各自持锁"，破坏跨进程互斥。
+rm -f /var/volatile/syshand.pid /var/volatile/nccu.pid 2>/dev/null
+
+# ── 写 PID 文件，供 S92app_mount stop 时 kill ─────────────────────
+echo $$ > /var/run/app.pid
+
+# 注册 SIGTERM 处理器：收到停止信号时调用 stoprun
+trap 'echo "app_entry: received SIGTERM, stopping..."; "${APP_SHELL_PATH}/stoprun"; rm -f /var/run/app.pid; exit 0' TERM
+
+echo "[BOOT] app_entry: calling startrun"
+"${APP_SHELL_PATH}/startrun"

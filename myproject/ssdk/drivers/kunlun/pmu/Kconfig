@@ -1,0 +1,8 @@
+menuconfig SDRV_KUNLUN_PMU
+    bool "kunlun PMU Driver"
+    select PMU
+    default n
+
+if SDRV_KUNLUN_PMU
+    comment "kunlun pmu driver config option"
+endif

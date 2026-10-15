@@ -1,0 +1,6 @@
+comment "PIN Tester Options"
+
+config PINMUX_AP
+    bool "support AP domain pinmux options"
+    default y
+

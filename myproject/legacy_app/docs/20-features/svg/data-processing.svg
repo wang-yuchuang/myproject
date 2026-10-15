@@ -1,0 +1,153 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 724" role="img" aria-labelledby="ttl desc" style="max-width:1160px;width:100%;height:auto;background:#fff">
+  <title id="ttl">处理功能：DPR 数据流水线</title>
+  <desc id="desc">libdpr.so 容器内四段流水线：参数/告警/设备表（GetParam_ByPR，config_mangmt.c）→ 表达式运算（Exp_Calculate，run_expression.c）→ 事件处理（Register_EventHandler / HandleEvent，256 槽位，event_manager.c）→ 告警状态机（Alarm_Begin / Alarm_Cease / Alarm_Suppress，data_processing.c）。主循环 _ThreadEntry_DataProcessing（data_processing.c:440）每 200ms（:467）刷新参数与告警，并持久化到 /data/nccu.data（Data_Alarms / Data_HisStatusData）。输入：配置 System.cfg（SQLite，config_mangmt.c:9 InitCfgMagt）与 samplers 经 Intern_Set（dpr_loader.c:648）排队写入的采集数据。输出：reporters（8 个 .so）经 DAI（dai_loader.c 转发 dataprocessor.Get，dai_loader.c:94）读取，并经 Register_EventHandler 订阅 EVENT_TYPE_ALARM / EVENT_TYPE_CFG_CHANGED / EVENT_TYPE_FIRMWARE_UPDATE（event_model.h:20/22/34）。跨模块读=DAI（读通道），跨模块写=Intern_Set（写通道）；配置用 SQLite System.cfg，不是 INI。</desc>
+
+  <defs>
+    <marker id="arw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#5F6368"/>
+    </marker>
+    <marker id="arw-broken" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#C5221F"/>
+    </marker>
+  </defs>
+
+  <!-- ===== 标题区 ===== -->
+  <text x="40" y="36" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="22" font-weight="700" fill="#202124">处理功能：DPR 数据流水线</text>
+  <text x="40" y="58" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">证据：src/moduals/data_processor/{dpr/, dpr_loader.c} · src/data_interfaces/dai_loader.c · src/include/data_model/event_model.h · docs/30-interfaces/dai.md</text>
+
+  <!-- ===== 图例 ===== -->
+  <rect x="744" y="30" width="14" height="12" rx="2" fill="#F3E8FD" stroke="#8430CE" stroke-width="1"/>
+  <text x="762" y="40" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#202124">DPR核心</text>
+  <rect x="830" y="30" width="14" height="12" rx="2" fill="#F1F3F4" stroke="#5F6368" stroke-width="1"/>
+  <text x="848" y="40" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#202124">存储</text>
+  <rect x="884" y="30" width="14" height="12" rx="2" fill="#E6F4EA" stroke="#137333" stroke-width="1"/>
+  <text x="902" y="40" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#202124">采集侧</text>
+  <rect x="950" y="30" width="14" height="12" rx="2" fill="#E8F0FE" stroke="#1A73E8" stroke-width="1"/>
+  <text x="968" y="40" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#202124">消费者</text>
+  <line x1="1016" y1="36" x2="1042" y2="36" stroke="#5F6368" stroke-width="1.6" stroke-dasharray="7 4"/>
+  <text x="1046" y="40" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#202124">异步/事件</text>
+
+  <!-- ===== libdpr.so 容器 ===== -->
+  <rect x="268" y="96" width="640" height="504" rx="10" fill="#F3E8FD" stroke="#8430CE" stroke-width="2"/>
+  <text x="288" y="124" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">libdpr.so — DPR 数据处理中心</text>
+
+  <!-- ===== 输入 1：配置 System.cfg（圆柱） ===== -->
+  <path d="M24,123 A90,13 0 0 1 204,123 L204,207 A90,13 0 0 1 24,207 Z" fill="#F1F3F4" stroke="#5F6368" stroke-width="1.5"/>
+  <ellipse cx="114" cy="123" rx="90" ry="13" fill="#F1F3F4" stroke="#5F6368" stroke-width="1.5"/>
+  <text x="114" y="152" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">配置 System.cfg</text>
+  <text x="114" y="176" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">SQLite · 12 个 Cfg_Parse_*</text>
+  <text x="114" y="200" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">config_mangmt.c:9 InitCfgMagt</text>
+  <line x1="205" y1="165" x2="278" y2="165" stroke="#5F6368" stroke-width="1.6" marker-end="url(#arw)"/>
+  <text x="246" y="155" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="11" fill="#5F6368">装载</text>
+
+  <!-- ===== 输入 2：采集数据（samplers） ===== -->
+  <rect x="24" y="310" width="180" height="120" rx="8" fill="#E6F4EA" stroke="#137333" stroke-width="1.5"/>
+  <text x="114" y="338" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">采集数据（samplers）</text>
+  <text x="114" y="368" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">持 hDPR → Set 写入</text>
+  <text x="114" y="388" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">INTER_QUEUE_CMD 排队</text>
+  <text x="114" y="414" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">dpr_loader.c:648 Intern_Set</text>
+  <line x1="205" y1="318" x2="278" y2="318" stroke="#5F6368" stroke-width="1.6" stroke-dasharray="7 4" marker-end="url(#arw)"/>
+  <text x="238" y="306" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="11" fill="#5F6368">Intern_Set</text>
+
+  <!-- ===== 流水线阶段 1：参数/告警/设备表 ===== -->
+  <rect x="280" y="150" width="134" height="180" rx="8" fill="#FFFFFF" stroke="#8430CE" stroke-width="1.5"/>
+  <text x="347" y="174" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">参数 / 告警</text>
+  <text x="347" y="194" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">设备表（内存）</text>
+  <text x="347" y="226" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">GetParam_ByPR()</text>
+  <text x="347" y="246" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">按 PR 查内存表</text>
+  <text x="347" y="316" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">config_mangmt.c:16</text>
+  <line x1="415" y1="240" x2="428" y2="240" stroke="#5F6368" stroke-width="1.6" marker-end="url(#arw)"/>
+
+  <!-- ===== 流水线阶段 2：表达式运算 ===== -->
+  <rect x="430" y="150" width="134" height="180" rx="8" fill="#FFFFFF" stroke="#8430CE" stroke-width="1.5"/>
+  <text x="497" y="174" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">表达式运算</text>
+  <text x="497" y="226" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">Exp_Calculate()</text>
+  <text x="497" y="246" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">12 运算符 + 括号</text>
+  <text x="497" y="266" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">Debug/Release 宏</text>
+  <text x="497" y="316" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">run_expression.h:11</text>
+  <line x1="565" y1="240" x2="578" y2="240" stroke="#5F6368" stroke-width="1.6" marker-end="url(#arw)"/>
+
+  <!-- ===== 流水线阶段 3：事件处理 ===== -->
+  <rect x="580" y="150" width="134" height="180" rx="8" fill="#FFFFFF" stroke="#8430CE" stroke-width="1.5"/>
+  <text x="647" y="174" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">事件处理</text>
+  <text x="647" y="210" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">Register_</text>
+  <text x="647" y="228" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">EventHandler()</text>
+  <text x="647" y="258" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">HandleEvent()</text>
+  <text x="647" y="278" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">256 槽位</text>
+  <text x="647" y="316" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">event_manager.c:19</text>
+  <line x1="715" y1="240" x2="728" y2="240" stroke="#5F6368" stroke-width="1.6" marker-end="url(#arw)"/>
+
+  <!-- ===== 流水线阶段 4：告警状态机 ===== -->
+  <rect x="730" y="150" width="134" height="180" rx="8" fill="#FFFFFF" stroke="#8430CE" stroke-width="1.5"/>
+  <text x="797" y="174" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">告警状态机</text>
+  <text x="797" y="210" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">Alarm_Begin()</text>
+  <text x="797" y="230" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">Alarm_Cease()</text>
+  <text x="797" y="250" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">Alarm_Suppress()</text>
+  <text x="797" y="276" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">三种状态转换</text>
+  <text x="797" y="316" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">data_processing.c:5</text>
+
+  <!-- ===== 主循环注记（200ms） ===== -->
+  <rect x="280" y="372" width="264" height="120" rx="8" fill="#F8F9FA" stroke="#DADCE0" stroke-width="1.2" stroke-dasharray="7 4"/>
+  <text x="296" y="396" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="13" fill="#5F6368">主循环 · 每 200ms 一轮</text>
+  <text x="296" y="420" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">_ThreadEntry_DataProcessing</text>
+  <text x="296" y="440" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">data_processing.c:440 / :467</text>
+  <text x="296" y="460" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">Refresh 参数/告警/历史</text>
+  <text x="296" y="482" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">RUN_THREAD_HEARTBEAT 每轮保活</text>
+  <line x1="340" y1="371" x2="340" y2="333" stroke="#5F6368" stroke-width="1.6" stroke-dasharray="7 4" marker-end="url(#arw)"/>
+  <text x="348" y="358" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="11" fill="#5F6368">Refresh_*</text>
+
+  <!-- ===== 持久化：nccu.data（圆柱） ===== -->
+  <path d="M620,386 A120,13 0 0 1 860,386 L860,496 A120,13 0 0 1 620,496 Z" fill="#F1F3F4" stroke="#5F6368" stroke-width="1.5"/>
+  <ellipse cx="740" cy="386" rx="120" ry="13" fill="#F1F3F4" stroke="#5F6368" stroke-width="1.5"/>
+  <text x="740" y="416" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">持久化 nccu.data</text>
+  <text x="740" y="440" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">Data_Alarms（告警事件）</text>
+  <text x="740" y="459" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">Data_HisStatusData（历史参数）</text>
+  <text x="740" y="478" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">/data 顶层 · 锁在 /opt/appdata/data</text>
+  <text x="740" y="496" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">iDataBase.c:691 · NCCU_DATA_PATH</text>
+  <line x1="647" y1="331" x2="688" y2="384" stroke="#5F6368" stroke-width="1.6" marker-end="url(#arw)"/>
+  <text x="676" y="360" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="11" fill="#5F6368">告警持久化</text>
+  <line x1="545" y1="432" x2="617" y2="432" stroke="#5F6368" stroke-width="1.6" stroke-dasharray="7 4" marker-end="url(#arw)"/>
+  <text x="581" y="424" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="11" fill="#5F6368">历史批量写</text>
+
+  <!-- ===== 输出 1：DAI 读通道 → 上报器 ===== -->
+  <rect x="936" y="150" width="200" height="140" rx="8" fill="#E8F0FE" stroke="#1A73E8" stroke-width="1.5"/>
+  <text x="1036" y="178" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">DAI 读通道</text>
+  <text x="1036" y="208" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">dai_loader.c 装配</text>
+  <text x="1036" y="228" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">Get/Set 转发 DPR</text>
+  <text x="1036" y="248" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">Query 直读 SQLite</text>
+  <text x="1036" y="274" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">dai_loader.c:94</text>
+  <line x1="909" y1="220" x2="934" y2="220" stroke="#5F6368" stroke-width="1.6" marker-end="url(#arw)"/>
+  <text x="921" y="209" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="11" fill="#5F6368">Get</text>
+
+  <rect x="936" y="330" width="200" height="150" rx="8" fill="#E8F0FE" stroke="#1A73E8" stroke-width="1.5"/>
+  <text x="1036" y="360" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">上报器 ×8（.so）</text>
+  <text x="1036" y="392" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">pReporter->pDAI 注入</text>
+  <text x="1036" y="412" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">定时/事件驱动上报</text>
+  <text x="1036" y="432" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">虚线 = 订阅 DPR 事件</text>
+  <text x="1036" y="464" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">reporters_loader.c:48</text>
+  <line x1="1036" y1="291" x2="1036" y2="328" stroke="#5F6368" stroke-width="1.6" marker-end="url(#arw)"/>
+  <text x="1042" y="314" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="11" fill="#5F6368">pDAI</text>
+  <line x1="909" y1="400" x2="934" y2="400" stroke="#5F6368" stroke-width="1.6" stroke-dasharray="7 4" marker-end="url(#arw)"/>
+
+  <!-- ===== 输出 2：事件订阅类型 ===== -->
+  <rect x="936" y="500" width="200" height="96" rx="8" fill="#F8F9FA" stroke="#DADCE0" stroke-width="1.2"/>
+  <text x="952" y="522" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="13" fill="#5F6368">订阅事件类型</text>
+  <text x="952" y="544" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">EVENT_TYPE_ALARM</text>
+  <text x="952" y="561" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">EVENT_TYPE_CFG_CHANGED</text>
+  <text x="952" y="578" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">EVENT_TYPE_FIRMWARE_UPDATE</text>
+  <text x="952" y="590" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">event_model.h:20·22·34</text>
+  <line x1="1036" y1="481" x2="1036" y2="499" stroke="#5F6368" stroke-width="1.6" stroke-dasharray="7 4" marker-end="url(#arw)"/>
+
+  <!-- ===== 底部结论 ===== -->
+  <rect x="24" y="636" width="360" height="64" rx="8" fill="#FCE8E6" stroke="#C5221F" stroke-width="1.5"/>
+  <text x="40" y="660" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" font-weight="600" fill="#202124">配置用 SQLite System.cfg，不是 INI</text>
+  <text x="40" y="682" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">config_mangmt.c 逐行解析 · 12 类 Cfg_Parse_*（R1）</text>
+
+  <rect x="404" y="636" width="360" height="64" rx="8" fill="#E6F4EA" stroke="#137333" stroke-width="1.5"/>
+  <text x="420" y="660" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" font-weight="600" fill="#202124">跨模块写 = Intern_Set（写通道）</text>
+  <text x="420" y="682" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">samplers 持 hDPR 直调 · INTER_QUEUE_CMD 排队</text>
+
+  <rect x="784" y="636" width="352" height="64" rx="8" fill="#E8F0FE" stroke="#1A73E8" stroke-width="1.5"/>
+  <text x="800" y="660" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" font-weight="600" fill="#202124">跨模块读 = DAI（读通道）</text>
+  <text x="800" y="682" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">reporters 经 pDAI->Get/Set 取数 · DAI_Query 直读</text>
+</svg>

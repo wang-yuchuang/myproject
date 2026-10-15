@@ -1,0 +1,17 @@
+comment "Taihang Driver and Application Example Options"
+
+menuconfig APPLICATION
+    bool "applications"
+    default n
+
+if APPLICATION
+rsource "application/Kconfig"
+endif # APPLICATION
+
+menuconfig DRIVERS_EXAMPLE
+    bool "Taihang Driver Example Support"
+    default n
+
+if DRIVERS_EXAMPLE
+rsource "drivers/Kconfig"
+endif # DRIVERS_EXAMPLE

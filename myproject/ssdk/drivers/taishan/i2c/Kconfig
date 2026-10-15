@@ -1,0 +1,4 @@
+config SDRV_I2C
+    bool "Taishan I2C Driver Support"
+    select I2C
+    default n

@@ -1,0 +1,4 @@
+config SDRV_TMR
+    bool "Kunlun TMR Driver Support"
+    select TIMER
+    default n

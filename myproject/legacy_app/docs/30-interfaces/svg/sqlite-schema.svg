@@ -1,0 +1,259 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 860" role="img" aria-labelledby="ttl desc" style="max-width:1160px;width:100%;height:auto;background:#fff">
+  <title id="ttl">两个 SQLite 库：配置库 System.cfg 与 /data 下的运行数据库（nccu.data / AppLog.data / BmsRunData.data / CloudData.data）</title>
+  <desc id="desc">配置库 /app/config/System.cfg（出厂，运行时覆写副本 /opt/appdata/config/）共 14 张表（Charger_CommPort、Charger_Sampler、Charger_Reporter、Charger_Devices、Charger_DeviceModel、Charger_HistoryParameter、Charger_DeviceModel_Alarms、Charger_DeviceModel_StatusParameters、Charger_DeviceModel_SettingParameters、Charger_DeviceModel_ControlParameters、Resources、Revisions、Web_MainIdx、Web_SubIdx）。数据侧共 4 个 DB 文件，均在 $NCCU_DATA_PATH=/data 顶层：nccu.data（主运行库，Data_SavedSettings、Data_Alarms、Data_Events、Data_HistoricalData、Data_BMSHealthData、Data_ESStats_Daily、Data_CurrentSPFW_kwh、Data_AccumulatedData、Data_BmsHistFault、Data_BmsHistEvent、Data_BattDegrData，以及待核实的 Data_ChargeRecords、Data_ChargeMeterValues、Data_HisStatusData）；AppLog.data（Data_AppLog、Data_MBELog、Data_DumpLog）；BmsRunData.data（Data_RealTimeBmsData、Data_DODHistory、Data_SOSHistory）；CloudData.data（Data_CloudBackupInfo）。三个受管 DB 的锁文件（.applog.lock/.bmsrundata.lock/.clouddata.lock）与 .logIdx 索引在 /opt/appdata/data/，与 DB 文件不同目录。</desc>
+  <defs></defs>
+
+  <!-- ===== 标题区 ===== -->
+  <text x="40" y="36" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="22" font-weight="700" fill="#202124">两个 SQLite 库：System.cfg（配置）与 /data 下的运行数据</text>
+  <text x="40" y="60" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="13" fill="#5F6368">配置库描述设备能力（出厂镜像内）；运行数据落 /data 顶层。表清单依据 src/config/System.sql、src/publib/iDataBase.c 核对（提交 97cac555）</text>
+
+  <!-- ===== 左：配置 DB 圆柱 ===== -->
+  <path d="M40,97 v56 a170,11 0 0 0 340,0 v-56 z" fill="#E6F4EA" stroke="#137333" stroke-width="2"/>
+  <ellipse cx="210" cy="97" rx="170" ry="11" fill="#E6F4EA" stroke="#137333" stroke-width="2"/>
+  <text x="210" y="117" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">配置 DB · System.cfg（出厂）</text>
+  <text x="210" y="134" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">/app/config/System.cfg</text>
+  <text x="210" y="150" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">运行时覆写: /opt/appdata/config/</text>
+  <line x1="210" y1="164" x2="210" y2="182" stroke="#5F6368" stroke-width="1.2"/>
+
+  <!-- 左：配置库表 2 列 × 7 行（w=162 h=40） -->
+  <g>
+    <rect x="40" y="182" width="162" height="40" rx="6" fill="#F1F3F4" stroke="#5F6368" stroke-width="1.5"/>
+    <rect x="41" y="183" width="160" height="9" fill="#DADCE0"/>
+    <text x="121" y="208" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" font-weight="600" fill="#202124">Charger_CommPort</text>
+  </g>
+  <g>
+    <rect x="214" y="182" width="162" height="40" rx="6" fill="#F1F3F4" stroke="#5F6368" stroke-width="1.5"/>
+    <rect x="215" y="183" width="160" height="9" fill="#DADCE0"/>
+    <text x="295" y="208" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" font-weight="600" fill="#202124">Charger_Sampler</text>
+  </g>
+  <g>
+    <rect x="40" y="232" width="162" height="40" rx="6" fill="#F1F3F4" stroke="#5F6368" stroke-width="1.5"/>
+    <rect x="41" y="233" width="160" height="9" fill="#DADCE0"/>
+    <text x="121" y="258" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" font-weight="600" fill="#202124">Charger_Reporter</text>
+  </g>
+  <g>
+    <rect x="214" y="232" width="162" height="40" rx="6" fill="#F1F3F4" stroke="#5F6368" stroke-width="1.5"/>
+    <rect x="215" y="233" width="160" height="9" fill="#DADCE0"/>
+    <text x="295" y="258" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" font-weight="600" fill="#202124">Charger_Devices</text>
+  </g>
+  <g>
+    <rect x="40" y="282" width="162" height="40" rx="6" fill="#F1F3F4" stroke="#5F6368" stroke-width="1.5"/>
+    <rect x="41" y="283" width="160" height="9" fill="#DADCE0"/>
+    <text x="121" y="308" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" font-weight="600" fill="#202124">Charger_DeviceModel</text>
+  </g>
+  <g>
+    <rect x="214" y="282" width="162" height="40" rx="6" fill="#F1F3F4" stroke="#5F6368" stroke-width="1.5"/>
+    <rect x="215" y="283" width="160" height="9" fill="#DADCE0"/>
+    <text x="295" y="303" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" font-weight="600" fill="#202124">Charger_History</text>
+    <text x="295" y="317" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" font-weight="600" fill="#202124">Parameter</text>
+  </g>
+  <g>
+    <rect x="40" y="332" width="162" height="40" rx="6" fill="#F1F3F4" stroke="#5F6368" stroke-width="1.5"/>
+    <rect x="41" y="333" width="160" height="9" fill="#DADCE0"/>
+    <text x="121" y="353" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" font-weight="600" fill="#202124">Charger_DeviceModel_</text>
+    <text x="121" y="367" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" font-weight="600" fill="#202124">Alarms</text>
+  </g>
+  <g>
+    <rect x="214" y="332" width="162" height="40" rx="6" fill="#F1F3F4" stroke="#5F6368" stroke-width="1.5"/>
+    <rect x="215" y="333" width="160" height="9" fill="#DADCE0"/>
+    <text x="295" y="353" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" font-weight="600" fill="#202124">Charger_DeviceModel_</text>
+    <text x="295" y="367" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" font-weight="600" fill="#202124">StatusParameters</text>
+  </g>
+  <g>
+    <rect x="40" y="382" width="162" height="40" rx="6" fill="#F1F3F4" stroke="#5F6368" stroke-width="1.5"/>
+    <rect x="41" y="383" width="160" height="9" fill="#DADCE0"/>
+    <text x="121" y="403" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" font-weight="600" fill="#202124">Charger_DeviceModel_</text>
+    <text x="121" y="417" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" font-weight="600" fill="#202124">SettingParameters</text>
+  </g>
+  <g>
+    <rect x="214" y="382" width="162" height="40" rx="6" fill="#F1F3F4" stroke="#5F6368" stroke-width="1.5"/>
+    <rect x="215" y="383" width="160" height="9" fill="#DADCE0"/>
+    <text x="295" y="403" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" font-weight="600" fill="#202124">Charger_DeviceModel_</text>
+    <text x="295" y="417" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" font-weight="600" fill="#202124">ControlParameters</text>
+  </g>
+  <g>
+    <rect x="40" y="432" width="162" height="40" rx="6" fill="#F1F3F4" stroke="#5F6368" stroke-width="1.5"/>
+    <rect x="41" y="433" width="160" height="9" fill="#DADCE0"/>
+    <text x="121" y="458" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" font-weight="600" fill="#202124">Resources</text>
+  </g>
+  <g>
+    <rect x="214" y="432" width="162" height="40" rx="6" fill="#F1F3F4" stroke="#5F6368" stroke-width="1.5"/>
+    <rect x="215" y="433" width="160" height="9" fill="#DADCE0"/>
+    <text x="295" y="458" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" font-weight="600" fill="#202124">Revisions</text>
+  </g>
+  <g>
+    <rect x="40" y="482" width="162" height="40" rx="6" fill="#F1F3F4" stroke="#5F6368" stroke-width="1.5"/>
+    <rect x="41" y="483" width="160" height="9" fill="#DADCE0"/>
+    <text x="121" y="508" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" font-weight="600" fill="#202124">Web_MainIdx</text>
+  </g>
+  <g>
+    <rect x="214" y="482" width="162" height="40" rx="6" fill="#F1F3F4" stroke="#5F6368" stroke-width="1.5"/>
+    <rect x="215" y="483" width="160" height="9" fill="#DADCE0"/>
+    <text x="295" y="508" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" font-weight="600" fill="#202124">Web_SubIdx</text>
+  </g>
+  <text x="40" y="540" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">来源: src/config/System.sql:10-9628（14 表；本机无 sqlite3 CLI，未开库核对）</text>
+
+  <!-- ===== 中：nccu.data 圆柱 ===== -->
+  <path d="M420,97 v56 a195,11 0 0 0 390,0 v-56 z" fill="#E8F0FE" stroke="#1A73E8" stroke-width="2"/>
+  <ellipse cx="615" cy="97" rx="195" ry="11" fill="#E8F0FE" stroke="#1A73E8" stroke-width="2"/>
+  <text x="615" y="117" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">数据 DB · nccu.data（主运行库）</text>
+  <text x="615" y="134" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">$NCCU_DATA_PATH/nccu.data → /data/nccu.data</text>
+  <text x="615" y="150" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">打开: main.c:248-265 · 建表: main.c:283</text>
+  <line x1="615" y1="164" x2="615" y2="182" stroke="#5F6368" stroke-width="1.2"/>
+
+  <!-- 中：nccu.data 表 2 列 × 7 行（w=186 h=34） -->
+  <g>
+    <rect x="420" y="182" width="186" height="34" rx="6" fill="#F1F3F4" stroke="#5F6368" stroke-width="1.5"/>
+    <rect x="421" y="183" width="184" height="8" fill="#DADCE0"/>
+    <text x="513" y="204" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" font-weight="600" fill="#202124">Data_SavedSettings</text>
+  </g>
+  <g>
+    <rect x="624" y="182" width="186" height="34" rx="6" fill="#F1F3F4" stroke="#5F6368" stroke-width="1.5"/>
+    <rect x="625" y="183" width="184" height="8" fill="#DADCE0"/>
+    <text x="717" y="204" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" font-weight="600" fill="#202124">Data_Alarms</text>
+  </g>
+  <g>
+    <rect x="420" y="226" width="186" height="34" rx="6" fill="#F1F3F4" stroke="#5F6368" stroke-width="1.5"/>
+    <rect x="421" y="227" width="184" height="8" fill="#DADCE0"/>
+    <text x="513" y="248" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" font-weight="600" fill="#202124">Data_Events</text>
+  </g>
+  <g>
+    <rect x="624" y="226" width="186" height="34" rx="6" fill="#F1F3F4" stroke="#5F6368" stroke-width="1.5"/>
+    <rect x="625" y="227" width="184" height="8" fill="#DADCE0"/>
+    <text x="717" y="248" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" font-weight="600" fill="#202124">Data_HistoricalData</text>
+  </g>
+  <g>
+    <rect x="420" y="270" width="186" height="34" rx="6" fill="#F1F3F4" stroke="#5F6368" stroke-width="1.5"/>
+    <rect x="421" y="271" width="184" height="8" fill="#DADCE0"/>
+    <text x="513" y="292" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" font-weight="600" fill="#202124">Data_BMSHealthData</text>
+  </g>
+  <g>
+    <rect x="624" y="270" width="186" height="34" rx="6" fill="#F1F3F4" stroke="#5F6368" stroke-width="1.5"/>
+    <rect x="625" y="271" width="184" height="8" fill="#DADCE0"/>
+    <text x="717" y="292" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" font-weight="600" fill="#202124">Data_ESStats_Daily</text>
+  </g>
+  <g>
+    <rect x="420" y="314" width="186" height="34" rx="6" fill="#F1F3F4" stroke="#5F6368" stroke-width="1.5"/>
+    <rect x="421" y="315" width="184" height="8" fill="#DADCE0"/>
+    <text x="513" y="336" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" font-weight="600" fill="#202124">Data_CurrentSPFW_kwh</text>
+  </g>
+  <g>
+    <rect x="624" y="314" width="186" height="34" rx="6" fill="#F1F3F4" stroke="#5F6368" stroke-width="1.5"/>
+    <rect x="625" y="315" width="184" height="8" fill="#DADCE0"/>
+    <text x="717" y="336" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" font-weight="600" fill="#202124">Data_AccumulatedData</text>
+  </g>
+  <g>
+    <rect x="420" y="358" width="186" height="34" rx="6" fill="#F1F3F4" stroke="#5F6368" stroke-width="1.5"/>
+    <rect x="421" y="359" width="184" height="8" fill="#DADCE0"/>
+    <text x="513" y="380" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" font-weight="600" fill="#202124">Data_BmsHistFault</text>
+  </g>
+  <g>
+    <rect x="624" y="358" width="186" height="34" rx="6" fill="#F1F3F4" stroke="#5F6368" stroke-width="1.5"/>
+    <rect x="625" y="359" width="184" height="8" fill="#DADCE0"/>
+    <text x="717" y="380" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" font-weight="600" fill="#202124">Data_BmsHistEvent</text>
+  </g>
+  <g>
+    <rect x="420" y="402" width="186" height="34" rx="6" fill="#F1F3F4" stroke="#5F6368" stroke-width="1.5"/>
+    <rect x="421" y="403" width="184" height="8" fill="#DADCE0"/>
+    <text x="513" y="424" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" font-weight="600" fill="#202124">Data_BattDegrData</text>
+  </g>
+  <g>
+    <rect x="624" y="402" width="186" height="34" rx="6" fill="#FCE8E6" stroke="#C5221F" stroke-width="1.5"/>
+    <rect x="625" y="403" width="184" height="8" fill="#F5C6BC"/>
+    <text x="710" y="424" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" font-weight="600" fill="#202124">Data_ChargeRecords</text>
+    <text x="800" y="413" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10" fill="#C5221F">⚠</text>
+  </g>
+  <g>
+    <rect x="420" y="446" width="186" height="34" rx="6" fill="#FCE8E6" stroke="#C5221F" stroke-width="1.5"/>
+    <rect x="421" y="447" width="184" height="8" fill="#F5C6BC"/>
+    <text x="506" y="468" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" font-weight="600" fill="#202124">Data_ChargeMeterValues</text>
+    <text x="596" y="457" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10" fill="#C5221F">⚠</text>
+  </g>
+  <g>
+    <rect x="624" y="446" width="186" height="34" rx="6" fill="#FCE8E6" stroke="#C5221F" stroke-width="1.5"/>
+    <rect x="625" y="447" width="184" height="8" fill="#F5C6BC"/>
+    <text x="717" y="468" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" font-weight="600" fill="#202124">Data_HisStatusData</text>
+    <text x="800" y="457" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10" fill="#C5221F">⚠</text>
+  </g>
+  <text x="420" y="498" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">来源: dpr_loader.c:1520-1761 · iLog.c:1328 · ⚠ 三表仅见 SELECT/DELETE，建表代码未找到（dpr_loader.c:1599 已注释），疑为出厂 nccu.data 预置</text>
+
+  <!-- ===== 右列：三个受管 DB ===== -->
+  <path d="M830,97 v48 a145,10 0 0 0 290,0 v-48 z" fill="#E8F0FE" stroke="#1A73E8" stroke-width="2"/>
+  <ellipse cx="975" cy="97" rx="145" ry="10" fill="#E8F0FE" stroke="#1A73E8" stroke-width="2"/>
+  <text x="975" y="117" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">数据 DB · AppLog.data</text>
+  <text x="975" y="134" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">DB 日志后端（LogOut 家族）</text>
+  <g>
+    <rect x="830" y="160" width="290" height="34" rx="6" fill="#F1F3F4" stroke="#5F6368" stroke-width="1.5"/>
+    <rect x="831" y="161" width="288" height="8" fill="#DADCE0"/>
+    <text x="975" y="182" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" font-weight="600" fill="#202124">Data_AppLog（iDataBase.c:376）</text>
+  </g>
+  <g>
+    <rect x="830" y="202" width="290" height="34" rx="6" fill="#F1F3F4" stroke="#5F6368" stroke-width="1.5"/>
+    <rect x="831" y="203" width="288" height="8" fill="#DADCE0"/>
+    <text x="975" y="224" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" font-weight="600" fill="#202124">Data_MBELog（iDataBase.c:752）</text>
+  </g>
+  <g>
+    <rect x="830" y="244" width="290" height="34" rx="6" fill="#FCE8E6" stroke="#C5221F" stroke-width="1.5"/>
+    <rect x="831" y="245" width="288" height="8" fill="#F5C6BC"/>
+    <text x="968" y="266" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" font-weight="600" fill="#202124">Data_DumpLog（:787 INSERT）</text>
+    <text x="1110" y="257" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10" fill="#C5221F">⚠</text>
+  </g>
+  <text x="830" y="292" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">⚠ CREATE 仅在 iLog.c:323（nccu.data 旧路径），AppLog.data 上未见建表</text>
+
+  <path d="M830,327 v48 a145,10 0 0 0 290,0 v-48 z" fill="#E8F0FE" stroke="#1A73E8" stroke-width="2"/>
+  <ellipse cx="975" cy="327" rx="145" ry="10" fill="#E8F0FE" stroke="#1A73E8" stroke-width="2"/>
+  <text x="975" y="347" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">数据 DB · BmsRunData.data</text>
+  <text x="975" y="364" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">Init_Database 建表（iDataBase.c:431-466）</text>
+  <g>
+    <rect x="830" y="388" width="290" height="32" rx="6" fill="#F1F3F4" stroke="#5F6368" stroke-width="1.5"/>
+    <rect x="831" y="389" width="288" height="8" fill="#DADCE0"/>
+    <text x="975" y="409" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" font-weight="600" fill="#202124">Data_RealTimeBmsData（:431）</text>
+  </g>
+  <g>
+    <rect x="830" y="424" width="290" height="32" rx="6" fill="#F1F3F4" stroke="#5F6368" stroke-width="1.5"/>
+    <rect x="831" y="425" width="288" height="8" fill="#DADCE0"/>
+    <text x="975" y="445" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" font-weight="600" fill="#202124">Data_DODHistory（:444）</text>
+  </g>
+  <g>
+    <rect x="830" y="460" width="290" height="32" rx="6" fill="#F1F3F4" stroke="#5F6368" stroke-width="1.5"/>
+    <rect x="831" y="461" width="288" height="8" fill="#DADCE0"/>
+    <text x="975" y="481" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" font-weight="600" fill="#202124">Data_SOSHistory（:466）</text>
+  </g>
+
+  <path d="M830,546 v48 a145,10 0 0 0 290,0 v-48 z" fill="#E8F0FE" stroke="#1A73E8" stroke-width="2"/>
+  <ellipse cx="975" cy="546" rx="145" ry="10" fill="#E8F0FE" stroke="#1A73E8" stroke-width="2"/>
+  <text x="975" y="566" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">数据 DB · CloudData.data</text>
+  <text x="975" y="583" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">Open_Lock_Database（iBasic_Funs.c:2681）</text>
+  <g>
+    <rect x="830" y="612" width="290" height="32" rx="6" fill="#F1F3F4" stroke="#5F6368" stroke-width="1.5"/>
+    <rect x="831" y="613" width="288" height="8" fill="#DADCE0"/>
+    <text x="975" y="633" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" font-weight="600" fill="#202124">Data_CloudBackupInfo（:2691）</text>
+  </g>
+
+  <!-- 右列三库 → 锁带 的关系线（无箭头） -->
+  <path d="M1135,120 V722" fill="none" stroke="#F9AB00" stroke-width="1.6"/>
+  <path d="M1120,120 H1135 M1120,350 H1135 M1120,566 H1135 M1120,722 H1135" fill="none" stroke="#F9AB00" stroke-width="1.6"/>
+
+  <!-- ===== 红色警示带 ===== -->
+  <rect x="40" y="668" width="1080" height="42" rx="6" fill="#FCE8E6" stroke="#C5221F" stroke-width="2"/>
+  <text x="56" y="694" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="13" font-weight="600" fill="#C5221F">⚠ DB 文件在 /data/ 顶层；锁/索引在 /opt/appdata/data/ —— 两者不同目录（/opt/appdata 是 bind mount，源为 /data/rootfs/opt/appdata，见 S00data_mount）</text>
+
+  <!-- ===== 锁与索引带 ===== -->
+  <rect x="40" y="722" width="1080" height="74" rx="6" fill="#FEF7E0" stroke="#F9AB00" stroke-width="1.5"/>
+  <text x="56" y="742" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">锁与索引（/opt/appdata/data/，与 DB 文件不同目录）</text>
+  <text x="56" y="760" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">.applog.lock / .bmsrundata.lock / .clouddata.lock（iDataBase.c:34/39/44）　·　.logIdx（iLog.c:46）</text>
+  <text x="56" y="778" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">Open_Lock_SqliteDB（iLog.c:429）· Open_Lock_Database（iDataBase.c:194）· sqlite3_busy_timeout 20s（main.c:264）· SQLITE_CONFIG_SERIALIZED（main.c:242）</text>
+
+  <!-- ===== 图例与来源 ===== -->
+  <rect x="40" y="812" width="14" height="14" fill="#E6F4EA" stroke="#137333" stroke-width="1.5"/>
+  <text x="60" y="823" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#202124">配置 DB</text>
+  <rect x="190" y="812" width="14" height="14" fill="#E8F0FE" stroke="#1A73E8" stroke-width="1.5"/>
+  <text x="210" y="823" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#202124">数据 DB</text>
+  <rect x="340" y="812" width="14" height="14" fill="#F1F3F4" stroke="#5F6368" stroke-width="1.5"/>
+  <text x="360" y="823" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#202124">表</text>
+  <rect x="460" y="812" width="14" height="14" fill="#FEF7E0" stroke="#F9AB00" stroke-width="1.5"/>
+  <text x="480" y="823" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#202124">锁/索引</text>
+  <rect x="620" y="812" width="14" height="14" fill="#FCE8E6" stroke="#C5221F" stroke-width="1.5"/>
+  <text x="640" y="823" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#202124">⚠ 待核实项</text>
+  <text x="40" y="848" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">核对提交 97cac555 · 权威契约见 docs/_meta/authority-contract.md · 路径事实见 openspec/.code-facts-snapshot.md「运行时可写路径与 DB/锁文件」</text>
+</svg>

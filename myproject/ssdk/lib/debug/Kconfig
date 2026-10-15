@@ -1,0 +1,5 @@
+comment "Debug Options"
+
+config DEBUG_LEVEL
+    int "Debug level"
+    default 2

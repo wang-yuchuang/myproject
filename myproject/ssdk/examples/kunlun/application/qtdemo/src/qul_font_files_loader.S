@@ -1,0 +1,6 @@
+.section QulFontResourceData, "a", %progbits
+.global qul_font_DejaVuSans_20_50_8_fb9a58cf35e85818e1dc5886886ddb1dd43f1ba2_alphaMaps_source
+.balign 1
+qul_font_DejaVuSans_20_50_8_fb9a58cf35e85818e1dc5886886ddb1dd43f1ba2_alphaMaps_source:
+.incbin "qul_font_DejaVuSans_20_50_8_fb9a58cf35e85818e1dc5886886ddb1dd43f1ba2.bin"
+

@@ -1,0 +1,7 @@
+comment "Timer Demo Options"
+
+config SDRV_TMR_DEMO
+    bool "Kunlun tmr demo"
+    select TIMER
+    select SDRV_TMR
+    default n

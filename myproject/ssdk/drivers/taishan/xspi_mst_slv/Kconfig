@@ -1,0 +1,22 @@
+menuconfig XSPI_MST_SLV
+    bool "XSPI Master and Slave Driver Support"
+    default n
+
+if XSPI_MST_SLV
+
+config XSPI_MST
+    bool "Taishan XSPI Master"
+    default n
+    ---help---
+    Use XSPI controller as master device, so we can directlly read and
+    write memory and register spaces of an external XSPI slave device
+    through memory mapped APB area of the XSPI master.
+
+config XSPI_SLV
+    bool "Taishan XSPI Slave"
+    default n
+    ---help---
+    Use XSPI controller as slave device, so an external XSPI master can
+    directlly read and write memory and register spaces of this device.
+
+endif # XSPI_MST_SLV

@@ -1,0 +1,49 @@
+comment "X9 Safety Core Options"
+
+config MEM_BASE
+    hex "Memory Start Address"
+    default 0x7E600000
+
+config MEM_SIZE
+    hex "Memory Size"
+    default 0x800000
+
+config RES_SIZE
+    hex "Res Size"
+    default 0x0
+
+config BOARD_REMAP
+    bool "Enable Kunlun board remap"
+    select SCR
+    select RESETGEN
+    select KUNLUN_RESETGEN
+    default n
+
+config KUNLUN_BOOT_MP
+    bool "Boot MP Core"
+    default n
+
+config SUPPORT_STR_MODE
+    bool "support str mode"
+    default n
+
+config STR_CORE_COMMU
+    bool "str communication between saf and sec"
+    default n
+
+config EARLYCOPY
+    bool "Early Copy sections from LMA to VMA"
+    default y
+
+config HANDOVER_CFG
+    bool "handover some IPs in safety to AP domain"
+    select SCR
+    default n
+
+config SOC_CLK_INIT
+    bool "initialize soc clock"
+    default y
+
+config SOC_RST_INIT
+    bool "initialize soc rstgen"
+    default y

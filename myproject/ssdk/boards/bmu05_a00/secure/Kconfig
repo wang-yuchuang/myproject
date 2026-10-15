@@ -1,0 +1,65 @@
+comment "D9 Secure Core Options"
+
+config MEM_BASE
+    hex "Memory Start Address"
+    default 0x3B000000
+
+config MEM_SIZE
+    hex "Memory Size"
+    default 0x10000000
+
+config BOARD_REMAP
+    bool "Enable Kunlun board remap"
+    select SCR
+    select RESETGEN
+    select KUNLUN_RESETGEN
+    default n
+
+config FIREWALL_DISABLE
+    bool "disable firewall function"
+	default y
+
+config EARLYCOPY
+    bool "early copy"
+    default n
+
+config SUPPORT_STR_MODE
+    bool "support str mode"
+    default n
+
+config PROJECT_VERSION
+    string "Custom project version string"
+    default "V0.0.1"
+    help
+      This is a custom string macro for device version, 
+      e.g. "V1.0.2" etc.
+
+config XIP_MODE
+    bool "Run in XIP mode"
+    default n
+
+config RAM_BASE
+    hex "RAM base for XIP mode"
+    depends on XIP_MODE
+    default 0x140000
+
+config RAM_SIZE
+    hex "RAM size for XIP mode"
+    depends on XIP_MODE
+    default 0xC0000
+
+config IRAM_NONE_ECC_BASE
+    hex "IRAM NONE-ECC Base Address"
+    default 0x0
+
+config IRAM_NONE_ECC_SIZE
+    hex "IRAM NONE-ECC Size"
+    default 0x0
+
+config ARMV7R_TCMA_BASE
+    hex "ARMV7-R TCMA Base Address"
+    default 0x004b0000
+
+config ARMV7R_TCMB_BASE
+    hex "ARMV7-R TCMB Base Address"
+    default 0x004c0000

@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 690" role="img" aria-labelledby="ttl desc" style="max-width:1160px;width:100%;height:auto;background:#fff">
+  <title id="ttl">配置加载流程 — System.cfg 到 CHARGER 内存模型</title>
+  <desc id="desc">DPR 配置加载：/app/config/System.cfg（SQLite 出厂默认）由 run_app 在首次启动复制到 /opt/appdata/config/ 运行时覆写区（当前 DPR 读取路径仍解析为 /app/config）；启动 boot step 2/6 LoadConfigAndData（main.c:157）调用 InitCfgMagt（config_mangmt.c:9）绑定 s_pCharger 并以只读方式打开配置 DB（dpr_loader.c:1284），12 个 Cfg_Parse_* 回调（dpr.h:22-33）把设备、采样器、上报器、通信端口等表解析进 CHARGER 内存模型，运行时经 GetParam_ByPR 分发查找。运行时数据 DB 是 /data/nccu.data，与配置 DB 不是同一文件；DB 文件在 /data/ 顶层，其锁与索引在 /opt/appdata/data/。</desc>
+
+  <defs>
+    <marker id="arw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#5F6368"/>
+    </marker>
+    <marker id="arw-broken" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#C5221F"/>
+    </marker>
+  </defs>
+
+  <text x="580" y="34" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="22" font-weight="700" fill="#202124">配置加载流程 — System.cfg 到 CHARGER 内存模型</text>
+  <text x="580" y="58" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="13" fill="#5F6368">SQLite 配置 DB 经 InitCfgMagt 与 12 个 Cfg_Parse_* 回调装入内存 · 数据 DB 另存于 /data/nccu.data</text>
+
+  <!-- 阶段带：启动阶段 -->
+  <rect x="20" y="72" width="1120" height="272" rx="8" fill="#F8F9FA" stroke="#DADCE0" stroke-width="1.2" opacity="0.45"/>
+  <text x="36" y="92" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="13" fill="#5F6368">启动阶段 · boot step 2/6 LoadConfigAndData（main.c:157）</text>
+
+  <!-- A: 配置源 System.cfg（圆柱） -->
+  <path d="M40,122 A100,10 0 0 1 240,122 L240,186 A100,10 0 0 1 40,186 Z" fill="#E6F4EA" stroke="#137333" stroke-width="1.5"/>
+  <ellipse cx="140" cy="122" rx="100" ry="10" fill="#E6F4EA" stroke="#137333" stroke-width="1.5"/>
+  <text x="140" y="143" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">System.cfg</text>
+  <text x="140" y="161" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">SQLite · 出厂默认</text>
+  <text x="140" y="177" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">charger_model.h:99</text>
+
+  <!-- C: InitCfgMagt -->
+  <rect x="560" y="128" width="200" height="72" rx="8" fill="#E8F0FE" stroke="#1A73E8" stroke-width="1.5"/>
+  <text x="660" y="152" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">InitCfgMagt</text>
+  <text x="660" y="170" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">绑定 s_pCharger</text>
+  <text x="660" y="187" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">config_mangmt.c:9</text>
+
+  <!-- A → C 实线：只读打开（当前生效） -->
+  <line x1="240" y1="158" x2="556" y2="158" stroke="#5F6368" stroke-width="1.6" marker-end="url(#arw)"/>
+  <text x="400" y="146" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="11" fill="#5F6368">SQLite 只读打开 · 当前生效路径</text>
+  <text x="400" y="175" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">dpr_loader.c:1284</text>
+
+  <!-- A → B 虚线：首次启动复制 -->
+  <line x1="140" y1="198" x2="140" y2="248" stroke="#5F6368" stroke-width="1.6" stroke-dasharray="6 4" marker-end="url(#arw)"/>
+  <text x="156" y="222" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="11" fill="#5F6368">首次启动复制</text>
+  <text x="156" y="238" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">run_app:54</text>
+
+  <!-- B: 运行时覆写区 -->
+  <rect x="40" y="252" width="200" height="64" rx="8" fill="#E6F4EA" stroke="#137333" stroke-width="1.5"/>
+  <text x="140" y="274" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">运行时覆写区</text>
+  <text x="140" y="292" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">/opt/appdata/config/</text>
+  <text x="140" y="308" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">run_app:50-54 · 首次复制</text>
+  <text x="260" y="290" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">当前仅 log4c 使用（iLog4c.c:141）</text>
+
+  <!-- C → 4 个解析器 扇出 -->
+  <text x="970" y="80" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="11" fill="#5F6368">12 个解析回调 · dpr.h:22-33</text>
+  <line x1="760" y1="164" x2="816" y2="112" stroke="#5F6368" stroke-width="1.6" marker-end="url(#arw)"/>
+  <line x1="760" y1="164" x2="816" y2="172" stroke="#5F6368" stroke-width="1.6" marker-end="url(#arw)"/>
+  <line x1="760" y1="164" x2="816" y2="232" stroke="#5F6368" stroke-width="1.6" marker-end="url(#arw)"/>
+  <line x1="760" y1="164" x2="816" y2="292" stroke="#5F6368" stroke-width="1.6" marker-end="url(#arw)"/>
+
+  <!-- 解析器（rx=6） -->
+  <rect x="820" y="88" width="300" height="48" rx="6" fill="#E8F0FE" stroke="#1A73E8" stroke-width="1.5"/>
+  <text x="970" y="108" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">Cfg_Parse_Device</text>
+  <text x="970" y="126" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">dpr.h:28 · dpr_loader.c:1309</text>
+
+  <rect x="820" y="148" width="300" height="48" rx="6" fill="#E8F0FE" stroke="#1A73E8" stroke-width="1.5"/>
+  <text x="970" y="168" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">Cfg_Parse_Sampler</text>
+  <text x="970" y="186" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">dpr.h:24 · dpr_loader.c:1307</text>
+
+  <rect x="820" y="208" width="300" height="48" rx="6" fill="#E8F0FE" stroke="#1A73E8" stroke-width="1.5"/>
+  <text x="970" y="228" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">Cfg_Parse_Reporter</text>
+  <text x="970" y="246" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">dpr.h:25 · dpr_loader.c:1308</text>
+
+  <rect x="820" y="268" width="300" height="48" rx="6" fill="#E8F0FE" stroke="#1A73E8" stroke-width="1.5"/>
+  <text x="970" y="288" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">Cfg_Parse_CommPort</text>
+  <text x="970" y="306" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">dpr.h:27 · dpr_loader.c:1306</text>
+
+  <!-- 汇流 → 内存模型 -->
+  <path d="M1120,112 L1135,112 M1120,172 L1135,172 M1120,232 L1135,232 M1120,292 L1135,292 M1135,112 L1135,380 L1066,380" fill="none" stroke="#5F6368" stroke-width="1.6" marker-end="url(#arw)"/>
+
+  <!-- E: CHARGER 内存模型 -->
+  <rect x="560" y="352" width="500" height="120" rx="8" fill="#F3E8FD" stroke="#8430CE" stroke-width="1.5"/>
+  <text x="810" y="380" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">CHARGER 内存模型</text>
+  <text x="810" y="402" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">设备表 · 采样器 · 上报器 · 通信端口 · 告警表</text>
+  <text x="810" y="420" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">参数表（状态/控制/设置）· GetParam_ByPR 分发查找</text>
+  <text x="810" y="448" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">config_mangmt.c:16 · dpr_loader.c:1297-1309</text>
+
+  <!-- 底部：运行时数据 DB（圆柱，存储灰） -->
+  <path d="M40,514 A215,10 0 0 1 470,514 L470,586 A215,10 0 0 1 40,586 Z" fill="#F1F3F4" stroke="#5F6368" stroke-width="1.5"/>
+  <ellipse cx="255" cy="514" rx="215" ry="10" fill="#F1F3F4" stroke="#5F6368" stroke-width="1.5"/>
+  <text x="255" y="537" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">运行时数据 DB（与配置 DB 非同一文件）</text>
+  <text x="255" y="557" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">$NCCU_DATA_PATH/nccu.data = /data/nccu.data</text>
+  <text x="255" y="576" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">run_app:10-11 · NCCU_DATA_PATH=/data</text>
+
+  <!-- 底部：警示框 -->
+  <rect x="510" y="504" width="610" height="92" rx="8" fill="#FCE8E6" stroke="#C5221F" stroke-width="1.5"/>
+  <text x="534" y="532" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">⚠ 配置 DB 与数据 DB 不是同一个文件</text>
+  <text x="534" y="554" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">DB 文件在 /data/ 顶层；其锁与索引在 /opt/appdata/data/</text>
+  <text x="534" y="572" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">/opt/appdata 为 bind mount，源 /data/rootfs/opt/appdata（S00data_mount）</text>
+
+  <!-- 注 -->
+  <text x="40" y="624" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">注：/opt/appdata/config 为运行时覆写区；DPR 配置读取路径当前解析为 /app/config/System.cfg（NCCU_APP_PATH 未设置 · iBasic_Funs.c:1243 · run_app:23）</text>
+
+  <!-- 图例 -->
+  <rect x="40" y="646" width="18" height="12" fill="#E6F4EA" stroke="#137333" stroke-width="1"/>
+  <text x="64" y="656" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#202124">配置源</text>
+  <rect x="130" y="646" width="18" height="12" fill="#E8F0FE" stroke="#1A73E8" stroke-width="1"/>
+  <text x="154" y="656" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#202124">解析器</text>
+  <rect x="220" y="646" width="18" height="12" fill="#F3E8FD" stroke="#8430CE" stroke-width="1"/>
+  <text x="244" y="656" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#202124">内存模型</text>
+  <rect x="322" y="646" width="18" height="12" fill="#F1F3F4" stroke="#5F6368" stroke-width="1"/>
+  <text x="346" y="656" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#202124">存储</text>
+  <rect x="400" y="646" width="18" height="12" fill="#FCE8E6" stroke="#C5221F" stroke-width="1"/>
+  <text x="424" y="656" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#202124">警示</text>
+  <line x1="478" y1="652" x2="506" y2="652" stroke="#5F6368" stroke-width="1.6"/>
+  <text x="514" y="656" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#202124">正常流</text>
+  <line x1="584" y1="652" x2="612" y2="652" stroke="#5F6368" stroke-width="1.6" stroke-dasharray="6 4"/>
+  <text x="620" y="656" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#202124">复制 / 旁路</text>
+</svg>

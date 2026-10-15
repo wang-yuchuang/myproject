@@ -1,0 +1,238 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 1200" role="img" aria-labelledby="ttl desc" style="max-width:1160px;width:100%;height:auto;background:#fff" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif">
+  <title id="ttl">加载器与动态库（dlopen/dlsym）</title>
+  <desc id="desc">nccu_app 主进程内编译进主程序的 5 个 loader.o（src/main/Makefile:11-16）。其中 3 个是 dlopen/dlsym 动态加载器：comm_loader.c 经 dlopen 加载 9 个 libcomm_*.so 并 dlsym 6 个 HAL 符号（HAL_CommOpen/HAL_CommAccept/HAL_CommRead/HAL_CommWrite/HAL_CommControl/HAL_CommClose，comm_port.h:284-302）；sampler_loader.c 加载 10 个 sampler_*.so 并 dlsym 4 个符号（Initialize/Sample/Control/JigTest，sampler_model.h:32-51，导出原型 sampler_base.h:68-77）；reporters_loader.c 加载 8 个 reporter_*.so 并 dlsym 1 个符号（Initialize，reporter_model.h:7 / reporters_base.h:27）。dpr_loader.o 与 dai_loader.o 不是 dlopen：Init_CreateDataProcessor（dpr_loader.c:1479）装配 Intern_Get/Intern_Set，Init_LoadDAI（dai_loader.c:1045-1053）装配 DAI 的 Get/Set/Query/Signal/Regsiter_EvHandler 进程内函数指针。条件加载：sampler 按 IMMU3/SEMS/AEMS 及配置开关跳过特定 ID（sampler_loader.c:180-232,249-280）；reporter 按 nPlatformType 互斥跳过 6/7/8/9、ID1 Qt GUI 无条件跳过、另有各自 DAI 开关（reporters_loader.c:51-163,166+）；comm 无模块级条件加载，仅 dummy 端口（nCommPort==0）跳过（comm_loader.c:48-52）。构建顺序 = src/Makefile DIRS；运行时装配顺序 = main.c 六步（main.c:149-193）。</desc>
+
+  <defs>
+    <marker id="arw" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0L10,5L0,10Z" fill="#5F6368"/>
+    </marker>
+    <marker id="arwRed" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0L10,5L0,10Z" fill="#C5221F"/>
+    </marker>
+  </defs>
+
+  <!-- ===== header ===== -->
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="32" y="44" font-size="22" font-weight="700" fill="#202124">加载器与动态库（dlopen / dlsym）</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="32" y="68" font-size="13" fill="#5F6368">5 个 loader.o 编译进主程序 · 3 个动态加载器扇出到 27 个 .so · 2 个进程内函数指针装配器（非 dlopen）</text>
+
+  <!-- ===== nccu_app process ===== -->
+  <rect x="32" y="88" width="1096" height="152" rx="10" fill="#F3E8FD" stroke="#8430CE" stroke-width="2"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="48" y="112" font-size="14" font-weight="600" fill="#202124">nccu_app（主进程）</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="1112" y="112" font-size="10.5" fill="#80868B" text-anchor="end">加载步骤 main.c:149-193</text>
+
+  <rect x="43" y="126" width="1074" height="86" rx="6" fill="#FFFFFF" stroke="#8430CE" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="55" y="144" font-size="13" font-weight="600" fill="#202124">编译进主程序的 5 个 loader.o</text>
+
+  <!-- loader.o nodes (Makefile order) -->
+  <rect x="55" y="152" width="190" height="48" rx="6" fill="#F3E8FD" stroke="#8430CE" stroke-width="1.5"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="150" y="170" font-size="14" font-weight="600" fill="#202124" text-anchor="middle">dpr_loader.o</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="150" y="184" font-size="10.5" fill="#80868B" text-anchor="middle">main/Makefile:11</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="150" y="197" font-size="10.5" font-weight="600" fill="#C5221F" text-anchor="middle">非 dlopen</text>
+
+  <rect x="265" y="152" width="190" height="48" rx="6" fill="#F3E8FD" stroke="#8430CE" stroke-width="1.5"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="360" y="170" font-size="14" font-weight="600" fill="#202124" text-anchor="middle">sampler_loader.o</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="360" y="184" font-size="10.5" fill="#80868B" text-anchor="middle">main/Makefile:12</text>
+
+  <rect x="475" y="152" width="190" height="48" rx="6" fill="#F3E8FD" stroke="#8430CE" stroke-width="1.5"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="570" y="170" font-size="14" font-weight="600" fill="#202124" text-anchor="middle">comm_loader.o</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="570" y="184" font-size="10.5" fill="#80868B" text-anchor="middle">main/Makefile:13</text>
+
+  <rect x="685" y="152" width="190" height="48" rx="6" fill="#F3E8FD" stroke="#8430CE" stroke-width="1.5"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="780" y="170" font-size="14" font-weight="600" fill="#202124" text-anchor="middle">dai_loader.o</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="780" y="184" font-size="10.5" fill="#80868B" text-anchor="middle">main/Makefile:14</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="780" y="197" font-size="10.5" font-weight="600" fill="#C5221F" text-anchor="middle">非 dlopen</text>
+
+  <rect x="895" y="152" width="190" height="48" rx="6" fill="#F3E8FD" stroke="#8430CE" stroke-width="1.5"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="990" y="170" font-size="14" font-weight="600" fill="#202124" text-anchor="middle">reporters_loader.o</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="990" y="184" font-size="10.5" fill="#80868B" text-anchor="middle">main/Makefile:15</text>
+
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="48" y="232" font-size="10.5" fill="#80868B">src/main/Makefile:11-16（OBJS 另含 main.o / watch_dog.o / main_args.o / sig_handler.o，非 loader）</text>
+
+  <!-- ===== arrows: process -> columns ===== -->
+  <line x1="162" y1="242" x2="162" y2="272" stroke="#5F6368" stroke-width="1.6" marker-end="url(#arw)"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="172" y="262" font-size="10.5" fill="#5F6368">main.c 1/6 · 3/6</text>
+  <line x1="440" y1="242" x2="440" y2="272" stroke="#5F6368" stroke-width="1.6" marker-end="url(#arw)"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="450" y="262" font-size="10.5" fill="#5F6368">main.c 4/6</text>
+  <line x1="718" y1="242" x2="718" y2="272" stroke="#5F6368" stroke-width="1.6" marker-end="url(#arw)"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="728" y="262" font-size="10.5" fill="#5F6368">main.c 5/6</text>
+  <line x1="996" y1="242" x2="996" y2="272" stroke="#5F6368" stroke-width="1.6" marker-end="url(#arw)"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="1006" y="262" font-size="10.5" fill="#5F6368">main.c 6/6</text>
+
+  <!-- ===== column 1: dpr/dai (non-dlopen) ===== -->
+  <rect x="32" y="278" width="260" height="190" rx="6" fill="#E8F0FE" stroke="#1A73E8" stroke-width="1.5"/>
+  <rect x="208" y="330" width="80" height="20" rx="10" fill="#FCE8E6" stroke="#C5221F" stroke-width="1.2"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="248" y="344" font-size="11" font-weight="600" fill="#C5221F" text-anchor="middle">非 dlopen</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="46" y="304" font-size="14" font-weight="600" fill="#202124">dpr_loader.o · dai_loader.o</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="46" y="326" font-size="12" fill="#5F6368">Init_CreateDataProcessor（1/6）</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="46" y="346" font-size="12" fill="#5F6368">Init_LoadDAI（3/6）</text>
+  <rect x="44" y="356" width="236" height="92" rx="4" fill="#FFFFFF" stroke="#1A73E8" stroke-width="1.2"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="56" y="376" font-size="11" font-weight="600" fill="#1A73E8">函数指针装配（非 dlopen）</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="56" y="394" font-size="10.5" fill="#202124">Intern_Get / Intern_Set → DPR.Get/Set</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="56" y="410" font-size="10.5" fill="#202124">DAI: Get / Set / Query / Signal /</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="56" y="426" font-size="10.5" fill="#202124">Regsiter_EvHandler</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="56" y="441" font-size="10.5" fill="#202124">（dai_loader.c:1049-1053）</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="46" y="462" font-size="10.5" fill="#80868B">dpr_loader.c:26,1479 · dai_loader.c:1045</text>
+
+  <line x1="162" y1="470" x2="162" y2="492" stroke="#5F6368" stroke-width="1.6" marker-end="url(#arw)"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="174" y="486" font-size="10.5" fill="#5F6368">装配（非 dlopen）</text>
+
+  <rect x="32" y="496" width="260" height="124" rx="6" fill="#F8F9FA" stroke="#DADCE0" stroke-width="1.2"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="46" y="522" font-size="12" font-weight="600" fill="#202124">进程内函数指针表</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="46" y="544" font-size="12" fill="#5F6368">pCharger-&gt;dataprocessor</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="46" y="562" font-size="12" fill="#5F6368">pCharger-&gt;dai</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="46" y="584" font-size="12" fill="#5F6368">上层模块经 DAI 门面访问 DPR</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="46" y="606" font-size="10.5" fill="#80868B">main.c:149-166 · dai_loader.c:1049</text>
+
+  <!-- ===== column 2: comm_loader ===== -->
+  <rect x="310" y="278" width="260" height="190" rx="6" fill="#E8F0FE" stroke="#1A73E8" stroke-width="1.5"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="324" y="304" font-size="14" font-weight="600" fill="#202124">comm_loader.c</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="324" y="326" font-size="12" fill="#5F6368">Load_ACommPort() × nTotal</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="324" y="346" font-size="11" fill="#5F6368">$APP/comm_port/&lt;szPortDriver&gt;</text>
+  <rect x="322" y="356" width="236" height="92" rx="4" fill="#FFFFFF" stroke="#1A73E8" stroke-width="1.2"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="334" y="376" font-size="11" font-weight="600" fill="#1A73E8">dlsym ×6（全部必须命中）</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="334" y="394" font-size="10.5" fill="#202124">HAL_CommOpen  HAL_CommAccept</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="334" y="410" font-size="10.5" fill="#202124">HAL_CommRead  HAL_CommWrite</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="334" y="426" font-size="10.5" fill="#202124">HAL_CommControl  HAL_CommClose</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="324" y="462" font-size="10.5" fill="#80868B">comm_loader.c:8-39 · comm_port.h:284-302</text>
+
+  <line x1="440" y1="470" x2="440" y2="492" stroke="#5F6368" stroke-width="1.6" marker-end="url(#arw)"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="452" y="486" font-size="10.5" fill="#5F6368">dlopen ×9 → dlsym ×6</text>
+
+  <rect x="310" y="496" width="260" height="372" rx="6" fill="#F8F9FA" stroke="#DADCE0" stroke-width="1.2"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="324" y="518" font-size="12" font-weight="600" fill="#202124">comm_port/ · 9 个 .so</text>
+  <rect x="322" y="530" width="236" height="32" rx="18" fill="#FEF7E0" stroke="#F9AB00" stroke-width="1.5"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="440" y="550" font-size="11" font-weight="600" fill="#202124" text-anchor="middle">libcomm_serial.so</text>
+  <rect x="322" y="567" width="236" height="32" rx="18" fill="#FEF7E0" stroke="#F9AB00" stroke-width="1.5"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="440" y="587" font-size="11" font-weight="600" fill="#202124" text-anchor="middle">libcomm_tcpip.so</text>
+  <rect x="322" y="604" width="236" height="32" rx="18" fill="#FEF7E0" stroke="#F9AB00" stroke-width="1.5"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="440" y="624" font-size="11" font-weight="600" fill="#202124" text-anchor="middle">libcomm_httpftp.so</text>
+  <rect x="322" y="641" width="236" height="32" rx="18" fill="#FEF7E0" stroke="#F9AB00" stroke-width="1.5"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="440" y="661" font-size="11" font-weight="600" fill="#202124" text-anchor="middle">libcomm_can.so</text>
+  <rect x="322" y="678" width="236" height="32" rx="18" fill="#FEF7E0" stroke="#F9AB00" stroke-width="1.5"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="440" y="698" font-size="11" font-weight="600" fill="#202124" text-anchor="middle">libcomm_ipc.so</text>
+  <rect x="322" y="715" width="236" height="32" rx="18" fill="#FEF7E0" stroke="#F9AB00" stroke-width="1.5"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="440" y="735" font-size="11" font-weight="600" fill="#202124" text-anchor="middle">libcomm_ws.so</text>
+  <rect x="322" y="752" width="236" height="32" rx="18" fill="#FEF7E0" stroke="#F9AB00" stroke-width="1.5"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="440" y="772" font-size="11" font-weight="600" fill="#202124" text-anchor="middle">libcomm_ws_ex.so</text>
+  <rect x="322" y="789" width="236" height="32" rx="18" fill="#FEF7E0" stroke="#F9AB00" stroke-width="1.5"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="440" y="809" font-size="11" font-weight="600" fill="#202124" text-anchor="middle">libcomm_udp.so</text>
+  <rect x="322" y="826" width="236" height="32" rx="18" fill="#FEF7E0" stroke="#F9AB00" stroke-width="1.5"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="440" y="846" font-size="11" font-weight="600" fill="#202124" text-anchor="middle">libcomm_rpmsg.so</text>
+
+  <line x1="440" y1="880" x2="440" y2="870" stroke="#C5221F" stroke-width="1.6" stroke-dasharray="7 4" marker-end="url(#arwRed)"/>
+  <rect x="310" y="882" width="260" height="64" rx="6" fill="#FCE8E6" stroke="#C5221F" stroke-width="1.2"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="324" y="902" font-size="12" font-weight="600" fill="#C5221F">条件：仅 dummy 端口跳过</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="324" y="920" font-size="12" fill="#202124">9 个 .so 全部 dlopen，无模块级条件；</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="324" y="938" font-size="12" fill="#202124">nCommPort==0 跳过（comm_loader.c:48）</text>
+
+  <!-- ===== column 3: sampler_loader ===== -->
+  <rect x="588" y="278" width="260" height="190" rx="6" fill="#E8F0FE" stroke="#1A73E8" stroke-width="1.5"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="602" y="304" font-size="14" font-weight="600" fill="#202124">sampler_loader.c</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="602" y="326" font-size="12" fill="#5F6368">LoadSamplerLib()（逐个 ID）</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="602" y="346" font-size="11" fill="#5F6368">$APP/sampler/&lt;szSamplerDriver&gt;</text>
+  <rect x="600" y="356" width="236" height="92" rx="4" fill="#FFFFFF" stroke="#1A73E8" stroke-width="1.2"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="612" y="376" font-size="11" font-weight="600" fill="#1A73E8">dlsym ×4（全部必须命中）</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="612" y="394" font-size="10.5" fill="#202124">Initialize  Sample</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="612" y="410" font-size="10.5" fill="#202124">Control  JigTest</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="612" y="426" font-size="10.5" fill="#80868B">（导出原型 sampler_base.h:68-77）</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="602" y="462" font-size="10.5" fill="#80868B">sampler_loader.c:145-178 · model.h:32</text>
+
+  <line x1="718" y1="470" x2="718" y2="492" stroke="#5F6368" stroke-width="1.6" marker-end="url(#arw)"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="730" y="486" font-size="10.5" fill="#5F6368">dlopen ×10 → dlsym ×4</text>
+
+  <rect x="588" y="496" width="260" height="410" rx="6" fill="#F8F9FA" stroke="#DADCE0" stroke-width="1.2"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="602" y="518" font-size="12" font-weight="600" fill="#202124">sampler/ · 10 个 .so</text>
+  <rect x="600" y="530" width="236" height="32" rx="18" fill="#FEF7E0" stroke="#F9AB00" stroke-width="1.5"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="718" y="550" font-size="11" font-weight="600" fill="#202124" text-anchor="middle">sampler_whm.so</text>
+  <rect x="600" y="567" width="236" height="32" rx="18" fill="#FEF7E0" stroke="#F9AB00" stroke-width="1.5"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="718" y="587" font-size="11" font-weight="600" fill="#202124" text-anchor="middle">sampler_485_2.so</text>
+  <rect x="600" y="604" width="236" height="32" rx="18" fill="#FEF7E0" stroke="#F9AB00" stroke-width="1.5"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="718" y="624" font-size="11" font-weight="600" fill="#202124" text-anchor="middle">sampler_system.so</text>
+  <rect x="600" y="641" width="236" height="32" rx="18" fill="#FEF7E0" stroke="#F9AB00" stroke-width="1.5"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="718" y="661" font-size="11" font-weight="600" fill="#202124" text-anchor="middle">sampler_ccu.so</text>
+  <rect x="600" y="678" width="236" height="32" rx="18" fill="#FEF7E0" stroke="#F9AB00" stroke-width="1.5"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="718" y="698" font-size="11" font-weight="600" fill="#202124" text-anchor="middle">sampler_stbatt.so</text>
+  <rect x="600" y="715" width="236" height="32" rx="18" fill="#FEF7E0" stroke="#F9AB00" stroke-width="1.5"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="718" y="735" font-size="11" font-weight="600" fill="#202124" text-anchor="middle">sampler_inter_udp.so</text>
+  <rect x="600" y="752" width="236" height="32" rx="18" fill="#FEF7E0" stroke="#F9AB00" stroke-width="1.5"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="718" y="772" font-size="11" font-weight="600" fill="#202124" text-anchor="middle">sampler_uart_server.so</text>
+  <rect x="600" y="789" width="236" height="32" rx="18" fill="#FEF7E0" stroke="#F9AB00" stroke-width="1.5"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="718" y="809" font-size="11" font-weight="600" fill="#202124" text-anchor="middle">sampler_aircon.so</text>
+  <rect x="600" y="826" width="236" height="32" rx="18" fill="#FEF7E0" stroke="#F9AB00" stroke-width="1.5"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="718" y="846" font-size="11" font-weight="600" fill="#202124" text-anchor="middle">sampler_auxdev.so</text>
+  <rect x="600" y="863" width="236" height="32" rx="18" fill="#FEF7E0" stroke="#F9AB00" stroke-width="1.5"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="718" y="883" font-size="11" font-weight="600" fill="#202124" text-anchor="middle">sampler_thermal.so</text>
+
+  <line x1="718" y1="918" x2="718" y2="908" stroke="#C5221F" stroke-width="1.6" stroke-dasharray="7 4" marker-end="url(#arwRed)"/>
+  <rect x="588" y="920" width="260" height="106" rx="6" fill="#FCE8E6" stroke="#C5221F" stroke-width="1.2"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="602" y="940" font-size="12" font-weight="600" fill="#C5221F">条件加载：IMMU3 / SEMS / AEMS</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="602" y="960" font-size="12" fill="#202124">IMMU3 跳 ID4；SEMS 跳 ID4-6；</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="602" y="978" font-size="12" fill="#202124">!AEMS 跳 ID9；ID2 常跳；</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="602" y="996" font-size="12" fill="#202124">#6 / #7 按配置开关</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="602" y="1016" font-size="10.5" fill="#80868B">（sampler_loader.c:180-232 · :249-280）</text>
+
+  <!-- ===== column 4: reporters_loader ===== -->
+  <rect x="866" y="278" width="260" height="190" rx="6" fill="#E8F0FE" stroke="#1A73E8" stroke-width="1.5"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="880" y="304" font-size="14" font-weight="600" fill="#202124">reporters_loader.c</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="880" y="326" font-size="12" fill="#5F6368">LoadReporterLib()（逐个 ID）</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="880" y="346" font-size="11" fill="#5F6368">$APP/reporter/&lt;szReporterDriver&gt;</text>
+  <rect x="878" y="356" width="236" height="92" rx="4" fill="#FFFFFF" stroke="#1A73E8" stroke-width="1.2"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="890" y="376" font-size="11" font-weight="600" fill="#1A73E8">dlsym ×1（全部必须命中）</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="890" y="394" font-size="10.5" fill="#202124">Initialize</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="890" y="410" font-size="10.5" fill="#80868B">（原型 reporters_base.h:27）</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="890" y="426" font-size="10.5" fill="#80868B">加载后注入 pReporter-&gt;pDAI</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="880" y="462" font-size="10.5" fill="#80868B">reporters_loader.c:6-34 · model.h:7</text>
+
+  <line x1="996" y1="470" x2="996" y2="492" stroke="#5F6368" stroke-width="1.6" marker-end="url(#arw)"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="1008" y="486" font-size="10.5" fill="#5F6368">dlopen ×8 → dlsym ×1</text>
+
+  <rect x="866" y="496" width="260" height="335" rx="6" fill="#F8F9FA" stroke="#DADCE0" stroke-width="1.2"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="880" y="518" font-size="12" font-weight="600" fill="#202124">reporter/ · 8 个 .so</text>
+  <rect x="878" y="530" width="236" height="32" rx="18" fill="#FEF7E0" stroke="#F9AB00" stroke-width="1.5"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="996" y="550" font-size="11" font-weight="600" fill="#202124" text-anchor="middle">reporter_es_iocpp.so</text>
+  <rect x="878" y="567" width="236" height="32" rx="18" fill="#FEF7E0" stroke="#F9AB00" stroke-width="1.5"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="996" y="587" font-size="11" font-weight="600" fill="#202124" text-anchor="middle">reporter_mqtt.so</text>
+  <rect x="878" y="604" width="236" height="32" rx="18" fill="#FEF7E0" stroke="#F9AB00" stroke-width="1.5"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="996" y="624" font-size="11" font-weight="600" fill="#202124" text-anchor="middle">reporter_es_ify.so</text>
+  <rect x="878" y="641" width="236" height="32" rx="18" fill="#FEF7E0" stroke="#F9AB00" stroke-width="1.5"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="996" y="661" font-size="11" font-weight="600" fill="#202124" text-anchor="middle">reporter_modbustcp.so</text>
+  <rect x="878" y="678" width="236" height="32" rx="18" fill="#FEF7E0" stroke="#F9AB00" stroke-width="1.5"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="996" y="698" font-size="11" font-weight="600" fill="#202124" text-anchor="middle">reporter_webapi.so</text>
+  <rect x="878" y="715" width="236" height="32" rx="18" fill="#FEF7E0" stroke="#F9AB00" stroke-width="1.5"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="996" y="735" font-size="11" font-weight="600" fill="#202124" text-anchor="middle">reporter_mbe_new.so</text>
+  <rect x="878" y="752" width="236" height="32" rx="18" fill="#FEF7E0" stroke="#F9AB00" stroke-width="1.5"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="996" y="772" font-size="11" font-weight="600" fill="#202124" text-anchor="middle">reporter_ess_maintenance.so</text>
+  <rect x="878" y="789" width="236" height="32" rx="18" fill="#FEF7E0" stroke="#F9AB00" stroke-width="1.5"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="996" y="809" font-size="11" font-weight="600" fill="#202124" text-anchor="middle">reporter_slaveEms.so</text>
+
+  <line x1="996" y1="843" x2="996" y2="833" stroke="#C5221F" stroke-width="1.6" stroke-dasharray="7 4" marker-end="url(#arwRed)"/>
+  <rect x="866" y="845" width="260" height="106" rx="6" fill="#FCE8E6" stroke="#C5221F" stroke-width="1.2"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="880" y="865" font-size="12" font-weight="600" fill="#C5221F">条件加载：平台互斥 + DAI 开关</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="880" y="885" font-size="12" fill="#202124">nPlatformType 决定互斥跳 6/7/8/9；</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="880" y="903" font-size="12" fill="#202124">ID1（Qt GUI）无条件跳过；</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="880" y="921" font-size="12" fill="#202124">另有各自 DAI 开关</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="880" y="941" font-size="10.5" fill="#80868B">（reporters_loader.c:51-163 · :166+）</text>
+
+  <!-- ===== order band ===== -->
+  <rect x="32" y="1046" width="1096" height="56" rx="8" fill="#F8F9FA" stroke="#DADCE0" stroke-width="1.2" opacity="0.98"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="48" y="1068" font-size="13" fill="#5F6368">优先级/顺序 = src/Makefile DIRS 顺序（构建）：dpr → 9×comm_port → 10×sampler → 8×reporter → main（.so 文件名 = 各模块 Makefile 的 EXEC）</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="48" y="1090" font-size="13" fill="#5F6368">运行时装配 = main.c 六步：1/6 Init_CreateDataProcessor → 2/6 LoadConfigAndData → 3/6 Init_LoadDAI → 4/6 CommPorts → 5/6 Samplers → 6/6 Reporters</text>
+
+  <!-- ===== legend ===== -->
+  <rect x="32" y="1122" width="18" height="12" fill="#F3E8FD" stroke="#8430CE" stroke-width="1.5"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="56" y="1132" font-size="12" fill="#202124">主进程 / loader.o</text>
+  <rect x="200" y="1122" width="18" height="12" fill="#E8F0FE" stroke="#1A73E8" stroke-width="1.5"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="224" y="1132" font-size="12" fill="#202124">加载器</text>
+  <rect x="290" y="1122" width="18" height="12" fill="#FEF7E0" stroke="#F9AB00" stroke-width="1.5"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="314" y="1132" font-size="12" fill="#202124">.so 动态库</text>
+  <rect x="410" y="1122" width="18" height="12" fill="#FCE8E6" stroke="#C5221F" stroke-width="1.5"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="434" y="1132" font-size="12" fill="#202124">条件 / 跳过</text>
+  <line x1="530" y1="1128" x2="558" y2="1128" stroke="#5F6368" stroke-width="1.6" marker-end="url(#arw)"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="568" y="1132" font-size="12" fill="#202124">dlopen/dlsym 流</text>
+  <line x1="690" y1="1128" x2="718" y2="1128" stroke="#C5221F" stroke-width="1.6" stroke-dasharray="7 4" marker-end="url(#arwRed)"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="728" y="1132" font-size="12" fill="#202124">条件跳过</text>
+
+  <!-- ===== sources ===== -->
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="32" y="1164" font-size="10.5" fill="#80868B">来源：src/main/Makefile:11-16 · src/main/main.c:149-193 · comm_loader.c:8-39 · comm_port.h:284-302 · sampler_loader.c:145-280 · sampler_model.h:32-51 · sampler_base.h:68-77</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="32" y="1182" font-size="10.5" fill="#80868B">reporters_loader.c:6-163 · reporter_model.h:7 · reporters_base.h:27 · dpr_loader.c:26,1479 · dai_loader.c:1045-1053 · src/Makefile（DIRS）· specs R10 / samplers R1 / reporters R1</text>
+</svg>

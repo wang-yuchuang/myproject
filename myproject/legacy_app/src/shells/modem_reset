@@ -1,0 +1,103 @@
+#!/bin/sh
+
+###kill previous dhcp process
+UDHCP_STA=`ps|grep udhcp|grep -v grep`
+if [ "$UDHCP_STA" != "" ]
+then
+	ps|grep udhcp|grep -v grep|cut -c 0-5|xargs kill -9
+fi
+
+stop_Modem=0
+ctl_CARD=1
+if [ "$1" = "sim0" ];then
+	ctl_CARD=1      ##### select sim0 card slot #######
+elif [ "$1" = "stop" ];then 
+	stop_Modem=1
+else
+	ctl_CARD=0	#### select sim1 card slot #######
+fi
+
+##Jimmy added for trying to stop dialing before reset
+# if test -e "/dev/ttyUSB2"; then
+# 	#echo -e "\r\nAT+ZECMCALL=0\r\n" > /dev/ttyUSB2
+# 	#changed to turnoff according to AT manual
+# 	echo -e "\r\nAT+ZTURNOFF\r\n" > /dev/ttyUSB2
+# 	sleep 2	
+# 	#insmod /home/driver/option.ko
+# fi
+
+#Jimmy added 3*5=15 max wait for rmmod
+# IS_OPTION_RMMOD_READY=`lsmod | grep -c option`
+# if [ $IS_OPTION_RMMOD_READY -gt 0 ]
+# then
+# 	wait_max=5  
+# 	rmmod_done=0
+# 	while [ $wait_max -ge 1 ]
+# 	do  
+# 	rmmod -f option
+# 	rmmod -f usb_wwan
+# 	sleep 1
+# 	IS_OPTION_RMMOD_READY=`lsmod | grep -c option`
+# 	if [ $IS_OPTION_RMMOD_READY -le 0 ]
+# 	then
+# 		rmmod_done=1
+# 		break
+# 	fi
+# 	let wait_max--
+# 	sleep 2
+# 	done
+# 	if [ $rmmod_done -le 0 ]
+# 	then
+# 		echo "Unintall modem FAILED!!!!!"
+# 		##exit 0
+# 	fi
+# fi
+
+######### Modem power ctl gpio1_17 (gpio49) ############
+if [ ! -d "/sys/class/gpio/gpio49" ]
+then
+	echo 49 > /sys/class/gpio/export
+fi
+echo out > /sys/class/gpio/gpio49/direction
+echo 0 > /sys/class/gpio/gpio49/value
+#added by Jimmy 20200709, for completely reset modem
+sleep 2
+
+####!!!!!!Be carefull!!!! added by Jimmy 20200730, just in case the driver create the wrong ttyUSB
+###rm /dev/ttyUSB* -f
+##########
+
+####if stop modem, then exit
+if [ $stop_Modem -gt 0 ]
+then
+	echo "Now lte-modem has been powerd off........"
+	exit 0
+fi
+
+######### Modem reset ctl gpio1_22 (gpio54) ############
+if [ ! -d "/sys/class/gpio/gpio54" ]
+then
+	echo 54 > /sys/class/gpio/export
+fi
+echo out > /sys/class/gpio/gpio54/direction
+echo 1 > /sys/class/gpio/gpio54/value
+
+sleep 1
+######### SIM channel select ctl gpio1_19 (gpio51) ########
+if [ ! -d "/sys/class/gpio/gpio51" ]
+then
+	echo 51 > /sys/class/gpio/export
+fi
+echo out > /sys/class/gpio/gpio51/direction
+echo $ctl_CARD > /sys/class/gpio/gpio51/value
+
+############ power on Modem ###############
+echo 1 > /sys/class/gpio/gpio49/value
+
+sleep 1    ### wait for Modem reset
+
+echo 0 > /sys/class/gpio/gpio54/value ### reset Modem ###
+
+######insmod /home/driver/usb_wwan.ko
+######insmod /home/driver/option.ko
+

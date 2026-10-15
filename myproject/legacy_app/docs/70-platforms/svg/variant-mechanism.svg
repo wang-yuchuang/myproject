@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 884" role="img" aria-labelledby="ttl desc" style="max-width:1160px;width:100%;height:auto;background:#fff">
+  <title id="ttl">变体机制现状：三种并存</title>
+  <desc id="desc">legacy_app 平台变体由三种机制并存实现：其一为编译期宏，src/include.mk:36-40 依据 MU_TYPE 注入 -DIMMU3 或 -DIMMU2，C 源码中 #ifdef IMMU3 分支遍布 24 个文件共 68 处；其二为双份 shell 脚本，src/shells 与 src/shells/mu3 下 startrun、stoprun、run_app、modem_reset 成对维护，构建时按 MU_TYPE 安装 mu3 变体；其三为运行时判断，run_app:36-44 以 hostname 决定 VAR_DIR。风险：同一逻辑改一处、漏另一处，SD 卡检测修正曾需在两份 startrun 同步；未来方向为配置驱动（债务 A1，未立项）。</desc>
+  <defs>
+    <marker id="arw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#5F6368"/></marker>
+    <marker id="arw-broken" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#C5221F"/></marker>
+  </defs>
+
+  <text x="40" y="40" font-size="22" font-weight="700" fill="#202124" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif">变体机制现状：三种并存</text>
+  <text x="40" y="64" font-size="13" fill="#5F6368" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif">同一平台差异由三种机制同时表达，任何行为修正都可能涉及多处（基线提交 507729a5 · 2026-09-17）</text>
+
+  <!-- ===== 带 1：编译期宏 ===== -->
+  <rect x="24" y="82" width="1112" height="190" rx="8" fill="#F3E8FD" opacity="0.45" stroke="#8430CE" stroke-width="1.2"/>
+  <text x="40" y="106" font-size="14" font-weight="600" fill="#202124" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif">机制 1 · 编译期宏（-DIMMU3 / -DIMMU2）</text>
+
+  <rect x="40" y="120" width="340" height="132" rx="8" fill="#F3E8FD" stroke="#8430CE" stroke-width="1.5"/>
+  <text x="56" y="146" font-size="14" font-weight="600" fill="#202124" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif">src/include.mk:36-40</text>
+  <text x="56" y="170" font-size="12" fill="#5F6368" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif">ifeq ($(MU_TYPE), mu3)</text>
+  <text x="56" y="188" font-size="12" fill="#5F6368" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif">    CFLAGS += -DIMMU3</text>
+  <text x="56" y="206" font-size="12" fill="#5F6368" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif">else · CFLAGS += -DIMMU2</text>
+  <text x="56" y="232" font-size="10.5" fill="#80868B" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif">来源 build.sh:28（MU_TYPE="mu3"）</text>
+
+  <line x1="384" y1="186" x2="420" y2="186" stroke="#5F6368" stroke-width="1.6" marker-end="url(#arw)"/>
+  <text x="402" y="178" font-size="11" fill="#5F6368" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif">注入</text>
+
+  <rect x="424" y="120" width="696" height="132" rx="8" fill="#F3E8FD" stroke="#8430CE" stroke-width="1.5"/>
+  <text x="440" y="146" font-size="14" font-weight="600" fill="#202124" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif">C 源码 #ifdef IMMU3 分支 · 68 处 / 24 文件</text>
+  <text x="440" y="170" font-size="12" fill="#5F6368" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif">main.c:216-217 平台名 pszPlatform</text>
+  <text x="440" y="188" font-size="12" fill="#5F6368" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif">sampler_loader.c:204 IMMU3 跳过采样器 ID 4</text>
+  <text x="440" y="206" font-size="12" fill="#5F6368" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif">sampler_base.h:114 DO/蜂鸣器接口</text>
+  <text x="440" y="224" font-size="12" fill="#5F6368" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif">comm_port.h:334 · blob_model.h:31,79,808</text>
+  <text x="810" y="170" font-size="12" fill="#5F6368" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif">ccu_sampler_main.c:488 等 7 处</text>
+  <text x="810" y="188" font-size="12" fill="#5F6368" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif">ccu_bin_upgrade.c:353 等 8 处</text>
+  <text x="810" y="206" font-size="12" fill="#5F6368" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif">ccu_protocol_parsers.c:82 等 6 处</text>
+  <text x="810" y="224" font-size="12" fill="#5F6368" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif">rs485_whim_sampler_main.c:198 等 5 处</text>
+  <text x="440" y="246" font-size="10.5" fill="#80868B" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif">grep src/ 2026-09-17 · 另有 imeu_sampler_main.c:207,578 与注释残留 reporters_loader.c:50、basetypes.h:16</text>
+
+  <!-- ===== 带 2：双份 shell 脚本 ===== -->
+  <rect x="24" y="288" width="1112" height="196" rx="8" fill="#E6F4EA" opacity="0.45" stroke="#137333" stroke-width="1.2"/>
+  <text x="40" y="312" font-size="14" font-weight="600" fill="#202124" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif">机制 2 · 双份 shell 脚本（src/shells ↔ src/shells/mu3）</text>
+
+  <rect x="40" y="326" width="430" height="110" rx="3" fill="#E6F4EA" stroke="#137333" stroke-width="1.5"/>
+  <rect x="40" y="326" width="4" height="110" fill="#137333"/>
+  <text x="60" y="352" font-size="14" font-weight="600" fill="#202124" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif">src/shells/startrun</text>
+  <text x="60" y="376" font-size="12" fill="#5F6368" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif">:53 SD 检测 ls /dev/mmcblk[1-9]*</text>
+  <text x="60" y="394" font-size="12" fill="#5F6368" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif">:106-108 无升级介质时直连 run_app</text>
+  <text x="60" y="416" font-size="10.5" fill="#80868B" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif">eMMC 固定名 mmcblk0 不再误报为 SD</text>
+
+  <line x1="474" y1="381" x2="524" y2="381" stroke="#5F6368" stroke-width="1.6" marker-end="url(#arw)" marker-start="url(#arw)"/>
+  <text x="499" y="372" font-size="11" fill="#5F6368" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif">同逻辑双写</text>
+
+  <rect x="530" y="326" width="430" height="110" rx="3" fill="#E6F4EA" stroke="#137333" stroke-width="1.5"/>
+  <rect x="530" y="326" width="4" height="110" fill="#137333"/>
+  <text x="550" y="352" font-size="14" font-weight="600" fill="#202124" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif">src/shells/mu3/startrun</text>
+  <text x="550" y="376" font-size="12" fill="#5F6368" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif">:62 同款 SD 检测（曾漏改，现已同步）</text>
+  <text x="550" y="394" font-size="12" fill="#5F6368" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif">:21-28 额外 QT4/tslib 环境变量</text>
+  <text x="550" y="416" font-size="10.5" fill="#80868B" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif">两份脚本靠人工保持同步，无一致性校验</text>
+
+  <text x="40" y="466" font-size="12" fill="#5F6368" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif">成对文件：startrun · stoprun · run_app · modem_reset — shells/Makefile:44-52 在 MU_TYPE=mu3 时以 mu3/ 变体覆盖安装（run_app 选择另见 :13-25，SHELL_FILES3 见 :7）</text>
+
+  <!-- ===== 带 3：运行时判断 ===== -->
+  <rect x="24" y="500" width="1112" height="176" rx="8" fill="#E8F0FE" opacity="0.45" stroke="#1A73E8" stroke-width="1.2"/>
+  <text x="40" y="524" font-size="14" font-weight="600" fill="#202124" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif">机制 3 · 运行时判断（同一镜像，行为靠环境区分）</text>
+
+  <rect x="40" y="538" width="470" height="118" rx="8" fill="#E8F0FE" stroke="#1A73E8" stroke-width="1.5"/>
+  <text x="56" y="564" font-size="14" font-weight="600" fill="#202124" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif">src/shells/run_app:36-44（hostname 判定）</text>
+  <text x="56" y="588" font-size="12" fill="#5F6368" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif">HOSTNAME=bmu* → VAR_DIR=/opt/appdata/data</text>
+  <text x="56" y="606" font-size="12" fill="#5F6368" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif">其余 → VAR_DIR="."（x86 调试路径）</text>
+  <text x="56" y="632" font-size="10.5" fill="#80868B" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif">注释 run_app:34：此前以 /home/driver 目录存在性判定</text>
+
+  <line x1="514" y1="597" x2="550" y2="597" stroke="#5F6368" stroke-width="1.6" marker-end="url(#arw)"/>
+
+  <rect x="554" y="538" width="566" height="118" rx="8" fill="#E8F0FE" stroke="#1A73E8" stroke-width="1.5"/>
+  <text x="570" y="564" font-size="14" font-weight="600" fill="#202124" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif">同一判定在脚本间已有三种风格</text>
+  <text x="570" y="588" font-size="12" fill="#5F6368" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif">mu3/run_app:24 硬编码 /opt/appdata/data</text>
+  <text x="570" y="606" font-size="12" fill="#5F6368" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif">stoprun:2-7 仍以 /home/driver 目录判定</text>
+  <text x="570" y="624" font-size="12" fill="#5F6368" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif">mu3/stoprun:2 直接硬编码（无任何判定）</text>
+  <text x="570" y="644" font-size="10.5" fill="#80868B" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif">hostname 由设备侧系统配置决定，非镜像内置</text>
+
+  <!-- ===== 红风险带：漏改风险 ===== -->
+  <rect x="24" y="692" width="1112" height="130" rx="8" fill="#FCE8E6" stroke="#C5221F" stroke-width="2" stroke-dasharray="7 4"/>
+  <text x="40" y="718" font-size="14" font-weight="600" fill="#C5221F" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif">债务 A1 · 漏改风险（红）</text>
+  <text x="40" y="742" font-size="12" fill="#5F6368" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif">同一逻辑改一处、漏另一处 —— 宏分支与双份脚本之间没有任何同步机制，全靠评审纪律</text>
+  <text x="40" y="762" font-size="12" fill="#5F6368" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif">实例：SD 卡检测修正（/dev/mmc* 曾误伤内部 eMMC mmcblk0，令 app_update 抢跑）曾需在两份 startrun 各改一次</text>
+  <text x="40" y="782" font-size="12" fill="#5F6368" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif">约束：spec R12 要求修改任一 run_app 变体须同步另一变体（app-lifecycle/spec.md:445-466）</text>
+  <text x="40" y="802" font-size="12" fill="#5F6368" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif">未来方向：三机制统一为配置驱动（债务 A1，未立项）</text>
+
+  <!-- ===== 图例 ===== -->
+  <rect x="40" y="838" width="20" height="12" rx="2" fill="#F3E8FD" stroke="#8430CE" stroke-width="1.2"/>
+  <text x="66" y="848" font-size="12" fill="#202124" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif">编译期宏</text>
+  <rect x="150" y="838" width="20" height="12" rx="2" fill="#E6F4EA" stroke="#137333" stroke-width="1.2"/>
+  <text x="176" y="848" font-size="12" fill="#202124" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif">脚本双份</text>
+  <rect x="260" y="838" width="20" height="12" rx="2" fill="#E8F0FE" stroke="#1A73E8" stroke-width="1.2"/>
+  <text x="286" y="848" font-size="12" fill="#202124" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif">运行时判断</text>
+  <rect x="390" y="838" width="20" height="12" rx="2" fill="#FCE8E6" stroke="#C5221F" stroke-width="1.2" stroke-dasharray="4 2"/>
+  <text x="416" y="848" font-size="12" fill="#202124" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif">债务·风险</text>
+
+  <text x="40" y="874" font-size="10.5" fill="#80868B" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif">相关：variant-matrix.md（机型差异矩阵） · ../10-architecture/boot-chain.md（启动链全景） · 代码事实基线 openspec/.code-facts-snapshot.md · 提交 507729a5</text>
+</svg>

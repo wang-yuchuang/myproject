@@ -1,0 +1,16 @@
+menuconfig TAISHAN_MBOX
+    bool "Taishan Mailbox driver Support"
+    select MBOX
+    default n
+
+if TAISHAN_MBOX
+
+config MBOX_FLUSH_CACHE
+    bool "Taishan Mailbox flush cache"
+    default y
+
+config MBOX_TX_POLL
+    int "Mailbox tx polling timer(us)"
+    default 2
+
+endif # TAISHAN_MBOX

@@ -1,0 +1,5 @@
+comment "CANFD DEMO For Gateway"
+
+config CANFD_BOARD_TEST
+    bool "Add Board Test For CANFD"
+    default n

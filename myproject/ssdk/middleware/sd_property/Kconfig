@@ -1,0 +1,8 @@
+comment "Property Options"
+
+config SDRV_PROP_SERVER
+    bool "SDRV PROP ENABLE SERVER"
+
+config SDRV_PROP_CLIENT
+    bool "SDRV PROP CLIENT SERVER"
+    default n

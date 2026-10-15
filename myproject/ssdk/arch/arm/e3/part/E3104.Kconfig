@@ -1,0 +1,189 @@
+config PART_CAN3
+	bool
+	default y if E3104
+config PART_CAN4
+	bool
+	default y if E3104
+config PART_CAN16
+	bool
+	default y if E3104
+config PART_CAN21
+	bool
+	default y if E3104
+config PART_UART1
+	bool
+	default y if E3104
+config PART_UART2
+	bool
+	default y if E3104
+config PART_UART3
+	bool
+	default y if E3104
+config PART_UART4
+	bool
+	default y if E3104
+config PART_UART5
+	bool
+	default y if E3104
+config PART_UART6
+	bool
+	default y if E3104
+config PART_UART7
+	bool
+	default y if E3104
+config PART_UART8
+	bool
+	default y if E3104
+config PART_UART9
+	bool
+	default y if E3104
+config PART_UART10
+	bool
+	default y if E3104
+config PART_UART11
+	bool
+	default y if E3104
+config PART_UART12
+	bool
+	default y if E3104
+config PART_USB1
+	bool
+	default y if E3104
+config PART_XSPI1
+	bool
+	default y if E3104
+config PART_SPI3
+	bool
+	default y if E3104
+config PART_SPI4
+	bool
+	default y if E3104
+config PART_SPI2
+	bool
+	default y if E3104
+config PART_SPI6
+	bool
+	default y if E3104
+config PART_I2S2
+	bool
+	default y if E3104
+config PART_I2C3
+	bool
+	default y if E3104
+config PART_I2C4
+	bool
+	default y if E3104
+config PART_I2C5
+	bool
+	default y if E3104
+config PART_I2C6
+	bool
+	default y if E3104
+config PART_ADC1
+	bool
+	default y if E3104
+config PART_ADC2
+	bool
+	default y if E3104
+config PART_ACMP1
+	bool
+	default y if E3104
+config PART_ACMP2
+	bool
+	default y if E3104
+config PART_ETMR1
+	bool
+	default y if E3104
+config PART_ETMR2
+	bool
+	default y if E3104
+config PART_EPWM1
+	bool
+	default y if E3104
+config PART_EPWM2
+	bool
+	default y if E3104
+config PART_WDT1
+	bool
+	default y if E3104
+config PART_WDT2
+	bool
+	default y if E3104
+config IRAM_LIMIT
+	hex
+	default 0x60000 if E3104
+config PART_ID
+	hex
+	default 0x3104 if E3104
+config PART_SF
+	bool
+	default y if E3104
+config PART_SX
+	bool
+	default n if E3104
+config PART_SP
+	bool
+	default n if E3104
+config PART_SF_LS_DISABLE
+	bool
+	default y if E3104
+config PART_SX_LS_DISABLE
+	bool
+	default n if E3104
+config PART_SP_LS_DISABLE
+	bool
+	default n if E3104
+config PART_CSI
+	bool
+	default n if E3104
+config PART_G2D
+	bool
+	default n if E3104
+config PART_LVDS
+	bool
+	default n if E3104
+config PART_RGB
+	bool
+	default n if E3104
+config PART_SDRAM
+	bool
+	default n if E3104
+config PART_GAMA
+	bool
+	default n if E3104
+config PART_SDIO_SEHC2
+	bool
+	default y if E3104
+config PART_SDIO_SEHC1
+	bool
+	default y if E3104
+config PART_CAN_NUM
+	hex
+	default 0x4 if E3104
+config PART_UART_NUM
+	hex
+	default 0xc if E3104
+config PART_ETH_NUM
+	hex
+	default 0x0 if E3104
+config PART_USB_NUM
+	hex
+	default 0x1 if E3104
+config PART_SPI_NUM
+	hex
+	default 0x4 if E3104
+config PART_I2S_NUM
+	hex
+	default 0x1 if E3104
+config PART_AIN_NUM
+	hex
+	default 0x28 if E3104
+config PART_ADC_NUM
+	hex
+	default 0x2 if E3104
+config PART_ACMP_NUM
+	hex
+	default 0x2 if E3104
+config MAX_FREQ
+	hex
+	default 0x11e1a300 if E3104

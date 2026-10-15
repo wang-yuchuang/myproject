@@ -1,0 +1,4603 @@
+/*
+* __regs_ap_driver/taishan/g2dlite/g2dlite.h
+*
+* Copyright (c) 2019 Semidrive Semiconductor.
+* All rights reserved.
+*
+* Description:
+*
+* Revision History:
+* -----------------
+* 011, 11/16/2021 BILLY create this file
+*/
+#ifndef AP_APB_G2DLITE_REG_H
+#define AP_APB_G2DLITE_REG_H
+//--------------------------------------------------------------------------
+// IP Ref Info     : REG_AP_APB_G2DLITE
+// RTL version     :
+//--------------------------------------------------------------------------
+
+//--------------------------------------------------------------------------
+// Address Block Name : G2DLITE_APB_AB0
+// Description        :
+//--------------------------------------------------------------------------
+#define G2DLITE_APB_AB0_BASE_ADDR 0x0
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_G2D_CTRL
+// Register Offset : 0x0
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_G2D_CTRL (G2DLITE_APB_AB0_BASE_ADDR + (0x0<<0))
+#define G2D_CTRL_SW_RST_FIELD_OFFSET 31
+#define G2D_CTRL_SW_RST_FIELD_SIZE 1
+#define G2D_CTRL_G2D_EN_FIELD_OFFSET 0
+#define G2D_CTRL_G2D_EN_FIELD_SIZE 1
+
+#define BIT_AP_APB_G2DLITE_G2D_CTRL_SW_RST    (BIT_(31))
+#define BIT_AP_APB_G2DLITE_G2D_CTRL_G2D_EN    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_G2D_FLC_CTRL
+// Register Offset : 0x4
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_G2D_FLC_CTRL (G2DLITE_APB_AB0_BASE_ADDR + (0x4<<0))
+#define G2D_FLC_CTRL_FLC_TRIG_FIELD_OFFSET 0
+#define G2D_FLC_CTRL_FLC_TRIG_FIELD_SIZE 1
+
+#define BIT_AP_APB_G2DLITE_G2D_FLC_CTRL_FLC_TRIG    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_G2D_DP_SIZE
+// Register Offset : 0xc
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_G2D_DP_SIZE (G2DLITE_APB_AB0_BASE_ADDR + (0xc<<0))
+#define G2D_DP_SIZE_V_FIELD_OFFSET 16
+#define G2D_DP_SIZE_V_FIELD_SIZE 16
+#define G2D_DP_SIZE_H_FIELD_OFFSET 0
+#define G2D_DP_SIZE_H_FIELD_SIZE 16
+
+#define BIT_AP_APB_G2DLITE_G2D_DP_SIZE_V_15    (BIT_(31))
+#define BIT_AP_APB_G2DLITE_G2D_DP_SIZE_V_14    (BIT_(30))
+#define BIT_AP_APB_G2DLITE_G2D_DP_SIZE_V_13    (BIT_(29))
+#define BIT_AP_APB_G2DLITE_G2D_DP_SIZE_V_12    (BIT_(28))
+#define BIT_AP_APB_G2DLITE_G2D_DP_SIZE_V_11    (BIT_(27))
+#define BIT_AP_APB_G2DLITE_G2D_DP_SIZE_V_10    (BIT_(26))
+#define BIT_AP_APB_G2DLITE_G2D_DP_SIZE_V_9    (BIT_(25))
+#define BIT_AP_APB_G2DLITE_G2D_DP_SIZE_V_8    (BIT_(24))
+#define BIT_AP_APB_G2DLITE_G2D_DP_SIZE_V_7    (BIT_(23))
+#define BIT_AP_APB_G2DLITE_G2D_DP_SIZE_V_6    (BIT_(22))
+#define BIT_AP_APB_G2DLITE_G2D_DP_SIZE_V_5    (BIT_(21))
+#define BIT_AP_APB_G2DLITE_G2D_DP_SIZE_V_4    (BIT_(20))
+#define BIT_AP_APB_G2DLITE_G2D_DP_SIZE_V_3    (BIT_(19))
+#define BIT_AP_APB_G2DLITE_G2D_DP_SIZE_V_2    (BIT_(18))
+#define BIT_AP_APB_G2DLITE_G2D_DP_SIZE_V_1    (BIT_(17))
+#define BIT_AP_APB_G2DLITE_G2D_DP_SIZE_V_0    (BIT_(16))
+#define BIT_AP_APB_G2DLITE_G2D_DP_SIZE_H_15    (BIT_(15))
+#define BIT_AP_APB_G2DLITE_G2D_DP_SIZE_H_14    (BIT_(14))
+#define BIT_AP_APB_G2DLITE_G2D_DP_SIZE_H_13    (BIT_(13))
+#define BIT_AP_APB_G2DLITE_G2D_DP_SIZE_H_12    (BIT_(12))
+#define BIT_AP_APB_G2DLITE_G2D_DP_SIZE_H_11    (BIT_(11))
+#define BIT_AP_APB_G2DLITE_G2D_DP_SIZE_H_10    (BIT_(10))
+#define BIT_AP_APB_G2DLITE_G2D_DP_SIZE_H_9    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_G2D_DP_SIZE_H_8    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_G2D_DP_SIZE_H_7    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_G2D_DP_SIZE_H_6    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_G2D_DP_SIZE_H_5    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_G2D_DP_SIZE_H_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_G2D_DP_SIZE_H_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_G2D_DP_SIZE_H_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_G2D_DP_SIZE_H_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_G2D_DP_SIZE_H_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_G2D_CMDFILE_ADDR_L
+// Register Offset : 0x10
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_G2D_CMDFILE_ADDR_L (G2DLITE_APB_AB0_BASE_ADDR + (0x10<<0))
+#define G2D_CMDFILE_ADDR_L_ADDR_FIELD_OFFSET 2
+#define G2D_CMDFILE_ADDR_L_ADDR_FIELD_SIZE 30
+
+#define BIT_AP_APB_G2DLITE_G2D_CMDFILE_ADDR_L_ADDR_29    (BIT_(31))
+#define BIT_AP_APB_G2DLITE_G2D_CMDFILE_ADDR_L_ADDR_28    (BIT_(30))
+#define BIT_AP_APB_G2DLITE_G2D_CMDFILE_ADDR_L_ADDR_27    (BIT_(29))
+#define BIT_AP_APB_G2DLITE_G2D_CMDFILE_ADDR_L_ADDR_26    (BIT_(28))
+#define BIT_AP_APB_G2DLITE_G2D_CMDFILE_ADDR_L_ADDR_25    (BIT_(27))
+#define BIT_AP_APB_G2DLITE_G2D_CMDFILE_ADDR_L_ADDR_24    (BIT_(26))
+#define BIT_AP_APB_G2DLITE_G2D_CMDFILE_ADDR_L_ADDR_23    (BIT_(25))
+#define BIT_AP_APB_G2DLITE_G2D_CMDFILE_ADDR_L_ADDR_22    (BIT_(24))
+#define BIT_AP_APB_G2DLITE_G2D_CMDFILE_ADDR_L_ADDR_21    (BIT_(23))
+#define BIT_AP_APB_G2DLITE_G2D_CMDFILE_ADDR_L_ADDR_20    (BIT_(22))
+#define BIT_AP_APB_G2DLITE_G2D_CMDFILE_ADDR_L_ADDR_19    (BIT_(21))
+#define BIT_AP_APB_G2DLITE_G2D_CMDFILE_ADDR_L_ADDR_18    (BIT_(20))
+#define BIT_AP_APB_G2DLITE_G2D_CMDFILE_ADDR_L_ADDR_17    (BIT_(19))
+#define BIT_AP_APB_G2DLITE_G2D_CMDFILE_ADDR_L_ADDR_16    (BIT_(18))
+#define BIT_AP_APB_G2DLITE_G2D_CMDFILE_ADDR_L_ADDR_15    (BIT_(17))
+#define BIT_AP_APB_G2DLITE_G2D_CMDFILE_ADDR_L_ADDR_14    (BIT_(16))
+#define BIT_AP_APB_G2DLITE_G2D_CMDFILE_ADDR_L_ADDR_13    (BIT_(15))
+#define BIT_AP_APB_G2DLITE_G2D_CMDFILE_ADDR_L_ADDR_12    (BIT_(14))
+#define BIT_AP_APB_G2DLITE_G2D_CMDFILE_ADDR_L_ADDR_11    (BIT_(13))
+#define BIT_AP_APB_G2DLITE_G2D_CMDFILE_ADDR_L_ADDR_10    (BIT_(12))
+#define BIT_AP_APB_G2DLITE_G2D_CMDFILE_ADDR_L_ADDR_9    (BIT_(11))
+#define BIT_AP_APB_G2DLITE_G2D_CMDFILE_ADDR_L_ADDR_8    (BIT_(10))
+#define BIT_AP_APB_G2DLITE_G2D_CMDFILE_ADDR_L_ADDR_7    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_G2D_CMDFILE_ADDR_L_ADDR_6    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_G2D_CMDFILE_ADDR_L_ADDR_5    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_G2D_CMDFILE_ADDR_L_ADDR_4    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_G2D_CMDFILE_ADDR_L_ADDR_3    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_G2D_CMDFILE_ADDR_L_ADDR_2    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_G2D_CMDFILE_ADDR_L_ADDR_1    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_G2D_CMDFILE_ADDR_L_ADDR_0    (BIT_(2))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_G2D_CMDFILE_ADDR_H
+// Register Offset : 0x14
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_G2D_CMDFILE_ADDR_H (G2DLITE_APB_AB0_BASE_ADDR + (0x14<<0))
+#define G2D_CMDFILE_ADDR_H_ADDR_FIELD_OFFSET 0
+#define G2D_CMDFILE_ADDR_H_ADDR_FIELD_SIZE 8
+
+#define BIT_AP_APB_G2DLITE_G2D_CMDFILE_ADDR_H_ADDR_7    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_G2D_CMDFILE_ADDR_H_ADDR_6    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_G2D_CMDFILE_ADDR_H_ADDR_5    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_G2D_CMDFILE_ADDR_H_ADDR_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_G2D_CMDFILE_ADDR_H_ADDR_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_G2D_CMDFILE_ADDR_H_ADDR_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_G2D_CMDFILE_ADDR_H_ADDR_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_G2D_CMDFILE_ADDR_H_ADDR_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_G2D_CMDFILE_LEN
+// Register Offset : 0x18
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_G2D_CMDFILE_LEN (G2DLITE_APB_AB0_BASE_ADDR + (0x18<<0))
+#define G2D_CMDFILE_LEN_FILE_LENGTH_FIELD_OFFSET 0
+#define G2D_CMDFILE_LEN_FILE_LENGTH_FIELD_SIZE 16
+
+#define BIT_AP_APB_G2DLITE_G2D_CMDFILE_LEN_FILE_LENGTH_15    (BIT_(15))
+#define BIT_AP_APB_G2DLITE_G2D_CMDFILE_LEN_FILE_LENGTH_14    (BIT_(14))
+#define BIT_AP_APB_G2DLITE_G2D_CMDFILE_LEN_FILE_LENGTH_13    (BIT_(13))
+#define BIT_AP_APB_G2DLITE_G2D_CMDFILE_LEN_FILE_LENGTH_12    (BIT_(12))
+#define BIT_AP_APB_G2DLITE_G2D_CMDFILE_LEN_FILE_LENGTH_11    (BIT_(11))
+#define BIT_AP_APB_G2DLITE_G2D_CMDFILE_LEN_FILE_LENGTH_10    (BIT_(10))
+#define BIT_AP_APB_G2DLITE_G2D_CMDFILE_LEN_FILE_LENGTH_9    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_G2D_CMDFILE_LEN_FILE_LENGTH_8    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_G2D_CMDFILE_LEN_FILE_LENGTH_7    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_G2D_CMDFILE_LEN_FILE_LENGTH_6    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_G2D_CMDFILE_LEN_FILE_LENGTH_5    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_G2D_CMDFILE_LEN_FILE_LENGTH_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_G2D_CMDFILE_LEN_FILE_LENGTH_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_G2D_CMDFILE_LEN_FILE_LENGTH_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_G2D_CMDFILE_LEN_FILE_LENGTH_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_G2D_CMDFILE_LEN_FILE_LENGTH_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_G2D_CMDFILE_CFG
+// Register Offset : 0x1c
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_G2D_CMDFILE_CFG (G2DLITE_APB_AB0_BASE_ADDR + (0x1c<<0))
+#define G2D_CMDFILE_CFG_CMD_DMA_EN_FIELD_OFFSET 3
+#define G2D_CMDFILE_CFG_CMD_DMA_EN_FIELD_SIZE 1
+#define G2D_CMDFILE_CFG_ENDIAN_CTRL_FIELD_OFFSET 0
+#define G2D_CMDFILE_CFG_ENDIAN_CTRL_FIELD_SIZE 3
+
+#define BIT_AP_APB_G2DLITE_G2D_CMDFILE_CFG_CMD_DMA_EN    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_G2D_CMDFILE_CFG_ENDIAN_CTRL_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_G2D_CMDFILE_CFG_ENDIAN_CTRL_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_G2D_CMDFILE_CFG_ENDIAN_CTRL_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_G2D_INT_MASK
+// Register Offset : 0x20
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_G2D_INT_MASK (G2DLITE_APB_AB0_BASE_ADDR + (0x20<<0))
+#define G2D_INT_MASK_G2D_FRM_DONE_FIELD_OFFSET 6
+#define G2D_INT_MASK_G2D_FRM_DONE_FIELD_SIZE 1
+#define G2D_INT_MASK_G2D_TASK_DONE_FIELD_OFFSET 5
+#define G2D_INT_MASK_G2D_TASK_DONE_FIELD_SIZE 1
+#define G2D_INT_MASK_WDMA_FIELD_OFFSET 4
+#define G2D_INT_MASK_WDMA_FIELD_SIZE 1
+#define G2D_INT_MASK_RLE_1_FIELD_OFFSET 3
+#define G2D_INT_MASK_RLE_1_FIELD_SIZE 1
+#define G2D_INT_MASK_MLC_FIELD_OFFSET 2
+#define G2D_INT_MASK_MLC_FIELD_SIZE 1
+#define G2D_INT_MASK_RLE_0_FIELD_OFFSET 1
+#define G2D_INT_MASK_RLE_0_FIELD_SIZE 1
+#define G2D_INT_MASK_RDMA_FIELD_OFFSET 0
+#define G2D_INT_MASK_RDMA_FIELD_SIZE 1
+
+#define BIT_AP_APB_G2DLITE_G2D_INT_MASK_G2D_FRM_DONE    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_G2D_INT_MASK_G2D_TASK_DONE    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_G2D_INT_MASK_WDMA    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_G2D_INT_MASK_RLE_1    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_G2D_INT_MASK_MLC    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_G2D_INT_MASK_RLE_0    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_G2D_INT_MASK_RDMA    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_G2D_INT_STATUS
+// Register Offset : 0x24
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_G2D_INT_STATUS (G2DLITE_APB_AB0_BASE_ADDR + (0x24<<0))
+#define G2D_INT_STATUS_G2D_FRM_DONE_FIELD_OFFSET 6
+#define G2D_INT_STATUS_G2D_FRM_DONE_FIELD_SIZE 1
+#define G2D_INT_STATUS_G2D_TASK_DONE_FIELD_OFFSET 5
+#define G2D_INT_STATUS_G2D_TASK_DONE_FIELD_SIZE 1
+#define G2D_INT_STATUS_WDMA_FIELD_OFFSET 4
+#define G2D_INT_STATUS_WDMA_FIELD_SIZE 1
+#define G2D_INT_STATUS_RLE_1_FIELD_OFFSET 3
+#define G2D_INT_STATUS_RLE_1_FIELD_SIZE 1
+#define G2D_INT_STATUS_MLC_FIELD_OFFSET 2
+#define G2D_INT_STATUS_MLC_FIELD_SIZE 1
+#define G2D_INT_STATUS_RLE_0_FIELD_OFFSET 1
+#define G2D_INT_STATUS_RLE_0_FIELD_SIZE 1
+#define G2D_INT_STATUS_RDMA_FIELD_OFFSET 0
+#define G2D_INT_STATUS_RDMA_FIELD_SIZE 1
+
+#define BIT_AP_APB_G2DLITE_G2D_INT_STATUS_G2D_FRM_DONE    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_G2D_INT_STATUS_G2D_TASK_DONE    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_G2D_INT_STATUS_WDMA    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_G2D_INT_STATUS_RLE_1    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_G2D_INT_STATUS_MLC    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_G2D_INT_STATUS_RLE_0    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_G2D_INT_STATUS_RDMA    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_G2D_SPEED_ADJ
+// Register Offset : 0x30
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_G2D_SPEED_ADJ (G2DLITE_APB_AB0_BASE_ADDR + (0x30<<0))
+#define G2D_SPEED_ADJ_ADJ_EN_FIELD_OFFSET 31
+#define G2D_SPEED_ADJ_ADJ_EN_FIELD_SIZE 1
+#define G2D_SPEED_ADJ_ADJ_INC_FIELD_OFFSET 0
+#define G2D_SPEED_ADJ_ADJ_INC_FIELD_SIZE 10
+
+#define BIT_AP_APB_G2DLITE_G2D_SPEED_ADJ_ADJ_EN    (BIT_(31))
+#define BIT_AP_APB_G2DLITE_G2D_SPEED_ADJ_ADJ_INC_9    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_G2D_SPEED_ADJ_ADJ_INC_8    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_G2D_SPEED_ADJ_ADJ_INC_7    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_G2D_SPEED_ADJ_ADJ_INC_6    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_G2D_SPEED_ADJ_ADJ_INC_5    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_G2D_SPEED_ADJ_ADJ_INC_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_G2D_SPEED_ADJ_ADJ_INC_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_G2D_SPEED_ADJ_ADJ_INC_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_G2D_SPEED_ADJ_ADJ_INC_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_G2D_SPEED_ADJ_ADJ_INC_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_RDMA_DFIFO_WML
+// Register Offset : 0x1000
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_RDMA_DFIFO_WML (G2DLITE_APB_AB0_BASE_ADDR + (0x1000<<0))
+#define RDMA_DFIFO_WML_WML_FIELD_OFFSET 0
+#define RDMA_DFIFO_WML_WML_FIELD_SIZE 16
+
+#define BIT_AP_APB_G2DLITE_RDMA_DFIFO_WML_WML_15    (BIT_(15))
+#define BIT_AP_APB_G2DLITE_RDMA_DFIFO_WML_WML_14    (BIT_(14))
+#define BIT_AP_APB_G2DLITE_RDMA_DFIFO_WML_WML_13    (BIT_(13))
+#define BIT_AP_APB_G2DLITE_RDMA_DFIFO_WML_WML_12    (BIT_(12))
+#define BIT_AP_APB_G2DLITE_RDMA_DFIFO_WML_WML_11    (BIT_(11))
+#define BIT_AP_APB_G2DLITE_RDMA_DFIFO_WML_WML_10    (BIT_(10))
+#define BIT_AP_APB_G2DLITE_RDMA_DFIFO_WML_WML_9    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_RDMA_DFIFO_WML_WML_8    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_RDMA_DFIFO_WML_WML_7    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_RDMA_DFIFO_WML_WML_6    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_RDMA_DFIFO_WML_WML_5    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_RDMA_DFIFO_WML_WML_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_RDMA_DFIFO_WML_WML_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_RDMA_DFIFO_WML_WML_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_RDMA_DFIFO_WML_WML_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_RDMA_DFIFO_WML_WML_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_RDMA_DFIFO_DEPTH
+// Register Offset : 0x1004
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_RDMA_DFIFO_DEPTH (G2DLITE_APB_AB0_BASE_ADDR + (0x1004<<0))
+#define RDMA_DFIFO_DEPTH_DEPTH_FIELD_OFFSET 0
+#define RDMA_DFIFO_DEPTH_DEPTH_FIELD_SIZE 16
+
+#define BIT_AP_APB_G2DLITE_RDMA_DFIFO_DEPTH_DEPTH_15    (BIT_(15))
+#define BIT_AP_APB_G2DLITE_RDMA_DFIFO_DEPTH_DEPTH_14    (BIT_(14))
+#define BIT_AP_APB_G2DLITE_RDMA_DFIFO_DEPTH_DEPTH_13    (BIT_(13))
+#define BIT_AP_APB_G2DLITE_RDMA_DFIFO_DEPTH_DEPTH_12    (BIT_(12))
+#define BIT_AP_APB_G2DLITE_RDMA_DFIFO_DEPTH_DEPTH_11    (BIT_(11))
+#define BIT_AP_APB_G2DLITE_RDMA_DFIFO_DEPTH_DEPTH_10    (BIT_(10))
+#define BIT_AP_APB_G2DLITE_RDMA_DFIFO_DEPTH_DEPTH_9    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_RDMA_DFIFO_DEPTH_DEPTH_8    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_RDMA_DFIFO_DEPTH_DEPTH_7    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_RDMA_DFIFO_DEPTH_DEPTH_6    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_RDMA_DFIFO_DEPTH_DEPTH_5    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_RDMA_DFIFO_DEPTH_DEPTH_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_RDMA_DFIFO_DEPTH_DEPTH_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_RDMA_DFIFO_DEPTH_DEPTH_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_RDMA_DFIFO_DEPTH_DEPTH_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_RDMA_DFIFO_DEPTH_DEPTH_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_RDMA_CFIFO_DEPTH
+// Register Offset : 0x1008
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_RDMA_CFIFO_DEPTH (G2DLITE_APB_AB0_BASE_ADDR + (0x1008<<0))
+#define RDMA_CFIFO_DEPTH_DEPTH_FIELD_OFFSET 0
+#define RDMA_CFIFO_DEPTH_DEPTH_FIELD_SIZE 16
+
+#define BIT_AP_APB_G2DLITE_RDMA_CFIFO_DEPTH_DEPTH_15    (BIT_(15))
+#define BIT_AP_APB_G2DLITE_RDMA_CFIFO_DEPTH_DEPTH_14    (BIT_(14))
+#define BIT_AP_APB_G2DLITE_RDMA_CFIFO_DEPTH_DEPTH_13    (BIT_(13))
+#define BIT_AP_APB_G2DLITE_RDMA_CFIFO_DEPTH_DEPTH_12    (BIT_(12))
+#define BIT_AP_APB_G2DLITE_RDMA_CFIFO_DEPTH_DEPTH_11    (BIT_(11))
+#define BIT_AP_APB_G2DLITE_RDMA_CFIFO_DEPTH_DEPTH_10    (BIT_(10))
+#define BIT_AP_APB_G2DLITE_RDMA_CFIFO_DEPTH_DEPTH_9    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_RDMA_CFIFO_DEPTH_DEPTH_8    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_RDMA_CFIFO_DEPTH_DEPTH_7    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_RDMA_CFIFO_DEPTH_DEPTH_6    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_RDMA_CFIFO_DEPTH_DEPTH_5    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_RDMA_CFIFO_DEPTH_DEPTH_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_RDMA_CFIFO_DEPTH_DEPTH_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_RDMA_CFIFO_DEPTH_DEPTH_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_RDMA_CFIFO_DEPTH_DEPTH_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_RDMA_CFIFO_DEPTH_DEPTH_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_RDMA_CH_PRIO
+// Register Offset : 0x100c
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_RDMA_CH_PRIO (G2DLITE_APB_AB0_BASE_ADDR + (0x100c<<0))
+#define RDMA_CH_PRIO_SCHE_FIELD_OFFSET 16
+#define RDMA_CH_PRIO_SCHE_FIELD_SIZE 6
+#define RDMA_CH_PRIO_P1_FIELD_OFFSET 8
+#define RDMA_CH_PRIO_P1_FIELD_SIZE 6
+#define RDMA_CH_PRIO_P0_FIELD_OFFSET 0
+#define RDMA_CH_PRIO_P0_FIELD_SIZE 6
+
+#define BIT_AP_APB_G2DLITE_RDMA_CH_PRIO_SCHE_5    (BIT_(21))
+#define BIT_AP_APB_G2DLITE_RDMA_CH_PRIO_SCHE_4    (BIT_(20))
+#define BIT_AP_APB_G2DLITE_RDMA_CH_PRIO_SCHE_3    (BIT_(19))
+#define BIT_AP_APB_G2DLITE_RDMA_CH_PRIO_SCHE_2    (BIT_(18))
+#define BIT_AP_APB_G2DLITE_RDMA_CH_PRIO_SCHE_1    (BIT_(17))
+#define BIT_AP_APB_G2DLITE_RDMA_CH_PRIO_SCHE_0    (BIT_(16))
+#define BIT_AP_APB_G2DLITE_RDMA_CH_PRIO_P1_5    (BIT_(13))
+#define BIT_AP_APB_G2DLITE_RDMA_CH_PRIO_P1_4    (BIT_(12))
+#define BIT_AP_APB_G2DLITE_RDMA_CH_PRIO_P1_3    (BIT_(11))
+#define BIT_AP_APB_G2DLITE_RDMA_CH_PRIO_P1_2    (BIT_(10))
+#define BIT_AP_APB_G2DLITE_RDMA_CH_PRIO_P1_1    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_RDMA_CH_PRIO_P1_0    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_RDMA_CH_PRIO_P0_5    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_RDMA_CH_PRIO_P0_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_RDMA_CH_PRIO_P0_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_RDMA_CH_PRIO_P0_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_RDMA_CH_PRIO_P0_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_RDMA_CH_PRIO_P0_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_RDMA_BURST
+// Register Offset : 0x1010
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_RDMA_BURST (G2DLITE_APB_AB0_BASE_ADDR + (0x1010<<0))
+#define RDMA_BURST_MODE_FIELD_OFFSET 3
+#define RDMA_BURST_MODE_FIELD_SIZE 1
+#define RDMA_BURST_LEN_FIELD_OFFSET 0
+#define RDMA_BURST_LEN_FIELD_SIZE 3
+
+#define BIT_AP_APB_G2DLITE_RDMA_BURST_MODE    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_RDMA_BURST_LEN_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_RDMA_BURST_LEN_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_RDMA_BURST_LEN_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_RDMA_AXI_USER
+// Register Offset : 0x1014
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_RDMA_AXI_USER (G2DLITE_APB_AB0_BASE_ADDR + (0x1014<<0))
+#define RDMA_AXI_USER_USER_FIELD_OFFSET 0
+#define RDMA_AXI_USER_USER_FIELD_SIZE 20
+
+#define BIT_AP_APB_G2DLITE_RDMA_AXI_USER_USER_19    (BIT_(19))
+#define BIT_AP_APB_G2DLITE_RDMA_AXI_USER_USER_18    (BIT_(18))
+#define BIT_AP_APB_G2DLITE_RDMA_AXI_USER_USER_17    (BIT_(17))
+#define BIT_AP_APB_G2DLITE_RDMA_AXI_USER_USER_16    (BIT_(16))
+#define BIT_AP_APB_G2DLITE_RDMA_AXI_USER_USER_15    (BIT_(15))
+#define BIT_AP_APB_G2DLITE_RDMA_AXI_USER_USER_14    (BIT_(14))
+#define BIT_AP_APB_G2DLITE_RDMA_AXI_USER_USER_13    (BIT_(13))
+#define BIT_AP_APB_G2DLITE_RDMA_AXI_USER_USER_12    (BIT_(12))
+#define BIT_AP_APB_G2DLITE_RDMA_AXI_USER_USER_11    (BIT_(11))
+#define BIT_AP_APB_G2DLITE_RDMA_AXI_USER_USER_10    (BIT_(10))
+#define BIT_AP_APB_G2DLITE_RDMA_AXI_USER_USER_9    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_RDMA_AXI_USER_USER_8    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_RDMA_AXI_USER_USER_7    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_RDMA_AXI_USER_USER_6    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_RDMA_AXI_USER_USER_5    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_RDMA_AXI_USER_USER_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_RDMA_AXI_USER_USER_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_RDMA_AXI_USER_USER_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_RDMA_AXI_USER_USER_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_RDMA_AXI_USER_USER_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_RDMA_AXI_CTRL
+// Register Offset : 0x1018
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_RDMA_AXI_CTRL (G2DLITE_APB_AB0_BASE_ADDR + (0x1018<<0))
+#define RDMA_AXI_CTRL_PROT_FIELD_OFFSET 4
+#define RDMA_AXI_CTRL_PROT_FIELD_SIZE 2
+#define RDMA_AXI_CTRL_CACHE_FIELD_OFFSET 0
+#define RDMA_AXI_CTRL_CACHE_FIELD_SIZE 4
+
+#define BIT_AP_APB_G2DLITE_RDMA_AXI_CTRL_PROT_1    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_RDMA_AXI_CTRL_PROT_0    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_RDMA_AXI_CTRL_CACHE_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_RDMA_AXI_CTRL_CACHE_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_RDMA_AXI_CTRL_CACHE_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_RDMA_AXI_CTRL_CACHE_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_RDMA_CTRL
+// Register Offset : 0x1400
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_RDMA_CTRL (G2DLITE_APB_AB0_BASE_ADDR + (0x1400<<0))
+#define RDMA_CTRL_CFG_LOAD_FIELD_OFFSET 1
+#define RDMA_CTRL_CFG_LOAD_FIELD_SIZE 1
+#define RDMA_CTRL_ARB_SEL_FIELD_OFFSET 0
+#define RDMA_CTRL_ARB_SEL_FIELD_SIZE 1
+
+#define BIT_AP_APB_G2DLITE_RDMA_CTRL_CFG_LOAD    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_RDMA_CTRL_ARB_SEL    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_RDMA_DFIFO_FULL
+// Register Offset : 0x1500
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_RDMA_DFIFO_FULL (G2DLITE_APB_AB0_BASE_ADDR + (0x1500<<0))
+#define RDMA_DFIFO_FULL_CH_4_FIELD_OFFSET 4
+#define RDMA_DFIFO_FULL_CH_4_FIELD_SIZE 1
+#define RDMA_DFIFO_FULL_CH_3_FIELD_OFFSET 3
+#define RDMA_DFIFO_FULL_CH_3_FIELD_SIZE 1
+#define RDMA_DFIFO_FULL_CH_2_FIELD_OFFSET 2
+#define RDMA_DFIFO_FULL_CH_2_FIELD_SIZE 1
+#define RDMA_DFIFO_FULL_CH_1_FIELD_OFFSET 1
+#define RDMA_DFIFO_FULL_CH_1_FIELD_SIZE 1
+#define RDMA_DFIFO_FULL_CH_0_FIELD_OFFSET 0
+#define RDMA_DFIFO_FULL_CH_0_FIELD_SIZE 1
+
+#define BIT_AP_APB_G2DLITE_RDMA_DFIFO_FULL_CH_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_RDMA_DFIFO_FULL_CH_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_RDMA_DFIFO_FULL_CH_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_RDMA_DFIFO_FULL_CH_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_RDMA_DFIFO_FULL_CH_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_RDMA_DFIFO_EMPTY
+// Register Offset : 0x1504
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_RDMA_DFIFO_EMPTY (G2DLITE_APB_AB0_BASE_ADDR + (0x1504<<0))
+#define RDMA_DFIFO_EMPTY_CH_4_FIELD_OFFSET 4
+#define RDMA_DFIFO_EMPTY_CH_4_FIELD_SIZE 1
+#define RDMA_DFIFO_EMPTY_CH_3_FIELD_OFFSET 3
+#define RDMA_DFIFO_EMPTY_CH_3_FIELD_SIZE 1
+#define RDMA_DFIFO_EMPTY_CH_2_FIELD_OFFSET 2
+#define RDMA_DFIFO_EMPTY_CH_2_FIELD_SIZE 1
+#define RDMA_DFIFO_EMPTY_CH_1_FIELD_OFFSET 1
+#define RDMA_DFIFO_EMPTY_CH_1_FIELD_SIZE 1
+#define RDMA_DFIFO_EMPTY_CH_0_FIELD_OFFSET 0
+#define RDMA_DFIFO_EMPTY_CH_0_FIELD_SIZE 1
+
+#define BIT_AP_APB_G2DLITE_RDMA_DFIFO_EMPTY_CH_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_RDMA_DFIFO_EMPTY_CH_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_RDMA_DFIFO_EMPTY_CH_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_RDMA_DFIFO_EMPTY_CH_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_RDMA_DFIFO_EMPTY_CH_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_RDMA_CFIFO_FULL
+// Register Offset : 0x1508
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_RDMA_CFIFO_FULL (G2DLITE_APB_AB0_BASE_ADDR + (0x1508<<0))
+#define RDMA_CFIFO_FULL_CH_4_FIELD_OFFSET 4
+#define RDMA_CFIFO_FULL_CH_4_FIELD_SIZE 1
+#define RDMA_CFIFO_FULL_CH_3_FIELD_OFFSET 3
+#define RDMA_CFIFO_FULL_CH_3_FIELD_SIZE 1
+#define RDMA_CFIFO_FULL_CH_2_FIELD_OFFSET 2
+#define RDMA_CFIFO_FULL_CH_2_FIELD_SIZE 1
+#define RDMA_CFIFO_FULL_CH_1_FIELD_OFFSET 1
+#define RDMA_CFIFO_FULL_CH_1_FIELD_SIZE 1
+#define RDMA_CFIFO_FULL_CH_0_FIELD_OFFSET 0
+#define RDMA_CFIFO_FULL_CH_0_FIELD_SIZE 1
+
+#define BIT_AP_APB_G2DLITE_RDMA_CFIFO_FULL_CH_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_RDMA_CFIFO_FULL_CH_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_RDMA_CFIFO_FULL_CH_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_RDMA_CFIFO_FULL_CH_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_RDMA_CFIFO_FULL_CH_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_RDMA_CFIFO_EMPTY
+// Register Offset : 0x150c
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_RDMA_CFIFO_EMPTY (G2DLITE_APB_AB0_BASE_ADDR + (0x150c<<0))
+#define RDMA_CFIFO_EMPTY_CH_4_FIELD_OFFSET 4
+#define RDMA_CFIFO_EMPTY_CH_4_FIELD_SIZE 1
+#define RDMA_CFIFO_EMPTY_CH_3_FIELD_OFFSET 3
+#define RDMA_CFIFO_EMPTY_CH_3_FIELD_SIZE 1
+#define RDMA_CFIFO_EMPTY_CH_2_FIELD_OFFSET 2
+#define RDMA_CFIFO_EMPTY_CH_2_FIELD_SIZE 1
+#define RDMA_CFIFO_EMPTY_CH_1_FIELD_OFFSET 1
+#define RDMA_CFIFO_EMPTY_CH_1_FIELD_SIZE 1
+#define RDMA_CFIFO_EMPTY_CH_0_FIELD_OFFSET 0
+#define RDMA_CFIFO_EMPTY_CH_0_FIELD_SIZE 1
+
+#define BIT_AP_APB_G2DLITE_RDMA_CFIFO_EMPTY_CH_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_RDMA_CFIFO_EMPTY_CH_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_RDMA_CFIFO_EMPTY_CH_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_RDMA_CFIFO_EMPTY_CH_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_RDMA_CFIFO_EMPTY_CH_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_RDMA_CH_IDLE
+// Register Offset : 0x1510
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_RDMA_CH_IDLE (G2DLITE_APB_AB0_BASE_ADDR + (0x1510<<0))
+#define RDMA_CH_IDLE_CH_4_FIELD_OFFSET 4
+#define RDMA_CH_IDLE_CH_4_FIELD_SIZE 1
+#define RDMA_CH_IDLE_CH_3_FIELD_OFFSET 3
+#define RDMA_CH_IDLE_CH_3_FIELD_SIZE 1
+#define RDMA_CH_IDLE_CH_2_FIELD_OFFSET 2
+#define RDMA_CH_IDLE_CH_2_FIELD_SIZE 1
+#define RDMA_CH_IDLE_CH_1_FIELD_OFFSET 1
+#define RDMA_CH_IDLE_CH_1_FIELD_SIZE 1
+#define RDMA_CH_IDLE_CH_0_FIELD_OFFSET 0
+#define RDMA_CH_IDLE_CH_0_FIELD_SIZE 1
+
+#define BIT_AP_APB_G2DLITE_RDMA_CH_IDLE_CH_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_RDMA_CH_IDLE_CH_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_RDMA_CH_IDLE_CH_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_RDMA_CH_IDLE_CH_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_RDMA_CH_IDLE_CH_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_RDMA_INT_MASK
+// Register Offset : 0x1520
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_RDMA_INT_MASK (G2DLITE_APB_AB0_BASE_ADDR + (0x1520<<0))
+#define RDMA_INT_MASK_ERR_CH_4_FIELD_OFFSET 4
+#define RDMA_INT_MASK_ERR_CH_4_FIELD_SIZE 1
+#define RDMA_INT_MASK_ERR_CH_3_FIELD_OFFSET 3
+#define RDMA_INT_MASK_ERR_CH_3_FIELD_SIZE 1
+#define RDMA_INT_MASK_ERR_CH_2_FIELD_OFFSET 2
+#define RDMA_INT_MASK_ERR_CH_2_FIELD_SIZE 1
+#define RDMA_INT_MASK_ERR_CH_1_FIELD_OFFSET 1
+#define RDMA_INT_MASK_ERR_CH_1_FIELD_SIZE 1
+#define RDMA_INT_MASK_ERR_CH_0_FIELD_OFFSET 0
+#define RDMA_INT_MASK_ERR_CH_0_FIELD_SIZE 1
+
+#define BIT_AP_APB_G2DLITE_RDMA_INT_MASK_ERR_CH_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_RDMA_INT_MASK_ERR_CH_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_RDMA_INT_MASK_ERR_CH_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_RDMA_INT_MASK_ERR_CH_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_RDMA_INT_MASK_ERR_CH_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_RDMA_INT_STATUS
+// Register Offset : 0x1524
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_RDMA_INT_STATUS (G2DLITE_APB_AB0_BASE_ADDR + (0x1524<<0))
+#define RDMA_INT_STATUS_ERR_CH_4_FIELD_OFFSET 4
+#define RDMA_INT_STATUS_ERR_CH_4_FIELD_SIZE 1
+#define RDMA_INT_STATUS_ERR_CH_3_FIELD_OFFSET 3
+#define RDMA_INT_STATUS_ERR_CH_3_FIELD_SIZE 1
+#define RDMA_INT_STATUS_ERR_CH_2_FIELD_OFFSET 2
+#define RDMA_INT_STATUS_ERR_CH_2_FIELD_SIZE 1
+#define RDMA_INT_STATUS_ERR_CH_1_FIELD_OFFSET 1
+#define RDMA_INT_STATUS_ERR_CH_1_FIELD_SIZE 1
+#define RDMA_INT_STATUS_ERR_CH_0_FIELD_OFFSET 0
+#define RDMA_INT_STATUS_ERR_CH_0_FIELD_SIZE 1
+
+#define BIT_AP_APB_G2DLITE_RDMA_INT_STATUS_ERR_CH_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_RDMA_INT_STATUS_ERR_CH_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_RDMA_INT_STATUS_ERR_CH_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_RDMA_INT_STATUS_ERR_CH_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_RDMA_INT_STATUS_ERR_CH_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_RDMA_DEBUG_CTRL
+// Register Offset : 0x1540
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_RDMA_DEBUG_CTRL (G2DLITE_APB_AB0_BASE_ADDR + (0x1540<<0))
+#define RDMA_DEBUG_CTRL_DEBUG_SEL_FIELD_OFFSET 0
+#define RDMA_DEBUG_CTRL_DEBUG_SEL_FIELD_SIZE 5
+
+#define BIT_AP_APB_G2DLITE_RDMA_DEBUG_CTRL_DEBUG_SEL_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_RDMA_DEBUG_CTRL_DEBUG_SEL_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_RDMA_DEBUG_CTRL_DEBUG_SEL_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_RDMA_DEBUG_CTRL_DEBUG_SEL_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_RDMA_DEBUG_CTRL_DEBUG_SEL_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_RDMA_DEBUG_STA
+// Register Offset : 0x1544
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_RDMA_DEBUG_STA (G2DLITE_APB_AB0_BASE_ADDR + (0x1544<<0))
+#define RDMA_DEBUG_STA_CFIFO_DEP_FIELD_OFFSET 16
+#define RDMA_DEBUG_STA_CFIFO_DEP_FIELD_SIZE 16
+#define RDMA_DEBUG_STA_DFIFO_DEP_FIELD_OFFSET 0
+#define RDMA_DEBUG_STA_DFIFO_DEP_FIELD_SIZE 16
+
+#define BIT_AP_APB_G2DLITE_RDMA_DEBUG_STA_CFIFO_DEP_15    (BIT_(31))
+#define BIT_AP_APB_G2DLITE_RDMA_DEBUG_STA_CFIFO_DEP_14    (BIT_(30))
+#define BIT_AP_APB_G2DLITE_RDMA_DEBUG_STA_CFIFO_DEP_13    (BIT_(29))
+#define BIT_AP_APB_G2DLITE_RDMA_DEBUG_STA_CFIFO_DEP_12    (BIT_(28))
+#define BIT_AP_APB_G2DLITE_RDMA_DEBUG_STA_CFIFO_DEP_11    (BIT_(27))
+#define BIT_AP_APB_G2DLITE_RDMA_DEBUG_STA_CFIFO_DEP_10    (BIT_(26))
+#define BIT_AP_APB_G2DLITE_RDMA_DEBUG_STA_CFIFO_DEP_9    (BIT_(25))
+#define BIT_AP_APB_G2DLITE_RDMA_DEBUG_STA_CFIFO_DEP_8    (BIT_(24))
+#define BIT_AP_APB_G2DLITE_RDMA_DEBUG_STA_CFIFO_DEP_7    (BIT_(23))
+#define BIT_AP_APB_G2DLITE_RDMA_DEBUG_STA_CFIFO_DEP_6    (BIT_(22))
+#define BIT_AP_APB_G2DLITE_RDMA_DEBUG_STA_CFIFO_DEP_5    (BIT_(21))
+#define BIT_AP_APB_G2DLITE_RDMA_DEBUG_STA_CFIFO_DEP_4    (BIT_(20))
+#define BIT_AP_APB_G2DLITE_RDMA_DEBUG_STA_CFIFO_DEP_3    (BIT_(19))
+#define BIT_AP_APB_G2DLITE_RDMA_DEBUG_STA_CFIFO_DEP_2    (BIT_(18))
+#define BIT_AP_APB_G2DLITE_RDMA_DEBUG_STA_CFIFO_DEP_1    (BIT_(17))
+#define BIT_AP_APB_G2DLITE_RDMA_DEBUG_STA_CFIFO_DEP_0    (BIT_(16))
+#define BIT_AP_APB_G2DLITE_RDMA_DEBUG_STA_DFIFO_DEP_15    (BIT_(15))
+#define BIT_AP_APB_G2DLITE_RDMA_DEBUG_STA_DFIFO_DEP_14    (BIT_(14))
+#define BIT_AP_APB_G2DLITE_RDMA_DEBUG_STA_DFIFO_DEP_13    (BIT_(13))
+#define BIT_AP_APB_G2DLITE_RDMA_DEBUG_STA_DFIFO_DEP_12    (BIT_(12))
+#define BIT_AP_APB_G2DLITE_RDMA_DEBUG_STA_DFIFO_DEP_11    (BIT_(11))
+#define BIT_AP_APB_G2DLITE_RDMA_DEBUG_STA_DFIFO_DEP_10    (BIT_(10))
+#define BIT_AP_APB_G2DLITE_RDMA_DEBUG_STA_DFIFO_DEP_9    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_RDMA_DEBUG_STA_DFIFO_DEP_8    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_RDMA_DEBUG_STA_DFIFO_DEP_7    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_RDMA_DEBUG_STA_DFIFO_DEP_6    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_RDMA_DEBUG_STA_DFIFO_DEP_5    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_RDMA_DEBUG_STA_DFIFO_DEP_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_RDMA_DEBUG_STA_DFIFO_DEP_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_RDMA_DEBUG_STA_DFIFO_DEP_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_RDMA_DEBUG_STA_DFIFO_DEP_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_RDMA_DEBUG_STA_DFIFO_DEP_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_GP_PIX_COMP
+// Register Offset : 0x2000
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_GP_PIX_COMP (G2DLITE_APB_AB0_BASE_ADDR + (0x2000<<0))
+#define GP_PIX_COMP_BPV_FIELD_OFFSET 24
+#define GP_PIX_COMP_BPV_FIELD_SIZE 4
+#define GP_PIX_COMP_BPU_FIELD_OFFSET 16
+#define GP_PIX_COMP_BPU_FIELD_SIZE 4
+#define GP_PIX_COMP_BPY_FIELD_OFFSET 8
+#define GP_PIX_COMP_BPY_FIELD_SIZE 5
+#define GP_PIX_COMP_BPA_FIELD_OFFSET 0
+#define GP_PIX_COMP_BPA_FIELD_SIZE 4
+
+#define BIT_AP_APB_G2DLITE_GP_PIX_COMP_BPV_3    (BIT_(27))
+#define BIT_AP_APB_G2DLITE_GP_PIX_COMP_BPV_2    (BIT_(26))
+#define BIT_AP_APB_G2DLITE_GP_PIX_COMP_BPV_1    (BIT_(25))
+#define BIT_AP_APB_G2DLITE_GP_PIX_COMP_BPV_0    (BIT_(24))
+#define BIT_AP_APB_G2DLITE_GP_PIX_COMP_BPU_3    (BIT_(19))
+#define BIT_AP_APB_G2DLITE_GP_PIX_COMP_BPU_2    (BIT_(18))
+#define BIT_AP_APB_G2DLITE_GP_PIX_COMP_BPU_1    (BIT_(17))
+#define BIT_AP_APB_G2DLITE_GP_PIX_COMP_BPU_0    (BIT_(16))
+#define BIT_AP_APB_G2DLITE_GP_PIX_COMP_BPY_4    (BIT_(12))
+#define BIT_AP_APB_G2DLITE_GP_PIX_COMP_BPY_3    (BIT_(11))
+#define BIT_AP_APB_G2DLITE_GP_PIX_COMP_BPY_2    (BIT_(10))
+#define BIT_AP_APB_G2DLITE_GP_PIX_COMP_BPY_1    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_GP_PIX_COMP_BPY_0    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_GP_PIX_COMP_BPA_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_GP_PIX_COMP_BPA_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_GP_PIX_COMP_BPA_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_GP_PIX_COMP_BPA_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_GP_FRM_CTRL
+// Register Offset : 0x2004
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_GP_FRM_CTRL (G2DLITE_APB_AB0_BASE_ADDR + (0x2004<<0))
+#define GP_FRM_CTRL_ENDIAN_CTRL_FIELD_OFFSET 16
+#define GP_FRM_CTRL_ENDIAN_CTRL_FIELD_SIZE 3
+#define GP_FRM_CTRL_COMP_SWAP_FIELD_OFFSET 12
+#define GP_FRM_CTRL_COMP_SWAP_FIELD_SIZE 4
+#define GP_FRM_CTRL_ROT_FIELD_OFFSET 9
+#define GP_FRM_CTRL_ROT_FIELD_SIZE 3
+#define GP_FRM_CTRL_RGB_YUV_FIELD_OFFSET 8
+#define GP_FRM_CTRL_RGB_YUV_FIELD_SIZE 1
+#define GP_FRM_CTRL_UV_SWAP_FIELD_OFFSET 7
+#define GP_FRM_CTRL_UV_SWAP_FIELD_SIZE 1
+#define GP_FRM_CTRL_UV_MODE_FIELD_OFFSET 5
+#define GP_FRM_CTRL_UV_MODE_FIELD_SIZE 2
+#define GP_FRM_CTRL_MODE_FIELD_OFFSET 2
+#define GP_FRM_CTRL_MODE_FIELD_SIZE 3
+#define GP_FRM_CTRL_FMT_FIELD_OFFSET 0
+#define GP_FRM_CTRL_FMT_FIELD_SIZE 2
+
+#define BIT_AP_APB_G2DLITE_GP_FRM_CTRL_ENDIAN_CTRL_2    (BIT_(18))
+#define BIT_AP_APB_G2DLITE_GP_FRM_CTRL_ENDIAN_CTRL_1    (BIT_(17))
+#define BIT_AP_APB_G2DLITE_GP_FRM_CTRL_ENDIAN_CTRL_0    (BIT_(16))
+#define BIT_AP_APB_G2DLITE_GP_FRM_CTRL_COMP_SWAP_3    (BIT_(15))
+#define BIT_AP_APB_G2DLITE_GP_FRM_CTRL_COMP_SWAP_2    (BIT_(14))
+#define BIT_AP_APB_G2DLITE_GP_FRM_CTRL_COMP_SWAP_1    (BIT_(13))
+#define BIT_AP_APB_G2DLITE_GP_FRM_CTRL_COMP_SWAP_0    (BIT_(12))
+#define BIT_AP_APB_G2DLITE_GP_FRM_CTRL_ROT_2    (BIT_(11))
+#define BIT_AP_APB_G2DLITE_GP_FRM_CTRL_ROT_1    (BIT_(10))
+#define BIT_AP_APB_G2DLITE_GP_FRM_CTRL_ROT_0    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_GP_FRM_CTRL_RGB_YUV    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_GP_FRM_CTRL_UV_SWAP    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_GP_FRM_CTRL_UV_MODE_1    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_GP_FRM_CTRL_UV_MODE_0    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_GP_FRM_CTRL_MODE_2    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_GP_FRM_CTRL_MODE_1    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_GP_FRM_CTRL_MODE_0    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_GP_FRM_CTRL_FMT_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_GP_FRM_CTRL_FMT_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_GP_FRM_SIZE
+// Register Offset : 0x2008
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_GP_FRM_SIZE (G2DLITE_APB_AB0_BASE_ADDR + (0x2008<<0))
+#define GP_FRM_SIZE_HEIGHT_FIELD_OFFSET 16
+#define GP_FRM_SIZE_HEIGHT_FIELD_SIZE 16
+#define GP_FRM_SIZE_WIDTH_FIELD_OFFSET 0
+#define GP_FRM_SIZE_WIDTH_FIELD_SIZE 16
+
+#define BIT_AP_APB_G2DLITE_GP_FRM_SIZE_HEIGHT_15    (BIT_(31))
+#define BIT_AP_APB_G2DLITE_GP_FRM_SIZE_HEIGHT_14    (BIT_(30))
+#define BIT_AP_APB_G2DLITE_GP_FRM_SIZE_HEIGHT_13    (BIT_(29))
+#define BIT_AP_APB_G2DLITE_GP_FRM_SIZE_HEIGHT_12    (BIT_(28))
+#define BIT_AP_APB_G2DLITE_GP_FRM_SIZE_HEIGHT_11    (BIT_(27))
+#define BIT_AP_APB_G2DLITE_GP_FRM_SIZE_HEIGHT_10    (BIT_(26))
+#define BIT_AP_APB_G2DLITE_GP_FRM_SIZE_HEIGHT_9    (BIT_(25))
+#define BIT_AP_APB_G2DLITE_GP_FRM_SIZE_HEIGHT_8    (BIT_(24))
+#define BIT_AP_APB_G2DLITE_GP_FRM_SIZE_HEIGHT_7    (BIT_(23))
+#define BIT_AP_APB_G2DLITE_GP_FRM_SIZE_HEIGHT_6    (BIT_(22))
+#define BIT_AP_APB_G2DLITE_GP_FRM_SIZE_HEIGHT_5    (BIT_(21))
+#define BIT_AP_APB_G2DLITE_GP_FRM_SIZE_HEIGHT_4    (BIT_(20))
+#define BIT_AP_APB_G2DLITE_GP_FRM_SIZE_HEIGHT_3    (BIT_(19))
+#define BIT_AP_APB_G2DLITE_GP_FRM_SIZE_HEIGHT_2    (BIT_(18))
+#define BIT_AP_APB_G2DLITE_GP_FRM_SIZE_HEIGHT_1    (BIT_(17))
+#define BIT_AP_APB_G2DLITE_GP_FRM_SIZE_HEIGHT_0    (BIT_(16))
+#define BIT_AP_APB_G2DLITE_GP_FRM_SIZE_WIDTH_15    (BIT_(15))
+#define BIT_AP_APB_G2DLITE_GP_FRM_SIZE_WIDTH_14    (BIT_(14))
+#define BIT_AP_APB_G2DLITE_GP_FRM_SIZE_WIDTH_13    (BIT_(13))
+#define BIT_AP_APB_G2DLITE_GP_FRM_SIZE_WIDTH_12    (BIT_(12))
+#define BIT_AP_APB_G2DLITE_GP_FRM_SIZE_WIDTH_11    (BIT_(11))
+#define BIT_AP_APB_G2DLITE_GP_FRM_SIZE_WIDTH_10    (BIT_(10))
+#define BIT_AP_APB_G2DLITE_GP_FRM_SIZE_WIDTH_9    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_GP_FRM_SIZE_WIDTH_8    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_GP_FRM_SIZE_WIDTH_7    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_GP_FRM_SIZE_WIDTH_6    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_GP_FRM_SIZE_WIDTH_5    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_GP_FRM_SIZE_WIDTH_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_GP_FRM_SIZE_WIDTH_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_GP_FRM_SIZE_WIDTH_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_GP_FRM_SIZE_WIDTH_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_GP_FRM_SIZE_WIDTH_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_GP_Y_BADDR_L
+// Register Offset : 0x200c
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_GP_Y_BADDR_L (G2DLITE_APB_AB0_BASE_ADDR + (0x200c<<0))
+#define GP_Y_BADDR_L_Y_FIELD_OFFSET 0
+#define GP_Y_BADDR_L_Y_FIELD_SIZE 32
+
+#define BIT_AP_APB_G2DLITE_GP_Y_BADDR_L_Y_31    (BIT_(31))
+#define BIT_AP_APB_G2DLITE_GP_Y_BADDR_L_Y_30    (BIT_(30))
+#define BIT_AP_APB_G2DLITE_GP_Y_BADDR_L_Y_29    (BIT_(29))
+#define BIT_AP_APB_G2DLITE_GP_Y_BADDR_L_Y_28    (BIT_(28))
+#define BIT_AP_APB_G2DLITE_GP_Y_BADDR_L_Y_27    (BIT_(27))
+#define BIT_AP_APB_G2DLITE_GP_Y_BADDR_L_Y_26    (BIT_(26))
+#define BIT_AP_APB_G2DLITE_GP_Y_BADDR_L_Y_25    (BIT_(25))
+#define BIT_AP_APB_G2DLITE_GP_Y_BADDR_L_Y_24    (BIT_(24))
+#define BIT_AP_APB_G2DLITE_GP_Y_BADDR_L_Y_23    (BIT_(23))
+#define BIT_AP_APB_G2DLITE_GP_Y_BADDR_L_Y_22    (BIT_(22))
+#define BIT_AP_APB_G2DLITE_GP_Y_BADDR_L_Y_21    (BIT_(21))
+#define BIT_AP_APB_G2DLITE_GP_Y_BADDR_L_Y_20    (BIT_(20))
+#define BIT_AP_APB_G2DLITE_GP_Y_BADDR_L_Y_19    (BIT_(19))
+#define BIT_AP_APB_G2DLITE_GP_Y_BADDR_L_Y_18    (BIT_(18))
+#define BIT_AP_APB_G2DLITE_GP_Y_BADDR_L_Y_17    (BIT_(17))
+#define BIT_AP_APB_G2DLITE_GP_Y_BADDR_L_Y_16    (BIT_(16))
+#define BIT_AP_APB_G2DLITE_GP_Y_BADDR_L_Y_15    (BIT_(15))
+#define BIT_AP_APB_G2DLITE_GP_Y_BADDR_L_Y_14    (BIT_(14))
+#define BIT_AP_APB_G2DLITE_GP_Y_BADDR_L_Y_13    (BIT_(13))
+#define BIT_AP_APB_G2DLITE_GP_Y_BADDR_L_Y_12    (BIT_(12))
+#define BIT_AP_APB_G2DLITE_GP_Y_BADDR_L_Y_11    (BIT_(11))
+#define BIT_AP_APB_G2DLITE_GP_Y_BADDR_L_Y_10    (BIT_(10))
+#define BIT_AP_APB_G2DLITE_GP_Y_BADDR_L_Y_9    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_GP_Y_BADDR_L_Y_8    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_GP_Y_BADDR_L_Y_7    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_GP_Y_BADDR_L_Y_6    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_GP_Y_BADDR_L_Y_5    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_GP_Y_BADDR_L_Y_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_GP_Y_BADDR_L_Y_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_GP_Y_BADDR_L_Y_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_GP_Y_BADDR_L_Y_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_GP_Y_BADDR_L_Y_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_GP_Y_BADDR_H
+// Register Offset : 0x2010
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_GP_Y_BADDR_H (G2DLITE_APB_AB0_BASE_ADDR + (0x2010<<0))
+#define GP_Y_BADDR_H_Y_FIELD_OFFSET 0
+#define GP_Y_BADDR_H_Y_FIELD_SIZE 8
+
+#define BIT_AP_APB_G2DLITE_GP_Y_BADDR_H_Y_7    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_GP_Y_BADDR_H_Y_6    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_GP_Y_BADDR_H_Y_5    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_GP_Y_BADDR_H_Y_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_GP_Y_BADDR_H_Y_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_GP_Y_BADDR_H_Y_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_GP_Y_BADDR_H_Y_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_GP_Y_BADDR_H_Y_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_GP_U_BADDR_L
+// Register Offset : 0x2014
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_GP_U_BADDR_L (G2DLITE_APB_AB0_BASE_ADDR + (0x2014<<0))
+#define GP_U_BADDR_L_U_FIELD_OFFSET 0
+#define GP_U_BADDR_L_U_FIELD_SIZE 32
+
+#define BIT_AP_APB_G2DLITE_GP_U_BADDR_L_U_31    (BIT_(31))
+#define BIT_AP_APB_G2DLITE_GP_U_BADDR_L_U_30    (BIT_(30))
+#define BIT_AP_APB_G2DLITE_GP_U_BADDR_L_U_29    (BIT_(29))
+#define BIT_AP_APB_G2DLITE_GP_U_BADDR_L_U_28    (BIT_(28))
+#define BIT_AP_APB_G2DLITE_GP_U_BADDR_L_U_27    (BIT_(27))
+#define BIT_AP_APB_G2DLITE_GP_U_BADDR_L_U_26    (BIT_(26))
+#define BIT_AP_APB_G2DLITE_GP_U_BADDR_L_U_25    (BIT_(25))
+#define BIT_AP_APB_G2DLITE_GP_U_BADDR_L_U_24    (BIT_(24))
+#define BIT_AP_APB_G2DLITE_GP_U_BADDR_L_U_23    (BIT_(23))
+#define BIT_AP_APB_G2DLITE_GP_U_BADDR_L_U_22    (BIT_(22))
+#define BIT_AP_APB_G2DLITE_GP_U_BADDR_L_U_21    (BIT_(21))
+#define BIT_AP_APB_G2DLITE_GP_U_BADDR_L_U_20    (BIT_(20))
+#define BIT_AP_APB_G2DLITE_GP_U_BADDR_L_U_19    (BIT_(19))
+#define BIT_AP_APB_G2DLITE_GP_U_BADDR_L_U_18    (BIT_(18))
+#define BIT_AP_APB_G2DLITE_GP_U_BADDR_L_U_17    (BIT_(17))
+#define BIT_AP_APB_G2DLITE_GP_U_BADDR_L_U_16    (BIT_(16))
+#define BIT_AP_APB_G2DLITE_GP_U_BADDR_L_U_15    (BIT_(15))
+#define BIT_AP_APB_G2DLITE_GP_U_BADDR_L_U_14    (BIT_(14))
+#define BIT_AP_APB_G2DLITE_GP_U_BADDR_L_U_13    (BIT_(13))
+#define BIT_AP_APB_G2DLITE_GP_U_BADDR_L_U_12    (BIT_(12))
+#define BIT_AP_APB_G2DLITE_GP_U_BADDR_L_U_11    (BIT_(11))
+#define BIT_AP_APB_G2DLITE_GP_U_BADDR_L_U_10    (BIT_(10))
+#define BIT_AP_APB_G2DLITE_GP_U_BADDR_L_U_9    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_GP_U_BADDR_L_U_8    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_GP_U_BADDR_L_U_7    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_GP_U_BADDR_L_U_6    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_GP_U_BADDR_L_U_5    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_GP_U_BADDR_L_U_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_GP_U_BADDR_L_U_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_GP_U_BADDR_L_U_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_GP_U_BADDR_L_U_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_GP_U_BADDR_L_U_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_GP_U_BADDR_H
+// Register Offset : 0x2018
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_GP_U_BADDR_H (G2DLITE_APB_AB0_BASE_ADDR + (0x2018<<0))
+#define GP_U_BADDR_H_U_FIELD_OFFSET 0
+#define GP_U_BADDR_H_U_FIELD_SIZE 8
+
+#define BIT_AP_APB_G2DLITE_GP_U_BADDR_H_U_7    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_GP_U_BADDR_H_U_6    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_GP_U_BADDR_H_U_5    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_GP_U_BADDR_H_U_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_GP_U_BADDR_H_U_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_GP_U_BADDR_H_U_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_GP_U_BADDR_H_U_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_GP_U_BADDR_H_U_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_GP_V_BADDR_L
+// Register Offset : 0x201c
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_GP_V_BADDR_L (G2DLITE_APB_AB0_BASE_ADDR + (0x201c<<0))
+#define GP_V_BADDR_L_V_FIELD_OFFSET 0
+#define GP_V_BADDR_L_V_FIELD_SIZE 32
+
+#define BIT_AP_APB_G2DLITE_GP_V_BADDR_L_V_31    (BIT_(31))
+#define BIT_AP_APB_G2DLITE_GP_V_BADDR_L_V_30    (BIT_(30))
+#define BIT_AP_APB_G2DLITE_GP_V_BADDR_L_V_29    (BIT_(29))
+#define BIT_AP_APB_G2DLITE_GP_V_BADDR_L_V_28    (BIT_(28))
+#define BIT_AP_APB_G2DLITE_GP_V_BADDR_L_V_27    (BIT_(27))
+#define BIT_AP_APB_G2DLITE_GP_V_BADDR_L_V_26    (BIT_(26))
+#define BIT_AP_APB_G2DLITE_GP_V_BADDR_L_V_25    (BIT_(25))
+#define BIT_AP_APB_G2DLITE_GP_V_BADDR_L_V_24    (BIT_(24))
+#define BIT_AP_APB_G2DLITE_GP_V_BADDR_L_V_23    (BIT_(23))
+#define BIT_AP_APB_G2DLITE_GP_V_BADDR_L_V_22    (BIT_(22))
+#define BIT_AP_APB_G2DLITE_GP_V_BADDR_L_V_21    (BIT_(21))
+#define BIT_AP_APB_G2DLITE_GP_V_BADDR_L_V_20    (BIT_(20))
+#define BIT_AP_APB_G2DLITE_GP_V_BADDR_L_V_19    (BIT_(19))
+#define BIT_AP_APB_G2DLITE_GP_V_BADDR_L_V_18    (BIT_(18))
+#define BIT_AP_APB_G2DLITE_GP_V_BADDR_L_V_17    (BIT_(17))
+#define BIT_AP_APB_G2DLITE_GP_V_BADDR_L_V_16    (BIT_(16))
+#define BIT_AP_APB_G2DLITE_GP_V_BADDR_L_V_15    (BIT_(15))
+#define BIT_AP_APB_G2DLITE_GP_V_BADDR_L_V_14    (BIT_(14))
+#define BIT_AP_APB_G2DLITE_GP_V_BADDR_L_V_13    (BIT_(13))
+#define BIT_AP_APB_G2DLITE_GP_V_BADDR_L_V_12    (BIT_(12))
+#define BIT_AP_APB_G2DLITE_GP_V_BADDR_L_V_11    (BIT_(11))
+#define BIT_AP_APB_G2DLITE_GP_V_BADDR_L_V_10    (BIT_(10))
+#define BIT_AP_APB_G2DLITE_GP_V_BADDR_L_V_9    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_GP_V_BADDR_L_V_8    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_GP_V_BADDR_L_V_7    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_GP_V_BADDR_L_V_6    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_GP_V_BADDR_L_V_5    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_GP_V_BADDR_L_V_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_GP_V_BADDR_L_V_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_GP_V_BADDR_L_V_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_GP_V_BADDR_L_V_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_GP_V_BADDR_L_V_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_GP_V_BADDR_H
+// Register Offset : 0x2020
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_GP_V_BADDR_H (G2DLITE_APB_AB0_BASE_ADDR + (0x2020<<0))
+#define GP_V_BADDR_H_V_FIELD_OFFSET 0
+#define GP_V_BADDR_H_V_FIELD_SIZE 8
+
+#define BIT_AP_APB_G2DLITE_GP_V_BADDR_H_V_7    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_GP_V_BADDR_H_V_6    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_GP_V_BADDR_H_V_5    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_GP_V_BADDR_H_V_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_GP_V_BADDR_H_V_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_GP_V_BADDR_H_V_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_GP_V_BADDR_H_V_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_GP_V_BADDR_H_V_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_GP_Y_STRIDE
+// Register Offset : 0x202c
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_GP_Y_STRIDE (G2DLITE_APB_AB0_BASE_ADDR + (0x202c<<0))
+#define GP_Y_STRIDE_Y_FIELD_OFFSET 0
+#define GP_Y_STRIDE_Y_FIELD_SIZE 18
+
+#define BIT_AP_APB_G2DLITE_GP_Y_STRIDE_Y_17    (BIT_(17))
+#define BIT_AP_APB_G2DLITE_GP_Y_STRIDE_Y_16    (BIT_(16))
+#define BIT_AP_APB_G2DLITE_GP_Y_STRIDE_Y_15    (BIT_(15))
+#define BIT_AP_APB_G2DLITE_GP_Y_STRIDE_Y_14    (BIT_(14))
+#define BIT_AP_APB_G2DLITE_GP_Y_STRIDE_Y_13    (BIT_(13))
+#define BIT_AP_APB_G2DLITE_GP_Y_STRIDE_Y_12    (BIT_(12))
+#define BIT_AP_APB_G2DLITE_GP_Y_STRIDE_Y_11    (BIT_(11))
+#define BIT_AP_APB_G2DLITE_GP_Y_STRIDE_Y_10    (BIT_(10))
+#define BIT_AP_APB_G2DLITE_GP_Y_STRIDE_Y_9    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_GP_Y_STRIDE_Y_8    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_GP_Y_STRIDE_Y_7    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_GP_Y_STRIDE_Y_6    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_GP_Y_STRIDE_Y_5    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_GP_Y_STRIDE_Y_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_GP_Y_STRIDE_Y_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_GP_Y_STRIDE_Y_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_GP_Y_STRIDE_Y_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_GP_Y_STRIDE_Y_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_GP_U_STRIDE
+// Register Offset : 0x2030
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_GP_U_STRIDE (G2DLITE_APB_AB0_BASE_ADDR + (0x2030<<0))
+#define GP_U_STRIDE_U_FIELD_OFFSET 0
+#define GP_U_STRIDE_U_FIELD_SIZE 18
+
+#define BIT_AP_APB_G2DLITE_GP_U_STRIDE_U_17    (BIT_(17))
+#define BIT_AP_APB_G2DLITE_GP_U_STRIDE_U_16    (BIT_(16))
+#define BIT_AP_APB_G2DLITE_GP_U_STRIDE_U_15    (BIT_(15))
+#define BIT_AP_APB_G2DLITE_GP_U_STRIDE_U_14    (BIT_(14))
+#define BIT_AP_APB_G2DLITE_GP_U_STRIDE_U_13    (BIT_(13))
+#define BIT_AP_APB_G2DLITE_GP_U_STRIDE_U_12    (BIT_(12))
+#define BIT_AP_APB_G2DLITE_GP_U_STRIDE_U_11    (BIT_(11))
+#define BIT_AP_APB_G2DLITE_GP_U_STRIDE_U_10    (BIT_(10))
+#define BIT_AP_APB_G2DLITE_GP_U_STRIDE_U_9    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_GP_U_STRIDE_U_8    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_GP_U_STRIDE_U_7    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_GP_U_STRIDE_U_6    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_GP_U_STRIDE_U_5    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_GP_U_STRIDE_U_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_GP_U_STRIDE_U_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_GP_U_STRIDE_U_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_GP_U_STRIDE_U_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_GP_U_STRIDE_U_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_GP_V_STRIDE
+// Register Offset : 0x2034
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_GP_V_STRIDE (G2DLITE_APB_AB0_BASE_ADDR + (0x2034<<0))
+#define GP_V_STRIDE_V_FIELD_OFFSET 0
+#define GP_V_STRIDE_V_FIELD_SIZE 18
+
+#define BIT_AP_APB_G2DLITE_GP_V_STRIDE_V_17    (BIT_(17))
+#define BIT_AP_APB_G2DLITE_GP_V_STRIDE_V_16    (BIT_(16))
+#define BIT_AP_APB_G2DLITE_GP_V_STRIDE_V_15    (BIT_(15))
+#define BIT_AP_APB_G2DLITE_GP_V_STRIDE_V_14    (BIT_(14))
+#define BIT_AP_APB_G2DLITE_GP_V_STRIDE_V_13    (BIT_(13))
+#define BIT_AP_APB_G2DLITE_GP_V_STRIDE_V_12    (BIT_(12))
+#define BIT_AP_APB_G2DLITE_GP_V_STRIDE_V_11    (BIT_(11))
+#define BIT_AP_APB_G2DLITE_GP_V_STRIDE_V_10    (BIT_(10))
+#define BIT_AP_APB_G2DLITE_GP_V_STRIDE_V_9    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_GP_V_STRIDE_V_8    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_GP_V_STRIDE_V_7    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_GP_V_STRIDE_V_6    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_GP_V_STRIDE_V_5    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_GP_V_STRIDE_V_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_GP_V_STRIDE_V_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_GP_V_STRIDE_V_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_GP_V_STRIDE_V_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_GP_V_STRIDE_V_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_GP_FRM_OFFSET
+// Register Offset : 0x2040
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_GP_FRM_OFFSET (G2DLITE_APB_AB0_BASE_ADDR + (0x2040<<0))
+#define GP_FRM_OFFSET_Y_FIELD_OFFSET 16
+#define GP_FRM_OFFSET_Y_FIELD_SIZE 16
+#define GP_FRM_OFFSET_X_FIELD_OFFSET 0
+#define GP_FRM_OFFSET_X_FIELD_SIZE 16
+
+#define BIT_AP_APB_G2DLITE_GP_FRM_OFFSET_Y_15    (BIT_(31))
+#define BIT_AP_APB_G2DLITE_GP_FRM_OFFSET_Y_14    (BIT_(30))
+#define BIT_AP_APB_G2DLITE_GP_FRM_OFFSET_Y_13    (BIT_(29))
+#define BIT_AP_APB_G2DLITE_GP_FRM_OFFSET_Y_12    (BIT_(28))
+#define BIT_AP_APB_G2DLITE_GP_FRM_OFFSET_Y_11    (BIT_(27))
+#define BIT_AP_APB_G2DLITE_GP_FRM_OFFSET_Y_10    (BIT_(26))
+#define BIT_AP_APB_G2DLITE_GP_FRM_OFFSET_Y_9    (BIT_(25))
+#define BIT_AP_APB_G2DLITE_GP_FRM_OFFSET_Y_8    (BIT_(24))
+#define BIT_AP_APB_G2DLITE_GP_FRM_OFFSET_Y_7    (BIT_(23))
+#define BIT_AP_APB_G2DLITE_GP_FRM_OFFSET_Y_6    (BIT_(22))
+#define BIT_AP_APB_G2DLITE_GP_FRM_OFFSET_Y_5    (BIT_(21))
+#define BIT_AP_APB_G2DLITE_GP_FRM_OFFSET_Y_4    (BIT_(20))
+#define BIT_AP_APB_G2DLITE_GP_FRM_OFFSET_Y_3    (BIT_(19))
+#define BIT_AP_APB_G2DLITE_GP_FRM_OFFSET_Y_2    (BIT_(18))
+#define BIT_AP_APB_G2DLITE_GP_FRM_OFFSET_Y_1    (BIT_(17))
+#define BIT_AP_APB_G2DLITE_GP_FRM_OFFSET_Y_0    (BIT_(16))
+#define BIT_AP_APB_G2DLITE_GP_FRM_OFFSET_X_15    (BIT_(15))
+#define BIT_AP_APB_G2DLITE_GP_FRM_OFFSET_X_14    (BIT_(14))
+#define BIT_AP_APB_G2DLITE_GP_FRM_OFFSET_X_13    (BIT_(13))
+#define BIT_AP_APB_G2DLITE_GP_FRM_OFFSET_X_12    (BIT_(12))
+#define BIT_AP_APB_G2DLITE_GP_FRM_OFFSET_X_11    (BIT_(11))
+#define BIT_AP_APB_G2DLITE_GP_FRM_OFFSET_X_10    (BIT_(10))
+#define BIT_AP_APB_G2DLITE_GP_FRM_OFFSET_X_9    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_GP_FRM_OFFSET_X_8    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_GP_FRM_OFFSET_X_7    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_GP_FRM_OFFSET_X_6    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_GP_FRM_OFFSET_X_5    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_GP_FRM_OFFSET_X_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_GP_FRM_OFFSET_X_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_GP_FRM_OFFSET_X_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_GP_FRM_OFFSET_X_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_GP_FRM_OFFSET_X_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_GP_YUVUP_CTRL
+// Register Offset : 0x2044
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_GP_YUVUP_CTRL (G2DLITE_APB_AB0_BASE_ADDR + (0x2044<<0))
+#define GP_YUVUP_CTRL_EN_FIELD_OFFSET 31
+#define GP_YUVUP_CTRL_EN_FIELD_SIZE 1
+#define GP_YUVUP_CTRL_VOFSET_FIELD_OFFSET 6
+#define GP_YUVUP_CTRL_VOFSET_FIELD_SIZE 2
+#define GP_YUVUP_CTRL_HOFSET_FIELD_OFFSET 4
+#define GP_YUVUP_CTRL_HOFSET_FIELD_SIZE 2
+#define GP_YUVUP_CTRL_FILTER_MODE_FIELD_OFFSET 3
+#define GP_YUVUP_CTRL_FILTER_MODE_FIELD_SIZE 1
+#define GP_YUVUP_CTRL_UPV_BYPASS_FIELD_OFFSET 2
+#define GP_YUVUP_CTRL_UPV_BYPASS_FIELD_SIZE 1
+#define GP_YUVUP_CTRL_UPH_BYPASS_FIELD_OFFSET 1
+#define GP_YUVUP_CTRL_UPH_BYPASS_FIELD_SIZE 1
+#define GP_YUVUP_CTRL_BYPASS_FIELD_OFFSET 0
+#define GP_YUVUP_CTRL_BYPASS_FIELD_SIZE 1
+
+#define BIT_AP_APB_G2DLITE_GP_YUVUP_CTRL_EN    (BIT_(31))
+#define BIT_AP_APB_G2DLITE_GP_YUVUP_CTRL_VOFSET_1    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_GP_YUVUP_CTRL_VOFSET_0    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_GP_YUVUP_CTRL_HOFSET_1    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_GP_YUVUP_CTRL_HOFSET_0    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_GP_YUVUP_CTRL_FILTER_MODE    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_GP_YUVUP_CTRL_UPV_BYPASS    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_GP_YUVUP_CTRL_UPH_BYPASS    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_GP_YUVUP_CTRL_BYPASS    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_GP_CROP_CTRL
+// Register Offset : 0x2100
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_GP_CROP_CTRL (G2DLITE_APB_AB0_BASE_ADDR + (0x2100<<0))
+#define GP_CROP_CTRL_BYPASS_FIELD_OFFSET 0
+#define GP_CROP_CTRL_BYPASS_FIELD_SIZE 1
+
+#define BIT_AP_APB_G2DLITE_GP_CROP_CTRL_BYPASS    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_GP_CROP_UL_POS
+// Register Offset : 0x2104
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_GP_CROP_UL_POS (G2DLITE_APB_AB0_BASE_ADDR + (0x2104<<0))
+#define GP_CROP_UL_POS_Y_FIELD_OFFSET 16
+#define GP_CROP_UL_POS_Y_FIELD_SIZE 16
+#define GP_CROP_UL_POS_X_FIELD_OFFSET 0
+#define GP_CROP_UL_POS_X_FIELD_SIZE 16
+
+#define BIT_AP_APB_G2DLITE_GP_CROP_UL_POS_Y_15    (BIT_(31))
+#define BIT_AP_APB_G2DLITE_GP_CROP_UL_POS_Y_14    (BIT_(30))
+#define BIT_AP_APB_G2DLITE_GP_CROP_UL_POS_Y_13    (BIT_(29))
+#define BIT_AP_APB_G2DLITE_GP_CROP_UL_POS_Y_12    (BIT_(28))
+#define BIT_AP_APB_G2DLITE_GP_CROP_UL_POS_Y_11    (BIT_(27))
+#define BIT_AP_APB_G2DLITE_GP_CROP_UL_POS_Y_10    (BIT_(26))
+#define BIT_AP_APB_G2DLITE_GP_CROP_UL_POS_Y_9    (BIT_(25))
+#define BIT_AP_APB_G2DLITE_GP_CROP_UL_POS_Y_8    (BIT_(24))
+#define BIT_AP_APB_G2DLITE_GP_CROP_UL_POS_Y_7    (BIT_(23))
+#define BIT_AP_APB_G2DLITE_GP_CROP_UL_POS_Y_6    (BIT_(22))
+#define BIT_AP_APB_G2DLITE_GP_CROP_UL_POS_Y_5    (BIT_(21))
+#define BIT_AP_APB_G2DLITE_GP_CROP_UL_POS_Y_4    (BIT_(20))
+#define BIT_AP_APB_G2DLITE_GP_CROP_UL_POS_Y_3    (BIT_(19))
+#define BIT_AP_APB_G2DLITE_GP_CROP_UL_POS_Y_2    (BIT_(18))
+#define BIT_AP_APB_G2DLITE_GP_CROP_UL_POS_Y_1    (BIT_(17))
+#define BIT_AP_APB_G2DLITE_GP_CROP_UL_POS_Y_0    (BIT_(16))
+#define BIT_AP_APB_G2DLITE_GP_CROP_UL_POS_X_15    (BIT_(15))
+#define BIT_AP_APB_G2DLITE_GP_CROP_UL_POS_X_14    (BIT_(14))
+#define BIT_AP_APB_G2DLITE_GP_CROP_UL_POS_X_13    (BIT_(13))
+#define BIT_AP_APB_G2DLITE_GP_CROP_UL_POS_X_12    (BIT_(12))
+#define BIT_AP_APB_G2DLITE_GP_CROP_UL_POS_X_11    (BIT_(11))
+#define BIT_AP_APB_G2DLITE_GP_CROP_UL_POS_X_10    (BIT_(10))
+#define BIT_AP_APB_G2DLITE_GP_CROP_UL_POS_X_9    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_GP_CROP_UL_POS_X_8    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_GP_CROP_UL_POS_X_7    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_GP_CROP_UL_POS_X_6    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_GP_CROP_UL_POS_X_5    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_GP_CROP_UL_POS_X_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_GP_CROP_UL_POS_X_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_GP_CROP_UL_POS_X_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_GP_CROP_UL_POS_X_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_GP_CROP_UL_POS_X_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_GP_CROP_SIZE
+// Register Offset : 0x2108
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_GP_CROP_SIZE (G2DLITE_APB_AB0_BASE_ADDR + (0x2108<<0))
+#define GP_CROP_SIZE_V_FIELD_OFFSET 16
+#define GP_CROP_SIZE_V_FIELD_SIZE 16
+#define GP_CROP_SIZE_H_FIELD_OFFSET 0
+#define GP_CROP_SIZE_H_FIELD_SIZE 16
+
+#define BIT_AP_APB_G2DLITE_GP_CROP_SIZE_V_15    (BIT_(31))
+#define BIT_AP_APB_G2DLITE_GP_CROP_SIZE_V_14    (BIT_(30))
+#define BIT_AP_APB_G2DLITE_GP_CROP_SIZE_V_13    (BIT_(29))
+#define BIT_AP_APB_G2DLITE_GP_CROP_SIZE_V_12    (BIT_(28))
+#define BIT_AP_APB_G2DLITE_GP_CROP_SIZE_V_11    (BIT_(27))
+#define BIT_AP_APB_G2DLITE_GP_CROP_SIZE_V_10    (BIT_(26))
+#define BIT_AP_APB_G2DLITE_GP_CROP_SIZE_V_9    (BIT_(25))
+#define BIT_AP_APB_G2DLITE_GP_CROP_SIZE_V_8    (BIT_(24))
+#define BIT_AP_APB_G2DLITE_GP_CROP_SIZE_V_7    (BIT_(23))
+#define BIT_AP_APB_G2DLITE_GP_CROP_SIZE_V_6    (BIT_(22))
+#define BIT_AP_APB_G2DLITE_GP_CROP_SIZE_V_5    (BIT_(21))
+#define BIT_AP_APB_G2DLITE_GP_CROP_SIZE_V_4    (BIT_(20))
+#define BIT_AP_APB_G2DLITE_GP_CROP_SIZE_V_3    (BIT_(19))
+#define BIT_AP_APB_G2DLITE_GP_CROP_SIZE_V_2    (BIT_(18))
+#define BIT_AP_APB_G2DLITE_GP_CROP_SIZE_V_1    (BIT_(17))
+#define BIT_AP_APB_G2DLITE_GP_CROP_SIZE_V_0    (BIT_(16))
+#define BIT_AP_APB_G2DLITE_GP_CROP_SIZE_H_15    (BIT_(15))
+#define BIT_AP_APB_G2DLITE_GP_CROP_SIZE_H_14    (BIT_(14))
+#define BIT_AP_APB_G2DLITE_GP_CROP_SIZE_H_13    (BIT_(13))
+#define BIT_AP_APB_G2DLITE_GP_CROP_SIZE_H_12    (BIT_(12))
+#define BIT_AP_APB_G2DLITE_GP_CROP_SIZE_H_11    (BIT_(11))
+#define BIT_AP_APB_G2DLITE_GP_CROP_SIZE_H_10    (BIT_(10))
+#define BIT_AP_APB_G2DLITE_GP_CROP_SIZE_H_9    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_GP_CROP_SIZE_H_8    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_GP_CROP_SIZE_H_7    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_GP_CROP_SIZE_H_6    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_GP_CROP_SIZE_H_5    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_GP_CROP_SIZE_H_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_GP_CROP_SIZE_H_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_GP_CROP_SIZE_H_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_GP_CROP_SIZE_H_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_GP_CROP_SIZE_H_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_GP_CROP_PAR_ERR
+// Register Offset : 0x2120
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_GP_CROP_PAR_ERR (G2DLITE_APB_AB0_BASE_ADDR + (0x2120<<0))
+#define GP_CROP_PAR_ERR_STATUS_FIELD_OFFSET 0
+#define GP_CROP_PAR_ERR_STATUS_FIELD_SIZE 1
+
+#define BIT_AP_APB_G2DLITE_GP_CROP_PAR_ERR_STATUS    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_GP_CSC_CTRL
+// Register Offset : 0x2200
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_GP_CSC_CTRL (G2DLITE_APB_AB0_BASE_ADDR + (0x2200<<0))
+#define GP_CSC_CTRL_ALPHA_FIELD_OFFSET 2
+#define GP_CSC_CTRL_ALPHA_FIELD_SIZE 1
+#define GP_CSC_CTRL_SBUP_CONV_FIELD_OFFSET 1
+#define GP_CSC_CTRL_SBUP_CONV_FIELD_SIZE 1
+#define GP_CSC_CTRL_BYPASS_FIELD_OFFSET 0
+#define GP_CSC_CTRL_BYPASS_FIELD_SIZE 1
+
+#define BIT_AP_APB_G2DLITE_GP_CSC_CTRL_ALPHA    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_GP_CSC_CTRL_SBUP_CONV    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_GP_CSC_CTRL_BYPASS    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_GP_CSC_COEF1
+// Register Offset : 0x2204
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_GP_CSC_COEF1 (G2DLITE_APB_AB0_BASE_ADDR + (0x2204<<0))
+#define GP_CSC_COEF1_A01_FIELD_OFFSET 16
+#define GP_CSC_COEF1_A01_FIELD_SIZE 14
+#define GP_CSC_COEF1_A00_FIELD_OFFSET 0
+#define GP_CSC_COEF1_A00_FIELD_SIZE 14
+
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF1_A01_13    (BIT_(29))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF1_A01_12    (BIT_(28))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF1_A01_11    (BIT_(27))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF1_A01_10    (BIT_(26))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF1_A01_9    (BIT_(25))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF1_A01_8    (BIT_(24))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF1_A01_7    (BIT_(23))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF1_A01_6    (BIT_(22))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF1_A01_5    (BIT_(21))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF1_A01_4    (BIT_(20))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF1_A01_3    (BIT_(19))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF1_A01_2    (BIT_(18))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF1_A01_1    (BIT_(17))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF1_A01_0    (BIT_(16))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF1_A00_13    (BIT_(13))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF1_A00_12    (BIT_(12))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF1_A00_11    (BIT_(11))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF1_A00_10    (BIT_(10))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF1_A00_9    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF1_A00_8    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF1_A00_7    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF1_A00_6    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF1_A00_5    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF1_A00_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF1_A00_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF1_A00_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF1_A00_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF1_A00_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_GP_CSC_COEF2
+// Register Offset : 0x2208
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_GP_CSC_COEF2 (G2DLITE_APB_AB0_BASE_ADDR + (0x2208<<0))
+#define GP_CSC_COEF2_A10_FIELD_OFFSET 16
+#define GP_CSC_COEF2_A10_FIELD_SIZE 14
+#define GP_CSC_COEF2_A02_FIELD_OFFSET 0
+#define GP_CSC_COEF2_A02_FIELD_SIZE 14
+
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF2_A10_13    (BIT_(29))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF2_A10_12    (BIT_(28))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF2_A10_11    (BIT_(27))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF2_A10_10    (BIT_(26))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF2_A10_9    (BIT_(25))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF2_A10_8    (BIT_(24))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF2_A10_7    (BIT_(23))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF2_A10_6    (BIT_(22))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF2_A10_5    (BIT_(21))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF2_A10_4    (BIT_(20))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF2_A10_3    (BIT_(19))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF2_A10_2    (BIT_(18))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF2_A10_1    (BIT_(17))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF2_A10_0    (BIT_(16))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF2_A02_13    (BIT_(13))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF2_A02_12    (BIT_(12))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF2_A02_11    (BIT_(11))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF2_A02_10    (BIT_(10))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF2_A02_9    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF2_A02_8    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF2_A02_7    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF2_A02_6    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF2_A02_5    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF2_A02_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF2_A02_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF2_A02_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF2_A02_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF2_A02_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_GP_CSC_COEF3
+// Register Offset : 0x220c
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_GP_CSC_COEF3 (G2DLITE_APB_AB0_BASE_ADDR + (0x220c<<0))
+#define GP_CSC_COEF3_A12_FIELD_OFFSET 16
+#define GP_CSC_COEF3_A12_FIELD_SIZE 14
+#define GP_CSC_COEF3_A11_FIELD_OFFSET 0
+#define GP_CSC_COEF3_A11_FIELD_SIZE 14
+
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF3_A12_13    (BIT_(29))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF3_A12_12    (BIT_(28))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF3_A12_11    (BIT_(27))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF3_A12_10    (BIT_(26))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF3_A12_9    (BIT_(25))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF3_A12_8    (BIT_(24))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF3_A12_7    (BIT_(23))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF3_A12_6    (BIT_(22))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF3_A12_5    (BIT_(21))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF3_A12_4    (BIT_(20))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF3_A12_3    (BIT_(19))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF3_A12_2    (BIT_(18))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF3_A12_1    (BIT_(17))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF3_A12_0    (BIT_(16))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF3_A11_13    (BIT_(13))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF3_A11_12    (BIT_(12))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF3_A11_11    (BIT_(11))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF3_A11_10    (BIT_(10))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF3_A11_9    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF3_A11_8    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF3_A11_7    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF3_A11_6    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF3_A11_5    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF3_A11_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF3_A11_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF3_A11_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF3_A11_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF3_A11_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_GP_CSC_COEF4
+// Register Offset : 0x2210
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_GP_CSC_COEF4 (G2DLITE_APB_AB0_BASE_ADDR + (0x2210<<0))
+#define GP_CSC_COEF4_A21_FIELD_OFFSET 16
+#define GP_CSC_COEF4_A21_FIELD_SIZE 14
+#define GP_CSC_COEF4_A20_FIELD_OFFSET 0
+#define GP_CSC_COEF4_A20_FIELD_SIZE 14
+
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF4_A21_13    (BIT_(29))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF4_A21_12    (BIT_(28))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF4_A21_11    (BIT_(27))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF4_A21_10    (BIT_(26))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF4_A21_9    (BIT_(25))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF4_A21_8    (BIT_(24))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF4_A21_7    (BIT_(23))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF4_A21_6    (BIT_(22))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF4_A21_5    (BIT_(21))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF4_A21_4    (BIT_(20))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF4_A21_3    (BIT_(19))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF4_A21_2    (BIT_(18))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF4_A21_1    (BIT_(17))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF4_A21_0    (BIT_(16))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF4_A20_13    (BIT_(13))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF4_A20_12    (BIT_(12))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF4_A20_11    (BIT_(11))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF4_A20_10    (BIT_(10))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF4_A20_9    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF4_A20_8    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF4_A20_7    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF4_A20_6    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF4_A20_5    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF4_A20_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF4_A20_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF4_A20_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF4_A20_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF4_A20_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_GP_CSC_COEF5
+// Register Offset : 0x2214
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_GP_CSC_COEF5 (G2DLITE_APB_AB0_BASE_ADDR + (0x2214<<0))
+#define GP_CSC_COEF5_B0_FIELD_OFFSET 16
+#define GP_CSC_COEF5_B0_FIELD_SIZE 14
+#define GP_CSC_COEF5_A22_FIELD_OFFSET 0
+#define GP_CSC_COEF5_A22_FIELD_SIZE 14
+
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF5_B0_13    (BIT_(29))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF5_B0_12    (BIT_(28))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF5_B0_11    (BIT_(27))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF5_B0_10    (BIT_(26))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF5_B0_9    (BIT_(25))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF5_B0_8    (BIT_(24))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF5_B0_7    (BIT_(23))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF5_B0_6    (BIT_(22))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF5_B0_5    (BIT_(21))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF5_B0_4    (BIT_(20))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF5_B0_3    (BIT_(19))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF5_B0_2    (BIT_(18))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF5_B0_1    (BIT_(17))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF5_B0_0    (BIT_(16))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF5_A22_13    (BIT_(13))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF5_A22_12    (BIT_(12))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF5_A22_11    (BIT_(11))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF5_A22_10    (BIT_(10))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF5_A22_9    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF5_A22_8    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF5_A22_7    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF5_A22_6    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF5_A22_5    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF5_A22_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF5_A22_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF5_A22_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF5_A22_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF5_A22_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_GP_CSC_COEF6
+// Register Offset : 0x2218
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_GP_CSC_COEF6 (G2DLITE_APB_AB0_BASE_ADDR + (0x2218<<0))
+#define GP_CSC_COEF6_B2_FIELD_OFFSET 16
+#define GP_CSC_COEF6_B2_FIELD_SIZE 14
+#define GP_CSC_COEF6_B1_FIELD_OFFSET 0
+#define GP_CSC_COEF6_B1_FIELD_SIZE 14
+
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF6_B2_13    (BIT_(29))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF6_B2_12    (BIT_(28))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF6_B2_11    (BIT_(27))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF6_B2_10    (BIT_(26))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF6_B2_9    (BIT_(25))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF6_B2_8    (BIT_(24))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF6_B2_7    (BIT_(23))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF6_B2_6    (BIT_(22))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF6_B2_5    (BIT_(21))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF6_B2_4    (BIT_(20))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF6_B2_3    (BIT_(19))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF6_B2_2    (BIT_(18))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF6_B2_1    (BIT_(17))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF6_B2_0    (BIT_(16))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF6_B1_13    (BIT_(13))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF6_B1_12    (BIT_(12))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF6_B1_11    (BIT_(11))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF6_B1_10    (BIT_(10))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF6_B1_9    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF6_B1_8    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF6_B1_7    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF6_B1_6    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF6_B1_5    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF6_B1_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF6_B1_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF6_B1_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF6_B1_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF6_B1_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_GP_CSC_COEF7
+// Register Offset : 0x221c
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_GP_CSC_COEF7 (G2DLITE_APB_AB0_BASE_ADDR + (0x221c<<0))
+#define GP_CSC_COEF7_C1_FIELD_OFFSET 16
+#define GP_CSC_COEF7_C1_FIELD_SIZE 10
+#define GP_CSC_COEF7_C0_FIELD_OFFSET 0
+#define GP_CSC_COEF7_C0_FIELD_SIZE 10
+
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF7_C1_9    (BIT_(25))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF7_C1_8    (BIT_(24))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF7_C1_7    (BIT_(23))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF7_C1_6    (BIT_(22))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF7_C1_5    (BIT_(21))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF7_C1_4    (BIT_(20))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF7_C1_3    (BIT_(19))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF7_C1_2    (BIT_(18))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF7_C1_1    (BIT_(17))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF7_C1_0    (BIT_(16))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF7_C0_9    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF7_C0_8    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF7_C0_7    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF7_C0_6    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF7_C0_5    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF7_C0_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF7_C0_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF7_C0_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF7_C0_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF7_C0_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_GP_CSC_COEF8
+// Register Offset : 0x2220
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_GP_CSC_COEF8 (G2DLITE_APB_AB0_BASE_ADDR + (0x2220<<0))
+#define GP_CSC_COEF8_C2_FIELD_OFFSET 0
+#define GP_CSC_COEF8_C2_FIELD_SIZE 10
+
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF8_C2_9    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF8_C2_8    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF8_C2_7    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF8_C2_6    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF8_C2_5    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF8_C2_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF8_C2_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF8_C2_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF8_C2_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_GP_CSC_COEF8_C2_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_GP_HS_CTRL
+// Register Offset : 0x2300
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_GP_HS_CTRL (G2DLITE_APB_AB0_BASE_ADDR + (0x2300<<0))
+#define GP_HS_CTRL_NOR_PARA_FIELD_OFFSET 8
+#define GP_HS_CTRL_NOR_PARA_FIELD_SIZE 4
+#define GP_HS_CTRL_APB_RD_FIELD_OFFSET 4
+#define GP_HS_CTRL_APB_RD_FIELD_SIZE 1
+#define GP_HS_CTRL_FILTER_EN_V_FIELD_OFFSET 3
+#define GP_HS_CTRL_FILTER_EN_V_FIELD_SIZE 1
+#define GP_HS_CTRL_FILTER_EN_U_FIELD_OFFSET 2
+#define GP_HS_CTRL_FILTER_EN_U_FIELD_SIZE 1
+#define GP_HS_CTRL_FILTER_EN_Y_FIELD_OFFSET 1
+#define GP_HS_CTRL_FILTER_EN_Y_FIELD_SIZE 1
+#define GP_HS_CTRL_FILTER_EN_A_FIELD_OFFSET 0
+#define GP_HS_CTRL_FILTER_EN_A_FIELD_SIZE 1
+
+#define BIT_AP_APB_G2DLITE_GP_HS_CTRL_NOR_PARA_3    (BIT_(11))
+#define BIT_AP_APB_G2DLITE_GP_HS_CTRL_NOR_PARA_2    (BIT_(10))
+#define BIT_AP_APB_G2DLITE_GP_HS_CTRL_NOR_PARA_1    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_GP_HS_CTRL_NOR_PARA_0    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_GP_HS_CTRL_APB_RD    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_GP_HS_CTRL_FILTER_EN_V    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_GP_HS_CTRL_FILTER_EN_U    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_GP_HS_CTRL_FILTER_EN_Y    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_GP_HS_CTRL_FILTER_EN_A    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_GP_HS_INI
+// Register Offset : 0x2304
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_GP_HS_INI (G2DLITE_APB_AB0_BASE_ADDR + (0x2304<<0))
+#define GP_HS_INI_POLA_FIELD_OFFSET 19
+#define GP_HS_INI_POLA_FIELD_SIZE 1
+#define GP_HS_INI_FRA_FIELD_OFFSET 0
+#define GP_HS_INI_FRA_FIELD_SIZE 19
+
+#define BIT_AP_APB_G2DLITE_GP_HS_INI_POLA    (BIT_(19))
+#define BIT_AP_APB_G2DLITE_GP_HS_INI_FRA_18    (BIT_(18))
+#define BIT_AP_APB_G2DLITE_GP_HS_INI_FRA_17    (BIT_(17))
+#define BIT_AP_APB_G2DLITE_GP_HS_INI_FRA_16    (BIT_(16))
+#define BIT_AP_APB_G2DLITE_GP_HS_INI_FRA_15    (BIT_(15))
+#define BIT_AP_APB_G2DLITE_GP_HS_INI_FRA_14    (BIT_(14))
+#define BIT_AP_APB_G2DLITE_GP_HS_INI_FRA_13    (BIT_(13))
+#define BIT_AP_APB_G2DLITE_GP_HS_INI_FRA_12    (BIT_(12))
+#define BIT_AP_APB_G2DLITE_GP_HS_INI_FRA_11    (BIT_(11))
+#define BIT_AP_APB_G2DLITE_GP_HS_INI_FRA_10    (BIT_(10))
+#define BIT_AP_APB_G2DLITE_GP_HS_INI_FRA_9    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_GP_HS_INI_FRA_8    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_GP_HS_INI_FRA_7    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_GP_HS_INI_FRA_6    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_GP_HS_INI_FRA_5    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_GP_HS_INI_FRA_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_GP_HS_INI_FRA_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_GP_HS_INI_FRA_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_GP_HS_INI_FRA_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_GP_HS_INI_FRA_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_GP_HS_RATIO
+// Register Offset : 0x2308
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_GP_HS_RATIO (G2DLITE_APB_AB0_BASE_ADDR + (0x2308<<0))
+#define GP_HS_RATIO_INT_FIELD_OFFSET 19
+#define GP_HS_RATIO_INT_FIELD_SIZE 3
+#define GP_HS_RATIO_FRA_FIELD_OFFSET 0
+#define GP_HS_RATIO_FRA_FIELD_SIZE 19
+
+#define BIT_AP_APB_G2DLITE_GP_HS_RATIO_INT_2    (BIT_(21))
+#define BIT_AP_APB_G2DLITE_GP_HS_RATIO_INT_1    (BIT_(20))
+#define BIT_AP_APB_G2DLITE_GP_HS_RATIO_INT_0    (BIT_(19))
+#define BIT_AP_APB_G2DLITE_GP_HS_RATIO_FRA_18    (BIT_(18))
+#define BIT_AP_APB_G2DLITE_GP_HS_RATIO_FRA_17    (BIT_(17))
+#define BIT_AP_APB_G2DLITE_GP_HS_RATIO_FRA_16    (BIT_(16))
+#define BIT_AP_APB_G2DLITE_GP_HS_RATIO_FRA_15    (BIT_(15))
+#define BIT_AP_APB_G2DLITE_GP_HS_RATIO_FRA_14    (BIT_(14))
+#define BIT_AP_APB_G2DLITE_GP_HS_RATIO_FRA_13    (BIT_(13))
+#define BIT_AP_APB_G2DLITE_GP_HS_RATIO_FRA_12    (BIT_(12))
+#define BIT_AP_APB_G2DLITE_GP_HS_RATIO_FRA_11    (BIT_(11))
+#define BIT_AP_APB_G2DLITE_GP_HS_RATIO_FRA_10    (BIT_(10))
+#define BIT_AP_APB_G2DLITE_GP_HS_RATIO_FRA_9    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_GP_HS_RATIO_FRA_8    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_GP_HS_RATIO_FRA_7    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_GP_HS_RATIO_FRA_6    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_GP_HS_RATIO_FRA_5    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_GP_HS_RATIO_FRA_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_GP_HS_RATIO_FRA_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_GP_HS_RATIO_FRA_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_GP_HS_RATIO_FRA_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_GP_HS_RATIO_FRA_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_GP_HS_WIDTH
+// Register Offset : 0x230c
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_GP_HS_WIDTH (G2DLITE_APB_AB0_BASE_ADDR + (0x230c<<0))
+#define GP_HS_WIDTH_OUT_FIELD_OFFSET 0
+#define GP_HS_WIDTH_OUT_FIELD_SIZE 16
+
+#define BIT_AP_APB_G2DLITE_GP_HS_WIDTH_OUT_15    (BIT_(15))
+#define BIT_AP_APB_G2DLITE_GP_HS_WIDTH_OUT_14    (BIT_(14))
+#define BIT_AP_APB_G2DLITE_GP_HS_WIDTH_OUT_13    (BIT_(13))
+#define BIT_AP_APB_G2DLITE_GP_HS_WIDTH_OUT_12    (BIT_(12))
+#define BIT_AP_APB_G2DLITE_GP_HS_WIDTH_OUT_11    (BIT_(11))
+#define BIT_AP_APB_G2DLITE_GP_HS_WIDTH_OUT_10    (BIT_(10))
+#define BIT_AP_APB_G2DLITE_GP_HS_WIDTH_OUT_9    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_GP_HS_WIDTH_OUT_8    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_GP_HS_WIDTH_OUT_7    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_GP_HS_WIDTH_OUT_6    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_GP_HS_WIDTH_OUT_5    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_GP_HS_WIDTH_OUT_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_GP_HS_WIDTH_OUT_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_GP_HS_WIDTH_OUT_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_GP_HS_WIDTH_OUT_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_GP_HS_WIDTH_OUT_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_GP_VS_CTRL
+// Register Offset : 0x2400
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_GP_VS_CTRL (G2DLITE_APB_AB0_BASE_ADDR + (0x2400<<0))
+#define GP_VS_CTRL_NORM_FIELD_OFFSET 4
+#define GP_VS_CTRL_NORM_FIELD_SIZE 4
+#define GP_VS_CTRL_PARITY_FIELD_OFFSET 3
+#define GP_VS_CTRL_PARITY_FIELD_SIZE 1
+#define GP_VS_CTRL_PXL_MODE_FIELD_OFFSET 2
+#define GP_VS_CTRL_PXL_MODE_FIELD_SIZE 1
+#define GP_VS_CTRL_VS_MODE_FIELD_OFFSET 0
+#define GP_VS_CTRL_VS_MODE_FIELD_SIZE 2
+
+#define BIT_AP_APB_G2DLITE_GP_VS_CTRL_NORM_3    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_GP_VS_CTRL_NORM_2    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_GP_VS_CTRL_NORM_1    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_GP_VS_CTRL_NORM_0    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_GP_VS_CTRL_PARITY    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_GP_VS_CTRL_PXL_MODE    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_GP_VS_CTRL_VS_MODE_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_GP_VS_CTRL_VS_MODE_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_GP_VS_RESV
+// Register Offset : 0x2404
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_GP_VS_RESV (G2DLITE_APB_AB0_BASE_ADDR + (0x2404<<0))
+#define GP_VS_RESV_VSIZE_FIELD_OFFSET 0
+#define GP_VS_RESV_VSIZE_FIELD_SIZE 16
+
+#define BIT_AP_APB_G2DLITE_GP_VS_RESV_VSIZE_15    (BIT_(15))
+#define BIT_AP_APB_G2DLITE_GP_VS_RESV_VSIZE_14    (BIT_(14))
+#define BIT_AP_APB_G2DLITE_GP_VS_RESV_VSIZE_13    (BIT_(13))
+#define BIT_AP_APB_G2DLITE_GP_VS_RESV_VSIZE_12    (BIT_(12))
+#define BIT_AP_APB_G2DLITE_GP_VS_RESV_VSIZE_11    (BIT_(11))
+#define BIT_AP_APB_G2DLITE_GP_VS_RESV_VSIZE_10    (BIT_(10))
+#define BIT_AP_APB_G2DLITE_GP_VS_RESV_VSIZE_9    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_GP_VS_RESV_VSIZE_8    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_GP_VS_RESV_VSIZE_7    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_GP_VS_RESV_VSIZE_6    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_GP_VS_RESV_VSIZE_5    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_GP_VS_RESV_VSIZE_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_GP_VS_RESV_VSIZE_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_GP_VS_RESV_VSIZE_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_GP_VS_RESV_VSIZE_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_GP_VS_RESV_VSIZE_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_GP_VS_INC
+// Register Offset : 0x2408
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_GP_VS_INC (G2DLITE_APB_AB0_BASE_ADDR + (0x2408<<0))
+#define GP_VS_INC_INC_FIELD_OFFSET 0
+#define GP_VS_INC_INC_FIELD_SIZE 21
+
+#define BIT_AP_APB_G2DLITE_GP_VS_INC_INC_20    (BIT_(20))
+#define BIT_AP_APB_G2DLITE_GP_VS_INC_INC_19    (BIT_(19))
+#define BIT_AP_APB_G2DLITE_GP_VS_INC_INC_18    (BIT_(18))
+#define BIT_AP_APB_G2DLITE_GP_VS_INC_INC_17    (BIT_(17))
+#define BIT_AP_APB_G2DLITE_GP_VS_INC_INC_16    (BIT_(16))
+#define BIT_AP_APB_G2DLITE_GP_VS_INC_INC_15    (BIT_(15))
+#define BIT_AP_APB_G2DLITE_GP_VS_INC_INC_14    (BIT_(14))
+#define BIT_AP_APB_G2DLITE_GP_VS_INC_INC_13    (BIT_(13))
+#define BIT_AP_APB_G2DLITE_GP_VS_INC_INC_12    (BIT_(12))
+#define BIT_AP_APB_G2DLITE_GP_VS_INC_INC_11    (BIT_(11))
+#define BIT_AP_APB_G2DLITE_GP_VS_INC_INC_10    (BIT_(10))
+#define BIT_AP_APB_G2DLITE_GP_VS_INC_INC_9    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_GP_VS_INC_INC_8    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_GP_VS_INC_INC_7    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_GP_VS_INC_INC_6    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_GP_VS_INC_INC_5    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_GP_VS_INC_INC_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_GP_VS_INC_INC_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_GP_VS_INC_INC_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_GP_VS_INC_INC_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_GP_VS_INC_INC_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_GP_VS_INT_INC_E
+// Register Offset : 0x240c
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_GP_VS_INT_INC_E (G2DLITE_APB_AB0_BASE_ADDR + (0x240c<<0))
+#define GP_VS_INT_INC_E_INIT_POS_FIELD_OFFSET 18
+#define GP_VS_INT_INC_E_INIT_POS_FIELD_SIZE 2
+#define GP_VS_INT_INC_E_INIT_PHASE_FIELD_OFFSET 0
+#define GP_VS_INT_INC_E_INIT_PHASE_FIELD_SIZE 18
+
+#define BIT_AP_APB_G2DLITE_GP_VS_INT_INC_E_INIT_POS_1    (BIT_(19))
+#define BIT_AP_APB_G2DLITE_GP_VS_INT_INC_E_INIT_POS_0    (BIT_(18))
+#define BIT_AP_APB_G2DLITE_GP_VS_INT_INC_E_INIT_PHASE_17    (BIT_(17))
+#define BIT_AP_APB_G2DLITE_GP_VS_INT_INC_E_INIT_PHASE_16    (BIT_(16))
+#define BIT_AP_APB_G2DLITE_GP_VS_INT_INC_E_INIT_PHASE_15    (BIT_(15))
+#define BIT_AP_APB_G2DLITE_GP_VS_INT_INC_E_INIT_PHASE_14    (BIT_(14))
+#define BIT_AP_APB_G2DLITE_GP_VS_INT_INC_E_INIT_PHASE_13    (BIT_(13))
+#define BIT_AP_APB_G2DLITE_GP_VS_INT_INC_E_INIT_PHASE_12    (BIT_(12))
+#define BIT_AP_APB_G2DLITE_GP_VS_INT_INC_E_INIT_PHASE_11    (BIT_(11))
+#define BIT_AP_APB_G2DLITE_GP_VS_INT_INC_E_INIT_PHASE_10    (BIT_(10))
+#define BIT_AP_APB_G2DLITE_GP_VS_INT_INC_E_INIT_PHASE_9    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_GP_VS_INT_INC_E_INIT_PHASE_8    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_GP_VS_INT_INC_E_INIT_PHASE_7    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_GP_VS_INT_INC_E_INIT_PHASE_6    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_GP_VS_INT_INC_E_INIT_PHASE_5    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_GP_VS_INT_INC_E_INIT_PHASE_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_GP_VS_INT_INC_E_INIT_PHASE_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_GP_VS_INT_INC_E_INIT_PHASE_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_GP_VS_INT_INC_E_INIT_PHASE_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_GP_VS_INT_INC_E_INIT_PHASE_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_GP_VS_INT_INC_O
+// Register Offset : 0x2410
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_GP_VS_INT_INC_O (G2DLITE_APB_AB0_BASE_ADDR + (0x2410<<0))
+#define GP_VS_INT_INC_O_INIT_POS_FIELD_OFFSET 18
+#define GP_VS_INT_INC_O_INIT_POS_FIELD_SIZE 2
+#define GP_VS_INT_INC_O_INIT_PHASE_FIELD_OFFSET 0
+#define GP_VS_INT_INC_O_INIT_PHASE_FIELD_SIZE 18
+
+#define BIT_AP_APB_G2DLITE_GP_VS_INT_INC_O_INIT_POS_1    (BIT_(19))
+#define BIT_AP_APB_G2DLITE_GP_VS_INT_INC_O_INIT_POS_0    (BIT_(18))
+#define BIT_AP_APB_G2DLITE_GP_VS_INT_INC_O_INIT_PHASE_17    (BIT_(17))
+#define BIT_AP_APB_G2DLITE_GP_VS_INT_INC_O_INIT_PHASE_16    (BIT_(16))
+#define BIT_AP_APB_G2DLITE_GP_VS_INT_INC_O_INIT_PHASE_15    (BIT_(15))
+#define BIT_AP_APB_G2DLITE_GP_VS_INT_INC_O_INIT_PHASE_14    (BIT_(14))
+#define BIT_AP_APB_G2DLITE_GP_VS_INT_INC_O_INIT_PHASE_13    (BIT_(13))
+#define BIT_AP_APB_G2DLITE_GP_VS_INT_INC_O_INIT_PHASE_12    (BIT_(12))
+#define BIT_AP_APB_G2DLITE_GP_VS_INT_INC_O_INIT_PHASE_11    (BIT_(11))
+#define BIT_AP_APB_G2DLITE_GP_VS_INT_INC_O_INIT_PHASE_10    (BIT_(10))
+#define BIT_AP_APB_G2DLITE_GP_VS_INT_INC_O_INIT_PHASE_9    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_GP_VS_INT_INC_O_INIT_PHASE_8    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_GP_VS_INT_INC_O_INIT_PHASE_7    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_GP_VS_INT_INC_O_INIT_PHASE_6    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_GP_VS_INT_INC_O_INIT_PHASE_5    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_GP_VS_INT_INC_O_INIT_PHASE_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_GP_VS_INT_INC_O_INIT_PHASE_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_GP_VS_INT_INC_O_INIT_PHASE_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_GP_VS_INT_INC_O_INIT_PHASE_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_GP_VS_INT_INC_O_INIT_PHASE_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_GP_RE_STATUS
+// Register Offset : 0x2414
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_GP_RE_STATUS (G2DLITE_APB_AB0_BASE_ADDR + (0x2414<<0))
+#define GP_RE_STATUS_V_FRAME_END_FIELD_OFFSET 2
+#define GP_RE_STATUS_V_FRAME_END_FIELD_SIZE 1
+#define GP_RE_STATUS_U_FRAME_END_FIELD_OFFSET 1
+#define GP_RE_STATUS_U_FRAME_END_FIELD_SIZE 1
+#define GP_RE_STATUS_Y_FRAME_END_FIELD_OFFSET 0
+#define GP_RE_STATUS_Y_FRAME_END_FIELD_SIZE 1
+
+#define BIT_AP_APB_G2DLITE_GP_RE_STATUS_V_FRAME_END    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_GP_RE_STATUS_U_FRAME_END    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_GP_RE_STATUS_Y_FRAME_END    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_GP_SDW_CTRL
+// Register Offset : 0x2f00
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_GP_SDW_CTRL (G2DLITE_APB_AB0_BASE_ADDR + (0x2f00<<0))
+#define GP_SDW_CTRL_TRIG_FIELD_OFFSET 0
+#define GP_SDW_CTRL_TRIG_FIELD_SIZE 1
+
+#define BIT_AP_APB_G2DLITE_GP_SDW_CTRL_TRIG    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_SP_PIX_COMP
+// Register Offset : 0x5000
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_SP_PIX_COMP (G2DLITE_APB_AB0_BASE_ADDR + (0x5000<<0))
+#define SP_PIX_COMP_BPV_FIELD_OFFSET 24
+#define SP_PIX_COMP_BPV_FIELD_SIZE 4
+#define SP_PIX_COMP_BPU_FIELD_OFFSET 16
+#define SP_PIX_COMP_BPU_FIELD_SIZE 4
+#define SP_PIX_COMP_BPY_FIELD_OFFSET 8
+#define SP_PIX_COMP_BPY_FIELD_SIZE 5
+#define SP_PIX_COMP_BPA_FIELD_OFFSET 0
+#define SP_PIX_COMP_BPA_FIELD_SIZE 4
+
+#define BIT_AP_APB_G2DLITE_SP_PIX_COMP_BPV_3    (BIT_(27))
+#define BIT_AP_APB_G2DLITE_SP_PIX_COMP_BPV_2    (BIT_(26))
+#define BIT_AP_APB_G2DLITE_SP_PIX_COMP_BPV_1    (BIT_(25))
+#define BIT_AP_APB_G2DLITE_SP_PIX_COMP_BPV_0    (BIT_(24))
+#define BIT_AP_APB_G2DLITE_SP_PIX_COMP_BPU_3    (BIT_(19))
+#define BIT_AP_APB_G2DLITE_SP_PIX_COMP_BPU_2    (BIT_(18))
+#define BIT_AP_APB_G2DLITE_SP_PIX_COMP_BPU_1    (BIT_(17))
+#define BIT_AP_APB_G2DLITE_SP_PIX_COMP_BPU_0    (BIT_(16))
+#define BIT_AP_APB_G2DLITE_SP_PIX_COMP_BPY_4    (BIT_(12))
+#define BIT_AP_APB_G2DLITE_SP_PIX_COMP_BPY_3    (BIT_(11))
+#define BIT_AP_APB_G2DLITE_SP_PIX_COMP_BPY_2    (BIT_(10))
+#define BIT_AP_APB_G2DLITE_SP_PIX_COMP_BPY_1    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_SP_PIX_COMP_BPY_0    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_SP_PIX_COMP_BPA_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_SP_PIX_COMP_BPA_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_SP_PIX_COMP_BPA_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_SP_PIX_COMP_BPA_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_SP_FRM_CTRL
+// Register Offset : 0x5004
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_SP_FRM_CTRL (G2DLITE_APB_AB0_BASE_ADDR + (0x5004<<0))
+#define SP_FRM_CTRL_ENDIAN_CTRL_FIELD_OFFSET 16
+#define SP_FRM_CTRL_ENDIAN_CTRL_FIELD_SIZE 3
+#define SP_FRM_CTRL_COMP_SWAP_FIELD_OFFSET 12
+#define SP_FRM_CTRL_COMP_SWAP_FIELD_SIZE 4
+#define SP_FRM_CTRL_ROT_FIELD_OFFSET 8
+#define SP_FRM_CTRL_ROT_FIELD_SIZE 3
+#define SP_FRM_CTRL_RGB_YUV_FIELD_OFFSET 7
+#define SP_FRM_CTRL_RGB_YUV_FIELD_SIZE 1
+#define SP_FRM_CTRL_UV_SWAP_FIELD_OFFSET 6
+#define SP_FRM_CTRL_UV_SWAP_FIELD_SIZE 1
+#define SP_FRM_CTRL_UV_MODE_FIELD_OFFSET 4
+#define SP_FRM_CTRL_UV_MODE_FIELD_SIZE 2
+#define SP_FRM_CTRL_MODE_FIELD_OFFSET 2
+#define SP_FRM_CTRL_MODE_FIELD_SIZE 2
+#define SP_FRM_CTRL_FMT_FIELD_OFFSET 0
+#define SP_FRM_CTRL_FMT_FIELD_SIZE 2
+
+#define BIT_AP_APB_G2DLITE_SP_FRM_CTRL_ENDIAN_CTRL_2    (BIT_(18))
+#define BIT_AP_APB_G2DLITE_SP_FRM_CTRL_ENDIAN_CTRL_1    (BIT_(17))
+#define BIT_AP_APB_G2DLITE_SP_FRM_CTRL_ENDIAN_CTRL_0    (BIT_(16))
+#define BIT_AP_APB_G2DLITE_SP_FRM_CTRL_COMP_SWAP_3    (BIT_(15))
+#define BIT_AP_APB_G2DLITE_SP_FRM_CTRL_COMP_SWAP_2    (BIT_(14))
+#define BIT_AP_APB_G2DLITE_SP_FRM_CTRL_COMP_SWAP_1    (BIT_(13))
+#define BIT_AP_APB_G2DLITE_SP_FRM_CTRL_COMP_SWAP_0    (BIT_(12))
+#define BIT_AP_APB_G2DLITE_SP_FRM_CTRL_ROT_2    (BIT_(10))
+#define BIT_AP_APB_G2DLITE_SP_FRM_CTRL_ROT_1    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_SP_FRM_CTRL_ROT_0    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_SP_FRM_CTRL_RGB_YUV    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_SP_FRM_CTRL_UV_SWAP    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_SP_FRM_CTRL_UV_MODE_1    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_SP_FRM_CTRL_UV_MODE_0    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_SP_FRM_CTRL_MODE_1    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_SP_FRM_CTRL_MODE_0    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_SP_FRM_CTRL_FMT_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_SP_FRM_CTRL_FMT_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_SP_FRM_SIZE
+// Register Offset : 0x5008
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_SP_FRM_SIZE (G2DLITE_APB_AB0_BASE_ADDR + (0x5008<<0))
+#define SP_FRM_SIZE_HEIGHT_FIELD_OFFSET 16
+#define SP_FRM_SIZE_HEIGHT_FIELD_SIZE 16
+#define SP_FRM_SIZE_WIDTH_FIELD_OFFSET 0
+#define SP_FRM_SIZE_WIDTH_FIELD_SIZE 16
+
+#define BIT_AP_APB_G2DLITE_SP_FRM_SIZE_HEIGHT_15    (BIT_(31))
+#define BIT_AP_APB_G2DLITE_SP_FRM_SIZE_HEIGHT_14    (BIT_(30))
+#define BIT_AP_APB_G2DLITE_SP_FRM_SIZE_HEIGHT_13    (BIT_(29))
+#define BIT_AP_APB_G2DLITE_SP_FRM_SIZE_HEIGHT_12    (BIT_(28))
+#define BIT_AP_APB_G2DLITE_SP_FRM_SIZE_HEIGHT_11    (BIT_(27))
+#define BIT_AP_APB_G2DLITE_SP_FRM_SIZE_HEIGHT_10    (BIT_(26))
+#define BIT_AP_APB_G2DLITE_SP_FRM_SIZE_HEIGHT_9    (BIT_(25))
+#define BIT_AP_APB_G2DLITE_SP_FRM_SIZE_HEIGHT_8    (BIT_(24))
+#define BIT_AP_APB_G2DLITE_SP_FRM_SIZE_HEIGHT_7    (BIT_(23))
+#define BIT_AP_APB_G2DLITE_SP_FRM_SIZE_HEIGHT_6    (BIT_(22))
+#define BIT_AP_APB_G2DLITE_SP_FRM_SIZE_HEIGHT_5    (BIT_(21))
+#define BIT_AP_APB_G2DLITE_SP_FRM_SIZE_HEIGHT_4    (BIT_(20))
+#define BIT_AP_APB_G2DLITE_SP_FRM_SIZE_HEIGHT_3    (BIT_(19))
+#define BIT_AP_APB_G2DLITE_SP_FRM_SIZE_HEIGHT_2    (BIT_(18))
+#define BIT_AP_APB_G2DLITE_SP_FRM_SIZE_HEIGHT_1    (BIT_(17))
+#define BIT_AP_APB_G2DLITE_SP_FRM_SIZE_HEIGHT_0    (BIT_(16))
+#define BIT_AP_APB_G2DLITE_SP_FRM_SIZE_WIDTH_15    (BIT_(15))
+#define BIT_AP_APB_G2DLITE_SP_FRM_SIZE_WIDTH_14    (BIT_(14))
+#define BIT_AP_APB_G2DLITE_SP_FRM_SIZE_WIDTH_13    (BIT_(13))
+#define BIT_AP_APB_G2DLITE_SP_FRM_SIZE_WIDTH_12    (BIT_(12))
+#define BIT_AP_APB_G2DLITE_SP_FRM_SIZE_WIDTH_11    (BIT_(11))
+#define BIT_AP_APB_G2DLITE_SP_FRM_SIZE_WIDTH_10    (BIT_(10))
+#define BIT_AP_APB_G2DLITE_SP_FRM_SIZE_WIDTH_9    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_SP_FRM_SIZE_WIDTH_8    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_SP_FRM_SIZE_WIDTH_7    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_SP_FRM_SIZE_WIDTH_6    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_SP_FRM_SIZE_WIDTH_5    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_SP_FRM_SIZE_WIDTH_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_SP_FRM_SIZE_WIDTH_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_SP_FRM_SIZE_WIDTH_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_SP_FRM_SIZE_WIDTH_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_SP_FRM_SIZE_WIDTH_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_SP_Y_BADDR_L
+// Register Offset : 0x500c
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_SP_Y_BADDR_L (G2DLITE_APB_AB0_BASE_ADDR + (0x500c<<0))
+#define SP_Y_BADDR_L_Y_FIELD_OFFSET 0
+#define SP_Y_BADDR_L_Y_FIELD_SIZE 32
+
+#define BIT_AP_APB_G2DLITE_SP_Y_BADDR_L_Y_31    (BIT_(31))
+#define BIT_AP_APB_G2DLITE_SP_Y_BADDR_L_Y_30    (BIT_(30))
+#define BIT_AP_APB_G2DLITE_SP_Y_BADDR_L_Y_29    (BIT_(29))
+#define BIT_AP_APB_G2DLITE_SP_Y_BADDR_L_Y_28    (BIT_(28))
+#define BIT_AP_APB_G2DLITE_SP_Y_BADDR_L_Y_27    (BIT_(27))
+#define BIT_AP_APB_G2DLITE_SP_Y_BADDR_L_Y_26    (BIT_(26))
+#define BIT_AP_APB_G2DLITE_SP_Y_BADDR_L_Y_25    (BIT_(25))
+#define BIT_AP_APB_G2DLITE_SP_Y_BADDR_L_Y_24    (BIT_(24))
+#define BIT_AP_APB_G2DLITE_SP_Y_BADDR_L_Y_23    (BIT_(23))
+#define BIT_AP_APB_G2DLITE_SP_Y_BADDR_L_Y_22    (BIT_(22))
+#define BIT_AP_APB_G2DLITE_SP_Y_BADDR_L_Y_21    (BIT_(21))
+#define BIT_AP_APB_G2DLITE_SP_Y_BADDR_L_Y_20    (BIT_(20))
+#define BIT_AP_APB_G2DLITE_SP_Y_BADDR_L_Y_19    (BIT_(19))
+#define BIT_AP_APB_G2DLITE_SP_Y_BADDR_L_Y_18    (BIT_(18))
+#define BIT_AP_APB_G2DLITE_SP_Y_BADDR_L_Y_17    (BIT_(17))
+#define BIT_AP_APB_G2DLITE_SP_Y_BADDR_L_Y_16    (BIT_(16))
+#define BIT_AP_APB_G2DLITE_SP_Y_BADDR_L_Y_15    (BIT_(15))
+#define BIT_AP_APB_G2DLITE_SP_Y_BADDR_L_Y_14    (BIT_(14))
+#define BIT_AP_APB_G2DLITE_SP_Y_BADDR_L_Y_13    (BIT_(13))
+#define BIT_AP_APB_G2DLITE_SP_Y_BADDR_L_Y_12    (BIT_(12))
+#define BIT_AP_APB_G2DLITE_SP_Y_BADDR_L_Y_11    (BIT_(11))
+#define BIT_AP_APB_G2DLITE_SP_Y_BADDR_L_Y_10    (BIT_(10))
+#define BIT_AP_APB_G2DLITE_SP_Y_BADDR_L_Y_9    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_SP_Y_BADDR_L_Y_8    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_SP_Y_BADDR_L_Y_7    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_SP_Y_BADDR_L_Y_6    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_SP_Y_BADDR_L_Y_5    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_SP_Y_BADDR_L_Y_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_SP_Y_BADDR_L_Y_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_SP_Y_BADDR_L_Y_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_SP_Y_BADDR_L_Y_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_SP_Y_BADDR_L_Y_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_SP_Y_BADDR_H
+// Register Offset : 0x5010
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_SP_Y_BADDR_H (G2DLITE_APB_AB0_BASE_ADDR + (0x5010<<0))
+#define SP_Y_BADDR_H_Y_FIELD_OFFSET 0
+#define SP_Y_BADDR_H_Y_FIELD_SIZE 8
+
+#define BIT_AP_APB_G2DLITE_SP_Y_BADDR_H_Y_7    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_SP_Y_BADDR_H_Y_6    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_SP_Y_BADDR_H_Y_5    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_SP_Y_BADDR_H_Y_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_SP_Y_BADDR_H_Y_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_SP_Y_BADDR_H_Y_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_SP_Y_BADDR_H_Y_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_SP_Y_BADDR_H_Y_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_SP_Y_STRIDE
+// Register Offset : 0x502c
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_SP_Y_STRIDE (G2DLITE_APB_AB0_BASE_ADDR + (0x502c<<0))
+#define SP_Y_STRIDE_Y_FIELD_OFFSET 0
+#define SP_Y_STRIDE_Y_FIELD_SIZE 18
+
+#define BIT_AP_APB_G2DLITE_SP_Y_STRIDE_Y_17    (BIT_(17))
+#define BIT_AP_APB_G2DLITE_SP_Y_STRIDE_Y_16    (BIT_(16))
+#define BIT_AP_APB_G2DLITE_SP_Y_STRIDE_Y_15    (BIT_(15))
+#define BIT_AP_APB_G2DLITE_SP_Y_STRIDE_Y_14    (BIT_(14))
+#define BIT_AP_APB_G2DLITE_SP_Y_STRIDE_Y_13    (BIT_(13))
+#define BIT_AP_APB_G2DLITE_SP_Y_STRIDE_Y_12    (BIT_(12))
+#define BIT_AP_APB_G2DLITE_SP_Y_STRIDE_Y_11    (BIT_(11))
+#define BIT_AP_APB_G2DLITE_SP_Y_STRIDE_Y_10    (BIT_(10))
+#define BIT_AP_APB_G2DLITE_SP_Y_STRIDE_Y_9    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_SP_Y_STRIDE_Y_8    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_SP_Y_STRIDE_Y_7    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_SP_Y_STRIDE_Y_6    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_SP_Y_STRIDE_Y_5    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_SP_Y_STRIDE_Y_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_SP_Y_STRIDE_Y_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_SP_Y_STRIDE_Y_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_SP_Y_STRIDE_Y_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_SP_Y_STRIDE_Y_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_SP_FRM_OFFSET
+// Register Offset : 0x5040
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_SP_FRM_OFFSET (G2DLITE_APB_AB0_BASE_ADDR + (0x5040<<0))
+#define SP_FRM_OFFSET_Y_FIELD_OFFSET 16
+#define SP_FRM_OFFSET_Y_FIELD_SIZE 16
+#define SP_FRM_OFFSET_X_FIELD_OFFSET 0
+#define SP_FRM_OFFSET_X_FIELD_SIZE 16
+
+#define BIT_AP_APB_G2DLITE_SP_FRM_OFFSET_Y_15    (BIT_(31))
+#define BIT_AP_APB_G2DLITE_SP_FRM_OFFSET_Y_14    (BIT_(30))
+#define BIT_AP_APB_G2DLITE_SP_FRM_OFFSET_Y_13    (BIT_(29))
+#define BIT_AP_APB_G2DLITE_SP_FRM_OFFSET_Y_12    (BIT_(28))
+#define BIT_AP_APB_G2DLITE_SP_FRM_OFFSET_Y_11    (BIT_(27))
+#define BIT_AP_APB_G2DLITE_SP_FRM_OFFSET_Y_10    (BIT_(26))
+#define BIT_AP_APB_G2DLITE_SP_FRM_OFFSET_Y_9    (BIT_(25))
+#define BIT_AP_APB_G2DLITE_SP_FRM_OFFSET_Y_8    (BIT_(24))
+#define BIT_AP_APB_G2DLITE_SP_FRM_OFFSET_Y_7    (BIT_(23))
+#define BIT_AP_APB_G2DLITE_SP_FRM_OFFSET_Y_6    (BIT_(22))
+#define BIT_AP_APB_G2DLITE_SP_FRM_OFFSET_Y_5    (BIT_(21))
+#define BIT_AP_APB_G2DLITE_SP_FRM_OFFSET_Y_4    (BIT_(20))
+#define BIT_AP_APB_G2DLITE_SP_FRM_OFFSET_Y_3    (BIT_(19))
+#define BIT_AP_APB_G2DLITE_SP_FRM_OFFSET_Y_2    (BIT_(18))
+#define BIT_AP_APB_G2DLITE_SP_FRM_OFFSET_Y_1    (BIT_(17))
+#define BIT_AP_APB_G2DLITE_SP_FRM_OFFSET_Y_0    (BIT_(16))
+#define BIT_AP_APB_G2DLITE_SP_FRM_OFFSET_X_15    (BIT_(15))
+#define BIT_AP_APB_G2DLITE_SP_FRM_OFFSET_X_14    (BIT_(14))
+#define BIT_AP_APB_G2DLITE_SP_FRM_OFFSET_X_13    (BIT_(13))
+#define BIT_AP_APB_G2DLITE_SP_FRM_OFFSET_X_12    (BIT_(12))
+#define BIT_AP_APB_G2DLITE_SP_FRM_OFFSET_X_11    (BIT_(11))
+#define BIT_AP_APB_G2DLITE_SP_FRM_OFFSET_X_10    (BIT_(10))
+#define BIT_AP_APB_G2DLITE_SP_FRM_OFFSET_X_9    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_SP_FRM_OFFSET_X_8    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_SP_FRM_OFFSET_X_7    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_SP_FRM_OFFSET_X_6    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_SP_FRM_OFFSET_X_5    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_SP_FRM_OFFSET_X_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_SP_FRM_OFFSET_X_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_SP_FRM_OFFSET_X_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_SP_FRM_OFFSET_X_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_SP_FRM_OFFSET_X_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_RLE_Y_LEN
+// Register Offset : 0x5100
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_RLE_Y_LEN (G2DLITE_APB_AB0_BASE_ADDR + (0x5100<<0))
+#define RLE_Y_LEN_Y_FIELD_OFFSET 0
+#define RLE_Y_LEN_Y_FIELD_SIZE 24
+
+#define BIT_AP_APB_G2DLITE_RLE_Y_LEN_Y_23    (BIT_(23))
+#define BIT_AP_APB_G2DLITE_RLE_Y_LEN_Y_22    (BIT_(22))
+#define BIT_AP_APB_G2DLITE_RLE_Y_LEN_Y_21    (BIT_(21))
+#define BIT_AP_APB_G2DLITE_RLE_Y_LEN_Y_20    (BIT_(20))
+#define BIT_AP_APB_G2DLITE_RLE_Y_LEN_Y_19    (BIT_(19))
+#define BIT_AP_APB_G2DLITE_RLE_Y_LEN_Y_18    (BIT_(18))
+#define BIT_AP_APB_G2DLITE_RLE_Y_LEN_Y_17    (BIT_(17))
+#define BIT_AP_APB_G2DLITE_RLE_Y_LEN_Y_16    (BIT_(16))
+#define BIT_AP_APB_G2DLITE_RLE_Y_LEN_Y_15    (BIT_(15))
+#define BIT_AP_APB_G2DLITE_RLE_Y_LEN_Y_14    (BIT_(14))
+#define BIT_AP_APB_G2DLITE_RLE_Y_LEN_Y_13    (BIT_(13))
+#define BIT_AP_APB_G2DLITE_RLE_Y_LEN_Y_12    (BIT_(12))
+#define BIT_AP_APB_G2DLITE_RLE_Y_LEN_Y_11    (BIT_(11))
+#define BIT_AP_APB_G2DLITE_RLE_Y_LEN_Y_10    (BIT_(10))
+#define BIT_AP_APB_G2DLITE_RLE_Y_LEN_Y_9    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_RLE_Y_LEN_Y_8    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_RLE_Y_LEN_Y_7    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_RLE_Y_LEN_Y_6    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_RLE_Y_LEN_Y_5    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_RLE_Y_LEN_Y_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_RLE_Y_LEN_Y_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_RLE_Y_LEN_Y_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_RLE_Y_LEN_Y_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_RLE_Y_LEN_Y_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_RLE_Y_CHECK_SUM
+// Register Offset : 0x5110
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_RLE_Y_CHECK_SUM (G2DLITE_APB_AB0_BASE_ADDR + (0x5110<<0))
+#define RLE_Y_CHECK_SUM_Y_FIELD_OFFSET 0
+#define RLE_Y_CHECK_SUM_Y_FIELD_SIZE 32
+
+#define BIT_AP_APB_G2DLITE_RLE_Y_CHECK_SUM_Y_31    (BIT_(31))
+#define BIT_AP_APB_G2DLITE_RLE_Y_CHECK_SUM_Y_30    (BIT_(30))
+#define BIT_AP_APB_G2DLITE_RLE_Y_CHECK_SUM_Y_29    (BIT_(29))
+#define BIT_AP_APB_G2DLITE_RLE_Y_CHECK_SUM_Y_28    (BIT_(28))
+#define BIT_AP_APB_G2DLITE_RLE_Y_CHECK_SUM_Y_27    (BIT_(27))
+#define BIT_AP_APB_G2DLITE_RLE_Y_CHECK_SUM_Y_26    (BIT_(26))
+#define BIT_AP_APB_G2DLITE_RLE_Y_CHECK_SUM_Y_25    (BIT_(25))
+#define BIT_AP_APB_G2DLITE_RLE_Y_CHECK_SUM_Y_24    (BIT_(24))
+#define BIT_AP_APB_G2DLITE_RLE_Y_CHECK_SUM_Y_23    (BIT_(23))
+#define BIT_AP_APB_G2DLITE_RLE_Y_CHECK_SUM_Y_22    (BIT_(22))
+#define BIT_AP_APB_G2DLITE_RLE_Y_CHECK_SUM_Y_21    (BIT_(21))
+#define BIT_AP_APB_G2DLITE_RLE_Y_CHECK_SUM_Y_20    (BIT_(20))
+#define BIT_AP_APB_G2DLITE_RLE_Y_CHECK_SUM_Y_19    (BIT_(19))
+#define BIT_AP_APB_G2DLITE_RLE_Y_CHECK_SUM_Y_18    (BIT_(18))
+#define BIT_AP_APB_G2DLITE_RLE_Y_CHECK_SUM_Y_17    (BIT_(17))
+#define BIT_AP_APB_G2DLITE_RLE_Y_CHECK_SUM_Y_16    (BIT_(16))
+#define BIT_AP_APB_G2DLITE_RLE_Y_CHECK_SUM_Y_15    (BIT_(15))
+#define BIT_AP_APB_G2DLITE_RLE_Y_CHECK_SUM_Y_14    (BIT_(14))
+#define BIT_AP_APB_G2DLITE_RLE_Y_CHECK_SUM_Y_13    (BIT_(13))
+#define BIT_AP_APB_G2DLITE_RLE_Y_CHECK_SUM_Y_12    (BIT_(12))
+#define BIT_AP_APB_G2DLITE_RLE_Y_CHECK_SUM_Y_11    (BIT_(11))
+#define BIT_AP_APB_G2DLITE_RLE_Y_CHECK_SUM_Y_10    (BIT_(10))
+#define BIT_AP_APB_G2DLITE_RLE_Y_CHECK_SUM_Y_9    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_RLE_Y_CHECK_SUM_Y_8    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_RLE_Y_CHECK_SUM_Y_7    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_RLE_Y_CHECK_SUM_Y_6    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_RLE_Y_CHECK_SUM_Y_5    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_RLE_Y_CHECK_SUM_Y_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_RLE_Y_CHECK_SUM_Y_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_RLE_Y_CHECK_SUM_Y_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_RLE_Y_CHECK_SUM_Y_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_RLE_Y_CHECK_SUM_Y_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_RLE_CTRL
+// Register Offset : 0x5120
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_RLE_CTRL (G2DLITE_APB_AB0_BASE_ADDR + (0x5120<<0))
+#define RLE_CTRL_RLE_DATA_SIZE_FIELD_OFFSET 1
+#define RLE_CTRL_RLE_DATA_SIZE_FIELD_SIZE 2
+#define RLE_CTRL_RLE_EN_FIELD_OFFSET 0
+#define RLE_CTRL_RLE_EN_FIELD_SIZE 1
+
+#define BIT_AP_APB_G2DLITE_RLE_CTRL_RLE_DATA_SIZE_1    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_RLE_CTRL_RLE_DATA_SIZE_0    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_RLE_CTRL_RLE_EN    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_RLE_Y_CHECK_SUM_ST
+// Register Offset : 0x5130
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_RLE_Y_CHECK_SUM_ST (G2DLITE_APB_AB0_BASE_ADDR + (0x5130<<0))
+#define RLE_Y_CHECK_SUM_ST_Y_FIELD_OFFSET 0
+#define RLE_Y_CHECK_SUM_ST_Y_FIELD_SIZE 32
+
+#define BIT_AP_APB_G2DLITE_RLE_Y_CHECK_SUM_ST_Y_31    (BIT_(31))
+#define BIT_AP_APB_G2DLITE_RLE_Y_CHECK_SUM_ST_Y_30    (BIT_(30))
+#define BIT_AP_APB_G2DLITE_RLE_Y_CHECK_SUM_ST_Y_29    (BIT_(29))
+#define BIT_AP_APB_G2DLITE_RLE_Y_CHECK_SUM_ST_Y_28    (BIT_(28))
+#define BIT_AP_APB_G2DLITE_RLE_Y_CHECK_SUM_ST_Y_27    (BIT_(27))
+#define BIT_AP_APB_G2DLITE_RLE_Y_CHECK_SUM_ST_Y_26    (BIT_(26))
+#define BIT_AP_APB_G2DLITE_RLE_Y_CHECK_SUM_ST_Y_25    (BIT_(25))
+#define BIT_AP_APB_G2DLITE_RLE_Y_CHECK_SUM_ST_Y_24    (BIT_(24))
+#define BIT_AP_APB_G2DLITE_RLE_Y_CHECK_SUM_ST_Y_23    (BIT_(23))
+#define BIT_AP_APB_G2DLITE_RLE_Y_CHECK_SUM_ST_Y_22    (BIT_(22))
+#define BIT_AP_APB_G2DLITE_RLE_Y_CHECK_SUM_ST_Y_21    (BIT_(21))
+#define BIT_AP_APB_G2DLITE_RLE_Y_CHECK_SUM_ST_Y_20    (BIT_(20))
+#define BIT_AP_APB_G2DLITE_RLE_Y_CHECK_SUM_ST_Y_19    (BIT_(19))
+#define BIT_AP_APB_G2DLITE_RLE_Y_CHECK_SUM_ST_Y_18    (BIT_(18))
+#define BIT_AP_APB_G2DLITE_RLE_Y_CHECK_SUM_ST_Y_17    (BIT_(17))
+#define BIT_AP_APB_G2DLITE_RLE_Y_CHECK_SUM_ST_Y_16    (BIT_(16))
+#define BIT_AP_APB_G2DLITE_RLE_Y_CHECK_SUM_ST_Y_15    (BIT_(15))
+#define BIT_AP_APB_G2DLITE_RLE_Y_CHECK_SUM_ST_Y_14    (BIT_(14))
+#define BIT_AP_APB_G2DLITE_RLE_Y_CHECK_SUM_ST_Y_13    (BIT_(13))
+#define BIT_AP_APB_G2DLITE_RLE_Y_CHECK_SUM_ST_Y_12    (BIT_(12))
+#define BIT_AP_APB_G2DLITE_RLE_Y_CHECK_SUM_ST_Y_11    (BIT_(11))
+#define BIT_AP_APB_G2DLITE_RLE_Y_CHECK_SUM_ST_Y_10    (BIT_(10))
+#define BIT_AP_APB_G2DLITE_RLE_Y_CHECK_SUM_ST_Y_9    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_RLE_Y_CHECK_SUM_ST_Y_8    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_RLE_Y_CHECK_SUM_ST_Y_7    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_RLE_Y_CHECK_SUM_ST_Y_6    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_RLE_Y_CHECK_SUM_ST_Y_5    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_RLE_Y_CHECK_SUM_ST_Y_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_RLE_Y_CHECK_SUM_ST_Y_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_RLE_Y_CHECK_SUM_ST_Y_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_RLE_Y_CHECK_SUM_ST_Y_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_RLE_Y_CHECK_SUM_ST_Y_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_RLE_U_CHECK_SUM_ST
+// Register Offset : 0x5134
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_RLE_U_CHECK_SUM_ST (G2DLITE_APB_AB0_BASE_ADDR + (0x5134<<0))
+#define RLE_U_CHECK_SUM_ST_U_FIELD_OFFSET 0
+#define RLE_U_CHECK_SUM_ST_U_FIELD_SIZE 32
+
+#define BIT_AP_APB_G2DLITE_RLE_U_CHECK_SUM_ST_U_31    (BIT_(31))
+#define BIT_AP_APB_G2DLITE_RLE_U_CHECK_SUM_ST_U_30    (BIT_(30))
+#define BIT_AP_APB_G2DLITE_RLE_U_CHECK_SUM_ST_U_29    (BIT_(29))
+#define BIT_AP_APB_G2DLITE_RLE_U_CHECK_SUM_ST_U_28    (BIT_(28))
+#define BIT_AP_APB_G2DLITE_RLE_U_CHECK_SUM_ST_U_27    (BIT_(27))
+#define BIT_AP_APB_G2DLITE_RLE_U_CHECK_SUM_ST_U_26    (BIT_(26))
+#define BIT_AP_APB_G2DLITE_RLE_U_CHECK_SUM_ST_U_25    (BIT_(25))
+#define BIT_AP_APB_G2DLITE_RLE_U_CHECK_SUM_ST_U_24    (BIT_(24))
+#define BIT_AP_APB_G2DLITE_RLE_U_CHECK_SUM_ST_U_23    (BIT_(23))
+#define BIT_AP_APB_G2DLITE_RLE_U_CHECK_SUM_ST_U_22    (BIT_(22))
+#define BIT_AP_APB_G2DLITE_RLE_U_CHECK_SUM_ST_U_21    (BIT_(21))
+#define BIT_AP_APB_G2DLITE_RLE_U_CHECK_SUM_ST_U_20    (BIT_(20))
+#define BIT_AP_APB_G2DLITE_RLE_U_CHECK_SUM_ST_U_19    (BIT_(19))
+#define BIT_AP_APB_G2DLITE_RLE_U_CHECK_SUM_ST_U_18    (BIT_(18))
+#define BIT_AP_APB_G2DLITE_RLE_U_CHECK_SUM_ST_U_17    (BIT_(17))
+#define BIT_AP_APB_G2DLITE_RLE_U_CHECK_SUM_ST_U_16    (BIT_(16))
+#define BIT_AP_APB_G2DLITE_RLE_U_CHECK_SUM_ST_U_15    (BIT_(15))
+#define BIT_AP_APB_G2DLITE_RLE_U_CHECK_SUM_ST_U_14    (BIT_(14))
+#define BIT_AP_APB_G2DLITE_RLE_U_CHECK_SUM_ST_U_13    (BIT_(13))
+#define BIT_AP_APB_G2DLITE_RLE_U_CHECK_SUM_ST_U_12    (BIT_(12))
+#define BIT_AP_APB_G2DLITE_RLE_U_CHECK_SUM_ST_U_11    (BIT_(11))
+#define BIT_AP_APB_G2DLITE_RLE_U_CHECK_SUM_ST_U_10    (BIT_(10))
+#define BIT_AP_APB_G2DLITE_RLE_U_CHECK_SUM_ST_U_9    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_RLE_U_CHECK_SUM_ST_U_8    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_RLE_U_CHECK_SUM_ST_U_7    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_RLE_U_CHECK_SUM_ST_U_6    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_RLE_U_CHECK_SUM_ST_U_5    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_RLE_U_CHECK_SUM_ST_U_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_RLE_U_CHECK_SUM_ST_U_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_RLE_U_CHECK_SUM_ST_U_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_RLE_U_CHECK_SUM_ST_U_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_RLE_U_CHECK_SUM_ST_U_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_RLE_V_CHECK_SUM_ST
+// Register Offset : 0x5138
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_RLE_V_CHECK_SUM_ST (G2DLITE_APB_AB0_BASE_ADDR + (0x5138<<0))
+#define RLE_V_CHECK_SUM_ST_V_FIELD_OFFSET 0
+#define RLE_V_CHECK_SUM_ST_V_FIELD_SIZE 32
+
+#define BIT_AP_APB_G2DLITE_RLE_V_CHECK_SUM_ST_V_31    (BIT_(31))
+#define BIT_AP_APB_G2DLITE_RLE_V_CHECK_SUM_ST_V_30    (BIT_(30))
+#define BIT_AP_APB_G2DLITE_RLE_V_CHECK_SUM_ST_V_29    (BIT_(29))
+#define BIT_AP_APB_G2DLITE_RLE_V_CHECK_SUM_ST_V_28    (BIT_(28))
+#define BIT_AP_APB_G2DLITE_RLE_V_CHECK_SUM_ST_V_27    (BIT_(27))
+#define BIT_AP_APB_G2DLITE_RLE_V_CHECK_SUM_ST_V_26    (BIT_(26))
+#define BIT_AP_APB_G2DLITE_RLE_V_CHECK_SUM_ST_V_25    (BIT_(25))
+#define BIT_AP_APB_G2DLITE_RLE_V_CHECK_SUM_ST_V_24    (BIT_(24))
+#define BIT_AP_APB_G2DLITE_RLE_V_CHECK_SUM_ST_V_23    (BIT_(23))
+#define BIT_AP_APB_G2DLITE_RLE_V_CHECK_SUM_ST_V_22    (BIT_(22))
+#define BIT_AP_APB_G2DLITE_RLE_V_CHECK_SUM_ST_V_21    (BIT_(21))
+#define BIT_AP_APB_G2DLITE_RLE_V_CHECK_SUM_ST_V_20    (BIT_(20))
+#define BIT_AP_APB_G2DLITE_RLE_V_CHECK_SUM_ST_V_19    (BIT_(19))
+#define BIT_AP_APB_G2DLITE_RLE_V_CHECK_SUM_ST_V_18    (BIT_(18))
+#define BIT_AP_APB_G2DLITE_RLE_V_CHECK_SUM_ST_V_17    (BIT_(17))
+#define BIT_AP_APB_G2DLITE_RLE_V_CHECK_SUM_ST_V_16    (BIT_(16))
+#define BIT_AP_APB_G2DLITE_RLE_V_CHECK_SUM_ST_V_15    (BIT_(15))
+#define BIT_AP_APB_G2DLITE_RLE_V_CHECK_SUM_ST_V_14    (BIT_(14))
+#define BIT_AP_APB_G2DLITE_RLE_V_CHECK_SUM_ST_V_13    (BIT_(13))
+#define BIT_AP_APB_G2DLITE_RLE_V_CHECK_SUM_ST_V_12    (BIT_(12))
+#define BIT_AP_APB_G2DLITE_RLE_V_CHECK_SUM_ST_V_11    (BIT_(11))
+#define BIT_AP_APB_G2DLITE_RLE_V_CHECK_SUM_ST_V_10    (BIT_(10))
+#define BIT_AP_APB_G2DLITE_RLE_V_CHECK_SUM_ST_V_9    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_RLE_V_CHECK_SUM_ST_V_8    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_RLE_V_CHECK_SUM_ST_V_7    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_RLE_V_CHECK_SUM_ST_V_6    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_RLE_V_CHECK_SUM_ST_V_5    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_RLE_V_CHECK_SUM_ST_V_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_RLE_V_CHECK_SUM_ST_V_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_RLE_V_CHECK_SUM_ST_V_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_RLE_V_CHECK_SUM_ST_V_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_RLE_V_CHECK_SUM_ST_V_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_RLE_A_CHECK_SUM_ST
+// Register Offset : 0x513c
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_RLE_A_CHECK_SUM_ST (G2DLITE_APB_AB0_BASE_ADDR + (0x513c<<0))
+#define RLE_A_CHECK_SUM_ST_A_FIELD_OFFSET 0
+#define RLE_A_CHECK_SUM_ST_A_FIELD_SIZE 32
+
+#define BIT_AP_APB_G2DLITE_RLE_A_CHECK_SUM_ST_A_31    (BIT_(31))
+#define BIT_AP_APB_G2DLITE_RLE_A_CHECK_SUM_ST_A_30    (BIT_(30))
+#define BIT_AP_APB_G2DLITE_RLE_A_CHECK_SUM_ST_A_29    (BIT_(29))
+#define BIT_AP_APB_G2DLITE_RLE_A_CHECK_SUM_ST_A_28    (BIT_(28))
+#define BIT_AP_APB_G2DLITE_RLE_A_CHECK_SUM_ST_A_27    (BIT_(27))
+#define BIT_AP_APB_G2DLITE_RLE_A_CHECK_SUM_ST_A_26    (BIT_(26))
+#define BIT_AP_APB_G2DLITE_RLE_A_CHECK_SUM_ST_A_25    (BIT_(25))
+#define BIT_AP_APB_G2DLITE_RLE_A_CHECK_SUM_ST_A_24    (BIT_(24))
+#define BIT_AP_APB_G2DLITE_RLE_A_CHECK_SUM_ST_A_23    (BIT_(23))
+#define BIT_AP_APB_G2DLITE_RLE_A_CHECK_SUM_ST_A_22    (BIT_(22))
+#define BIT_AP_APB_G2DLITE_RLE_A_CHECK_SUM_ST_A_21    (BIT_(21))
+#define BIT_AP_APB_G2DLITE_RLE_A_CHECK_SUM_ST_A_20    (BIT_(20))
+#define BIT_AP_APB_G2DLITE_RLE_A_CHECK_SUM_ST_A_19    (BIT_(19))
+#define BIT_AP_APB_G2DLITE_RLE_A_CHECK_SUM_ST_A_18    (BIT_(18))
+#define BIT_AP_APB_G2DLITE_RLE_A_CHECK_SUM_ST_A_17    (BIT_(17))
+#define BIT_AP_APB_G2DLITE_RLE_A_CHECK_SUM_ST_A_16    (BIT_(16))
+#define BIT_AP_APB_G2DLITE_RLE_A_CHECK_SUM_ST_A_15    (BIT_(15))
+#define BIT_AP_APB_G2DLITE_RLE_A_CHECK_SUM_ST_A_14    (BIT_(14))
+#define BIT_AP_APB_G2DLITE_RLE_A_CHECK_SUM_ST_A_13    (BIT_(13))
+#define BIT_AP_APB_G2DLITE_RLE_A_CHECK_SUM_ST_A_12    (BIT_(12))
+#define BIT_AP_APB_G2DLITE_RLE_A_CHECK_SUM_ST_A_11    (BIT_(11))
+#define BIT_AP_APB_G2DLITE_RLE_A_CHECK_SUM_ST_A_10    (BIT_(10))
+#define BIT_AP_APB_G2DLITE_RLE_A_CHECK_SUM_ST_A_9    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_RLE_A_CHECK_SUM_ST_A_8    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_RLE_A_CHECK_SUM_ST_A_7    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_RLE_A_CHECK_SUM_ST_A_6    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_RLE_A_CHECK_SUM_ST_A_5    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_RLE_A_CHECK_SUM_ST_A_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_RLE_A_CHECK_SUM_ST_A_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_RLE_A_CHECK_SUM_ST_A_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_RLE_A_CHECK_SUM_ST_A_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_RLE_A_CHECK_SUM_ST_A_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_RLE_INT_MASK
+// Register Offset : 0x5140
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_RLE_INT_MASK (G2DLITE_APB_AB0_BASE_ADDR + (0x5140<<0))
+#define RLE_INT_MASK_V_ERR_FIELD_OFFSET 3
+#define RLE_INT_MASK_V_ERR_FIELD_SIZE 1
+#define RLE_INT_MASK_U_ERR_FIELD_OFFSET 2
+#define RLE_INT_MASK_U_ERR_FIELD_SIZE 1
+#define RLE_INT_MASK_Y_ERR_FIELD_OFFSET 1
+#define RLE_INT_MASK_Y_ERR_FIELD_SIZE 1
+#define RLE_INT_MASK_A_ERR_FIELD_OFFSET 0
+#define RLE_INT_MASK_A_ERR_FIELD_SIZE 1
+
+#define BIT_AP_APB_G2DLITE_RLE_INT_MASK_V_ERR    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_RLE_INT_MASK_U_ERR    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_RLE_INT_MASK_Y_ERR    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_RLE_INT_MASK_A_ERR    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_RLE_INT_STATUS
+// Register Offset : 0x5144
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_RLE_INT_STATUS (G2DLITE_APB_AB0_BASE_ADDR + (0x5144<<0))
+#define RLE_INT_STATUS_V_ERR_FIELD_OFFSET 3
+#define RLE_INT_STATUS_V_ERR_FIELD_SIZE 1
+#define RLE_INT_STATUS_U_ERR_FIELD_OFFSET 2
+#define RLE_INT_STATUS_U_ERR_FIELD_SIZE 1
+#define RLE_INT_STATUS_Y_ERR_FIELD_OFFSET 1
+#define RLE_INT_STATUS_Y_ERR_FIELD_SIZE 1
+#define RLE_INT_STATUS_A_ERR_FIELD_OFFSET 0
+#define RLE_INT_STATUS_A_ERR_FIELD_SIZE 1
+
+#define BIT_AP_APB_G2DLITE_RLE_INT_STATUS_V_ERR    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_RLE_INT_STATUS_U_ERR    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_RLE_INT_STATUS_Y_ERR    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_RLE_INT_STATUS_A_ERR    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_CLUT_A_CTRL
+// Register Offset : 0x5200
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_CLUT_A_CTRL (G2DLITE_APB_AB0_BASE_ADDR + (0x5200<<0))
+#define CLUT_A_CTRL_HAS_ALPHA_FIELD_OFFSET 18
+#define CLUT_A_CTRL_HAS_ALPHA_FIELD_SIZE 1
+#define CLUT_A_CTRL_A_Y_SEL_FIELD_OFFSET 17
+#define CLUT_A_CTRL_A_Y_SEL_FIELD_SIZE 1
+#define CLUT_A_CTRL_BYPASS_FIELD_OFFSET 16
+#define CLUT_A_CTRL_BYPASS_FIELD_SIZE 1
+#define CLUT_A_CTRL_OFFSET_FIELD_OFFSET 8
+#define CLUT_A_CTRL_OFFSET_FIELD_SIZE 8
+#define CLUT_A_CTRL_DEPTH_FIELD_OFFSET 0
+#define CLUT_A_CTRL_DEPTH_FIELD_SIZE 4
+
+#define BIT_AP_APB_G2DLITE_CLUT_A_CTRL_HAS_ALPHA    (BIT_(18))
+#define BIT_AP_APB_G2DLITE_CLUT_A_CTRL_A_Y_SEL    (BIT_(17))
+#define BIT_AP_APB_G2DLITE_CLUT_A_CTRL_BYPASS    (BIT_(16))
+#define BIT_AP_APB_G2DLITE_CLUT_A_CTRL_OFFSET_7    (BIT_(15))
+#define BIT_AP_APB_G2DLITE_CLUT_A_CTRL_OFFSET_6    (BIT_(14))
+#define BIT_AP_APB_G2DLITE_CLUT_A_CTRL_OFFSET_5    (BIT_(13))
+#define BIT_AP_APB_G2DLITE_CLUT_A_CTRL_OFFSET_4    (BIT_(12))
+#define BIT_AP_APB_G2DLITE_CLUT_A_CTRL_OFFSET_3    (BIT_(11))
+#define BIT_AP_APB_G2DLITE_CLUT_A_CTRL_OFFSET_2    (BIT_(10))
+#define BIT_AP_APB_G2DLITE_CLUT_A_CTRL_OFFSET_1    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_CLUT_A_CTRL_OFFSET_0    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_CLUT_A_CTRL_DEPTH_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_CLUT_A_CTRL_DEPTH_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_CLUT_A_CTRL_DEPTH_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_CLUT_A_CTRL_DEPTH_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_CLUT_Y_CTRL
+// Register Offset : 0x5204
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_CLUT_Y_CTRL (G2DLITE_APB_AB0_BASE_ADDR + (0x5204<<0))
+#define CLUT_Y_CTRL_BYPASS_FIELD_OFFSET 16
+#define CLUT_Y_CTRL_BYPASS_FIELD_SIZE 1
+#define CLUT_Y_CTRL_OFFSET_FIELD_OFFSET 8
+#define CLUT_Y_CTRL_OFFSET_FIELD_SIZE 8
+#define CLUT_Y_CTRL_DEPTH_FIELD_OFFSET 0
+#define CLUT_Y_CTRL_DEPTH_FIELD_SIZE 4
+
+#define BIT_AP_APB_G2DLITE_CLUT_Y_CTRL_BYPASS    (BIT_(16))
+#define BIT_AP_APB_G2DLITE_CLUT_Y_CTRL_OFFSET_7    (BIT_(15))
+#define BIT_AP_APB_G2DLITE_CLUT_Y_CTRL_OFFSET_6    (BIT_(14))
+#define BIT_AP_APB_G2DLITE_CLUT_Y_CTRL_OFFSET_5    (BIT_(13))
+#define BIT_AP_APB_G2DLITE_CLUT_Y_CTRL_OFFSET_4    (BIT_(12))
+#define BIT_AP_APB_G2DLITE_CLUT_Y_CTRL_OFFSET_3    (BIT_(11))
+#define BIT_AP_APB_G2DLITE_CLUT_Y_CTRL_OFFSET_2    (BIT_(10))
+#define BIT_AP_APB_G2DLITE_CLUT_Y_CTRL_OFFSET_1    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_CLUT_Y_CTRL_OFFSET_0    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_CLUT_Y_CTRL_DEPTH_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_CLUT_Y_CTRL_DEPTH_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_CLUT_Y_CTRL_DEPTH_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_CLUT_Y_CTRL_DEPTH_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_CLUT_U_CTRL
+// Register Offset : 0x5208
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_CLUT_U_CTRL (G2DLITE_APB_AB0_BASE_ADDR + (0x5208<<0))
+#define CLUT_U_CTRL_U_Y_SEL_FIELD_OFFSET 17
+#define CLUT_U_CTRL_U_Y_SEL_FIELD_SIZE 1
+#define CLUT_U_CTRL_BYPASS_FIELD_OFFSET 16
+#define CLUT_U_CTRL_BYPASS_FIELD_SIZE 1
+#define CLUT_U_CTRL_OFFSET_FIELD_OFFSET 8
+#define CLUT_U_CTRL_OFFSET_FIELD_SIZE 8
+#define CLUT_U_CTRL_DEPTH_FIELD_OFFSET 0
+#define CLUT_U_CTRL_DEPTH_FIELD_SIZE 4
+
+#define BIT_AP_APB_G2DLITE_CLUT_U_CTRL_U_Y_SEL    (BIT_(17))
+#define BIT_AP_APB_G2DLITE_CLUT_U_CTRL_BYPASS    (BIT_(16))
+#define BIT_AP_APB_G2DLITE_CLUT_U_CTRL_OFFSET_7    (BIT_(15))
+#define BIT_AP_APB_G2DLITE_CLUT_U_CTRL_OFFSET_6    (BIT_(14))
+#define BIT_AP_APB_G2DLITE_CLUT_U_CTRL_OFFSET_5    (BIT_(13))
+#define BIT_AP_APB_G2DLITE_CLUT_U_CTRL_OFFSET_4    (BIT_(12))
+#define BIT_AP_APB_G2DLITE_CLUT_U_CTRL_OFFSET_3    (BIT_(11))
+#define BIT_AP_APB_G2DLITE_CLUT_U_CTRL_OFFSET_2    (BIT_(10))
+#define BIT_AP_APB_G2DLITE_CLUT_U_CTRL_OFFSET_1    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_CLUT_U_CTRL_OFFSET_0    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_CLUT_U_CTRL_DEPTH_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_CLUT_U_CTRL_DEPTH_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_CLUT_U_CTRL_DEPTH_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_CLUT_U_CTRL_DEPTH_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_CLUT_V_CTRL
+// Register Offset : 0x520c
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_CLUT_V_CTRL (G2DLITE_APB_AB0_BASE_ADDR + (0x520c<<0))
+#define CLUT_V_CTRL_V_Y_SEL_FIELD_OFFSET 17
+#define CLUT_V_CTRL_V_Y_SEL_FIELD_SIZE 1
+#define CLUT_V_CTRL_BYPASS_FIELD_OFFSET 16
+#define CLUT_V_CTRL_BYPASS_FIELD_SIZE 1
+#define CLUT_V_CTRL_OFFSET_FIELD_OFFSET 8
+#define CLUT_V_CTRL_OFFSET_FIELD_SIZE 8
+#define CLUT_V_CTRL_DEPTH_FIELD_OFFSET 0
+#define CLUT_V_CTRL_DEPTH_FIELD_SIZE 4
+
+#define BIT_AP_APB_G2DLITE_CLUT_V_CTRL_V_Y_SEL    (BIT_(17))
+#define BIT_AP_APB_G2DLITE_CLUT_V_CTRL_BYPASS    (BIT_(16))
+#define BIT_AP_APB_G2DLITE_CLUT_V_CTRL_OFFSET_7    (BIT_(15))
+#define BIT_AP_APB_G2DLITE_CLUT_V_CTRL_OFFSET_6    (BIT_(14))
+#define BIT_AP_APB_G2DLITE_CLUT_V_CTRL_OFFSET_5    (BIT_(13))
+#define BIT_AP_APB_G2DLITE_CLUT_V_CTRL_OFFSET_4    (BIT_(12))
+#define BIT_AP_APB_G2DLITE_CLUT_V_CTRL_OFFSET_3    (BIT_(11))
+#define BIT_AP_APB_G2DLITE_CLUT_V_CTRL_OFFSET_2    (BIT_(10))
+#define BIT_AP_APB_G2DLITE_CLUT_V_CTRL_OFFSET_1    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_CLUT_V_CTRL_OFFSET_0    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_CLUT_V_CTRL_DEPTH_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_CLUT_V_CTRL_DEPTH_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_CLUT_V_CTRL_DEPTH_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_CLUT_V_CTRL_DEPTH_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_CLUT_READ_CTRL
+// Register Offset : 0x5210
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_CLUT_READ_CTRL (G2DLITE_APB_AB0_BASE_ADDR + (0x5210<<0))
+#define CLUT_READ_CTRL_V_SEL_FIELD_OFFSET 3
+#define CLUT_READ_CTRL_V_SEL_FIELD_SIZE 1
+#define CLUT_READ_CTRL_U_SEL_FIELD_OFFSET 2
+#define CLUT_READ_CTRL_U_SEL_FIELD_SIZE 1
+#define CLUT_READ_CTRL_Y_SEL_FIELD_OFFSET 1
+#define CLUT_READ_CTRL_Y_SEL_FIELD_SIZE 1
+#define CLUT_READ_CTRL_A_SEL_FIELD_OFFSET 0
+#define CLUT_READ_CTRL_A_SEL_FIELD_SIZE 1
+
+#define BIT_AP_APB_G2DLITE_CLUT_READ_CTRL_V_SEL    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_CLUT_READ_CTRL_U_SEL    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_CLUT_READ_CTRL_Y_SEL    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_CLUT_READ_CTRL_A_SEL    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_SP_SDW_CTRL
+// Register Offset : 0x5f00
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_SP_SDW_CTRL (G2DLITE_APB_AB0_BASE_ADDR + (0x5f00<<0))
+#define SP_SDW_CTRL_TRIG_FIELD_OFFSET 0
+#define SP_SDW_CTRL_TRIG_FIELD_SIZE 1
+
+#define BIT_AP_APB_G2DLITE_SP_SDW_CTRL_TRIG    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_MLC_SF_CTRL
+// Register Offset : 0x7000
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_MLC_SF_CTRL (G2DLITE_APB_AB0_BASE_ADDR + (0x7000<<0))
+#define MLC_SF_CTRL_PROT_VAL_FIELD_OFFSET 8
+#define MLC_SF_CTRL_PROT_VAL_FIELD_SIZE 6
+#define MLC_SF_CTRL_VPOS_PROT_EN_FIELD_OFFSET 7
+#define MLC_SF_CTRL_VPOS_PROT_EN_FIELD_SIZE 1
+#define MLC_SF_CTRL_SLOWDOWN_EN_FIELD_OFFSET 6
+#define MLC_SF_CTRL_SLOWDOWN_EN_FIELD_SIZE 1
+#define MLC_SF_CTRL_AFLU_PSEL_FIELD_OFFSET 5
+#define MLC_SF_CTRL_AFLU_PSEL_FIELD_SIZE 1
+#define MLC_SF_CTRL_AFLU_EN_FIELD_OFFSET 4
+#define MLC_SF_CTRL_AFLU_EN_FIELD_SIZE 1
+#define MLC_SF_CTRL_CKEY_EN_FIELD_OFFSET 3
+#define MLC_SF_CTRL_CKEY_EN_FIELD_SIZE 1
+#define MLC_SF_CTRL_G_ALPHA_EN_FIELD_OFFSET 2
+#define MLC_SF_CTRL_G_ALPHA_EN_FIELD_SIZE 1
+#define MLC_SF_CTRL_CROP_EN_FIELD_OFFSET 1
+#define MLC_SF_CTRL_CROP_EN_FIELD_SIZE 1
+#define MLC_SF_CTRL_SF_EN_FIELD_OFFSET 0
+#define MLC_SF_CTRL_SF_EN_FIELD_SIZE 1
+
+#define BIT_AP_APB_G2DLITE_MLC_SF_CTRL_PROT_VAL_5    (BIT_(13))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CTRL_PROT_VAL_4    (BIT_(12))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CTRL_PROT_VAL_3    (BIT_(11))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CTRL_PROT_VAL_2    (BIT_(10))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CTRL_PROT_VAL_1    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CTRL_PROT_VAL_0    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CTRL_VPOS_PROT_EN    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CTRL_SLOWDOWN_EN    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CTRL_AFLU_PSEL    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CTRL_AFLU_EN    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CTRL_CKEY_EN    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CTRL_G_ALPHA_EN    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CTRL_CROP_EN    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CTRL_SF_EN    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_MLC_SF_H_SPOS
+// Register Offset : 0x7004
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_MLC_SF_H_SPOS (G2DLITE_APB_AB0_BASE_ADDR + (0x7004<<0))
+#define MLC_SF_H_SPOS_H_FIELD_OFFSET 0
+#define MLC_SF_H_SPOS_H_FIELD_SIZE 17
+
+#define BIT_AP_APB_G2DLITE_MLC_SF_H_SPOS_H_16    (BIT_(16))
+#define BIT_AP_APB_G2DLITE_MLC_SF_H_SPOS_H_15    (BIT_(15))
+#define BIT_AP_APB_G2DLITE_MLC_SF_H_SPOS_H_14    (BIT_(14))
+#define BIT_AP_APB_G2DLITE_MLC_SF_H_SPOS_H_13    (BIT_(13))
+#define BIT_AP_APB_G2DLITE_MLC_SF_H_SPOS_H_12    (BIT_(12))
+#define BIT_AP_APB_G2DLITE_MLC_SF_H_SPOS_H_11    (BIT_(11))
+#define BIT_AP_APB_G2DLITE_MLC_SF_H_SPOS_H_10    (BIT_(10))
+#define BIT_AP_APB_G2DLITE_MLC_SF_H_SPOS_H_9    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_MLC_SF_H_SPOS_H_8    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_MLC_SF_H_SPOS_H_7    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_MLC_SF_H_SPOS_H_6    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_MLC_SF_H_SPOS_H_5    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_MLC_SF_H_SPOS_H_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_MLC_SF_H_SPOS_H_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_MLC_SF_H_SPOS_H_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_MLC_SF_H_SPOS_H_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_MLC_SF_H_SPOS_H_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_MLC_SF_V_SPOS
+// Register Offset : 0x7008
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_MLC_SF_V_SPOS (G2DLITE_APB_AB0_BASE_ADDR + (0x7008<<0))
+#define MLC_SF_V_SPOS_V_FIELD_OFFSET 0
+#define MLC_SF_V_SPOS_V_FIELD_SIZE 17
+
+#define BIT_AP_APB_G2DLITE_MLC_SF_V_SPOS_V_16    (BIT_(16))
+#define BIT_AP_APB_G2DLITE_MLC_SF_V_SPOS_V_15    (BIT_(15))
+#define BIT_AP_APB_G2DLITE_MLC_SF_V_SPOS_V_14    (BIT_(14))
+#define BIT_AP_APB_G2DLITE_MLC_SF_V_SPOS_V_13    (BIT_(13))
+#define BIT_AP_APB_G2DLITE_MLC_SF_V_SPOS_V_12    (BIT_(12))
+#define BIT_AP_APB_G2DLITE_MLC_SF_V_SPOS_V_11    (BIT_(11))
+#define BIT_AP_APB_G2DLITE_MLC_SF_V_SPOS_V_10    (BIT_(10))
+#define BIT_AP_APB_G2DLITE_MLC_SF_V_SPOS_V_9    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_MLC_SF_V_SPOS_V_8    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_MLC_SF_V_SPOS_V_7    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_MLC_SF_V_SPOS_V_6    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_MLC_SF_V_SPOS_V_5    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_MLC_SF_V_SPOS_V_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_MLC_SF_V_SPOS_V_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_MLC_SF_V_SPOS_V_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_MLC_SF_V_SPOS_V_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_MLC_SF_V_SPOS_V_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_MLC_SF_SIZE
+// Register Offset : 0x700c
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_MLC_SF_SIZE (G2DLITE_APB_AB0_BASE_ADDR + (0x700c<<0))
+#define MLC_SF_SIZE_V_FIELD_OFFSET 16
+#define MLC_SF_SIZE_V_FIELD_SIZE 16
+#define MLC_SF_SIZE_H_FIELD_OFFSET 0
+#define MLC_SF_SIZE_H_FIELD_SIZE 16
+
+#define BIT_AP_APB_G2DLITE_MLC_SF_SIZE_V_15    (BIT_(31))
+#define BIT_AP_APB_G2DLITE_MLC_SF_SIZE_V_14    (BIT_(30))
+#define BIT_AP_APB_G2DLITE_MLC_SF_SIZE_V_13    (BIT_(29))
+#define BIT_AP_APB_G2DLITE_MLC_SF_SIZE_V_12    (BIT_(28))
+#define BIT_AP_APB_G2DLITE_MLC_SF_SIZE_V_11    (BIT_(27))
+#define BIT_AP_APB_G2DLITE_MLC_SF_SIZE_V_10    (BIT_(26))
+#define BIT_AP_APB_G2DLITE_MLC_SF_SIZE_V_9    (BIT_(25))
+#define BIT_AP_APB_G2DLITE_MLC_SF_SIZE_V_8    (BIT_(24))
+#define BIT_AP_APB_G2DLITE_MLC_SF_SIZE_V_7    (BIT_(23))
+#define BIT_AP_APB_G2DLITE_MLC_SF_SIZE_V_6    (BIT_(22))
+#define BIT_AP_APB_G2DLITE_MLC_SF_SIZE_V_5    (BIT_(21))
+#define BIT_AP_APB_G2DLITE_MLC_SF_SIZE_V_4    (BIT_(20))
+#define BIT_AP_APB_G2DLITE_MLC_SF_SIZE_V_3    (BIT_(19))
+#define BIT_AP_APB_G2DLITE_MLC_SF_SIZE_V_2    (BIT_(18))
+#define BIT_AP_APB_G2DLITE_MLC_SF_SIZE_V_1    (BIT_(17))
+#define BIT_AP_APB_G2DLITE_MLC_SF_SIZE_V_0    (BIT_(16))
+#define BIT_AP_APB_G2DLITE_MLC_SF_SIZE_H_15    (BIT_(15))
+#define BIT_AP_APB_G2DLITE_MLC_SF_SIZE_H_14    (BIT_(14))
+#define BIT_AP_APB_G2DLITE_MLC_SF_SIZE_H_13    (BIT_(13))
+#define BIT_AP_APB_G2DLITE_MLC_SF_SIZE_H_12    (BIT_(12))
+#define BIT_AP_APB_G2DLITE_MLC_SF_SIZE_H_11    (BIT_(11))
+#define BIT_AP_APB_G2DLITE_MLC_SF_SIZE_H_10    (BIT_(10))
+#define BIT_AP_APB_G2DLITE_MLC_SF_SIZE_H_9    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_MLC_SF_SIZE_H_8    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_MLC_SF_SIZE_H_7    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_MLC_SF_SIZE_H_6    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_MLC_SF_SIZE_H_5    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_MLC_SF_SIZE_H_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_MLC_SF_SIZE_H_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_MLC_SF_SIZE_H_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_MLC_SF_SIZE_H_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_MLC_SF_SIZE_H_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_MLC_SF_CROP_H_POS
+// Register Offset : 0x7010
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_MLC_SF_CROP_H_POS (G2DLITE_APB_AB0_BASE_ADDR + (0x7010<<0))
+#define MLC_SF_CROP_H_POS_END_FIELD_OFFSET 16
+#define MLC_SF_CROP_H_POS_END_FIELD_SIZE 16
+#define MLC_SF_CROP_H_POS_START_FIELD_OFFSET 0
+#define MLC_SF_CROP_H_POS_START_FIELD_SIZE 16
+
+#define BIT_AP_APB_G2DLITE_MLC_SF_CROP_H_POS_END_15    (BIT_(31))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CROP_H_POS_END_14    (BIT_(30))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CROP_H_POS_END_13    (BIT_(29))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CROP_H_POS_END_12    (BIT_(28))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CROP_H_POS_END_11    (BIT_(27))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CROP_H_POS_END_10    (BIT_(26))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CROP_H_POS_END_9    (BIT_(25))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CROP_H_POS_END_8    (BIT_(24))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CROP_H_POS_END_7    (BIT_(23))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CROP_H_POS_END_6    (BIT_(22))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CROP_H_POS_END_5    (BIT_(21))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CROP_H_POS_END_4    (BIT_(20))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CROP_H_POS_END_3    (BIT_(19))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CROP_H_POS_END_2    (BIT_(18))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CROP_H_POS_END_1    (BIT_(17))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CROP_H_POS_END_0    (BIT_(16))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CROP_H_POS_START_15    (BIT_(15))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CROP_H_POS_START_14    (BIT_(14))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CROP_H_POS_START_13    (BIT_(13))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CROP_H_POS_START_12    (BIT_(12))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CROP_H_POS_START_11    (BIT_(11))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CROP_H_POS_START_10    (BIT_(10))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CROP_H_POS_START_9    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CROP_H_POS_START_8    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CROP_H_POS_START_7    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CROP_H_POS_START_6    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CROP_H_POS_START_5    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CROP_H_POS_START_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CROP_H_POS_START_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CROP_H_POS_START_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CROP_H_POS_START_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CROP_H_POS_START_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_MLC_SF_CROP_V_POS
+// Register Offset : 0x7014
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_MLC_SF_CROP_V_POS (G2DLITE_APB_AB0_BASE_ADDR + (0x7014<<0))
+#define MLC_SF_CROP_V_POS_END_FIELD_OFFSET 16
+#define MLC_SF_CROP_V_POS_END_FIELD_SIZE 16
+#define MLC_SF_CROP_V_POS_START_FIELD_OFFSET 0
+#define MLC_SF_CROP_V_POS_START_FIELD_SIZE 16
+
+#define BIT_AP_APB_G2DLITE_MLC_SF_CROP_V_POS_END_15    (BIT_(31))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CROP_V_POS_END_14    (BIT_(30))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CROP_V_POS_END_13    (BIT_(29))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CROP_V_POS_END_12    (BIT_(28))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CROP_V_POS_END_11    (BIT_(27))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CROP_V_POS_END_10    (BIT_(26))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CROP_V_POS_END_9    (BIT_(25))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CROP_V_POS_END_8    (BIT_(24))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CROP_V_POS_END_7    (BIT_(23))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CROP_V_POS_END_6    (BIT_(22))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CROP_V_POS_END_5    (BIT_(21))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CROP_V_POS_END_4    (BIT_(20))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CROP_V_POS_END_3    (BIT_(19))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CROP_V_POS_END_2    (BIT_(18))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CROP_V_POS_END_1    (BIT_(17))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CROP_V_POS_END_0    (BIT_(16))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CROP_V_POS_START_15    (BIT_(15))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CROP_V_POS_START_14    (BIT_(14))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CROP_V_POS_START_13    (BIT_(13))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CROP_V_POS_START_12    (BIT_(12))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CROP_V_POS_START_11    (BIT_(11))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CROP_V_POS_START_10    (BIT_(10))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CROP_V_POS_START_9    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CROP_V_POS_START_8    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CROP_V_POS_START_7    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CROP_V_POS_START_6    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CROP_V_POS_START_5    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CROP_V_POS_START_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CROP_V_POS_START_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CROP_V_POS_START_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CROP_V_POS_START_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CROP_V_POS_START_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_MLC_SF_G_ALPHA
+// Register Offset : 0x7018
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_MLC_SF_G_ALPHA (G2DLITE_APB_AB0_BASE_ADDR + (0x7018<<0))
+#define MLC_SF_G_ALPHA_A_FIELD_OFFSET 0
+#define MLC_SF_G_ALPHA_A_FIELD_SIZE 8
+
+#define BIT_AP_APB_G2DLITE_MLC_SF_G_ALPHA_A_7    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_MLC_SF_G_ALPHA_A_6    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_MLC_SF_G_ALPHA_A_5    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_MLC_SF_G_ALPHA_A_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_MLC_SF_G_ALPHA_A_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_MLC_SF_G_ALPHA_A_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_MLC_SF_G_ALPHA_A_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_MLC_SF_G_ALPHA_A_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_MLC_SF_CKEY_ALPHA
+// Register Offset : 0x701c
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_MLC_SF_CKEY_ALPHA (G2DLITE_APB_AB0_BASE_ADDR + (0x701c<<0))
+#define MLC_SF_CKEY_ALPHA_A_FIELD_OFFSET 0
+#define MLC_SF_CKEY_ALPHA_A_FIELD_SIZE 8
+
+#define BIT_AP_APB_G2DLITE_MLC_SF_CKEY_ALPHA_A_7    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CKEY_ALPHA_A_6    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CKEY_ALPHA_A_5    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CKEY_ALPHA_A_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CKEY_ALPHA_A_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CKEY_ALPHA_A_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CKEY_ALPHA_A_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CKEY_ALPHA_A_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_MLC_SF_CKEY_R_LV
+// Register Offset : 0x7020
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_MLC_SF_CKEY_R_LV (G2DLITE_APB_AB0_BASE_ADDR + (0x7020<<0))
+#define MLC_SF_CKEY_R_LV_UP_FIELD_OFFSET 16
+#define MLC_SF_CKEY_R_LV_UP_FIELD_SIZE 10
+#define MLC_SF_CKEY_R_LV_DN_FIELD_OFFSET 0
+#define MLC_SF_CKEY_R_LV_DN_FIELD_SIZE 10
+
+#define BIT_AP_APB_G2DLITE_MLC_SF_CKEY_R_LV_UP_9    (BIT_(25))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CKEY_R_LV_UP_8    (BIT_(24))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CKEY_R_LV_UP_7    (BIT_(23))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CKEY_R_LV_UP_6    (BIT_(22))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CKEY_R_LV_UP_5    (BIT_(21))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CKEY_R_LV_UP_4    (BIT_(20))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CKEY_R_LV_UP_3    (BIT_(19))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CKEY_R_LV_UP_2    (BIT_(18))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CKEY_R_LV_UP_1    (BIT_(17))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CKEY_R_LV_UP_0    (BIT_(16))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CKEY_R_LV_DN_9    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CKEY_R_LV_DN_8    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CKEY_R_LV_DN_7    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CKEY_R_LV_DN_6    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CKEY_R_LV_DN_5    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CKEY_R_LV_DN_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CKEY_R_LV_DN_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CKEY_R_LV_DN_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CKEY_R_LV_DN_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CKEY_R_LV_DN_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_MLC_SF_CKEY_G_LV
+// Register Offset : 0x7024
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_MLC_SF_CKEY_G_LV (G2DLITE_APB_AB0_BASE_ADDR + (0x7024<<0))
+#define MLC_SF_CKEY_G_LV_UP_FIELD_OFFSET 16
+#define MLC_SF_CKEY_G_LV_UP_FIELD_SIZE 10
+#define MLC_SF_CKEY_G_LV_DN_FIELD_OFFSET 0
+#define MLC_SF_CKEY_G_LV_DN_FIELD_SIZE 10
+
+#define BIT_AP_APB_G2DLITE_MLC_SF_CKEY_G_LV_UP_9    (BIT_(25))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CKEY_G_LV_UP_8    (BIT_(24))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CKEY_G_LV_UP_7    (BIT_(23))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CKEY_G_LV_UP_6    (BIT_(22))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CKEY_G_LV_UP_5    (BIT_(21))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CKEY_G_LV_UP_4    (BIT_(20))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CKEY_G_LV_UP_3    (BIT_(19))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CKEY_G_LV_UP_2    (BIT_(18))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CKEY_G_LV_UP_1    (BIT_(17))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CKEY_G_LV_UP_0    (BIT_(16))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CKEY_G_LV_DN_9    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CKEY_G_LV_DN_8    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CKEY_G_LV_DN_7    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CKEY_G_LV_DN_6    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CKEY_G_LV_DN_5    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CKEY_G_LV_DN_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CKEY_G_LV_DN_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CKEY_G_LV_DN_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CKEY_G_LV_DN_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CKEY_G_LV_DN_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_MLC_SF_CKEY_B_LV
+// Register Offset : 0x7028
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_MLC_SF_CKEY_B_LV (G2DLITE_APB_AB0_BASE_ADDR + (0x7028<<0))
+#define MLC_SF_CKEY_B_LV_UP_FIELD_OFFSET 16
+#define MLC_SF_CKEY_B_LV_UP_FIELD_SIZE 10
+#define MLC_SF_CKEY_B_LV_DN_FIELD_OFFSET 0
+#define MLC_SF_CKEY_B_LV_DN_FIELD_SIZE 10
+
+#define BIT_AP_APB_G2DLITE_MLC_SF_CKEY_B_LV_UP_9    (BIT_(25))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CKEY_B_LV_UP_8    (BIT_(24))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CKEY_B_LV_UP_7    (BIT_(23))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CKEY_B_LV_UP_6    (BIT_(22))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CKEY_B_LV_UP_5    (BIT_(21))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CKEY_B_LV_UP_4    (BIT_(20))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CKEY_B_LV_UP_3    (BIT_(19))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CKEY_B_LV_UP_2    (BIT_(18))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CKEY_B_LV_UP_1    (BIT_(17))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CKEY_B_LV_UP_0    (BIT_(16))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CKEY_B_LV_DN_9    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CKEY_B_LV_DN_8    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CKEY_B_LV_DN_7    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CKEY_B_LV_DN_6    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CKEY_B_LV_DN_5    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CKEY_B_LV_DN_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CKEY_B_LV_DN_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CKEY_B_LV_DN_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CKEY_B_LV_DN_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_MLC_SF_CKEY_B_LV_DN_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_MLC_SF_AFLU_TIME
+// Register Offset : 0x702c
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_MLC_SF_AFLU_TIME (G2DLITE_APB_AB0_BASE_ADDR + (0x702c<<0))
+#define MLC_SF_AFLU_TIME_TIMER_FIELD_OFFSET 0
+#define MLC_SF_AFLU_TIME_TIMER_FIELD_SIZE 32
+
+#define BIT_AP_APB_G2DLITE_MLC_SF_AFLU_TIME_TIMER_31    (BIT_(31))
+#define BIT_AP_APB_G2DLITE_MLC_SF_AFLU_TIME_TIMER_30    (BIT_(30))
+#define BIT_AP_APB_G2DLITE_MLC_SF_AFLU_TIME_TIMER_29    (BIT_(29))
+#define BIT_AP_APB_G2DLITE_MLC_SF_AFLU_TIME_TIMER_28    (BIT_(28))
+#define BIT_AP_APB_G2DLITE_MLC_SF_AFLU_TIME_TIMER_27    (BIT_(27))
+#define BIT_AP_APB_G2DLITE_MLC_SF_AFLU_TIME_TIMER_26    (BIT_(26))
+#define BIT_AP_APB_G2DLITE_MLC_SF_AFLU_TIME_TIMER_25    (BIT_(25))
+#define BIT_AP_APB_G2DLITE_MLC_SF_AFLU_TIME_TIMER_24    (BIT_(24))
+#define BIT_AP_APB_G2DLITE_MLC_SF_AFLU_TIME_TIMER_23    (BIT_(23))
+#define BIT_AP_APB_G2DLITE_MLC_SF_AFLU_TIME_TIMER_22    (BIT_(22))
+#define BIT_AP_APB_G2DLITE_MLC_SF_AFLU_TIME_TIMER_21    (BIT_(21))
+#define BIT_AP_APB_G2DLITE_MLC_SF_AFLU_TIME_TIMER_20    (BIT_(20))
+#define BIT_AP_APB_G2DLITE_MLC_SF_AFLU_TIME_TIMER_19    (BIT_(19))
+#define BIT_AP_APB_G2DLITE_MLC_SF_AFLU_TIME_TIMER_18    (BIT_(18))
+#define BIT_AP_APB_G2DLITE_MLC_SF_AFLU_TIME_TIMER_17    (BIT_(17))
+#define BIT_AP_APB_G2DLITE_MLC_SF_AFLU_TIME_TIMER_16    (BIT_(16))
+#define BIT_AP_APB_G2DLITE_MLC_SF_AFLU_TIME_TIMER_15    (BIT_(15))
+#define BIT_AP_APB_G2DLITE_MLC_SF_AFLU_TIME_TIMER_14    (BIT_(14))
+#define BIT_AP_APB_G2DLITE_MLC_SF_AFLU_TIME_TIMER_13    (BIT_(13))
+#define BIT_AP_APB_G2DLITE_MLC_SF_AFLU_TIME_TIMER_12    (BIT_(12))
+#define BIT_AP_APB_G2DLITE_MLC_SF_AFLU_TIME_TIMER_11    (BIT_(11))
+#define BIT_AP_APB_G2DLITE_MLC_SF_AFLU_TIME_TIMER_10    (BIT_(10))
+#define BIT_AP_APB_G2DLITE_MLC_SF_AFLU_TIME_TIMER_9    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_MLC_SF_AFLU_TIME_TIMER_8    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_MLC_SF_AFLU_TIME_TIMER_7    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_MLC_SF_AFLU_TIME_TIMER_6    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_MLC_SF_AFLU_TIME_TIMER_5    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_MLC_SF_AFLU_TIME_TIMER_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_MLC_SF_AFLU_TIME_TIMER_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_MLC_SF_AFLU_TIME_TIMER_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_MLC_SF_AFLU_TIME_TIMER_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_MLC_SF_AFLU_TIME_TIMER_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_MLC_PATH_CTRL
+// Register Offset : 0x7200
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_MLC_PATH_CTRL (G2DLITE_APB_AB0_BASE_ADDR + (0x7200<<0))
+#define MLC_PATH_CTRL_PMA_EN_FIELD_OFFSET 29
+#define MLC_PATH_CTRL_PMA_EN_FIELD_SIZE 1
+#define MLC_PATH_CTRL_PD_OUT_SEL_FIELD_OFFSET 28
+#define MLC_PATH_CTRL_PD_OUT_SEL_FIELD_SIZE 1
+#define MLC_PATH_CTRL_PD_MODE_FIELD_OFFSET 20
+#define MLC_PATH_CTRL_PD_MODE_FIELD_SIZE 5
+#define MLC_PATH_CTRL_ALPHA_BLD_IDX_FIELD_OFFSET 16
+#define MLC_PATH_CTRL_ALPHA_BLD_IDX_FIELD_SIZE 4
+#define MLC_PATH_CTRL_PD_OUT_IDX_FIELD_OFFSET 12
+#define MLC_PATH_CTRL_PD_OUT_IDX_FIELD_SIZE 3
+#define MLC_PATH_CTRL_PD_DES_IDX_FIELD_OFFSET 8
+#define MLC_PATH_CTRL_PD_DES_IDX_FIELD_SIZE 3
+#define MLC_PATH_CTRL_PD_SRC_IDX_FIELD_OFFSET 4
+#define MLC_PATH_CTRL_PD_SRC_IDX_FIELD_SIZE 3
+#define MLC_PATH_CTRL_LAYER_OUT_IDX_FIELD_OFFSET 0
+#define MLC_PATH_CTRL_LAYER_OUT_IDX_FIELD_SIZE 4
+
+#define BIT_AP_APB_G2DLITE_MLC_PATH_CTRL_PMA_EN    (BIT_(29))
+#define BIT_AP_APB_G2DLITE_MLC_PATH_CTRL_PD_OUT_SEL    (BIT_(28))
+#define BIT_AP_APB_G2DLITE_MLC_PATH_CTRL_PD_MODE_4    (BIT_(24))
+#define BIT_AP_APB_G2DLITE_MLC_PATH_CTRL_PD_MODE_3    (BIT_(23))
+#define BIT_AP_APB_G2DLITE_MLC_PATH_CTRL_PD_MODE_2    (BIT_(22))
+#define BIT_AP_APB_G2DLITE_MLC_PATH_CTRL_PD_MODE_1    (BIT_(21))
+#define BIT_AP_APB_G2DLITE_MLC_PATH_CTRL_PD_MODE_0    (BIT_(20))
+#define BIT_AP_APB_G2DLITE_MLC_PATH_CTRL_ALPHA_BLD_IDX_3    (BIT_(19))
+#define BIT_AP_APB_G2DLITE_MLC_PATH_CTRL_ALPHA_BLD_IDX_2    (BIT_(18))
+#define BIT_AP_APB_G2DLITE_MLC_PATH_CTRL_ALPHA_BLD_IDX_1    (BIT_(17))
+#define BIT_AP_APB_G2DLITE_MLC_PATH_CTRL_ALPHA_BLD_IDX_0    (BIT_(16))
+#define BIT_AP_APB_G2DLITE_MLC_PATH_CTRL_PD_OUT_IDX_2    (BIT_(14))
+#define BIT_AP_APB_G2DLITE_MLC_PATH_CTRL_PD_OUT_IDX_1    (BIT_(13))
+#define BIT_AP_APB_G2DLITE_MLC_PATH_CTRL_PD_OUT_IDX_0    (BIT_(12))
+#define BIT_AP_APB_G2DLITE_MLC_PATH_CTRL_PD_DES_IDX_2    (BIT_(10))
+#define BIT_AP_APB_G2DLITE_MLC_PATH_CTRL_PD_DES_IDX_1    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_MLC_PATH_CTRL_PD_DES_IDX_0    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_MLC_PATH_CTRL_PD_SRC_IDX_2    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_MLC_PATH_CTRL_PD_SRC_IDX_1    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_MLC_PATH_CTRL_PD_SRC_IDX_0    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_MLC_PATH_CTRL_LAYER_OUT_IDX_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_MLC_PATH_CTRL_LAYER_OUT_IDX_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_MLC_PATH_CTRL_LAYER_OUT_IDX_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_MLC_PATH_CTRL_LAYER_OUT_IDX_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_MLC_BG_CTRL
+// Register Offset : 0x7220
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_MLC_BG_CTRL (G2DLITE_APB_AB0_BASE_ADDR + (0x7220<<0))
+#define MLC_BG_CTRL_BG_A_FIELD_OFFSET 8
+#define MLC_BG_CTRL_BG_A_FIELD_SIZE 8
+#define MLC_BG_CTRL_AFLU_EN_FIELD_OFFSET 7
+#define MLC_BG_CTRL_AFLU_EN_FIELD_SIZE 1
+#define MLC_BG_CTRL_FSTART_SEL_FIELD_OFFSET 4
+#define MLC_BG_CTRL_FSTART_SEL_FIELD_SIZE 3
+#define MLC_BG_CTRL_BG_A_SEL_FIELD_OFFSET 2
+#define MLC_BG_CTRL_BG_A_SEL_FIELD_SIZE 1
+#define MLC_BG_CTRL_BG_EN_FIELD_OFFSET 1
+#define MLC_BG_CTRL_BG_EN_FIELD_SIZE 1
+#define MLC_BG_CTRL_ALPHA_BLD_BYPS_FIELD_OFFSET 0
+#define MLC_BG_CTRL_ALPHA_BLD_BYPS_FIELD_SIZE 1
+
+#define BIT_AP_APB_G2DLITE_MLC_BG_CTRL_BG_A_7    (BIT_(15))
+#define BIT_AP_APB_G2DLITE_MLC_BG_CTRL_BG_A_6    (BIT_(14))
+#define BIT_AP_APB_G2DLITE_MLC_BG_CTRL_BG_A_5    (BIT_(13))
+#define BIT_AP_APB_G2DLITE_MLC_BG_CTRL_BG_A_4    (BIT_(12))
+#define BIT_AP_APB_G2DLITE_MLC_BG_CTRL_BG_A_3    (BIT_(11))
+#define BIT_AP_APB_G2DLITE_MLC_BG_CTRL_BG_A_2    (BIT_(10))
+#define BIT_AP_APB_G2DLITE_MLC_BG_CTRL_BG_A_1    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_MLC_BG_CTRL_BG_A_0    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_MLC_BG_CTRL_AFLU_EN    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_MLC_BG_CTRL_FSTART_SEL_2    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_MLC_BG_CTRL_FSTART_SEL_1    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_MLC_BG_CTRL_FSTART_SEL_0    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_MLC_BG_CTRL_BG_A_SEL    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_MLC_BG_CTRL_BG_EN    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_MLC_BG_CTRL_ALPHA_BLD_BYPS    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_MLC_BG_COLOR
+// Register Offset : 0x7224
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_MLC_BG_COLOR (G2DLITE_APB_AB0_BASE_ADDR + (0x7224<<0))
+#define MLC_BG_COLOR_R_FIELD_OFFSET 20
+#define MLC_BG_COLOR_R_FIELD_SIZE 10
+#define MLC_BG_COLOR_G_FIELD_OFFSET 10
+#define MLC_BG_COLOR_G_FIELD_SIZE 10
+#define MLC_BG_COLOR_B_FIELD_OFFSET 0
+#define MLC_BG_COLOR_B_FIELD_SIZE 10
+
+#define BIT_AP_APB_G2DLITE_MLC_BG_COLOR_R_9    (BIT_(29))
+#define BIT_AP_APB_G2DLITE_MLC_BG_COLOR_R_8    (BIT_(28))
+#define BIT_AP_APB_G2DLITE_MLC_BG_COLOR_R_7    (BIT_(27))
+#define BIT_AP_APB_G2DLITE_MLC_BG_COLOR_R_6    (BIT_(26))
+#define BIT_AP_APB_G2DLITE_MLC_BG_COLOR_R_5    (BIT_(25))
+#define BIT_AP_APB_G2DLITE_MLC_BG_COLOR_R_4    (BIT_(24))
+#define BIT_AP_APB_G2DLITE_MLC_BG_COLOR_R_3    (BIT_(23))
+#define BIT_AP_APB_G2DLITE_MLC_BG_COLOR_R_2    (BIT_(22))
+#define BIT_AP_APB_G2DLITE_MLC_BG_COLOR_R_1    (BIT_(21))
+#define BIT_AP_APB_G2DLITE_MLC_BG_COLOR_R_0    (BIT_(20))
+#define BIT_AP_APB_G2DLITE_MLC_BG_COLOR_G_9    (BIT_(19))
+#define BIT_AP_APB_G2DLITE_MLC_BG_COLOR_G_8    (BIT_(18))
+#define BIT_AP_APB_G2DLITE_MLC_BG_COLOR_G_7    (BIT_(17))
+#define BIT_AP_APB_G2DLITE_MLC_BG_COLOR_G_6    (BIT_(16))
+#define BIT_AP_APB_G2DLITE_MLC_BG_COLOR_G_5    (BIT_(15))
+#define BIT_AP_APB_G2DLITE_MLC_BG_COLOR_G_4    (BIT_(14))
+#define BIT_AP_APB_G2DLITE_MLC_BG_COLOR_G_3    (BIT_(13))
+#define BIT_AP_APB_G2DLITE_MLC_BG_COLOR_G_2    (BIT_(12))
+#define BIT_AP_APB_G2DLITE_MLC_BG_COLOR_G_1    (BIT_(11))
+#define BIT_AP_APB_G2DLITE_MLC_BG_COLOR_G_0    (BIT_(10))
+#define BIT_AP_APB_G2DLITE_MLC_BG_COLOR_B_9    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_MLC_BG_COLOR_B_8    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_MLC_BG_COLOR_B_7    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_MLC_BG_COLOR_B_6    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_MLC_BG_COLOR_B_5    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_MLC_BG_COLOR_B_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_MLC_BG_COLOR_B_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_MLC_BG_COLOR_B_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_MLC_BG_COLOR_B_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_MLC_BG_COLOR_B_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_MLC_BG_AFLU_TIME
+// Register Offset : 0x7228
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_MLC_BG_AFLU_TIME (G2DLITE_APB_AB0_BASE_ADDR + (0x7228<<0))
+#define MLC_BG_AFLU_TIME_TIMER_FIELD_OFFSET 0
+#define MLC_BG_AFLU_TIME_TIMER_FIELD_SIZE 32
+
+#define BIT_AP_APB_G2DLITE_MLC_BG_AFLU_TIME_TIMER_31    (BIT_(31))
+#define BIT_AP_APB_G2DLITE_MLC_BG_AFLU_TIME_TIMER_30    (BIT_(30))
+#define BIT_AP_APB_G2DLITE_MLC_BG_AFLU_TIME_TIMER_29    (BIT_(29))
+#define BIT_AP_APB_G2DLITE_MLC_BG_AFLU_TIME_TIMER_28    (BIT_(28))
+#define BIT_AP_APB_G2DLITE_MLC_BG_AFLU_TIME_TIMER_27    (BIT_(27))
+#define BIT_AP_APB_G2DLITE_MLC_BG_AFLU_TIME_TIMER_26    (BIT_(26))
+#define BIT_AP_APB_G2DLITE_MLC_BG_AFLU_TIME_TIMER_25    (BIT_(25))
+#define BIT_AP_APB_G2DLITE_MLC_BG_AFLU_TIME_TIMER_24    (BIT_(24))
+#define BIT_AP_APB_G2DLITE_MLC_BG_AFLU_TIME_TIMER_23    (BIT_(23))
+#define BIT_AP_APB_G2DLITE_MLC_BG_AFLU_TIME_TIMER_22    (BIT_(22))
+#define BIT_AP_APB_G2DLITE_MLC_BG_AFLU_TIME_TIMER_21    (BIT_(21))
+#define BIT_AP_APB_G2DLITE_MLC_BG_AFLU_TIME_TIMER_20    (BIT_(20))
+#define BIT_AP_APB_G2DLITE_MLC_BG_AFLU_TIME_TIMER_19    (BIT_(19))
+#define BIT_AP_APB_G2DLITE_MLC_BG_AFLU_TIME_TIMER_18    (BIT_(18))
+#define BIT_AP_APB_G2DLITE_MLC_BG_AFLU_TIME_TIMER_17    (BIT_(17))
+#define BIT_AP_APB_G2DLITE_MLC_BG_AFLU_TIME_TIMER_16    (BIT_(16))
+#define BIT_AP_APB_G2DLITE_MLC_BG_AFLU_TIME_TIMER_15    (BIT_(15))
+#define BIT_AP_APB_G2DLITE_MLC_BG_AFLU_TIME_TIMER_14    (BIT_(14))
+#define BIT_AP_APB_G2DLITE_MLC_BG_AFLU_TIME_TIMER_13    (BIT_(13))
+#define BIT_AP_APB_G2DLITE_MLC_BG_AFLU_TIME_TIMER_12    (BIT_(12))
+#define BIT_AP_APB_G2DLITE_MLC_BG_AFLU_TIME_TIMER_11    (BIT_(11))
+#define BIT_AP_APB_G2DLITE_MLC_BG_AFLU_TIME_TIMER_10    (BIT_(10))
+#define BIT_AP_APB_G2DLITE_MLC_BG_AFLU_TIME_TIMER_9    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_MLC_BG_AFLU_TIME_TIMER_8    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_MLC_BG_AFLU_TIME_TIMER_7    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_MLC_BG_AFLU_TIME_TIMER_6    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_MLC_BG_AFLU_TIME_TIMER_5    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_MLC_BG_AFLU_TIME_TIMER_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_MLC_BG_AFLU_TIME_TIMER_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_MLC_BG_AFLU_TIME_TIMER_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_MLC_BG_AFLU_TIME_TIMER_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_MLC_BG_AFLU_TIME_TIMER_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_MLC_CANVAS_COLOR
+// Register Offset : 0x7230
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_MLC_CANVAS_COLOR (G2DLITE_APB_AB0_BASE_ADDR + (0x7230<<0))
+#define MLC_CANVAS_COLOR_R_FIELD_OFFSET 20
+#define MLC_CANVAS_COLOR_R_FIELD_SIZE 10
+#define MLC_CANVAS_COLOR_G_FIELD_OFFSET 10
+#define MLC_CANVAS_COLOR_G_FIELD_SIZE 10
+#define MLC_CANVAS_COLOR_B_FIELD_OFFSET 0
+#define MLC_CANVAS_COLOR_B_FIELD_SIZE 10
+
+#define BIT_AP_APB_G2DLITE_MLC_CANVAS_COLOR_R_9    (BIT_(29))
+#define BIT_AP_APB_G2DLITE_MLC_CANVAS_COLOR_R_8    (BIT_(28))
+#define BIT_AP_APB_G2DLITE_MLC_CANVAS_COLOR_R_7    (BIT_(27))
+#define BIT_AP_APB_G2DLITE_MLC_CANVAS_COLOR_R_6    (BIT_(26))
+#define BIT_AP_APB_G2DLITE_MLC_CANVAS_COLOR_R_5    (BIT_(25))
+#define BIT_AP_APB_G2DLITE_MLC_CANVAS_COLOR_R_4    (BIT_(24))
+#define BIT_AP_APB_G2DLITE_MLC_CANVAS_COLOR_R_3    (BIT_(23))
+#define BIT_AP_APB_G2DLITE_MLC_CANVAS_COLOR_R_2    (BIT_(22))
+#define BIT_AP_APB_G2DLITE_MLC_CANVAS_COLOR_R_1    (BIT_(21))
+#define BIT_AP_APB_G2DLITE_MLC_CANVAS_COLOR_R_0    (BIT_(20))
+#define BIT_AP_APB_G2DLITE_MLC_CANVAS_COLOR_G_9    (BIT_(19))
+#define BIT_AP_APB_G2DLITE_MLC_CANVAS_COLOR_G_8    (BIT_(18))
+#define BIT_AP_APB_G2DLITE_MLC_CANVAS_COLOR_G_7    (BIT_(17))
+#define BIT_AP_APB_G2DLITE_MLC_CANVAS_COLOR_G_6    (BIT_(16))
+#define BIT_AP_APB_G2DLITE_MLC_CANVAS_COLOR_G_5    (BIT_(15))
+#define BIT_AP_APB_G2DLITE_MLC_CANVAS_COLOR_G_4    (BIT_(14))
+#define BIT_AP_APB_G2DLITE_MLC_CANVAS_COLOR_G_3    (BIT_(13))
+#define BIT_AP_APB_G2DLITE_MLC_CANVAS_COLOR_G_2    (BIT_(12))
+#define BIT_AP_APB_G2DLITE_MLC_CANVAS_COLOR_G_1    (BIT_(11))
+#define BIT_AP_APB_G2DLITE_MLC_CANVAS_COLOR_G_0    (BIT_(10))
+#define BIT_AP_APB_G2DLITE_MLC_CANVAS_COLOR_B_9    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_MLC_CANVAS_COLOR_B_8    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_MLC_CANVAS_COLOR_B_7    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_MLC_CANVAS_COLOR_B_6    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_MLC_CANVAS_COLOR_B_5    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_MLC_CANVAS_COLOR_B_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_MLC_CANVAS_COLOR_B_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_MLC_CANVAS_COLOR_B_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_MLC_CANVAS_COLOR_B_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_MLC_CANVAS_COLOR_B_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_MLC_CLK_RATIO
+// Register Offset : 0x7234
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_MLC_CLK_RATIO (G2DLITE_APB_AB0_BASE_ADDR + (0x7234<<0))
+#define MLC_CLK_RATIO_RATIO_FIELD_OFFSET 0
+#define MLC_CLK_RATIO_RATIO_FIELD_SIZE 16
+
+#define BIT_AP_APB_G2DLITE_MLC_CLK_RATIO_RATIO_15    (BIT_(15))
+#define BIT_AP_APB_G2DLITE_MLC_CLK_RATIO_RATIO_14    (BIT_(14))
+#define BIT_AP_APB_G2DLITE_MLC_CLK_RATIO_RATIO_13    (BIT_(13))
+#define BIT_AP_APB_G2DLITE_MLC_CLK_RATIO_RATIO_12    (BIT_(12))
+#define BIT_AP_APB_G2DLITE_MLC_CLK_RATIO_RATIO_11    (BIT_(11))
+#define BIT_AP_APB_G2DLITE_MLC_CLK_RATIO_RATIO_10    (BIT_(10))
+#define BIT_AP_APB_G2DLITE_MLC_CLK_RATIO_RATIO_9    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_MLC_CLK_RATIO_RATIO_8    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_MLC_CLK_RATIO_RATIO_7    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_MLC_CLK_RATIO_RATIO_6    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_MLC_CLK_RATIO_RATIO_5    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_MLC_CLK_RATIO_RATIO_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_MLC_CLK_RATIO_RATIO_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_MLC_CLK_RATIO_RATIO_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_MLC_CLK_RATIO_RATIO_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_MLC_CLK_RATIO_RATIO_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_MLC_INT_MASK
+// Register Offset : 0x7240
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_MLC_INT_MASK (G2DLITE_APB_AB0_BASE_ADDR + (0x7240<<0))
+#define MLC_INT_MASK_ERR_LAYER_5_FIELD_OFFSET 12
+#define MLC_INT_MASK_ERR_LAYER_5_FIELD_SIZE 1
+#define MLC_INT_MASK_ERR_LAYER_4_FIELD_OFFSET 11
+#define MLC_INT_MASK_ERR_LAYER_4_FIELD_SIZE 1
+#define MLC_INT_MASK_ERR_LAYER_3_FIELD_OFFSET 10
+#define MLC_INT_MASK_ERR_LAYER_3_FIELD_SIZE 1
+#define MLC_INT_MASK_ERR_LAYER_2_FIELD_OFFSET 9
+#define MLC_INT_MASK_ERR_LAYER_2_FIELD_SIZE 1
+#define MLC_INT_MASK_ERR_LAYER_1_FIELD_OFFSET 8
+#define MLC_INT_MASK_ERR_LAYER_1_FIELD_SIZE 1
+#define MLC_INT_MASK_ERR_LAYER_0_FIELD_OFFSET 7
+#define MLC_INT_MASK_ERR_LAYER_0_FIELD_SIZE 1
+#define MLC_INT_MASK_FLU_LAYER_5_FIELD_OFFSET 6
+#define MLC_INT_MASK_FLU_LAYER_5_FIELD_SIZE 1
+#define MLC_INT_MASK_FLU_LAYER_4_FIELD_OFFSET 5
+#define MLC_INT_MASK_FLU_LAYER_4_FIELD_SIZE 1
+#define MLC_INT_MASK_FLU_LAYER_3_FIELD_OFFSET 4
+#define MLC_INT_MASK_FLU_LAYER_3_FIELD_SIZE 1
+#define MLC_INT_MASK_FLU_LAYER_2_FIELD_OFFSET 3
+#define MLC_INT_MASK_FLU_LAYER_2_FIELD_SIZE 1
+#define MLC_INT_MASK_FLU_LAYER_1_FIELD_OFFSET 2
+#define MLC_INT_MASK_FLU_LAYER_1_FIELD_SIZE 1
+#define MLC_INT_MASK_FLU_LAYER_0_FIELD_OFFSET 1
+#define MLC_INT_MASK_FLU_LAYER_0_FIELD_SIZE 1
+#define MLC_INT_MASK_FRM_END_FIELD_OFFSET 0
+#define MLC_INT_MASK_FRM_END_FIELD_SIZE 1
+
+#define BIT_AP_APB_G2DLITE_MLC_INT_MASK_ERR_LAYER_5    (BIT_(12))
+#define BIT_AP_APB_G2DLITE_MLC_INT_MASK_ERR_LAYER_4    (BIT_(11))
+#define BIT_AP_APB_G2DLITE_MLC_INT_MASK_ERR_LAYER_3    (BIT_(10))
+#define BIT_AP_APB_G2DLITE_MLC_INT_MASK_ERR_LAYER_2    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_MLC_INT_MASK_ERR_LAYER_1    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_MLC_INT_MASK_ERR_LAYER_0    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_MLC_INT_MASK_FLU_LAYER_5    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_MLC_INT_MASK_FLU_LAYER_4    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_MLC_INT_MASK_FLU_LAYER_3    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_MLC_INT_MASK_FLU_LAYER_2    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_MLC_INT_MASK_FLU_LAYER_1    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_MLC_INT_MASK_FLU_LAYER_0    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_MLC_INT_MASK_FRM_END    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_MLC_INT_STATUS
+// Register Offset : 0x7244
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_MLC_INT_STATUS (G2DLITE_APB_AB0_BASE_ADDR + (0x7244<<0))
+#define MLC_INT_STATUS_SLOWD_LAYER_5_FIELD_OFFSET 27
+#define MLC_INT_STATUS_SLOWD_LAYER_5_FIELD_SIZE 1
+#define MLC_INT_STATUS_SLOWD_LAYER_4_FIELD_OFFSET 26
+#define MLC_INT_STATUS_SLOWD_LAYER_4_FIELD_SIZE 1
+#define MLC_INT_STATUS_SLOWD_LAYER_3_FIELD_OFFSET 25
+#define MLC_INT_STATUS_SLOWD_LAYER_3_FIELD_SIZE 1
+#define MLC_INT_STATUS_SLOWD_LAYER_2_FIELD_OFFSET 24
+#define MLC_INT_STATUS_SLOWD_LAYER_2_FIELD_SIZE 1
+#define MLC_INT_STATUS_SLOWD_LAYER_1_FIELD_OFFSET 23
+#define MLC_INT_STATUS_SLOWD_LAYER_1_FIELD_SIZE 1
+#define MLC_INT_STATUS_SLOWD_LAYER_0_FIELD_OFFSET 22
+#define MLC_INT_STATUS_SLOWD_LAYER_0_FIELD_SIZE 1
+#define MLC_INT_STATUS_CROP_ERR_LAYER_5_FIELD_OFFSET 21
+#define MLC_INT_STATUS_CROP_ERR_LAYER_5_FIELD_SIZE 1
+#define MLC_INT_STATUS_CROP_ERR_LAYER_4_FIELD_OFFSET 20
+#define MLC_INT_STATUS_CROP_ERR_LAYER_4_FIELD_SIZE 1
+#define MLC_INT_STATUS_CROP_ERR_LAYER_3_FIELD_OFFSET 19
+#define MLC_INT_STATUS_CROP_ERR_LAYER_3_FIELD_SIZE 1
+#define MLC_INT_STATUS_CROP_ERR_LAYER_2_FIELD_OFFSET 18
+#define MLC_INT_STATUS_CROP_ERR_LAYER_2_FIELD_SIZE 1
+#define MLC_INT_STATUS_CROP_ERR_LAYER_1_FIELD_OFFSET 17
+#define MLC_INT_STATUS_CROP_ERR_LAYER_1_FIELD_SIZE 1
+#define MLC_INT_STATUS_CROP_ERR_LAYER_0_FIELD_OFFSET 16
+#define MLC_INT_STATUS_CROP_ERR_LAYER_0_FIELD_SIZE 1
+#define MLC_INT_STATUS_ERR_LAYER_5_FIELD_OFFSET 12
+#define MLC_INT_STATUS_ERR_LAYER_5_FIELD_SIZE 1
+#define MLC_INT_STATUS_ERR_LAYER_4_FIELD_OFFSET 11
+#define MLC_INT_STATUS_ERR_LAYER_4_FIELD_SIZE 1
+#define MLC_INT_STATUS_ERR_LAYER_3_FIELD_OFFSET 10
+#define MLC_INT_STATUS_ERR_LAYER_3_FIELD_SIZE 1
+#define MLC_INT_STATUS_ERR_LAYER_2_FIELD_OFFSET 9
+#define MLC_INT_STATUS_ERR_LAYER_2_FIELD_SIZE 1
+#define MLC_INT_STATUS_ERR_LAYER_1_FIELD_OFFSET 8
+#define MLC_INT_STATUS_ERR_LAYER_1_FIELD_SIZE 1
+#define MLC_INT_STATUS_ERR_LAYER_0_FIELD_OFFSET 7
+#define MLC_INT_STATUS_ERR_LAYER_0_FIELD_SIZE 1
+#define MLC_INT_STATUS_FLU_LAYER_5_FIELD_OFFSET 6
+#define MLC_INT_STATUS_FLU_LAYER_5_FIELD_SIZE 1
+#define MLC_INT_STATUS_FLU_LAYER_4_FIELD_OFFSET 5
+#define MLC_INT_STATUS_FLU_LAYER_4_FIELD_SIZE 1
+#define MLC_INT_STATUS_FLU_LAYER_3_FIELD_OFFSET 4
+#define MLC_INT_STATUS_FLU_LAYER_3_FIELD_SIZE 1
+#define MLC_INT_STATUS_FLU_LAYER_2_FIELD_OFFSET 3
+#define MLC_INT_STATUS_FLU_LAYER_2_FIELD_SIZE 1
+#define MLC_INT_STATUS_FLU_LAYER_1_FIELD_OFFSET 2
+#define MLC_INT_STATUS_FLU_LAYER_1_FIELD_SIZE 1
+#define MLC_INT_STATUS_FLU_LAYER_0_FIELD_OFFSET 1
+#define MLC_INT_STATUS_FLU_LAYER_0_FIELD_SIZE 1
+#define MLC_INT_STATUS_FRM_END_FIELD_OFFSET 0
+#define MLC_INT_STATUS_FRM_END_FIELD_SIZE 1
+
+#define BIT_AP_APB_G2DLITE_MLC_INT_STATUS_SLOWD_LAYER_5    (BIT_(27))
+#define BIT_AP_APB_G2DLITE_MLC_INT_STATUS_SLOWD_LAYER_4    (BIT_(26))
+#define BIT_AP_APB_G2DLITE_MLC_INT_STATUS_SLOWD_LAYER_3    (BIT_(25))
+#define BIT_AP_APB_G2DLITE_MLC_INT_STATUS_SLOWD_LAYER_2    (BIT_(24))
+#define BIT_AP_APB_G2DLITE_MLC_INT_STATUS_SLOWD_LAYER_1    (BIT_(23))
+#define BIT_AP_APB_G2DLITE_MLC_INT_STATUS_SLOWD_LAYER_0    (BIT_(22))
+#define BIT_AP_APB_G2DLITE_MLC_INT_STATUS_CROP_ERR_LAYER_5    (BIT_(21))
+#define BIT_AP_APB_G2DLITE_MLC_INT_STATUS_CROP_ERR_LAYER_4    (BIT_(20))
+#define BIT_AP_APB_G2DLITE_MLC_INT_STATUS_CROP_ERR_LAYER_3    (BIT_(19))
+#define BIT_AP_APB_G2DLITE_MLC_INT_STATUS_CROP_ERR_LAYER_2    (BIT_(18))
+#define BIT_AP_APB_G2DLITE_MLC_INT_STATUS_CROP_ERR_LAYER_1    (BIT_(17))
+#define BIT_AP_APB_G2DLITE_MLC_INT_STATUS_CROP_ERR_LAYER_0    (BIT_(16))
+#define BIT_AP_APB_G2DLITE_MLC_INT_STATUS_ERR_LAYER_5    (BIT_(12))
+#define BIT_AP_APB_G2DLITE_MLC_INT_STATUS_ERR_LAYER_4    (BIT_(11))
+#define BIT_AP_APB_G2DLITE_MLC_INT_STATUS_ERR_LAYER_3    (BIT_(10))
+#define BIT_AP_APB_G2DLITE_MLC_INT_STATUS_ERR_LAYER_2    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_MLC_INT_STATUS_ERR_LAYER_1    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_MLC_INT_STATUS_ERR_LAYER_0    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_MLC_INT_STATUS_FLU_LAYER_5    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_MLC_INT_STATUS_FLU_LAYER_4    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_MLC_INT_STATUS_FLU_LAYER_3    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_MLC_INT_STATUS_FLU_LAYER_2    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_MLC_INT_STATUS_FLU_LAYER_1    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_MLC_INT_STATUS_FLU_LAYER_0    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_MLC_INT_STATUS_FRM_END    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_AP_PIX_COMP
+// Register Offset : 0x9000
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_AP_PIX_COMP (G2DLITE_APB_AB0_BASE_ADDR + (0x9000<<0))
+#define AP_PIX_COMP_BPA_FIELD_OFFSET 0
+#define AP_PIX_COMP_BPA_FIELD_SIZE 4
+
+#define BIT_AP_APB_G2DLITE_AP_PIX_COMP_BPA_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_AP_PIX_COMP_BPA_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_AP_PIX_COMP_BPA_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_AP_PIX_COMP_BPA_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_AP_FRM_CTRL
+// Register Offset : 0x9004
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_AP_FRM_CTRL (G2DLITE_APB_AB0_BASE_ADDR + (0x9004<<0))
+#define AP_FRM_CTRL_ENDIAN_CTRL_FIELD_OFFSET 16
+#define AP_FRM_CTRL_ENDIAN_CTRL_FIELD_SIZE 3
+#define AP_FRM_CTRL_ROT_FIELD_OFFSET 8
+#define AP_FRM_CTRL_ROT_FIELD_SIZE 3
+#define AP_FRM_CTRL_FAST_CP_MODE_FIELD_OFFSET 0
+#define AP_FRM_CTRL_FAST_CP_MODE_FIELD_SIZE 1
+
+#define BIT_AP_APB_G2DLITE_AP_FRM_CTRL_ENDIAN_CTRL_2    (BIT_(18))
+#define BIT_AP_APB_G2DLITE_AP_FRM_CTRL_ENDIAN_CTRL_1    (BIT_(17))
+#define BIT_AP_APB_G2DLITE_AP_FRM_CTRL_ENDIAN_CTRL_0    (BIT_(16))
+#define BIT_AP_APB_G2DLITE_AP_FRM_CTRL_ROT_2    (BIT_(10))
+#define BIT_AP_APB_G2DLITE_AP_FRM_CTRL_ROT_1    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_AP_FRM_CTRL_ROT_0    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_AP_FRM_CTRL_FAST_CP_MODE    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_AP_FRM_SIZE
+// Register Offset : 0x9008
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_AP_FRM_SIZE (G2DLITE_APB_AB0_BASE_ADDR + (0x9008<<0))
+#define AP_FRM_SIZE_HEIGHT_FIELD_OFFSET 16
+#define AP_FRM_SIZE_HEIGHT_FIELD_SIZE 16
+#define AP_FRM_SIZE_WIDTH_FIELD_OFFSET 0
+#define AP_FRM_SIZE_WIDTH_FIELD_SIZE 16
+
+#define BIT_AP_APB_G2DLITE_AP_FRM_SIZE_HEIGHT_15    (BIT_(31))
+#define BIT_AP_APB_G2DLITE_AP_FRM_SIZE_HEIGHT_14    (BIT_(30))
+#define BIT_AP_APB_G2DLITE_AP_FRM_SIZE_HEIGHT_13    (BIT_(29))
+#define BIT_AP_APB_G2DLITE_AP_FRM_SIZE_HEIGHT_12    (BIT_(28))
+#define BIT_AP_APB_G2DLITE_AP_FRM_SIZE_HEIGHT_11    (BIT_(27))
+#define BIT_AP_APB_G2DLITE_AP_FRM_SIZE_HEIGHT_10    (BIT_(26))
+#define BIT_AP_APB_G2DLITE_AP_FRM_SIZE_HEIGHT_9    (BIT_(25))
+#define BIT_AP_APB_G2DLITE_AP_FRM_SIZE_HEIGHT_8    (BIT_(24))
+#define BIT_AP_APB_G2DLITE_AP_FRM_SIZE_HEIGHT_7    (BIT_(23))
+#define BIT_AP_APB_G2DLITE_AP_FRM_SIZE_HEIGHT_6    (BIT_(22))
+#define BIT_AP_APB_G2DLITE_AP_FRM_SIZE_HEIGHT_5    (BIT_(21))
+#define BIT_AP_APB_G2DLITE_AP_FRM_SIZE_HEIGHT_4    (BIT_(20))
+#define BIT_AP_APB_G2DLITE_AP_FRM_SIZE_HEIGHT_3    (BIT_(19))
+#define BIT_AP_APB_G2DLITE_AP_FRM_SIZE_HEIGHT_2    (BIT_(18))
+#define BIT_AP_APB_G2DLITE_AP_FRM_SIZE_HEIGHT_1    (BIT_(17))
+#define BIT_AP_APB_G2DLITE_AP_FRM_SIZE_HEIGHT_0    (BIT_(16))
+#define BIT_AP_APB_G2DLITE_AP_FRM_SIZE_WIDTH_15    (BIT_(15))
+#define BIT_AP_APB_G2DLITE_AP_FRM_SIZE_WIDTH_14    (BIT_(14))
+#define BIT_AP_APB_G2DLITE_AP_FRM_SIZE_WIDTH_13    (BIT_(13))
+#define BIT_AP_APB_G2DLITE_AP_FRM_SIZE_WIDTH_12    (BIT_(12))
+#define BIT_AP_APB_G2DLITE_AP_FRM_SIZE_WIDTH_11    (BIT_(11))
+#define BIT_AP_APB_G2DLITE_AP_FRM_SIZE_WIDTH_10    (BIT_(10))
+#define BIT_AP_APB_G2DLITE_AP_FRM_SIZE_WIDTH_9    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_AP_FRM_SIZE_WIDTH_8    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_AP_FRM_SIZE_WIDTH_7    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_AP_FRM_SIZE_WIDTH_6    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_AP_FRM_SIZE_WIDTH_5    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_AP_FRM_SIZE_WIDTH_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_AP_FRM_SIZE_WIDTH_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_AP_FRM_SIZE_WIDTH_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_AP_FRM_SIZE_WIDTH_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_AP_FRM_SIZE_WIDTH_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_AP_BADDR_L
+// Register Offset : 0x900c
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_AP_BADDR_L (G2DLITE_APB_AB0_BASE_ADDR + (0x900c<<0))
+#define AP_BADDR_L_A_FIELD_OFFSET 0
+#define AP_BADDR_L_A_FIELD_SIZE 32
+
+#define BIT_AP_APB_G2DLITE_AP_BADDR_L_A_31    (BIT_(31))
+#define BIT_AP_APB_G2DLITE_AP_BADDR_L_A_30    (BIT_(30))
+#define BIT_AP_APB_G2DLITE_AP_BADDR_L_A_29    (BIT_(29))
+#define BIT_AP_APB_G2DLITE_AP_BADDR_L_A_28    (BIT_(28))
+#define BIT_AP_APB_G2DLITE_AP_BADDR_L_A_27    (BIT_(27))
+#define BIT_AP_APB_G2DLITE_AP_BADDR_L_A_26    (BIT_(26))
+#define BIT_AP_APB_G2DLITE_AP_BADDR_L_A_25    (BIT_(25))
+#define BIT_AP_APB_G2DLITE_AP_BADDR_L_A_24    (BIT_(24))
+#define BIT_AP_APB_G2DLITE_AP_BADDR_L_A_23    (BIT_(23))
+#define BIT_AP_APB_G2DLITE_AP_BADDR_L_A_22    (BIT_(22))
+#define BIT_AP_APB_G2DLITE_AP_BADDR_L_A_21    (BIT_(21))
+#define BIT_AP_APB_G2DLITE_AP_BADDR_L_A_20    (BIT_(20))
+#define BIT_AP_APB_G2DLITE_AP_BADDR_L_A_19    (BIT_(19))
+#define BIT_AP_APB_G2DLITE_AP_BADDR_L_A_18    (BIT_(18))
+#define BIT_AP_APB_G2DLITE_AP_BADDR_L_A_17    (BIT_(17))
+#define BIT_AP_APB_G2DLITE_AP_BADDR_L_A_16    (BIT_(16))
+#define BIT_AP_APB_G2DLITE_AP_BADDR_L_A_15    (BIT_(15))
+#define BIT_AP_APB_G2DLITE_AP_BADDR_L_A_14    (BIT_(14))
+#define BIT_AP_APB_G2DLITE_AP_BADDR_L_A_13    (BIT_(13))
+#define BIT_AP_APB_G2DLITE_AP_BADDR_L_A_12    (BIT_(12))
+#define BIT_AP_APB_G2DLITE_AP_BADDR_L_A_11    (BIT_(11))
+#define BIT_AP_APB_G2DLITE_AP_BADDR_L_A_10    (BIT_(10))
+#define BIT_AP_APB_G2DLITE_AP_BADDR_L_A_9    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_AP_BADDR_L_A_8    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_AP_BADDR_L_A_7    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_AP_BADDR_L_A_6    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_AP_BADDR_L_A_5    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_AP_BADDR_L_A_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_AP_BADDR_L_A_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_AP_BADDR_L_A_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_AP_BADDR_L_A_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_AP_BADDR_L_A_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_AP_BADDR_H
+// Register Offset : 0x9010
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_AP_BADDR_H (G2DLITE_APB_AB0_BASE_ADDR + (0x9010<<0))
+#define AP_BADDR_H_A_FIELD_OFFSET 0
+#define AP_BADDR_H_A_FIELD_SIZE 8
+
+#define BIT_AP_APB_G2DLITE_AP_BADDR_H_A_7    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_AP_BADDR_H_A_6    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_AP_BADDR_H_A_5    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_AP_BADDR_H_A_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_AP_BADDR_H_A_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_AP_BADDR_H_A_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_AP_BADDR_H_A_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_AP_BADDR_H_A_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_AP_STRIDE
+// Register Offset : 0x902c
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_AP_STRIDE (G2DLITE_APB_AB0_BASE_ADDR + (0x902c<<0))
+#define AP_STRIDE_A_FIELD_OFFSET 0
+#define AP_STRIDE_A_FIELD_SIZE 18
+
+#define BIT_AP_APB_G2DLITE_AP_STRIDE_A_17    (BIT_(17))
+#define BIT_AP_APB_G2DLITE_AP_STRIDE_A_16    (BIT_(16))
+#define BIT_AP_APB_G2DLITE_AP_STRIDE_A_15    (BIT_(15))
+#define BIT_AP_APB_G2DLITE_AP_STRIDE_A_14    (BIT_(14))
+#define BIT_AP_APB_G2DLITE_AP_STRIDE_A_13    (BIT_(13))
+#define BIT_AP_APB_G2DLITE_AP_STRIDE_A_12    (BIT_(12))
+#define BIT_AP_APB_G2DLITE_AP_STRIDE_A_11    (BIT_(11))
+#define BIT_AP_APB_G2DLITE_AP_STRIDE_A_10    (BIT_(10))
+#define BIT_AP_APB_G2DLITE_AP_STRIDE_A_9    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_AP_STRIDE_A_8    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_AP_STRIDE_A_7    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_AP_STRIDE_A_6    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_AP_STRIDE_A_5    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_AP_STRIDE_A_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_AP_STRIDE_A_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_AP_STRIDE_A_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_AP_STRIDE_A_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_AP_STRIDE_A_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_AP_FRM_OFFSET
+// Register Offset : 0x9040
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_AP_FRM_OFFSET (G2DLITE_APB_AB0_BASE_ADDR + (0x9040<<0))
+#define AP_FRM_OFFSET_Y_FIELD_OFFSET 16
+#define AP_FRM_OFFSET_Y_FIELD_SIZE 16
+#define AP_FRM_OFFSET_X_FIELD_OFFSET 0
+#define AP_FRM_OFFSET_X_FIELD_SIZE 16
+
+#define BIT_AP_APB_G2DLITE_AP_FRM_OFFSET_Y_15    (BIT_(31))
+#define BIT_AP_APB_G2DLITE_AP_FRM_OFFSET_Y_14    (BIT_(30))
+#define BIT_AP_APB_G2DLITE_AP_FRM_OFFSET_Y_13    (BIT_(29))
+#define BIT_AP_APB_G2DLITE_AP_FRM_OFFSET_Y_12    (BIT_(28))
+#define BIT_AP_APB_G2DLITE_AP_FRM_OFFSET_Y_11    (BIT_(27))
+#define BIT_AP_APB_G2DLITE_AP_FRM_OFFSET_Y_10    (BIT_(26))
+#define BIT_AP_APB_G2DLITE_AP_FRM_OFFSET_Y_9    (BIT_(25))
+#define BIT_AP_APB_G2DLITE_AP_FRM_OFFSET_Y_8    (BIT_(24))
+#define BIT_AP_APB_G2DLITE_AP_FRM_OFFSET_Y_7    (BIT_(23))
+#define BIT_AP_APB_G2DLITE_AP_FRM_OFFSET_Y_6    (BIT_(22))
+#define BIT_AP_APB_G2DLITE_AP_FRM_OFFSET_Y_5    (BIT_(21))
+#define BIT_AP_APB_G2DLITE_AP_FRM_OFFSET_Y_4    (BIT_(20))
+#define BIT_AP_APB_G2DLITE_AP_FRM_OFFSET_Y_3    (BIT_(19))
+#define BIT_AP_APB_G2DLITE_AP_FRM_OFFSET_Y_2    (BIT_(18))
+#define BIT_AP_APB_G2DLITE_AP_FRM_OFFSET_Y_1    (BIT_(17))
+#define BIT_AP_APB_G2DLITE_AP_FRM_OFFSET_Y_0    (BIT_(16))
+#define BIT_AP_APB_G2DLITE_AP_FRM_OFFSET_X_15    (BIT_(15))
+#define BIT_AP_APB_G2DLITE_AP_FRM_OFFSET_X_14    (BIT_(14))
+#define BIT_AP_APB_G2DLITE_AP_FRM_OFFSET_X_13    (BIT_(13))
+#define BIT_AP_APB_G2DLITE_AP_FRM_OFFSET_X_12    (BIT_(12))
+#define BIT_AP_APB_G2DLITE_AP_FRM_OFFSET_X_11    (BIT_(11))
+#define BIT_AP_APB_G2DLITE_AP_FRM_OFFSET_X_10    (BIT_(10))
+#define BIT_AP_APB_G2DLITE_AP_FRM_OFFSET_X_9    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_AP_FRM_OFFSET_X_8    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_AP_FRM_OFFSET_X_7    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_AP_FRM_OFFSET_X_6    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_AP_FRM_OFFSET_X_5    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_AP_FRM_OFFSET_X_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_AP_FRM_OFFSET_X_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_AP_FRM_OFFSET_X_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_AP_FRM_OFFSET_X_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_AP_FRM_OFFSET_X_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_AP_SDW_CTRL
+// Register Offset : 0x9f00
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_AP_SDW_CTRL (G2DLITE_APB_AB0_BASE_ADDR + (0x9f00<<0))
+#define AP_SDW_CTRL_TRIG_FIELD_OFFSET 0
+#define AP_SDW_CTRL_TRIG_FIELD_SIZE 1
+
+#define BIT_AP_APB_G2DLITE_AP_SDW_CTRL_TRIG    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_WDMA_DFIFO_WML
+// Register Offset : 0xa000
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_WDMA_DFIFO_WML (G2DLITE_APB_AB0_BASE_ADDR + (0xa000<<0))
+#define WDMA_DFIFO_WML_WML_FIELD_OFFSET 0
+#define WDMA_DFIFO_WML_WML_FIELD_SIZE 16
+
+#define BIT_AP_APB_G2DLITE_WDMA_DFIFO_WML_WML_15    (BIT_(15))
+#define BIT_AP_APB_G2DLITE_WDMA_DFIFO_WML_WML_14    (BIT_(14))
+#define BIT_AP_APB_G2DLITE_WDMA_DFIFO_WML_WML_13    (BIT_(13))
+#define BIT_AP_APB_G2DLITE_WDMA_DFIFO_WML_WML_12    (BIT_(12))
+#define BIT_AP_APB_G2DLITE_WDMA_DFIFO_WML_WML_11    (BIT_(11))
+#define BIT_AP_APB_G2DLITE_WDMA_DFIFO_WML_WML_10    (BIT_(10))
+#define BIT_AP_APB_G2DLITE_WDMA_DFIFO_WML_WML_9    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_WDMA_DFIFO_WML_WML_8    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_WDMA_DFIFO_WML_WML_7    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_WDMA_DFIFO_WML_WML_6    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_WDMA_DFIFO_WML_WML_5    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_WDMA_DFIFO_WML_WML_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_WDMA_DFIFO_WML_WML_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_WDMA_DFIFO_WML_WML_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_WDMA_DFIFO_WML_WML_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_WDMA_DFIFO_WML_WML_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_WDMA_DFIFO_DEPTH
+// Register Offset : 0xa004
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_WDMA_DFIFO_DEPTH (G2DLITE_APB_AB0_BASE_ADDR + (0xa004<<0))
+#define WDMA_DFIFO_DEPTH_DEPTH_FIELD_OFFSET 0
+#define WDMA_DFIFO_DEPTH_DEPTH_FIELD_SIZE 16
+
+#define BIT_AP_APB_G2DLITE_WDMA_DFIFO_DEPTH_DEPTH_15    (BIT_(15))
+#define BIT_AP_APB_G2DLITE_WDMA_DFIFO_DEPTH_DEPTH_14    (BIT_(14))
+#define BIT_AP_APB_G2DLITE_WDMA_DFIFO_DEPTH_DEPTH_13    (BIT_(13))
+#define BIT_AP_APB_G2DLITE_WDMA_DFIFO_DEPTH_DEPTH_12    (BIT_(12))
+#define BIT_AP_APB_G2DLITE_WDMA_DFIFO_DEPTH_DEPTH_11    (BIT_(11))
+#define BIT_AP_APB_G2DLITE_WDMA_DFIFO_DEPTH_DEPTH_10    (BIT_(10))
+#define BIT_AP_APB_G2DLITE_WDMA_DFIFO_DEPTH_DEPTH_9    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_WDMA_DFIFO_DEPTH_DEPTH_8    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_WDMA_DFIFO_DEPTH_DEPTH_7    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_WDMA_DFIFO_DEPTH_DEPTH_6    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_WDMA_DFIFO_DEPTH_DEPTH_5    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_WDMA_DFIFO_DEPTH_DEPTH_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_WDMA_DFIFO_DEPTH_DEPTH_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_WDMA_DFIFO_DEPTH_DEPTH_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_WDMA_DFIFO_DEPTH_DEPTH_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_WDMA_DFIFO_DEPTH_DEPTH_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_WDMA_CFIFO_DEPTH
+// Register Offset : 0xa008
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_WDMA_CFIFO_DEPTH (G2DLITE_APB_AB0_BASE_ADDR + (0xa008<<0))
+#define WDMA_CFIFO_DEPTH_DEPTH_FIELD_OFFSET 0
+#define WDMA_CFIFO_DEPTH_DEPTH_FIELD_SIZE 16
+
+#define BIT_AP_APB_G2DLITE_WDMA_CFIFO_DEPTH_DEPTH_15    (BIT_(15))
+#define BIT_AP_APB_G2DLITE_WDMA_CFIFO_DEPTH_DEPTH_14    (BIT_(14))
+#define BIT_AP_APB_G2DLITE_WDMA_CFIFO_DEPTH_DEPTH_13    (BIT_(13))
+#define BIT_AP_APB_G2DLITE_WDMA_CFIFO_DEPTH_DEPTH_12    (BIT_(12))
+#define BIT_AP_APB_G2DLITE_WDMA_CFIFO_DEPTH_DEPTH_11    (BIT_(11))
+#define BIT_AP_APB_G2DLITE_WDMA_CFIFO_DEPTH_DEPTH_10    (BIT_(10))
+#define BIT_AP_APB_G2DLITE_WDMA_CFIFO_DEPTH_DEPTH_9    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_WDMA_CFIFO_DEPTH_DEPTH_8    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_WDMA_CFIFO_DEPTH_DEPTH_7    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_WDMA_CFIFO_DEPTH_DEPTH_6    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_WDMA_CFIFO_DEPTH_DEPTH_5    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_WDMA_CFIFO_DEPTH_DEPTH_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_WDMA_CFIFO_DEPTH_DEPTH_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_WDMA_CFIFO_DEPTH_DEPTH_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_WDMA_CFIFO_DEPTH_DEPTH_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_WDMA_CFIFO_DEPTH_DEPTH_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_WDMA_CH_PRIO
+// Register Offset : 0xa00c
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_WDMA_CH_PRIO (G2DLITE_APB_AB0_BASE_ADDR + (0xa00c<<0))
+#define WDMA_CH_PRIO_SCHE_FIELD_OFFSET 16
+#define WDMA_CH_PRIO_SCHE_FIELD_SIZE 6
+#define WDMA_CH_PRIO_P1_FIELD_OFFSET 8
+#define WDMA_CH_PRIO_P1_FIELD_SIZE 6
+#define WDMA_CH_PRIO_P0_FIELD_OFFSET 0
+#define WDMA_CH_PRIO_P0_FIELD_SIZE 6
+
+#define BIT_AP_APB_G2DLITE_WDMA_CH_PRIO_SCHE_5    (BIT_(21))
+#define BIT_AP_APB_G2DLITE_WDMA_CH_PRIO_SCHE_4    (BIT_(20))
+#define BIT_AP_APB_G2DLITE_WDMA_CH_PRIO_SCHE_3    (BIT_(19))
+#define BIT_AP_APB_G2DLITE_WDMA_CH_PRIO_SCHE_2    (BIT_(18))
+#define BIT_AP_APB_G2DLITE_WDMA_CH_PRIO_SCHE_1    (BIT_(17))
+#define BIT_AP_APB_G2DLITE_WDMA_CH_PRIO_SCHE_0    (BIT_(16))
+#define BIT_AP_APB_G2DLITE_WDMA_CH_PRIO_P1_5    (BIT_(13))
+#define BIT_AP_APB_G2DLITE_WDMA_CH_PRIO_P1_4    (BIT_(12))
+#define BIT_AP_APB_G2DLITE_WDMA_CH_PRIO_P1_3    (BIT_(11))
+#define BIT_AP_APB_G2DLITE_WDMA_CH_PRIO_P1_2    (BIT_(10))
+#define BIT_AP_APB_G2DLITE_WDMA_CH_PRIO_P1_1    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_WDMA_CH_PRIO_P1_0    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_WDMA_CH_PRIO_P0_5    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_WDMA_CH_PRIO_P0_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_WDMA_CH_PRIO_P0_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_WDMA_CH_PRIO_P0_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_WDMA_CH_PRIO_P0_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_WDMA_CH_PRIO_P0_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_WDMA_BURST
+// Register Offset : 0xa010
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_WDMA_BURST (G2DLITE_APB_AB0_BASE_ADDR + (0xa010<<0))
+#define WDMA_BURST_MODE_FIELD_OFFSET 3
+#define WDMA_BURST_MODE_FIELD_SIZE 1
+#define WDMA_BURST_LEN_FIELD_OFFSET 0
+#define WDMA_BURST_LEN_FIELD_SIZE 3
+
+#define BIT_AP_APB_G2DLITE_WDMA_BURST_MODE    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_WDMA_BURST_LEN_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_WDMA_BURST_LEN_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_WDMA_BURST_LEN_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_WDMA_AXI_USER
+// Register Offset : 0xa014
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_WDMA_AXI_USER (G2DLITE_APB_AB0_BASE_ADDR + (0xa014<<0))
+#define WDMA_AXI_USER_USER_FIELD_OFFSET 0
+#define WDMA_AXI_USER_USER_FIELD_SIZE 20
+
+#define BIT_AP_APB_G2DLITE_WDMA_AXI_USER_USER_19    (BIT_(19))
+#define BIT_AP_APB_G2DLITE_WDMA_AXI_USER_USER_18    (BIT_(18))
+#define BIT_AP_APB_G2DLITE_WDMA_AXI_USER_USER_17    (BIT_(17))
+#define BIT_AP_APB_G2DLITE_WDMA_AXI_USER_USER_16    (BIT_(16))
+#define BIT_AP_APB_G2DLITE_WDMA_AXI_USER_USER_15    (BIT_(15))
+#define BIT_AP_APB_G2DLITE_WDMA_AXI_USER_USER_14    (BIT_(14))
+#define BIT_AP_APB_G2DLITE_WDMA_AXI_USER_USER_13    (BIT_(13))
+#define BIT_AP_APB_G2DLITE_WDMA_AXI_USER_USER_12    (BIT_(12))
+#define BIT_AP_APB_G2DLITE_WDMA_AXI_USER_USER_11    (BIT_(11))
+#define BIT_AP_APB_G2DLITE_WDMA_AXI_USER_USER_10    (BIT_(10))
+#define BIT_AP_APB_G2DLITE_WDMA_AXI_USER_USER_9    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_WDMA_AXI_USER_USER_8    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_WDMA_AXI_USER_USER_7    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_WDMA_AXI_USER_USER_6    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_WDMA_AXI_USER_USER_5    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_WDMA_AXI_USER_USER_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_WDMA_AXI_USER_USER_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_WDMA_AXI_USER_USER_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_WDMA_AXI_USER_USER_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_WDMA_AXI_USER_USER_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_WDMA_AXI_CTRL
+// Register Offset : 0xa018
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_WDMA_AXI_CTRL (G2DLITE_APB_AB0_BASE_ADDR + (0xa018<<0))
+#define WDMA_AXI_CTRL_CHN_RST_FIELD_OFFSET 7
+#define WDMA_AXI_CTRL_CHN_RST_FIELD_SIZE 1
+#define WDMA_AXI_CTRL_BUFAB_CFG_FIELD_OFFSET 6
+#define WDMA_AXI_CTRL_BUFAB_CFG_FIELD_SIZE 1
+#define WDMA_AXI_CTRL_PROT_FIELD_OFFSET 4
+#define WDMA_AXI_CTRL_PROT_FIELD_SIZE 2
+#define WDMA_AXI_CTRL_CACHE_FIELD_OFFSET 0
+#define WDMA_AXI_CTRL_CACHE_FIELD_SIZE 4
+
+#define BIT_AP_APB_G2DLITE_WDMA_AXI_CTRL_CHN_RST    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_WDMA_AXI_CTRL_BUFAB_CFG    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_WDMA_AXI_CTRL_PROT_1    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_WDMA_AXI_CTRL_PROT_0    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_WDMA_AXI_CTRL_CACHE_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_WDMA_AXI_CTRL_CACHE_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_WDMA_AXI_CTRL_CACHE_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_WDMA_AXI_CTRL_CACHE_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_WDMA_CTRL
+// Register Offset : 0xa400
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_WDMA_CTRL (G2DLITE_APB_AB0_BASE_ADDR + (0xa400<<0))
+#define WDMA_CTRL_CFG_LOAD_FIELD_OFFSET 1
+#define WDMA_CTRL_CFG_LOAD_FIELD_SIZE 1
+#define WDMA_CTRL_ARB_SEL_FIELD_OFFSET 0
+#define WDMA_CTRL_ARB_SEL_FIELD_SIZE 1
+
+#define BIT_AP_APB_G2DLITE_WDMA_CTRL_CFG_LOAD    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_WDMA_CTRL_ARB_SEL    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_WDMA_DFIFO_FULL
+// Register Offset : 0xa500
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_WDMA_DFIFO_FULL (G2DLITE_APB_AB0_BASE_ADDR + (0xa500<<0))
+#define WDMA_DFIFO_FULL_CH_2_FIELD_OFFSET 2
+#define WDMA_DFIFO_FULL_CH_2_FIELD_SIZE 1
+#define WDMA_DFIFO_FULL_CH_1_FIELD_OFFSET 1
+#define WDMA_DFIFO_FULL_CH_1_FIELD_SIZE 1
+#define WDMA_DFIFO_FULL_CH_0_FIELD_OFFSET 0
+#define WDMA_DFIFO_FULL_CH_0_FIELD_SIZE 1
+
+#define BIT_AP_APB_G2DLITE_WDMA_DFIFO_FULL_CH_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_WDMA_DFIFO_FULL_CH_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_WDMA_DFIFO_FULL_CH_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_WDMA_DFIFO_EMPTY
+// Register Offset : 0xa504
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_WDMA_DFIFO_EMPTY (G2DLITE_APB_AB0_BASE_ADDR + (0xa504<<0))
+#define WDMA_DFIFO_EMPTY_CH_2_FIELD_OFFSET 2
+#define WDMA_DFIFO_EMPTY_CH_2_FIELD_SIZE 1
+#define WDMA_DFIFO_EMPTY_CH_1_FIELD_OFFSET 1
+#define WDMA_DFIFO_EMPTY_CH_1_FIELD_SIZE 1
+#define WDMA_DFIFO_EMPTY_CH_0_FIELD_OFFSET 0
+#define WDMA_DFIFO_EMPTY_CH_0_FIELD_SIZE 1
+
+#define BIT_AP_APB_G2DLITE_WDMA_DFIFO_EMPTY_CH_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_WDMA_DFIFO_EMPTY_CH_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_WDMA_DFIFO_EMPTY_CH_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_WDMA_CFIFO_FULL
+// Register Offset : 0xa508
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_WDMA_CFIFO_FULL (G2DLITE_APB_AB0_BASE_ADDR + (0xa508<<0))
+#define WDMA_CFIFO_FULL_CH_2_FIELD_OFFSET 2
+#define WDMA_CFIFO_FULL_CH_2_FIELD_SIZE 1
+#define WDMA_CFIFO_FULL_CH_1_FIELD_OFFSET 1
+#define WDMA_CFIFO_FULL_CH_1_FIELD_SIZE 1
+#define WDMA_CFIFO_FULL_CH_0_FIELD_OFFSET 0
+#define WDMA_CFIFO_FULL_CH_0_FIELD_SIZE 1
+
+#define BIT_AP_APB_G2DLITE_WDMA_CFIFO_FULL_CH_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_WDMA_CFIFO_FULL_CH_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_WDMA_CFIFO_FULL_CH_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_WDMA_CFIFO_EMPTY
+// Register Offset : 0xa50c
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_WDMA_CFIFO_EMPTY (G2DLITE_APB_AB0_BASE_ADDR + (0xa50c<<0))
+#define WDMA_CFIFO_EMPTY_CH_2_FIELD_OFFSET 2
+#define WDMA_CFIFO_EMPTY_CH_2_FIELD_SIZE 1
+#define WDMA_CFIFO_EMPTY_CH_1_FIELD_OFFSET 1
+#define WDMA_CFIFO_EMPTY_CH_1_FIELD_SIZE 1
+#define WDMA_CFIFO_EMPTY_CH_0_FIELD_OFFSET 0
+#define WDMA_CFIFO_EMPTY_CH_0_FIELD_SIZE 1
+
+#define BIT_AP_APB_G2DLITE_WDMA_CFIFO_EMPTY_CH_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_WDMA_CFIFO_EMPTY_CH_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_WDMA_CFIFO_EMPTY_CH_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_WDMA_CH_IDLE
+// Register Offset : 0xa510
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_WDMA_CH_IDLE (G2DLITE_APB_AB0_BASE_ADDR + (0xa510<<0))
+#define WDMA_CH_IDLE_CH_2_FIELD_OFFSET 2
+#define WDMA_CH_IDLE_CH_2_FIELD_SIZE 1
+#define WDMA_CH_IDLE_CH_1_FIELD_OFFSET 1
+#define WDMA_CH_IDLE_CH_1_FIELD_SIZE 1
+#define WDMA_CH_IDLE_CH_0_FIELD_OFFSET 0
+#define WDMA_CH_IDLE_CH_0_FIELD_SIZE 1
+
+#define BIT_AP_APB_G2DLITE_WDMA_CH_IDLE_CH_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_WDMA_CH_IDLE_CH_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_WDMA_CH_IDLE_CH_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_WDMA_INT_MASK
+// Register Offset : 0xa520
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_WDMA_INT_MASK (G2DLITE_APB_AB0_BASE_ADDR + (0xa520<<0))
+#define WDMA_INT_MASK_ERR_CH_2_FIELD_OFFSET 2
+#define WDMA_INT_MASK_ERR_CH_2_FIELD_SIZE 1
+#define WDMA_INT_MASK_ERR_CH_1_FIELD_OFFSET 1
+#define WDMA_INT_MASK_ERR_CH_1_FIELD_SIZE 1
+#define WDMA_INT_MASK_ERR_CH_0_FIELD_OFFSET 0
+#define WDMA_INT_MASK_ERR_CH_0_FIELD_SIZE 1
+
+#define BIT_AP_APB_G2DLITE_WDMA_INT_MASK_ERR_CH_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_WDMA_INT_MASK_ERR_CH_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_WDMA_INT_MASK_ERR_CH_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_WDMA_INT_STATUS
+// Register Offset : 0xa524
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_WDMA_INT_STATUS (G2DLITE_APB_AB0_BASE_ADDR + (0xa524<<0))
+#define WDMA_INT_STATUS_ERR_CH_2_FIELD_OFFSET 2
+#define WDMA_INT_STATUS_ERR_CH_2_FIELD_SIZE 1
+#define WDMA_INT_STATUS_ERR_CH_1_FIELD_OFFSET 1
+#define WDMA_INT_STATUS_ERR_CH_1_FIELD_SIZE 1
+#define WDMA_INT_STATUS_ERR_CH_0_FIELD_OFFSET 0
+#define WDMA_INT_STATUS_ERR_CH_0_FIELD_SIZE 1
+
+#define BIT_AP_APB_G2DLITE_WDMA_INT_STATUS_ERR_CH_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_WDMA_INT_STATUS_ERR_CH_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_WDMA_INT_STATUS_ERR_CH_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_WDMA_DEBUG_CTRL
+// Register Offset : 0xa540
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_WDMA_DEBUG_CTRL (G2DLITE_APB_AB0_BASE_ADDR + (0xa540<<0))
+#define WDMA_DEBUG_CTRL_DEBUG_SEL_FIELD_OFFSET 0
+#define WDMA_DEBUG_CTRL_DEBUG_SEL_FIELD_SIZE 5
+
+#define BIT_AP_APB_G2DLITE_WDMA_DEBUG_CTRL_DEBUG_SEL_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_WDMA_DEBUG_CTRL_DEBUG_SEL_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_WDMA_DEBUG_CTRL_DEBUG_SEL_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_WDMA_DEBUG_CTRL_DEBUG_SEL_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_WDMA_DEBUG_CTRL_DEBUG_SEL_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_WDMA_DEBUG_STA
+// Register Offset : 0xa544
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_WDMA_DEBUG_STA (G2DLITE_APB_AB0_BASE_ADDR + (0xa544<<0))
+#define WDMA_DEBUG_STA_CFIFO_DEP_FIELD_OFFSET 16
+#define WDMA_DEBUG_STA_CFIFO_DEP_FIELD_SIZE 16
+#define WDMA_DEBUG_STA_DFIFO_DEP_FIELD_OFFSET 0
+#define WDMA_DEBUG_STA_DFIFO_DEP_FIELD_SIZE 16
+
+#define BIT_AP_APB_G2DLITE_WDMA_DEBUG_STA_CFIFO_DEP_15    (BIT_(31))
+#define BIT_AP_APB_G2DLITE_WDMA_DEBUG_STA_CFIFO_DEP_14    (BIT_(30))
+#define BIT_AP_APB_G2DLITE_WDMA_DEBUG_STA_CFIFO_DEP_13    (BIT_(29))
+#define BIT_AP_APB_G2DLITE_WDMA_DEBUG_STA_CFIFO_DEP_12    (BIT_(28))
+#define BIT_AP_APB_G2DLITE_WDMA_DEBUG_STA_CFIFO_DEP_11    (BIT_(27))
+#define BIT_AP_APB_G2DLITE_WDMA_DEBUG_STA_CFIFO_DEP_10    (BIT_(26))
+#define BIT_AP_APB_G2DLITE_WDMA_DEBUG_STA_CFIFO_DEP_9    (BIT_(25))
+#define BIT_AP_APB_G2DLITE_WDMA_DEBUG_STA_CFIFO_DEP_8    (BIT_(24))
+#define BIT_AP_APB_G2DLITE_WDMA_DEBUG_STA_CFIFO_DEP_7    (BIT_(23))
+#define BIT_AP_APB_G2DLITE_WDMA_DEBUG_STA_CFIFO_DEP_6    (BIT_(22))
+#define BIT_AP_APB_G2DLITE_WDMA_DEBUG_STA_CFIFO_DEP_5    (BIT_(21))
+#define BIT_AP_APB_G2DLITE_WDMA_DEBUG_STA_CFIFO_DEP_4    (BIT_(20))
+#define BIT_AP_APB_G2DLITE_WDMA_DEBUG_STA_CFIFO_DEP_3    (BIT_(19))
+#define BIT_AP_APB_G2DLITE_WDMA_DEBUG_STA_CFIFO_DEP_2    (BIT_(18))
+#define BIT_AP_APB_G2DLITE_WDMA_DEBUG_STA_CFIFO_DEP_1    (BIT_(17))
+#define BIT_AP_APB_G2DLITE_WDMA_DEBUG_STA_CFIFO_DEP_0    (BIT_(16))
+#define BIT_AP_APB_G2DLITE_WDMA_DEBUG_STA_DFIFO_DEP_15    (BIT_(15))
+#define BIT_AP_APB_G2DLITE_WDMA_DEBUG_STA_DFIFO_DEP_14    (BIT_(14))
+#define BIT_AP_APB_G2DLITE_WDMA_DEBUG_STA_DFIFO_DEP_13    (BIT_(13))
+#define BIT_AP_APB_G2DLITE_WDMA_DEBUG_STA_DFIFO_DEP_12    (BIT_(12))
+#define BIT_AP_APB_G2DLITE_WDMA_DEBUG_STA_DFIFO_DEP_11    (BIT_(11))
+#define BIT_AP_APB_G2DLITE_WDMA_DEBUG_STA_DFIFO_DEP_10    (BIT_(10))
+#define BIT_AP_APB_G2DLITE_WDMA_DEBUG_STA_DFIFO_DEP_9    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_WDMA_DEBUG_STA_DFIFO_DEP_8    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_WDMA_DEBUG_STA_DFIFO_DEP_7    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_WDMA_DEBUG_STA_DFIFO_DEP_6    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_WDMA_DEBUG_STA_DFIFO_DEP_5    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_WDMA_DEBUG_STA_DFIFO_DEP_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_WDMA_DEBUG_STA_DFIFO_DEP_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_WDMA_DEBUG_STA_DFIFO_DEP_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_WDMA_DEBUG_STA_DFIFO_DEP_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_WDMA_DEBUG_STA_DFIFO_DEP_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_WP_CTRL
+// Register Offset : 0xb000
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_WP_CTRL (G2DLITE_APB_AB0_BASE_ADDR + (0xb000<<0))
+#define WP_CTRL_PACK_ENDIAN_CTRL_FIELD_OFFSET 16
+#define WP_CTRL_PACK_ENDIAN_CTRL_FIELD_SIZE 3
+#define WP_CTRL_PACK_ROUND_FIELD_OFFSET 12
+#define WP_CTRL_PACK_ROUND_FIELD_SIZE 1
+#define WP_CTRL_TILE_TYPE_FIELD_OFFSET 10
+#define WP_CTRL_TILE_TYPE_FIELD_SIZE 2
+#define WP_CTRL_PXL_MODE_FIELD_OFFSET 9
+#define WP_CTRL_PXL_MODE_FIELD_SIZE 1
+#define WP_CTRL_REFORGE_BYPS_FIELD_OFFSET 8
+#define WP_CTRL_REFORGE_BYPS_FIELD_SIZE 1
+#define WP_CTRL_UV_MODE_FIELD_OFFSET 6
+#define WP_CTRL_UV_MODE_FIELD_SIZE 2
+#define WP_CTRL_STR_FMT_FIELD_OFFSET 4
+#define WP_CTRL_STR_FMT_FIELD_SIZE 2
+#define WP_CTRL_VFLIP_FIELD_OFFSET 3
+#define WP_CTRL_VFLIP_FIELD_SIZE 1
+#define WP_CTRL_HFLIP_FIELD_OFFSET 2
+#define WP_CTRL_HFLIP_FIELD_SIZE 1
+#define WP_CTRL_ROT_EN_FIELD_OFFSET 1
+#define WP_CTRL_ROT_EN_FIELD_SIZE 1
+#define WP_CTRL_FRM_MODE_FIELD_OFFSET 0
+#define WP_CTRL_FRM_MODE_FIELD_SIZE 1
+
+#define BIT_AP_APB_G2DLITE_WP_CTRL_PACK_ENDIAN_CTRL_2    (BIT_(18))
+#define BIT_AP_APB_G2DLITE_WP_CTRL_PACK_ENDIAN_CTRL_1    (BIT_(17))
+#define BIT_AP_APB_G2DLITE_WP_CTRL_PACK_ENDIAN_CTRL_0    (BIT_(16))
+#define BIT_AP_APB_G2DLITE_WP_CTRL_PACK_ROUND    (BIT_(12))
+#define BIT_AP_APB_G2DLITE_WP_CTRL_TILE_TYPE_1    (BIT_(11))
+#define BIT_AP_APB_G2DLITE_WP_CTRL_TILE_TYPE_0    (BIT_(10))
+#define BIT_AP_APB_G2DLITE_WP_CTRL_PXL_MODE    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_WP_CTRL_REFORGE_BYPS    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_WP_CTRL_UV_MODE_1    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_WP_CTRL_UV_MODE_0    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_WP_CTRL_STR_FMT_1    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_WP_CTRL_STR_FMT_0    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_WP_CTRL_VFLIP    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_WP_CTRL_HFLIP    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_WP_CTRL_ROT_EN    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_WP_CTRL_FRM_MODE    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_WP_PIX_COMP
+// Register Offset : 0xb004
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_WP_PIX_COMP (G2DLITE_APB_AB0_BASE_ADDR + (0xb004<<0))
+#define WP_PIX_COMP_BPV_FIELD_OFFSET 24
+#define WP_PIX_COMP_BPV_FIELD_SIZE 4
+#define WP_PIX_COMP_BPU_FIELD_OFFSET 16
+#define WP_PIX_COMP_BPU_FIELD_SIZE 4
+#define WP_PIX_COMP_BPY_FIELD_OFFSET 8
+#define WP_PIX_COMP_BPY_FIELD_SIZE 5
+#define WP_PIX_COMP_BPA_FIELD_OFFSET 0
+#define WP_PIX_COMP_BPA_FIELD_SIZE 4
+
+#define BIT_AP_APB_G2DLITE_WP_PIX_COMP_BPV_3    (BIT_(27))
+#define BIT_AP_APB_G2DLITE_WP_PIX_COMP_BPV_2    (BIT_(26))
+#define BIT_AP_APB_G2DLITE_WP_PIX_COMP_BPV_1    (BIT_(25))
+#define BIT_AP_APB_G2DLITE_WP_PIX_COMP_BPV_0    (BIT_(24))
+#define BIT_AP_APB_G2DLITE_WP_PIX_COMP_BPU_3    (BIT_(19))
+#define BIT_AP_APB_G2DLITE_WP_PIX_COMP_BPU_2    (BIT_(18))
+#define BIT_AP_APB_G2DLITE_WP_PIX_COMP_BPU_1    (BIT_(17))
+#define BIT_AP_APB_G2DLITE_WP_PIX_COMP_BPU_0    (BIT_(16))
+#define BIT_AP_APB_G2DLITE_WP_PIX_COMP_BPY_4    (BIT_(12))
+#define BIT_AP_APB_G2DLITE_WP_PIX_COMP_BPY_3    (BIT_(11))
+#define BIT_AP_APB_G2DLITE_WP_PIX_COMP_BPY_2    (BIT_(10))
+#define BIT_AP_APB_G2DLITE_WP_PIX_COMP_BPY_1    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_WP_PIX_COMP_BPY_0    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_WP_PIX_COMP_BPA_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_WP_PIX_COMP_BPA_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_WP_PIX_COMP_BPA_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_WP_PIX_COMP_BPA_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_WP_YUVDOWN_CTRL
+// Register Offset : 0xb008
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_WP_YUVDOWN_CTRL (G2DLITE_APB_AB0_BASE_ADDR + (0xb008<<0))
+#define WP_YUVDOWN_CTRL_V_BYPASS_FIELD_OFFSET 9
+#define WP_YUVDOWN_CTRL_V_BYPASS_FIELD_SIZE 1
+#define WP_YUVDOWN_CTRL_BYPASS_FIELD_OFFSET 8
+#define WP_YUVDOWN_CTRL_BYPASS_FIELD_SIZE 1
+#define WP_YUVDOWN_CTRL_V_INI_OFST_FIELD_OFFSET 6
+#define WP_YUVDOWN_CTRL_V_INI_OFST_FIELD_SIZE 2
+#define WP_YUVDOWN_CTRL_V_FILTER_TYPE_FIELD_OFFSET 4
+#define WP_YUVDOWN_CTRL_V_FILTER_TYPE_FIELD_SIZE 2
+#define WP_YUVDOWN_CTRL_H_INI_OFST_FIELD_OFFSET 2
+#define WP_YUVDOWN_CTRL_H_INI_OFST_FIELD_SIZE 2
+#define WP_YUVDOWN_CTRL_H_FILTER_TYPE_FIELD_OFFSET 0
+#define WP_YUVDOWN_CTRL_H_FILTER_TYPE_FIELD_SIZE 2
+
+#define BIT_AP_APB_G2DLITE_WP_YUVDOWN_CTRL_V_BYPASS    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_WP_YUVDOWN_CTRL_BYPASS    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_WP_YUVDOWN_CTRL_V_INI_OFST_1    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_WP_YUVDOWN_CTRL_V_INI_OFST_0    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_WP_YUVDOWN_CTRL_V_FILTER_TYPE_1    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_WP_YUVDOWN_CTRL_V_FILTER_TYPE_0    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_WP_YUVDOWN_CTRL_H_INI_OFST_1    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_WP_YUVDOWN_CTRL_H_INI_OFST_0    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_WP_YUVDOWN_CTRL_H_FILTER_TYPE_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_WP_YUVDOWN_CTRL_H_FILTER_TYPE_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_WP_Y_BADDR_L
+// Register Offset : 0xb010
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_WP_Y_BADDR_L (G2DLITE_APB_AB0_BASE_ADDR + (0xb010<<0))
+#define WP_Y_BADDR_L_Y_FIELD_OFFSET 0
+#define WP_Y_BADDR_L_Y_FIELD_SIZE 32
+
+#define BIT_AP_APB_G2DLITE_WP_Y_BADDR_L_Y_31    (BIT_(31))
+#define BIT_AP_APB_G2DLITE_WP_Y_BADDR_L_Y_30    (BIT_(30))
+#define BIT_AP_APB_G2DLITE_WP_Y_BADDR_L_Y_29    (BIT_(29))
+#define BIT_AP_APB_G2DLITE_WP_Y_BADDR_L_Y_28    (BIT_(28))
+#define BIT_AP_APB_G2DLITE_WP_Y_BADDR_L_Y_27    (BIT_(27))
+#define BIT_AP_APB_G2DLITE_WP_Y_BADDR_L_Y_26    (BIT_(26))
+#define BIT_AP_APB_G2DLITE_WP_Y_BADDR_L_Y_25    (BIT_(25))
+#define BIT_AP_APB_G2DLITE_WP_Y_BADDR_L_Y_24    (BIT_(24))
+#define BIT_AP_APB_G2DLITE_WP_Y_BADDR_L_Y_23    (BIT_(23))
+#define BIT_AP_APB_G2DLITE_WP_Y_BADDR_L_Y_22    (BIT_(22))
+#define BIT_AP_APB_G2DLITE_WP_Y_BADDR_L_Y_21    (BIT_(21))
+#define BIT_AP_APB_G2DLITE_WP_Y_BADDR_L_Y_20    (BIT_(20))
+#define BIT_AP_APB_G2DLITE_WP_Y_BADDR_L_Y_19    (BIT_(19))
+#define BIT_AP_APB_G2DLITE_WP_Y_BADDR_L_Y_18    (BIT_(18))
+#define BIT_AP_APB_G2DLITE_WP_Y_BADDR_L_Y_17    (BIT_(17))
+#define BIT_AP_APB_G2DLITE_WP_Y_BADDR_L_Y_16    (BIT_(16))
+#define BIT_AP_APB_G2DLITE_WP_Y_BADDR_L_Y_15    (BIT_(15))
+#define BIT_AP_APB_G2DLITE_WP_Y_BADDR_L_Y_14    (BIT_(14))
+#define BIT_AP_APB_G2DLITE_WP_Y_BADDR_L_Y_13    (BIT_(13))
+#define BIT_AP_APB_G2DLITE_WP_Y_BADDR_L_Y_12    (BIT_(12))
+#define BIT_AP_APB_G2DLITE_WP_Y_BADDR_L_Y_11    (BIT_(11))
+#define BIT_AP_APB_G2DLITE_WP_Y_BADDR_L_Y_10    (BIT_(10))
+#define BIT_AP_APB_G2DLITE_WP_Y_BADDR_L_Y_9    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_WP_Y_BADDR_L_Y_8    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_WP_Y_BADDR_L_Y_7    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_WP_Y_BADDR_L_Y_6    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_WP_Y_BADDR_L_Y_5    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_WP_Y_BADDR_L_Y_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_WP_Y_BADDR_L_Y_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_WP_Y_BADDR_L_Y_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_WP_Y_BADDR_L_Y_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_WP_Y_BADDR_L_Y_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_WP_Y_BADDR_H
+// Register Offset : 0xb014
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_WP_Y_BADDR_H (G2DLITE_APB_AB0_BASE_ADDR + (0xb014<<0))
+#define WP_Y_BADDR_H_Y_FIELD_OFFSET 0
+#define WP_Y_BADDR_H_Y_FIELD_SIZE 8
+
+#define BIT_AP_APB_G2DLITE_WP_Y_BADDR_H_Y_7    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_WP_Y_BADDR_H_Y_6    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_WP_Y_BADDR_H_Y_5    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_WP_Y_BADDR_H_Y_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_WP_Y_BADDR_H_Y_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_WP_Y_BADDR_H_Y_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_WP_Y_BADDR_H_Y_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_WP_Y_BADDR_H_Y_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_WP_U_BADDR_L
+// Register Offset : 0xb018
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_WP_U_BADDR_L (G2DLITE_APB_AB0_BASE_ADDR + (0xb018<<0))
+#define WP_U_BADDR_L_U_FIELD_OFFSET 0
+#define WP_U_BADDR_L_U_FIELD_SIZE 32
+
+#define BIT_AP_APB_G2DLITE_WP_U_BADDR_L_U_31    (BIT_(31))
+#define BIT_AP_APB_G2DLITE_WP_U_BADDR_L_U_30    (BIT_(30))
+#define BIT_AP_APB_G2DLITE_WP_U_BADDR_L_U_29    (BIT_(29))
+#define BIT_AP_APB_G2DLITE_WP_U_BADDR_L_U_28    (BIT_(28))
+#define BIT_AP_APB_G2DLITE_WP_U_BADDR_L_U_27    (BIT_(27))
+#define BIT_AP_APB_G2DLITE_WP_U_BADDR_L_U_26    (BIT_(26))
+#define BIT_AP_APB_G2DLITE_WP_U_BADDR_L_U_25    (BIT_(25))
+#define BIT_AP_APB_G2DLITE_WP_U_BADDR_L_U_24    (BIT_(24))
+#define BIT_AP_APB_G2DLITE_WP_U_BADDR_L_U_23    (BIT_(23))
+#define BIT_AP_APB_G2DLITE_WP_U_BADDR_L_U_22    (BIT_(22))
+#define BIT_AP_APB_G2DLITE_WP_U_BADDR_L_U_21    (BIT_(21))
+#define BIT_AP_APB_G2DLITE_WP_U_BADDR_L_U_20    (BIT_(20))
+#define BIT_AP_APB_G2DLITE_WP_U_BADDR_L_U_19    (BIT_(19))
+#define BIT_AP_APB_G2DLITE_WP_U_BADDR_L_U_18    (BIT_(18))
+#define BIT_AP_APB_G2DLITE_WP_U_BADDR_L_U_17    (BIT_(17))
+#define BIT_AP_APB_G2DLITE_WP_U_BADDR_L_U_16    (BIT_(16))
+#define BIT_AP_APB_G2DLITE_WP_U_BADDR_L_U_15    (BIT_(15))
+#define BIT_AP_APB_G2DLITE_WP_U_BADDR_L_U_14    (BIT_(14))
+#define BIT_AP_APB_G2DLITE_WP_U_BADDR_L_U_13    (BIT_(13))
+#define BIT_AP_APB_G2DLITE_WP_U_BADDR_L_U_12    (BIT_(12))
+#define BIT_AP_APB_G2DLITE_WP_U_BADDR_L_U_11    (BIT_(11))
+#define BIT_AP_APB_G2DLITE_WP_U_BADDR_L_U_10    (BIT_(10))
+#define BIT_AP_APB_G2DLITE_WP_U_BADDR_L_U_9    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_WP_U_BADDR_L_U_8    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_WP_U_BADDR_L_U_7    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_WP_U_BADDR_L_U_6    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_WP_U_BADDR_L_U_5    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_WP_U_BADDR_L_U_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_WP_U_BADDR_L_U_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_WP_U_BADDR_L_U_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_WP_U_BADDR_L_U_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_WP_U_BADDR_L_U_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_WP_U_BADDR_H
+// Register Offset : 0xb01c
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_WP_U_BADDR_H (G2DLITE_APB_AB0_BASE_ADDR + (0xb01c<<0))
+#define WP_U_BADDR_H_U_FIELD_OFFSET 0
+#define WP_U_BADDR_H_U_FIELD_SIZE 8
+
+#define BIT_AP_APB_G2DLITE_WP_U_BADDR_H_U_7    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_WP_U_BADDR_H_U_6    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_WP_U_BADDR_H_U_5    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_WP_U_BADDR_H_U_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_WP_U_BADDR_H_U_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_WP_U_BADDR_H_U_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_WP_U_BADDR_H_U_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_WP_U_BADDR_H_U_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_WP_V_BADDR_L
+// Register Offset : 0xb020
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_WP_V_BADDR_L (G2DLITE_APB_AB0_BASE_ADDR + (0xb020<<0))
+#define WP_V_BADDR_L_V_FIELD_OFFSET 0
+#define WP_V_BADDR_L_V_FIELD_SIZE 32
+
+#define BIT_AP_APB_G2DLITE_WP_V_BADDR_L_V_31    (BIT_(31))
+#define BIT_AP_APB_G2DLITE_WP_V_BADDR_L_V_30    (BIT_(30))
+#define BIT_AP_APB_G2DLITE_WP_V_BADDR_L_V_29    (BIT_(29))
+#define BIT_AP_APB_G2DLITE_WP_V_BADDR_L_V_28    (BIT_(28))
+#define BIT_AP_APB_G2DLITE_WP_V_BADDR_L_V_27    (BIT_(27))
+#define BIT_AP_APB_G2DLITE_WP_V_BADDR_L_V_26    (BIT_(26))
+#define BIT_AP_APB_G2DLITE_WP_V_BADDR_L_V_25    (BIT_(25))
+#define BIT_AP_APB_G2DLITE_WP_V_BADDR_L_V_24    (BIT_(24))
+#define BIT_AP_APB_G2DLITE_WP_V_BADDR_L_V_23    (BIT_(23))
+#define BIT_AP_APB_G2DLITE_WP_V_BADDR_L_V_22    (BIT_(22))
+#define BIT_AP_APB_G2DLITE_WP_V_BADDR_L_V_21    (BIT_(21))
+#define BIT_AP_APB_G2DLITE_WP_V_BADDR_L_V_20    (BIT_(20))
+#define BIT_AP_APB_G2DLITE_WP_V_BADDR_L_V_19    (BIT_(19))
+#define BIT_AP_APB_G2DLITE_WP_V_BADDR_L_V_18    (BIT_(18))
+#define BIT_AP_APB_G2DLITE_WP_V_BADDR_L_V_17    (BIT_(17))
+#define BIT_AP_APB_G2DLITE_WP_V_BADDR_L_V_16    (BIT_(16))
+#define BIT_AP_APB_G2DLITE_WP_V_BADDR_L_V_15    (BIT_(15))
+#define BIT_AP_APB_G2DLITE_WP_V_BADDR_L_V_14    (BIT_(14))
+#define BIT_AP_APB_G2DLITE_WP_V_BADDR_L_V_13    (BIT_(13))
+#define BIT_AP_APB_G2DLITE_WP_V_BADDR_L_V_12    (BIT_(12))
+#define BIT_AP_APB_G2DLITE_WP_V_BADDR_L_V_11    (BIT_(11))
+#define BIT_AP_APB_G2DLITE_WP_V_BADDR_L_V_10    (BIT_(10))
+#define BIT_AP_APB_G2DLITE_WP_V_BADDR_L_V_9    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_WP_V_BADDR_L_V_8    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_WP_V_BADDR_L_V_7    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_WP_V_BADDR_L_V_6    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_WP_V_BADDR_L_V_5    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_WP_V_BADDR_L_V_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_WP_V_BADDR_L_V_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_WP_V_BADDR_L_V_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_WP_V_BADDR_L_V_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_WP_V_BADDR_L_V_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_WP_V_BADDR_H
+// Register Offset : 0xb024
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_WP_V_BADDR_H (G2DLITE_APB_AB0_BASE_ADDR + (0xb024<<0))
+#define WP_V_BADDR_H_V_FIELD_OFFSET 0
+#define WP_V_BADDR_H_V_FIELD_SIZE 8
+
+#define BIT_AP_APB_G2DLITE_WP_V_BADDR_H_V_7    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_WP_V_BADDR_H_V_6    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_WP_V_BADDR_H_V_5    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_WP_V_BADDR_H_V_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_WP_V_BADDR_H_V_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_WP_V_BADDR_H_V_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_WP_V_BADDR_H_V_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_WP_V_BADDR_H_V_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_WP_Y_STRIDE
+// Register Offset : 0xb028
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_WP_Y_STRIDE (G2DLITE_APB_AB0_BASE_ADDR + (0xb028<<0))
+#define WP_Y_STRIDE_Y_FIELD_OFFSET 0
+#define WP_Y_STRIDE_Y_FIELD_SIZE 18
+
+#define BIT_AP_APB_G2DLITE_WP_Y_STRIDE_Y_17    (BIT_(17))
+#define BIT_AP_APB_G2DLITE_WP_Y_STRIDE_Y_16    (BIT_(16))
+#define BIT_AP_APB_G2DLITE_WP_Y_STRIDE_Y_15    (BIT_(15))
+#define BIT_AP_APB_G2DLITE_WP_Y_STRIDE_Y_14    (BIT_(14))
+#define BIT_AP_APB_G2DLITE_WP_Y_STRIDE_Y_13    (BIT_(13))
+#define BIT_AP_APB_G2DLITE_WP_Y_STRIDE_Y_12    (BIT_(12))
+#define BIT_AP_APB_G2DLITE_WP_Y_STRIDE_Y_11    (BIT_(11))
+#define BIT_AP_APB_G2DLITE_WP_Y_STRIDE_Y_10    (BIT_(10))
+#define BIT_AP_APB_G2DLITE_WP_Y_STRIDE_Y_9    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_WP_Y_STRIDE_Y_8    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_WP_Y_STRIDE_Y_7    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_WP_Y_STRIDE_Y_6    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_WP_Y_STRIDE_Y_5    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_WP_Y_STRIDE_Y_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_WP_Y_STRIDE_Y_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_WP_Y_STRIDE_Y_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_WP_Y_STRIDE_Y_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_WP_Y_STRIDE_Y_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_WP_U_STRIDE
+// Register Offset : 0xb02c
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_WP_U_STRIDE (G2DLITE_APB_AB0_BASE_ADDR + (0xb02c<<0))
+#define WP_U_STRIDE_U_FIELD_OFFSET 0
+#define WP_U_STRIDE_U_FIELD_SIZE 18
+
+#define BIT_AP_APB_G2DLITE_WP_U_STRIDE_U_17    (BIT_(17))
+#define BIT_AP_APB_G2DLITE_WP_U_STRIDE_U_16    (BIT_(16))
+#define BIT_AP_APB_G2DLITE_WP_U_STRIDE_U_15    (BIT_(15))
+#define BIT_AP_APB_G2DLITE_WP_U_STRIDE_U_14    (BIT_(14))
+#define BIT_AP_APB_G2DLITE_WP_U_STRIDE_U_13    (BIT_(13))
+#define BIT_AP_APB_G2DLITE_WP_U_STRIDE_U_12    (BIT_(12))
+#define BIT_AP_APB_G2DLITE_WP_U_STRIDE_U_11    (BIT_(11))
+#define BIT_AP_APB_G2DLITE_WP_U_STRIDE_U_10    (BIT_(10))
+#define BIT_AP_APB_G2DLITE_WP_U_STRIDE_U_9    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_WP_U_STRIDE_U_8    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_WP_U_STRIDE_U_7    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_WP_U_STRIDE_U_6    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_WP_U_STRIDE_U_5    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_WP_U_STRIDE_U_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_WP_U_STRIDE_U_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_WP_U_STRIDE_U_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_WP_U_STRIDE_U_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_WP_U_STRIDE_U_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_WP_V_STRIDE
+// Register Offset : 0xb030
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_WP_V_STRIDE (G2DLITE_APB_AB0_BASE_ADDR + (0xb030<<0))
+#define WP_V_STRIDE_V_FIELD_OFFSET 0
+#define WP_V_STRIDE_V_FIELD_SIZE 18
+
+#define BIT_AP_APB_G2DLITE_WP_V_STRIDE_V_17    (BIT_(17))
+#define BIT_AP_APB_G2DLITE_WP_V_STRIDE_V_16    (BIT_(16))
+#define BIT_AP_APB_G2DLITE_WP_V_STRIDE_V_15    (BIT_(15))
+#define BIT_AP_APB_G2DLITE_WP_V_STRIDE_V_14    (BIT_(14))
+#define BIT_AP_APB_G2DLITE_WP_V_STRIDE_V_13    (BIT_(13))
+#define BIT_AP_APB_G2DLITE_WP_V_STRIDE_V_12    (BIT_(12))
+#define BIT_AP_APB_G2DLITE_WP_V_STRIDE_V_11    (BIT_(11))
+#define BIT_AP_APB_G2DLITE_WP_V_STRIDE_V_10    (BIT_(10))
+#define BIT_AP_APB_G2DLITE_WP_V_STRIDE_V_9    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_WP_V_STRIDE_V_8    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_WP_V_STRIDE_V_7    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_WP_V_STRIDE_V_6    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_WP_V_STRIDE_V_5    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_WP_V_STRIDE_V_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_WP_V_STRIDE_V_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_WP_V_STRIDE_V_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_WP_V_STRIDE_V_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_WP_V_STRIDE_V_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_WP_CSC_CTRL
+// Register Offset : 0xb040
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_WP_CSC_CTRL (G2DLITE_APB_AB0_BASE_ADDR + (0xb040<<0))
+#define WP_CSC_CTRL_ALPHA_FIELD_OFFSET 2
+#define WP_CSC_CTRL_ALPHA_FIELD_SIZE 1
+#define WP_CSC_CTRL_SBUP_CONV_FIELD_OFFSET 1
+#define WP_CSC_CTRL_SBUP_CONV_FIELD_SIZE 1
+#define WP_CSC_CTRL_BYPASS_FIELD_OFFSET 0
+#define WP_CSC_CTRL_BYPASS_FIELD_SIZE 1
+
+#define BIT_AP_APB_G2DLITE_WP_CSC_CTRL_ALPHA    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_WP_CSC_CTRL_SBUP_CONV    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_WP_CSC_CTRL_BYPASS    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_WP_CSC_COEF1
+// Register Offset : 0xb044
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_WP_CSC_COEF1 (G2DLITE_APB_AB0_BASE_ADDR + (0xb044<<0))
+#define WP_CSC_COEF1_A01_FIELD_OFFSET 16
+#define WP_CSC_COEF1_A01_FIELD_SIZE 14
+#define WP_CSC_COEF1_A00_FIELD_OFFSET 0
+#define WP_CSC_COEF1_A00_FIELD_SIZE 14
+
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF1_A01_13    (BIT_(29))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF1_A01_12    (BIT_(28))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF1_A01_11    (BIT_(27))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF1_A01_10    (BIT_(26))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF1_A01_9    (BIT_(25))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF1_A01_8    (BIT_(24))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF1_A01_7    (BIT_(23))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF1_A01_6    (BIT_(22))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF1_A01_5    (BIT_(21))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF1_A01_4    (BIT_(20))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF1_A01_3    (BIT_(19))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF1_A01_2    (BIT_(18))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF1_A01_1    (BIT_(17))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF1_A01_0    (BIT_(16))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF1_A00_13    (BIT_(13))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF1_A00_12    (BIT_(12))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF1_A00_11    (BIT_(11))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF1_A00_10    (BIT_(10))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF1_A00_9    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF1_A00_8    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF1_A00_7    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF1_A00_6    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF1_A00_5    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF1_A00_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF1_A00_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF1_A00_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF1_A00_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF1_A00_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_WP_CSC_COEF2
+// Register Offset : 0xb048
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_WP_CSC_COEF2 (G2DLITE_APB_AB0_BASE_ADDR + (0xb048<<0))
+#define WP_CSC_COEF2_A10_FIELD_OFFSET 16
+#define WP_CSC_COEF2_A10_FIELD_SIZE 14
+#define WP_CSC_COEF2_A02_FIELD_OFFSET 0
+#define WP_CSC_COEF2_A02_FIELD_SIZE 14
+
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF2_A10_13    (BIT_(29))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF2_A10_12    (BIT_(28))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF2_A10_11    (BIT_(27))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF2_A10_10    (BIT_(26))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF2_A10_9    (BIT_(25))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF2_A10_8    (BIT_(24))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF2_A10_7    (BIT_(23))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF2_A10_6    (BIT_(22))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF2_A10_5    (BIT_(21))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF2_A10_4    (BIT_(20))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF2_A10_3    (BIT_(19))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF2_A10_2    (BIT_(18))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF2_A10_1    (BIT_(17))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF2_A10_0    (BIT_(16))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF2_A02_13    (BIT_(13))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF2_A02_12    (BIT_(12))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF2_A02_11    (BIT_(11))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF2_A02_10    (BIT_(10))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF2_A02_9    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF2_A02_8    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF2_A02_7    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF2_A02_6    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF2_A02_5    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF2_A02_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF2_A02_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF2_A02_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF2_A02_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF2_A02_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_WP_CSC_COEF3
+// Register Offset : 0xb04c
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_WP_CSC_COEF3 (G2DLITE_APB_AB0_BASE_ADDR + (0xb04c<<0))
+#define WP_CSC_COEF3_A12_FIELD_OFFSET 16
+#define WP_CSC_COEF3_A12_FIELD_SIZE 14
+#define WP_CSC_COEF3_A11_FIELD_OFFSET 0
+#define WP_CSC_COEF3_A11_FIELD_SIZE 14
+
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF3_A12_13    (BIT_(29))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF3_A12_12    (BIT_(28))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF3_A12_11    (BIT_(27))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF3_A12_10    (BIT_(26))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF3_A12_9    (BIT_(25))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF3_A12_8    (BIT_(24))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF3_A12_7    (BIT_(23))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF3_A12_6    (BIT_(22))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF3_A12_5    (BIT_(21))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF3_A12_4    (BIT_(20))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF3_A12_3    (BIT_(19))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF3_A12_2    (BIT_(18))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF3_A12_1    (BIT_(17))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF3_A12_0    (BIT_(16))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF3_A11_13    (BIT_(13))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF3_A11_12    (BIT_(12))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF3_A11_11    (BIT_(11))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF3_A11_10    (BIT_(10))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF3_A11_9    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF3_A11_8    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF3_A11_7    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF3_A11_6    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF3_A11_5    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF3_A11_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF3_A11_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF3_A11_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF3_A11_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF3_A11_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_WP_CSC_COEF4
+// Register Offset : 0xb050
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_WP_CSC_COEF4 (G2DLITE_APB_AB0_BASE_ADDR + (0xb050<<0))
+#define WP_CSC_COEF4_A21_FIELD_OFFSET 16
+#define WP_CSC_COEF4_A21_FIELD_SIZE 14
+#define WP_CSC_COEF4_A20_FIELD_OFFSET 0
+#define WP_CSC_COEF4_A20_FIELD_SIZE 14
+
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF4_A21_13    (BIT_(29))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF4_A21_12    (BIT_(28))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF4_A21_11    (BIT_(27))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF4_A21_10    (BIT_(26))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF4_A21_9    (BIT_(25))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF4_A21_8    (BIT_(24))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF4_A21_7    (BIT_(23))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF4_A21_6    (BIT_(22))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF4_A21_5    (BIT_(21))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF4_A21_4    (BIT_(20))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF4_A21_3    (BIT_(19))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF4_A21_2    (BIT_(18))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF4_A21_1    (BIT_(17))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF4_A21_0    (BIT_(16))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF4_A20_13    (BIT_(13))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF4_A20_12    (BIT_(12))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF4_A20_11    (BIT_(11))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF4_A20_10    (BIT_(10))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF4_A20_9    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF4_A20_8    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF4_A20_7    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF4_A20_6    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF4_A20_5    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF4_A20_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF4_A20_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF4_A20_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF4_A20_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF4_A20_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_WP_CSC_COEF5
+// Register Offset : 0xb054
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_WP_CSC_COEF5 (G2DLITE_APB_AB0_BASE_ADDR + (0xb054<<0))
+#define WP_CSC_COEF5_B0_FIELD_OFFSET 16
+#define WP_CSC_COEF5_B0_FIELD_SIZE 14
+#define WP_CSC_COEF5_A22_FIELD_OFFSET 0
+#define WP_CSC_COEF5_A22_FIELD_SIZE 14
+
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF5_B0_13    (BIT_(29))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF5_B0_12    (BIT_(28))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF5_B0_11    (BIT_(27))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF5_B0_10    (BIT_(26))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF5_B0_9    (BIT_(25))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF5_B0_8    (BIT_(24))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF5_B0_7    (BIT_(23))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF5_B0_6    (BIT_(22))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF5_B0_5    (BIT_(21))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF5_B0_4    (BIT_(20))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF5_B0_3    (BIT_(19))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF5_B0_2    (BIT_(18))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF5_B0_1    (BIT_(17))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF5_B0_0    (BIT_(16))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF5_A22_13    (BIT_(13))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF5_A22_12    (BIT_(12))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF5_A22_11    (BIT_(11))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF5_A22_10    (BIT_(10))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF5_A22_9    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF5_A22_8    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF5_A22_7    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF5_A22_6    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF5_A22_5    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF5_A22_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF5_A22_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF5_A22_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF5_A22_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF5_A22_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_WP_CSC_COEF6
+// Register Offset : 0xb058
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_WP_CSC_COEF6 (G2DLITE_APB_AB0_BASE_ADDR + (0xb058<<0))
+#define WP_CSC_COEF6_B2_FIELD_OFFSET 16
+#define WP_CSC_COEF6_B2_FIELD_SIZE 14
+#define WP_CSC_COEF6_B1_FIELD_OFFSET 0
+#define WP_CSC_COEF6_B1_FIELD_SIZE 14
+
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF6_B2_13    (BIT_(29))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF6_B2_12    (BIT_(28))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF6_B2_11    (BIT_(27))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF6_B2_10    (BIT_(26))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF6_B2_9    (BIT_(25))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF6_B2_8    (BIT_(24))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF6_B2_7    (BIT_(23))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF6_B2_6    (BIT_(22))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF6_B2_5    (BIT_(21))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF6_B2_4    (BIT_(20))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF6_B2_3    (BIT_(19))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF6_B2_2    (BIT_(18))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF6_B2_1    (BIT_(17))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF6_B2_0    (BIT_(16))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF6_B1_13    (BIT_(13))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF6_B1_12    (BIT_(12))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF6_B1_11    (BIT_(11))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF6_B1_10    (BIT_(10))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF6_B1_9    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF6_B1_8    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF6_B1_7    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF6_B1_6    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF6_B1_5    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF6_B1_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF6_B1_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF6_B1_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF6_B1_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF6_B1_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_WP_CSC_COEF7
+// Register Offset : 0xb05c
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_WP_CSC_COEF7 (G2DLITE_APB_AB0_BASE_ADDR + (0xb05c<<0))
+#define WP_CSC_COEF7_C1_FIELD_OFFSET 16
+#define WP_CSC_COEF7_C1_FIELD_SIZE 10
+#define WP_CSC_COEF7_C0_FIELD_OFFSET 0
+#define WP_CSC_COEF7_C0_FIELD_SIZE 10
+
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF7_C1_9    (BIT_(25))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF7_C1_8    (BIT_(24))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF7_C1_7    (BIT_(23))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF7_C1_6    (BIT_(22))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF7_C1_5    (BIT_(21))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF7_C1_4    (BIT_(20))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF7_C1_3    (BIT_(19))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF7_C1_2    (BIT_(18))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF7_C1_1    (BIT_(17))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF7_C1_0    (BIT_(16))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF7_C0_9    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF7_C0_8    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF7_C0_7    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF7_C0_6    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF7_C0_5    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF7_C0_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF7_C0_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF7_C0_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF7_C0_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF7_C0_0    (BIT_(0))
+
+//--------------------------------------------------------------------------
+// Register Name   : REG_AP_APB_G2DLITE_WP_CSC_COEF8
+// Register Offset : 0xb060
+// Description     :
+//--------------------------------------------------------------------------
+#define REG_AP_APB_G2DLITE_WP_CSC_COEF8 (G2DLITE_APB_AB0_BASE_ADDR + (0xb060<<0))
+#define WP_CSC_COEF8_C2_FIELD_OFFSET 0
+#define WP_CSC_COEF8_C2_FIELD_SIZE 10
+
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF8_C2_9    (BIT_(9))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF8_C2_8    (BIT_(8))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF8_C2_7    (BIT_(7))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF8_C2_6    (BIT_(6))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF8_C2_5    (BIT_(5))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF8_C2_4    (BIT_(4))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF8_C2_3    (BIT_(3))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF8_C2_2    (BIT_(2))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF8_C2_1    (BIT_(1))
+#define BIT_AP_APB_G2DLITE_WP_CSC_COEF8_C2_0    (BIT_(0))
+
+
+
+#endif

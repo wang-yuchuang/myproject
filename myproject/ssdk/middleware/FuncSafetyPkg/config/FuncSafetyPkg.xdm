@@ -1,0 +1,1716 @@
+<?xml version='1.0'?>
+<datamodel version="7.0" 
+           xmlns="http://www.tresos.de/_projects/DataModel2/16/root.xsd" 
+           xmlns:a="http://www.tresos.de/_projects/DataModel2/16/attribute.xsd" 
+           xmlns:v="http://www.tresos.de/_projects/DataModel2/06/schema.xsd" 
+           xmlns:d="http://www.tresos.de/_projects/DataModel2/06/data.xsd">
+
+  <d:ctr type="AUTOSAR" factory="autosar" 
+         xmlns:ad="http://www.tresos.de/_projects/DataModel2/08/admindata.xsd" 
+         xmlns:cd="http://www.tresos.de/_projects/DataModel2/08/customdata.xsd" 
+         xmlns:f="http://www.tresos.de/_projects/DataModel2/14/formulaexpr.xsd" 
+         xmlns:icc="http://www.tresos.de/_projects/DataModel2/08/implconfigclass.xsd" 
+         xmlns:mt="http://www.tresos.de/_projects/DataModel2/11/multitest.xsd"  
+         xmlns:variant="http://www.tresos.de/_projects/DataModel2/11/variant.xsd">
+    <d:lst type="TOP-LEVEL-PACKAGES">
+      <d:ctr name="AUTOSAR" type="AR-PACKAGE">
+        <a:a name="UUID" value="ECUC:AUTOSAR"/>
+        <d:lst type="TOP-LEVEL-PACKAGES">
+          <d:ctr name="EcucDefs" type="AR-PACKAGE">
+            <a:a name="UUID" value="ECUC:ECUCDEFS"/>
+            <d:lst type="ELEMENTS">
+              <d:chc name="FuncSafetyPkg" type="AR-ELEMENT" value="MODULE-DEF">
+                <v:ctr type="MODULE-DEF">
+                  <a:a name="ADMIN-DATA" type="ADMIN-DATA">
+                    <ad:ADMIN-DATA>
+                      <ad:DOC-REVISIONS>
+                        <ad:DOC-REVISION>
+                          <ad:REVISION-LABEL>4.3.1</ad:REVISION-LABEL>
+                          <ad:ISSUED-BY>AUTOSAR</ad:ISSUED-BY>
+                        </ad:DOC-REVISION>
+                      </ad:DOC-REVISIONS>
+                    </ad:ADMIN-DATA>
+                  </a:a>
+                  <a:a name="DESC" 
+                       value="EN: Configuration of the FuncSafetyPkg module."/>
+                  <a:a name="LOWER-MULTIPLICITY" value="0"/>
+                  <a:a name="POSTBUILDVARIANTSUPPORT" value="false"/>
+                  <a:a name="RELEASE" value="asc:4.3.1"/>
+                  <a:a name="UPPER-MULTIPLICITY" value="1"/>
+                  <a:a name="UUID" 
+                       value="ECUC:c41e9d3e-2da8-4985-a0ad-283ad8661088"/>
+                  <v:var name="IMPLEMENTATION_CONFIG_VARIANT" 
+                         type="ENUMERATION">
+                    <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                         type="IMPLEMENTATIONCONFIGCLASS">
+                      <icc:v vclass="PreCompile">VariantLinkTime</icc:v>
+                      <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                    </a:a>
+                    <a:a name="LABEL" value="Config Variant"/>
+                    <a:da name="DEFAULT" value="VariantLinkTime"/>
+                    <a:da name="RANGE">
+                      <a:v>VariantLinkTime</a:v>
+                      <a:v>VariantPreCompile</a:v>
+                    </a:da>
+                  </v:var>
+                  <v:ctr name="FuncSafetyPkgCommon" type="IDENTIFIABLE">
+                    <a:a name="DESC" 
+                         value="EN: This container holds a list of all available functions in the FuncSafetyPkg module.  Each function is turned ON or OFF before compiling so that only the desired functions and test algorithms are in the compiled code."/>
+                    <a:a name="UUID" 
+                         value="ECUC:8e3b9850-bbd7-415a-a5bb-e6e4962cc5da"/>
+					<v:var name="SelfTestPowerOn" type="BOOLEAN">
+					  <a:a name="DESC" 
+						   value="EN: Preprocessor switch to disable / enable the function."/>
+					  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+						   type="IMPLEMENTATIONCONFIGCLASS">
+						<icc:v vclass="PreCompile">VariantLinkTime</icc:v>
+						<icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+					  </a:a>
+					  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+					  <a:a name="SCOPE" value="LOCAL"/>
+					  <a:da name="DEFAULT" value='true'/>
+					  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+					  <a:a name="UUID" 
+						   value="ECUC:16d97fa1-5ab2-41a9-af8c-3cda57200b97"/>
+					</v:var>
+					<v:var name="SelfTestPeriodic" type="BOOLEAN">
+					  <a:a name="DESC" 
+						   value="EN: Preprocessor switch to disable / enable the function for self test period."/>
+					  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+						   type="IMPLEMENTATIONCONFIGCLASS">
+						<icc:v vclass="PreCompile">VariantLinkTime</icc:v>
+						<icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+					  </a:a>
+					  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+					  <a:a name="SCOPE" value="LOCAL"/>
+					  <a:da name="DEFAULT" value='true'/>
+					  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+					  <a:a name="UUID" 
+						   value="ECUC:16d97fa1-5ab2-41a9-af8c-3cda57200b97"/>
+					</v:var>
+					<v:ctr name="SelfTestPowerOnOptions" type="IDENTIFIABLE">
+					    <a:a name="ENABLE" type="XPath" expr="node:value(../SelfTestPowerOn)= &quot;true&quot;"/>
+						<a:a name="DESC" 
+							 value="EN: This container holds a list of all available functions for self-test when ECUM power on in the FuncSafetyPkg module.  Each function is turned ON or OFF before compiling so that only the desired functions and test algorithms are in the compiled code."/>
+						<a:a name="UUID" 
+							 value="ECUC:8e3b9850-bbd7-415a-a5bb-e6e4962cc5de"/>						
+						<v:var name="Iram1BitErrInjectPowerOn" type="BOOLEAN">
+						  <a:a name="DESC" 
+							   value="EN: Preprocessor switch to disable / enable the function which injects 1 bit error in Iram when ECU powers on."/>
+						  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+							   type="IMPLEMENTATIONCONFIGCLASS">
+							<icc:v vclass="PreCompile">VariantLinkTime</icc:v>
+							<icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+						  </a:a>
+						  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+						  <a:a name="SCOPE" value="LOCAL"/>		
+						  <a:da name="DEFAULT" value='true'/>						  
+						  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+						  <a:a name="UUID" 
+							   value="ECUC:16d97fa1-5ab2-41a9-af8c-3cda57200b97"/>
+						</v:var>
+						<v:var name="Iram2BitErrInjectPowerOn" type="BOOLEAN">
+						  <a:a name="DESC" 
+							   value="EN: Preprocessor switch to disable / enable the function which injects 2 bits error in Iram when ECU powers on."/>
+						  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+							   type="IMPLEMENTATIONCONFIGCLASS">
+							<icc:v vclass="PreCompile">VariantLinkTime</icc:v>
+							<icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+						  </a:a>
+						  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+						  <a:a name="SCOPE" value="LOCAL"/>
+						  <a:da name="DEFAULT" value='true'/>
+						  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+						  <a:a name="UUID" 
+							   value="ECUC:16d97fa1-5ab2-41a9-af8c-3cda57200b97"/>
+						</v:var>
+						<v:var name="ATCM1BitErrInjectPowerOn" type="BOOLEAN">
+						  <a:a name="DESC" 
+							   value="EN: Preprocessor switch to disable / enable the function which injects 1 bit error in ATCM when ECU powers on."/>
+						  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+							   type="IMPLEMENTATIONCONFIGCLASS">
+							<icc:v vclass="PreCompile">VariantLinkTime</icc:v>
+							<icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+						  </a:a>
+						  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+						  <a:a name="SCOPE" value="LOCAL"/>
+						  <a:da name="DEFAULT" value='true'/>
+						  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+						  <a:a name="UUID" 
+							   value="ECUC:16d97fa1-5ab2-41a9-af8c-3cda57200b97"/>
+						</v:var>					
+						<v:var name="ATCM2BitErrInjectPowerOn" type="BOOLEAN">
+						  <a:a name="DESC" 
+							   value="EN: Preprocessor switch to disable / enable the function which injects 2 bits error in ATCM when ECU powers on."/>
+						  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+							   type="IMPLEMENTATIONCONFIGCLASS">
+							<icc:v vclass="PreCompile">VariantLinkTime</icc:v>
+							<icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+						  </a:a>
+						  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+						  <a:a name="SCOPE" value="LOCAL"/>
+						  <a:da name="DEFAULT" value='true'/>
+						  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+						  <a:a name="UUID" 
+							   value="ECUC:16d97fa1-5ab2-41a9-af8c-3cda57200b97"/>
+						</v:var>						
+						<v:var name="B0TCM1BitErrInjectPowerOn" type="BOOLEAN">
+						  <a:a name="DESC" 
+							   value="EN: Preprocessor switch to disable / enable the function which injects 1 bit error in B0TCM when ECU powers on."/>
+						  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+							   type="IMPLEMENTATIONCONFIGCLASS">
+							<icc:v vclass="PreCompile">VariantLinkTime</icc:v>
+							<icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+						  </a:a>
+						  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+						  <a:a name="SCOPE" value="LOCAL"/>
+						  <a:da name="DEFAULT" value='true'/>
+						  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+						  <a:a name="UUID" 
+							   value="ECUC:16d97fa1-5ab2-41a9-af8c-3cda57200b97"/>
+						</v:var>	
+						<v:var name="B0TCM2BitErrInjectPowerOn" type="BOOLEAN">
+						  <a:a name="DESC" 
+							   value="EN: Preprocessor switch to disable / enable the function which injects 2 bits error in B0TCM when ECU powers on."/>
+						  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+							   type="IMPLEMENTATIONCONFIGCLASS">
+							<icc:v vclass="PreCompile">VariantLinkTime</icc:v>
+							<icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+						  </a:a>
+						  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+						  <a:a name="SCOPE" value="LOCAL"/>
+						  <a:da name="DEFAULT" value='true'/>
+						  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+						  <a:a name="UUID" 
+							   value="ECUC:16d97fa1-5ab2-41a9-af8c-3cda57200b97"/>
+						</v:var>					
+						<v:var name="B1TCM1BitErrInjectPowerOn" type="BOOLEAN">
+						  <a:a name="DESC" 
+							   value="EN: Preprocessor switch to disable / enable the function which injects 1 bit error in B1TCM when ECU powers on."/>
+						  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+							   type="IMPLEMENTATIONCONFIGCLASS">
+							<icc:v vclass="PreCompile">VariantLinkTime</icc:v>
+							<icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+						  </a:a>
+						  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+						  <a:a name="SCOPE" value="LOCAL"/>
+						  <a:da name="DEFAULT" value='true'/>
+						  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+						  <a:a name="UUID" 
+							   value="ECUC:16d97fa1-5ab2-41a9-af8c-3cda57200b97"/>
+						</v:var>	
+						<v:var name="B1TCM2BitErrInjectPowerOn" type="BOOLEAN">
+						  <a:a name="DESC" 
+							   value="EN: Preprocessor switch to disable / enable the function which injects 2 bits error in B1TCM when ECU powers on."/>
+						  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+							   type="IMPLEMENTATIONCONFIGCLASS">
+							<icc:v vclass="PreCompile">VariantLinkTime</icc:v>
+							<icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+						  </a:a>
+						  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+						  <a:a name="SCOPE" value="LOCAL"/>
+						  <a:da name="DEFAULT" value='true'/>
+						  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+						  <a:a name="UUID" 
+							   value="ECUC:16d97fa1-5ab2-41a9-af8c-3cda57200b97"/>
+						</v:var>		
+						<v:var name="DCACHE1BitErrInjectPowerOn" type="BOOLEAN">
+						  <a:a name="DESC" 
+							   value="EN: Preprocessor switch to disable / enable the function which injects 1 bit error in data cache when ECU powers on."/>
+						  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+							   type="IMPLEMENTATIONCONFIGCLASS">
+							<icc:v vclass="PreCompile">VariantLinkTime</icc:v>
+							<icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+						  </a:a>
+						  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+						  <a:a name="SCOPE" value="LOCAL"/>
+						  <a:da name="DEFAULT" value='true'/>
+						  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+						  <a:a name="UUID" 
+							   value="ECUC:16d97fa1-5ab2-41a9-af8c-3cda57200b97"/>
+						</v:var>						
+						<v:var name="Fabric1BitErrInjectPowerOn" type="BOOLEAN">
+						  <a:a name="DESC" 
+							   value="EN: Preprocessor switch to disable / enable the function which injects 1 bit error in fabric when ECU powers on."/>
+						  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+							   type="IMPLEMENTATIONCONFIGCLASS">
+							<icc:v vclass="PreCompile">VariantLinkTime</icc:v>
+							<icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+						  </a:a>
+						  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+						  <a:a name="SCOPE" value="LOCAL"/>
+						  <a:da name="DEFAULT" value='true'/>
+						  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+						  <a:a name="UUID" 
+							   value="ECUC:16d97fa1-5ab2-41a9-af8c-3cda57200b97"/>
+						</v:var>
+						<v:var name="Fabric2BitErrInjectPowerOn" type="BOOLEAN">
+						  <a:a name="DESC" 
+							   value="EN: Preprocessor switch to disable / enable the function which injects 2 bits error in fabric when ECU powers on."/>
+						  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+							   type="IMPLEMENTATIONCONFIGCLASS">
+							<icc:v vclass="PreCompile">VariantLinkTime</icc:v>
+							<icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+						  </a:a>
+						  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+						  <a:a name="SCOPE" value="LOCAL"/>
+						  <a:da name="DEFAULT" value='true'/>
+						  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+						  <a:a name="UUID" 
+							   value="ECUC:16d97fa1-5ab2-41a9-af8c-3cda57200b97"/>
+						</v:var>	
+						<v:var name="Fuse1BitErrInjectPowerOn" type="BOOLEAN">
+						  <a:a name="DESC" 
+							   value="EN: Preprocessor switch to disable / enable the function which injects 1 bit error in fuse when ECU powers on."/>
+						  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+							   type="IMPLEMENTATIONCONFIGCLASS">
+							<icc:v vclass="PreCompile">VariantLinkTime</icc:v>
+							<icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+						  </a:a>
+						  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+						  <a:a name="SCOPE" value="LOCAL"/>
+						  <a:da name="DEFAULT" value='true'/>
+						  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+						  <a:a name="UUID" 
+							   value="ECUC:16d97fa1-5ab2-41a9-af8c-3cda57200b97"/>
+						</v:var>
+						<v:var name="Fuse2BitErrInjectPowerOn" type="BOOLEAN">
+						  <a:a name="DESC" 
+							   value="EN: Preprocessor switch to disable / enable the function which injects 2 bits error in fuse when ECU powers on."/>
+						  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+							   type="IMPLEMENTATIONCONFIGCLASS">
+							<icc:v vclass="PreCompile">VariantLinkTime</icc:v>
+							<icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+						  </a:a>
+						  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+						  <a:a name="SCOPE" value="LOCAL"/>
+						  <a:da name="DEFAULT" value='true'/>
+						  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+						  <a:a name="UUID" 
+							   value="ECUC:16d97fa1-5ab2-41a9-af8c-3cda57200b97"/>
+						</v:var>	
+						<v:var name="FSRefClkRcChkAPPowerOn" type="BOOLEAN">
+						  <a:a name="DESC" 
+							   value="EN: Preprocessor switch to disable / enable the function(Fail safe reference clock:Rc clock check Ap clock)."/>
+						  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+							   type="IMPLEMENTATIONCONFIGCLASS">
+							<icc:v vclass="PreCompile">VariantLinkTime</icc:v>
+							<icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+						  </a:a>
+						  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+						  <a:a name="SCOPE" value="LOCAL"/>
+						  <a:da name="DEFAULT" value='true'/>
+						  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+						  <a:a name="UUID" 
+							   value="ECUC:16d97fa1-5ab2-41a9-af8c-3cda57200b97"/>
+						</v:var>	
+						<v:var name="FSRefClkSafeChkApPowerOn" type="BOOLEAN">
+						  <a:a name="DESC" 
+							   value="EN: Preprocessor switch to disable / enable the function(Fail safe reference clock:Safe clock check Ap clock)."/>
+						  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+							   type="IMPLEMENTATIONCONFIGCLASS">
+							<icc:v vclass="PreCompile">VariantLinkTime</icc:v>
+							<icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+						  </a:a>
+						  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+						  <a:a name="SCOPE" value="LOCAL"/>
+						  <a:da name="DEFAULT" value='true'/>
+						  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+						  <a:a name="UUID" 
+							   value="ECUC:16d97fa1-5ab2-41a9-af8c-3cda57200b97"/>
+						</v:var>
+						<v:var name="RunNocBISTPowerOn" type="BOOLEAN">
+						  <a:a name="DESC" 
+							   value="EN: Preprocessor switch to disable / enable the function which runs BIST when ECU powers on."/>
+						  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+							   type="IMPLEMENTATIONCONFIGCLASS">
+							<icc:v vclass="PreCompile">VariantLinkTime</icc:v>
+							<icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+						  </a:a>
+						  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+						  <a:a name="SCOPE" value="LOCAL"/>
+						  <a:da name="DEFAULT" value='true'/>
+						  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+						  <a:a name="UUID" 
+							   value="ECUC:16d97fa1-5ab2-41a9-af8c-3cda57200b97"/>
+						</v:var>
+						<v:var name="WdtSelfTestPowerOn" type="BOOLEAN">
+						  <a:a name="DESC" 
+							   value="EN: Preprocessor switch to disable / enable the function which tests Wdt itself when ECU powers on."/>
+						  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+							   type="IMPLEMENTATIONCONFIGCLASS">
+							<icc:v vclass="PreCompile">VariantLinkTime</icc:v>
+							<icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+						  </a:a>
+						  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+						  <a:a name="SCOPE" value="LOCAL"/>
+						  <a:da name="DEFAULT" value='true'/>
+						  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+						  <a:a name="UUID" 
+							   value="ECUC:16d97fa1-5ab2-41a9-af8c-3cda57200b97"/>
+						</v:var>	
+						<v:var name="SemSigMonitorPowerOn" type="BOOLEAN">
+						  <a:a name="DESC" 
+							   value="EN: Preprocessor switch to disable / enable the function which monitors sem signal when ECU powers on."/>
+						  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+							   type="IMPLEMENTATIONCONFIGCLASS">
+							<icc:v vclass="PreCompile">VariantLinkTime</icc:v>
+							<icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+						  </a:a>
+						  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+						  <a:a name="SCOPE" value="LOCAL"/>
+						  <a:da name="DEFAULT" value='true'/>
+						  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+						  <a:a name="UUID" 
+							   value="ECUC:16d97fa1-5ab2-41a9-af8c-3cda57200b97"/>
+						</v:var>						
+						<v:var name="SemSigMonInjectErrPowerOn" type="BOOLEAN">
+						  <a:a name="DESC" 
+							   value="EN: Preprocessor switch to disable / enable the function which injects error for sem signal when ECU powers on)."/>
+						  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+							   type="IMPLEMENTATIONCONFIGCLASS">
+							<icc:v vclass="PreCompile">VariantLinkTime</icc:v>
+							<icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+						  </a:a>
+						  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+						  <a:a name="SCOPE" value="LOCAL"/>
+						  <a:da name="DEFAULT" value='true'/>
+						  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+						  <a:a name="UUID" 
+							   value="ECUC:16d97fa1-5ab2-41a9-af8c-3cda57200b97"/>
+						</v:var>
+						<v:var name="DualCoreLockStepInjectErrorPowerOn" type="BOOLEAN">
+						  <a:a name="DESC" 
+							   value="EN: Preprocessor switch to disable / enable the function which injects error for dual core lock step when ECU powers on."/>
+						  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+							   type="IMPLEMENTATIONCONFIGCLASS">
+							<icc:v vclass="PreCompile">VariantLinkTime</icc:v>
+							<icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+						  </a:a>
+						  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+						  <a:a name="SCOPE" value="LOCAL"/>
+						  <a:da name="DEFAULT" value='true'/>
+						  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+						  <a:a name="UUID" 
+							   value="ECUC:16d97fa1-5ab2-41a9-af8c-3cda57200b97"/>
+						</v:var>	
+						<v:var name="SocTempMonitorPowerOn" type="BOOLEAN">
+						  <a:a name="DESC" 
+							   value="EN: Preprocessor switch to disable / enable the function which monitors SOC temperature when ECU powers on)."/>
+						  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+							   type="IMPLEMENTATIONCONFIGCLASS">
+							<icc:v vclass="PreCompile">VariantLinkTime</icc:v>
+							<icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+						  </a:a>
+						  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+						  <a:a name="SCOPE" value="LOCAL"/>
+						  <a:da name="DEFAULT" value='true'/>
+						  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+						  <a:a name="UUID" 
+							   value="ECUC:16d97fa1-5ab2-41a9-af8c-3cda57200b97"/>
+						</v:var>						
+					</v:ctr>
+					<v:ctr name="SelfTestPeriodicOptions" type="IDENTIFIABLE">
+					    <a:a name="ENABLE" type="XPath" expr="node:value(../SelfTestPeriodic)= &quot;true&quot;"/>
+						<a:a name="DESC" 
+							 value="EN: This container holds a list of all available functions for self-test period in the FuncSafetyPkg module.  Each function is turned ON or OFF before compiling so that only the desired functions and test algorithms are in the compiled code."/>
+						<a:a name="UUID" 
+							 value="ECUC:8e3b9850-bbd7-415a-a5bb-e6e4962cc5dc"/>					
+						<v:var name="Iram1BitErrInjectPeriodic" type="BOOLEAN">
+						  <a:a name="DESC" 
+							   value="EN: Preprocessor switch to disable / enable the function which injects 1 bit error in Iram periodically."/>
+						  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+							   type="IMPLEMENTATIONCONFIGCLASS">
+							<icc:v vclass="PreCompile">VariantLinkTime</icc:v>
+							<icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+						  </a:a>
+						  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+						  <a:a name="SCOPE" value="LOCAL"/>
+						  <a:da name="DEFAULT" value='true'/>
+						  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+						  <a:a name="UUID" 
+							   value="ECUC:16d97fa1-5ab2-41a9-af8c-3cda57200b97"/>
+						</v:var>
+						<v:var name="Iram2BitErrInjectPeriodic" type="BOOLEAN">
+						  <a:a name="DESC" 
+							   value="EN: Preprocessor switch to disable / enable the function which injects 2 bits error in Iram periodically."/>
+						  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+							   type="IMPLEMENTATIONCONFIGCLASS">
+							<icc:v vclass="PreCompile">VariantLinkTime</icc:v>
+							<icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+						  </a:a>
+						  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+						  <a:a name="SCOPE" value="LOCAL"/>
+						  <a:da name="DEFAULT" value='true'/>
+						  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+						  <a:a name="UUID" 
+							   value="ECUC:16d97fa1-5ab2-41a9-af8c-3cda57200b97"/>
+						</v:var>
+						<v:var name="Fuse1BitErrInjectPeriodic" type="BOOLEAN">
+						  <a:a name="DESC" 
+							   value="EN: Preprocessor switch to disable / enable the function which injects 1 bit error in fuse periodically."/>
+						  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+							   type="IMPLEMENTATIONCONFIGCLASS">
+							<icc:v vclass="PreCompile">VariantLinkTime</icc:v>
+							<icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+						  </a:a>
+						  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+						  <a:a name="SCOPE" value="LOCAL"/>
+						  <a:da name="DEFAULT" value='true'/>
+						  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+						  <a:a name="UUID" 
+							   value="ECUC:16d97fa1-5ab2-41a9-af8c-3cda57200b97"/>
+						</v:var>
+						<v:var name="Fuse2BitErrInjectPeriodic" type="BOOLEAN">
+						  <a:a name="DESC" 
+							   value="EN: Preprocessor switch to disable / enable the function which injects 2 bit errors in Iram periodically."/>
+						  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+							   type="IMPLEMENTATIONCONFIGCLASS">
+							<icc:v vclass="PreCompile">VariantLinkTime</icc:v>
+							<icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+						  </a:a>
+						  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+						  <a:a name="SCOPE" value="LOCAL"/>
+						  <a:da name="DEFAULT" value='true'/>
+						  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+						  <a:a name="UUID" 
+							   value="ECUC:16d97fa1-5ab2-41a9-af8c-3cda57200b97"/>
+						</v:var>												
+						<v:var name="DualCoreLockStepInjectErrorPeriodic" type="BOOLEAN">
+						  <a:a name="DESC" 
+							   value="EN: Preprocessor switch to disable / enable the function which injects error for dual core lock step periodically."/>
+						  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+							   type="IMPLEMENTATIONCONFIGCLASS">
+							<icc:v vclass="PreCompile">VariantLinkTime</icc:v>
+							<icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+						  </a:a>
+						  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+						  <a:a name="SCOPE" value="LOCAL"/>
+						  <a:da name="DEFAULT" value='true'/>
+						  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+						  <a:a name="UUID" 
+							   value="ECUC:16d97fa1-5ab2-41a9-af8c-3cda57200b97"/>
+						</v:var>	
+                        <v:var name="IramErrInjectPeriodCnt" type="INTEGER">
+						  <a:a name="ENABLE" type="XPath" expr="node:value(../../SelfTestPeriodic)= &quot;true&quot;
+						  and (node:value(../../SelfTestPeriodicOptions/Iram1BitErrInjectPeriodic)= &quot;true&quot; or 		 node:value(../SelfTestPeriodicOptions/Iram2BitErrInjectPeriodic)= &quot;true&quot;)"/>								
+                          <a:a name="DESC" 
+                               value="EN: The period count for injecting 1/2 bits error in Iram periodically."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                               type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v mclass="PostBuild">VariantPostBuild</icc:v>
+                            <icc:v mclass="PreCompile">VariantPreCompile</icc:v>
+                            <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                            <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                          <a:a name="SCOPE" value="LOCAL"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                          <a:a name="UUID" 
+                               value="ECUC:ea7f8f6d-5d98-4bc4-808e-dc02c4c233ac"/>
+						  <a:da name="DEFAULT" value='1'/>	   
+                          <a:da name="INVALID" type="Range">
+                            <a:tst expr="&lt;=255"/>
+                            <a:tst expr="&gt;=1"/>
+                          </a:da>
+                        </v:var>		
+                        <v:var name="FuseErrInjectPeriodCnt  " type="INTEGER">
+						  <a:a name="ENABLE" type="XPath" expr="node:value(../../SelfTestPeriodic) = &quot;true&quot;
+						  and (node:value(../../SelfTestPeriodicOptions/Fuse1BitErrInjectPeriodic) = &quot;true&quot; or 		 node:value(../../SelfTestPeriodicOptions/Fuse2BitErrInjectPeriodic) = &quot;true&quot;)"/>							
+                          <a:a name="DESC" 
+                               value="EN: The period count for injecting 1/2 bits error in Efuse periodically."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                               type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v mclass="PostBuild">VariantPostBuild</icc:v>
+                            <icc:v mclass="PreCompile">VariantPreCompile</icc:v>
+                            <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                            <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                          <a:a name="SCOPE" value="LOCAL"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                          <a:a name="UUID" 
+                               value="ECUC:ea7f8f6d-5d98-4bc4-808e-dc02c4c233ac"/>
+						  <a:da name="DEFAULT" value='2'/>	 	   
+                          <a:da name="INVALID" type="Range">
+                            <a:tst expr="&lt;=255"/>
+                            <a:tst expr="&gt;=1"/>
+                          </a:da>
+                        </v:var>						
+                        <v:var name="DualCoreLockStepInjectErrorPeriodCnt" type="INTEGER">
+						  <a:a name="ENABLE" type="XPath" expr="(node:value(../../SelfTestPeriodic)= &quot;true&quot;) and (node:value(../../SelfTestPeriodicOptions/DualCoreLockStepInjectErrorPeriodic)= &quot;true&quot;)"/>				
+						  <a:a name="DESC" 
+                               value="EN: The period count for injecting error in dualcore lockstep periodically."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                               type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v mclass="PostBuild">VariantPostBuild</icc:v>
+                            <icc:v mclass="PreCompile">VariantPreCompile</icc:v>
+                            <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                            <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                          <a:a name="SCOPE" value="LOCAL"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                          <a:a name="UUID" 
+                               value="ECUC:ea7f8f6d-5d98-4bc4-808e-dc02c4c233ac"/>
+						  <a:da name="DEFAULT" value='3'/>	 	   	   
+                          <a:da name="INVALID" type="Range">
+                            <a:tst expr="&lt;=255"/>
+                            <a:tst expr="&gt;=1"/>
+                          </a:da>
+                        </v:var>						
+					</v:ctr>				
+					<v:ctr name="IramErrInjectConfigSet" type="IDENTIFIABLE">					
+                      <a:a name="ENABLE" type="XPath" expr="(((node:value(../SelfTestPowerOn) = &quot;true&quot;)  and
+					                                        ((node:value(../SelfTestPowerOnOptions/Iram1BitErrInjectPowerOn) = &quot;true&quot;)   or
+					                                        (node:value(../SelfTestPowerOnOptions/Iram2BitErrInjectPowerOn) = &quot;true&quot;)))
+															or
+					                                       ((node:value(../SelfTestPeriodic) = &quot;true&quot;)   and
+					                                       ((node:value(../SelfTestPeriodicOptions/Iram1BitErrInjectPeriodic) = &quot;true&quot;) or
+															(node:value(../SelfTestPeriodicOptions/Iram2BitErrInjectPeriodic) = &quot;true&quot;)))) "/>																
+					  <v:var name="IramInject1BitErrMode" type="ENUMERATION">
+				      <a:a name="DESC" 
+						   value="EN: Inject 1bit error mode for iram when ECU power on or off: INJECT_ALL_TRAVEL,INJECT_FIXED_POINT,the former takes more time than the latter"/>
+					  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+						   type="IMPLEMENTATIONCONFIGCLASS">
+						<icc:v vclass="PreCompile">VariantLinkTime</icc:v>
+						<icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+					  </a:a>	
+                      <a:a name="ENABLE" type="XPath" expr="(node:value(../../SelfTestPowerOn)= &quot;true&quot; and
+					                                         node:value(../../SelfTestPowerOnOptions/Iram1BitErrInjectPowerOn)= &quot;true&quot;) or
+					                                        (node:value(../../SelfTestPeriodic)= &quot;true&quot; and
+					                                         node:value(../../SelfTestPeriodicOptions/Iram1BitErrInjectPeriodic)= &quot;true&quot;)"/>								
+					  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+					  <a:a name="SCOPE" value="ECU"/>
+					  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+					  <a:a name="UUID" 
+						   value="ECUC:d596f059-d21f-46fa-8c62-8eae8ff3d68d"/>
+					  <a:da name="DEFAULT" value='INJECT_FIXED_POINT'/>
+					  <a:da name="RANGE">
+						<a:v>INJECT_ALL_TRAVEL</a:v>
+						<a:v>INJECT_FIXED_POINT</a:v>
+					  </a:da>
+					</v:var>
+					<v:var name="IramInject2BitErrMode" type="ENUMERATION">
+					  <a:a name="DESC" 
+						   value="EN: Inject 2bit error mode for iram when ECU power on or off: INJECT_ALL_TRAVEL,INJECT_FIXED_POINT,the former takes more time than the latter"/>
+					  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+						   type="IMPLEMENTATIONCONFIGCLASS">
+						<icc:v vclass="PreCompile">VariantLinkTime</icc:v>
+						<icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+					  </a:a>			
+                      <a:a name="ENABLE" type="XPath" expr="(node:value(../../SelfTestPowerOn)= &quot;true&quot; and
+					                                         node:value(../../SelfTestPowerOnOptions/Iram2BitErrInjectPowerOn)= &quot;true&quot;) or
+					                                        (node:value(../../SelfTestPeriodic)= &quot;true&quot; and
+					                                         node:value(../../SelfTestPeriodicOptions/Iram2BitErrInjectPeriodic)= &quot;true&quot;)"/>				
+					  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+					  <a:a name="SCOPE" value="ECU"/>
+					  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+					  <a:a name="UUID" 
+						   value="ECUC:d596f059-d21f-46fa-8c62-8eae8ff3d68d"/>
+					  <a:da name="DEFAULT" value='INJECT_FIXED_POINT'/>
+					  <a:da name="RANGE">
+						<a:v>INJECT_ALL_TRAVEL</a:v>
+						<a:v>INJECT_FIXED_POINT</a:v>
+					  </a:da>
+					</v:var>					
+                    <v:lst name="IramZoneConfiguration" type="MAP">
+                      <a:da name="MIN" value="0"/>
+                      <v:ctr name="IramZoneConfiguration" type="IDENTIFIABLE">
+                        <a:a name="DESC" 
+                             value="EN: Configuration of individual Iram zone inject 1bit or 2 bits error."/>
+                        <a:a name="UUID" 
+                             value="ECUC:f85f480f-fee7-4a00-a99a-4aede301e703"/>
+                        <v:var name="IramZoneId" type="INTEGER">
+                          <a:a name="DESC" 
+                               value="EN: Unique identifier of the Iram zone"/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                               type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v vclass="PreCompile">VariantLinkTime</icc:v>
+                            <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SCOPE" value="ECU"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                          <a:a name="UUID" 
+                               value="ECUC:d596f059-d21f-46fa-8c62-8eae8ff3d68d"/>
+                          <a:da name="DEFAULT" value='0'/>
+                          <a:da name="INVALID" type="Range">
+                            <a:tst expr="&lt;=3"/>
+                            <a:tst expr="&gt;=0"/>
+                          </a:da>
+                        </v:var>
+                        <v:var name="IramInjectErrZone" type="ENUMERATION">
+                          <a:a name="DESC" 
+                               value="EN: Unique identifier of the Iram zone"/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                               type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v vclass="PreCompile">VariantLinkTime</icc:v>
+                            <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SCOPE" value="ECU"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                          <a:a name="UUID" 
+                               value="ECUC:d596f059-d21f-46fa-8c62-8eae8ff3d68d"/>
+                          <a:da name="DEFAULT" value='IRAM1ERR'/>
+                          <a:da name="RANGE">
+							<a:v>IRAM1ERR</a:v>
+							<a:v>IRAM2ERR</a:v>
+							<a:v>IRAM3ERR</a:v>
+							<a:v>IRAM4ERR</a:v>
+                          </a:da>
+                        </v:var>							
+						<v:ctr name="IramOneBitErrInject" type="IDENTIFIABLE">
+			                <a:a name="ENABLE" type="XPath" expr="(node:value(../../../../SelfTestPowerOn)= &quot;true&quot;   and
+							                                       node:value(../../../../SelfTestPowerOnOptions/Iram1BitErrInjectPowerOn)= &quot;true&quot;)  or
+																  (node:value(../../../../SelfTestPeriodic)= &quot;true&quot; and
+																   node:value(../../../../SelfTestPeriodicOptions/Iram1BitErrInjectPeriodic)= &quot;true&quot;)"/>		
+							<a:a name="DESC" 
+								value="EN: This container contains configurations for injection one bit error in iram ."/>
+							<a:a name="UUID" 
+								value="ECUC:62eb25f3-28ac-452e-a2fa-0f92357c16a6"/>
+						  <v:var name="Iram_1BitErr_Un_CorrNotification" type="FUNCTION-NAME">
+							<a:a name="DESC" 
+							   value="EN: Definition of the Callback function for reading values are different from writing values after injecting 1 bit error in Iram."/>
+							<a:a name="IMPLEMENTATIONCONFIGCLASS" 
+								type="IMPLEMENTATIONCONFIGCLASS">
+								<icc:v mclass="PostBuild">VariantPostBuild</icc:v>
+								<icc:v mclass="PreCompile">VariantPreCompile</icc:v>
+								<icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+								<icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+							</a:a>	
+							<a:a name="OPTIONAL" value="true"/>
+							<a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+							<a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+							<a:a name="SCOPE" value="LOCAL"/>
+							<a:a name="SYMBOLICNAMEVALUE" value="false"/>
+							<a:a name="UUID" 
+								value="ECUC:44bb38ac-d409-4b1d-96be-ec84466c1019"/>
+							<a:da name="DEFAULT" value="NULL_PTR"/>
+							<a:da name="ENABLE" value="false"/>
+						  </v:var>								
+						  <v:var name="Iram_1BitErr_Un_DetectNotification" type="FUNCTION-NAME">
+							<a:a name="DESC" 
+							   value="EN: Definition of the Callback function for not detecting according interrupt status after injecting 1 bit error in Iram."/>
+							<a:a name="IMPLEMENTATIONCONFIGCLASS" 
+								type="IMPLEMENTATIONCONFIGCLASS">
+								<icc:v mclass="PostBuild">VariantPostBuild</icc:v>
+								<icc:v mclass="PreCompile">VariantPreCompile</icc:v>
+								<icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+								<icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+							</a:a>
+							<a:a name="OPTIONAL" value="true"/>
+							<a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+							<a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+							<a:a name="SCOPE" value="LOCAL"/>
+							<a:a name="SYMBOLICNAMEVALUE" value="false"/>
+							<a:a name="UUID" 
+								value="ECUC:44bb38ac-d409-4b1d-96be-ec84466c1019"/>
+							<a:da name="DEFAULT" value="NULL_PTR"/>
+							<a:da name="ENABLE" value="false"/>
+						  </v:var>								  
+						</v:ctr>	
+						<v:ctr name="IramTwoBitErrInject" type="IDENTIFIABLE">
+			                <a:a name="ENABLE" type="XPath" expr="(node:value(../../../../SelfTestPowerOn)= &quot;true&quot;   and
+							                                       node:value(../../../../SelfTestPowerOnOptions/Iram2BitErrInjectPowerOn)= &quot;true&quot;)  or
+																  (node:value(../../../../SelfTestPeriodic)= &quot;true&quot; and
+																  node:value(../../../../SelfTestPeriodicOptions/Iram2BitErrInjectPeriodic)= &quot;true&quot;)"/>											
+							<a:a name="DESC" 
+								value="EN: This container contains configurations for injection two bits error in iram ."/>
+							<a:a name="UUID" 
+								value="ECUC:62eb25f3-28ac-452e-a2fa-0f92357c16a6"/>							
+						  <v:var name="Iram_2BitErr_Un_DetectNotification" type="FUNCTION-NAME">
+							<a:a name="DESC" 
+							   value="EN: Definition of the Callback function for not detecting according interrupt status after injecting 2 bits error in Iram."/>
+							<a:a name="IMPLEMENTATIONCONFIGCLASS" 
+								type="IMPLEMENTATIONCONFIGCLASS">
+								<icc:v mclass="PostBuild">VariantPostBuild</icc:v>
+								<icc:v mclass="PreCompile">VariantPreCompile</icc:v>
+								<icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+								<icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+							</a:a>
+							<a:a name="OPTIONAL" value="true"/>
+							<a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+							<a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+							<a:a name="SCOPE" value="LOCAL"/>
+							<a:a name="SYMBOLICNAMEVALUE" value="false"/>
+							<a:a name="UUID" 
+								value="ECUC:44bb38ac-d409-4b1d-96be-ec84466c1019"/>
+							<a:da name="DEFAULT" value="NULL_PTR"/>
+							<a:da name="ENABLE" value="false"/>
+						  </v:var>								  
+						</v:ctr>						
+                      </v:ctr>
+                    </v:lst>	
+					</v:ctr>
+
+					<v:ctr name="TCMErrInjectConfigSet" type="IDENTIFIABLE">
+                      <a:a name="ENABLE" type="XPath" expr="node:value(../SelfTestPowerOn) = &quot;true&quot; and (node:value(../SelfTestPowerOnOptions/ATCM1BitErrInjectPowerOn)= &quot;true&quot; or 		 node:value(../SelfTestPowerOnOptions/ATCM2BitErrInjectPowerOn)= &quot;true&quot;  or node:value(../SelfTestPowerOnOptions/B0TCM1BitErrInjectPowerOn)= &quot;true&quot; or 		 node:value(../SelfTestPowerOnOptions/B0TCM2BitErrInjectPowerOn)= &quot;true&quot; or
+					  node:value(../SelfTestPowerOnOptions/B1TCM1BitErrInjectPowerOn)= &quot;true&quot; or 		 node:value(../SelfTestPowerOnOptions/B1TCM2BitErrInjectPowerOn)= &quot;true&quot;)"/>					
+						<v:ctr name="ATCMOneBitErrInject" type="IDENTIFIABLE">
+                        <a:a name="ENABLE" type="XPath" expr="node:value(../../SelfTestPowerOn) = &quot;true&quot; and  
+						                                      node:value(../../SelfTestPowerOnOptions/ATCM1BitErrInjectPowerOn)= &quot;true&quot;"/>
+						    <a:a name="DESC" 
+								value="EN: This container contains configurations for injection one bit error on ATCM ."/>
+							<a:a name="UUID" 
+								value="ECUC:62eb25f3-28ac-452e-a2fa-0f92357c16a6"/>			
+						    <v:var name="ATCM_1BitErr_Un_DetectNotification" type="FUNCTION-NAME">
+							<a:a name="DESC" 
+							   value="EN: Definition of the Callback function for not detecting according interrupt status after injecting 1 bit error in ATCM."/>
+							<a:a name="IMPLEMENTATIONCONFIGCLASS" 
+								type="IMPLEMENTATIONCONFIGCLASS">
+								<icc:v mclass="PostBuild">VariantPostBuild</icc:v>
+								<icc:v mclass="PreCompile">VariantPreCompile</icc:v>
+								<icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+								<icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+							</a:a>
+							<a:a name="OPTIONAL" value="true"/>
+							<a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+							<a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+							<a:a name="SCOPE" value="LOCAL"/>
+							<a:a name="SYMBOLICNAMEVALUE" value="false"/>
+							<a:a name="UUID" 
+								value="ECUC:44bb38ac-d409-4b1d-96be-ec84466c1019"/>
+							<a:da name="DEFAULT" value="NULL_PTR"/>
+							<a:da name="ENABLE" value="false"/>
+						  </v:var>								  
+						</v:ctr>						
+						<v:ctr name="ATCMTwoBitErrInject" type="IDENTIFIABLE">
+						<a:a name="ENABLE" type="XPath" expr="node:value(../../SelfTestPowerOn) = &quot;true&quot; and 
+						                                      node:value(../../SelfTestPowerOnOptions/ATCM2BitErrInjectPowerOn)= &quot;true&quot;"/>	
+							<a:a name="DESC" 
+								value="EN: This container contains configurations for injection two bits error on ATCM ."/>
+							<a:a name="UUID" 
+								value="ECUC:62eb25f3-28ac-452e-a2fa-0f92357c16a6"/>			
+						  <v:var name="ATCM_2BitErr_Un_DetectNotification" type="FUNCTION-NAME">
+							<a:a name="DESC" 
+							   value="EN: Definition of the Callback function for not detecting according interrupt status after injecting 2 bits error in ATCM."/>
+							<a:a name="IMPLEMENTATIONCONFIGCLASS" 
+								type="IMPLEMENTATIONCONFIGCLASS">
+								<icc:v mclass="PostBuild">VariantPostBuild</icc:v>
+								<icc:v mclass="PreCompile">VariantPreCompile</icc:v>
+								<icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+								<icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+							</a:a>
+							<a:a name="OPTIONAL" value="true"/>
+							<a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+							<a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+							<a:a name="SCOPE" value="LOCAL"/>
+							<a:a name="SYMBOLICNAMEVALUE" value="false"/>
+							<a:a name="UUID" 
+								value="ECUC:44bb38ac-d409-4b1d-96be-ec84466c1019"/>
+							<a:da name="DEFAULT" value="NULL_PTR"/>
+							<a:da name="ENABLE" value="false"/>
+						  </v:var>								  
+						</v:ctr>	
+						<v:ctr name="B0TCMOneBitErrInject" type="IDENTIFIABLE">
+						   <a:a name="ENABLE" type="XPath" expr="node:value(../../SelfTestPowerOn) = &quot;true&quot; and 
+						                                         node:value(../../SelfTestPowerOnOptions/B0TCM1BitErrInjectPowerOn)= &quot;true&quot;"/>
+							<a:a name="DESC" 
+								value="EN: This container contains configurations for injection one bits error on B0TCM ."/>
+							<a:a name="UUID" 
+								value="ECUC:62eb25f3-28ac-452e-a2fa-0f92357c16a6"/>			
+						  <v:var name="B0TCM_1BitErr_Un_DetectNotification" type="FUNCTION-NAME">
+							<a:a name="DESC" 
+							   value="EN: Definition of the Callback function for not detecting according interrupt status after injecting 1 bit error in B0TCM."/>
+							<a:a name="IMPLEMENTATIONCONFIGCLASS" 
+								type="IMPLEMENTATIONCONFIGCLASS">
+								<icc:v mclass="PostBuild">VariantPostBuild</icc:v>
+								<icc:v mclass="PreCompile">VariantPreCompile</icc:v>
+								<icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+								<icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+							</a:a>
+							<a:a name="OPTIONAL" value="true"/>
+							<a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+							<a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+							<a:a name="SCOPE" value="LOCAL"/>
+							<a:a name="SYMBOLICNAMEVALUE" value="false"/>
+							<a:a name="UUID" 
+								value="ECUC:44bb38ac-d409-4b1d-96be-ec84466c1019"/>
+							<a:da name="DEFAULT" value="NULL_PTR"/>
+							<a:da name="ENABLE" value="false"/>
+						  </v:var>								  
+						</v:ctr>
+						<v:ctr name="B0TCMTwoBitErrInject" type="IDENTIFIABLE">
+						   <a:a name="ENABLE" type="XPath" expr="node:value(../../SelfTestPowerOn) = &quot;true&quot; and  
+						                                         node:value(../../SelfTestPowerOnOptions/B0TCM2BitErrInjectPowerOn)= &quot;true&quot;"/>
+							<a:a name="DESC" 
+								value="EN: This container contains configurations for injection two bits error on B0TCM ."/>
+							<a:a name="UUID" 
+								value="ECUC:62eb25f3-28ac-452e-a2fa-0f92357c16a6"/>			
+						  <v:var name="B0TCM_2BitErr_Un_DetectNotification" type="FUNCTION-NAME">
+							<a:a name="DESC" 
+							   value="EN: Definition of the Callback function for not detecting according interrupt status after injecting 2 bits error in B0TCM."/>
+							<a:a name="IMPLEMENTATIONCONFIGCLASS" 
+								type="IMPLEMENTATIONCONFIGCLASS">
+								<icc:v mclass="PostBuild">VariantPostBuild</icc:v>
+								<icc:v mclass="PreCompile">VariantPreCompile</icc:v>
+								<icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+								<icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+							</a:a>
+							<a:a name="OPTIONAL" value="true"/>
+							<a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+							<a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+							<a:a name="SCOPE" value="LOCAL"/>
+							<a:a name="SYMBOLICNAMEVALUE" value="false"/>
+							<a:a name="UUID" 
+								value="ECUC:44bb38ac-d409-4b1d-96be-ec84466c1019"/>
+							<a:da name="DEFAULT" value="NULL_PTR"/>
+							<a:da name="ENABLE" value="false"/>
+						  </v:var>								  
+						</v:ctr>
+						<v:ctr name="B1TCMOneBitErrInject" type="IDENTIFIABLE">
+						    <a:a name="ENABLE" type="XPath" expr="node:value(../../SelfTestPowerOn) = &quot;true&quot; and           
+							                                      node:value(../../SelfTestPowerOnOptions/B1TCM1BitErrInjectPowerOn)= &quot;true&quot;"/>
+							<a:a name="DESC" 
+								value="EN: This container contains configurations for injection one bits error on B1TCM ."/>
+							<a:a name="UUID" 
+								value="ECUC:62eb25f3-28ac-452e-a2fa-0f92357c16a6"/>			
+						  <v:var name="B1TCM_1BitErr_Un_DetectNotification" type="FUNCTION-NAME">
+							<a:a name="DESC" 
+							   value="EN: Definition of the Callback function for not detecting according interrupt status after injecting 1 bit error in B1TCM."/>
+							<a:a name="IMPLEMENTATIONCONFIGCLASS" 
+								type="IMPLEMENTATIONCONFIGCLASS">
+								<icc:v mclass="PostBuild">VariantPostBuild</icc:v>
+								<icc:v mclass="PreCompile">VariantPreCompile</icc:v>
+								<icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+								<icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+							</a:a>
+							<a:a name="OPTIONAL" value="true"/>
+							<a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+							<a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+							<a:a name="SCOPE" value="LOCAL"/>
+							<a:a name="SYMBOLICNAMEVALUE" value="false"/>
+							<a:a name="UUID" 
+								value="ECUC:44bb38ac-d409-4b1d-96be-ec84466c1019"/>
+							<a:da name="DEFAULT" value="NULL_PTR"/>
+							<a:da name="ENABLE" value="false"/>
+						  </v:var>								  
+						</v:ctr>
+						<v:ctr name="B1TCMTwoBitErrInject" type="IDENTIFIABLE">
+						    <a:a name="ENABLE" type="XPath" expr="node:value(../../SelfTestPowerOn) = &quot;true&quot; and 
+							                                      node:value(../../SelfTestPowerOnOptions/B1TCM2BitErrInjectPowerOn)= &quot;true&quot;"/>
+							<a:a name="DESC" 
+								value="EN: This container contains configurations for injection two bits error on B1TCM ."/>
+							<a:a name="UUID" 
+								value="ECUC:62eb25f3-28ac-452e-a2fa-0f92357c16a6"/>			
+						  <v:var name="B1TCM_2BitErr_Un_DetectNotification" type="FUNCTION-NAME">
+							<a:a name="DESC" 
+							   value="EN: Definition of the Callback function for not detecting according interrupt status after injecting 2 bits error in B1TCM."/>
+							<a:a name="IMPLEMENTATIONCONFIGCLASS" 
+								type="IMPLEMENTATIONCONFIGCLASS">
+								<icc:v mclass="PostBuild">VariantPostBuild</icc:v>
+								<icc:v mclass="PreCompile">VariantPreCompile</icc:v>
+								<icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+								<icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+							</a:a>
+							<a:a name="OPTIONAL" value="true"/>
+							<a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+							<a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+							<a:a name="SCOPE" value="LOCAL"/>
+							<a:a name="SYMBOLICNAMEVALUE" value="false"/>
+							<a:a name="UUID" 
+								value="ECUC:44bb38ac-d409-4b1d-96be-ec84466c1019"/>
+							<a:da name="DEFAULT" value="NULL_PTR"/>
+							<a:da name="ENABLE" value="false"/>
+						  </v:var>								  
+						</v:ctr>						
+                    </v:ctr>	
+					<v:ctr name="CACHEErrInjectConfigSet" type="IDENTIFIABLE">
+					    <a:a name="ENABLE" type="XPath" expr="node:value(../SelfTestPowerOn) = &quot;true&quot; and  
+						                                      node:value(../SelfTestPowerOnOptions/DCACHE1BitErrInjectPowerOn)= &quot;true&quot;"/>
+						<v:ctr name="DCACHEOneBitErrInject" type="IDENTIFIABLE">
+							<a:a name="DESC" 
+								value="EN: This container contains configurations for injection one bit error on Data Cache ."/>
+							<a:a name="UUID" 
+								value="ECUC:62eb25f3-28ac-452e-a2fa-0f92357c16a6"/>	
+						  <v:ctr name="DataRamOfDCACHE" type="IDENTIFIABLE">		
+							<a:a name="DESC" 
+								value="EN: This container contains configurations for injection one bit error on dara ram of Data Cache ."/>
+							<a:a name="UUID" 
+								value="ECUC:62eb25f3-28ac-452e-a2fa-0f92357c16a3"/>			
+							<v:var name="BankNumber" type="INTEGER">
+							  <a:a name="DESC" 
+								   value="EN: Bank select for D-Cache data RAMs."/>
+							  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+								   type="IMPLEMENTATIONCONFIGCLASS">
+								<icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+							  </a:a>
+							  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+							  <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+							  <a:a name="SCOPE" value="LOCAL"/>
+							  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+							  <a:a name="UUID" 
+								   value="ECUC:ea7f8f6d-5d98-4bc4-808e-dc02c4c233ac"/>
+							  <a:da name="DEFAULT" value="0"/>
+							  <a:da name="INVALID" type="Range">
+								<a:tst expr="&lt;=7"/>
+								<a:tst expr="&gt;=0"/>
+							  </a:da>
+							</v:var>	
+							<v:var name="RamIndex" type="INTEGER">
+							  <a:a name="DESC" 
+								   value="EN: Ram index for D-Cache data RAMs."/>
+							  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+								   type="IMPLEMENTATIONCONFIGCLASS">
+								<icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+							  </a:a>
+							  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+							  <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+							  <a:a name="SCOPE" value="LOCAL"/>
+							  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+							  <a:a name="UUID" 
+								   value="ECUC:ea7f8f6d-5d98-4bc4-808e-dc02c4c233ac"/>
+							  <a:da name="DEFAULT" value="0"/>
+							  <a:da name="INVALID" type="Range">
+								<a:tst expr="&lt;=1023"/>
+								<a:tst expr="&gt;=0"/>
+							  </a:da>
+							</v:var>							
+						  <v:var name="DCACHE_Data_Ram_1BitErr_Un_DetectNotification" type="FUNCTION-NAME">
+							<a:a name="DESC" 
+							   value="EN: Definition of the Callback function for not detecting according interrupt status after injecting 1 bit error in data ram of data cache."/>
+							<a:a name="IMPLEMENTATIONCONFIGCLASS" 
+								type="IMPLEMENTATIONCONFIGCLASS">
+								<icc:v mclass="PostBuild">VariantPostBuild</icc:v>
+								<icc:v mclass="PreCompile">VariantPreCompile</icc:v>
+								<icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+								<icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+							</a:a>
+							<a:a name="OPTIONAL" value="true"/>
+							<a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+							<a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+							<a:a name="SCOPE" value="LOCAL"/>
+							<a:a name="SYMBOLICNAMEVALUE" value="false"/>
+							<a:a name="UUID" 
+								value="ECUC:44bb38ac-d409-4b1d-96be-ec84466c1019"/>
+							<a:da name="DEFAULT" value="NULL_PTR"/>
+							<a:da name="ENABLE" value="false"/>
+						  </v:var>	
+						  </v:ctr>
+						  <v:ctr name="TagRamOfDCACHE" type="IDENTIFIABLE">		
+							<a:a name="DESC" 
+								value="EN: This container contains configurations for injection one bit error on tag ram of Data Cache ."/>
+							<a:a name="UUID" 
+								value="ECUC:62eb25f3-28ac-452e-a2fa-0f92357c16a4"/>	
+							<v:var name="BankNumber" type="INTEGER">
+							  <a:a name="DESC" 
+								   value="EN: Bank select for D-Cache tag RAMs."/>
+							  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+								   type="IMPLEMENTATIONCONFIGCLASS">
+								<icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+							  </a:a>
+							  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+							  <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+							  <a:a name="SCOPE" value="LOCAL"/>
+							  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+							  <a:a name="UUID" 
+								   value="ECUC:ea7f8f6d-5d98-4bc4-808e-dc02c4c233ac"/>
+							  <a:da name="DEFAULT" value="0"/>
+							  <a:da name="INVALID" type="Range">
+								<a:tst expr="&lt;=3"/>
+								<a:tst expr="&gt;=0"/>
+							  </a:da>
+							</v:var>	
+							<v:var name="RamIndex" type="INTEGER">
+							  <a:a name="DESC" 
+								   value="EN: Ram index for D-Cache tag RAMs."/>
+							  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+								   type="IMPLEMENTATIONCONFIGCLASS">
+								<icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+							  </a:a>
+							  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+							  <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+							  <a:a name="SCOPE" value="LOCAL"/>
+							  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+							  <a:a name="UUID" 
+								   value="ECUC:ea7f8f6d-5d98-4bc4-808e-dc02c4c233ac"/>
+							  <a:da name="DEFAULT" value="0"/>
+							  <a:da name="INVALID" type="Range">
+								<a:tst expr="&lt;=255"/>
+								<a:tst expr="&gt;=0"/>
+							  </a:da>
+							</v:var>								
+						  <v:var name="DCACHE_Tag_Ram_1BitErr_Un_DetectNotification" type="FUNCTION-NAME">
+							<a:a name="DESC" 
+							   value="EN: Definition of the Callback function for not detecting according interrupt status after injecting 1 bit error in tag ram of data cache."/>
+							<a:a name="IMPLEMENTATIONCONFIGCLASS" 
+								type="IMPLEMENTATIONCONFIGCLASS">
+								<icc:v mclass="PostBuild">VariantPostBuild</icc:v>
+								<icc:v mclass="PreCompile">VariantPreCompile</icc:v>
+								<icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+								<icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+							</a:a>
+							<a:a name="OPTIONAL" value="true"/>
+							<a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+							<a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+							<a:a name="SCOPE" value="LOCAL"/>
+							<a:a name="SYMBOLICNAMEVALUE" value="false"/>
+							<a:a name="UUID" 
+								value="ECUC:44bb38ac-d409-4b1d-96be-ec84466c1019"/>
+							<a:da name="DEFAULT" value="NULL_PTR"/>
+							<a:da name="ENABLE" value="false"/>
+						  </v:var>	
+                        </v:ctr>						  
+						</v:ctr>											
+                    </v:ctr>					
+					<v:ctr name="FabricErrInjectConfigSet" type="IDENTIFIABLE">
+					    <a:a name="ENABLE" type="XPath" expr="node:value(../SelfTestPowerOn) = &quot;true&quot; and
+						                                     (node:value(../SelfTestPowerOnOptions/Fabric1BitErrInjectPowerOn)= &quot;true&quot; or
+						                                      node:value(../SelfTestPowerOnOptions/Fabric2BitErrInjectPowerOn)= &quot;true&quot;)"/> 
+						<v:var name="FabricInjectErrMode" type="ENUMERATION">
+						  <a:a name="DESC" 
+							   value="EN: Inject 1/2bit error mode for fabric when ECU power on or off: INJECT_ALL_TRAVEL,INJECT_FIXED_POINT,the former takes more time than the latter"/>
+						  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+							   type="IMPLEMENTATIONCONFIGCLASS">
+							<icc:v vclass="PreCompile">VariantLinkTime</icc:v>
+							<icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+						  </a:a>
+						  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+						  <a:a name="SCOPE" value="ECU"/>
+						  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+						  <a:a name="UUID" 
+							   value="ECUC:d596f059-d21f-46fa-8c62-8eae8ff3d68d"/>
+						  <a:da name="DEFAULT" value='INJECT_FIXED_POINT'/>
+						  <a:da name="RANGE">
+							<a:v>INJECT_ALL_TRAVEL</a:v>
+							<a:v>INJECT_FIXED_POINT</a:v>
+						  </a:da>
+						</v:var>
+						<v:ctr name="FabricOneBitErrInject" type="IDENTIFIABLE">
+					    <a:a name="ENABLE" type="XPath" expr="node:value(../../SelfTestPowerOn) = &quot;true&quot; and
+						                                      node:value(../../SelfTestPowerOnOptions/Fabric1BitErrInjectPowerOn)= &quot;true&quot;"/> 			 
+							<a:a name="DESC" 
+								value="EN: This container contains configurations for injection one bit error on fabric ."/>
+							<a:a name="UUID" 
+								value="ECUC:62eb25f3-28ac-452e-a2fa-0f92357c16a6"/>			
+						  <v:var name="Fabric_1BitErr_Un_DetectNotification" type="FUNCTION-NAME">
+							<a:a name="DESC" 
+							   value="EN: Definition of the Callback function for not detecting according interrupt status after injecting 1 bit error in fabric."/>
+							<a:a name="IMPLEMENTATIONCONFIGCLASS" 
+								type="IMPLEMENTATIONCONFIGCLASS">
+								<icc:v mclass="PostBuild">VariantPostBuild</icc:v>
+								<icc:v mclass="PreCompile">VariantPreCompile</icc:v>
+								<icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+								<icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+							</a:a>
+							<a:a name="OPTIONAL" value="true"/>
+							<a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+							<a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+							<a:a name="SCOPE" value="LOCAL"/>
+							<a:a name="SYMBOLICNAMEVALUE" value="false"/>
+							<a:a name="UUID" 
+								value="ECUC:44bb38ac-d409-4b1d-96be-ec84466c1019"/>
+							<a:da name="DEFAULT" value="NULL_PTR"/>
+							<a:da name="ENABLE" value="false"/>
+						  </v:var>								  
+						</v:ctr>						
+						<v:ctr name="FabricTwoBitErrInject" type="IDENTIFIABLE">
+					    <a:a name="ENABLE" type="XPath" expr="node:value(../../SelfTestPowerOn) = &quot;true&quot; and    
+						                                      node:value(../../SelfTestPowerOnOptions/Fabric2BitErrInjectPowerOn)= &quot;true&quot;"/> 			
+															  
+							<a:a name="DESC" 
+								value="EN: This container contains configurations for injection two bits error on fabric ."/>
+							<a:a name="UUID" 
+								value="ECUC:62eb25f3-28ac-452e-a2fa-0f92357c16a6"/>			
+						  <v:var name="Fabric_2BitErr_Un_DetectNotification" type="FUNCTION-NAME">
+							<a:a name="DESC" 
+							   value="EN: Definition of the Callback function for not detecting according interrupt status after injecting 2 bits error in fabric"/>
+							<a:a name="IMPLEMENTATIONCONFIGCLASS" 
+								type="IMPLEMENTATIONCONFIGCLASS">
+								<icc:v mclass="PostBuild">VariantPostBuild</icc:v>
+								<icc:v mclass="PreCompile">VariantPreCompile</icc:v>
+								<icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+								<icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+							</a:a>
+							<a:a name="OPTIONAL" value="true"/>
+							<a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+							<a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+							<a:a name="SCOPE" value="LOCAL"/>
+							<a:a name="SYMBOLICNAMEVALUE" value="false"/>
+							<a:a name="UUID" 
+								value="ECUC:44bb38ac-d409-4b1d-96be-ec84466c1019"/>
+							<a:da name="DEFAULT" value="NULL_PTR"/>
+							<a:da name="ENABLE" value="false"/>
+						  </v:var>								  
+						</v:ctr>						
+                      </v:ctr>					  
+					<v:ctr name="FuseConfigSet" type="IDENTIFIABLE">
+					    <a:a name="ENABLE" type="XPath" expr="(node:value(../SelfTestPowerOn) = &quot;true&quot; and 
+						                                      (node:value(../SelfTestPowerOnOptions/Fuse1BitErrInjectPowerOn)= &quot;true&quot; or
+						                                       node:value(../SelfTestPowerOnOptions/Fuse2BitErrInjectPowerOn)= &quot;true&quot;)) or
+															  (node:value(../SelfTestPeriodic) = &quot;true&quot; and 
+						                                      (node:value(../SelfTestPeriodicOptions/Fuse1BitErrInjectPeriodic)= &quot;true&quot; or
+						                                      node:value(../SelfTestPeriodicOptions/Fuse2BitErrInjectPeriodic)= &quot;true&quot;))"/> 	
+						  <v:var name="FuseInjectErrMode" type="ENUMERATION">
+						  <a:a name="DESC" 
+							   value="EN: Inject 1/2bit error mode for fuse when ECU power on or off: INJECT_ALL_TRAVEL,INJECT_FIXED_POINT,the former takes more time than the latter"/>
+						  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+							   type="IMPLEMENTATIONCONFIGCLASS">
+							<icc:v vclass="PreCompile">VariantLinkTime</icc:v>
+							<icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+						  </a:a>
+						  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+						  <a:a name="SCOPE" value="ECU"/>
+						  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+						  <a:a name="UUID" 
+							   value="ECUC:d596f059-d21f-46fa-8c62-8eae8ff3d68d"/>
+						  <a:da name="DEFAULT" value='INJECT_FIXED_POINT'/>
+						  <a:da name="RANGE">
+							<a:v>INJECT_ALL_TRAVEL</a:v>
+							<a:v>INJECT_FIXED_POINT</a:v>
+						  </a:da>
+						</v:var>					
+						<v:ctr name="FuseOneBitErrInject" type="IDENTIFIABLE">
+					    <a:a name="ENABLE" type="XPath" expr="(node:value(../../SelfTestPowerOn) = &quot;true&quot; and 
+						                                      (node:value(../../SelfTestPowerOnOptions/Fuse1BitErrInjectPowerOn)= &quot;true&quot;)) or
+															  (node:value(../../SelfTestPeriodic) = &quot;true&quot; and 
+						                                      (node:value(../../SelfTestPeriodicOptions/Fuse1BitErrInjectPeriodic)= &quot;true&quot;))"/> 								
+							<a:a name="DESC" 
+								value="EN: This container contains configurations for injection one bit error in fuse .."/>
+							<a:a name="UUID" 
+								value="ECUC:62eb25f3-28ac-452e-a2fa-0f92357c16a6"/>			
+						  <v:var name="Fuse_1BitErr_ErrSta_Un_DetectNotification" type="FUNCTION-NAME">
+							<a:a name="DESC" 
+							   value="EN: Definition of the Callback function for not detecting according error status after injecting 1 bit error in fuse"/>
+							<a:a name="IMPLEMENTATIONCONFIGCLASS" 
+								type="IMPLEMENTATIONCONFIGCLASS">
+								<icc:v mclass="PostBuild">VariantPostBuild</icc:v>
+								<icc:v mclass="PreCompile">VariantPreCompile</icc:v>
+								<icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+								<icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+							</a:a>
+							<a:a name="OPTIONAL" value="true"/>
+							<a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+							<a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+							<a:a name="SCOPE" value="LOCAL"/>
+							<a:a name="SYMBOLICNAMEVALUE" value="false"/>
+							<a:a name="UUID" 
+								value="ECUC:44bb38ac-d409-4b1d-96be-ec84466c1019"/>
+							<a:da name="DEFAULT" value="NULL_PTR"/>
+							<a:da name="ENABLE" value="false"/>
+						  </v:var>									
+						  <v:var name="Fuse_1BitErr_IntSta_Un_DetectNotification" type="FUNCTION-NAME">
+							<a:a name="DESC" 
+							   value="EN: Definition of the Callback function for not detecting according interrupt status after injecting 1 bit error in fuse."/>
+							<a:a name="IMPLEMENTATIONCONFIGCLASS" 
+								type="IMPLEMENTATIONCONFIGCLASS">
+								<icc:v mclass="PostBuild">VariantPostBuild</icc:v>
+								<icc:v mclass="PreCompile">VariantPreCompile</icc:v>
+								<icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+								<icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+							</a:a>
+							<a:a name="OPTIONAL" value="true"/>
+							<a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+							<a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+							<a:a name="SCOPE" value="LOCAL"/>
+							<a:a name="SYMBOLICNAMEVALUE" value="false"/>
+							<a:a name="UUID" 
+								value="ECUC:44bb38ac-d409-4b1d-96be-ec84466c1019"/>
+							<a:da name="DEFAULT" value="NULL_PTR"/>
+							<a:da name="ENABLE" value="false"/>
+						  </v:var>								  
+						</v:ctr>	
+						<v:ctr name="FuseTwoBitErrInject" type="IDENTIFIABLE">
+				            <a:a name="ENABLE" type="XPath" expr="(node:value(../../SelfTestPowerOn) = &quot;true&quot; and 
+						                                      (node:value(../../SelfTestPowerOnOptions/Fuse2BitErrInjectPowerOn)= &quot;true&quot;)) or
+															  (node:value(../../SelfTestPeriodic) = &quot;true&quot; and 
+						                                      (node:value(../../SelfTestPeriodicOptions/Fuse2BitErrInjectPeriodic)= &quot;true&quot;))"/>
+							<a:a name="DESC" 
+								value="EN: This container contains configurations for injection two bits error in fuse .."/>
+							<a:a name="UUID" 
+								value="ECUC:62eb25f3-28ac-452e-a2fa-0f92357c16a6"/>			
+						  <v:var name="Fuse_2BitErr_ErrSta_Un_DetectNotification" type="FUNCTION-NAME">
+							<a:a name="DESC" 
+							   value="EN: Definition of the Callback function for not detecting according error status after injecting 2 bits error in fuse."/>
+							<a:a name="IMPLEMENTATIONCONFIGCLASS" 
+								type="IMPLEMENTATIONCONFIGCLASS">
+								<icc:v mclass="PostBuild">VariantPostBuild</icc:v>
+								<icc:v mclass="PreCompile">VariantPreCompile</icc:v>
+								<icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+								<icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+							</a:a>
+							<a:a name="OPTIONAL" value="true"/>
+							<a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+							<a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+							<a:a name="SCOPE" value="LOCAL"/>
+							<a:a name="SYMBOLICNAMEVALUE" value="false"/>
+							<a:a name="UUID" 
+								value="ECUC:44bb38ac-d409-4b1d-96be-ec84466c1019"/>
+							<a:da name="DEFAULT" value="NULL_PTR"/>
+							<a:da name="ENABLE" value="false"/>
+						  </v:var>									
+						  <v:var name="Fuse_2BitErr_IntSta_Un_DetectNotification" type="FUNCTION-NAME">
+							<a:a name="DESC" 
+							   value="EN: Definition of the Callback function for not detecting according interrupt status after injecting 2 bits error in fuse."/>
+							<a:a name="IMPLEMENTATIONCONFIGCLASS" 
+								type="IMPLEMENTATIONCONFIGCLASS">
+								<icc:v mclass="PostBuild">VariantPostBuild</icc:v>
+								<icc:v mclass="PreCompile">VariantPreCompile</icc:v>
+								<icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+								<icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+							</a:a>
+							<a:a name="OPTIONAL" value="true"/>
+							<a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+							<a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+							<a:a name="SCOPE" value="LOCAL"/>
+							<a:a name="SYMBOLICNAMEVALUE" value="false"/>
+							<a:a name="UUID" 
+								value="ECUC:44bb38ac-d409-4b1d-96be-ec84466c1019"/>
+							<a:da name="DEFAULT" value="NULL_PTR"/>
+							<a:da name="ENABLE" value="false"/>
+						  </v:var>								  
+						</v:ctr>						
+                      </v:ctr>	
+					<v:ctr name="SemSigMonConfigSet" type="IDENTIFIABLE">
+					    <a:a name="ENABLE" type="XPath" expr="node:value(../SelfTestPowerOn) = &quot;true&quot; and 
+						                                      (node:value(../SelfTestPowerOnOptions/SemSigMonitorPowerOn)= &quot;true&quot; or
+						                                      node:value(../SelfTestPowerOnOptions/SemSigMonInjectErrPowerOn)= &quot;true&quot;)"/> 	
+						<v:ctr name="SemSignalMonitor" type="IDENTIFIABLE">
+					    <a:a name="ENABLE" type="XPath" expr="node:value(../../SelfTestPowerOn) = &quot;true&quot; and 
+						                                      node:value(../../SelfTestPowerOnOptions/SemSigMonitorPowerOn)= &quot;true&quot;"/> 	
+						    <a:a name="DESC" 
+								value="EN: This container contains configurations for setting expected tagget value to  monitor sem signals."/>
+							<a:a name="UUID" 
+								value="ECUC:62eb25f3-28ac-452e-a2fa-0f92357c16a6"/>			
+						  <v:var name="Sem_SigMonitor_UnmatchNotification" type="FUNCTION-NAME">
+							<a:a name="DESC" 
+							   value="EN: Definition of the Callback function for not matching between signal input value and target value"/>
+							<a:a name="IMPLEMENTATIONCONFIGCLASS" 
+								type="IMPLEMENTATIONCONFIGCLASS">
+								<icc:v mclass="PostBuild">VariantPostBuild</icc:v>
+								<icc:v mclass="PreCompile">VariantPreCompile</icc:v>
+								<icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+								<icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+							</a:a>
+							<a:a name="OPTIONAL" value="true"/>
+							<a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+							<a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+							<a:a name="SCOPE" value="LOCAL"/>
+							<a:a name="SYMBOLICNAMEVALUE" value="false"/>
+							<a:a name="UUID" 
+								value="ECUC:44bb38ac-d409-4b1d-96be-ec84466c1019"/>
+							<a:da name="DEFAULT" value="NULL_PTR"/>
+							<a:da name="ENABLE" value="false"/>
+						  </v:var>															  
+						</v:ctr>										
+						<v:ctr name="SemSignalMonitorInjectError" type="IDENTIFIABLE">
+					    <a:a name="ENABLE" type="XPath" expr="node:value(../../SelfTestPowerOn) = &quot;true&quot; and                      
+						                                      node:value(../../SelfTestPowerOnOptions/SemSigMonInjectErrPowerOn)= &quot;true&quot;"/> 				
+							<a:a name="DESC" 
+								value="EN: This container contains configurations for setting wrong expected tagget value to trigger monitoring sem signals."/>
+							<a:a name="UUID" 
+								value="ECUC:62eb25f3-28ac-452e-a2fa-0f92357c16a6"/>			
+						  <v:var name="Sem_SigMon_InjErr_UndetectedNotification" type="FUNCTION-NAME">
+							<a:a name="DESC" 
+							   value="EN: Definition of the Callback function for not detecting according interrupt status after setting wrong target value."/>
+							<a:a name="IMPLEMENTATIONCONFIGCLASS" 
+								type="IMPLEMENTATIONCONFIGCLASS">
+								<icc:v mclass="PostBuild">VariantPostBuild</icc:v>
+								<icc:v mclass="PreCompile">VariantPreCompile</icc:v>
+								<icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+								<icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+							</a:a>
+							<a:a name="OPTIONAL" value="true"/>
+							<a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+							<a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+							<a:a name="SCOPE" value="LOCAL"/>
+							<a:a name="SYMBOLICNAMEVALUE" value="false"/>
+							<a:a name="UUID" 
+								value="ECUC:44bb38ac-d409-4b1d-96be-ec84466c1019"/>
+							<a:da name="DEFAULT" value="NULL_PTR"/>
+							<a:da name="ENABLE" value="false"/>
+						  </v:var>															  
+						</v:ctr>							
+                      </v:ctr>
+					<v:ctr name="NocBistConfigSet" type="IDENTIFIABLE">
+						<a:a name="ENABLE" type="XPath" expr="node:value(../SelfTestPowerOn) = &quot;true&quot; and 
+						                                      node:value(../SelfTestPowerOnOptions/RunNocBISTPowerOn)= &quot;true&quot;"/> 	
+						<v:ctr name="Run_Noc_Bist_Sequence" type="IDENTIFIABLE">
+							<a:a name="DESC" 
+								value="EN: This container contains configurations for running noc bist sequence."/>
+							<a:a name="UUID" 
+								value="ECUC:62eb25f3-28ac-452e-a2fa-0f92357c16a6"/>			
+						  <v:var name="Latent_Fault0Notification" type="FUNCTION-NAME">
+							<a:a name="DESC" 
+							   value="EN: Definition of the Callback function."/>
+							<a:a name="IMPLEMENTATIONCONFIGCLASS" 
+								type="IMPLEMENTATIONCONFIGCLASS">
+								<icc:v mclass="PostBuild">VariantPostBuild</icc:v>
+								<icc:v mclass="PreCompile">VariantPreCompile</icc:v>
+								<icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+								<icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+							</a:a>
+							<a:a name="OPTIONAL" value="true"/>
+							<a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+							<a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+							<a:a name="SCOPE" value="LOCAL"/>
+							<a:a name="SYMBOLICNAMEVALUE" value="false"/>
+							<a:a name="UUID" 
+								value="ECUC:44bb38ac-d409-4b1d-96be-ec84466c1019"/>
+							<a:da name="DEFAULT" value="NULL_PTR"/>
+							<a:da name="ENABLE" value="false"/>
+						  </v:var>		
+						  <v:var name="Latent_Fault1Notification" type="FUNCTION-NAME">
+							<a:a name="DESC" 
+							   value="EN: Definition of the Callback function."/>
+							<a:a name="IMPLEMENTATIONCONFIGCLASS" 
+								type="IMPLEMENTATIONCONFIGCLASS">
+								<icc:v mclass="PostBuild">VariantPostBuild</icc:v>
+								<icc:v mclass="PreCompile">VariantPreCompile</icc:v>
+								<icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+								<icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+							</a:a>
+							<a:a name="OPTIONAL" value="true"/>
+							<a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+							<a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+							<a:a name="SCOPE" value="LOCAL"/>
+							<a:a name="SYMBOLICNAMEVALUE" value="false"/>
+							<a:a name="UUID" 
+								value="ECUC:44bb38ac-d409-4b1d-96be-ec84466c1019"/>
+							<a:da name="DEFAULT" value="NULL_PTR"/>
+							<a:da name="ENABLE" value="false"/>
+						  </v:var>	
+						  <v:var name="Latent_Fault2Notification" type="FUNCTION-NAME">
+							<a:a name="DESC" 
+							   value="EN: Definition of the Callback function."/>
+							<a:a name="IMPLEMENTATIONCONFIGCLASS" 
+								type="IMPLEMENTATIONCONFIGCLASS">
+								<icc:v mclass="PostBuild">VariantPostBuild</icc:v>
+								<icc:v mclass="PreCompile">VariantPreCompile</icc:v>
+								<icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+								<icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+							</a:a>
+							<a:a name="OPTIONAL" value="true"/>
+							<a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+							<a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+							<a:a name="SCOPE" value="LOCAL"/>
+							<a:a name="SYMBOLICNAMEVALUE" value="false"/>
+							<a:a name="UUID" 
+								value="ECUC:44bb38ac-d409-4b1d-96be-ec84466c1019"/>
+							<a:da name="DEFAULT" value="NULL_PTR"/>
+							<a:da name="ENABLE" value="false"/>
+						  </v:var>	
+						  <v:var name="Latent_Fault3Notification" type="FUNCTION-NAME">
+							<a:a name="DESC" 
+							   value="EN: Definition of the Callback function."/>
+							<a:a name="IMPLEMENTATIONCONFIGCLASS" 
+								type="IMPLEMENTATIONCONFIGCLASS">
+								<icc:v mclass="PostBuild">VariantPostBuild</icc:v>
+								<icc:v mclass="PreCompile">VariantPreCompile</icc:v>
+								<icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+								<icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+							</a:a>
+							<a:a name="OPTIONAL" value="true"/>
+							<a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+							<a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+							<a:a name="SCOPE" value="LOCAL"/>
+							<a:a name="SYMBOLICNAMEVALUE" value="false"/>
+							<a:a name="UUID" 
+								value="ECUC:44bb38ac-d409-4b1d-96be-ec84466c1019"/>
+							<a:da name="DEFAULT" value="NULL_PTR"/>
+							<a:da name="ENABLE" value="false"/>
+						  </v:var>							  
+						</v:ctr>							
+                      </v:ctr>	
+					<v:ctr name="WdtSelfTestConfigSet" type="IDENTIFIABLE">
+					    <a:a name="ENABLE" type="XPath" expr="node:value(../SelfTestPowerOn) = &quot;true&quot; and 
+						                                      node:value(../SelfTestPowerOnOptions/WdtSelfTestPowerOn)= &quot;true&quot;"/> 
+						<v:ctr name="WdtSelfTest" type="IDENTIFIABLE">
+							<a:a name="DESC" 
+								value="EN: This container contains configurations for wdt self test."/>
+							<a:a name="UUID" 
+								value="ECUC:62eb25f3-28ac-452e-a2fa-0f92357c16a6"/>			
+							<v:var name="OverFlowValue" type="INTEGER">
+							  <a:a name="DESC" 
+								   value="EN: A 32bit overflow value is divided into four bytes in self-test mode, and we set this value so that all four bytes are the same "/>
+							  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+								   type="IMPLEMENTATIONCONFIGCLASS">
+								<icc:v vclass="PreCompile">VariantLinkTime</icc:v>
+								<icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+							  </a:a>
+							  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+							  <a:a name="SCOPE" value="ECU"/>
+							  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+							  <a:a name="UUID" 
+								   value="ECUC:d596f059-d21f-46fa-8c62-8eae8ff3d68d"/>
+							  <a:da name="DEFAULT" value='0xffffffff'/>
+							  <a:da name="INVALID" type="Range">
+								<a:tst expr="&lt;=0xff"/>
+								<a:tst expr="&gt;=0x0a"/>
+							  </a:da>
+							</v:var>
+							  <v:var name="Wdt_SelfTst_OverFlow_Rst_UndetectNotification" type="FUNCTION-NAME">
+								<a:a name="DESC" 
+								   value="EN: Definition of the Callback function for not detecting reset status when wdt overflows."/>
+								<a:a name="IMPLEMENTATIONCONFIGCLASS" 
+									type="IMPLEMENTATIONCONFIGCLASS">
+									<icc:v mclass="PostBuild">VariantPostBuild</icc:v>
+									<icc:v mclass="PreCompile">VariantPreCompile</icc:v>
+									<icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+									<icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+								</a:a>
+								<a:a name="OPTIONAL" value="true"/>
+								<a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+								<a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+								<a:a name="SCOPE" value="LOCAL"/>
+								<a:a name="SYMBOLICNAMEVALUE" value="false"/>
+								<a:a name="UUID" 
+									value="ECUC:44bb38ac-d409-4b1d-96be-ec84466c1019"/>
+								<a:da name="DEFAULT" value="NULL_PTR"/>
+								<a:da name="ENABLE" value="false"/>
+							  </v:var>								
+						</v:ctr>							
+                      </v:ctr>		
+
+
+					<v:ctr name="FsrefclkchkTestConfigSet" type="IDENTIFIABLE">
+					    <a:a name="ENABLE" type="XPath" expr="node:value(../SelfTestPowerOn) = &quot;true&quot; and  
+						                                      (node:value(../SelfTestPowerOnOptions/FSRefClkRcChkAPPowerOn)= &quot;true&quot; or
+						                                      node:value(../SelfTestPowerOnOptions/FSRefClkSafeChkApPowerOn)= &quot;true&quot;)"/>
+						  <v:ctr name="FsRefClkRcChkApTest" type="IDENTIFIABLE">
+						  <a:a name="ENABLE" type="XPath" expr="node:value(../../SelfTestPowerOn) = &quot;true&quot; and   
+																node:value(../../SelfTestPowerOnOptions/FSRefClkRcChkAPPowerOn)= &quot;true&quot;"/>		
+							<a:a name="DESC" 
+							value="EN: This container contains configurations for injection one bit error in iram ."/>
+							<a:a name="UUID" 
+							value="ECUC:62eb25f3-28ac-452e-a2fa-0f92357c16a1"/>								
+						  <v:var name="RcChkAp_UnCheckNotification" type="FUNCTION-NAME">
+							<a:a name="DESC" 
+							   value="EN: Definition of the Callback function for not detecting accoding interrupt status."/>
+							<a:a name="IMPLEMENTATIONCONFIGCLASS" 
+								type="IMPLEMENTATIONCONFIGCLASS">
+								<icc:v mclass="PostBuild">VariantPostBuild</icc:v>
+								<icc:v mclass="PreCompile">VariantPreCompile</icc:v>
+								<icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+								<icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+							</a:a>
+							
+							<a:a name="OPTIONAL" value="true"/>
+							<a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+							<a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+							<a:a name="SCOPE" value="LOCAL"/>
+							<a:a name="SYMBOLICNAMEVALUE" value="false"/>
+							<a:a name="UUID" 
+								value="ECUC:44bb38ac-d409-4b1d-96be-ec84466c1019"/>
+							<a:da name="DEFAULT" value="NULL_PTR"/>
+						  </v:var>	
+						  </v:ctr>
+						  <v:ctr name="FsRefClkSafeChkApTest" type="IDENTIFIABLE">
+							<a:a name="ENABLE" type="XPath" expr="node:value(../../SelfTestPowerOn) = &quot;true&quot; and 
+															   node:value(../../SelfTestPowerOnOptions/FSRefClkSafeChkApPowerOn)= &quot;true&quot;"/>		
+							<a:a name="DESC" 
+							value="EN: This container contains configurations for injection one bit error in iram ."/>
+							<a:a name="UUID" 
+							value="ECUC:62eb25f3-28ac-452e-a2fa-0f92357c16a2"/>							  
+							<v:var name="SafeChkAp_UnCheckNotification" type="FUNCTION-NAME">
+							<a:a name="DESC" 
+							   value="EN: Definition of the Callback function for not detecting accoding interrupt status."/>
+							<a:a name="IMPLEMENTATIONCONFIGCLASS" 
+								type="IMPLEMENTATIONCONFIGCLASS">
+								<icc:v mclass="PostBuild">VariantPostBuild</icc:v>
+								<icc:v mclass="PreCompile">VariantPreCompile</icc:v>
+								<icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+								<icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+							</a:a>								
+							<a:a name="OPTIONAL" value="true"/>
+							<a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+							<a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+							<a:a name="SCOPE" value="LOCAL"/>
+							<a:a name="SYMBOLICNAMEVALUE" value="false"/>
+							<a:a name="UUID" 
+								value="ECUC:44bb38ac-d409-4b1d-96be-ec84466c1019"/>
+							<a:da name="DEFAULT" value="NULL_PTR"/>
+							</v:var>
+						 </v:ctr>															
+                      </v:ctr>
+					<v:ctr name="SemInterruptMonitorConfigSet" type="IDENTIFIABLE">
+						<v:ctr name="SemIntOutput2Cpu" type="IDENTIFIABLE">
+							<a:a name="DESC" 
+								value="EN: This container contains configurations for sem interrupt output to CPU."/>
+							<a:a name="UUID" 
+								value="ECUC:62eb25f3-28ac-452e-a2fa-0f92357c16a6"/>			
+						  <v:var name="SemIntOutput2CpuNotification" type="FUNCTION-NAME">
+							<a:a name="DESC" 
+							   value="EN: Definition of the Callback function."/>
+							<a:a name="IMPLEMENTATIONCONFIGCLASS" 
+								type="IMPLEMENTATIONCONFIGCLASS">
+								<icc:v mclass="PostBuild">VariantPostBuild</icc:v>
+								<icc:v mclass="PreCompile">VariantPreCompile</icc:v>
+								<icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+								<icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+							</a:a>
+							<a:a name="OPTIONAL" value="true"/>
+							<a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+							<a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+							<a:a name="SCOPE" value="LOCAL"/>
+							<a:a name="SYMBOLICNAMEVALUE" value="false"/>
+							<a:a name="UUID" 
+								value="ECUC:44bb38ac-d409-4b1d-96be-ec84466c1019"/>
+							<a:da name="DEFAULT" value="NULL_PTR"/>
+							<a:da name="ENABLE" value="false"/>
+						  </v:var>															  
+						</v:ctr>	
+                    <v:lst name="SemInterruptMonitorConfiguration" type="MAP">
+                      <a:da name="MIN" value="0"/>
+                      <v:ctr name="SemInterruptMonitorConfiguration" type="IDENTIFIABLE">
+                        <a:a name="DESC" 
+                             value="EN: Configuration of monitoring sem interrupt."/>
+                        <a:a name="UUID" 
+                             value="ECUC:f85f480f-fee7-4a00-a99a-4aede301e705"/>
+                        <v:var name="SemIntOut0" type="INTEGER">
+                          <a:a name="DESC" 
+                               value="EN: Combined with SemIntOut1 to generate PAD interrupt,sem interrupt input status range:0~318,319 is invalid status and default is an invalid status,please refer to the manual for details."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                               type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v vclass="PreCompile">VariantLinkTime</icc:v>
+                            <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SCOPE" value="ECU"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                          <a:a name="UUID" 
+                               value="ECUC:d596f059-d21f-46fa-8c62-8eae8ff3d68d"/>
+                          <a:da name="DEFAULT" value='319'/>					  
+                          <a:da name="INVALID" type="Range">
+                            <a:tst expr="&lt;=319"/>
+                            <a:tst expr="&gt;=0"/>
+                          </a:da>
+                        </v:var>
+                        <v:var name="SemIntOut1" type="INTEGER">
+                          <a:a name="DESC" 
+                               value="EN: Combined with SemIntOut0 to generate PAD interrupt,sem interrupt input status range:0~318,319 is invalid status and default is an invalid status,please refer to the manual for details."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                               type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v vclass="PreCompile">VariantLinkTime</icc:v>
+                            <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SCOPE" value="ECU"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                          <a:a name="UUID" 
+                               value="ECUC:d596f059-d21f-46fa-8c62-8eae8ff3d68d"/>
+                          <a:da name="DEFAULT" value='319'/>							  
+                          <a:da name="INVALID" type="Range">
+                            <a:tst expr="&lt;=319"/>
+                            <a:tst expr="&gt;=0"/>
+                          </a:da>
+                        </v:var>	
+                        <v:var name="SemIntOut2" type="INTEGER">
+                          <a:a name="DESC" 
+                               value="EN: Interrupt to CPU,sem interrupt input status range:0~318,319 is invalid status and default is an invalid status,please refer to the manual for details."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                               type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v vclass="PreCompile">VariantLinkTime</icc:v>
+                            <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SCOPE" value="ECU"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                          <a:a name="UUID" 
+                               value="ECUC:d596f059-d21f-46fa-8c62-8eae8ff3d68d"/>
+                          <a:da name="DEFAULT" value='319'/>							  
+                          <a:da name="INVALID" type="Range">
+                            <a:tst expr="&lt;=319"/>
+                            <a:tst expr="&gt;=0"/>
+                          </a:da>
+                        </v:var>	
+                        <v:var name="SemIntOut3" type="INTEGER">
+                          <a:a name="DESC" 
+                               value="EN: Interrupt to reset,sem interrupt input status range:0~318,319 is invalid status and default is an invalid status,please refer to the manual for details."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                               type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v vclass="PreCompile">VariantLinkTime</icc:v>
+                            <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SCOPE" value="ECU"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                          <a:a name="UUID" 
+                               value="ECUC:d596f059-d21f-46fa-8c62-8eae8ff3d68d"/>
+                          <a:da name="DEFAULT" value='319'/>							  
+                          <a:da name="INVALID" type="Range">
+                            <a:tst expr="&lt;=319"/>
+                            <a:tst expr="&gt;=0"/>
+                          </a:da>
+                        </v:var>																				
+                      </v:ctr>
+                    </v:lst>					
+                    </v:ctr>
+					<v:ctr name="DualCoreLockStepInjectErrConfigSet" type="IDENTIFIABLE">
+						<a:a name="ENABLE" type="XPath" expr="(node:value(../SelfTestPowerOn) = &quot;true&quot; and               
+						                                      node:value(../SelfTestPowerOnOptions/DualCoreLockStepInjectErrorPowerOn)= &quot;true&quot;) or 
+															 (node:value(../SelfTestPeriodic) = &quot;true&quot; and               
+						                                      node:value(../SelfTestPeriodicOptions/DualCoreLockStepInjectErrorPeriodic)= &quot;true&quot;) "/>
+						<v:ctr name="DualCoreLockStepInjectErr" type="IDENTIFIABLE">
+							<a:a name="DESC" 
+								value="EN: This container contains configurations for injecting error on dual core lock step."/>
+							<a:a name="UUID" 
+								value="ECUC:62eb25f3-28ac-452e-a2fa-0f92357c16a6"/>			
+						  <v:var name="DualCore_LockStep_CompareFail_NotDetectedNotification" type="FUNCTION-NAME">
+							<a:a name="DESC" 
+							   value="EN: Definition of the Callback function for not detecting according interrupt status after injecting error on dual core lock step."/>
+							<a:a name="IMPLEMENTATIONCONFIGCLASS" 
+								type="IMPLEMENTATIONCONFIGCLASS">
+								<icc:v mclass="PostBuild">VariantPostBuild</icc:v>
+								<icc:v mclass="PreCompile">VariantPreCompile</icc:v>
+								<icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+								<icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+							</a:a>
+							<a:a name="OPTIONAL" value="true"/>
+							<a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+							<a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+							<a:a name="SCOPE" value="LOCAL"/>
+							<a:a name="SYMBOLICNAMEVALUE" value="false"/>
+							<a:a name="UUID" 
+								value="ECUC:44bb38ac-d409-4b1d-96be-ec84466c1019"/>
+							<a:da name="DEFAULT" value="NULL_PTR"/>
+							<a:da name="ENABLE" value="false"/>
+						  </v:var>															  
+						</v:ctr>							
+                      </v:ctr>	
+					<v:ctr name="SocTempMonitorTstConfigSet" type="IDENTIFIABLE">					
+					    <a:a name="ENABLE" type="XPath" expr="node:value(../SelfTestPowerOn) = &quot;true&quot; and
+						                                      node:value(../SelfTestPowerOnOptions/SocTempMonitorPowerOn)= &quot;true&quot;"/>
+						<v:ctr name="SocTempMonitorTst" type="IDENTIFIABLE">
+							<a:a name="DESC" 
+								value="EN: This container contains configurations for setting over-heat threshold of SOC temperature monitor."/>
+							<a:a name="UUID" 
+								value="ECUC:62eb25f3-28ac-452e-a2fa-0f92357c16a6"/>			
+						  <v:var name="SocTempOverHeatInt_NotDetectedNotification" type="FUNCTION-NAME">
+							<a:a name="DESC" 
+							   value="EN: Definition of the Callback function."/>
+							<a:a name="IMPLEMENTATIONCONFIGCLASS" 
+								type="IMPLEMENTATIONCONFIGCLASS">
+								<icc:v mclass="PostBuild">VariantPostBuild</icc:v>
+								<icc:v mclass="PreCompile">VariantPreCompile</icc:v>
+								<icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+								<icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+							</a:a>
+							<a:a name="OPTIONAL" value="true"/>
+							<a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+							<a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+							<a:a name="SCOPE" value="LOCAL"/>
+							<a:a name="SYMBOLICNAMEVALUE" value="false"/>
+							<a:a name="UUID" 
+								value="ECUC:44bb38ac-d409-4b1d-96be-ec84466c1019"/>
+							<a:da name="DEFAULT" value="NULL_PTR"/>
+							<a:da name="ENABLE" value="false"/>
+						  </v:var>															  
+						</v:ctr>							
+                      </v:ctr>						  
+					</v:ctr>	
+                </v:ctr>
+              </d:chc>
+            </d:lst>
+          </d:ctr>
+        </d:lst>
+      </d:ctr>
+    </d:lst>
+  </d:ctr>
+
+</datamodel>

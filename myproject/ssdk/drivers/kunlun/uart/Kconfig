@@ -1,0 +1,4 @@
+config DW_UART
+    bool "DesignWare Uart Driver Support"
+    select UART
+    default n

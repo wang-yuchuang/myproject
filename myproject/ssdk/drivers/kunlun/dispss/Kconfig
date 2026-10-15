@@ -1,0 +1,17 @@
+menuconfig DISPSS
+    bool "Display Driver Support"
+    default n
+
+if DISPSS
+rsource "sd_disp/Kconfig"
+rsource "lcm/Kconfig"
+
+menuconfig DISP_VLDN_SUPPORT
+    bool "display validation support"
+    default n
+
+if DISP_VLDN_SUPPORT
+#    rsource "disp_vldn/Kconfig"
+endif
+
+endif #DISPSS

@@ -1,0 +1,4 @@
+config DW_SPI
+    bool "DesignWare SPI Driver Support"
+    select SPI
+    default n

@@ -1,0 +1,38 @@
+menuconfig TOUCH_KUNLUN_PLATFORM
+    bool "Touch Driver for kunlun"
+    select TOUCH
+    select I2C
+    select GPIO
+    default n
+
+if TOUCH_KUNLUN_PLATFORM
+    comment "kunlun touch option"
+    menuconfig TOUCH_KUNLUN_GOODIX
+        bool "goodix Touch Driver for kunlun"
+        default n
+    if TOUCH_KUNLUN_GOODIX
+        config TOUCH_I2C_POLLING
+            bool "touch i2c rw polling"
+            default n
+
+        config TOUCH_LINK_WITH_SERDES
+            bool "touch sensor is link with serdes"
+            default n
+            select SERDES
+    endif
+
+    menuconfig TOUCH_KUNLUN_CYTTSP6
+        bool "cyttsp6 Touch Driver for kunlun"
+        default n
+
+    if TOUCH_KUNLUN_CYTTSP6
+        config WDT_MONITOR_PERIOD
+        int "watchdog monitor period time, unit is ms"
+        default 3000
+
+        config CYTTSP_DRIVER_STACK_SIZE
+        int "cyttsp driver task stack size"
+        default 4096
+
+    endif
+endif

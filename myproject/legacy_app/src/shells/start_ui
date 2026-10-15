@@ -1,0 +1,28 @@
+#!/bin/sh
+
+###set environmntal variables
+NCCU_RUN_PATH="/app"
+#NCCU_RUN_PATH="/var"
+#NCCU_RUN_PATH=$PWD
+export NCCU_RUN_PATH
+
+NCCU_DATA_PATH="/data"
+export NCCU_DATA_PATH
+
+LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/lib:$NCCU_RUN_PATH/lib:$NCCU_RUN_PATH/comm_port
+export LD_LIBRARY_PATH
+
+cd $NCCU_RUN_PATH
+
+if [ "$1" = "multimain" ];then
+    killall -9 nccu_ui_mm
+    ./bin/nccu_ui_mm -qws -nokeyboard&
+elif [ "$1" = "slave" ];then
+    killall -9 nccu_ui_sl
+    ./bin/nccu_ui_sl -qws -nokeyboard&
+else
+    killall -9 nccu_ui_mm
+    ./bin/nccu_ui_mm -qws -nokeyboard&
+fi
+
+exit 0;

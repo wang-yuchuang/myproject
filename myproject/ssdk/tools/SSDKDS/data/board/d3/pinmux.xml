@@ -1,0 +1,1997 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pins>
+	<pin index="0" name="JTAG_TDI" ball="">
+		<mux id="0" func="GPIO_SF.IO0" offset="" val=""/>
+		<mux id="1" func="JTAG.TDI" offset="" val=""/>
+		<mux id="2" func="WDT1.EXT_CLK" offset="" val=""/>
+		<mux id="3" func="SPI8.SS0" offset="" val=""/>
+		<mux id="4" func="UART1.TXD" offset="" val=""/>
+		<mux id="5" func="xTRG.IO54" offset="" val=""/>
+		<mux id="6" func="I2C8.SCL" offset="" val=""/>
+	</pin>
+	<pin index="1" name="JTAG_TDO" ball="">
+		<mux id="0" func="GPIO_SF.IO1" offset="" val=""/>
+		<mux id="1" func="JTAG.TDO" offset="" val=""/>
+		<mux id="2" func="WDT1.RESET_N" offset="" val=""/>
+		<mux id="3" func="SPI8.SCLK" offset="" val=""/>
+		<mux id="4" func="UART1.RXD" offset="" val=""/>
+		<mux id="5" func="xTRG.IO55" offset="" val=""/>
+		<mux id="6" func="I2C8.SDA" offset="" val=""/>
+	</pin>
+	<pin index="2" name="JTAG_TRST_N" ball="">
+		<mux id="0" func="GPIO_SF.IO2" offset="" val=""/>
+		<mux id="1" func="JTAG.TRST_N" offset="" val=""/>
+		<mux id="2" func="XTAL_24M.CLK_OUT" offset="" val=""/>
+		<mux id="3" func="SPI8.MISO" offset="" val=""/>
+		<mux id="4" func="UART1.CTSN" offset="" val=""/>
+		<mux id="5" func="xTRG.IO56" offset="" val=""/>
+		<mux id="6" func="I2C8.SUSP" offset="" val=""/>
+	</pin>
+	<pin index="3" name="JTAG_TMS" ball="">
+		<mux id="0" func="GPIO_SF.IO3" offset="" val=""/>
+		<mux id="1" func="JTAG.TMS" offset="" val=""/>
+		<mux id="2" func="WDT5.EXT_CLK" offset="" val=""/>
+		<mux id="3" func="SPI8.MOSI" offset="" val=""/>
+		<mux id="4" func="UART1.RTSN" offset="" val=""/>
+		<mux id="5" func="xTRG.IO57" offset="" val=""/>
+		<mux id="6" func="I2C8.ALERT" offset="" val=""/>
+	</pin>
+	<pin index="4" name="JTAG_TCK" ball="">
+		<mux id="0" func="GPIO_SF.IO4" offset="" val=""/>
+		<mux id="1" func="JTAG.TCK" offset="" val=""/>
+		<mux id="2" func="WDT5.RESET_N" offset="" val=""/>
+		<mux id="3" func="SPI8.SS1" offset="" val=""/>
+		<mux id="5" func="xTRG.IO58" offset="" val=""/>
+	</pin>
+	<pin index="5" name="GPIO_X0" ball="">
+		<mux id="0" func="GPIO_SF.IO5" offset="" val=""/>
+		<mux id="1" func="XSPI1.PA_DQS" offset="" val=""/>
+		<mux id="8" func="SADC1.SAROUT0" offset="" val=""/>
+		<mux id="9" func="SADC3.SAROUT0" offset="" val=""/>
+	</pin>
+	<pin index="6" name="GPIO_X1" ball="">
+		<mux id="0" func="GPIO_SF.IO6" offset="" val=""/>
+		<mux id="1" func="XSPI1.PA_SCLK" offset="" val=""/>
+		<mux id="8" func="SADC1.SAROUT1" offset="" val=""/>
+		<mux id="9" func="SADC3.SAROUT1" offset="" val=""/>
+	</pin>
+	<pin index="7" name="GPIO_X2" ball="">
+		<mux id="0" func="GPIO_SF.IO7" offset="" val=""/>
+		<mux id="1" func="XSPI1.PA_SS0" offset="" val=""/>
+		<mux id="8" func="SADC1.SAROUT2" offset="" val=""/>
+		<mux id="9" func="SADC3.SAROUT2" offset="" val=""/>
+	</pin>
+	<pin index="8" name="GPIO_X3" ball="">
+		<mux id="0" func="GPIO_SF.IO8" offset="" val=""/>
+		<mux id="1" func="XSPI1.PA_DATA0" offset="" val=""/>
+		<mux id="8" func="SADC1.SAROUT3" offset="" val=""/>
+		<mux id="9" func="SADC3.SAROUT3" offset="" val=""/>
+	</pin>
+	<pin index="9" name="GPIO_X4" ball="">
+		<mux id="0" func="GPIO_SF.IO9" offset="" val=""/>
+		<mux id="1" func="XSPI1.PA_DATA1" offset="" val=""/>
+		<mux id="8" func="SADC1.SAROUT4" offset="" val=""/>
+		<mux id="9" func="SADC3.SAROUT4" offset="" val=""/>
+	</pin>
+	<pin index="10" name="GPIO_X5" ball="">
+		<mux id="0" func="GPIO_SF.IO10" offset="" val=""/>
+		<mux id="1" func="XSPI1.PA_DATA2" offset="" val=""/>
+		<mux id="8" func="SADC1.SAROUT5" offset="" val=""/>
+		<mux id="9" func="SADC3.SAROUT5" offset="" val=""/>
+	</pin>
+	<pin index="11" name="GPIO_X6" ball="">
+		<mux id="0" func="GPIO_SF.IO11" offset="" val=""/>
+		<mux id="1" func="XSPI1.PA_DATA3" offset="" val=""/>
+		<mux id="8" func="SADC1.SAROUT6" offset="" val=""/>
+		<mux id="9" func="SADC3.SAROUT6" offset="" val=""/>
+	</pin>
+	<pin index="12" name="GPIO_X7" ball="">
+		<mux id="0" func="GPIO_SF.IO12" offset="" val=""/>
+		<mux id="1" func="XSPI1.PA_DATA4" offset="" val=""/>
+		<mux id="2" func="CANFD14.RX" offset="" val=""/>
+		<mux id="3" func="SPI5.SS0" offset="" val=""/>
+		<mux id="4" func="UART2.TXD" offset="" val=""/>
+		<mux id="5" func="xTRG.IO44" offset="" val=""/>
+		<mux id="6" func="UART3.CTSN" offset="" val=""/>
+		<mux id="7" func="CKGEN_SF.ENET2_25M_125M" offset="" val=""/>
+		<mux id="8" func="SADC1.SAROUT7" offset="" val=""/>
+		<mux id="9" func="SADC3.SAROUT7" offset="" val=""/>
+	</pin>
+	<pin index="13" name="GPIO_X8" ball="">
+		<mux id="0" func="GPIO_SF.IO13" offset="" val=""/>
+		<mux id="1" func="XSPI1.PA_DATA5" offset="" val=""/>
+		<mux id="2" func="CANFD14.TX" offset="" val=""/>
+		<mux id="3" func="SPI5.SCLK" offset="" val=""/>
+		<mux id="4" func="UART2.RXD" offset="" val=""/>
+		<mux id="5" func="xTRG.IO45" offset="" val=""/>
+		<mux id="6" func="UART3.RTSN" offset="" val=""/>
+		<mux id="7" func="FLEXRAY1.STRB3" offset="" val=""/>
+		<mux id="8" func="SADC1.SAROUT8" offset="" val=""/>
+		<mux id="9" func="SADC3.SAROUT8" offset="" val=""/>
+	</pin>
+	<pin index="14" name="GPIO_X9" ball="">
+		<mux id="0" func="GPIO_SF.IO14" offset="" val=""/>
+		<mux id="1" func="XSPI1.PA_DATA6" offset="" val=""/>
+		<mux id="2" func="CANFD15.RX" offset="" val=""/>
+		<mux id="3" func="SPI5.MISO" offset="" val=""/>
+		<mux id="4" func="UART3.TXD" offset="" val=""/>
+		<mux id="5" func="xTRG.IO46" offset="" val=""/>
+		<mux id="6" func="I2C3.SCL" offset="" val=""/>
+		<mux id="7" func="FLEXRAY1.STRB2" offset="" val=""/>
+		<mux id="8" func="SADC1.SAROUT9" offset="" val=""/>
+		<mux id="9" func="SADC3.SAROUT9" offset="" val=""/>
+	</pin>
+	<pin index="15" name="GPIO_X10" ball="">
+		<mux id="0" func="GPIO_SF.IO15" offset="" val=""/>
+		<mux id="1" func="XSPI1.PA_DATA7" offset="" val=""/>
+		<mux id="2" func="CANFD15.TX" offset="" val=""/>
+		<mux id="3" func="SPI5.MOSI" offset="" val=""/>
+		<mux id="4" func="UART3.RXD" offset="" val=""/>
+		<mux id="5" func="xTRG.IO47" offset="" val=""/>
+		<mux id="6" func="I2C3.SDA" offset="" val=""/>
+		<mux id="7" func="FLEXRAY1.STRB1" offset="" val=""/>
+		<mux id="8" func="SADC1.SAROUT10" offset="" val=""/>
+		<mux id="9" func="SADC3.SAROUT10" offset="" val=""/>
+	</pin>
+	<pin index="16" name="GPIO_X11" ball="">
+		<mux id="0" func="GPIO_SF.IO16" offset="" val=""/>
+		<mux id="1" func="XSPI1.PA_SS1" offset="" val=""/>
+		<mux id="2" func="XTAL_24M.CLK_OUT" offset="" val=""/>
+		<mux id="3" func="WDT1.RESET_N" offset="" val=""/>
+		<mux id="4" func="CKGEN_SF.ENET1_25M_125M" offset="" val=""/>
+		<mux id="5" func="xTRG.IO48" offset="" val=""/>
+		<mux id="6" func="FLEXRAY1.EXT_CLK" offset="" val=""/>
+		<mux id="7" func="FLEXRAY1.STRB0" offset="" val=""/>
+		<mux id="8" func="SADC1.SAROUT11" offset="" val=""/>
+		<mux id="9" func="SADC3.SAROUT11" offset="" val=""/>
+	</pin>
+	<pin index="17" name="GPIO_Y0" ball="">
+		<mux id="0" func="GPIO_SF.IO17" offset="" val=""/>
+		<mux id="1" func="XSPI1.PB_SS1" offset="" val=""/>
+		<mux id="2" func="CANFD16.RX" offset="" val=""/>
+		<mux id="3" func="WDT2.RESET_N" offset="" val=""/>
+		<mux id="4" func="UART4.TXD" offset="" val=""/>
+		<mux id="5" func="xTRG.IO49" offset="" val=""/>
+		<mux id="6" func="UART5.CTSN" offset="" val=""/>
+		<mux id="7" func="FLEXRAY1.A_TX" offset="" val=""/>
+		<mux id="8" func="SADC2.SAROUT0" offset="" val=""/>
+		<mux id="9" func="ACMP1.CMPO" offset="" val=""/>
+	</pin>
+	<pin index="18" name="GPIO_Y1" ball="">
+		<mux id="0" func="GPIO_SF.IO18" offset="" val=""/>
+		<mux id="1" func="XSPI1.PB_DATA7" offset="" val=""/>
+		<mux id="2" func="CANFD16.TX" offset="" val=""/>
+		<mux id="3" func="SPI6.SS1" offset="" val=""/>
+		<mux id="4" func="UART4.RXD" offset="" val=""/>
+		<mux id="5" func="xTRG.IO50" offset="" val=""/>
+		<mux id="6" func="UART5.RTSN" offset="" val=""/>
+		<mux id="7" func="FLEXRAY1.A_RX" offset="" val=""/>
+		<mux id="8" func="SADC2.SAROUT1" offset="" val=""/>
+		<mux id="9" func="ACMP2.CMPO" offset="" val=""/>
+	</pin>
+	<pin index="19" name="GPIO_Y2" ball="">
+		<mux id="0" func="GPIO_SF.IO19" offset="" val=""/>
+		<mux id="1" func="XSPI1.PB_DATA6" offset="" val=""/>
+		<mux id="2" func="ENET1.MDIO" offset="" val=""/>
+		<mux id="3" func="SPI6.SS0" offset="" val=""/>
+		<mux id="4" func="UART5.TXD" offset="" val=""/>
+		<mux id="5" func="xTRG.IO51" offset="" val=""/>
+		<mux id="6" func="I2C4.SCL" offset="" val=""/>
+		<mux id="7" func="FLEXRAY1.A_TX_EN" offset="" val=""/>
+		<mux id="8" func="SADC2.SAROUT2" offset="" val=""/>
+		<mux id="9" func="ACMP3.CMPO" offset="" val=""/>
+	</pin>
+	<pin index="20" name="GPIO_Y3" ball="">
+		<mux id="0" func="GPIO_SF.IO20" offset="" val=""/>
+		<mux id="1" func="XSPI1.PB_DATA5" offset="" val=""/>
+		<mux id="2" func="ENET1.MDC" offset="" val=""/>
+		<mux id="3" func="SPI6.SCLK" offset="" val=""/>
+		<mux id="4" func="UART5.RXD" offset="" val=""/>
+		<mux id="5" func="xTRG.IO52" offset="" val=""/>
+		<mux id="6" func="I2C4.SDA" offset="" val=""/>
+		<mux id="7" func="FLEXRAY1.B_TX" offset="" val=""/>
+		<mux id="8" func="SADC2.SAROUT3" offset="" val=""/>
+		<mux id="9" func="ACMP4.CMPO" offset="" val=""/>
+	</pin>
+	<pin index="21" name="GPIO_Y4" ball="">
+		<mux id="0" func="GPIO_SF.IO21" offset="" val=""/>
+		<mux id="1" func="XSPI1.PB_DATA4" offset="" val=""/>
+		<mux id="2" func="ENET1.CAP/COMP_0" offset="" val=""/>
+		<mux id="3" func="SPI6.MISO" offset="" val=""/>
+		<mux id="4" func="UART6.TXD" offset="" val=""/>
+		<mux id="5" func="xTRG.IO53" offset="" val=""/>
+		<mux id="6" func="UART7.CTSN" offset="" val=""/>
+		<mux id="7" func="FLEXRAY1.B_RX" offset="" val=""/>
+		<mux id="8" func="SADC2.SAROUT4" offset="" val=""/>
+		<mux id="9" func="SADC3.CLK" offset="" val=""/>
+	</pin>
+	<pin index="22" name="GPIO_Y5" ball="">
+		<mux id="0" func="GPIO_SF.IO22" offset="" val=""/>
+		<mux id="1" func="XSPI1.PB_DATA3" offset="" val=""/>
+		<mux id="2" func="ENET1.CAP/COMP_1" offset="" val=""/>
+		<mux id="3" func="SPI6.MOSI" offset="" val=""/>
+		<mux id="4" func="UART6.RXD" offset="" val=""/>
+		<mux id="5" func="xTRG.IO16" offset="" val=""/>
+		<mux id="6" func="UART7.RTSN" offset="" val=""/>
+		<mux id="7" func="FLEXRAY1.B_TX_EN" offset="" val=""/>
+		<mux id="8" func="SADC2.SAROUT5" offset="" val=""/>
+		<mux id="9" func="SADC3.SOC" offset="" val=""/>
+	</pin>
+	<pin index="23" name="GPIO_Y6" ball="">
+		<mux id="0" func="GPIO_SF.IO23" offset="" val=""/>
+		<mux id="1" func="XSPI1.PB_DATA2" offset="" val=""/>
+		<mux id="2" func="ENET1.CAP/COMP_2" offset="" val=""/>
+		<mux id="3" func="SPI7.SS2" offset="" val=""/>
+		<mux id="4" func="UART7.TXD" offset="" val=""/>
+		<mux id="5" func="xTRG.IO17" offset="" val=""/>
+		<mux id="6" func="I2C5.SCL" offset="" val=""/>
+		<mux id="7" func="FLEXRAY2.A_TX" offset="" val=""/>
+		<mux id="8" func="SADC2.SAROUT6" offset="" val=""/>
+		<mux id="9" func="SADC3.BUSY" offset="" val=""/>
+	</pin>
+	<pin index="24" name="GPIO_Y7" ball="">
+		<mux id="0" func="GPIO_SF.IO24" offset="" val=""/>
+		<mux id="1" func="XSPI1.PB_DATA1" offset="" val=""/>
+		<mux id="2" func="ENET1.CAP/COMP_3" offset="" val=""/>
+		<mux id="3" func="SPI7.MISO" offset="" val=""/>
+		<mux id="4" func="UART7.RXD" offset="" val=""/>
+		<mux id="5" func="xTRG.IO18" offset="" val=""/>
+		<mux id="6" func="I2C5.SDA" offset="" val=""/>
+		<mux id="7" func="FLEXRAY2.A_RX" offset="" val=""/>
+		<mux id="8" func="SADC2.SAROUT7" offset="" val=""/>
+		<mux id="9" func="SADC3.EOC" offset="" val=""/>
+	</pin>
+	<pin index="25" name="GPIO_Y8" ball="">
+		<mux id="0" func="GPIO_SF.IO25" offset="" val=""/>
+		<mux id="1" func="XSPI1.PB_DATA0" offset="" val=""/>
+		<mux id="2" func="ENET1.AUS_IN_0" offset="" val=""/>
+		<mux id="3" func="SPI7.MOSI" offset="" val=""/>
+		<mux id="4" func="UART8.TXD" offset="" val=""/>
+		<mux id="5" func="xTRG.IO19" offset="" val=""/>
+		<mux id="6" func="I2C6.SCL" offset="" val=""/>
+		<mux id="7" func="FLEXRAY2.A_TX_EN" offset="" val=""/>
+		<mux id="8" func="SADC2.SAROUT8" offset="" val=""/>
+		<mux id="9" func="SADC3.OUTEN" offset="" val=""/>
+	</pin>
+	<pin index="26" name="GPIO_Y9" ball="">
+		<mux id="0" func="GPIO_SF.IO26" offset="" val=""/>
+		<mux id="1" func="XSPI1.PB_SS0" offset="" val=""/>
+		<mux id="2" func="ENET1.AUS_IN_1" offset="" val=""/>
+		<mux id="3" func="SPI7.SS0" offset="" val=""/>
+		<mux id="4" func="UART8.RXD" offset="" val=""/>
+		<mux id="5" func="xTRG.IO20" offset="" val=""/>
+		<mux id="6" func="I2C6.SDA" offset="" val=""/>
+		<mux id="7" func="FLEXRAY2.B_TX" offset="" val=""/>
+		<mux id="8" func="SADC2.SAROUT9" offset="" val=""/>
+	</pin>
+	<pin index="27" name="GPIO_Y10" ball="">
+		<mux id="0" func="GPIO_SF.IO27" offset="" val=""/>
+		<mux id="1" func="XSPI1.PB_SCLK" offset="" val=""/>
+		<mux id="2" func="ENET1.AUS_IN_2" offset="" val=""/>
+		<mux id="3" func="SPI7.SCLK" offset="" val=""/>
+		<mux id="4" func="UART9.TXD" offset="" val=""/>
+		<mux id="5" func="xTRG.IO21" offset="" val=""/>
+		<mux id="6" func="I2C7.SCL" offset="" val=""/>
+		<mux id="7" func="FLEXRAY2.B_RX" offset="" val=""/>
+		<mux id="8" func="SADC2.SAROUT10" offset="" val=""/>
+	</pin>
+	<pin index="28" name="GPIO_Y11" ball="">
+		<mux id="0" func="GPIO_SF.IO28" offset="" val=""/>
+		<mux id="1" func="XSPI1.PB_DQS" offset="" val=""/>
+		<mux id="2" func="ENET1.AUS_IN_3" offset="" val=""/>
+		<mux id="3" func="SPI7.SS1" offset="" val=""/>
+		<mux id="4" func="UART9.RXD" offset="" val=""/>
+		<mux id="5" func="xTRG.IO22" offset="" val=""/>
+		<mux id="6" func="I2C7.SDA" offset="" val=""/>
+		<mux id="7" func="FLEXRAY2.B_TX_EN" offset="" val=""/>
+		<mux id="8" func="SADC2.SAROUT11" offset="" val=""/>
+	</pin>
+	<pin index="29" name="GPIO_A0" ball="">
+		<mux id="0" func="GPIO_SF.IO29" offset="" val=""/>
+		<mux id="1" func="XSPI2.PA_INT" offset="" val=""/>
+		<mux id="2" func="CANFD1.RX" offset="" val=""/>
+		<mux id="3" func="SPI1.SS0" offset="" val=""/>
+		<mux id="4" func="UART16.TXD" offset="" val=""/>
+		<mux id="5" func="xTRG.IO0" offset="" val=""/>
+		<mux id="6" func="I2C1.SCL" offset="" val=""/>
+		<mux id="7" func="XSPI1.PA_SS2" offset="" val=""/>
+	</pin>
+	<pin index="30" name="GPIO_A1" ball="">
+		<mux id="0" func="GPIO_SF.IO30" offset="" val=""/>
+		<mux id="1" func="XSPI2.PA_CRC" offset="" val=""/>
+		<mux id="2" func="CANFD1.TX" offset="" val=""/>
+		<mux id="3" func="SPI1.SCLK" offset="" val=""/>
+		<mux id="4" func="UART16.RXD" offset="" val=""/>
+		<mux id="5" func="xTRG.IO1" offset="" val=""/>
+		<mux id="6" func="I2C1.SDA" offset="" val=""/>
+		<mux id="7" func="XSPI1.PB_SS2" offset="" val=""/>
+	</pin>
+	<pin index="31" name="GPIO_A2" ball="">
+		<mux id="0" func="GPIO_SF.IO31" offset="" val=""/>
+		<mux id="1" func="I2C2.SCL" offset="" val=""/>
+		<mux id="2" func="CANFD2.RX" offset="" val=""/>
+		<mux id="3" func="SPI1.MISO" offset="" val=""/>
+		<mux id="4" func="UART15.TXD" offset="" val=""/>
+		<mux id="5" func="xTRG.IO2" offset="" val=""/>
+		<mux id="6" func="I2C1.SUSP" offset="" val=""/>
+		<mux id="7" func="XSPI2.PA_SS2" offset="" val=""/>
+	</pin>
+	<pin index="32" name="GPIO_A3" ball="">
+		<mux id="0" func="GPIO_SF.IO32" offset="" val=""/>
+		<mux id="1" func="I2C2.SDA" offset="" val=""/>
+		<mux id="2" func="CANFD2.TX" offset="" val=""/>
+		<mux id="3" func="SPI1.MOSI" offset="" val=""/>
+		<mux id="4" func="UART15.RXD" offset="" val=""/>
+		<mux id="5" func="xTRG.IO3" offset="" val=""/>
+		<mux id="6" func="I2C1.ALERT" offset="" val=""/>
+		<mux id="7" func="XSPI2.PB_SS2" offset="" val=""/>
+	</pin>
+	<pin index="33" name="GPIO_A4" ball="">
+		<mux id="0" func="GPIO_SF.IO33" offset="" val=""/>
+		<mux id="1" func="XSPI2.PA_SCLK" offset="" val=""/>
+		<mux id="2" func="CANFD3.RX" offset="" val=""/>
+		<mux id="3" func="SPI1.SS1" offset="" val=""/>
+		<mux id="4" func="UART14.TXD" offset="" val=""/>
+		<mux id="5" func="xTRG.IO4" offset="" val=""/>
+		<mux id="6" func="XSPI_SLV.SCLK" offset="" val=""/>
+		<mux id="7" func="FLEXRAY1.A_TX" offset="" val=""/>
+	</pin>
+	<pin index="34" name="GPIO_A5" ball="">
+		<mux id="0" func="GPIO_SF.IO34" offset="" val=""/>
+		<mux id="1" func="XSPI2.PA_SS0" offset="" val=""/>
+		<mux id="2" func="CANFD3.TX" offset="" val=""/>
+		<mux id="3" func="SPI1.SS2" offset="" val=""/>
+		<mux id="4" func="UART14.RXD" offset="" val=""/>
+		<mux id="5" func="xTRG.IO5" offset="" val=""/>
+		<mux id="6" func="XSPI_SLV.SS0" offset="" val=""/>
+		<mux id="7" func="FLEXRAY1.A_RX" offset="" val=""/>
+	</pin>
+	<pin index="35" name="GPIO_A6" ball="">
+		<mux id="0" func="GPIO_SF.IO35" offset="" val=""/>
+		<mux id="1" func="XSPI2.PA_DATA0" offset="" val=""/>
+		<mux id="2" func="CANFD4.RX" offset="" val=""/>
+		<mux id="3" func="SPI1.SS3" offset="" val=""/>
+		<mux id="4" func="UART13.TXD" offset="" val=""/>
+		<mux id="5" func="xTRG.IO6" offset="" val=""/>
+		<mux id="6" func="XSPI_SLV.DATA0" offset="" val=""/>
+		<mux id="7" func="FLEXRAY1.A_TX_EN" offset="" val=""/>
+	</pin>
+	<pin index="36" name="GPIO_A7" ball="">
+		<mux id="0" func="GPIO_SF.IO36" offset="" val=""/>
+		<mux id="1" func="XSPI2.PA_DATA1" offset="" val=""/>
+		<mux id="2" func="CANFD4.TX" offset="" val=""/>
+		<mux id="3" func="SPI2.SS3" offset="" val=""/>
+		<mux id="4" func="UART13.RXD" offset="" val=""/>
+		<mux id="5" func="xTRG.IO7" offset="" val=""/>
+		<mux id="6" func="XSPI_SLV.DATA1" offset="" val=""/>
+		<mux id="7" func="FLEXRAY1.B_TX" offset="" val=""/>
+	</pin>
+	<pin index="37" name="GPIO_A8" ball="">
+		<mux id="0" func="GPIO_SF.IO37" offset="" val=""/>
+		<mux id="1" func="XSPI2.PA_DATA2" offset="" val=""/>
+		<mux id="2" func="CANFD5.RX" offset="" val=""/>
+		<mux id="3" func="SPI2.SS2" offset="" val=""/>
+		<mux id="4" func="UART12.TXD" offset="" val=""/>
+		<mux id="5" func="xTRG.IO8" offset="" val=""/>
+		<mux id="6" func="XSPI_SLV.DATA2" offset="" val=""/>
+		<mux id="7" func="FLEXRAY1.B_RX" offset="" val=""/>
+		<mux id="8" func="PLL1.PLL_DTESTO" offset="" val=""/>
+	</pin>
+	<pin index="38" name="GPIO_A9" ball="">
+		<mux id="0" func="GPIO_SF.IO38" offset="" val=""/>
+		<mux id="1" func="XSPI2.PA_DATA3" offset="" val=""/>
+		<mux id="2" func="CANFD5.TX" offset="" val=""/>
+		<mux id="3" func="SPI2.SS1" offset="" val=""/>
+		<mux id="4" func="UART12.RXD" offset="" val=""/>
+		<mux id="5" func="xTRG.IO9" offset="" val=""/>
+		<mux id="6" func="XSPI_SLV.DATA3" offset="" val=""/>
+		<mux id="7" func="FLEXRAY1.B_TX_EN" offset="" val=""/>
+		<mux id="8" func="PLL1.PLL_DUTY_DET" offset="" val=""/>
+	</pin>
+	<pin index="39" name="GPIO_A10" ball="">
+		<mux id="0" func="GPIO_SF.IO39" offset="" val=""/>
+		<mux id="1" func="XSPI2.PA_DATA4" offset="" val=""/>
+		<mux id="2" func="CANFD6.RX" offset="" val=""/>
+		<mux id="3" func="SPI2.SS0" offset="" val=""/>
+		<mux id="4" func="UART11.TXD" offset="" val=""/>
+		<mux id="5" func="xTRG.IO10" offset="" val=""/>
+		<mux id="6" func="XSPI_SLV.DATA4" offset="" val=""/>
+		<mux id="7" func="FLEXRAY2.STRB0" offset="" val=""/>
+		<mux id="8" func="PLL1.PLL_LOCK" offset="" val=""/>
+	</pin>
+	<pin index="40" name="GPIO_A11" ball="">
+		<mux id="0" func="GPIO_SF.IO40" offset="" val=""/>
+		<mux id="1" func="XSPI2.PA_DATA5" offset="" val=""/>
+		<mux id="2" func="CANFD6.TX" offset="" val=""/>
+		<mux id="3" func="SPI2.SCLK" offset="" val=""/>
+		<mux id="4" func="UART11.RXD" offset="" val=""/>
+		<mux id="5" func="xTRG.IO11" offset="" val=""/>
+		<mux id="6" func="XSPI_SLV.DATA5" offset="" val=""/>
+		<mux id="7" func="FLEXRAY2.STRB1" offset="" val=""/>
+		<mux id="8" func="PLL2.PLL_DTESTO" offset="" val=""/>
+	</pin>
+	<pin index="41" name="GPIO_A12" ball="">
+		<mux id="0" func="GPIO_SF.IO41" offset="" val=""/>
+		<mux id="1" func="XSPI2.PA_DATA6" offset="" val=""/>
+		<mux id="2" func="CANFD7.RX" offset="" val=""/>
+		<mux id="3" func="SPI2.MISO" offset="" val=""/>
+		<mux id="4" func="UART10.TXD" offset="" val=""/>
+		<mux id="5" func="xTRG.IO12" offset="" val=""/>
+		<mux id="6" func="XSPI_SLV.DATA6" offset="" val=""/>
+		<mux id="7" func="FLEXRAY2.STRB2" offset="" val=""/>
+		<mux id="8" func="PLL2.PLL_DUTY_DET" offset="" val=""/>
+	</pin>
+	<pin index="42" name="GPIO_A13" ball="">
+		<mux id="0" func="GPIO_SF.IO42" offset="" val=""/>
+		<mux id="1" func="XSPI2.PA_DATA7" offset="" val=""/>
+		<mux id="2" func="CANFD7.TX" offset="" val=""/>
+		<mux id="3" func="SPI2.MOSI" offset="" val=""/>
+		<mux id="4" func="UART10.RXD" offset="" val=""/>
+		<mux id="5" func="xTRG.IO13" offset="" val=""/>
+		<mux id="6" func="XSPI_SLV.DATA7" offset="" val=""/>
+		<mux id="7" func="FLEXRAY2.STRB3" offset="" val=""/>
+		<mux id="8" func="PLL2.PLL_LOCK" offset="" val=""/>
+	</pin>
+	<pin index="43" name="GPIO_A14" ball="">
+		<mux id="0" func="GPIO_SF.IO43" offset="" val=""/>
+		<mux id="1" func="XSPI2.PA_DQS" offset="" val=""/>
+		<mux id="2" func="CANFD8.RX" offset="" val=""/>
+		<mux id="3" func="XTAL_24M.CLK_OUT" offset="" val=""/>
+		<mux id="4" func="UART9.TXD" offset="" val=""/>
+		<mux id="5" func="xTRG.IO14" offset="" val=""/>
+		<mux id="6" func="XSPI_SLV.DQS" offset="" val=""/>
+		<mux id="7" func="CKGEN_SF.ENET2_25M_125M" offset="" val=""/>
+		<mux id="8" func="PLL3.PLL_DTESTO" offset="" val=""/>
+	</pin>
+	<pin index="44" name="GPIO_A15" ball="">
+		<mux id="0" func="GPIO_SF.IO44" offset="" val=""/>
+		<mux id="1" func="XSPI2.PA_SS1" offset="" val=""/>
+		<mux id="2" func="CANFD8.TX" offset="" val=""/>
+		<mux id="3" func="CKGEN_SF.ENET1_25M_125M" offset="" val=""/>
+		<mux id="4" func="UART9.RXD" offset="" val=""/>
+		<mux id="5" func="xTRG.IO15" offset="" val=""/>
+		<mux id="6" func="XSPI_SLV.RESET" offset="" val=""/>
+		<mux id="7" func="FLEXRAY2.EXT_CLK" offset="" val=""/>
+		<mux id="8" func="PLL3.PLL_DUTY_DET" offset="" val=""/>
+	</pin>
+	<pin index="45" name="GPIO_B0" ball="">
+		<mux id="0" func="GPIO_SF.IO45" offset="" val=""/>
+		<mux id="1" func="ENET1.MDIO" offset="" val=""/>
+		<mux id="2" func="CANFD9.RX" offset="" val=""/>
+		<mux id="3" func="SPI3.SS0" offset="" val=""/>
+		<mux id="4" func="UART8.TXD" offset="" val=""/>
+		<mux id="5" func="xTRG.IO16" offset="" val=""/>
+		<mux id="6" func="XSPI2.PB_INT" offset="" val=""/>
+		<mux id="7" func="CSI.MCLK" offset="" val=""/>
+		<mux id="8" func="PLL3.PLL_LOCK" offset="" val=""/>
+	</pin>
+	<pin index="46" name="GPIO_B1" ball="">
+		<mux id="0" func="GPIO_SF.IO46" offset="" val=""/>
+		<mux id="1" func="ENET1.MDC" offset="" val=""/>
+		<mux id="2" func="CANFD9.TX" offset="" val=""/>
+		<mux id="3" func="SPI3.SCLK" offset="" val=""/>
+		<mux id="4" func="UART8.RXD" offset="" val=""/>
+		<mux id="5" func="xTRG.IO17" offset="" val=""/>
+		<mux id="6" func="XSPI2.PB_CRC" offset="" val=""/>
+		<mux id="7" func="CSI.ENABLE" offset="" val=""/>
+		<mux id="8" func="PLL4.PLL_DTESTO" offset="" val=""/>
+	</pin>
+	<pin index="47" name="GPIO_B2" ball="">
+		<mux id="0" func="GPIO_SF.IO47" offset="" val=""/>
+		<mux id="1" func="WDT1.RESET_N" offset="" val=""/>
+		<mux id="2" func="CANFD10.RX" offset="" val=""/>
+		<mux id="3" func="SPI3.MISO" offset="" val=""/>
+		<mux id="4" func="UART7.TXD" offset="" val=""/>
+		<mux id="5" func="xTRG.IO18" offset="" val=""/>
+		<mux id="6" func="UART8.CTSN" offset="" val=""/>
+		<mux id="7" func="CSI.CLK" offset="" val=""/>
+		<mux id="8" func="PLL4.PLL_DUTY_DET" offset="" val=""/>
+	</pin>
+	<pin index="48" name="GPIO_B3" ball="">
+		<mux id="0" func="GPIO_SF.IO48" offset="" val=""/>
+		<mux id="1" func="CKGEN_SF.ENET1_25M_125M" offset="" val=""/>
+		<mux id="2" func="CANFD10.TX" offset="" val=""/>
+		<mux id="3" func="SPI3.MOSI" offset="" val=""/>
+		<mux id="4" func="UART7.RXD" offset="" val=""/>
+		<mux id="5" func="xTRG.IO19" offset="" val=""/>
+		<mux id="6" func="UART8.RTSN" offset="" val=""/>
+		<mux id="7" func="CSI.HSYNC" offset="" val=""/>
+		<mux id="8" func="PLL4.PLL_LOCK" offset="" val=""/>
+	</pin>
+	<pin index="49" name="GPIO_B4" ball="">
+		<mux id="0" func="GPIO_SF.IO49" offset="" val=""/>
+		<mux id="1" func="XSPI2.PB_SS1" offset="" val=""/>
+		<mux id="2" func="CANFD11.RX" offset="" val=""/>
+		<mux id="3" func="SPI3.SS1" offset="" val=""/>
+		<mux id="4" func="UART6.TXD" offset="" val=""/>
+		<mux id="5" func="xTRG.IO20" offset="" val=""/>
+		<mux id="6" func="I2C3.SCL" offset="" val=""/>
+		<mux id="7" func="CSI.VSYNC" offset="" val=""/>
+		<mux id="8" func="PLL5.PLL_DTESTO" offset="" val=""/>
+	</pin>
+	<pin index="50" name="GPIO_B5" ball="">
+		<mux id="0" func="GPIO_SF.IO50" offset="" val=""/>
+		<mux id="1" func="XSPI2.PB_DQS" offset="" val=""/>
+		<mux id="2" func="CANFD11.TX" offset="" val=""/>
+		<mux id="3" func="SPI3.SS2" offset="" val=""/>
+		<mux id="4" func="UART6.RXD" offset="" val=""/>
+		<mux id="5" func="xTRG.IO21" offset="" val=""/>
+		<mux id="6" func="I2C3.SDA" offset="" val=""/>
+		<mux id="7" func="CSI.DATA0" offset="" val=""/>
+		<mux id="8" func="PLL5.PLL_DUTY_DET" offset="" val=""/>
+	</pin>
+	<pin index="51" name="GPIO_B6" ball="">
+		<mux id="0" func="GPIO_SF.IO51" offset="" val=""/>
+		<mux id="1" func="XSPI2.PB_DATA7" offset="" val=""/>
+		<mux id="2" func="CANFD12.RX" offset="" val=""/>
+		<mux id="3" func="SPI4.SS0" offset="" val=""/>
+		<mux id="4" func="UART5.TXD" offset="" val=""/>
+		<mux id="5" func="xTRG.IO22" offset="" val=""/>
+		<mux id="6" func="XSPI_SLV.DATA15" offset="" val=""/>
+		<mux id="7" func="CSI.DATA1" offset="" val=""/>
+		<mux id="8" func="PLL5.PLL_LOCK" offset="" val=""/>
+	</pin>
+	<pin index="52" name="GPIO_B7" ball="">
+		<mux id="0" func="GPIO_SF.IO52" offset="" val=""/>
+		<mux id="1" func="XSPI2.PB_DATA6" offset="" val=""/>
+		<mux id="2" func="CANFD12.TX" offset="" val=""/>
+		<mux id="3" func="SPI4.SCLK" offset="" val=""/>
+		<mux id="4" func="UART5.RXD" offset="" val=""/>
+		<mux id="5" func="xTRG.IO23" offset="" val=""/>
+		<mux id="6" func="XSPI_SLV.DATA14" offset="" val=""/>
+		<mux id="7" func="CSI.DATA2" offset="" val=""/>
+		<mux id="8" func="PLL6.PLL_DTESTO" offset="" val=""/>
+	</pin>
+	<pin index="53" name="GPIO_B8" ball="">
+		<mux id="0" func="GPIO_SF.IO53" offset="" val=""/>
+		<mux id="1" func="XSPI2.PB_DATA5" offset="" val=""/>
+		<mux id="2" func="CANFD13.RX" offset="" val=""/>
+		<mux id="3" func="SPI4.MISO" offset="" val=""/>
+		<mux id="4" func="UART4.TXD" offset="" val=""/>
+		<mux id="5" func="xTRG.IO24" offset="" val=""/>
+		<mux id="6" func="XSPI_SLV.DATA13" offset="" val=""/>
+		<mux id="7" func="CSI.DATA3" offset="" val=""/>
+		<mux id="8" func="PLL6.PLL_DUTY_DET" offset="" val=""/>
+	</pin>
+	<pin index="54" name="GPIO_B9" ball="">
+		<mux id="0" func="GPIO_SF.IO54" offset="" val=""/>
+		<mux id="1" func="XSPI2.PB_DATA4" offset="" val=""/>
+		<mux id="2" func="CANFD13.TX" offset="" val=""/>
+		<mux id="3" func="SPI4.MOSI" offset="" val=""/>
+		<mux id="4" func="UART4.RXD" offset="" val=""/>
+		<mux id="5" func="xTRG.IO25" offset="" val=""/>
+		<mux id="6" func="XSPI_SLV.DATA12" offset="" val=""/>
+		<mux id="7" func="CSI.DATA4" offset="" val=""/>
+		<mux id="8" func="PLL6.PLL_LOCK" offset="" val=""/>
+	</pin>
+	<pin index="55" name="GPIO_B10" ball="">
+		<mux id="0" func="GPIO_SF.IO55" offset="" val=""/>
+		<mux id="1" func="XSPI2.PB_DATA3" offset="" val=""/>
+		<mux id="2" func="CANFD14.RX" offset="" val=""/>
+		<mux id="3" func="SPI3.SS3" offset="" val=""/>
+		<mux id="4" func="UART3.TXD" offset="" val=""/>
+		<mux id="5" func="xTRG.IO26" offset="" val=""/>
+		<mux id="6" func="XSPI_SLV.DATA11" offset="" val=""/>
+		<mux id="7" func="CSI.DATA5" offset="" val=""/>
+		<mux id="8" func="RC24M_OSC.RC24M_CLK_OUT" offset="" val=""/>
+	</pin>
+	<pin index="56" name="GPIO_B11" ball="">
+		<mux id="0" func="GPIO_SF.IO56" offset="" val=""/>
+		<mux id="1" func="XSPI2.PB_DATA2" offset="" val=""/>
+		<mux id="2" func="CANFD14.TX" offset="" val=""/>
+		<mux id="3" func="SPI5.SS1" offset="" val=""/>
+		<mux id="4" func="UART3.RXD" offset="" val=""/>
+		<mux id="5" func="xTRG.IO27" offset="" val=""/>
+		<mux id="6" func="XSPI_SLV.DATA10" offset="" val=""/>
+		<mux id="7" func="CSI.DATA6" offset="" val=""/>
+		<mux id="8" func="RC24M_OSC.RC24M_CLK_RDY" offset="" val=""/>
+	</pin>
+	<pin index="57" name="GPIO_B12" ball="">
+		<mux id="0" func="GPIO_SF.IO57" offset="" val=""/>
+		<mux id="1" func="XSPI2.PB_DATA1" offset="" val=""/>
+		<mux id="2" func="CANFD15.RX" offset="" val=""/>
+		<mux id="3" func="SPI5.MISO" offset="" val=""/>
+		<mux id="4" func="UART2.TXD" offset="" val=""/>
+		<mux id="5" func="xTRG.IO28" offset="" val=""/>
+		<mux id="6" func="XSPI_SLV.DATA9" offset="" val=""/>
+		<mux id="7" func="CSI.DATA7" offset="" val=""/>
+		<mux id="8" func="SF_CKGEN.CLK_DBG" offset="" val=""/>
+	</pin>
+	<pin index="58" name="GPIO_B13" ball="">
+		<mux id="0" func="GPIO_SF.IO58" offset="" val=""/>
+		<mux id="1" func="XSPI2.PB_DATA0" offset="" val=""/>
+		<mux id="2" func="CANFD15.TX" offset="" val=""/>
+		<mux id="3" func="SPI5.MOSI" offset="" val=""/>
+		<mux id="4" func="UART2.RXD" offset="" val=""/>
+		<mux id="5" func="xTRG.IO29" offset="" val=""/>
+		<mux id="6" func="XSPI_SLV.DATA8" offset="" val=""/>
+		<mux id="7" func="CSI.DATA8" offset="" val=""/>
+		<mux id="8" func="AP_CKGEN.CLK_DBG" offset="" val=""/>
+	</pin>
+	<pin index="59" name="GPIO_B14" ball="">
+		<mux id="0" func="GPIO_SF.IO59" offset="" val=""/>
+		<mux id="1" func="XSPI2.PB_SS0" offset="" val=""/>
+		<mux id="2" func="CANFD16.RX" offset="" val=""/>
+		<mux id="3" func="SPI5.SS0" offset="" val=""/>
+		<mux id="4" func="UART1.TXD" offset="" val=""/>
+		<mux id="5" func="xTRG.IO30" offset="" val=""/>
+		<mux id="6" func="XSPI_SLV.INT_B" offset="" val=""/>
+		<mux id="7" func="CSI.DATA9" offset="" val=""/>
+		<mux id="8" func="RC32K_OSC.RC32_CLK_OUT_33" offset="" val=""/>
+	</pin>
+	<pin index="60" name="GPIO_B15" ball="">
+		<mux id="0" func="GPIO_SF.IO60" offset="" val=""/>
+		<mux id="1" func="XSPI2.PB_SCLK" offset="" val=""/>
+		<mux id="2" func="CANFD16.TX" offset="" val=""/>
+		<mux id="3" func="SPI5.SCLK" offset="" val=""/>
+		<mux id="4" func="UART1.RXD" offset="" val=""/>
+		<mux id="5" func="xTRG.IO31" offset="" val=""/>
+		<mux id="6" func="XSPI_SLV.CRC_B" offset="" val=""/>
+		<mux id="7" func="CSI.DATA10" offset="" val=""/>
+		<mux id="8" func="RC32K_OSC.RC32_CLK_RDY33" offset="" val=""/>
+	</pin>
+	<pin index="61" name="GPIO_C0" ball="">
+		<mux id="0" func="GPIO_SF.IO61" offset="" val=""/>
+		<mux id="1" func="WDT1.RESET_N" offset="" val=""/>
+		<mux id="2" func="CANFD17.RX" offset="" val=""/>
+		<mux id="3" func="SPI8.SS1" offset="" val=""/>
+		<mux id="4" func="UART15.TXD" offset="" val=""/>
+		<mux id="5" func="xTRG.IO54" offset="" val=""/>
+		<mux id="6" func="UART14.CTSN" offset="" val=""/>
+		<mux id="7" func="CSI.DATA11" offset="" val=""/>
+		<mux id="8" func="APB_SENSOR.O_RC_CLK" offset="" val=""/>
+	</pin>
+	<pin index="62" name="GPIO_C1" ball="">
+		<mux id="0" func="GPIO_SF.IO62" offset="" val=""/>
+		<mux id="1" func="WDT1.EXT_CLK" offset="" val=""/>
+		<mux id="2" func="CANFD17.TX" offset="" val=""/>
+		<mux id="3" func="XTAL_24M.CLK_OUT" offset="" val=""/>
+		<mux id="4" func="UART15.RXD" offset="" val=""/>
+		<mux id="5" func="xTRG.IO55" offset="" val=""/>
+		<mux id="6" func="UART14.RTSN" offset="" val=""/>
+		<mux id="7" func="CSI.DATA12" offset="" val=""/>
+	</pin>
+	<pin index="63" name="GPIO_C2" ball="">
+		<mux id="0" func="GPIO_SF.IO63" offset="" val=""/>
+		<mux id="1" func="ENET2.MDIO" offset="" val=""/>
+		<mux id="2" func="CANFD18.RX" offset="" val=""/>
+		<mux id="3" func="SPI8.SS0" offset="" val=""/>
+		<mux id="4" func="UART14.TXD" offset="" val=""/>
+		<mux id="5" func="xTRG.IO56" offset="" val=""/>
+		<mux id="6" func="I2C1.SCL" offset="" val=""/>
+		<mux id="7" func="CSI.DATA13" offset="" val=""/>
+	</pin>
+	<pin index="64" name="GPIO_C3" ball="">
+		<mux id="0" func="GPIO_SF.IO64" offset="" val=""/>
+		<mux id="1" func="ENET2.MDC" offset="" val=""/>
+		<mux id="2" func="CANFD18.TX" offset="" val=""/>
+		<mux id="3" func="SPI8.SCLK" offset="" val=""/>
+		<mux id="4" func="UART14.RXD" offset="" val=""/>
+		<mux id="5" func="xTRG.IO57" offset="" val=""/>
+		<mux id="6" func="I2C1.SDA" offset="" val=""/>
+		<mux id="7" func="CSI.DATA14" offset="" val=""/>
+	</pin>
+	<pin index="65" name="GPIO_C4" ball="">
+		<mux id="0" func="GPIO_SF.IO65" offset="" val=""/>
+		<mux id="1" func="WDT2.RESET_N" offset="" val=""/>
+		<mux id="2" func="CANFD19.RX" offset="" val=""/>
+		<mux id="3" func="SPI8.MISO" offset="" val=""/>
+		<mux id="4" func="UART13.TXD" offset="" val=""/>
+		<mux id="5" func="xTRG.IO58" offset="" val=""/>
+		<mux id="6" func="UART12.CTSN" offset="" val=""/>
+		<mux id="7" func="CSI.DATA15" offset="" val=""/>
+	</pin>
+	<pin index="66" name="GPIO_C5" ball="">
+		<mux id="0" func="GPIO_SF.IO66" offset="" val=""/>
+		<mux id="1" func="WDT2.EXT_CLK" offset="" val=""/>
+		<mux id="2" func="CANFD19.TX" offset="" val=""/>
+		<mux id="3" func="SPI8.MOSI" offset="" val=""/>
+		<mux id="4" func="UART13.RXD" offset="" val=""/>
+		<mux id="5" func="xTRG.IO59" offset="" val=""/>
+		<mux id="6" func="UART12.RTSN" offset="" val=""/>
+		<mux id="7" func="CSI.DATA16" offset="" val=""/>
+	</pin>
+	<pin index="67" name="GPIO_C6" ball="">
+		<mux id="0" func="GPIO_SF.IO67" offset="" val=""/>
+		<mux id="1" func="ENET1.MDIO" offset="" val=""/>
+		<mux id="2" func="CANFD20.RX" offset="" val=""/>
+		<mux id="3" func="SPI4.SS3" offset="" val=""/>
+		<mux id="4" func="UART12.TXD" offset="" val=""/>
+		<mux id="5" func="xTRG.IO60" offset="" val=""/>
+		<mux id="6" func="I2C2.SCL" offset="" val=""/>
+		<mux id="7" func="CSI.DATA17" offset="" val=""/>
+	</pin>
+	<pin index="68" name="GPIO_C7" ball="">
+		<mux id="0" func="GPIO_SF.IO68" offset="" val=""/>
+		<mux id="1" func="ENET1.MDC" offset="" val=""/>
+		<mux id="2" func="CANFD20.TX" offset="" val=""/>
+		<mux id="3" func="SPI4.SS2" offset="" val=""/>
+		<mux id="4" func="UART12.RXD" offset="" val=""/>
+		<mux id="5" func="xTRG.IO61" offset="" val=""/>
+		<mux id="6" func="I2C2.SDA" offset="" val=""/>
+		<mux id="7" func="CSI.DATA18" offset="" val=""/>
+	</pin>
+	<pin index="69" name="GPIO_C8" ball="">
+		<mux id="0" func="GPIO_SF.IO69" offset="" val=""/>
+		<mux id="1" func="ENET2.CAP/COMP_3" offset="" val=""/>
+		<mux id="2" func="CANFD21.RX" offset="" val=""/>
+		<mux id="3" func="SPI4.SS1" offset="" val=""/>
+		<mux id="4" func="ADC3.AMS_4" offset="" val=""/>
+		<mux id="5" func="xTRG.IO62" offset="" val=""/>
+		<mux id="6" func="ACMP3.AMS_4" offset="" val=""/>
+		<mux id="7" func="CSI.DATA19" offset="" val=""/>
+	</pin>
+	<pin index="70" name="GPIO_C9" ball="">
+		<mux id="0" func="GPIO_SF.IO70" offset="" val=""/>
+		<mux id="1" func="ENET2.CAP/COMP_2" offset="" val=""/>
+		<mux id="2" func="CANFD21.TX" offset="" val=""/>
+		<mux id="3" func="SPI4.SS0" offset="" val=""/>
+		<mux id="4" func="ADC3.AMS_5" offset="" val=""/>
+		<mux id="5" func="xTRG.IO63" offset="" val=""/>
+		<mux id="6" func="ACMP3.AMS_5" offset="" val=""/>
+		<mux id="7" func="CSI.DATA20" offset="" val=""/>
+	</pin>
+	<pin index="71" name="GPIO_C10" ball="">
+		<mux id="0" func="GPIO_SF.IO71" offset="" val=""/>
+		<mux id="1" func="ENET2.CAP/COMP_1" offset="" val=""/>
+		<mux id="2" func="CANFD22.RX" offset="" val=""/>
+		<mux id="3" func="SPI4.SCLK" offset="" val=""/>
+		<mux id="4" func="ADC3.AMS_6" offset="" val=""/>
+		<mux id="5" func="xTRG.IO0" offset="" val=""/>
+		<mux id="6" func="ACMP3.AMS_6" offset="" val=""/>
+		<mux id="7" func="CSI.DATA21" offset="" val=""/>
+	</pin>
+	<pin index="72" name="GPIO_C11" ball="">
+		<mux id="0" func="GPIO_SF.IO72" offset="" val=""/>
+		<mux id="1" func="ENET2.CAP/COMP_0" offset="" val=""/>
+		<mux id="2" func="CANFD22.TX" offset="" val=""/>
+		<mux id="3" func="SPI4.MISO" offset="" val=""/>
+		<mux id="4" func="FLEXRAY2.STRB2" offset="" val=""/>
+		<mux id="5" func="xTRG.IO1" offset="" val=""/>
+		<mux id="6" func="I2C4.SCL" offset="" val=""/>
+		<mux id="7" func="CSI.DATA22" offset="" val=""/>
+	</pin>
+	<pin index="73" name="GPIO_C12" ball="">
+		<mux id="0" func="GPIO_SF.IO73" offset="" val=""/>
+		<mux id="1" func="ENET2.AUS_IN_3" offset="" val=""/>
+		<mux id="2" func="CANFD23.RX" offset="" val=""/>
+		<mux id="3" func="SPI4.MOSI" offset="" val=""/>
+		<mux id="4" func="FLEXRAY2.STRB3" offset="" val=""/>
+		<mux id="5" func="xTRG.IO2" offset="" val=""/>
+		<mux id="6" func="I2C4.SDA" offset="" val=""/>
+		<mux id="7" func="CSI.DATA23" offset="" val=""/>
+	</pin>
+	<pin index="74" name="GPIO_C13" ball="">
+		<mux id="0" func="GPIO_SF.IO74" offset="" val=""/>
+		<mux id="1" func="ENET2.AUS_IN_2" offset="" val=""/>
+		<mux id="2" func="CANFD23.TX" offset="" val=""/>
+		<mux id="3" func="SPI8.SS2" offset="" val=""/>
+		<mux id="4" func="ADC2.AMS_4" offset="" val=""/>
+		<mux id="5" func="xTRG.IO3" offset="" val=""/>
+		<mux id="6" func="ACMP4.AMS_4" offset="" val=""/>
+		<mux id="7" func="ADC1.AMS_4" offset="" val=""/>
+	</pin>
+	<pin index="75" name="GPIO_C14" ball="">
+		<mux id="0" func="GPIO_SF.IO75" offset="" val=""/>
+		<mux id="1" func="ENET2.AUS_IN_1" offset="" val=""/>
+		<mux id="2" func="CANFD24.RX" offset="" val=""/>
+		<mux id="3" func="SPI8.SS3" offset="" val=""/>
+		<mux id="4" func="ADC2.AMS_5" offset="" val=""/>
+		<mux id="5" func="xTRG.IO4" offset="" val=""/>
+		<mux id="6" func="ACMP4.AMS_5" offset="" val=""/>
+		<mux id="7" func="ADC1.AMS_5" offset="" val=""/>
+	</pin>
+	<pin index="76" name="GPIO_C15" ball="">
+		<mux id="0" func="GPIO_SF.IO76" offset="" val=""/>
+		<mux id="1" func="ENET2.AUS_IN_0" offset="" val=""/>
+		<mux id="2" func="CANFD24.TX" offset="" val=""/>
+		<mux id="3" func="CKGEN_SF.ENET2_25M_125M" offset="" val=""/>
+		<mux id="4" func="ADC2.AMS_6" offset="" val=""/>
+		<mux id="5" func="xTRG.IO5" offset="" val=""/>
+		<mux id="6" func="ACMP4.AMS_6" offset="" val=""/>
+		<mux id="7" func="ADC1.AMS_6" offset="" val=""/>
+	</pin>
+	<pin index="77" name="GPIO_G0" ball="">
+		<mux id="0" func="GPIO_SF.IO77" offset="" val=""/>
+		<mux id="1" func="ENET1.TXC" offset="" val=""/>
+		<mux id="2" func="ENET1.AUS_IN_0" offset="" val=""/>
+		<mux id="3" func="SPI6.SS3" offset="" val=""/>
+		<mux id="4" func="UART7.TXD" offset="" val=""/>
+		<mux id="5" func="xTRG.IO32" offset="" val=""/>
+		<mux id="6" func="FLEXRAY1.A_TX" offset="" val=""/>
+		<mux id="7" func="I2C7.SCL" offset="" val=""/>
+		<mux id="8" func="SADC1.CLK" offset="" val=""/>
+		<mux id="9" func="DCDC.DCDC_DBG_OUT0" offset="" val=""/>
+	</pin>
+	<pin index="78" name="GPIO_G1" ball="">
+		<mux id="0" func="GPIO_SF.IO78" offset="" val=""/>
+		<mux id="1" func="ENET1.TXD0" offset="" val=""/>
+		<mux id="2" func="FLEXRAY1.STRB0" offset="" val=""/>
+		<mux id="3" func="SPI6.SS2" offset="" val=""/>
+		<mux id="4" func="UART7.RXD" offset="" val=""/>
+		<mux id="5" func="xTRG.IO33" offset="" val=""/>
+		<mux id="6" func="FLEXRAY1.A_RX" offset="" val=""/>
+		<mux id="7" func="I2C7.SDA" offset="" val=""/>
+		<mux id="8" func="SADC1.SOC" offset="" val=""/>
+		<mux id="9" func="DCDC.DCDC_DBG_OUT1" offset="" val=""/>
+	</pin>
+	<pin index="79" name="GPIO_G2" ball="">
+		<mux id="0" func="GPIO_SF.IO79" offset="" val=""/>
+		<mux id="1" func="ENET1.TXD1" offset="" val=""/>
+		<mux id="2" func="FLEXRAY1.STRB1" offset="" val=""/>
+		<mux id="3" func="SPI6.SS0" offset="" val=""/>
+		<mux id="4" func="UART6.TXD" offset="" val=""/>
+		<mux id="5" func="xTRG.IO34" offset="" val=""/>
+		<mux id="6" func="FLEXRAY1.A_TX_EN" offset="" val=""/>
+		<mux id="8" func="SADC1.BUSY" offset="" val=""/>
+		<mux id="9" func="DCDC.DCDC_DBG_OUT2" offset="" val=""/>
+	</pin>
+	<pin index="80" name="GPIO_G3" ball="">
+		<mux id="0" func="GPIO_SF.IO80" offset="" val=""/>
+		<mux id="1" func="ENET1.TXD2" offset="" val=""/>
+		<mux id="2" func="ENET1.MDIO" offset="" val=""/>
+		<mux id="3" func="SPI6.SCLK" offset="" val=""/>
+		<mux id="4" func="UART6.RXD" offset="" val=""/>
+		<mux id="5" func="xTRG.IO35" offset="" val=""/>
+		<mux id="6" func="FLEXRAY1.B_TX" offset="" val=""/>
+		<mux id="7" func="CANFD1.RX" offset="" val=""/>
+		<mux id="8" func="SADC1.EOC" offset="" val=""/>
+		<mux id="9" func="DCDC.DCDC_DBG_OUT3" offset="" val=""/>
+	</pin>
+	<pin index="81" name="GPIO_G4" ball="">
+		<mux id="0" func="GPIO_SF.IO81" offset="" val=""/>
+		<mux id="1" func="ENET1.TXD3" offset="" val=""/>
+		<mux id="2" func="ENET1.MDC" offset="" val=""/>
+		<mux id="3" func="SPI6.MISO" offset="" val=""/>
+		<mux id="4" func="UART5.TXD" offset="" val=""/>
+		<mux id="5" func="xTRG.IO36" offset="" val=""/>
+		<mux id="6" func="FLEXRAY1.B_RX" offset="" val=""/>
+		<mux id="7" func="CANFD1.TX" offset="" val=""/>
+		<mux id="8" func="SADC1.OUTEN" offset="" val=""/>
+		<mux id="9" func="DCDC.DCDC_DBG_OUT4" offset="" val=""/>
+	</pin>
+	<pin index="82" name="GPIO_G5" ball="">
+		<mux id="0" func="GPIO_SF.IO82" offset="" val=""/>
+		<mux id="1" func="ENET1.TXEN" offset="" val=""/>
+		<mux id="2" func="FLEXRAY1.STRB2" offset="" val=""/>
+		<mux id="3" func="SPI6.MOSI" offset="" val=""/>
+		<mux id="4" func="UART5.RXD" offset="" val=""/>
+		<mux id="5" func="xTRG.IO37" offset="" val=""/>
+		<mux id="6" func="FLEXRAY1.B_TX_EN" offset="" val=""/>
+		<mux id="7" func="XSPI1.PB_RESET_N" offset="" val=""/>
+		<mux id="8" func="SADC2.CLK" offset="" val=""/>
+		<mux id="9" func="DCDC.DCDC_DBG_OUT5" offset="" val=""/>
+	</pin>
+	<pin index="83" name="GPIO_G6" ball="">
+		<mux id="0" func="GPIO_SF.IO83" offset="" val=""/>
+		<mux id="1" func="ENET1.RXC" offset="" val=""/>
+		<mux id="2" func="ENET1.CAP/COMP_0" offset="" val=""/>
+		<mux id="3" func="SPI6.SS1" offset="" val=""/>
+		<mux id="4" func="UART4.TXD" offset="" val=""/>
+		<mux id="5" func="xTRG.IO38" offset="" val=""/>
+		<mux id="6" func="FLEXRAY2.A_TX" offset="" val=""/>
+		<mux id="7" func="XSPI1.PB_INT" offset="" val=""/>
+		<mux id="8" func="SADC2.SOC" offset="" val=""/>
+		<mux id="9" func="DCDC.DCDC_DBG_OUT6" offset="" val=""/>
+	</pin>
+	<pin index="84" name="GPIO_G7" ball="">
+		<mux id="0" func="GPIO_SF.IO84" offset="" val=""/>
+		<mux id="1" func="ENET1.RXD0" offset="" val=""/>
+		<mux id="2" func="FLEXRAY1.STRB3" offset="" val=""/>
+		<mux id="3" func="SPI4.SS1" offset="" val=""/>
+		<mux id="4" func="UART4.RXD" offset="" val=""/>
+		<mux id="5" func="xTRG.IO39" offset="" val=""/>
+		<mux id="6" func="FLEXRAY2.A_RX" offset="" val=""/>
+		<mux id="7" func="XSPI1.PB_CRC" offset="" val=""/>
+		<mux id="8" func="SADC2.BUSY" offset="" val=""/>
+		<mux id="9" func="DCDC.DCDC_DBG_OUT7" offset="" val=""/>
+	</pin>
+	<pin index="85" name="GPIO_G8" ball="">
+		<mux id="0" func="GPIO_SF.IO85" offset="" val=""/>
+		<mux id="1" func="ENET1.RXD1" offset="" val=""/>
+		<mux id="2" func="FLEXRAY2.STRB0" offset="" val=""/>
+		<mux id="3" func="SPI4.SS0" offset="" val=""/>
+		<mux id="4" func="UART3.TXD" offset="" val=""/>
+		<mux id="5" func="xTRG.IO40" offset="" val=""/>
+		<mux id="6" func="FLEXRAY2.A_TX_EN" offset="" val=""/>
+		<mux id="7" func="CANFD2.RX" offset="" val=""/>
+		<mux id="8" func="SADC2.EOC" offset="" val=""/>
+	</pin>
+	<pin index="86" name="GPIO_G9" ball="">
+		<mux id="0" func="GPIO_SF.IO86" offset="" val=""/>
+		<mux id="1" func="ENET1.RXD2" offset="" val=""/>
+		<mux id="2" func="ENET1.RMII_REF_CLK" offset="" val=""/>
+		<mux id="3" func="SPI4.SCLK" offset="" val=""/>
+		<mux id="4" func="UART3.RXD" offset="" val=""/>
+		<mux id="5" func="xTRG.IO41" offset="" val=""/>
+		<mux id="6" func="FLEXRAY2.B_TX" offset="" val=""/>
+		<mux id="7" func="CANFD2.TX" offset="" val=""/>
+		<mux id="8" func="SADC2.OUTEN" offset="" val=""/>
+	</pin>
+	<pin index="87" name="GPIO_G10" ball="">
+		<mux id="0" func="GPIO_SF.IO87" offset="" val=""/>
+		<mux id="1" func="ENET1.RXD3" offset="" val=""/>
+		<mux id="2" func="ENET1.RX_ER" offset="" val=""/>
+		<mux id="3" func="SPI4.MISO" offset="" val=""/>
+		<mux id="4" func="UART2.TXD" offset="" val=""/>
+		<mux id="5" func="xTRG.IO42" offset="" val=""/>
+		<mux id="6" func="FLEXRAY2.B_RX" offset="" val=""/>
+		<mux id="7" func="XSPI2.PB_RESET_N" offset="" val=""/>
+	</pin>
+	<pin index="88" name="GPIO_G11" ball="">
+		<mux id="0" func="GPIO_SF.IO88" offset="" val=""/>
+		<mux id="1" func="ENET1.RXDV" offset="" val=""/>
+		<mux id="2" func="FLEXRAY2.STRB1" offset="" val=""/>
+		<mux id="3" func="SPI4.MOSI" offset="" val=""/>
+		<mux id="4" func="UART2.RXD" offset="" val=""/>
+		<mux id="5" func="xTRG.IO43" offset="" val=""/>
+		<mux id="6" func="FLEXRAY2.B_TX_EN" offset="" val=""/>
+		<mux id="7" func="XSPI2.PA_RESET_N" offset="" val=""/>
+	</pin>
+	<pin index="89" name="GPIO_M0" ball="">
+		<mux id="0" func="GPIO_SF.IO89" offset="" val=""/>
+		<mux id="1" func="ENET2.TXC" offset="" val=""/>
+		<mux id="2" func="ENET2.AUS_IN_0" offset="" val=""/>
+		<mux id="3" func="SPI1.SS0" offset="" val=""/>
+		<mux id="4" func="UART16.TXD" offset="" val=""/>
+		<mux id="5" func="xTRG.IO6" offset="" val=""/>
+		<mux id="6" func="I2C5.SDA" offset="" val=""/>
+	</pin>
+	<pin index="90" name="GPIO_M1" ball="">
+		<mux id="0" func="GPIO_SF.IO90" offset="" val=""/>
+		<mux id="1" func="ENET2.TXD0" offset="" val=""/>
+		<mux id="2" func="ACMP1.AMS_4" offset="" val=""/>
+		<mux id="3" func="SPI1.SCLK" offset="" val=""/>
+		<mux id="4" func="UART16.RXD" offset="" val=""/>
+		<mux id="5" func="xTRG.IO7" offset="" val=""/>
+		<mux id="6" func="I2C5.SUSP" offset="" val=""/>
+		<mux id="7" func="XSPI1.PA_RESET_N" offset="" val=""/>
+	</pin>
+	<pin index="91" name="GPIO_M2" ball="">
+		<mux id="0" func="GPIO_SF.IO91" offset="" val=""/>
+		<mux id="1" func="ENET2.TXD1" offset="" val=""/>
+		<mux id="2" func="ACMP1.AMS_5" offset="" val=""/>
+		<mux id="3" func="SPI1.MISO" offset="" val=""/>
+		<mux id="4" func="UART15.TXD" offset="" val=""/>
+		<mux id="5" func="xTRG.IO8" offset="" val=""/>
+		<mux id="6" func="I2C5.ALERT" offset="" val=""/>
+		<mux id="7" func="XSPI1.PA_INT" offset="" val=""/>
+	</pin>
+	<pin index="92" name="GPIO_M3" ball="">
+		<mux id="0" func="GPIO_SF.IO92" offset="" val=""/>
+		<mux id="1" func="ENET2.TXD2" offset="" val=""/>
+		<mux id="2" func="ENET2.MDIO" offset="" val=""/>
+		<mux id="3" func="SPI1.MOSI" offset="" val=""/>
+		<mux id="4" func="UART15.RXD" offset="" val=""/>
+		<mux id="5" func="xTRG.IO9" offset="" val=""/>
+		<mux id="7" func="XSPI1.PA_CRC" offset="" val=""/>
+	</pin>
+	<pin index="93" name="GPIO_M4" ball="">
+		<mux id="0" func="GPIO_SF.IO93" offset="" val=""/>
+		<mux id="1" func="ENET2.TXD3" offset="" val=""/>
+		<mux id="2" func="ENET2.MDC" offset="" val=""/>
+		<mux id="3" func="SPI1.SS1" offset="" val=""/>
+		<mux id="4" func="UART14.TXD" offset="" val=""/>
+		<mux id="5" func="xTRG.IO10" offset="" val=""/>
+		<mux id="6" func="I2C6.SCL" offset="" val=""/>
+	</pin>
+	<pin index="94" name="GPIO_M5" ball="">
+		<mux id="0" func="GPIO_SF.IO94" offset="" val=""/>
+		<mux id="1" func="ENET2.TXEN" offset="" val=""/>
+		<mux id="2" func="ACMP1.AMS_6" offset="" val=""/>
+		<mux id="3" func="SPI1.SS2" offset="" val=""/>
+		<mux id="4" func="UART14.RXD" offset="" val=""/>
+		<mux id="5" func="xTRG.IO11" offset="" val=""/>
+		<mux id="6" func="I2C6.SDA" offset="" val=""/>
+	</pin>
+	<pin index="95" name="GPIO_M6" ball="">
+		<mux id="0" func="GPIO_SF.IO95" offset="" val=""/>
+		<mux id="1" func="ENET2.RXC" offset="" val=""/>
+		<mux id="2" func="ENET2.CAP/COMP_0" offset="" val=""/>
+		<mux id="3" func="SPI1.SS3" offset="" val=""/>
+		<mux id="4" func="UART13.TXD" offset="" val=""/>
+		<mux id="5" func="xTRG.IO12" offset="" val=""/>
+		<mux id="6" func="I2C7.SCL" offset="" val=""/>
+	</pin>
+	<pin index="96" name="GPIO_M7" ball="">
+		<mux id="0" func="GPIO_SF.IO96" offset="" val=""/>
+		<mux id="1" func="ENET2.RXD0" offset="" val=""/>
+		<mux id="2" func="ACMP2.AMS_4" offset="" val=""/>
+		<mux id="3" func="SPI2.SS0" offset="" val=""/>
+		<mux id="4" func="UART13.RXD" offset="" val=""/>
+		<mux id="5" func="xTRG.IO13" offset="" val=""/>
+		<mux id="6" func="I2C7.SDA" offset="" val=""/>
+	</pin>
+	<pin index="97" name="GPIO_M8" ball="">
+		<mux id="0" func="GPIO_SF.IO97" offset="" val=""/>
+		<mux id="1" func="ENET2.RXD1" offset="" val=""/>
+		<mux id="2" func="ACMP2.AMS_5" offset="" val=""/>
+		<mux id="3" func="SPI2.SCLK" offset="" val=""/>
+		<mux id="4" func="UART13.CTSN" offset="" val=""/>
+		<mux id="5" func="xTRG.IO14" offset="" val=""/>
+		<mux id="6" func="I2C7.SUSP" offset="" val=""/>
+	</pin>
+	<pin index="98" name="GPIO_M9" ball="">
+		<mux id="0" func="GPIO_SF.IO98" offset="" val=""/>
+		<mux id="1" func="ENET2.RXD2" offset="" val=""/>
+		<mux id="2" func="ENET2.RMII_REF_CLK" offset="" val=""/>
+		<mux id="3" func="SPI2.MISO" offset="" val=""/>
+		<mux id="4" func="UART13.RTSN" offset="" val=""/>
+		<mux id="5" func="xTRG.IO15" offset="" val=""/>
+		<mux id="6" func="I2C7.ALERT" offset="" val=""/>
+	</pin>
+	<pin index="99" name="GPIO_M10" ball="">
+		<mux id="0" func="GPIO_SF.IO99" offset="" val=""/>
+		<mux id="1" func="ENET2.RXD3" offset="" val=""/>
+		<mux id="2" func="ENET2.RX_ER" offset="" val=""/>
+		<mux id="3" func="SPI2.MOSI" offset="" val=""/>
+		<mux id="4" func="UART12.TXD" offset="" val=""/>
+		<mux id="5" func="xTRG.IO16" offset="" val=""/>
+		<mux id="6" func="I2C8.SCL" offset="" val=""/>
+	</pin>
+	<pin index="100" name="GPIO_M11" ball="">
+		<mux id="0" func="GPIO_SF.IO100" offset="" val=""/>
+		<mux id="1" func="ENET2.RXDV" offset="" val=""/>
+		<mux id="2" func="ACMP2.AMS_6" offset="" val=""/>
+		<mux id="3" func="SPI2.SS1" offset="" val=""/>
+		<mux id="4" func="UART12.RXD" offset="" val=""/>
+		<mux id="5" func="xTRG.IO17" offset="" val=""/>
+		<mux id="6" func="I2C8.SDA" offset="" val=""/>
+	</pin>
+	<pin index="101" name="GPIO_S0" ball="">
+		<mux id="0" func="GPIO_SF.IO101" offset="" val=""/>
+		<mux id="1" func="SACI1.TXSCK" offset="" val=""/>
+		<mux id="2" func="SACI1.RXSCK" offset="" val=""/>
+		<mux id="3" func="SEHC1.EMMC_CMD" offset="" val=""/>
+		<mux id="4" func="UART11.TXD" offset="" val=""/>
+		<mux id="5" func="xTRG.IO18" offset="" val=""/>
+		<mux id="6" func="FLEXRAY1.A_TX" offset="" val=""/>
+		<mux id="7" func="DISP.DATA23" offset="" val=""/>
+	</pin>
+	<pin index="102" name="GPIO_S1" ball="">
+		<mux id="0" func="GPIO_SF.IO102" offset="" val=""/>
+		<mux id="1" func="SACI1.TXWS" offset="" val=""/>
+		<mux id="2" func="SACI1.RXWS" offset="" val=""/>
+		<mux id="3" func="SEHC1.EMMC_CLK" offset="" val=""/>
+		<mux id="4" func="UART11.RXD" offset="" val=""/>
+		<mux id="5" func="xTRG.IO19" offset="" val=""/>
+		<mux id="6" func="FLEXRAY1.A_RX" offset="" val=""/>
+		<mux id="7" func="DISP.DATA22" offset="" val=""/>
+	</pin>
+	<pin index="103" name="GPIO_S2" ball="">
+		<mux id="0" func="GPIO_SF.IO103" offset="" val=""/>
+		<mux id="1" func="SACI1.TXRXD0" offset="" val=""/>
+		<mux id="2" func="SMC.SWM0" offset="" val=""/>
+		<mux id="3" func="SEHC1.EMMC_DAT0" offset="" val=""/>
+		<mux id="4" func="UART10.TXD" offset="" val=""/>
+		<mux id="5" func="xTRG.IO20" offset="" val=""/>
+		<mux id="6" func="FLEXRAY1.A_TX_EN" offset="" val=""/>
+		<mux id="7" func="DISP.DATA21" offset="" val=""/>
+	</pin>
+	<pin index="104" name="GPIO_S3" ball="">
+		<mux id="0" func="GPIO_SF.IO104" offset="" val=""/>
+		<mux id="1" func="SACI1.TXRXD1" offset="" val=""/>
+		<mux id="2" func="SMC.SWM1" offset="" val=""/>
+		<mux id="3" func="SEHC1.EMMC_DAT1" offset="" val=""/>
+		<mux id="4" func="UART10.RXD" offset="" val=""/>
+		<mux id="5" func="xTRG.IO21" offset="" val=""/>
+		<mux id="6" func="FLEXRAY1.B_TX" offset="" val=""/>
+		<mux id="7" func="DISP.DATA20" offset="" val=""/>
+	</pin>
+	<pin index="105" name="GPIO_S4" ball="">
+		<mux id="0" func="GPIO_SF.IO105" offset="" val=""/>
+		<mux id="1" func="SACI1.TXRXD2" offset="" val=""/>
+		<mux id="2" func="SMC.SWM2" offset="" val=""/>
+		<mux id="3" func="SEHC1.EMMC_DAT2" offset="" val=""/>
+		<mux id="4" func="UART9.TXD" offset="" val=""/>
+		<mux id="5" func="xTRG.IO22" offset="" val=""/>
+		<mux id="6" func="FLEXRAY1.B_RX" offset="" val=""/>
+		<mux id="7" func="DISP.DATA19" offset="" val=""/>
+	</pin>
+	<pin index="106" name="GPIO_S5" ball="">
+		<mux id="0" func="GPIO_SF.IO106" offset="" val=""/>
+		<mux id="1" func="SACI1.TXRXD3" offset="" val=""/>
+		<mux id="2" func="SMC.SWM3" offset="" val=""/>
+		<mux id="3" func="SEHC1.EMMC_DAT3" offset="" val=""/>
+		<mux id="4" func="UART9.RXD" offset="" val=""/>
+		<mux id="5" func="xTRG.IO23" offset="" val=""/>
+		<mux id="6" func="FLEXRAY1.B_TX_EN" offset="" val=""/>
+		<mux id="7" func="DISP.DATA18" offset="" val=""/>
+	</pin>
+	<pin index="107" name="GPIO_S6" ball="">
+		<mux id="0" func="GPIO_SF.IO107" offset="" val=""/>
+		<mux id="1" func="SACI1.TXRXD4" offset="" val=""/>
+		<mux id="2" func="SACI1.PDM_CLK" offset="" val=""/>
+		<mux id="4" func="SEHC2.CARD_DET_B" offset="" val=""/>
+		<mux id="5" func="xTRG.IO24" offset="" val=""/>
+		<mux id="6" func="FLEXRAY2.A_TX" offset="" val=""/>
+		<mux id="7" func="CANFD21.RX" offset="" val=""/>
+	</pin>
+	<pin index="108" name="GPIO_S7" ball="">
+		<mux id="0" func="GPIO_SF.IO108" offset="" val=""/>
+		<mux id="1" func="SACI1.TXRXD5" offset="" val=""/>
+		<mux id="2" func="SACI1.PDM_DATA" offset="" val=""/>
+		<mux id="3" func="SPI7.SS3" offset="" val=""/>
+		<mux id="4" func="SEHC2.IO_VOLT_SW" offset="" val=""/>
+		<mux id="5" func="xTRG.IO25" offset="" val=""/>
+		<mux id="6" func="FLEXRAY2.A_RX" offset="" val=""/>
+		<mux id="7" func="CANFD21.TX" offset="" val=""/>
+	</pin>
+	<pin index="109" name="GPIO_S8" ball="">
+		<mux id="0" func="GPIO_SF.IO109" offset="" val=""/>
+		<mux id="1" func="SACI1.TXRXD6" offset="" val=""/>
+		<mux id="2" func="UART7.CTSN" offset="" val=""/>
+		<mux id="3" func="SPI7.SS2" offset="" val=""/>
+		<mux id="4" func="UART6.TXD" offset="" val=""/>
+		<mux id="5" func="xTRG.IO26" offset="" val=""/>
+		<mux id="6" func="FLEXRAY2.A_TX_EN" offset="" val=""/>
+		<mux id="7" func="CANFD22.RX" offset="" val=""/>
+	</pin>
+	<pin index="110" name="GPIO_S9" ball="">
+		<mux id="0" func="GPIO_SF.IO110" offset="" val=""/>
+		<mux id="1" func="SACI1.TXRXD7" offset="" val=""/>
+		<mux id="2" func="UART7.RTSN" offset="" val=""/>
+		<mux id="3" func="SPI7.SS1" offset="" val=""/>
+		<mux id="4" func="UART6.RXD" offset="" val=""/>
+		<mux id="5" func="xTRG.IO27" offset="" val=""/>
+		<mux id="6" func="FLEXRAY2.B_TX" offset="" val=""/>
+		<mux id="7" func="CANFD22.TX" offset="" val=""/>
+	</pin>
+	<pin index="111" name="GPIO_S10" ball="">
+		<mux id="0" func="GPIO_SF.IO111" offset="" val=""/>
+		<mux id="1" func="SACI1.RXSCK" offset="" val=""/>
+		<mux id="2" func="SACI1.MCLK0" offset="" val=""/>
+		<mux id="3" func="SPI7.SS0" offset="" val=""/>
+		<mux id="4" func="UART7.TXD" offset="" val=""/>
+		<mux id="5" func="xTRG.IO28" offset="" val=""/>
+		<mux id="6" func="FLEXRAY2.B_RX" offset="" val=""/>
+		<mux id="7" func="CANFD23.RX" offset="" val=""/>
+	</pin>
+	<pin index="112" name="GPIO_S11" ball="">
+		<mux id="0" func="GPIO_SF.IO112" offset="" val=""/>
+		<mux id="1" func="SACI1.RXWS" offset="" val=""/>
+		<mux id="3" func="SPI7.SCLK" offset="" val=""/>
+		<mux id="4" func="UART7.RXD" offset="" val=""/>
+		<mux id="5" func="xTRG.IO29" offset="" val=""/>
+		<mux id="6" func="FLEXRAY2.B_TX_EN" offset="" val=""/>
+		<mux id="7" func="CANFD23.TX" offset="" val=""/>
+	</pin>
+	<pin index="113" name="GPIO_S12" ball="">
+		<mux id="0" func="GPIO_SF.IO113" offset="" val=""/>
+		<mux id="1" func="SACI1.PDM_CLK" offset="" val=""/>
+		<mux id="2" func="SACI1.MCLK1" offset="" val=""/>
+		<mux id="3" func="SPI7.MISO" offset="" val=""/>
+		<mux id="4" func="UART8.TXD" offset="" val=""/>
+		<mux id="5" func="xTRG.IO30" offset="" val=""/>
+		<mux id="6" func="FLEXRAY1.STRB0" offset="" val=""/>
+		<mux id="7" func="CANFD24.RX" offset="" val=""/>
+	</pin>
+	<pin index="114" name="GPIO_S13" ball="">
+		<mux id="0" func="GPIO_SF.IO114" offset="" val=""/>
+		<mux id="1" func="SACI1.PDM_DATA" offset="" val=""/>
+		<mux id="3" func="SPI7.MOSI" offset="" val=""/>
+		<mux id="4" func="UART8.RXD" offset="" val=""/>
+		<mux id="5" func="xTRG.IO31" offset="" val=""/>
+		<mux id="6" func="SEHC2.IO_VOLT_SW" offset="" val=""/>
+		<mux id="7" func="CANFD24.TX" offset="" val=""/>
+	</pin>
+	<pin index="115" name="GPIO_H0" ball="">
+		<mux id="0" func="GPIO_SF.IO115" offset="" val=""/>
+		<mux id="1" func="SACI2.TXSCK" offset="" val=""/>
+		<mux id="2" func="SACI2.RXSCK" offset="" val=""/>
+		<mux id="3" func="CSI.DATA0" offset="" val=""/>
+		<mux id="4" func="SEHC1.EMMC_STRB" offset="" val=""/>
+		<mux id="5" func="xTRG.IO32" offset="" val=""/>
+		<mux id="6" func="UART12.TXD" offset="" val=""/>
+		<mux id="7" func="DISP.DATA17" offset="" val=""/>
+		<mux id="8" func="PTB.ACK" offset="" val=""/>
+		<mux id="9" func="PTB.ACK" offset="" val=""/>
+	</pin>
+	<pin index="116" name="GPIO_H1" ball="">
+		<mux id="0" func="GPIO_SF.IO116" offset="" val=""/>
+		<mux id="1" func="SACI2.TXWS" offset="" val=""/>
+		<mux id="2" func="SACI2.RXWS" offset="" val=""/>
+		<mux id="3" func="CSI.DATA1" offset="" val=""/>
+		<mux id="4" func="SEHC1.EMMC_RST_B" offset="" val=""/>
+		<mux id="5" func="xTRG.IO33" offset="" val=""/>
+		<mux id="6" func="UART12.RXD" offset="" val=""/>
+		<mux id="7" func="DISP.DATA16" offset="" val=""/>
+		<mux id="8" func="PTB.CLK" offset="" val=""/>
+		<mux id="9" func="PTB.CLK" offset="" val=""/>
+	</pin>
+	<pin index="117" name="GPIO_H2" ball="">
+		<mux id="0" func="GPIO_SF.IO117" offset="" val=""/>
+		<mux id="1" func="SACI2.TXRXD0" offset="" val=""/>
+		<mux id="3" func="CSI.DATA2" offset="" val=""/>
+		<mux id="4" func="SEHC1.EMMC_DAT7" offset="" val=""/>
+		<mux id="5" func="xTRG.IO34" offset="" val=""/>
+		<mux id="6" func="UART11.TXD" offset="" val=""/>
+		<mux id="7" func="DISP.DATA15" offset="" val=""/>
+		<mux id="8" func="PTB.CMD[0]" offset="" val=""/>
+		<mux id="9" func="PTB.CMD[0]" offset="" val=""/>
+	</pin>
+	<pin index="118" name="GPIO_H3" ball="">
+		<mux id="0" func="GPIO_SF.IO118" offset="" val=""/>
+		<mux id="1" func="SACI2.TXRXD1" offset="" val=""/>
+		<mux id="3" func="CSI.DATA3" offset="" val=""/>
+		<mux id="4" func="SEHC1.EMMC_DAT6" offset="" val=""/>
+		<mux id="5" func="xTRG.IO35" offset="" val=""/>
+		<mux id="6" func="UART11.RXD" offset="" val=""/>
+		<mux id="7" func="DISP.DATA14" offset="" val=""/>
+		<mux id="8" func="PTB.CMD[1]" offset="" val=""/>
+		<mux id="9" func="PTB.CMD[1]" offset="" val=""/>
+	</pin>
+	<pin index="119" name="GPIO_H4" ball="">
+		<mux id="0" func="GPIO_SF.IO119" offset="" val=""/>
+		<mux id="1" func="SACI2.TXRXD2" offset="" val=""/>
+		<mux id="3" func="CSI.DATA4" offset="" val=""/>
+		<mux id="4" func="SEHC1.EMMC_DAT5" offset="" val=""/>
+		<mux id="5" func="xTRG.IO36" offset="" val=""/>
+		<mux id="6" func="UART10.TXD" offset="" val=""/>
+		<mux id="7" func="DISP.DATA13" offset="" val=""/>
+		<mux id="8" func="PTB.CMD[2]" offset="" val=""/>
+		<mux id="9" func="PTB.CMD[2]" offset="" val=""/>
+	</pin>
+	<pin index="120" name="GPIO_H5" ball="">
+		<mux id="0" func="GPIO_SF.IO120" offset="" val=""/>
+		<mux id="1" func="SACI2.TXRXD3" offset="" val=""/>
+		<mux id="2" func="CKGEN_AP.CLK24M_I" offset="" val=""/>
+		<mux id="3" func="CSI.DATA5" offset="" val=""/>
+		<mux id="4" func="SEHC1.EMMC_DAT4" offset="" val=""/>
+		<mux id="5" func="xTRG.IO37" offset="" val=""/>
+		<mux id="6" func="UART10.RXD" offset="" val=""/>
+		<mux id="7" func="DISP.DATA12" offset="" val=""/>
+		<mux id="8" func="PTB.CMD[3]" offset="" val=""/>
+		<mux id="9" func="PTB.CMD[3]" offset="" val=""/>
+	</pin>
+	<pin index="121" name="GPIO_H6" ball="">
+		<mux id="0" func="GPIO_SF.IO121" offset="" val=""/>
+		<mux id="1" func="SACI2.TXRXD4" offset="" val=""/>
+		<mux id="2" func="SACI2.PDM_CLK" offset="" val=""/>
+		<mux id="3" func="CSI.DATA6" offset="" val=""/>
+		<mux id="4" func="SEHC1.EMMC_DAT3" offset="" val=""/>
+		<mux id="5" func="xTRG.IO38" offset="" val=""/>
+		<mux id="6" func="UART9.TXD" offset="" val=""/>
+		<mux id="7" func="DISP.DATA11" offset="" val=""/>
+		<mux id="8" func="PTB.DA[0]" offset="" val=""/>
+		<mux id="9" func="PTB.DA[0]" offset="" val=""/>
+	</pin>
+	<pin index="122" name="GPIO_H7" ball="">
+		<mux id="0" func="GPIO_SF.IO122" offset="" val=""/>
+		<mux id="1" func="SACI2.TXRXD5" offset="" val=""/>
+		<mux id="2" func="SACI2.PDM_DATA" offset="" val=""/>
+		<mux id="3" func="CSI.DATA7" offset="" val=""/>
+		<mux id="4" func="SEHC1.EMMC_DAT2" offset="" val=""/>
+		<mux id="5" func="xTRG.IO39" offset="" val=""/>
+		<mux id="6" func="UART9.RXD" offset="" val=""/>
+		<mux id="7" func="DISP.DATA10" offset="" val=""/>
+		<mux id="8" func="PTB.DA[1]" offset="" val=""/>
+		<mux id="9" func="PTB.DA[1]" offset="" val=""/>
+	</pin>
+	<pin index="123" name="GPIO_H8" ball="">
+		<mux id="0" func="GPIO_SF.IO123" offset="" val=""/>
+		<mux id="1" func="SACI2.TXRXD6" offset="" val=""/>
+		<mux id="2" func="SEIP.UART_RXD" offset="" val=""/>
+		<mux id="3" func="CSI.CLK" offset="" val=""/>
+		<mux id="4" func="SEHC1.EMMC_DAT1" offset="" val=""/>
+		<mux id="5" func="xTRG.IO40" offset="" val=""/>
+		<mux id="6" func="CANFD21.RX" offset="" val=""/>
+		<mux id="7" func="DISP.DATA9" offset="" val=""/>
+		<mux id="8" func="PTB.DA[2]" offset="" val=""/>
+		<mux id="9" func="PTB.DA[2]" offset="" val=""/>
+	</pin>
+	<pin index="124" name="GPIO_H9" ball="">
+		<mux id="0" func="GPIO_SF.IO124" offset="" val=""/>
+		<mux id="1" func="SACI2.TXRXD7" offset="" val=""/>
+		<mux id="2" func="SEIP.UART_TXD" offset="" val=""/>
+		<mux id="3" func="CSI.HSYNC" offset="" val=""/>
+		<mux id="4" func="SEHC1.EMMC_DAT0" offset="" val=""/>
+		<mux id="5" func="xTRG.IO41" offset="" val=""/>
+		<mux id="6" func="CANFD21.TX" offset="" val=""/>
+		<mux id="7" func="DISP.DATA8" offset="" val=""/>
+		<mux id="8" func="PTB.DA[3]" offset="" val=""/>
+		<mux id="9" func="PTB.DA[3]" offset="" val=""/>
+	</pin>
+	<pin index="125" name="GPIO_H10" ball="">
+		<mux id="0" func="GPIO_SF.IO125" offset="" val=""/>
+		<mux id="1" func="SACI2.RXSCK" offset="" val=""/>
+		<mux id="2" func="SACI1.MCLK0" offset="" val=""/>
+		<mux id="3" func="CSI.VSYNC" offset="" val=""/>
+		<mux id="4" func="SEHC1.EMMC_CLK" offset="" val=""/>
+		<mux id="5" func="xTRG.IO42" offset="" val=""/>
+		<mux id="6" func="CANFD22.RX" offset="" val=""/>
+		<mux id="7" func="DISP.DATA7" offset="" val=""/>
+		<mux id="8" func="PTB.DA[4]" offset="" val=""/>
+		<mux id="9" func="PTB.DA[4]" offset="" val=""/>
+	</pin>
+	<pin index="126" name="GPIO_H11" ball="">
+		<mux id="0" func="GPIO_SF.IO126" offset="" val=""/>
+		<mux id="1" func="SACI2.RXWS" offset="" val=""/>
+		<mux id="2" func="CKGEN_SF.ENET2_25M_125M" offset="" val=""/>
+		<mux id="3" func="CSI.ENABLE" offset="" val=""/>
+		<mux id="4" func="SEHC1.EMMC_CMD" offset="" val=""/>
+		<mux id="5" func="xTRG.IO43" offset="" val=""/>
+		<mux id="6" func="CANFD22.TX" offset="" val=""/>
+		<mux id="7" func="DISP.DATA6" offset="" val=""/>
+		<mux id="8" func="PTB.DA[5]" offset="" val=""/>
+		<mux id="9" func="PTB.DA[5]" offset="" val=""/>
+	</pin>
+	<pin index="127" name="GPIO_H12" ball="">
+		<mux id="0" func="GPIO_SF.IO127" offset="" val=""/>
+		<mux id="1" func="SACI2.PDM_CLK" offset="" val=""/>
+		<mux id="2" func="SACI1.MCLK1" offset="" val=""/>
+		<mux id="3" func="CSI.MCLK" offset="" val=""/>
+		<mux id="4" func="WDT1.RESET_N" offset="" val=""/>
+		<mux id="5" func="xTRG.IO44" offset="" val=""/>
+		<mux id="6" func="USB.PWR" offset="" val=""/>
+		<mux id="7" func="DISP.DATA23" offset="" val=""/>
+		<mux id="8" func="PTB.DA[6]" offset="" val=""/>
+		<mux id="9" func="PTB.DA[6]" offset="" val=""/>
+	</pin>
+	<pin index="128" name="GPIO_H13" ball="">
+		<mux id="0" func="GPIO_SF.IO128" offset="" val=""/>
+		<mux id="1" func="SACI2.PDM_DATA" offset="" val=""/>
+		<mux id="2" func="SEHC2.IO_VOLT_SW" offset="" val=""/>
+		<mux id="3" func="SPI5.SS3" offset="" val=""/>
+		<mux id="4" func="SEHC1.IO_VOLT_SW" offset="" val=""/>
+		<mux id="5" func="xTRG.IO45" offset="" val=""/>
+		<mux id="6" func="USB.OC" offset="" val=""/>
+		<mux id="7" func="DISP.DATA22" offset="" val=""/>
+		<mux id="8" func="PTB.DA[7]" offset="" val=""/>
+		<mux id="9" func="PTB.DA[7]" offset="" val=""/>
+	</pin>
+	<pin index="129" name="GPIO_F0" ball="">
+		<mux id="0" func="GPIO_SF.IO129" offset="" val=""/>
+		<mux id="1" func="SEHC2.EMMC_DAT3" offset="" val=""/>
+		<mux id="3" func="SPI5.SS2" offset="" val=""/>
+		<mux id="4" func="WDT3.RESET_N" offset="" val=""/>
+		<mux id="5" func="xTRG.IO46" offset="" val=""/>
+	</pin>
+	<pin index="130" name="GPIO_F1" ball="">
+		<mux id="0" func="GPIO_SF.IO130" offset="" val=""/>
+		<mux id="1" func="SEHC2.EMMC_DAT2" offset="" val=""/>
+		<mux id="3" func="SPI5.SS1" offset="" val=""/>
+		<mux id="4" func="WDT3.EXT_CLK" offset="" val=""/>
+		<mux id="5" func="xTRG.IO47" offset="" val=""/>
+	</pin>
+	<pin index="131" name="GPIO_F2" ball="">
+		<mux id="0" func="GPIO_SF.IO131" offset="" val=""/>
+		<mux id="1" func="SEHC2.EMMC_DAT1" offset="" val=""/>
+		<mux id="3" func="SPI5.SS0" offset="" val=""/>
+		<mux id="4" func="WDT4.RESET_N" offset="" val=""/>
+		<mux id="5" func="xTRG.IO48" offset="" val=""/>
+	</pin>
+	<pin index="132" name="GPIO_F3" ball="">
+		<mux id="0" func="GPIO_SF.IO132" offset="" val=""/>
+		<mux id="1" func="SEHC2.EMMC_DAT0" offset="" val=""/>
+		<mux id="3" func="SPI5.MISO" offset="" val=""/>
+		<mux id="4" func="WDT4.EXT_CLK" offset="" val=""/>
+		<mux id="5" func="xTRG.IO49" offset="" val=""/>
+	</pin>
+	<pin index="133" name="GPIO_F4" ball="">
+		<mux id="0" func="GPIO_SF.IO133" offset="" val=""/>
+		<mux id="1" func="SEHC2.EMMC_CLK" offset="" val=""/>
+		<mux id="3" func="SPI5.MOSI" offset="" val=""/>
+		<mux id="4" func="WDT6.RESET_N" offset="" val=""/>
+		<mux id="5" func="xTRG.IO50" offset="" val=""/>
+	</pin>
+	<pin index="134" name="GPIO_F5" ball="">
+		<mux id="0" func="GPIO_SF.IO134" offset="" val=""/>
+		<mux id="1" func="SEHC2.EMMC_CMD" offset="" val=""/>
+		<mux id="3" func="SPI5.SCLK" offset="" val=""/>
+		<mux id="4" func="WDT6.EXT_CLK" offset="" val=""/>
+		<mux id="5" func="xTRG.IO51" offset="" val=""/>
+	</pin>
+	<pin index="135" name="GPIO_L0" ball="">
+		<mux id="0" func="GPIO_AP.IO0" offset="" val=""/>
+		<mux id="1" func="LVDS_CLK_P" offset="" val=""/>
+		<mux id="2" func="ENET2.MDIO" offset="" val=""/>
+		<mux id="3" func="CANFD23.RX" offset="" val=""/>
+		<mux id="4" func="SEHC1.LED_CTRL" offset="" val=""/>
+		<mux id="5" func="CKGEN_AP.CLK24M_I" offset="" val=""/>
+		<mux id="7" func="DISP.DATA5" offset="" val=""/>
+	</pin>
+	<pin index="136" name="GPIO_L1" ball="">
+		<mux id="0" func="GPIO_AP.IO1" offset="" val=""/>
+		<mux id="1" func="LVDS_CLK_N" offset="" val=""/>
+		<mux id="2" func="ENET2.MDC" offset="" val=""/>
+		<mux id="3" func="CANFD23.TX" offset="" val=""/>
+		<mux id="4" func="SEHC1.CARD_WP_B" offset="" val=""/>
+		<mux id="5" func="WDT1.RESET_N" offset="" val=""/>
+		<mux id="7" func="DISP.DATA4" offset="" val=""/>
+	</pin>
+	<pin index="137" name="GPIO_L2" ball="">
+		<mux id="0" func="GPIO_AP.IO2" offset="" val=""/>
+		<mux id="1" func="LVDS_D0_P" offset="" val=""/>
+		<mux id="2" func="ENET2.RMII_REF_CLK" offset="" val=""/>
+		<mux id="3" func="CANFD24.RX" offset="" val=""/>
+		<mux id="4" func="SEHC1.IO_VOLT_SW" offset="" val=""/>
+		<mux id="5" func="USB.PWR" offset="" val=""/>
+		<mux id="7" func="DISP.DATA3" offset="" val=""/>
+	</pin>
+	<pin index="138" name="GPIO_L3" ball="">
+		<mux id="0" func="GPIO_AP.IO3" offset="" val=""/>
+		<mux id="1" func="LVDS_D0_N" offset="" val=""/>
+		<mux id="2" func="ENET2.TXD0" offset="" val=""/>
+		<mux id="3" func="CANFD24.TX" offset="" val=""/>
+		<mux id="4" func="SEHC1.CARD_DET_B" offset="" val=""/>
+		<mux id="5" func="USB.OC" offset="" val=""/>
+		<mux id="7" func="DISP.DATA2" offset="" val=""/>
+	</pin>
+	<pin index="139" name="GPIO_L4" ball="">
+		<mux id="0" func="GPIO_AP.IO4" offset="" val=""/>
+		<mux id="1" func="LVDS_D1_P" offset="" val=""/>
+		<mux id="2" func="ENET2.TXD1" offset="" val=""/>
+		<mux id="3" func="SEHC2.CARD_DET_B" offset="" val=""/>
+		<mux id="4" func="UART16.TXD" offset="" val=""/>
+		<mux id="7" func="DISP.DATA1" offset="" val=""/>
+	</pin>
+	<pin index="140" name="GPIO_L5" ball="">
+		<mux id="0" func="GPIO_AP.IO5" offset="" val=""/>
+		<mux id="1" func="LVDS_D1_N" offset="" val=""/>
+		<mux id="2" func="ENET2.TXEN" offset="" val=""/>
+		<mux id="3" func="SEHC2.CARD_WP_B" offset="" val=""/>
+		<mux id="4" func="UART16.RXD" offset="" val=""/>
+		<mux id="7" func="DISP.DATA0" offset="" val=""/>
+	</pin>
+	<pin index="141" name="GPIO_L6" ball="">
+		<mux id="0" func="GPIO_AP.IO6" offset="" val=""/>
+		<mux id="1" func="LVDS_D2_P" offset="" val=""/>
+		<mux id="2" func="ENET2.RX_ER" offset="" val=""/>
+		<mux id="3" func="SEHC2.IO_VOLT_SW" offset="" val=""/>
+		<mux id="4" func="UART15.TXD" offset="" val=""/>
+		<mux id="7" func="DISP.CLK" offset="" val=""/>
+	</pin>
+	<pin index="142" name="GPIO_L7" ball="">
+		<mux id="0" func="GPIO_AP.IO7" offset="" val=""/>
+		<mux id="1" func="LVDS_D2_N" offset="" val=""/>
+		<mux id="2" func="ENET2.RXD0" offset="" val=""/>
+		<mux id="3" func="SEHC2.LED_CTRL" offset="" val=""/>
+		<mux id="4" func="UART15.RXD" offset="" val=""/>
+		<mux id="7" func="DISP.HSYNC" offset="" val=""/>
+	</pin>
+	<pin index="143" name="GPIO_L8" ball="">
+		<mux id="0" func="GPIO_AP.IO8" offset="" val=""/>
+		<mux id="1" func="LVDS_D3_P" offset="" val=""/>
+		<mux id="2" func="ENET2.RXD1" offset="" val=""/>
+		<mux id="3" func="USB.PWR" offset="" val=""/>
+		<mux id="4" func="UART14.TXD" offset="" val=""/>
+		<mux id="7" func="DISP.VSYNC" offset="" val=""/>
+	</pin>
+	<pin index="144" name="GPIO_L9" ball="">
+		<mux id="0" func="GPIO_AP.IO9" offset="" val=""/>
+		<mux id="1" func="LVDS_D3_N" offset="" val=""/>
+		<mux id="2" func="ENET2.RXDV" offset="" val=""/>
+		<mux id="3" func="USB.OC" offset="" val=""/>
+		<mux id="4" func="UART14.RXD" offset="" val=""/>
+		<mux id="7" func="DISP.ENABLE" offset="" val=""/>
+	</pin>
+	<pin index="145" name="GPIO_D0" ball="">
+		<mux id="0" func="GPIO_AP.IO10" offset="" val=""/>
+		<mux id="1" func="SDRAMC.ADDR0" offset="" val=""/>
+		<mux id="2" func="CANFD1.RX" offset="" val=""/>
+		<mux id="4" func="CSI.MCLK" offset="" val=""/>
+		<mux id="5" func="XSPI2.PA_SCLK" offset="" val=""/>
+	</pin>
+	<pin index="146" name="GPIO_D1" ball="">
+		<mux id="0" func="GPIO_AP.IO11" offset="" val=""/>
+		<mux id="1" func="SDRAMC.ADDR1" offset="" val=""/>
+		<mux id="2" func="CANFD1.TX" offset="" val=""/>
+		<mux id="4" func="CSI.ENABLE" offset="" val=""/>
+		<mux id="5" func="XSPI2.PA_SS0" offset="" val=""/>
+	</pin>
+	<pin index="147" name="GPIO_D2" ball="">
+		<mux id="0" func="GPIO_AP.IO12" offset="" val=""/>
+		<mux id="1" func="SDRAMC.ADDR2" offset="" val=""/>
+		<mux id="2" func="CANFD2.RX" offset="" val=""/>
+		<mux id="4" func="CSI.CLK" offset="" val=""/>
+		<mux id="5" func="XSPI2.PA_DATA0" offset="" val=""/>
+	</pin>
+	<pin index="148" name="GPIO_D3" ball="">
+		<mux id="0" func="GPIO_AP.IO13" offset="" val=""/>
+		<mux id="1" func="SDRAMC.ADDR3" offset="" val=""/>
+		<mux id="2" func="CANFD2.TX" offset="" val=""/>
+		<mux id="4" func="CSI.HSYNC" offset="" val=""/>
+		<mux id="5" func="XSPI2.PA_DATA1" offset="" val=""/>
+	</pin>
+	<pin index="149" name="GPIO_D4" ball="">
+		<mux id="0" func="GPIO_AP.IO14" offset="" val=""/>
+		<mux id="1" func="SDRAMC.ADDR4" offset="" val=""/>
+		<mux id="2" func="CANFD3.RX" offset="" val=""/>
+		<mux id="4" func="CSI.VSYNC" offset="" val=""/>
+		<mux id="5" func="XSPI2.PA_DATA2" offset="" val=""/>
+	</pin>
+	<pin index="150" name="GPIO_D5" ball="">
+		<mux id="0" func="GPIO_AP.IO15" offset="" val=""/>
+		<mux id="1" func="SDRAMC.ADDR5" offset="" val=""/>
+		<mux id="2" func="CANFD3.TX" offset="" val=""/>
+		<mux id="4" func="CSI.DATA0" offset="" val=""/>
+		<mux id="5" func="XSPI2.PA_DATA3" offset="" val=""/>
+	</pin>
+	<pin index="151" name="GPIO_D6" ball="">
+		<mux id="0" func="GPIO_AP.IO16" offset="" val=""/>
+		<mux id="1" func="SDRAMC.ADDR6" offset="" val=""/>
+		<mux id="2" func="CANFD4.RX" offset="" val=""/>
+		<mux id="4" func="CSI.DATA1" offset="" val=""/>
+		<mux id="5" func="XSPI2.PA_DATA4" offset="" val=""/>
+	</pin>
+	<pin index="152" name="GPIO_D7" ball="">
+		<mux id="0" func="GPIO_AP.IO17" offset="" val=""/>
+		<mux id="1" func="SDRAMC.ADDR7" offset="" val=""/>
+		<mux id="2" func="CANFD4.TX" offset="" val=""/>
+		<mux id="4" func="CSI.DATA2" offset="" val=""/>
+		<mux id="5" func="XSPI2.PA_DATA5" offset="" val=""/>
+	</pin>
+	<pin index="153" name="GPIO_D8" ball="">
+		<mux id="0" func="GPIO_AP.IO18" offset="" val=""/>
+		<mux id="1" func="SDRAMC.ADDR8" offset="" val=""/>
+		<mux id="2" func="CANFD5.RX" offset="" val=""/>
+		<mux id="4" func="CSI.DATA3" offset="" val=""/>
+		<mux id="5" func="XSPI2.PA_DATA6" offset="" val=""/>
+	</pin>
+	<pin index="154" name="GPIO_D9" ball="">
+		<mux id="0" func="GPIO_AP.IO19" offset="" val=""/>
+		<mux id="1" func="SDRAMC.ADDR9" offset="" val=""/>
+		<mux id="2" func="CANFD5.TX" offset="" val=""/>
+		<mux id="4" func="CSI.DATA4" offset="" val=""/>
+		<mux id="5" func="XSPI2.PA_DATA7" offset="" val=""/>
+	</pin>
+	<pin index="155" name="GPIO_D10" ball="">
+		<mux id="0" func="GPIO_AP.IO20" offset="" val=""/>
+		<mux id="1" func="SDRAMC.ADDR10" offset="" val=""/>
+		<mux id="2" func="CANFD6.RX" offset="" val=""/>
+		<mux id="4" func="CSI.DATA5" offset="" val=""/>
+		<mux id="5" func="XSPI2.PA_DQS" offset="" val=""/>
+	</pin>
+	<pin index="156" name="GPIO_D11" ball="">
+		<mux id="0" func="GPIO_AP.IO21" offset="" val=""/>
+		<mux id="1" func="SDRAMC.ADDR11" offset="" val=""/>
+		<mux id="2" func="CANFD6.TX" offset="" val=""/>
+		<mux id="4" func="CSI.DATA6" offset="" val=""/>
+		<mux id="5" func="XSPI2.PB_DQS" offset="" val=""/>
+	</pin>
+	<pin index="157" name="GPIO_D12" ball="">
+		<mux id="0" func="GPIO_AP.IO22" offset="" val=""/>
+		<mux id="1" func="SDRAMC.ADDR12" offset="" val=""/>
+		<mux id="2" func="CANFD7.RX" offset="" val=""/>
+		<mux id="4" func="CSI.DATA7" offset="" val=""/>
+		<mux id="5" func="XSPI2.PB_DATA7" offset="" val=""/>
+	</pin>
+	<pin index="158" name="GPIO_D13" ball="">
+		<mux id="0" func="GPIO_AP.IO23" offset="" val=""/>
+		<mux id="1" func="SDRAMC.BA0" offset="" val=""/>
+		<mux id="2" func="CANFD7.TX" offset="" val=""/>
+		<mux id="4" func="CSI.DATA8" offset="" val=""/>
+		<mux id="5" func="XSPI2.PB_DATA6" offset="" val=""/>
+		<mux id="6" func="USB.PWR" offset="" val=""/>
+		<mux id="7" func="DC.CRC_EXT_CLK" offset="" val=""/>
+	</pin>
+	<pin index="159" name="GPIO_D14" ball="">
+		<mux id="0" func="GPIO_AP.IO24" offset="" val=""/>
+		<mux id="1" func="SDRAMC.BA1" offset="" val=""/>
+		<mux id="2" func="CANFD8.RX" offset="" val=""/>
+		<mux id="4" func="CSI.DATA9" offset="" val=""/>
+		<mux id="5" func="XSPI2.PB_DATA5" offset="" val=""/>
+		<mux id="6" func="USB.OC" offset="" val=""/>
+		<mux id="7" func="DISP.DATA22" offset="" val=""/>
+	</pin>
+	<pin index="160" name="GPIO_D15" ball="">
+		<mux id="0" func="GPIO_AP.IO25" offset="" val=""/>
+		<mux id="1" func="SDRAMC.RAS" offset="" val=""/>
+		<mux id="2" func="CANFD8.TX" offset="" val=""/>
+		<mux id="4" func="CSI.DATA10" offset="" val=""/>
+		<mux id="5" func="XSPI2.PB_DATA4" offset="" val=""/>
+		<mux id="7" func="DISP.DATA21" offset="" val=""/>
+	</pin>
+	<pin index="161" name="GPIO_D16" ball="">
+		<mux id="0" func="GPIO_AP.IO26" offset="" val=""/>
+		<mux id="1" func="SDRAMC.CAS" offset="" val=""/>
+		<mux id="2" func="CANFD9.RX" offset="" val=""/>
+		<mux id="4" func="CSI.DATA11" offset="" val=""/>
+		<mux id="5" func="XSPI2.PB_DATA3" offset="" val=""/>
+		<mux id="7" func="DISP.DATA20" offset="" val=""/>
+	</pin>
+	<pin index="162" name="GPIO_D17" ball="">
+		<mux id="0" func="GPIO_AP.IO27" offset="" val=""/>
+		<mux id="1" func="SDRAMC.WE" offset="" val=""/>
+		<mux id="2" func="CANFD9.TX" offset="" val=""/>
+		<mux id="4" func="CSI.DATA12" offset="" val=""/>
+		<mux id="5" func="XSPI2.PB_DATA2" offset="" val=""/>
+		<mux id="7" func="DISP.DATA19" offset="" val=""/>
+	</pin>
+	<pin index="163" name="GPIO_D18" ball="">
+		<mux id="0" func="GPIO_AP.IO28" offset="" val=""/>
+		<mux id="1" func="SDRAMC.CKE0" offset="" val=""/>
+		<mux id="2" func="CANFD10.RX" offset="" val=""/>
+		<mux id="4" func="CSI.DATA13" offset="" val=""/>
+		<mux id="5" func="XSPI2.PB_DATA1" offset="" val=""/>
+		<mux id="7" func="DISP.DATA18" offset="" val=""/>
+	</pin>
+	<pin index="164" name="GPIO_D19" ball="">
+		<mux id="0" func="GPIO_AP.IO29" offset="" val=""/>
+		<mux id="1" func="SDRAMC.CLK_P" offset="" val=""/>
+		<mux id="2" func="CANFD10.TX" offset="" val=""/>
+		<mux id="4" func="CSI.DATA14" offset="" val=""/>
+		<mux id="5" func="XSPI2.PB_DATA0" offset="" val=""/>
+		<mux id="7" func="DISP.DATA17" offset="" val=""/>
+	</pin>
+	<pin index="165" name="GPIO_D20" ball="">
+		<mux id="0" func="GPIO_AP.IO30" offset="" val=""/>
+		<mux id="1" func="SDRAMC.CLK_N" offset="" val=""/>
+		<mux id="2" func="CANFD11.RX" offset="" val=""/>
+		<mux id="4" func="CSI.DATA15" offset="" val=""/>
+		<mux id="5" func="XSPI2.PB_SS0" offset="" val=""/>
+		<mux id="7" func="DISP.DATA23" offset="" val=""/>
+	</pin>
+	<pin index="166" name="GPIO_D21" ball="">
+		<mux id="0" func="GPIO_AP.IO31" offset="" val=""/>
+		<mux id="1" func="SDRAMC.CS0" offset="" val=""/>
+		<mux id="2" func="CANFD11.TX" offset="" val=""/>
+		<mux id="4" func="CSI.DATA16" offset="" val=""/>
+		<mux id="5" func="XSPI2.PB_SCLK" offset="" val=""/>
+		<mux id="7" func="DISP.DATA16" offset="" val=""/>
+	</pin>
+	<pin index="167" name="GPIO_D22" ball="">
+		<mux id="0" func="GPIO_AP.IO32" offset="" val=""/>
+		<mux id="1" func="SDRAMC.DATA0" offset="" val=""/>
+		<mux id="2" func="CANFD12.RX" offset="" val=""/>
+		<mux id="4" func="CSI.DATA17" offset="" val=""/>
+		<mux id="5" func="XSPI2.PA_SS1" offset="" val=""/>
+		<mux id="7" func="DISP.DATA15" offset="" val=""/>
+	</pin>
+	<pin index="168" name="GPIO_D23" ball="">
+		<mux id="0" func="GPIO_AP.IO33" offset="" val=""/>
+		<mux id="1" func="SDRAMC.DATA1" offset="" val=""/>
+		<mux id="2" func="CANFD12.TX" offset="" val=""/>
+		<mux id="4" func="CSI.DATA18" offset="" val=""/>
+		<mux id="5" func="XSPI2.PB_SS1" offset="" val=""/>
+		<mux id="7" func="DISP.DATA14" offset="" val=""/>
+	</pin>
+	<pin index="169" name="GPIO_D24" ball="">
+		<mux id="0" func="GPIO_AP.IO34" offset="" val=""/>
+		<mux id="1" func="SDRAMC.DATA2" offset="" val=""/>
+		<mux id="2" func="CANFD13.RX" offset="" val=""/>
+		<mux id="4" func="CSI.DATA19" offset="" val=""/>
+		<mux id="5" func="XSPI2.PA_SS2" offset="" val=""/>
+		<mux id="7" func="DISP.DATA13" offset="" val=""/>
+	</pin>
+	<pin index="170" name="GPIO_D25" ball="">
+		<mux id="0" func="GPIO_AP.IO35" offset="" val=""/>
+		<mux id="1" func="SDRAMC.DATA3" offset="" val=""/>
+		<mux id="2" func="CANFD13.TX" offset="" val=""/>
+		<mux id="4" func="CSI.DATA20" offset="" val=""/>
+		<mux id="5" func="XSPI2.PB_SS2" offset="" val=""/>
+		<mux id="7" func="DISP.DATA12" offset="" val=""/>
+	</pin>
+	<pin index="171" name="GPIO_D26" ball="">
+		<mux id="0" func="GPIO_AP.IO36" offset="" val=""/>
+		<mux id="1" func="SDRAMC.DQS0" offset="" val=""/>
+		<mux id="2" func="CANFD14.RX" offset="" val=""/>
+		<mux id="4" func="CSI.DATA21" offset="" val=""/>
+		<mux id="7" func="DISP.DATA11" offset="" val=""/>
+	</pin>
+	<pin index="172" name="GPIO_D27" ball="">
+		<mux id="0" func="GPIO_AP.IO37" offset="" val=""/>
+		<mux id="1" func="SDRAMC.DATA4" offset="" val=""/>
+		<mux id="2" func="CANFD14.TX" offset="" val=""/>
+		<mux id="4" func="CSI.DATA22" offset="" val=""/>
+		<mux id="7" func="DISP.DATA10" offset="" val=""/>
+	</pin>
+	<pin index="173" name="GPIO_D28" ball="">
+		<mux id="0" func="GPIO_AP.IO38" offset="" val=""/>
+		<mux id="1" func="SDRAMC.DATA5" offset="" val=""/>
+		<mux id="2" func="CANFD15.RX" offset="" val=""/>
+		<mux id="4" func="CSI.DATA23" offset="" val=""/>
+		<mux id="7" func="DISP.DATA9" offset="" val=""/>
+	</pin>
+	<pin index="174" name="GPIO_D29" ball="">
+		<mux id="0" func="GPIO_AP.IO39" offset="" val=""/>
+		<mux id="1" func="SDRAMC.DATA6" offset="" val=""/>
+		<mux id="2" func="CANFD15.TX" offset="" val=""/>
+		<mux id="7" func="DISP.DATA8" offset="" val=""/>
+	</pin>
+	<pin index="175" name="GPIO_D30" ball="">
+		<mux id="0" func="GPIO_AP.IO40" offset="" val=""/>
+		<mux id="1" func="SDRAMC.DATA7" offset="" val=""/>
+		<mux id="2" func="CANFD16.RX" offset="" val=""/>
+		<mux id="7" func="DISP.DATA7" offset="" val=""/>
+	</pin>
+	<pin index="176" name="GPIO_D31" ball="">
+		<mux id="0" func="GPIO_AP.IO41" offset="" val=""/>
+		<mux id="1" func="SDRAMC.DM0" offset="" val=""/>
+		<mux id="2" func="CANFD16.TX" offset="" val=""/>
+		<mux id="7" func="DISP.DATA6" offset="" val=""/>
+	</pin>
+	<pin index="177" name="GPIO_D32" ball="">
+		<mux id="0" func="GPIO_AP.IO42" offset="" val=""/>
+		<mux id="1" func="SDRAMC.DATA8" offset="" val=""/>
+		<mux id="2" func="CANFD17.RX" offset="" val=""/>
+		<mux id="7" func="DISP.DATA5" offset="" val=""/>
+	</pin>
+	<pin index="178" name="GPIO_D33" ball="">
+		<mux id="0" func="GPIO_AP.IO43" offset="" val=""/>
+		<mux id="1" func="SDRAMC.DATA9" offset="" val=""/>
+		<mux id="2" func="CANFD17.TX" offset="" val=""/>
+		<mux id="7" func="DISP.DATA4" offset="" val=""/>
+	</pin>
+	<pin index="179" name="GPIO_D34" ball="">
+		<mux id="0" func="GPIO_AP.IO44" offset="" val=""/>
+		<mux id="1" func="SDRAMC.DATA10" offset="" val=""/>
+		<mux id="2" func="CANFD18.RX" offset="" val=""/>
+		<mux id="7" func="DISP.DATA3" offset="" val=""/>
+	</pin>
+	<pin index="180" name="GPIO_D35" ball="">
+		<mux id="0" func="GPIO_AP.IO45" offset="" val=""/>
+		<mux id="1" func="SDRAMC.DATA11" offset="" val=""/>
+		<mux id="2" func="CANFD18.TX" offset="" val=""/>
+		<mux id="7" func="DISP.DATA2" offset="" val=""/>
+	</pin>
+	<pin index="181" name="GPIO_D36" ball="">
+		<mux id="0" func="GPIO_AP.IO46" offset="" val=""/>
+		<mux id="1" func="SDRAMC.DQS1" offset="" val=""/>
+		<mux id="2" func="CANFD19.RX" offset="" val=""/>
+		<mux id="7" func="DISP.DATA1" offset="" val=""/>
+	</pin>
+	<pin index="182" name="GPIO_D37" ball="">
+		<mux id="0" func="GPIO_AP.IO47" offset="" val=""/>
+		<mux id="1" func="SDRAMC.DATA12" offset="" val=""/>
+		<mux id="2" func="CANFD19.TX" offset="" val=""/>
+		<mux id="7" func="DISP.DATA0" offset="" val=""/>
+	</pin>
+	<pin index="183" name="GPIO_D38" ball="">
+		<mux id="0" func="GPIO_AP.IO48" offset="" val=""/>
+		<mux id="1" func="SDRAMC.DATA13" offset="" val=""/>
+		<mux id="2" func="CANFD20.RX" offset="" val=""/>
+		<mux id="7" func="DISP.CLK" offset="" val=""/>
+	</pin>
+	<pin index="184" name="GPIO_D39" ball="">
+		<mux id="0" func="GPIO_AP.IO49" offset="" val=""/>
+		<mux id="1" func="SDRAMC.DATA14" offset="" val=""/>
+		<mux id="2" func="CANFD20.TX" offset="" val=""/>
+		<mux id="7" func="DISP.HSYNC" offset="" val=""/>
+	</pin>
+	<pin index="185" name="GPIO_D40" ball="">
+		<mux id="0" func="GPIO_AP.IO50" offset="" val=""/>
+		<mux id="1" func="SDRAMC.DATA15" offset="" val=""/>
+		<mux id="2" func="CANFD21.RX" offset="" val=""/>
+		<mux id="4" func="USB.PWR" offset="" val=""/>
+		<mux id="7" func="DISP.VSYNC" offset="" val=""/>
+	</pin>
+	<pin index="186" name="GPIO_D41" ball="">
+		<mux id="0" func="GPIO_AP.IO51" offset="" val=""/>
+		<mux id="1" func="SDRAMC.DM1" offset="" val=""/>
+		<mux id="2" func="CANFD21.TX" offset="" val=""/>
+		<mux id="4" func="USB.OC" offset="" val=""/>
+		<mux id="7" func="DISP.ENABLE" offset="" val=""/>
+	</pin>
+	<pin index="187" name="GPIO_E0" ball="">
+		<mux id="0" func="GPIO_AP.IO52" offset="" val=""/>
+		<mux id="1" func="SDRAMC.ADDR13" offset="" val=""/>
+		<mux id="2" func="CKGEN_AP.CLK24M_I" offset="" val=""/>
+		<mux id="3" func="CSI.DATA18" offset="" val=""/>
+		<mux id="4" func="SACI1.TXSCK" offset="" val=""/>
+		<mux id="5" func="UART2.TXD" offset="" val=""/>
+		<mux id="6" func="SEHC2.EMMC_DAT3" offset="" val=""/>
+		<mux id="7" func="DISP.DATA22" offset="" val=""/>
+	</pin>
+	<pin index="188" name="GPIO_E1" ball="">
+		<mux id="0" func="GPIO_AP.IO53" offset="" val=""/>
+		<mux id="1" func="SDRAMC.DATA16" offset="" val=""/>
+		<mux id="2" func="SEHC1.CARD_DET_B" offset="" val=""/>
+		<mux id="3" func="CSI.DATA19" offset="" val=""/>
+		<mux id="4" func="SACI1.TXWS" offset="" val=""/>
+		<mux id="5" func="UART2.RXD" offset="" val=""/>
+		<mux id="6" func="SEHC2.EMMC_DAT2" offset="" val=""/>
+		<mux id="7" func="DISP.DATA21" offset="" val=""/>
+	</pin>
+	<pin index="189" name="GPIO_E2" ball="">
+		<mux id="0" func="GPIO_AP.IO54" offset="" val=""/>
+		<mux id="1" func="SDRAMC.DATA17" offset="" val=""/>
+		<mux id="2" func="SEHC1.CARD_WP_B" offset="" val=""/>
+		<mux id="3" func="CSI.DATA20" offset="" val=""/>
+		<mux id="4" func="SACI1.TXRXD0" offset="" val=""/>
+		<mux id="5" func="UART3.TXD" offset="" val=""/>
+		<mux id="6" func="SEHC2.EMMC_DAT1" offset="" val=""/>
+		<mux id="7" func="DISP.DATA20" offset="" val=""/>
+	</pin>
+	<pin index="190" name="GPIO_E3" ball="">
+		<mux id="0" func="GPIO_AP.IO55" offset="" val=""/>
+		<mux id="1" func="SDRAMC.DATA18" offset="" val=""/>
+		<mux id="2" func="SEHC1.IO_VOLT_SW" offset="" val=""/>
+		<mux id="3" func="CSI.DATA21" offset="" val=""/>
+		<mux id="4" func="SACI1.TXRXD1" offset="" val=""/>
+		<mux id="5" func="UART3.RXD" offset="" val=""/>
+		<mux id="6" func="SEHC2.EMMC_DAT0" offset="" val=""/>
+		<mux id="7" func="DISP.DATA19" offset="" val=""/>
+	</pin>
+	<pin index="191" name="GPIO_E4" ball="">
+		<mux id="0" func="GPIO_AP.IO56" offset="" val=""/>
+		<mux id="1" func="SDRAMC.DATA19" offset="" val=""/>
+		<mux id="2" func="USB.PWR" offset="" val=""/>
+		<mux id="3" func="CSI.DATA22" offset="" val=""/>
+		<mux id="4" func="SACI1.TXRXD2" offset="" val=""/>
+		<mux id="5" func="UART4.TXD" offset="" val=""/>
+		<mux id="6" func="SEHC2.EMMC_CLK" offset="" val=""/>
+		<mux id="7" func="DISP.DATA18" offset="" val=""/>
+	</pin>
+	<pin index="192" name="GPIO_E5" ball="">
+		<mux id="0" func="GPIO_AP.IO57" offset="" val=""/>
+		<mux id="1" func="SDRAMC.DQS2" offset="" val=""/>
+		<mux id="2" func="USB.OC" offset="" val=""/>
+		<mux id="3" func="CSI.DATA23" offset="" val=""/>
+		<mux id="4" func="SACI1.TXRXD3" offset="" val=""/>
+		<mux id="5" func="UART4.RXD" offset="" val=""/>
+		<mux id="6" func="SEHC2.EMMC_CMD" offset="" val=""/>
+		<mux id="7" func="DISP.DATA17" offset="" val=""/>
+	</pin>
+	<pin index="193" name="GPIO_E6" ball="">
+		<mux id="0" func="GPIO_AP.IO58" offset="" val=""/>
+		<mux id="1" func="SDRAMC.DATA20" offset="" val=""/>
+		<mux id="2" func="SEHC1.LED_CTRL" offset="" val=""/>
+		<mux id="4" func="SACI1.TXRXD4" offset="" val=""/>
+		<mux id="5" func="UART4.CTSN" offset="" val=""/>
+		<mux id="7" func="DISP.DATA16" offset="" val=""/>
+	</pin>
+	<pin index="194" name="GPIO_E7" ball="">
+		<mux id="0" func="GPIO_AP.IO59" offset="" val=""/>
+		<mux id="1" func="SDRAMC.DATA21" offset="" val=""/>
+		<mux id="2" func="CKGEN_AP.CLK24M_I" offset="" val=""/>
+		<mux id="4" func="SACI1.TXRXD5" offset="" val=""/>
+		<mux id="5" func="UART4.RTSN" offset="" val=""/>
+		<mux id="7" func="DISP.DATA15" offset="" val=""/>
+	</pin>
+	<pin index="195" name="GPIO_E8" ball="">
+		<mux id="0" func="GPIO_AP.IO60" offset="" val=""/>
+		<mux id="1" func="SDRAMC.DATA22" offset="" val=""/>
+		<mux id="2" func="SEIP.UART_RXD" offset="" val=""/>
+		<mux id="4" func="SACI1.TXRXD6" offset="" val=""/>
+		<mux id="5" func="UART5.TXD" offset="" val=""/>
+		<mux id="7" func="DISP.DATA14" offset="" val=""/>
+	</pin>
+	<pin index="196" name="GPIO_E9" ball="">
+		<mux id="0" func="GPIO_AP.IO61" offset="" val=""/>
+		<mux id="1" func="SDRAMC.DATA23" offset="" val=""/>
+		<mux id="2" func="SEIP.UART_TXD" offset="" val=""/>
+		<mux id="4" func="SACI1.TXRXD7" offset="" val=""/>
+		<mux id="5" func="UART5.RXD" offset="" val=""/>
+		<mux id="7" func="DISP.DATA13" offset="" val=""/>
+	</pin>
+	<pin index="197" name="GPIO_E10" ball="">
+		<mux id="0" func="GPIO_AP.IO62" offset="" val=""/>
+		<mux id="1" func="SDRAMC.DM2" offset="" val=""/>
+		<mux id="2" func="CSI.DATA0" offset="" val=""/>
+		<mux id="4" func="SACI1.RXSCK" offset="" val=""/>
+		<mux id="5" func="SACI1.PDM_CLK" offset="" val=""/>
+		<mux id="7" func="DISP.DATA12" offset="" val=""/>
+	</pin>
+	<pin index="198" name="GPIO_E11" ball="">
+		<mux id="0" func="GPIO_AP.IO63" offset="" val=""/>
+		<mux id="1" func="SDRAMC.DATA24" offset="" val=""/>
+		<mux id="2" func="CSI.DATA1" offset="" val=""/>
+		<mux id="4" func="SACI1.RXWS" offset="" val=""/>
+		<mux id="5" func="SACI1.PDM_DATA" offset="" val=""/>
+		<mux id="7" func="DISP.DATA11" offset="" val=""/>
+	</pin>
+	<pin index="199" name="GPIO_E12" ball="">
+		<mux id="0" func="GPIO_AP.IO64" offset="" val=""/>
+		<mux id="1" func="SDRAMC.DATA25" offset="" val=""/>
+		<mux id="2" func="CSI.DATA2" offset="" val=""/>
+		<mux id="4" func="SACI1.MCLK0" offset="" val=""/>
+		<mux id="5" func="USB.PWR" offset="" val=""/>
+		<mux id="7" func="DISP.DATA10" offset="" val=""/>
+	</pin>
+	<pin index="200" name="GPIO_E13" ball="">
+		<mux id="0" func="GPIO_AP.IO65" offset="" val=""/>
+		<mux id="1" func="SDRAMC.DATA26" offset="" val=""/>
+		<mux id="2" func="CSI.DATA3" offset="" val=""/>
+		<mux id="4" func="SACI2.TXSCK" offset="" val=""/>
+		<mux id="5" func="USB.OC" offset="" val=""/>
+		<mux id="7" func="DISP.DATA9" offset="" val=""/>
+	</pin>
+	<pin index="201" name="GPIO_E14" ball="">
+		<mux id="0" func="GPIO_AP.IO66" offset="" val=""/>
+		<mux id="1" func="SDRAMC.DATA27" offset="" val=""/>
+		<mux id="2" func="CSI.DATA4" offset="" val=""/>
+		<mux id="4" func="SACI2.TXWS" offset="" val=""/>
+		<mux id="5" func="UART6.TXD" offset="" val=""/>
+		<mux id="7" func="DISP.DATA8" offset="" val=""/>
+	</pin>
+	<pin index="202" name="GPIO_E15" ball="">
+		<mux id="0" func="GPIO_AP.IO67" offset="" val=""/>
+		<mux id="1" func="SDRAMC.DQS3" offset="" val=""/>
+		<mux id="2" func="CSI.DATA5" offset="" val=""/>
+		<mux id="4" func="SACI2.TXRXD0" offset="" val=""/>
+		<mux id="5" func="UART6.RXD" offset="" val=""/>
+		<mux id="7" func="DISP.DATA7" offset="" val=""/>
+	</pin>
+	<pin index="203" name="GPIO_E16" ball="">
+		<mux id="0" func="GPIO_AP.IO68" offset="" val=""/>
+		<mux id="1" func="SDRAMC.DATA28" offset="" val=""/>
+		<mux id="2" func="CSI.DATA6" offset="" val=""/>
+		<mux id="4" func="SACI2.TXRXD1" offset="" val=""/>
+		<mux id="5" func="UART7.TXD" offset="" val=""/>
+		<mux id="7" func="DISP.DATA6" offset="" val=""/>
+	</pin>
+	<pin index="204" name="GPIO_E17" ball="">
+		<mux id="0" func="GPIO_AP.IO69" offset="" val=""/>
+		<mux id="1" func="SDRAMC.DATA29" offset="" val=""/>
+		<mux id="2" func="CSI.DATA7" offset="" val=""/>
+		<mux id="4" func="SACI2.TXRXD2" offset="" val=""/>
+		<mux id="5" func="UART7.RXD" offset="" val=""/>
+		<mux id="7" func="DISP.DATA5" offset="" val=""/>
+	</pin>
+	<pin index="205" name="GPIO_E18" ball="">
+		<mux id="0" func="GPIO_AP.IO70" offset="" val=""/>
+		<mux id="1" func="SDRAMC.DATA30" offset="" val=""/>
+		<mux id="2" func="CSI.CLK" offset="" val=""/>
+		<mux id="4" func="SACI2.TXRXD3" offset="" val=""/>
+		<mux id="5" func="UART8.TXD" offset="" val=""/>
+		<mux id="7" func="DISP.DATA4" offset="" val=""/>
+	</pin>
+	<pin index="206" name="GPIO_E19" ball="">
+		<mux id="0" func="GPIO_AP.IO71" offset="" val=""/>
+		<mux id="1" func="SDRAMC.DATA31" offset="" val=""/>
+		<mux id="2" func="CSI.HSYNC" offset="" val=""/>
+		<mux id="4" func="SACI2.TXRXD4" offset="" val=""/>
+		<mux id="5" func="UART8.RXD" offset="" val=""/>
+		<mux id="7" func="DISP.DATA3" offset="" val=""/>
+	</pin>
+	<pin index="207" name="GPIO_E20" ball="">
+		<mux id="0" func="GPIO_AP.IO72" offset="" val=""/>
+		<mux id="1" func="SDRAMC.DM3" offset="" val=""/>
+		<mux id="2" func="CSI.VSYNC" offset="" val=""/>
+		<mux id="4" func="SACI2.TXRXD5" offset="" val=""/>
+		<mux id="5" func="SEHC1.CARD_DET_B" offset="" val=""/>
+		<mux id="7" func="DISP.DATA2" offset="" val=""/>
+	</pin>
+	<pin index="208" name="GPIO_E21" ball="">
+		<mux id="0" func="GPIO_AP.IO73" offset="" val=""/>
+		<mux id="1" func="SDRAMC.CKE1" offset="" val=""/>
+		<mux id="2" func="CSI.ENABLE" offset="" val=""/>
+		<mux id="4" func="SACI2.TXRXD6" offset="" val=""/>
+		<mux id="5" func="SEHC1.CARD_WP_B" offset="" val=""/>
+		<mux id="7" func="DISP.DATA1" offset="" val=""/>
+	</pin>
+	<pin index="209" name="GPIO_E22" ball="">
+		<mux id="0" func="GPIO_AP.IO74" offset="" val=""/>
+		<mux id="1" func="SDRAMC.CKE2" offset="" val=""/>
+		<mux id="2" func="CSI.MCLK" offset="" val=""/>
+		<mux id="4" func="SACI2.TXRXD7" offset="" val=""/>
+		<mux id="5" func="SEHC1.IO_VOLT_SW" offset="" val=""/>
+		<mux id="7" func="DISP.DATA0" offset="" val=""/>
+	</pin>
+	<pin index="210" name="GPIO_E23" ball="">
+		<mux id="0" func="GPIO_AP.IO75" offset="" val=""/>
+		<mux id="1" func="SDRAMC.CKE3" offset="" val=""/>
+		<mux id="2" func="DC.CRC_EXT_CLK" offset="" val=""/>
+		<mux id="4" func="SACI2.RXSCK" offset="" val=""/>
+		<mux id="5" func="SACI2.PDM_CLK" offset="" val=""/>
+		<mux id="7" func="DISP.CLK" offset="" val=""/>
+	</pin>
+	<pin index="211" name="GPIO_E24" ball="">
+		<mux id="0" func="GPIO_AP.IO76" offset="" val=""/>
+		<mux id="1" func="SDRAMC.CS1" offset="" val=""/>
+		<mux id="2" func="SEHC2.CARD_DET_B" offset="" val=""/>
+		<mux id="4" func="SACI2.RXWS" offset="" val=""/>
+		<mux id="5" func="SACI2.PDM_DATA" offset="" val=""/>
+		<mux id="7" func="DISP.HSYNC" offset="" val=""/>
+	</pin>
+	<pin index="212" name="GPIO_E25" ball="">
+		<mux id="0" func="GPIO_AP.IO77" offset="" val=""/>
+		<mux id="1" func="SDRAMC.CS2" offset="" val=""/>
+		<mux id="2" func="SEHC2.CARD_WP_B" offset="" val=""/>
+		<mux id="3" func="WDT8.RESET_N" offset="" val=""/>
+		<mux id="4" func="SACI1.MCLK1" offset="" val=""/>
+		<mux id="5" func="SEHC1.IO_VOLT_SW" offset="" val=""/>
+		<mux id="6" func="USB.PWR" offset="" val=""/>
+		<mux id="7" func="DISP.VSYNC" offset="" val=""/>
+	</pin>
+	<pin index="213" name="GPIO_E26" ball="">
+		<mux id="0" func="GPIO_AP.IO78" offset="" val=""/>
+		<mux id="1" func="SDRAMC.CS3" offset="" val=""/>
+		<mux id="2" func="SEHC2.IO_VOLT_SW" offset="" val=""/>
+		<mux id="3" func="WDT8.EXT_CLK" offset="" val=""/>
+		<mux id="6" func="USB.OC" offset="" val=""/>
+		<mux id="7" func="DISP.ENABLE" offset="" val=""/>
+	</pin>
+</pins>

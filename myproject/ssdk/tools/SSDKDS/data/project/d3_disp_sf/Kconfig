@@ -1,0 +1,11 @@
+comment "Taishan EVB SF Board Options"
+
+config MEM_BASE
+    hex "Memory Start Address"
+    default 0x404000
+
+config MEM_SIZE
+    hex "Memory Size"
+    default 0x1FC000
+
+rsource "../../Kconfig"

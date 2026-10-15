@@ -1,0 +1,4 @@
+config TAISHAN_GPIO
+    bool "Taishan GPIO Driver Support"
+    select GPIO
+    default n

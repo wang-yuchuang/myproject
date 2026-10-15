@@ -1,0 +1,240 @@
+comment "Driver Example Options"
+
+config USB_DEMO
+    bool "USB Example Application Support"
+    default n
+    help
+      USB example applications. Corresponding class drivers shall be enabled as well.
+
+if USB_DEMO
+rsource "usb/Kconfig"
+endif # USB_DEMO
+
+config UART_DEMO
+    bool "UART Example Application Support"
+    depends on CLI
+    default n
+
+if UART_DEMO
+rsource "uart/Kconfig"
+endif # UART_DEMO
+
+config SPI_DEMO
+    bool "SPI Example Application Support"
+    default n
+
+if SPI_DEMO
+rsource "spi/Kconfig"
+endif # SPI_DEMO
+
+config SENT_DEMO
+    bool "SENT Example Application Support"
+    depends on CLI
+    default n
+
+if SENT_DEMO
+rsource "sent/Kconfig"
+endif # SENT_DEMO
+
+config LIN_DEMO
+    bool "LIN Example Application Support"
+    depends on CLI
+    default n
+
+if LIN_DEMO
+rsource "lin/Kconfig"
+endif # LIN_DEMO
+
+config ADC_DEMO
+    bool "ADC Example Application Support"
+    default n
+
+if ADC_DEMO
+rsource "adc/Kconfig"
+endif # ADC_DEMO
+
+menuconfig MBOX_DEMO
+    bool "MBOX Example Application Support"
+    select MBOX
+    default n
+
+if MBOX_DEMO
+rsource "mbox/Kconfig"
+endif # MBOX_DEMO
+
+menuconfig RPMSG_DEMO
+    bool "RPMSG Example Application Support"
+    select RPMSG
+    select RPMSG_SERVICE
+    default n
+
+if RPMSG_DEMO
+rsource "rpmsg/Kconfig"
+endif # RPMSG_DEMO
+
+menuconfig DMA_DEMO
+    bool "DMA Example Application Support"
+    depends on DMA
+    default n
+    help
+      DMA example applications. Corresponding class drivers shall be enabled as well.
+
+if DMA_DEMO
+rsource "dma/Kconfig"
+endif # DMA_DEMO
+
+config CANFD_DEMO
+    bool "CANFD Example Application Support"
+    depends on CLI
+    default n
+
+if CANFD_DEMO
+rsource "canfd/Kconfig"
+endif #CANFD_DEMO
+
+config LED_DEMO
+    bool "LED Example Application Support"
+    depends on CLI
+    default n
+
+config ANALOG_IN_DEMO
+    bool "ANALOG_IN Example Application Support"
+    depends on CLI
+    default n
+
+config ANALOG_OUT_DEMO
+    bool "ANALOG_OUT Example Application Support"
+    depends on CLI
+    default n
+
+config FUSE_UTILITY
+    bool "eFuse tool"
+    depends on CLI
+    default n
+    help
+      eFuse utility. Fuse driver shall be enabled as well.
+
+config HSD_DEMO
+    bool "HSD Example Application Support"
+    depends on CLI
+    default n
+
+if HSD_DEMO
+rsource "hsd/Kconfig"
+endif #HSD_DEMO
+
+config ACMP_DEMO
+    bool "ACMP Example Application Support"
+    depends on SDRV_ACMP
+    default n
+
+config LSD_DEMO
+    bool "LSD Example Application Support"
+    depends on CLI
+    default n
+
+config SBC
+    bool "SBC TLE9461-3ES for E3 gateway examples"
+    depends on CLI
+    default n
+
+if LSD_DEMO
+rsource "lsd/Kconfig"
+endif #LSD_DEMO
+
+config PMU_DEMO
+    bool "PMU Example Application Support"
+    default n
+
+if PMU_DEMO
+rsource "pmu/Kconfig"
+endif #PMU_DEMO
+
+config WDOG_DEMO
+    bool "Watchdog Example Application Support"
+    depends on CLI
+    default n
+
+config TIMER_DEMO
+    bool "Timer Example Support"
+    default n
+
+if TIMER_DEMO
+rsource "timer/Kconfig"
+endif #TIMER_DEMO
+
+menuconfig DISK_DEMO
+    bool "DISK Example Support"
+    default n
+
+if DISK_DEMO
+rsource "disk/Kconfig"
+endif # DISK_DEMO
+
+menuconfig FEE_DEMO
+    bool "FEE Example Support"
+    depends on (CDNS_OSPI || TAISHAN_XSPI) && DISK_NOR_FLASH
+    default y
+
+if FEE_DEMO
+rsource "fee/Kconfig"
+endif # FEE_DEMO
+
+config PINCTRL_DEMO
+    bool "Pinctrl Example Support"
+    default n
+
+if PINCTRL_DEMO
+rsource "pinctrl/Kconfig"
+endif #PINCTRL_DEMO
+
+config CPUFREQ_DEMO
+    bool "Cpufreq Example Support"
+    depends on CPU_FREQ
+    default n
+
+if CPUFREQ_DEMO
+rsource "cpufreq/Kconfig"
+endif #CPUFREQ_DEMO
+
+config I2C_DEMO
+    bool "I2C Example Support"
+    default n
+
+if I2C_DEMO
+rsource "i2c/Kconfig"
+endif #I2C_DEMO
+
+config ETH_DEMO
+    bool "Eth Example Support"
+    depends on ETH
+    default n
+
+if ETH_DEMO
+rsource "eth/Kconfig"
+endif #ETH_DEMO
+
+config POWER_DEMO
+    bool "Power Example Support"
+    depends on PM
+    default n
+
+if POWER_DEMO
+rsource "power/Kconfig"
+endif #POWER_DEMO
+
+config PWM_DEMO
+    bool "PWM Example Support"
+    default n
+
+if PWM_DEMO
+rsource "pwm/Kconfig"
+endif #PWM_DEMO
+
+config RTC_DEMO
+    bool "RTC Example Support"
+    default n
+
+if RTC_DEMO
+rsource "rtc/Kconfig"
+endif #RTC_DEMO

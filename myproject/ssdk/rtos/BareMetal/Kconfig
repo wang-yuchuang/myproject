@@ -1,0 +1,9 @@
+comment "BareMetal Options"
+
+config OS_POLL
+    bool "OS polling"
+    default y
+
+config BAREMETAL_WORK_IN_IRQ
+    bool "Enable BareMetal work in irq mode"
+    default n

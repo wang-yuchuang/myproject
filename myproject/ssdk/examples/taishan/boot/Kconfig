@@ -1,0 +1,27 @@
+comment "Boot Example Options"
+
+menuconfig BOOT_CORE_EXAMPLE
+    bool "Taishan Core Boot Example Support"
+    default n
+
+if BOOT_CORE_EXAMPLE
+rsource "boot_core/Kconfig"
+endif # BOOT_CORE_EXAMPLE
+
+menuconfig GLOBAL_REBOOT_EXAMPLE
+    bool "Taishan Global Reboot Example Support"
+    default n
+
+if GLOBAL_REBOOT_EXAMPLE
+rsource "global_reboot/Kconfig"
+endif # GLOBAL_REBOOT_EXAMPLE
+
+menuconfig LOAD_IMAGE_EXAMPLE
+    bool "Taishan Image Load Example Support"
+    select PARTITION
+    select DISK
+    default n
+
+if LOAD_IMAGE_EXAMPLE
+rsource "load_image/Kconfig"
+endif # LOAD_IMAGE_EXAMPLE

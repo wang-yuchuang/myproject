@@ -1,0 +1,3 @@
+config TAMPER_MONITOR
+    bool "Taishan Tamper Monitor Driver Support"
+    default n

@@ -1,0 +1,267 @@
+comment "Driver Example Options"
+
+config BACKLIGHT_DEMO
+    bool "backlight Example Application Support"
+    depends on CLI
+    default n
+
+menuconfig SILEX_CRYPTO_TESTER
+    bool "Silex CRYPTO Tester Support"
+    default n
+
+if SILEX_CRYPTO_TESTER
+rsource "crypto/crypto_silex/Kconfig"
+endif # SILEX_CRYPTO_TESTER
+
+menuconfig DISP_TESTER
+    bool "Display Tester Support"
+    default n
+
+if DISP_TESTER
+rsource "disp/Kconfig"
+endif # DISP_TESTER
+
+config FUSE_DEMO
+    bool "fuse Example Application Support"
+    depends on CLI
+    default n
+
+config GPIO_DEMO
+    bool "GPIO Example Application Support"
+    depends on CLI
+    default n
+
+if GPIO_DEMO
+rsource "gpio/Kconfig"
+endif #GPIO_DEMO
+
+config I2CTOOLS
+    bool "I2C Test Tools"
+    depends on CLI
+    default n
+
+# input demo/test menuconfig
+menuconfig INPUT_DEMO
+    bool "input example demo & tester support"
+    select INPUT_SERVICE
+    default n
+
+if INPUT_DEMO
+    rsource "input/Kconfig"
+endif # INPUT_DEMO
+
+menuconfig MBOX_DEMO
+    bool "MBOX Example Application Support"
+    select MBOX
+    default n
+
+if MBOX_DEMO
+rsource "mbox/Kconfig"
+endif # MBOX_DEMO
+
+# pmu driver menuconfig
+menuconfig PMU_DEMO
+    bool "PMU Example demo support"
+    select PMU
+    default n
+
+if PMU_DEMO
+rsource "pmu/Kconfig"
+endif # PMU_DEMO
+
+# pvt driver menuconfig
+menuconfig PVT_DEMO
+    bool "PVT Example demo support"
+    select PVT
+    default n
+
+if PVT_DEMO
+rsource "pmu/Kconfig"
+endif # PVT_DEMO
+
+menuconfig RPMSG_DEMO
+    bool "RPMSG Example Application Support"
+    select RPMSG
+    select RPMSG_SERVICE
+    default n
+
+if RPMSG_DEMO
+rsource "rpmsg/Kconfig"
+endif # RPMSG_DEMO
+
+menuconfig RTC_DEMO
+    bool "RTC Example Application Support"
+    select RTC
+    default n
+
+if RTC_DEMO
+rsource "rtc/Kconfig"
+endif
+
+# serdes demo/test menuconfig
+menuconfig SERDES_DEMO
+    bool "serdes example demo & tester support"
+    depends on SERDES
+    default n
+
+if SERDES_DEMO
+    rsource "serdes/Kconfig"
+endif # SERDES_DEMO
+
+config SPI_DEMO
+    bool "SPI Example Application Support"
+    depends on CLI
+    default n
+
+# touch demo/test menuconfig
+menuconfig TOUCH_DEMO
+    bool "touch example demo & tester support"
+    depends on TOUCH_KUNLUN_PLATFORM
+    default n
+
+if TOUCH_DEMO
+    rsource "touch/Kconfig"
+endif # TOUCH_DEMO
+
+# vpu demo/test menuconfig
+menuconfig VPU_DEMO
+    bool "vpu example demo & tester support"
+    select VPU
+    select RES_LOADER
+    default n
+
+if VPU_DEMO
+    rsource "vpu/Kconfig"
+endif # VPU_DEMO
+
+menuconfig IRQ_TESTER
+    bool "TIMER IRQ Tester Support"
+    select INTERRUPT_NESTING
+    default n
+
+if IRQ_TESTER
+rsource "irq/Kconfig"
+endif # IRQ_TESTER
+menuconfig I2C_TESTER
+    bool "I2C Tester Support"
+    default n
+
+if I2C_TESTER
+rsource "i2c/Kconfig"
+endif # I2C_TESTER
+
+menuconfig DMA_TESTER
+    bool "DMA Tester Support"
+    default n
+
+if DMA_TESTER
+rsource "dma/Kconfig"
+endif # DMA_TESTER
+
+menuconfig CAN_TESTER
+    bool "CAN Tester Support"
+    default n
+
+if CAN_TESTER
+rsource "can/Kconfig"
+endif # CAN_TESTER
+
+menuconfig PIN_TESTER
+    bool "PIN Tester Support"
+    default n
+
+if PIN_TESTER
+rsource "pin/Kconfig"
+endif # PIN_TESTER
+
+menuconfig WDOG_TESTER
+    bool "WDOG Tester Support"
+    default n
+
+if WDOG_TESTER
+rsource "watchdog/Kconfig"
+endif # WDOG_TESTER
+
+menuconfig NORFLASH_TESTER
+    bool "Norflash Tester Support"
+    default n
+
+if NORFLASH_TESTER
+rsource "norflash/Kconfig"
+endif # NORFLASH_TESTER
+
+menuconfig PCIE_TESTER
+    bool "PCIE Tester Support"
+    default n
+
+if PCIE_TESTER
+rsource "pcie/Kconfig"
+endif # PCIE_TESTER
+
+menuconfig MMC_TESTER
+    bool "MMC Tester Support"
+    default n
+
+if MMC_TESTER
+rsource "mmc/Kconfig"
+endif # MMC_TESTER
+
+menuconfig DISK_DEMO
+    bool "DISK Example Support"
+    default n
+
+if DISK_DEMO
+rsource "disk/Kconfig"
+endif # DISK_DEMO
+
+menuconfig FEE_DEMO
+    bool "FEE Example Support"
+    depends on (CDNS_OSPI || TAISHAN_XSPI) && DISK_NOR_FLASH
+    default y
+
+if FEE_DEMO
+rsource "fee/Kconfig"
+endif # FEE_DEMO
+
+menuconfig VPU_TEST
+    bool "vpu test"
+    default n
+
+if VPU_TEST
+    rsource "vpu_test/Kconfig"
+endif # VPU_TEST
+
+menuconfig ETH_TEST
+    bool "eth test"
+    default n
+
+if ETH_TEST
+    rsource "eth/Kconfig"
+endif # ETH_TEST
+
+menuconfig SPINLOCK_TEST
+    bool "spinlock interface test"
+    default n
+
+if SPINLOCK_TEST
+    rsource "spinlock/Kconfig"
+endif # SPINLOCK_TES
+
+if ARCH_WITH_SMP
+menuconfig IPI_TEST
+    bool "ipi irq test"
+    default n
+
+if IPI_TEST
+    rsource "ipi/Kconfig"
+endif # IPI_TEST
+endif # ARCH_WITH_SMP
+
+menuconfig DW_UART_TEST
+    bool "DesignWare Uart test"
+    default n
+
+if DW_UART_TEST
+rsource "dw_uart/Kconfig"
+endif # DW_UART_TEST
+

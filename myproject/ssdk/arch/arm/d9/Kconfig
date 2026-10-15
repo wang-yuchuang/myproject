@@ -1,0 +1,15 @@
+comment "D9 Chip Options"
+
+choice
+    prompt "Select target core"
+    default ARCH_CHIP_D9_SAF
+    help
+        Select the target core.
+
+config ARCH_CHIP_D9_SAF
+    bool "D9 Saftey Core"
+
+config ARCH_CHIP_D9_SEC
+    bool "D9 Secure Core"
+
+endchoice

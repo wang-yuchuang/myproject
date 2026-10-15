@@ -1,0 +1,11 @@
+config VIRTIO_FRONTEND
+    bool "VirtIO Frontend Device Support"
+    default n
+
+config VIRTIO_BACKEND
+    bool "VirtIO Backend Device Support"
+    default n
+
+config VIRTIO_MMC_FRONTEND
+    bool "VirtIO MMC Frontend Device Support"
+    default n

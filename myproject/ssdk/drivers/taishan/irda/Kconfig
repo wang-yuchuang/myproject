@@ -1,0 +1,6 @@
+config SDRV_IRDA
+    bool "Taishan IRDA Driver Support"
+    select UART
+    select SDRV_UART
+    select IRDA
+    default n

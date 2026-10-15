@@ -1,0 +1,7 @@
+menuconfig DISPSS
+    bool "Taishan Dispss Support"
+    default n
+
+if DISPSS
+rsource "lcm/Kconfig"
+endif #DISPSS

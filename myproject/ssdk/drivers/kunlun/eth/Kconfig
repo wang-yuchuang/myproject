@@ -1,0 +1,4 @@
+config DWC_ETH
+    bool "Kunlun dwc eth Driver Support"
+    select ETH
+    default n

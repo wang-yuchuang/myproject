@@ -1,0 +1,4 @@
+config SDRV_WDOG_TAISHAN
+    bool "Taishan WDOG Driver Support"
+    select WDOG
+    default n

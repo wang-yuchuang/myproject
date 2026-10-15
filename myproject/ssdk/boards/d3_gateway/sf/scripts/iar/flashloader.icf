@@ -1,0 +1,17 @@
+define memory mem with size = 4G;
+define region RAM_region =
+    mem:[from MEMBASE to MEMBASE + MEMSIZE - 1];
+define region TCM_region =
+    mem:[from TCMBASE to TCMBASE + TCMSIZE - 1];
+
+define block CSTACK with alignment = 8, size = 0x4000 { };
+define block HEAP with alignment = 4, size = 0x2000 { };
+define block FLASH_BUF with size = READ_BACK_BUFFER_SIZE, alignment = 4 { };
+
+initialize by copy { readwrite };
+do not initialize { section .noinit };
+
+place at start of TCM_region { block RamTop with fixed order {readonly, section LOWEND}};
+place at end of TCM_region { block RamBottom with fixed order {section HIGHSTART, readwrite,
+                             block CSTACK, block HEAP}};
+place at end of RAM_region { block FLASH_BUF };

@@ -1,0 +1,12 @@
+menuconfig SDRV_KUNLUN_VPU
+    bool "kunlun VPU Driver"
+    select VPU
+    default n
+
+if SDRV_KUNLUN_VPU
+    comment "kunlun vpu driver config option"
+
+    menuconfig VMEM_PAGE_SIZE
+        hex "vmemory page size"
+        default 0x100000
+endif

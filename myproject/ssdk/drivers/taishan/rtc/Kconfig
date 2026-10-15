@@ -1,0 +1,4 @@
+config SEC_RTC
+    bool "Taishan RTC Driver Support"
+    select RTC 
+    default n

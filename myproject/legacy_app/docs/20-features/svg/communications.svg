@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 624" role="img" aria-labelledby="ttl desc" style="max-width:1160px;width:100%;height:auto;background:#fff">
+  <title id="ttl">通信功能：统一 HAL 与 9 个协议模块</title>
+  <desc id="desc">comm-ports 通信功能分层图。上层业务（samplers 采集、reporters 上报、服务器业务）经 COMMPORT 结构体函数指针调用中间的 HAL 通信抽象层；HAL 层提供 6 个统一函数：HAL_CommOpen、HAL_CommAccept、HAL_CommRead、HAL_CommWrite、HAL_CommControl、HAL_CommClose，原型集中定义于 src/include/comm_ports/comm_port.h:284-291，各模块用 #define Xxx_Comm* HAL_Comm* 别名宏复用。底部为 9 个协议模块编译产物（.so 动态库）：libcomm_serial.so（串口 termios）、libcomm_can.so（CAN SocketCAN）、libcomm_tcpip.so（TCP/IP socket）、libcomm_httpftp.so（HTTP/FTP curl）、libcomm_ipc.so（IPC nanomsg）、libcomm_ws.so（WebSocket libwebsockets）、libcomm_ws_ex.so（WebSocket noPoll，非 libwebsockets）、libcomm_udp.so（UDP socket）、libcomm_rpmsg.so（RPMSG iccmsg AP↔R 跨核）。右侧注记：comm_loader.c 以 dlopen + dlsym 加载 6 个符号（SYM_HAL_*，任一缺失即失败并终止启动）；所有驱动结构体首字段必须是 nLastErrorCode，供 CommGetLastError 宏双重解引用。9 个产物名逐一核对自各模块 Makefile 的 EXEC 变量，对应提交 86f803b5。</desc>
+  <defs>
+    <marker id="arw" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L9,4 L0,8 Z" fill="#5F6368"/>
+    </marker>
+    <marker id="arw-broken" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L9,4 L0,8 Z" fill="#C5221F"/>
+    </marker>
+  </defs>
+
+  <!-- 标题与说明 -->
+  <text x="580" y="44" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="22" font-weight="700" fill="#202124">通信功能：统一 HAL 与 9 个协议模块</text>
+  <text x="580" y="70" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="13" fill="#5F6368">9 个协议模块各自编译为 .so 动态库，运行时由 comm_loader 按需加载；上层经 COMMPORT 函数指针调用，与具体传输方式解耦</text>
+
+  <!-- 上层业务 -->
+  <rect x="40" y="96" width="300" height="64" rx="8" fill="#F3E8FD" stroke="#8430CE" stroke-width="1.5"/>
+  <text x="190" y="122" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">samplers</text>
+  <text x="190" y="144" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">数据采集 · 采样器层</text>
+  <rect x="430" y="96" width="300" height="64" rx="8" fill="#F3E8FD" stroke="#8430CE" stroke-width="1.5"/>
+  <text x="580" y="122" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">reporters</text>
+  <text x="580" y="144" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">数据上报 · 上报器层</text>
+  <rect x="820" y="96" width="300" height="64" rx="8" fill="#F3E8FD" stroke="#8430CE" stroke-width="1.5"/>
+  <text x="970" y="122" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">服务器业务</text>
+  <text x="970" y="144" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">nccu_app 业务（IPC、RPMSG 场景）</text>
+  <text x="385" y="180" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">经 COMMPORT 函数指针调用 · comm_port.h:313-327</text>
+
+  <!-- 上层 → HAL 箭头 -->
+  <line x1="190" y1="160" x2="190" y2="194" stroke="#5F6368" stroke-width="1.6" marker-end="url(#arw)"/>
+  <line x1="580" y1="160" x2="580" y2="194" stroke="#5F6368" stroke-width="1.6" marker-end="url(#arw)"/>
+  <line x1="970" y1="160" x2="970" y2="194" stroke="#5F6368" stroke-width="1.6" marker-end="url(#arw)"/>
+
+  <!-- HAL 抽象层 -->
+  <rect x="40" y="200" width="1080" height="126" rx="8" fill="#FEF7E0" stroke="#F9AB00" stroke-width="2"/>
+  <text x="64" y="226" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">HAL 通信抽象层（6 个函数）</text>
+  <text x="1096" y="226" text-anchor="end" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">各模块用 #define Xxx_Comm* HAL_Comm* 别名复用</text>
+  <rect x="52" y="242" width="166" height="46" rx="8" fill="#FFFFFF" stroke="#F9AB00" stroke-width="1.5"/>
+  <text x="135" y="270" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">HAL_CommOpen</text>
+  <rect x="230" y="242" width="166" height="46" rx="8" fill="#FFFFFF" stroke="#F9AB00" stroke-width="1.5"/>
+  <text x="313" y="270" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">HAL_CommAccept</text>
+  <rect x="408" y="242" width="166" height="46" rx="8" fill="#FFFFFF" stroke="#F9AB00" stroke-width="1.5"/>
+  <text x="491" y="270" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">HAL_CommRead</text>
+  <rect x="586" y="242" width="166" height="46" rx="8" fill="#FFFFFF" stroke="#F9AB00" stroke-width="1.5"/>
+  <text x="669" y="270" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">HAL_CommWrite</text>
+  <rect x="764" y="242" width="166" height="46" rx="8" fill="#FFFFFF" stroke="#F9AB00" stroke-width="1.5"/>
+  <text x="847" y="270" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">HAL_CommControl</text>
+  <rect x="942" y="242" width="166" height="46" rx="8" fill="#FFFFFF" stroke="#F9AB00" stroke-width="1.5"/>
+  <text x="1025" y="270" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">HAL_CommClose</text>
+  <text x="580" y="316" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">原型集中于 comm_port.h，符号名由 SYM_HAL_* 宏（comm_port.h:297-302）统一定义</text>
+  <text x="580" y="344" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">src/include/comm_ports/comm_port.h:284-291</text>
+
+  <!-- 模块 → HAL 箭头 -->
+  <line x1="311" y1="386" x2="311" y2="330" stroke="#5F6368" stroke-width="1.6" marker-end="url(#arw)"/>
+  <text x="325" y="362" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="11" fill="#5F6368">实现并导出 6 个 HAL 符号</text>
+
+  <!-- 9 个 .so 模块（3×3 胶囊） -->
+  <rect x="40" y="386" width="170" height="40" rx="18" fill="#E6F4EA" stroke="#137333" stroke-width="1.5"/>
+  <text x="125" y="403" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">libcomm_serial.so</text>
+  <text x="125" y="419" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#5F6368">串口 · termios</text>
+  <rect x="226" y="386" width="170" height="40" rx="18" fill="#E6F4EA" stroke="#137333" stroke-width="1.5"/>
+  <text x="311" y="403" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">libcomm_can.so</text>
+  <text x="311" y="419" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#5F6368">CAN · SocketCAN</text>
+  <rect x="412" y="386" width="170" height="40" rx="18" fill="#E6F4EA" stroke="#137333" stroke-width="1.5"/>
+  <text x="497" y="403" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">libcomm_tcpip.so</text>
+  <text x="497" y="419" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#5F6368">TCP/IP · socket</text>
+  <rect x="40" y="442" width="170" height="40" rx="18" fill="#E6F4EA" stroke="#137333" stroke-width="1.5"/>
+  <text x="125" y="459" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">libcomm_httpftp.so</text>
+  <text x="125" y="475" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#5F6368">HTTP/FTP · curl</text>
+  <rect x="226" y="442" width="170" height="40" rx="18" fill="#E6F4EA" stroke="#137333" stroke-width="1.5"/>
+  <text x="311" y="459" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">libcomm_ipc.so</text>
+  <text x="311" y="475" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#5F6368">IPC · nanomsg</text>
+  <rect x="412" y="442" width="170" height="40" rx="18" fill="#E6F4EA" stroke="#137333" stroke-width="1.5"/>
+  <text x="497" y="459" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">libcomm_ws.so</text>
+  <text x="497" y="475" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#5F6368">WebSocket · libwebsockets</text>
+  <rect x="40" y="498" width="190" height="40" rx="18" fill="#E6F4EA" stroke="#137333" stroke-width="1.5"/>
+  <text x="135" y="515" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">libcomm_ws_ex.so</text>
+  <text x="135" y="531" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#5F6368">noPoll · 非 libwebsockets</text>
+  <rect x="246" y="498" width="170" height="40" rx="18" fill="#E6F4EA" stroke="#137333" stroke-width="1.5"/>
+  <text x="331" y="515" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">libcomm_udp.so</text>
+  <text x="331" y="531" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#5F6368">UDP · socket</text>
+  <rect x="432" y="498" width="190" height="40" rx="18" fill="#E6F4EA" stroke="#137333" stroke-width="1.5"/>
+  <text x="527" y="515" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">libcomm_rpmsg.so</text>
+  <text x="527" y="531" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#5F6368">RPMSG · iccmsg · AP↔R</text>
+
+  <!-- 右侧注记：加载机制与错误码约定 -->
+  <rect x="660" y="386" width="460" height="166" rx="8" fill="#F1F3F4" stroke="#5F6368" stroke-width="1.5" stroke-dasharray="6 3"/>
+  <text x="684" y="410" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="13" font-weight="600" fill="#202124">动态加载与错误码约定</text>
+  <text x="684" y="434" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">comm_loader.c：dlopen 打开 .so，dlsym 解析 6 个符号</text>
+  <text x="684" y="456" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">（SYM_HAL_*，任一缺失即失败并终止启动）</text>
+  <text x="684" y="478" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">易错点：comm_websocket_ex 基于 noPoll，非 libwebsockets</text>
+  <text x="684" y="500" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">所有驱动结构体首字段必须是 nLastErrorCode，</text>
+  <text x="684" y="522" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">供 CommGetLastError 宏双重解引用读取错误码</text>
+  <text x="684" y="542" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">comm_loader.c:8-39 · comm_port.h:144 · spec R10/R12</text>
+
+  <!-- 图例 -->
+  <rect x="40" y="580" width="14" height="14" rx="7" fill="#E6F4EA" stroke="#137333" stroke-width="1.2"/>
+  <text x="62" y="592" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#202124">协议模块（.so 动态库）</text>
+  <rect x="230" y="580" width="14" height="14" rx="4" fill="#FEF7E0" stroke="#F9AB00" stroke-width="1.2"/>
+  <text x="252" y="592" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#202124">HAL 抽象层</text>
+  <rect x="360" y="580" width="14" height="14" rx="4" fill="#F3E8FD" stroke="#8430CE" stroke-width="1.2"/>
+  <text x="382" y="592" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#202124">上层业务模块</text>
+  <rect x="500" y="580" width="14" height="14" rx="4" fill="#F1F3F4" stroke="#5F6368" stroke-width="1.2" stroke-dasharray="4 2"/>
+  <text x="522" y="592" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#202124">加载器 / 注记</text>
+
+  <!-- 来源注记 -->
+  <text x="1120" y="592" text-anchor="end" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">来源：comm-ports spec.md R1–R12 · 快照 ## comm-ports · src/Makefile:26-34 · 86f803b5</text>
+</svg>

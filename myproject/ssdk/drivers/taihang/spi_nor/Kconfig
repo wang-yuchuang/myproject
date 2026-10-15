@@ -1,0 +1,12 @@
+menuconfig TAIHANG_XSPI
+    bool "TAIHANG XSPI Driver Support"
+    select XSPI
+    default n
+
+if TAIHANG_XSPI
+
+config XSPI_Z1_TEST
+    bool "XSPI Z1 TEST"
+    default n
+
+endif # TAIHANG_XSPI

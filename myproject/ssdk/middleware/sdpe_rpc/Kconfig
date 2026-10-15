@@ -1,0 +1,47 @@
+comment "SDPE RPC Options"
+
+choice
+    prompt "RPC Role"
+    default SDPE_RPC_CLIENT
+
+config SDPE_RPC_SERVER
+    bool "SDPE RPC Server"
+
+config SDPE_RPC_CLIENT
+    bool "SDPE RPC Client"
+
+endchoice
+
+config SDPE_RPC_MEM_BASE
+    hex "SDPE RPC Share Buffer Base"
+    default 0x001f8000
+
+config SDPE_RPC_MEM_OFFSET
+    hex "SDPE RPC Share Buffer Offset"
+    default 0x1000
+
+config SDPE_RPC_MEM_SIZE
+    hex "SDPE RPC Share Buffer Size"
+    default 0x8000
+
+config SDPE_RPC_MBUF
+    bool "Support SDPE RPC mbuf"
+    default n
+
+config SDPE_RPC_MBOX_TRANSPORT
+    bool "Support mbox transport"
+    select MBOX
+    default n
+
+if SDPE_RPC_MBOX_TRANSPORT
+
+config SDPE_RPC_MBOX_RX_BUF
+    int "SDPE RPC rx mbox buffer"
+    default 512
+
+endif
+
+config SDPE_RPC_RPMSG_TRANSPORT
+    bool "Support rpmsg transport"
+    select RPMSG
+    default n

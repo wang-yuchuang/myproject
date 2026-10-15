@@ -1,0 +1,4 @@
+config XLI_TTC
+    bool "Xilinx TTC Driver"
+    select TIMER
+    default n

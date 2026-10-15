@@ -1,0 +1,28 @@
+config APPLICATION_SYS_MONITOR
+	bool "System Monitor (sysmgr endpoint + WDT + AP heartbeat + task supervision)"
+	depends on ICCMSG
+	default n
+	help
+	  R-core system management monitor service. Provides iccmsg-based
+	  AP<->RP heartbeat, hardware watchdog feed, iccmsg channel status
+	  tracking, and supervised-task restart capabilities.
+
+# boot media 编译期区分 (2026-09-05 D1): XIP 工程编 sys_monitor_ota (NOR GPT
+# OTA/STIG/mark_good), emmc_only (ref) 不编 —— R 核由 FDA 载 OCRAM 无 NOR GPT,
+# 升级由 A 核 RAUC 直写 eMMC 分区, R 核无 OTA/GPT 职责 (消除 XIP 污染 + 减体积)。
+# defconfig 分别设 CONFIG_SYSMON_BOOT_MEDIA_{NOR_XIP,EMMC}=y; 两选项互斥。
+config SYSMON_BOOT_MEDIA_NOR_XIP
+	bool "sys_monitor boot media: NOR XIP (enable NOR GPT OTA module)"
+	depends on APPLICATION_SYS_MONITOR && !SYSMON_BOOT_MEDIA_EMMC
+	default n
+	help
+	  R-core firmware executes in place from OSPI2 NOR. sys_monitor_ota
+	  (staging/STIG NOR write/GPT switch/mark_good) is compiled in.
+
+config SYSMON_BOOT_MEDIA_EMMC
+	bool "sys_monitor boot media: emmc_only (disable NOR GPT OTA module)"
+	depends on APPLICATION_SYS_MONITOR
+	default n
+	help
+	  R-core firmware loaded by FDA into OCRAM from eMMC. No NOR GPT/OTA;
+	  upgrades driven by A-core RAUC writing eMMC partitions directly.

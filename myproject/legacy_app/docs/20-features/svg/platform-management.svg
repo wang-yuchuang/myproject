@@ -1,0 +1,153 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 780" role="img" aria-labelledby="ttl desc" style="max-width:1160px;width:100%;height:auto;background:#fff">
+  <title id="ttl">平台管理功能：配置 · 版本 · 升级 · 维护</title>
+  <desc id="desc">平台管理功能四域总览。配置管理：出厂默认为 SQLite 配置库 /app/config/System.cfg（非 INI），run_app 幂等复制到可写的 /opt/appdata/config/，cp -rn 不覆盖已有文件使运行时改动跨升级保留；log4crc 同样复制并兜底到 /etc。版本管理：git describe 生成版本号（dev-8位hex-YYYYMMDD），注入 version_patch.h（被 config_mangmt.c:5 引用）、D9APPMD1 元数据 app_version 字段、RAUC manifest version= 与产物文件名，设备端用 cat /var/lib/rauc/slot-status 查 bundle.version。升级管理：路径一为 OTA，rauc install 写备用槽 app.0/app.1，安装前 S92app_mount stop 卸载 /app，compatible 校验 bmu02_a00；路径二为本地 USB/SD，检测 /dev/sd* 与 /dev/mmcblk[1-9]*（排除内置 eMMC mmcblk0）后执行 app_update -qws -nokeyboard -fwupdt；/var/.ext_mark 存在则跳过检测。维护与运行支撑：syshand 守护进程承担 BSP 扩展安装、系统命令代理与心跳监控（180s 丢失仅记录不重启），log_cat 包装 log_view 查日志，运行时可写目录为 /opt/appdata 与 /data 顶层四个 SQLite DB。底部注记：本域横跨 app-lifecycle 与 system-hand 两个 spec。</desc>
+
+  <defs>
+    <marker id="arw" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0L10,5L0,10Z" fill="#5F6368"/>
+    </marker>
+  </defs>
+
+  <!-- ===== header ===== -->
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="48" y="42" font-size="22" font-weight="700" fill="#202124">平台管理功能：配置 · 版本 · 升级 · 维护</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="48" y="66" font-size="13" fill="#5F6368">四个功能域 × 代码事实对照 · 权威源：app-lifecycle 与 system-hand spec（dev 分支）</text>
+
+  <!-- ===== column headers ===== -->
+  <rect x="40" y="96" width="256" height="36" rx="8" fill="#E6F4EA" stroke="#137333" stroke-width="1.5"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="168" y="119" font-size="14" font-weight="600" fill="#202124" text-anchor="middle">配置管理</text>
+
+  <rect x="320" y="96" width="256" height="36" rx="8" fill="#F3E8FD" stroke="#8430CE" stroke-width="1.5"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="448" y="119" font-size="14" font-weight="600" fill="#202124" text-anchor="middle">版本管理</text>
+
+  <rect x="600" y="96" width="256" height="36" rx="8" fill="#E8F0FE" stroke="#1A73E8" stroke-width="1.5"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="728" y="119" font-size="14" font-weight="600" fill="#202124" text-anchor="middle">升级管理</text>
+
+  <rect x="880" y="96" width="256" height="36" rx="8" fill="#F1F3F4" stroke="#5F6368" stroke-width="1.5"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="1008" y="119" font-size="14" font-weight="600" fill="#202124" text-anchor="middle">维护与运行支撑</text>
+
+  <!-- ===== column 1 : 配置管理 ===== -->
+  <rect x="40" y="156" width="256" height="96" rx="8" fill="#E6F4EA" stroke="#137333" stroke-width="1.5"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="52" y="178" font-size="14" font-weight="600" fill="#202124">出厂默认 System.cfg</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="52" y="198" font-size="12" fill="#5F6368">SQLite 配置库，非 INI 文件</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="52" y="215" font-size="12" fill="#5F6368">/app/config/（只读 app 分区）</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="52" y="237" font-size="10.5" fill="#80868B">.code-facts-snapshot.md:286 · dpr.h:22</text>
+
+  <path d="M168,252 V271" fill="none" stroke="#5F6368" stroke-width="1.6" marker-end="url(#arw)"/>
+
+  <rect x="40" y="276" width="256" height="96" rx="8" fill="#E6F4EA" stroke="#137333" stroke-width="1.5"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="52" y="298" font-size="14" font-weight="600" fill="#202124">首次复制（幂等）</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="52" y="318" font-size="12" fill="#5F6368">cp -rn /app/config/*</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="52" y="335" font-size="12" fill="#5F6368">→ /opt/appdata/config/</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="52" y="357" font-size="10.5" fill="#80868B">run_app:50-54</text>
+
+  <rect x="40" y="396" width="256" height="96" rx="8" fill="#E6F4EA" stroke="#137333" stroke-width="1.5"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="52" y="418" font-size="14" font-weight="600" fill="#202124">log4crc 日志配置</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="52" y="438" font-size="12" fill="#5F6368">extensions/log4crc → config/</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="52" y="455" font-size="12" fill="#5F6368">缺失时兜底到 /etc/log4crc</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="52" y="477" font-size="10.5" fill="#80868B">run_app:105-107</text>
+
+  <rect x="40" y="516" width="256" height="96" rx="8" fill="#E6F4EA" stroke="#137333" stroke-width="1.5"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="52" y="538" font-size="14" font-weight="600" fill="#202124">覆写优先级</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="52" y="558" font-size="12" fill="#5F6368">cp -rn 不覆盖已有文件</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="52" y="575" font-size="12" fill="#5F6368">运行时改动跨升级保留</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="52" y="597" font-size="10.5" fill="#80868B">run_app:54 · snapshot:100</text>
+
+  <!-- ===== column 2 : 版本管理 ===== -->
+  <rect x="320" y="156" width="256" height="96" rx="8" fill="#F3E8FD" stroke="#8430CE" stroke-width="1.5"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="332" y="178" font-size="14" font-weight="600" fill="#202124">版本生成</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="332" y="198" font-size="12" fill="#5F6368">git describe --tags --always</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="332" y="215" font-size="12" fill="#5F6368">dev-&lt;8位hex&gt;-&lt;YYYYMMDD&gt;</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="332" y="237" font-size="10.5" fill="#80868B">build.sh:32-48（auto_version）</text>
+
+  <path d="M448,252 V271" fill="none" stroke="#5F6368" stroke-width="1.6" marker-end="url(#arw)"/>
+
+  <rect x="320" y="276" width="256" height="150" rx="8" fill="#F3E8FD" stroke="#8430CE" stroke-width="1.5"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="332" y="298" font-size="14" font-weight="600" fill="#202124">注入点 ×4</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="332" y="318" font-size="12" fill="#5F6368">src/version_patch.h（自动生成）</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="332" y="335" font-size="12" fill="#5F6368">→ config_mangmt.c:5 引用</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="332" y="352" font-size="12" fill="#5F6368">D9APPMD1 app_version 字段</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="332" y="369" font-size="12" fill="#5F6368">RAUC manifest version=</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="332" y="386" font-size="12" fill="#5F6368">产物名 app-&lt;version&gt;.raucb</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="332" y="408" font-size="10.5" fill="#80868B">spec app-lifecycle R2 · R5 · R6</text>
+
+  <rect x="320" y="450" width="256" height="96" rx="8" fill="#F3E8FD" stroke="#8430CE" stroke-width="1.5"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="332" y="472" font-size="14" font-weight="600" fill="#202124">设备端查询</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="332" y="492" font-size="12" fill="#5F6368">cat /var/lib/rauc/slot-status</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="332" y="509" font-size="12" fill="#5F6368">  | grep bundle.version</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="332" y="531" font-size="10.5" fill="#80868B">spec app-lifecycle R2 Test</text>
+
+  <rect x="320" y="570" width="256" height="76" rx="8" fill="#F3E8FD" stroke="#8430CE" stroke-width="1.5"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="332" y="592" font-size="14" font-weight="600" fill="#202124">A/B 槽各自持版本</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="332" y="612" font-size="12" fill="#5F6368">安装只写非活动槽，可回退</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="332" y="632" font-size="10.5" fill="#80868B">docs/10-architecture/ota-and-ab.md</text>
+
+  <!-- ===== column 3 : 升级管理 ===== -->
+  <rect x="600" y="156" width="256" height="150" rx="8" fill="#E8F0FE" stroke="#1A73E8" stroke-width="1.5"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="612" y="178" font-size="14" font-weight="600" fill="#202124">路径一 · OTA（RAUC A/B）</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="612" y="198" font-size="12" fill="#5F6368">rauc install → 写备用槽</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="612" y="215" font-size="12" fill="#5F6368">app.0 / app.1（A/B 轮换）</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="612" y="232" font-size="12" fill="#5F6368">安装前 S92app_mount stop 卸载 /app</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="612" y="249" font-size="12" fill="#5F6368">compatible 校验 bmu02_a00</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="612" y="271" font-size="10.5" fill="#80868B">spec app-lifecycle R6 · build.sh:22-29</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="612" y="289" font-size="10.5" fill="#80868B">详见 ota-and-ab.md（10-architecture）</text>
+
+  <rect x="600" y="330" width="256" height="146" rx="8" fill="#E8F0FE" stroke="#1A73E8" stroke-width="1.5"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="612" y="352" font-size="14" font-weight="600" fill="#202124">路径二 · 本地 USB/SD</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="612" y="372" font-size="12" fill="#5F6368">USB: /dev/sd*</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="612" y="389" font-size="12" fill="#5F6368">SD: /dev/mmcblk[1-9]*</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="612" y="406" font-size="12" fill="#5F6368">（排除内置 eMMC mmcblk0）</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="612" y="423" font-size="12" fill="#5F6368">检出 → app_update</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="612" y="440" font-size="12" fill="#5F6368">-qws -nokeyboard -fwupdt</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="612" y="462" font-size="10.5" fill="#80868B">startrun:52-53 · 99 · 105</text>
+
+  <rect x="600" y="500" width="256" height="96" rx="8" fill="#E8F0FE" stroke="#1A73E8" stroke-width="1.5"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="612" y="522" font-size="14" font-weight="600" fill="#202124">跳过条件</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="612" y="542" font-size="12" fill="#5F6368">/var/.ext_mark 存在 → 跳过检测</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="612" y="559" font-size="12" fill="#5F6368">（BSP 扩展升级后首次启动）</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="612" y="581" font-size="10.5" fill="#80868B">startrun:42-48</text>
+
+  <!-- ===== column 4 : 维护与运行支撑 ===== -->
+  <rect x="880" y="156" width="256" height="112" rx="10" fill="#FEF7E0" stroke="#F9AB00" stroke-width="1.5"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="892" y="178" font-size="14" font-weight="600" fill="#202124">syshand 守护进程（OS HAL）</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="892" y="198" font-size="12" fill="#5F6368">BSP 扩展安装 install.sh</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="892" y="215" font-size="12" fill="#5F6368">系统命令代理 system()/popen()</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="892" y="232" font-size="12" fill="#5F6368">心跳丢失 180s → 仅记录不重启</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="892" y="254" font-size="10.5" fill="#80868B">smain.c:20-63 · handler.c:114-154</text>
+
+  <rect x="880" y="292" width="256" height="76" rx="8" fill="#F1F3F4" stroke="#5F6368" stroke-width="1.5"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="892" y="314" font-size="14" font-weight="600" fill="#202124">日志查看 log_view</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="892" y="334" font-size="12" fill="#5F6368">log_cat → ./bin/log_view</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="892" y="356" font-size="10.5" fill="#80868B">src/shells/log_cat:18</text>
+
+  <rect x="880" y="392" width="256" height="132" rx="8" fill="#F1F3F4" stroke="#5F6368" stroke-width="1.5"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="892" y="414" font-size="14" font-weight="600" fill="#202124">运行时可写目录</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="892" y="434" font-size="12" fill="#5F6368">/opt/appdata/{log,config,data}</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="892" y="451" font-size="12" fill="#5F6368">/data/ 顶层 · 4 个 SQLite DB</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="892" y="468" font-size="12" fill="#5F6368">nccu.data · AppLog.data</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="892" y="485" font-size="12" fill="#5F6368">BmsRunData · CloudData.data</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="892" y="507" font-size="10.5" fill="#80868B">.code-facts-snapshot.md:100-111</text>
+
+  <rect x="880" y="548" width="256" height="94" rx="8" fill="#F8F9FA" stroke="#5F6368" stroke-width="1.2" stroke-dasharray="6 3"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="892" y="570" font-size="14" font-weight="600" fill="#202124">挂载形态</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="892" y="590" font-size="12" fill="#5F6368">/opt/appdata 为 bind mount</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="892" y="607" font-size="12" fill="#5F6368">源 = /data/rootfs/opt/appdata</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="892" y="629" font-size="10.5" fill="#80868B">S00data_mount · snapshot:102</text>
+
+  <!-- ===== bottom note ===== -->
+  <path d="M40,672 H1120" stroke="#DADCE0" stroke-width="1" fill="none"/>
+  <rect x="330" y="688" width="500" height="36" rx="8" fill="#F8F9FA" stroke="#5F6368" stroke-width="1.2" stroke-dasharray="6 3"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="580" y="711" font-size="13" fill="#5F6368" text-anchor="middle">这一域横跨 app-lifecycle 与 system-hand 两个 spec</text>
+
+  <!-- ===== legend (left) + source (right) ===== -->
+  <rect x="40" y="738" width="14" height="14" rx="3" fill="#E6F4EA" stroke="#137333" stroke-width="1.2"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="60" y="750" font-size="12" fill="#202124">配置</text>
+  <rect x="120" y="738" width="14" height="14" rx="3" fill="#F3E8FD" stroke="#8430CE" stroke-width="1.2"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="140" y="750" font-size="12" fill="#202124">版本</text>
+  <rect x="200" y="738" width="14" height="14" rx="3" fill="#E8F0FE" stroke="#1A73E8" stroke-width="1.2"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="220" y="750" font-size="12" fill="#202124">升级</text>
+  <rect x="280" y="738" width="14" height="14" rx="3" fill="#F1F3F4" stroke="#5F6368" stroke-width="1.2"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="300" y="750" font-size="12" fill="#202124">维护</text>
+  <rect x="360" y="738" width="14" height="14" rx="3" fill="#FEF7E0" stroke="#F9AB00" stroke-width="1.2"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="380" y="750" font-size="12" fill="#202124">syshand</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="1120" y="750" font-size="10.5" fill="#80868B" text-anchor="end">来源：app-lifecycle R1-R7 · system-hand R1-R5 · .code-facts-snapshot.md · dev@86f803b5</text>
+</svg>

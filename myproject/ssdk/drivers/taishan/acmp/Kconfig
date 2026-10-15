@@ -1,0 +1,9 @@
+config SDRV_ACMP
+    bool "Taishan ACMP Driver Support"
+    depends on TAISHAN_ADC
+    default n
+    ---help---
+    The Analog Comparator (ACMP) controller is a built-in analog compare
+    module with multiple analog input channels and external analog mux
+    control. The ACMP supports continuous, windowed, sampled and filtered
+    compare modes.

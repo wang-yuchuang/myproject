@@ -1,0 +1,8 @@
+comment "ADC Example Application Options"
+
+config TAISHAN_ACMP_DEMO
+    bool "Taishan ACMP Example Application"
+    select SCR
+    select ACMP
+    select SDRV_ACMP
+    default n

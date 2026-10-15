@@ -1,0 +1,6 @@
+config BOARD_X9SP
+    bool
+    depends on ARCH_CHIP_X9
+    default y
+
+rsource "$(CORE)/Kconfig"

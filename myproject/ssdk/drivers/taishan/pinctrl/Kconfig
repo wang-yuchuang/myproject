@@ -1,0 +1,6 @@
+config TAISHAN_PINCTRL
+    bool "Taishan PIN CTRL driver Support"
+    select PINCTRL
+    select GPIO
+    select TAISHAN_GPIO
+    default n

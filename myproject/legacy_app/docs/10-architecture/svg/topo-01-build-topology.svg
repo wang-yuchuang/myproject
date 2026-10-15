@@ -1,0 +1,280 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 1130" role="img" aria-labelledby="ttl desc" style="max-width:1160px;width:100%;height:auto;background:#fff">
+  <title id="ttl">构建拓扑：源码目录 → 产物 → 安装目录</title>
+  <desc id="desc">legacy_app 构建拓扑。第一列源码目录（src/Makefile 的 DIRS），第二列构建产物（各模块 Makefile 的 EXEC），第三列安装目录（NCCU_TARGET_DIR）。核实清单：publib/ 产出 libpub.so 装入 lib/；moduals/data_processor/dpr/ 产出 libdpr.so 装入 lib/（被 nccu_app 以 -ldpr 链接）；main/ 产出可执行 nccu_app 装入 bin/（链接 -ldpr -lpub libcurl.so.4）；utilities/system_hand/ 产出 syshand 装入 bin/；utilities/log_viewer/ 产出 log_view 装入 bin/；comm_ports/ 九个模块产出 libcomm_can.so、libcomm_serial.so、libcomm_tcpip.so、libcomm_httpftp.so、libcomm_ipc.so、libcomm_ws.so、libcomm_ws_ex.so、libcomm_udp.so、libcomm_rpmsg.so 装入 comm_port/；moduals/samplers/ 十个模块产出 sampler_whm.so、sampler_485_2.so、sampler_system.so、sampler_ccu.so、sampler_stbatt.so、sampler_inter_udp.so、sampler_uart_server.so、sampler_aircon.so、sampler_auxdev.so、sampler_thermal.so 装入 sampler/；moduals/reporters/ 产出 reporter_es_iocpp.so、reporter_mqtt.so、reporter_es_ify.so、reporter_modbustcp.so、reporter_mbe_new.so、reporter_ess_maintenance.so、reporter_slaveEms.so、reporter_webapi.so 装入 reporter/，web_reporter 另产出 start_web_server、server_main.conf、web_main.api、www/normal 装入 web/；shells/ 的启动脚本（app_entry、app_exit、startrun、start_ui、stoprun、log_cat、modem_reset、modem_dial）拷至运行根目录；extensions/ 的 BSP 扩展安装件装入 extensions/。右侧红框列出目录存在但未列入 DIRS 的模块。底部注释：平台宏 -DIMMU3/-DIMMU2 由 MU_TYPE 决定（include.mk:36-40）；DIRS 定义见 src/Makefile:14-82。</desc>
+  <defs>
+    <marker id="arw" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#5F6368"/>
+    </marker>
+    <g id="fldr">
+      <path d="M0 1 h8 l3 3 h9 a2 2 0 0 1 2 2 v9 a2 2 0 0 1 -2 2 h-18 a2 2 0 0 1 -2 -2 v-12 a2 2 0 0 1 2 -2 z" fill="#5F6368"/>
+    </g>
+  </defs>
+
+  <!-- ===== 标题区 ===== -->
+  <text x="24" y="36" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="22" font-weight="700" fill="#202124">构建拓扑：源码目录 → 产物 → 安装目录</text>
+  <text x="24" y="60" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="13" fill="#5F6368">依据 src/Makefile（DIRS）与各模块 Makefile 的 EXEC / install 规则核实绘制</text>
+
+  <!-- ===== 列头 ===== -->
+  <text x="24" y="92" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">源码目录（src/Makefile DIRS）</text>
+  <text x="348" y="92" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">产物（EXEC）</text>
+  <text x="812" y="92" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">安装目录</text>
+  <text x="812" y="108" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">NCCU_TARGET_DIR</text>
+
+  <!-- ===== 行 1：publib → libpub.so → lib/ ===== -->
+  <rect x="24" y="118" width="280" height="36" rx="8" fill="#E6F4EA" stroke="#137333" stroke-width="1.5"/>
+  <text x="40" y="141" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">publib/</text>
+  <rect x="348" y="124" width="96" height="26" rx="18" fill="#FEF7E0" stroke="#F9AB00" stroke-width="1.5"/>
+  <text x="396" y="141" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#202124">libpub.so</text>
+  <rect x="812" y="118" width="148" height="80" rx="6" fill="#F1F3F4" stroke="#5F6368" stroke-width="1.5"/>
+  <use href="#fldr" x="875" y="128"/>
+  <text x="886" y="174" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">lib/</text>
+
+  <!-- ===== 行 2：dpr → libdpr.so → lib/ ===== -->
+  <rect x="24" y="162" width="280" height="36" rx="8" fill="#E6F4EA" stroke="#137333" stroke-width="1.5"/>
+  <text x="40" y="185" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">moduals/data_processor/dpr/</text>
+  <rect x="348" y="168" width="96" height="26" rx="18" fill="#FEF7E0" stroke="#F9AB00" stroke-width="1.5"/>
+  <text x="396" y="185" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#202124">libdpr.so</text>
+  <text x="454" y="185" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">被 nccu_app 以 -ldpr 链接</text>
+
+  <!-- ===== 行 3：main → nccu_app → bin/ ===== -->
+  <rect x="24" y="214" width="280" height="44" rx="8" fill="#E6F4EA" stroke="#137333" stroke-width="1.5"/>
+  <text x="40" y="234" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">main/</text>
+  <text x="40" y="251" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#5F6368">主进程入口</text>
+  <rect x="348" y="214" width="236" height="44" rx="10" fill="#F3E8FD" stroke="#8430CE" stroke-width="2"/>
+  <text x="366" y="233" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">nccu_app</text>
+  <text x="366" y="250" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">链接 -ldpr -lpub libcurl.so.4</text>
+
+  <!-- ===== 行 4：system_hand → syshand → bin/ ===== -->
+  <rect x="24" y="266" width="280" height="36" rx="8" fill="#E6F4EA" stroke="#137333" stroke-width="1.5"/>
+  <text x="40" y="289" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">utilities/system_hand/</text>
+  <rect x="348" y="266" width="120" height="36" rx="10" fill="#F3E8FD" stroke="#8430CE" stroke-width="2"/>
+  <text x="408" y="289" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">syshand</text>
+
+  <!-- ===== 行 5：log_viewer → log_view → bin/ ===== -->
+  <rect x="24" y="310" width="280" height="36" rx="8" fill="#E6F4EA" stroke="#137333" stroke-width="1.5"/>
+  <text x="40" y="333" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">utilities/log_viewer/</text>
+  <rect x="348" y="310" width="120" height="36" rx="10" fill="#F3E8FD" stroke="#8430CE" stroke-width="2"/>
+  <text x="408" y="333" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">log_view</text>
+  <rect x="812" y="214" width="148" height="132" rx="6" fill="#F1F3F4" stroke="#5F6368" stroke-width="1.5"/>
+  <use href="#fldr" x="875" y="226"/>
+  <text x="886" y="270" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">bin/</text>
+  <text x="886" y="292" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">可执行 ×3</text>
+
+  <!-- ===== 组：comm_ports ×9 ===== -->
+  <rect x="24" y="362" width="280" height="142" rx="8" fill="#F8F9FA" stroke="#DADCE0" stroke-width="1.2"/>
+  <rect x="27" y="372" width="3" height="122" rx="1.5" fill="#137333"/>
+  <text x="40" y="384" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" font-weight="600" fill="#137333">comm_ports/ ×9</text>
+  <text x="40" y="404" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#5F6368">comm_can</text>
+  <text x="40" y="422" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#5F6368">comm_std_serial</text>
+  <text x="40" y="440" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#5F6368">comm_net_tcpip</text>
+  <text x="40" y="458" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#5F6368">comm_http_ftp</text>
+  <text x="40" y="476" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#5F6368">comm_ipc</text>
+  <text x="168" y="404" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#5F6368">comm_websocket</text>
+  <text x="168" y="422" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#5F6368">comm_websocket_ex</text>
+  <text x="168" y="440" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#5F6368">comm_net_udp</text>
+  <text x="168" y="458" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#5F6368">comm_rpmsg</text>
+  <rect x="348" y="362" width="428" height="142" rx="8" fill="#F8F9FA" stroke="#DADCE0" stroke-width="1.2"/>
+  <rect x="351" y="372" width="3" height="122" rx="1.5" fill="#F9AB00"/>
+  <text x="364" y="384" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" font-weight="600" fill="#202124">libcomm_*.so ×9</text>
+  <rect x="364" y="396" width="124" height="22" rx="18" fill="#FEF7E0" stroke="#F9AB00" stroke-width="1.5"/>
+  <text x="426" y="411" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#202124">libcomm_can.so</text>
+  <rect x="496" y="396" width="124" height="22" rx="18" fill="#FEF7E0" stroke="#F9AB00" stroke-width="1.5"/>
+  <text x="558" y="411" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#202124">libcomm_serial.so</text>
+  <rect x="628" y="396" width="124" height="22" rx="18" fill="#FEF7E0" stroke="#F9AB00" stroke-width="1.5"/>
+  <text x="690" y="411" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#202124">libcomm_tcpip.so</text>
+  <rect x="364" y="424" width="124" height="22" rx="18" fill="#FEF7E0" stroke="#F9AB00" stroke-width="1.5"/>
+  <text x="426" y="439" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#202124">libcomm_httpftp.so</text>
+  <rect x="496" y="424" width="124" height="22" rx="18" fill="#FEF7E0" stroke="#F9AB00" stroke-width="1.5"/>
+  <text x="558" y="439" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#202124">libcomm_ipc.so</text>
+  <rect x="628" y="424" width="124" height="22" rx="18" fill="#FEF7E0" stroke="#F9AB00" stroke-width="1.5"/>
+  <text x="690" y="439" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#202124">libcomm_ws.so</text>
+  <rect x="364" y="452" width="124" height="22" rx="18" fill="#FEF7E0" stroke="#F9AB00" stroke-width="1.5"/>
+  <text x="426" y="467" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#202124">libcomm_ws_ex.so</text>
+  <rect x="496" y="452" width="124" height="22" rx="18" fill="#FEF7E0" stroke="#F9AB00" stroke-width="1.5"/>
+  <text x="558" y="467" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#202124">libcomm_udp.so</text>
+  <rect x="628" y="452" width="124" height="22" rx="18" fill="#FEF7E0" stroke="#F9AB00" stroke-width="1.5"/>
+  <text x="690" y="467" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#202124">libcomm_rpmsg.so</text>
+  <rect x="812" y="396" width="148" height="76" rx="6" fill="#F1F3F4" stroke="#5F6368" stroke-width="1.5"/>
+  <use href="#fldr" x="875" y="408"/>
+  <text x="886" y="452" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">comm_port/</text>
+
+  <!-- ===== 组：samplers ×10 ===== -->
+  <rect x="24" y="520" width="280" height="164" rx="8" fill="#F8F9FA" stroke="#DADCE0" stroke-width="1.2"/>
+  <rect x="27" y="530" width="3" height="144" rx="1.5" fill="#137333"/>
+  <text x="40" y="542" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" font-weight="600" fill="#137333">moduals/samplers/ ×10</text>
+  <text x="40" y="562" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#5F6368">kwhmeter_sampler</text>
+  <text x="40" y="580" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#5F6368">dev_485_2_sampler</text>
+  <text x="40" y="598" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#5F6368">system_sampler</text>
+  <text x="40" y="616" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#5F6368">ccu_sampler</text>
+  <text x="40" y="634" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#5F6368">st_batt_sampler</text>
+  <text x="168" y="562" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#5F6368">udp_inter_sampler</text>
+  <text x="168" y="580" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#5F6368">uart_server_sampler</text>
+  <text x="168" y="598" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#5F6368">aircon_sampler</text>
+  <text x="168" y="616" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#5F6368">auxdev_sampler</text>
+  <text x="168" y="634" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#5F6368">thermal_control</text>
+  <rect x="348" y="520" width="428" height="164" rx="8" fill="#F8F9FA" stroke="#DADCE0" stroke-width="1.2"/>
+  <rect x="351" y="530" width="3" height="144" rx="1.5" fill="#F9AB00"/>
+  <text x="364" y="542" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" font-weight="600" fill="#202124">sampler_*.so ×10</text>
+  <rect x="364" y="552" width="178" height="22" rx="18" fill="#FEF7E0" stroke="#F9AB00" stroke-width="1.5"/>
+  <text x="453" y="567" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#202124">sampler_whm.so</text>
+  <rect x="552" y="552" width="178" height="22" rx="18" fill="#FEF7E0" stroke="#F9AB00" stroke-width="1.5"/>
+  <text x="641" y="567" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#202124">sampler_inter_udp.so</text>
+  <rect x="364" y="578" width="178" height="22" rx="18" fill="#FEF7E0" stroke="#F9AB00" stroke-width="1.5"/>
+  <text x="453" y="593" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#202124">sampler_485_2.so</text>
+  <rect x="552" y="578" width="178" height="22" rx="18" fill="#FEF7E0" stroke="#F9AB00" stroke-width="1.5"/>
+  <text x="641" y="593" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#202124">sampler_uart_server.so</text>
+  <rect x="364" y="604" width="178" height="22" rx="18" fill="#FEF7E0" stroke="#F9AB00" stroke-width="1.5"/>
+  <text x="453" y="619" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#202124">sampler_system.so</text>
+  <rect x="552" y="604" width="178" height="22" rx="18" fill="#FEF7E0" stroke="#F9AB00" stroke-width="1.5"/>
+  <text x="641" y="619" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#202124">sampler_aircon.so</text>
+  <rect x="364" y="630" width="178" height="22" rx="18" fill="#FEF7E0" stroke="#F9AB00" stroke-width="1.5"/>
+  <text x="453" y="645" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#202124">sampler_ccu.so</text>
+  <rect x="552" y="630" width="178" height="22" rx="18" fill="#FEF7E0" stroke="#F9AB00" stroke-width="1.5"/>
+  <text x="641" y="645" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#202124">sampler_auxdev.so</text>
+  <rect x="364" y="656" width="178" height="22" rx="18" fill="#FEF7E0" stroke="#F9AB00" stroke-width="1.5"/>
+  <text x="453" y="671" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#202124">sampler_stbatt.so</text>
+  <rect x="552" y="656" width="178" height="22" rx="18" fill="#FEF7E0" stroke="#F9AB00" stroke-width="1.5"/>
+  <text x="641" y="671" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#202124">sampler_thermal.so</text>
+  <rect x="812" y="564" width="148" height="76" rx="6" fill="#F1F3F4" stroke="#5F6368" stroke-width="1.5"/>
+  <use href="#fldr" x="875" y="576"/>
+  <text x="886" y="620" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">sampler/</text>
+
+  <!-- ===== 组：reporters ×8 + web ===== -->
+  <rect x="24" y="700" width="280" height="230" rx="8" fill="#F8F9FA" stroke="#DADCE0" stroke-width="1.2"/>
+  <rect x="27" y="710" width="3" height="210" rx="1.5" fill="#137333"/>
+  <text x="40" y="722" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" font-weight="600" fill="#137333">moduals/reporters/ ×8</text>
+  <text x="40" y="744" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#5F6368">es_iocpp_reporter</text>
+  <text x="40" y="763" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#5F6368">es_mqtt_reporter</text>
+  <text x="40" y="782" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#5F6368">ify_cloud_reporter</text>
+  <text x="40" y="801" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#5F6368">modbus_reporter</text>
+  <text x="40" y="820" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#5F6368">web_reporter/（4 子模块）</text>
+  <text x="54" y="839" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">└ web_server·back_api·front·web_api</text>
+  <text x="40" y="858" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#5F6368">mbe-mqtt（maintain_backend/）</text>
+  <text x="40" y="877" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#5F6368">ess_maintenance_reporter</text>
+  <text x="40" y="896" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#5F6368">slaveEMS_reporter</text>
+  <rect x="348" y="700" width="428" height="230" rx="8" fill="#F8F9FA" stroke="#DADCE0" stroke-width="1.2"/>
+  <rect x="351" y="710" width="3" height="210" rx="1.5" fill="#F9AB00"/>
+  <text x="364" y="722" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" font-weight="600" fill="#202124">reporter_*.so ×8 ＋ web 组件</text>
+  <rect x="364" y="734" width="190" height="22" rx="18" fill="#FEF7E0" stroke="#F9AB00" stroke-width="1.5"/>
+  <text x="459" y="749" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#202124">reporter_es_iocpp.so</text>
+  <rect x="564" y="734" width="190" height="22" rx="18" fill="#FEF7E0" stroke="#F9AB00" stroke-width="1.5"/>
+  <text x="659" y="749" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#202124">reporter_mqtt.so</text>
+  <rect x="364" y="760" width="190" height="22" rx="18" fill="#FEF7E0" stroke="#F9AB00" stroke-width="1.5"/>
+  <text x="459" y="775" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#202124">reporter_es_ify.so</text>
+  <rect x="564" y="760" width="190" height="22" rx="18" fill="#FEF7E0" stroke="#F9AB00" stroke-width="1.5"/>
+  <text x="659" y="775" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#202124">reporter_modbustcp.so</text>
+  <rect x="364" y="786" width="190" height="22" rx="18" fill="#FEF7E0" stroke="#F9AB00" stroke-width="1.5"/>
+  <text x="459" y="801" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#202124">reporter_mbe_new.so</text>
+  <rect x="564" y="786" width="190" height="22" rx="18" fill="#FEF7E0" stroke="#F9AB00" stroke-width="1.5"/>
+  <text x="659" y="801" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#202124">reporter_ess_maintenance.so</text>
+  <rect x="364" y="812" width="190" height="22" rx="18" fill="#FEF7E0" stroke="#F9AB00" stroke-width="1.5"/>
+  <text x="459" y="827" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#202124">reporter_slaveEms.so</text>
+  <rect x="564" y="812" width="190" height="22" rx="18" fill="#FEF7E0" stroke="#F9AB00" stroke-width="1.5"/>
+  <text x="659" y="827" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#202124">reporter_webapi.so</text>
+  <rect x="364" y="848" width="390" height="70" rx="6" fill="#FEF7E0" stroke="#F9AB00" stroke-width="1.2"/>
+  <text x="376" y="868" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" font-weight="600" fill="#202124">web_reporter 其他产物</text>
+  <text x="376" y="886" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#5F6368">web_server → start_web_server · server_main.conf</text>
+  <text x="376" y="901" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#5F6368">back_api → web_main.api ；front → www/normal</text>
+  <rect x="812" y="740" width="148" height="76" rx="6" fill="#F1F3F4" stroke="#5F6368" stroke-width="1.5"/>
+  <use href="#fldr" x="875" y="752"/>
+  <text x="886" y="796" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">reporter/</text>
+  <rect x="812" y="848" width="148" height="70" rx="6" fill="#F1F3F4" stroke="#5F6368" stroke-width="1.5"/>
+  <use href="#fldr" x="875" y="858"/>
+  <text x="886" y="894" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">web/</text>
+  <text x="886" y="910" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">server · www</text>
+
+  <!-- ===== 行：shells → 启动脚本 → 运行根目录 ===== -->
+  <rect x="24" y="938" width="280" height="46" rx="8" fill="#E6F4EA" stroke="#137333" stroke-width="1.5"/>
+  <text x="40" y="958" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">shells/（启动脚本）</text>
+  <text x="40" y="975" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#5F6368">经 SHELL_FILES 拷贝</text>
+  <rect x="348" y="938" width="428" height="46" rx="3" fill="#E6F4EA" stroke="#137333" stroke-width="1.5"/>
+  <rect x="348" y="942" width="4" height="38" fill="#137333"/>
+  <text x="364" y="958" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#202124">app_entry · app_exit · startrun · start_ui · stoprun · log_cat</text>
+  <text x="364" y="974" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#5F6368">modem_reset · modem_dial → 运行根目录</text>
+  <rect x="812" y="938" width="148" height="46" rx="6" fill="#F1F3F4" stroke="#5F6368" stroke-width="1.5"/>
+  <use href="#fldr" x="826" y="952"/>
+  <text x="856" y="966" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">运行根目录 ./</text>
+
+  <!-- ===== 行：extensions → BSP 扩展 → extensions/ ===== -->
+  <rect x="24" y="992" width="280" height="40" rx="8" fill="#E6F4EA" stroke="#137333" stroke-width="1.5"/>
+  <text x="40" y="1016" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">extensions/（BSP 扩展）</text>
+  <rect x="348" y="992" width="428" height="40" rx="3" fill="#E6F4EA" stroke="#137333" stroke-width="1.5"/>
+  <rect x="348" y="996" width="4" height="32" fill="#137333"/>
+  <text x="364" y="1016" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#202124">install.sh · *.ko · eGTouchD · libnopoll.so · paho-mqtt3 · zImage* …</text>
+  <rect x="812" y="992" width="148" height="40" rx="6" fill="#F1F3F4" stroke="#5F6368" stroke-width="1.5"/>
+  <use href="#fldr" x="826" y="1004"/>
+  <text x="856" y="1017" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">extensions/</text>
+
+  <!-- ===== 右侧红框：未编译 ===== -->
+  <rect x="984" y="362" width="152" height="428" rx="8" fill="#FCE8E6" stroke="#C5221F" stroke-width="1.5"/>
+  <text x="996" y="386" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="13" font-weight="700" fill="#C5221F">未编译</text>
+  <text x="996" y="404" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#5F6368">目录存在，未列入 DIRS</text>
+  <text x="992" y="428" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" font-weight="600" fill="#C5221F">samplers ×7</text>
+  <text x="992" y="446" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#5F6368">cardreader_sampler</text>
+  <text x="992" y="463" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#5F6368">inter_slave_sampler</text>
+  <text x="992" y="480" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#5F6368">imeu_sampler</text>
+  <text x="992" y="497" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#5F6368">aems_sampler</text>
+  <text x="992" y="514" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#5F6368">charger_sampler</text>
+  <text x="992" y="531" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#5F6368">pv_inverter_sampler</text>
+  <text x="992" y="548" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#5F6368">can2_metershare_sampler</text>
+  <text x="992" y="576" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" font-weight="600" fill="#C5221F">reporters ×7</text>
+  <text x="992" y="594" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#5F6368">iec_101_reporter</text>
+  <text x="992" y="611" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#5F6368">iec_104_reporter</text>
+  <text x="992" y="628" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#5F6368">iec_61850_reporter</text>
+  <text x="992" y="645" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#5F6368">occp_reporter</text>
+  <text x="992" y="662" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#5F6368">inter_master_reporter</text>
+  <text x="992" y="679" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#5F6368">modbustcp2_reporter</text>
+  <text x="992" y="696" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#5F6368">mbe-websocket-old</text>
+  <text x="992" y="724" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" font-weight="600" fill="#C5221F">utilities ×3</text>
+  <text x="992" y="742" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#5F6368">usb_update</text>
+  <text x="992" y="759" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#5F6368">start_fbshow</text>
+  <text x="992" y="776" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#5F6368">simulator_python3_qt5</text>
+
+  <!-- ===== 箭头：源码 → 产物（实线） ===== -->
+  <g stroke="#5F6368" stroke-width="1.6" fill="none">
+    <line x1="304" y1="136" x2="342" y2="136" marker-end="url(#arw)"/>
+    <line x1="304" y1="180" x2="342" y2="180" marker-end="url(#arw)"/>
+    <line x1="304" y1="236" x2="342" y2="236" marker-end="url(#arw)"/>
+    <line x1="304" y1="284" x2="342" y2="284" marker-end="url(#arw)"/>
+    <line x1="304" y1="328" x2="342" y2="328" marker-end="url(#arw)"/>
+    <line x1="304" y1="433" x2="342" y2="433" marker-end="url(#arw)"/>
+    <line x1="304" y1="602" x2="342" y2="602" marker-end="url(#arw)"/>
+    <line x1="304" y1="815" x2="342" y2="815" marker-end="url(#arw)"/>
+    <line x1="304" y1="961" x2="342" y2="961" marker-end="url(#arw)"/>
+    <line x1="304" y1="1012" x2="342" y2="1012" marker-end="url(#arw)"/>
+  </g>
+  <!-- ===== 箭头：产物 → 安装（虚线 = install 拷贝） ===== -->
+  <g stroke="#5F6368" stroke-width="1.6" stroke-dasharray="5 4" fill="none">
+    <line x1="444" y1="137" x2="806" y2="137" marker-end="url(#arw)"/>
+    <line x1="444" y1="181" x2="806" y2="181" marker-end="url(#arw)"/>
+    <line x1="584" y1="236" x2="806" y2="236" marker-end="url(#arw)"/>
+    <line x1="468" y1="284" x2="806" y2="284" marker-end="url(#arw)"/>
+    <line x1="468" y1="328" x2="806" y2="328" marker-end="url(#arw)"/>
+    <line x1="776" y1="434" x2="806" y2="434" marker-end="url(#arw)"/>
+    <line x1="776" y1="602" x2="806" y2="602" marker-end="url(#arw)"/>
+    <line x1="776" y1="778" x2="806" y2="778" marker-end="url(#arw)"/>
+    <line x1="776" y1="883" x2="806" y2="883" marker-end="url(#arw)"/>
+    <line x1="776" y1="961" x2="806" y2="961" marker-end="url(#arw)"/>
+    <line x1="776" y1="1012" x2="806" y2="1012" marker-end="url(#arw)"/>
+  </g>
+
+  <!-- ===== 底部注释 ===== -->
+  <text x="24" y="1058" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="13" fill="#5F6368">平台宏：-DIMMU3 / -DIMMU2 由 MU_TYPE 决定（include.mk:36-40）</text>
+  <text x="24" y="1078" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="13" fill="#5F6368">DIRS 定义见 src/Makefile:14-82；产物名与安装目录均核对自各模块 Makefile 的 EXEC 与 install 规则</text>
+
+  <!-- ===== 图例 ===== -->
+  <g font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#202124">
+    <rect x="24" y="1096" width="16" height="12" rx="3" fill="#E6F4EA" stroke="#137333" stroke-width="1.2"/>
+    <text x="46" y="1107" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif">源码模块</text>
+    <rect x="118" y="1096" width="16" height="12" rx="6" fill="#FEF7E0" stroke="#F9AB00" stroke-width="1.2"/>
+    <text x="140" y="1107" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif">.so 库</text>
+    <rect x="208" y="1096" width="16" height="12" rx="4" fill="#F3E8FD" stroke="#8430CE" stroke-width="2"/>
+    <text x="230" y="1107" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif">可执行</text>
+    <rect x="302" y="1096" width="16" height="12" rx="3" fill="#F1F3F4" stroke="#5F6368" stroke-width="1.2"/>
+    <text x="324" y="1107" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif">安装目录</text>
+    <rect x="396" y="1096" width="16" height="12" rx="3" fill="#FCE8E6" stroke="#C5221F" stroke-width="1.2"/>
+    <text x="418" y="1107" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif">未编译</text>
+    <line x1="478" y1="1102" x2="512" y2="1102" stroke="#5F6368" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#arw)"/>
+    <text x="526" y="1107" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif">虚线 = install 拷贝到 NCCU_TARGET_DIR</text>
+  </g>
+</svg>

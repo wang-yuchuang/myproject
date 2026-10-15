@@ -1,0 +1,32 @@
+#!/bin/bash
+if [ -L $0 ]
+then
+    BASE_DIR=`dirname $(readlink $0)`
+else
+    BASE_DIR=`dirname $0`
+fi #
+
+if [ ! -n "$2" ] ;then
+	echo "Need specify Image Base."
+	exit 1
+fi
+
+export bin_file=$1
+
+OUT_BIN_NAME=${bin_file%%.bin}_signed.bin
+
+if [ -f "${OUT_BIN_NAME}" ]; then
+ rm ${OUT_BIN_NAME}
+fi
+
+host_os=`uname -s`
+
+if [ "$host_os" == "Linux" ]; then
+ATB_SIGNER=$BASE_DIR/sign_tool/linux/atb_signer
+else
+ATB_SIGNER=$BASE_DIR/sign_tool/windows/atb_signer
+fi
+
+echo "signer:"$ATB_SIGNER
+
+$ATB_SIGNER sign --v 2 --sec_ver 0x1234 --dgst sha256 --iib nohash core=0 image=$1 to=$2 entry=$2 --psn 0x01 --of ${OUT_BIN_NAME}

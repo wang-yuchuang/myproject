@@ -1,0 +1,11 @@
+config BOARD_X9HP_MS
+    bool
+    depends on ARCH_CHIP_X9
+    default y
+
+config ULINK_SIDE_A
+    bool "ULINK FOR X9U SSA"
+    default y
+
+rsource "$(CORE)/Kconfig"
+

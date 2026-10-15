@@ -1,0 +1,9 @@
+comment "I2C Example Application Options"
+
+config TAISHAN_I2C_DEMO
+    bool "Taishan i2c example"
+    depends on I2C
+    depends on SDRV_I2C
+    default n
+
+

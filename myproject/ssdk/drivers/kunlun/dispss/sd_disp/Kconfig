@@ -1,0 +1,9 @@
+comment "DISPSS_Version_Options"
+
+menuconfig DISPSS_KUNLUN
+	bool "KUNLUN Display Driver"
+	default n
+
+menuconfig DISPSS_TAIHANG
+	bool "TAIHANG Display Driver"
+	default n

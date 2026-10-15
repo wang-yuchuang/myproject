@@ -1,0 +1,56 @@
+comment "E3 Driver and Application Example Options"
+
+menuconfig DRIVERS_EXAMPLE
+    bool "Driver Example Support"
+    default n
+
+if DRIVERS_EXAMPLE
+rsource "drivers/Kconfig"
+endif # DRIVERS_EXAMPLE
+
+menuconfig GUI_APPLICATION
+    bool "Gui Application Support"
+    default n
+
+if GUI_APPLICATION
+rsource "application/Kconfig"
+endif # GUI_APPLICATION
+
+menuconfig BOOT_EXAMPLE
+    bool "Boot Example Support"
+    default n
+
+if BOOT_EXAMPLE
+rsource "boot/Kconfig"
+endif # BOOT_EXAMPLE
+
+menuconfig UTIL_EXAMPLE
+    bool "Example Utilities"
+    default n
+
+if UTIL_EXAMPLE
+rsource "util/Kconfig"
+endif # UTIL_EXAMPLE
+
+menuconfig OTA_EXAMPLE
+    bool "OTA example application"
+    select PARTITION
+    select DISK
+    select SD_BOOT_IMG
+    select FATFS
+    select MD5
+    select REBOOT
+    select TAISHAN_REBOOT_GLOBAL
+    default n
+
+if OTA_EXAMPLE
+rsource "ota/Kconfig"
+endif # OTA_EXAMPLE
+
+menuconfig MOTOR_EXAMPLE
+    bool "Motor example application"
+    default n
+
+if MOTOR_EXAMPLE
+rsource "motor/Kconfig"
+endif # MOTOR_EXAMPLE

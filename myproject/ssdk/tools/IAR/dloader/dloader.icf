@@ -1,0 +1,17 @@
+/**********************************************************/ 
+define symbol FALSH_START = 0x10000000;
+define symbol FLASH_END = 0x14000000;
+define memory MEM with size = 4G;
+
+define symbol SFS_START = FALSH_START;
+define symbol BOOT0_START = 0x100C0000;
+define symbol BOOT1_START = 0x104C0000;
+define symbol BOOT2_START = 0x108C0000;
+
+define region FLASH_region = MEM:[from FALSH_START to FLASH_END];
+
+place at address MEM:SFS_START { section SFS_BIN };
+place at address MEM:BOOT0_START { section BOOT0_BIN };
+place at address MEM:BOOT1_START { section BOOT1_BIN };
+place at address MEM:BOOT2_START { section BOOT2_BIN };
+/**********************************************************/

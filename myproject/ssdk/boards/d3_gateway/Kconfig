@@ -1,0 +1,407 @@
+#*****************************************************************************
+#
+# WARNING: Automatically generated file, don't modify anymore!!!
+#
+# Copyright (c) 2021-2029 Semidrive Incorporated.  All rights reserved.
+# Software License Agreement
+#
+#*****************************************************************************
+config BOARD_D3_GATEWAY
+	bool
+	depends on ARCH_CHIP_D3
+	default y
+
+rsource "$(CORE)/Kconfig"
+
+menu "Board Peripheral Configuration"
+	menu "CAN Peripheral Configuration"
+		config CAN1
+		bool "CAN1 Support"
+		depends on PART_CAN1
+		default y
+		config CAN2
+		bool "CAN2 Support"
+		depends on PART_CAN2
+		default y
+		config CAN3
+		bool "CAN3 Support"
+		depends on PART_CAN3
+		default y
+		config CAN4
+		bool "CAN4 Support"
+		depends on PART_CAN4
+		default y
+		config CAN5
+		bool "CAN5 Support"
+		depends on PART_CAN5
+		default y
+		config CAN6
+		bool "CAN6 Support"
+		depends on PART_CAN6
+		default y
+		config CAN7
+		bool "CAN7 Support"
+		depends on PART_CAN7
+		default y
+		config CAN8
+		bool "CAN8 Support"
+		depends on PART_CAN8
+		default y
+		config CAN9
+		bool "CAN9 Support"
+		depends on PART_CAN9
+		default y
+		config CAN10
+		bool "CAN10 Support"
+		depends on PART_CAN10
+		default y
+		config CAN11
+		bool "CAN11 Support"
+		depends on PART_CAN11
+		default y
+		config CAN12
+		bool "CAN12 Support"
+		depends on PART_CAN12
+		default y
+		config CAN13
+		bool "CAN13 Support"
+		depends on PART_CAN13
+		default y
+		config CAN14
+		bool "CAN14 Support"
+		depends on PART_CAN14
+		default y
+		config CAN15
+		bool "CAN15 Support"
+		depends on PART_CAN15
+		default y
+		config CAN16
+		bool "CAN16 Support"
+		depends on PART_CAN16
+		default y
+		config CAN17
+		bool "CAN17 Support"
+		depends on PART_CAN17
+		default n
+		config CAN18
+		bool "CAN18 Support"
+		depends on PART_CAN18
+		default n
+		config CAN19
+		bool "CAN19 Support"
+		depends on PART_CAN19
+		default n
+		config CAN20
+		bool "CAN20 Support"
+		depends on PART_CAN20
+		default n
+		config CAN21
+		bool "CAN21 Support"
+		depends on PART_CAN21
+		default n
+		config CAN23
+		bool "CAN23 Support"
+		depends on PART_CAN23
+		default n
+		config CAN22
+		bool "CAN22 Support"
+		depends on PART_CAN22
+		default n
+		config CAN24
+		bool "CAN24 Support"
+		depends on PART_CAN24
+		default n
+	endmenu
+
+	menu "LIN Peripheral Configuration"
+		config UART1
+		bool "UART1 Support"
+		depends on PART_UART1
+		default n
+		config UART2
+		bool "UART2 Support"
+		depends on PART_UART2
+		default y
+		config UART3
+		bool "UART3 Support"
+		depends on PART_UART3
+		default y
+		config UART4
+		bool "UART4 Support"
+		depends on PART_UART4
+		default y
+		config UART5
+		bool "UART5 Support"
+		depends on PART_UART5
+		default y
+		config UART6
+		bool "UART6 Support"
+		depends on PART_UART6
+		default n
+		config UART7
+		bool "UART7 Support"
+		depends on PART_UART7
+		default n
+		config UART8
+		bool "UART8 Support"
+		depends on PART_UART8
+		default n
+		config UART9
+		bool "UART9 Support"
+		depends on PART_UART9
+		default n
+		config UART10
+		bool "UART10 Support"
+		depends on PART_UART10
+		default n
+		config UART11
+		bool "UART11 Support"
+		depends on PART_UART11
+		default n
+		config UART12
+		bool "UART12 Support"
+		depends on PART_UART12
+		default n
+		config UART13
+		bool "UART13 Support"
+		depends on PART_UART13
+		default n
+		config UART14
+		bool "UART14 Support"
+		depends on PART_UART14
+		default n
+		config UART15
+		bool "UART15 Support"
+		depends on PART_UART15
+		default n
+		config UART16
+		bool "UART16 Support"
+		depends on PART_UART16
+		default n
+	endmenu
+
+	menu "ETH Peripheral Configuration"
+		config ETH1
+		bool "ETH1 Support"
+		depends on PART_ETH1
+		default y
+		config ETH2
+		bool "ETH2 Support"
+		depends on PART_ETH2
+		default y
+	endmenu
+
+	menu "USB Peripheral Configuration"
+		config USB1
+		bool "USB1 Support"
+		depends on PART_USB1
+		default y
+	endmenu
+
+	menu "XSPI Peripheral Configuration"
+		config XSPI1
+		bool "XSPI1 Support"
+		depends on PART_XSPI1
+		default y
+		config XSPI2
+		bool "XSPI2 Support"
+		depends on PART_XSPI2
+		default y
+	endmenu
+
+	menu "SPI Peripheral Configuration"
+		config SPI3
+		bool "SPI3 Support"
+		depends on PART_SPI3
+		default y
+		config SPI4
+		bool "SPI4 Support"
+		depends on PART_SPI4
+		default y
+		config SPI2
+		bool "SPI2 Support"
+		depends on PART_SPI2
+		default y
+		config SPI6
+		bool "SPI6 Support"
+		depends on PART_SPI6
+		default y
+		config SPI1
+		bool "SPI1 Support"
+		depends on PART_SPI1
+		default y
+		config SPI5
+		bool "SPI5 Support"
+		depends on PART_SPI5
+		default y
+		config SPI7
+		bool "SPI7 Support"
+		depends on PART_SPI7
+		default y
+		config SPI8
+		bool "SPI8 Support"
+		depends on PART_SPI8
+		default y
+	endmenu
+
+	menu "SACI Peripheral Configuration"
+		config I2S2
+		bool "I2S2 Support"
+		depends on PART_I2S2
+		default y
+		config PDM2
+		bool "PDM2 Support"
+		depends on PART_I2S2
+		default y
+		config I2S1
+		bool "I2S1 Support"
+		depends on PART_I2S1
+		default y
+		config PDM1
+		bool "PDM1 Support"
+		depends on PART_I2S1
+		default y
+	endmenu
+
+	menu "I2C Peripheral Configuration"
+		config I2C1
+		bool "I2C1 Support"
+		depends on PART_I2C1
+		default y
+		config I2C2
+		bool "I2C2 Support"
+		depends on PART_I2C2
+		default y
+		config I2C3
+		bool "I2C3 Support"
+		depends on PART_I2C3
+		default y
+		config I2C4
+		bool "I2C4 Support"
+		depends on PART_I2C4
+		default y
+		config I2C5
+		bool "I2C5 Support"
+		depends on PART_I2C5
+		default y
+		config I2C6
+		bool "I2C6 Support"
+		depends on PART_I2C6
+		default y
+		config I2C7
+		bool "I2C7 Support"
+		depends on PART_I2C7
+		default y
+		config I2C8
+		bool "I2C8 Support"
+		depends on PART_I2C8
+		default y
+	endmenu
+
+	menu "ADC Peripheral Configuration"
+		config ADC1
+		bool "ADC1 Support"
+		depends on PART_ADC1
+		default y
+		config ADC2
+		bool "ADC2 Support"
+		depends on PART_ADC2
+		default y
+		config ADC3
+		bool "ADC3 Support"
+		depends on PART_ADC3
+		default y
+	endmenu
+
+	menu "ACMP Peripheral Configuration"
+		config ACMP1
+		bool "ACMP1 Support"
+		depends on PART_ACMP1
+		default y
+		config ACMP2
+		bool "ACMP2 Support"
+		depends on PART_ACMP2
+		default y
+		config ACMP3
+		bool "ACMP3 Support"
+		depends on PART_ACMP3
+		default y
+		config ACMP4
+		bool "ACMP4 Support"
+		depends on PART_ACMP4
+		default y
+	endmenu
+
+	menu "ETMR Peripheral Configuration"
+		config ETMR1
+		bool "ETMR1 Support"
+		depends on PART_ETMR1
+		default y
+		config ETMR2
+		bool "ETMR2 Support"
+		depends on PART_ETMR2
+		default y
+		config ETMR3
+		bool "ETMR3 Support"
+		depends on PART_ETMR3
+		default y
+		config ETMR4
+		bool "ETMR4 Support"
+		depends on PART_ETMR4
+		default y
+	endmenu
+
+	menu "EPWM Peripheral Configuration"
+		config EPWM1
+		bool "EPWM1 Support"
+		depends on PART_EPWM1
+		default y
+		config EPWM2
+		bool "EPWM2 Support"
+		depends on PART_EPWM2
+		default y
+		config EPWM3
+		bool "EPWM3 Support"
+		depends on PART_EPWM3
+		default y
+		config EPWM4
+		bool "EPWM4 Support"
+		depends on PART_EPWM4
+		default y
+	endmenu
+
+	menu "WDT Peripheral Configuration"
+		config WDT1
+		bool "WDT1 Support"
+		depends on PART_WDT1
+		default y
+		config WDT2
+		bool "WDT2 Support"
+		depends on PART_WDT2
+		default y
+		config WDT8
+		bool "WDT8 Support"
+		depends on PART_WDT8
+		default y
+		config WDT3
+		bool "WDT3 Support"
+		depends on PART_WDT3
+		default y
+		config WDT4
+		bool "WDT4 Support"
+		depends on PART_WDT4
+		default y
+		config WDT5
+		bool "WDT5 Support"
+		depends on PART_WDT5
+		default y
+		config WDT6
+		bool "WDT6 Support"
+		depends on PART_WDT6
+		default y
+	endmenu
+
+endmenu
+config PACKAGE_BGA324
+bool 
+default y

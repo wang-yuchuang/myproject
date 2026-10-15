@@ -1,0 +1,4 @@
+config FuncSafetyPkg
+    bool "Funcsafety package"
+    select EARLYCOPY
+    default n

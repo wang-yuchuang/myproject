@@ -1,0 +1,13 @@
+CAN_DRIVER_DIR := $(GET_LOCAL_DIR)
+
+ifeq ($(CONFIG_SUPPORT_CAN_SDDRV), y)
+#Without SDPE
+MODULE_SRCS += \
+	$(CAN_DRIVER_DIR)/flexcan/Can.c \
+	$(CAN_DRIVER_DIR)/flexcan/flexcan.c \
+	$(CAN_DRIVER_DIR)/flexcan/can_cfg.c
+
+MODULE_DEFINES := CORE_LITTLE_ENDIAN=1
+endif
+
+GLOBAL_DEFINES += MAX_FLEXCAN_CH=2

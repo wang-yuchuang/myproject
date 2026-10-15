@@ -1,0 +1,6 @@
+comment "GPT A/B Slot Switch Support"
+
+config GPT_SLOT_SWITCH_CMD
+    bool "GPT A/B Slot Switch Example Cmd"
+    depends on GPT_SLOT_SWITCH
+    default y

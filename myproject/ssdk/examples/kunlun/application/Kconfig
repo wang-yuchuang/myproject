@@ -1,0 +1,248 @@
+comment "Application Options"
+
+rsource "boot_splash/Kconfig"
+
+menuconfig APP_LAUNCHER
+    bool "launcher application"
+    default n
+
+config APP_LAUNCHER_DEBUG
+    bool "app launcher debug"
+    depends on APP_LAUNCHER
+    default n
+
+if APP_LAUNCHER
+rsource "launcher/Kconfig"
+rsource "arbitrator/Kconfig"
+endif # APP_LAUNCHER
+
+menuconfig AUDIO_HUB
+    bool "audio hub Support"
+    default y
+
+if AUDIO_HUB
+    rsource "ahub/Kconfig"
+endif
+
+menuconfig BOOT_ANIMATION
+    bool "boot animation application"
+    depends on APP_LAUNCHER
+    default n
+
+if BOOT_ANIMATION
+rsource "bootanimation/Kconfig"
+endif # BOOT_ANIMATION
+
+menuconfig FASTAVM
+    bool "fastavm application"
+    select KUNLUN_CAMERA_SERVICE
+    select GPU_HAL
+    depends on APP_LAUNCHER
+    default n
+
+if FASTAVM
+rsource "fastavm/Kconfig"
+endif # FASTAVM
+
+menuconfig CLUSTER
+    bool "cluster application"
+    depends on APP_LAUNCHER
+    select LVGL_SDRV_GPU
+    select USE_GUI_LVGL
+    default n
+
+if CLUSTER
+rsource "cluster/Kconfig"
+endif # CLUSTER
+
+menuconfig CONTROL_PANEL
+    bool "control panel application"
+    depends on APP_LAUNCHER
+    select GRAPHICS
+    select USE_GUI_LVGL
+    default n
+
+if CONTROL_PANEL
+rsource "controlpanel/Kconfig"
+endif # CONTROL_PANEL
+
+menuconfig EMIRROR
+    bool "emirror application"
+    depends on APP_LAUNCHER
+    select GPU_HAL
+    default n
+
+if EMIRROR
+rsource "emirror/Kconfig"
+endif # EMIRROR
+
+choice
+    prompt "launcher app gui mode"
+    default USE_GUI_LVGL
+    depends on APP_LAUNCHER
+
+config USE_GUI_LVGL
+    bool "use lvgl gui"
+    select GUI_LVGL
+    select LVGL_SDRV_DISPLAY
+    select LVGL_SDRV_DECODER_PNG
+    select LVGL_SDRV_DECODER_JPG
+    select LVGL_SDRV_FAT_FS
+    select LVGL_SDRV_INPUT
+
+config USE_QT_MCU
+    bool "use qt mcu gui"
+    select QT_FOR_MCU
+
+config CLOSE_GUI
+    bool "Do not use gui"
+
+endchoice
+
+menuconfig PVT_APPLICATION
+    bool "pvt application Support"
+    select PVT
+    default n
+
+if PVT_APPLICATION
+rsource "pvt/Kconfig"
+endif # PVT_APPLICATION
+
+menuconfig CAM_PRE
+    bool "Camera preview application"
+    select CSI
+    default n
+
+if CAM_PRE
+rsource "cam_pre/Kconfig"
+endif # CAM_PRE
+
+menuconfig CAM_DEBUG
+    bool "Camera debug application"
+    select CSI
+    default n
+
+if CAM_DEBUG
+rsource "cam_debug/Kconfig"
+endif # CAM_DEBUG
+
+menuconfig APP_AUDIO
+    bool "audio application Support"
+    default y
+
+if APP_AUDIO
+    rsource "audio/Kconfig"
+endif
+
+menuconfig PFM_ON
+    bool "DDR pfm on test"
+    select PFM
+    default n
+
+if PFM_ON
+rsource "pfmon/Kconfig"
+endif # PFM_ON
+
+menuconfig POWER_OFF
+    bool "Power off options test"
+    depends on CLI
+    default n
+
+if POWER_OFF
+rsource "poweroff/Kconfig"
+endif # POWER_OFF
+
+menuconfig KERNEL_MONITOR
+    bool "Kernel monitor debug"
+    depends on CLI
+    default n
+
+if KERNEL_MONITOR
+rsource "kernel_monitor/Kconfig"
+endif # KERNEL_MONITOR
+
+menuconfig SEM_MONITOR
+    bool "sem monitor test"
+    depends on CLI
+    default n
+
+if SEM_MONITOR
+rsource "sem_monitor/Kconfig"
+endif # SEM_MONITOR
+
+menuconfig SDLOG_COMMAND
+    bool "sdlog command support"
+    default n
+
+if SDLOG_COMMAND
+rsource "sdlog-tools/Kconfig"
+endif
+
+menuconfig EXT_RST_REQ
+    bool "External reset request options"
+    depends on CLI
+    default n
+
+if EXT_RST_REQ
+rsource "ext_rst_req/Kconfig"
+endif # EXT_RST_REQ
+
+if FuncSafetyPkg
+rsource "FuncSafetyPkg_test/Kconfig"
+endif # FuncSafetyPkg
+
+
+menuconfig APP_DEMO1
+    bool "app test demo1."
+    default n
+
+if APP_DEMO1
+rsource "app_demo1/Kconfig"
+endif
+
+menuconfig ICCMSG_DEMO
+    bool "iccmsg demo."
+    depends on ICCMSG
+    default n
+
+if ICCMSG_DEMO
+    rsource "iccmsg_demo/Kconfig"
+endif
+
+menuconfig SYS_MON
+    bool "sys monitor."
+    default n
+
+if SYS_MON
+    rsource "sys_mon/Kconfig"
+endif
+
+rsource "sys_monitor/Kconfig"
+
+menuconfig GPT_SLOT_SWITCH
+    bool "GPT A/B Slot Switch Support"
+    select DISK
+    select PARTITION
+    default n
+
+if GPT_SLOT_SWITCH
+rsource "gpt_slot_switch/Kconfig"
+endif # GPT_SLOT_SWITCH
+
+menuconfig FLASH_TEST
+    bool "OSPI2 NOR XIP Erase/Write Min-verify"
+    select DISK
+    select DISK_NOR_FLASH
+    default n
+
+if FLASH_TEST
+rsource "flash_test/Kconfig"
+endif # FLASH_TEST
+
+menuconfig APP_COREMARK
+    bool "CoreMark benchmark (EEMBC 1.0, R5 perf)"
+    default n
+
+if APP_COREMARK
+rsource "coremark/Kconfig"
+endif # APP_COREMARK

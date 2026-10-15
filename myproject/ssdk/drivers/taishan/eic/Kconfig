@@ -1,0 +1,3 @@
+config EIC
+    bool "Taishan EIC Driver Support"
+    default n

@@ -1,0 +1,1340 @@
+syntax = "proto2";
+package Vpu;
+
+enum RetCode {
+    RETCODE_SUCCESS = 0;
+    RETCODE_FAILURE = 1;
+    RETCODE_INVALID_HANDLE = 2;
+    RETCODE_INVALID_PARAM = 3;
+    RETCODE_INVALID_COMMAND = 4;
+    RETCODE_ROTATOR_OUTPUT_NOT_SET = 5;
+    RETCODE_ROTATOR_STRIDE_NOT_SET = 6;
+    RETCODE_FRAME_NOT_COMPLETE = 7;
+    RETCODE_INVALID_FRAME_BUFFER = 8;
+    RETCODE_INSUFFICIENT_FRAME_BUFFERS = 9;
+    RETCODE_INVALID_STRIDE = 10;
+    RETCODE_WRONG_CALL_SEQUENCE = 11;
+    RETCODE_CALLED_BEFORE = 12;
+    RETCODE_NOT_INITIALIZED = 13;
+    RETCODE_USERDATA_BUF_NOT_SET = 14;
+    RETCODE_MEMORY_ACCESS_VIOLATION = 15;
+    RETCODE_VPU_RESPONSE_TIMEOUT = 16;
+    RETCODE_INSUFFICIENT_RESOURCE = 17;
+    RETCODE_NOT_FOUND_BITCODE_PATH = 18;
+    RETCODE_NOT_SUPPORTED_FEATURE = 19;
+    RETCODE_NOT_FOUND_VPU_DEVICE = 20;
+    RETCODE_CP0_EXCEPTION = 21;
+    RETCODE_STREAM_BUF_FULL = 22;
+    RETCODE_ACCESS_VIOLATION_HW = 23;
+    RETCODE_QUERY_FAILURE = 24;
+    RETCODE_QUEUEING_FAILURE = 25;
+}
+
+enum CodStd {
+    STD_AVC = 0;
+    STD_VC1 = 1;
+    STD_MPEG2 = 2;
+    STD_MPEG4 = 3;
+    STD_H263 = 4;
+    STD_DIV3 = 5;
+    STD_RV = 6;
+    STD_AVS = 7;
+    STD_THO = 9;
+    STD_VP3 = 10;
+    STD_VP8 = 11;
+    STD_HEVC = 12;
+    STD_VP9 = 13;
+    STD_AVS2 = 14;
+    STD_SVAC = 15;
+    STD_AV1 = 16;
+    STD_MAX = 17;
+}
+
+enum EndianMode {
+    VDI_LITTLE_ENDIAN = 0;      /*64bit LE*/
+    VDI_BIG_ENDIAN = 1;             /*64bit BE*/
+    VDI_32BIT_LITTLE_ENDIAN = 2;
+    VDI_32BIT_BIG_ENDIAN = 3;
+    /*WAVE410 ONLY*/
+    VDI_128BIT_BIG_ENDIAN = 16;
+    VDI_128BIT_BE_BYTE_SWAP = 17;
+    VDI_128BIT_BE_WORD_SWAP = 18;
+    VDI_128BIT_BE_WORD_BYTE_SWAP = 19;
+    VDI_128BIT_BE_DWORD_SWAP = 20;
+    VDI_128BIT_BE_DWORD_BYTE_SWAP = 21;
+    VDI_128BIT_BE_DWORD_WORD_SWAP = 22;
+    VDI_128BIT_BE_DWORD_WORD_BYTE_SWAP = 23;
+    VDI_128BIT_LE_DWORD_WORD_BYTE_SWAP = 24;
+    VDI_128BIT_LE_DWORD_WORD_SWAP = 25;
+    VDI_128BIT_LE_DWORD_BYTE_SWAP = 26;
+    VDI_128BIT_LE_DWORD_SWAP = 27;
+    VDI_128BIT_LE_WORD_BYTE_SWAP = 28;
+    VDI_128BIT_LE_WORD_SWAP = 29;
+    VDI_128BIT_LE_BYTE_SWAP = 30;
+    VDI_128BIT_LITTLE_ENDIAN = 31;
+    VDI_ENDIAN_MAX = 32;
+}
+
+enum CodecCommand {
+    ENABLE_ROTATION = 0;
+    DISABLE_ROTATION = 1;
+    ENABLE_MIRRORING = 2;
+    DISABLE_MIRRORING = 3;
+    SET_MIRROR_DIRECTION = 4;
+    SET_ROTATION_ANGLE = 5;
+    SET_ROTATOR_OUTPUT = 6;
+    SET_ROTATOR_STRIDE = 7;
+    DEC_GET_SEQ_INFO = 8;
+    DEC_SET_SPS_RBSP = 9;
+    DEC_SET_PPS_RBSP = 10;
+    DEC_SET_SEQ_CHANGE_MASK = 11;
+    ENABLE_DERING = 12;
+    DISABLE_DERING = 13;
+    SET_SEC_AXI = 14;
+    SET_DRAM_CONFIG = 15;
+    GET_DRAM_CONFIG = 16;
+    ENABLE_REP_USERDATA = 17;
+    DISABLE_REP_USERDATA = 18;
+    SET_ADDR_REP_USERDATA = 19;
+    SET_VIRT_ADDR_REP_USERDATA = 20;
+    SET_SIZE_REP_USERDATA = 21;
+    SET_USERDATA_REPORT_MODE = 22;
+    ENABLE_REP_CUDATA = 23;
+    DISABLE_REP_CUDATA = 24;
+    SET_ADDR_REP_CUDATA = 25;
+    SET_SIZE_REP_CUDATA = 26;
+    SET_CACHE_CONFIG = 27;
+    GET_TILEDMAP_CONFIG = 28;
+    SET_LOW_DELAY_CONFIG = 29;
+    SET_DECODE_FLUSH = 30;
+    GET_LOW_DELAY_OUTPUT = 31;
+    DEC_SET_FRAME_DELAY = 32;
+    DEC_SET_WTL_FRAME_FORMAT = 33;
+    DEC_GET_FIELD_PIC_TYPE = 34;
+    DEC_GET_DISPLAY_OUTPUT_INFO = 35;
+    DEC_ENABLE_REORDER = 36;
+    DEC_DISABLE_REORDER = 37;
+    DEC_SET_AVC_ERROR_CONCEAL_MODE = 38;
+    DEC_FREE_FRAME_BUFFER = 39;
+    DEC_GET_FRAMEBUF_INFO = 40;
+    DEC_RESET_FRAMEBUF_INFO = 41;
+    ENABLE_DEC_THUMBNAIL_MODE = 42;
+    DEC_SET_DISPLAY_FLAG = 43;
+    DEC_GET_SCALER_INFO = 44;
+    DEC_SET_SCALER_INFO = 45;
+    DEC_SET_PVRIC_MODE = 46;
+    DEC_SET_TARGET_TEMPORAL_ID = 47;
+    DEC_SET_BWB_CUR_FRAME_IDX = 48;
+    DEC_SET_FBC_CUR_FRAME_IDX = 49;
+    DEC_SET_INTER_RES_INFO_ON = 50;
+    DEC_SET_INTER_RES_INFO_OFF = 51;
+    DEC_FREE_FBC_TABLE_BUFFER = 52;
+    DEC_FREE_MV_BUFFER = 53;
+    DEC_ALLOC_FBC_Y_TABLE_BUFFER = 54;
+    DEC_ALLOC_FBC_C_TABLE_BUFFER = 55;
+    DEC_ALLOC_MV_BUFFER = 56;
+    DEC_SET_TEMPORAL_ID_MODE = 57;
+    ENC_ADD_PPS = 58;
+    ENC_SET_ACTIVE_PPS = 59;
+    ENC_GET_ACTIVE_PPS = 60;
+    ENC_SET_PARAM = 61;
+    ENC_PUT_VIDEO_HEADER = 62;
+    ENC_PUT_MP4_HEADER = 63;
+    ENC_PUT_AVC_HEADER = 64;
+    ENC_GET_VIDEO_HEADER = 65;
+    ENC_SET_INTRA_MB_REFRESH_NUMBER = 66;
+    ENC_ENABLE_HEC = 67;
+    ENC_DISABLE_HEC = 68;
+    ENC_SET_SLICE_INFO = 69;
+    ENC_SET_GOP_NUMBER = 70;
+    ENC_SET_INTRA_QP = 71;
+    ENC_SET_BITRATE = 72;
+    ENC_SET_FRAME_RATE = 73;
+    ENC_SET_PARA_CHANGE = 74;
+    ENABLE_LOGGING = 75;
+    DISABLE_LOGGING = 76;
+    ENC_SET_SEI_NAL_DATA = 77;
+    DEC_GET_QUEUE_STATUS = 78;
+    ENC_GET_QUEUE_STATUS = 79;
+    GET_BANDWIDTH_REPORT = 80;
+    ENC_WRPTR_SEL = 81;
+    SET_CYCLE_PER_TICK = 82;
+    ENC_GET_SRC_BUF_FLAG = 83;
+    GET_DEBUG_INFORM = 84;
+    CMD_END = 85;
+}
+
+enum SWResetMode {
+    SW_RESET_SAFETY = 0;
+    SW_RESET_FORCE = 1;
+    SW_RESET_ON_BOOT = 2;
+}
+
+enum FrameBufferFormat {
+    FORMAT_420 = 0;
+    FORMAT_422 = 1;
+    FORMAT_224 = 2;
+    FORMAT_444 = 3;
+    FORMAT_400 = 4;
+
+    FORMAT_420_P10_16BIT_MSB = 5;
+    FORMAT_420_P10_16BIT_LSB = 6;
+    FORMAT_420_P10_32BIT_MSB = 7;
+    FORMAT_420_P10_32BIT_LSB = 8;
+    FORMAT_422_P10_16BIT_MSB = 9;
+    FORMAT_422_P10_16BIT_LSB = 10;
+    FORMAT_422_P10_32BIT_MSB = 11;
+    FORMAT_422_P10_32BIT_LSB = 12;
+
+    FORMAT_YUYV = 13;
+    FORMAT_YUYV_P10_16BIT_MSB = 14;
+    FORMAT_YUYV_P10_16BIT_LSB = 15;
+    FORMAT_YUYV_P10_32BIT_MSB = 16;
+    FORMAT_YUYV_P10_32BIT_LSB = 17;
+
+    FORMAT_YVYU = 18;
+    FORMAT_YVYU_P10_16BIT_MSB = 19;
+    FORMAT_YVYU_P10_16BIT_LSB = 20;
+    FORMAT_YVYU_P10_32BIT_MSB = 21;
+    FORMAT_YVYU_P10_32BIT_LSB = 22;
+
+    FORMAT_UYVY = 23;
+    FORMAT_UYVY_P10_16BIT_MSB = 24;
+    FORMAT_UYVY_P10_16BIT_LSB = 25;
+    FORMAT_UYVY_P10_32BIT_MSB = 26;
+    FORMAT_UYVY_P10_32BIT_LSB = 27;
+
+    FORMAT_VYUY = 28;
+    FORMAT_VYUY_P10_16BIT_MSB = 29;
+    FORMAT_VYUY_P10_16BIT_LSB = 30;
+    FORMAT_VYUY_P10_32BIT_MSB = 31;
+    FORMAT_VYUY_P10_32BIT_LSB = 32;
+
+    FORMAT_MAX = 33;
+}
+
+enum SramMode {
+    MODE_SRAM_AXI_EXCLUSIVE = 0;
+    MODE_SRAM_AXI_LINEBUFFER_SHARE = 1;
+    MODE_SRAM_LINEBUFFER = 2;
+    MODE_SRAM_MAX = 3;
+}
+
+enum StreamUpFlag {
+    STREAM_FILL = 0;
+    STREAM_UPDATE = 1;
+    STREAM_END = 2;
+    STREAM_END_CLEAR = 3;
+}
+
+enum ErrorConcealUnit {
+    ERROR_CONCEAL_UNIT_PICTURE = 0;
+    ERROR_CONCEAL_UNIT_SLICE_TILE = 1;
+    ERROR_CONCEAL_UNIT_BLOCK_ROW = 2;
+    ERROR_CONCEAL_UNIT_BLOCK = 3;
+}
+
+enum ErrorConcealMode {
+    ERROR_CONCEAL_MODE_OFF = 0;
+    ERROR_CONCEAL_MODE_INTRA_ONLY = 1;
+    ERROR_CONCEAL_MODE_INTRA_INTER = 2;
+}
+
+message DecHandle {
+    required uint32 handle = 1;
+}
+
+message DecOpenParam {
+    optional CodStd bitstream_format = 1;
+    optional uint32 bitstream_buffer = 2;
+    optional int32 bitstream_buffer_size = 3;
+    optional int32 mp4_deblk_enable = 4;
+    optional int32 avc_extension = 5;
+    optional int32 mp4_class = 6;
+    optional int32 tiled2_linear_enable = 7;
+    optional int32 tiled2_linear_mode = 8;
+    optional int32 wtl_enable = 9;
+    optional int32 wtl_mode = 10;
+    optional int32 cbcr_interleave = 11;
+    optional int32 nv21 = 12;
+    optional int32 cbcr_order = 13;
+    optional int32 bwb_enable = 14;
+    optional EndianMode frame_endian = 15;
+    optional EndianMode stream_endian = 16;
+    optional int32 bitstream_mode = 17;
+    optional uint32 core_idx = 18;
+    optional int32 fbc_mode = 19;
+    optional uint32 virt_axi_i_d = 20;
+    optional bool bw_optimization = 21;
+    optional uint32 div3_width = 22;
+    optional uint32 div3_height = 23;
+    optional bool pvric_fbc_enable = 24;
+    optional uint32 pvric31_hw_support = 25;
+    optional bool enable_non_ref_fbc_write = 26;
+    optional int32 enable_pvric_v31 = 27;
+    optional bool temp_id_select_mode = 28;
+    optional int32 av1_format = 29;
+    optional ErrorConcealUnit error_conceal_unit = 30;
+    optional ErrorConcealMode error_conceal_mode = 31;
+    optional bool sram_enable = 32;
+}
+
+message DecOpen {
+    required DecHandle handle = 1;
+    optional DecOpenParam dec_op = 2;
+    optional RetCode ret_code = 3;
+}
+
+message SecAxiUse {
+    message Coda9 {
+        optional int32 use_bit_enable = 1;
+        optional int32 use_ip_enable = 2;
+        optional int32 use_dbk_y_enable = 3;
+        optional int32 use_dbk_c_enable = 4;
+        optional int32 use_ovl_enable = 5;
+        optional int32 use_btp_enable = 6;
+        optional int32 use_me_enable = 7;
+        optional int32 use_scaler_enable = 8;
+    }
+    message Wave4 {
+        optional int32 use_scl_enable = 1;
+        optional int32 use_scl_packed_mode_enable = 2;
+        optional int32 use_bit_enable = 3;
+        optional int32 use_ip_enable = 4;
+        optional int32 use_lf_row_enable = 5;
+        optional int32 use_enc_imd_enable = 6;
+        optional int32 use_enc_lf_enable = 7;
+        optional int32 use_enc_rdo_enable = 8;
+    }
+    message Wave5 {
+        optional int32 use_scl_enable = 1;
+        optional int32 use_bit_enable = 2;
+        optional int32 use_ip_enable = 3;
+        optional int32 use_lf_row_enable = 4;
+        optional int32 use_enc_lf_enable = 5;
+        optional int32 use_enc_rdo_enable = 6;
+    }
+    required DecHandle handle = 1;
+    oneof U {
+        Coda9 coda9 = 2;
+        Wave4 wave4 = 3;
+        Wave5 wave5 = 4;
+    }
+}
+
+message DecGiveCommand {
+    required DecHandle handle = 1;
+    optional CodecCommand cmd = 2;
+    optional RetCode ret_code = 3;
+    oneof Param {
+        SecAxiUse sec_axi_use = 4;
+    }
+}
+
+message DecGetBitstreamBuffer {
+    required DecHandle handle = 1;
+    optional uint32 prd_ptr = 2;
+    optional uint32 pwr_ptr = 3;
+    optional uint32 size = 4;
+    optional RetCode ret_code = 5;
+}
+
+message DecUpdateBitstreamBuffer {
+    required DecHandle handle = 1;
+    optional int32 size = 2;
+    optional StreamUpFlag flag = 3;
+    optional RetCode ret_code = 4;
+}
+
+message DecPicEndModeUpdateBSBuffer {
+    required DecHandle handle = 1;
+    optional uint32 addr = 2;
+    optional uint32 size = 3;
+    optional StreamUpFlag flag = 4;
+    optional RetCode ret_code = 5;
+}
+
+message VpuRect {
+    optional uint32 left = 1;
+    optional uint32 top = 2;
+    optional uint32 right = 3;
+    optional uint32 bottom = 4;
+}
+
+message ThoScaleInfo {
+    optional int32 frame_width = 1;
+    optional int32 frame_height = 2;
+    optional int32 pic_width = 3;
+    optional int32 pic_height = 4;
+    optional int32 pic_offset_x = 5;
+    optional int32 pic_offset_y = 6;
+}
+
+message Vp8ScaleInfo {
+    optional int32 h_scale_factor = 1;
+    optional int32 v_scale_factor = 2;
+    optional int32 pic_width = 3;
+    optional int32 pic_height = 4;
+}
+
+message AvcVuiInfo {
+    optional int32 fixed_frame_rate_flag = 1;
+    optional int32 timing_info_present = 2;
+    optional int32 chroma_loc_bot_field = 3;
+    optional int32 chroma_loc_top_field = 4;
+    optional int32 chroma_loc_info_present = 5;
+    optional int32 color_primaries = 6;
+    optional int32 color_desc_present = 7;
+    optional int32 is_ext_s_a_r = 8;
+    optional int32 vid_full_range = 9;
+    optional int32 vid_format = 10;
+    optional int32 vid_sig_type_present = 11;
+    optional int32 vui_param_present = 12;
+    optional int32 vui_pic_struct_present = 13;
+    optional int32 vui_pic_struct = 14;
+    optional int32 vui_transfer_characteristics = 15;
+    optional int32 vui_matrix_coefficients = 16;
+}
+
+message MP2BarDataInfo {
+    optional int32 bar_left = 1;
+    optional int32 bar_right = 2;
+    optional int32 bar_top = 3;
+    optional int32 bar_bottom = 4;
+}
+
+message DecInitialInfo {
+    optional int32 pic_width = 1;
+    optional int32 pic_height = 2;
+    optional int32 f_rate_numerator = 3;
+    optional int32 f_rate_denominator = 4;
+    optional VpuRect pic_crop_rect = 5;
+    optional int32 mp4_data_partition_enable = 6;
+    optional int32 mp4_reversible_vlc_enable = 7;
+    optional int32 mp4_short_video_header = 8;
+    optional int32 h263_annex_j_enable = 9;
+    optional int32 min_frame_buffer_count = 10;
+    optional int32 frame_buf_delay = 11;
+    optional int32 normal_slice_size = 12;
+    optional int32 worst_slice_size = 13;
+    optional int32 max_sub_layers = 14;
+    optional int32 profile = 15;
+    optional int32 level = 16;
+    optional int32 tier = 17;
+    optional int32 interlace = 18;
+    repeated int32 constraint_set_flag = 19 [packed = true];
+    optional int32 direct8x8_flag = 20;
+    optional int32 vc1_psf = 21;
+    optional int32 is_ext_s_a_r = 22;
+    optional int32 max_num_ref_frm_flag = 23;
+    optional int32 max_num_ref_frm = 24;
+    optional int32 aspect_rate_info = 25;
+    optional int32 bit_rate = 26;
+    optional int32 mp2_low_delay = 27;
+    optional int32 mp2_disp_ver_size = 28;
+    optional int32 mp2_disp_hor_size = 29;
+    optional uint32 user_data_header = 30;
+    optional int32 user_data_num = 31;
+    optional int32 user_data_size = 32;
+    optional int32 user_data_buf_full = 33;
+    optional int32 chroma_format_i_d_c = 34;
+    optional int32 luma_bitdepth = 35;
+    optional int32 chroma_bitdepth = 36;
+    optional int32 mp2_color_desc_present_flag = 37;
+    optional int32 mp2_color_primaries = 38;
+    optional int32 mp2_transfer_char = 39;
+    optional int32 mp2_matrix_coeff = 40;
+    optional int32 seq_init_err_reason = 41;
+    optional int32 warn_info = 42;
+    optional uint32 rd_ptr = 43;
+    optional uint32 wr_ptr = 44;
+    optional uint32 sequence_no = 45;
+    optional int32 num_reorder_frames = 46;
+    optional int32 spatial_svc_enable = 47;
+    optional int32 spatial_svc_mode = 48;
+    optional uint32 output_bit_depth = 49;
+    optional uint32 vlc_buf_size = 50;
+    optional uint32 param_buf_size = 51;
+    oneof CodecModeInfo {
+        ThoScaleInfo tho_scale_info = 52;
+        Vp8ScaleInfo vp8_scale_info = 53;
+        AvcVuiInfo avc_vui_info = 54;
+        MP2BarDataInfo mp2_bardata_info = 55;
+        DecHevcInfo hevc_info = 56;
+    }
+}
+
+message DecSeqInit {
+    required DecHandle handle = 1;
+    optional DecInitialInfo initial_info = 2;
+    optional sint32 interrupt_reaseon = 3;
+    optional RetCode ret_code = 4;
+}
+
+message SWReset {
+    required uint32 core_idx = 1;
+    optional SWResetMode reset_mode = 2;
+    optional uint32 handle = 3;
+    optional RetCode ret_code = 4;
+}
+
+message FrameBufferAllocInfo {
+    optional int32 map_type = 1;
+    optional int32 cbcr_interleave = 2;
+    optional int32 nv21 = 3;
+    optional FrameBufferFormat format = 4;
+    optional int32 stride = 5;
+    optional int32 height = 6;
+    optional int32 size = 7;
+    optional int32 luma_bit_depth = 8;
+    optional int32 chroma_bit_depth = 9;
+    optional int32 endian = 10;
+    optional int32 num = 11;
+    optional int32 type = 12;
+}
+
+message FrameBuffer {
+    optional uint32 buf_y = 1;
+    optional uint32 buf_cb = 2;
+    optional uint32 buf_cr = 3;
+    optional uint32 buf_y_bot = 4;
+    optional uint32 buf_cb_bot = 5;
+    optional uint32 buf_cr_bot = 6;
+    optional uint32 buf_y_size = 7;
+    optional uint32 buf_cb_size = 8;
+    optional uint32 buf_cr_size = 9;
+    optional int32 cbcr_interleave = 10;
+    optional int32 nv21 = 11;
+    optional int32 endian = 12;
+    optional int32 my_index = 13;
+    optional int32 map_type = 14;
+    optional int32 stride = 15;
+    optional int32 width = 16;
+    optional int32 height = 17;
+    optional int32 size = 18;
+    optional int32 size_luma = 19;
+    optional int32 size_chroma = 20;
+    optional int32 luma_bit_depth = 21;
+    optional int32 chroma_bit_depth = 22;
+    optional FrameBufferFormat format = 23;
+    optional int32 source_l_burst_en = 24;
+    optional int32 src_buf_state = 25;
+    optional int32 alloc_num = 26;
+    optional int32 src_end_flag = 27;
+    optional int32 sequence_no = 28;
+    optional int32 packed_enable = 29;
+    optional int32 packed_mode = 30;
+    optional bool update_fb_info = 31;
+}
+
+message DecRegisterDecodeBuffer{
+    required DecHandle handle = 1;
+    optional RetCode ret_code = 2;
+    optional FrameBufferAllocInfo fb_alloc_info_dec = 3;
+    optional FrameBufferAllocInfo fb_alloc_info_wtl = 4;
+    optional int32 vb_frame_dec_size = 5;
+    repeated uint32 vb_frame_dec_phys_addr = 6 [packed = true];
+    optional int32 vb_frame_wtl_size = 7;
+    repeated uint32 vb_frame_wtl_phys_addr = 8 [packed = true];
+    optional bool vp9_res_change = 9;
+    optional bool enable_scaler = 10;
+    optional uint32 scale_width = 11;
+    optional uint32 scale_height = 12;
+}
+
+message DecSetRdPtr {
+    required DecHandle handle = 1;
+    optional uint32 addr = 2;
+    optional bool update_wr_ptr = 3;
+    optional RetCode ret_code = 4;
+}
+
+message DecParam {
+    optional int32 iframe_search_enable = 1;
+    optional int32 skipframe_mode = 2;
+    oneof DecStdParam {
+        int32 mp2_pic_flush = 3;
+        int32 rv_dbk_mode = 4;
+    }
+    optional bool cra_as_bla_flag = 5;
+    optional bool disable_film_grain = 6;
+    optional uint32 pixel_luma_pad = 7;
+    optional uint32 pixel_chroma_pad = 8;
+    optional SramMode sram_mode = 9;
+    optional bool thumbnail_mode = 10;
+    optional uint32 clr_disp_flag = 11;
+    optional uint32 set_disp_flag = 12;
+}
+
+message DecOutputExtData {
+    optional uint32 user_data_header = 1;
+    optional uint32 user_data_num = 2;
+    optional uint32 user_data_size = 3;
+    optional uint32 user_data_buf_full = 4;
+    optional uint32 active_format = 5;
+}
+
+message DecVp8Info {
+    message Vp8PicInfo {
+        optional uint32 show_frame = 1;
+        optional uint32 version_number = 2;
+        optional uint32 ref_idx_last = 3;
+        optional uint32 ref_idx_altr = 4;
+        optional uint32 ref_idx_gold = 5;
+    }
+    optional Vp8ScaleInfo vp8_scale_info = 1;
+    optional Vp8PicInfo vp8_pic_info = 2;
+}
+
+message DecAvcInfo {
+    message MvcPicInfo {
+        optional int32 view_idx_display = 1;
+        optional int32 view_idx_decoded = 2;
+    }
+    message AvcFpaSei {
+        optional uint32 exist = 1;
+        optional uint32 frame_packing_arrangement_id = 2;
+        optional uint32 frame_packing_arrangement_cancel_flag = 3;
+        optional uint32 quincunx_sampling_flag = 4;
+        optional uint32 spatial_flipping_flag = 5;
+        optional uint32 frame0_flipped_flag = 6;
+        optional uint32 field_views_flag = 7;
+        optional uint32 current_frame_is_frame0_flag = 8;
+        optional uint32 frame0_self_contained_flag = 9;
+        optional uint32 frame1_self_contained_flag = 10;
+        optional uint32 frame_packing_arrangement_extension_flag = 11;
+        optional uint32 frame_packing_arrangement_type = 12;
+        optional uint32 content_interpretation_type = 13;
+        optional uint32 frame0_grid_position_x = 14;
+        optional uint32 frame0_grid_position_y = 15;
+        optional uint32 frame1_grid_position_x = 16;
+        optional uint32 frame1_grid_position_y = 17;
+        optional uint32 frame_packing_arrangement_repetition_period = 18;
+    }
+    message AvcHrdInfo {
+        optional int32 cpb_minus1 = 1;
+        optional int32 vcl_hrd_param_flag = 2;
+        optional int32 nal_hrd_param_flag = 3;
+    }
+    message AvcRpSei {
+        optional uint32 exist = 1;
+        optional int32 recovery_frame_cnt = 2;
+        optional int32 exact_match_flag = 3;
+        optional int32 broken_link_flag = 4;
+        optional int32 changing_slice_group_idc = 5;
+    }
+    optional MvcPicInfo mvc_pic_info = 1;
+    optional AvcFpaSei avc_fpa_sei = 2;
+    optional AvcHrdInfo avc_hrd_info = 3;
+    optional AvcVuiInfo avc_vui_info = 4;
+    optional AvcRpSei avc_rp_sei = 5;
+}
+
+message DecHevcInfo {
+    message H265Info {
+        optional int32 decoded_p_o_c = 1;
+        optional int32 display_p_o_c = 2;
+        optional int32 ctu_size = 3;
+        optional int32 temporal_id = 4;
+        optional int32 color_primaries = 5;
+        optional int32 color_desc_present = 6;
+        optional int32 vid_full_range = 7;
+        optional int32 vui_param_present = 8;
+        optional int32 vui_transfer_characteristics = 9;
+        optional int32 vui_matrix_coefficients = 10;
+        optional int32 master_meta_present = 11;
+        optional uint32 display_primaries_x_b = 12;
+        optional uint32 display_primaries_x_g = 13;
+        optional uint32 display_primaries_x_r = 14;
+        optional uint32 display_primaries_y_b = 15;
+        optional uint32 display_primaries_y_g = 16;
+        optional uint32 display_primaries_y_r = 17;
+        optional uint32 white_point_x = 18;
+        optional uint32 white_point_y = 19;
+        optional uint32 max_display_mastering_luminance = 20;
+        optional uint32 min_display_mastering_luminance = 21;
+        optional int32 content_meta_present = 22;
+        optional uint32 max_content_light_level = 23;
+        optional uint32 max_pic_average_light_level = 24;
+    }
+    message H265RpSei {
+        optional uint32 exist = 1;
+        optional int32 recovery_poc_cnt = 2;
+        optional int32 exact_match_flag = 3;
+        optional int32 broken_link_flag = 4;
+    }
+    optional H265Info h265_info = 1;
+    optional H265RpSei h265_rp_sei = 2;
+}
+
+message SvacInfo {
+    optional int32 spatial_svc_mode = 1;
+    optional int32 spatial_svc_layer = 2;
+    optional int32 spatial_svc_flag = 3;
+}
+
+message Avs2Info {
+    optional int32 decoded_poi = 1;
+    optional int32 display_poi = 2;
+}
+
+message Av1Info {
+    optional int32 allow_screen_content_tools = 1;
+    optional int32 allow_intra_bc = 2;
+}
+
+message DecMP2Info {
+    message MP2PicDispExtInfo {
+        optional uint32 offset_num = 1;
+        optional int32 horizontal_offset1 = 2;
+        optional int32 horizontal_offset2 = 3;
+        optional int32 horizontal_offset3 = 4;
+        optional int32 vertical_offset1 = 5;
+        optional int32 vertical_offset2 = 6;
+        optional int32 vertical_offset3 = 7;
+    }
+    optional MP2BarDataInfo mp2_bardata_info = 1;
+    optional MP2PicDispExtInfo mp2_pic_disp_ext_info = 2;
+}
+
+message DecOutputInfo {
+    optional int32 index_frame_display = 1;
+    optional int32 index_frame_display_for_tiled = 2;
+    optional int32 index_frame_decoded = 3;
+    optional int32 index_inter_frame_decoded = 4;
+    optional int32 index_frame_decoded_for_tiled = 5;
+    optional int32 nal_type = 6;
+    optional int32 pic_type = 7;
+    optional int32 pic_type_first = 8;
+    optional int32 num_of_err_m_bs = 9;
+    optional int32 num_of_tot_m_bs = 10;
+    optional int32 num_of_err_m_bs_in_display = 11;
+    optional int32 num_of_tot_m_bs_in_display = 12;
+    optional bool ref_missing_frame_flag = 13;
+    optional int32 not_sufficient_slice_buffer = 14;
+    optional int32 not_sufficient_ps_buffer = 15;
+    optional int32 decoding_success = 16;
+    optional int32 interlaced_frame = 17;
+    optional int32 chunk_reuse_required = 18;
+    optional VpuRect rc_display = 19;
+    optional int32 disp_pic_width = 20;
+    optional int32 disp_pic_height = 21;
+    optional VpuRect rc_decoded = 22;
+    optional int32 dec_pic_width = 23;
+    optional int32 dec_pic_height = 24;
+    optional int32 aspect_rate_info = 25;
+    optional int32 f_rate_numerator = 26;
+    optional int32 f_rate_denominator = 27;
+
+    optional int32 decoded_poc = 28;
+    optional int32 display_poc = 29;
+    optional int32 temporal_id = 30;
+    optional int32 vc1_npf_field_info = 31;
+    optional int32 mp2_disp_ver_size = 32;
+    optional int32 mp2_disp_hor_size = 33;
+    optional int32 mp2_npf_field_info = 34;
+    optional int32 mp2_color_desc_present_flag = 35;
+    optional int32 mp2_color_primaries = 36;
+    optional int32 mp2_transfer_char = 37;
+    optional int32 mp2_matrix_coeff = 38;
+
+    optional int32 avc_npf_field_info = 39;
+    optional int32 avc_poc_pic = 40;
+    optional int32 avc_poc_top = 41;
+    optional int32 avc_poc_bot = 42;
+    optional int32 picture_structure = 43;
+    optional int32 top_field_first = 44;
+    optional int32 repeat_first_field = 45;
+    optional int32 progressive_frame = 46;
+    optional int32 field_sequence = 47;
+    optional int32 frame_dct = 48;
+    optional int32 nal_ref_idc = 49;
+    optional int32 dec_frame_info = 50;
+    optional int32 pic_str_present = 51;
+    optional int32 pic_timing_struct = 52;
+    optional int32 progressive_sequence = 53;
+    optional int32 mp4_time_increment = 54;
+    optional int32 mp4_modulo_time_base = 55;
+    optional DecOutputExtData dec_output_ext_data = 56;
+    optional int32 consumed_byte = 57;
+    optional uint32 rd_ptr = 58;
+    optional uint32 wr_ptr = 59;
+    optional uint32 byte_pos_frame_start = 60;
+    optional uint32 byte_pos_frame_end = 61;
+    optional FrameBuffer disp_frame = 62;
+    optional int32 frame_display_flag = 63;
+    optional int32 sequence_changed = 64;
+    optional int32 stream_end_flag = 65;
+    optional int32 frame_cycle = 66;
+    optional int32 error_reason = 67;
+    optional int32 error_reason_ext = 68;
+    optional int32 warn_info = 69;
+    optional uint32 sequence_no = 70;
+    optional int32 rv_tr = 71;
+    optional int32 rv_tr_b = 72;
+    optional int32 index_frame_prescan = 73;
+    optional uint32 dec_host_cmd_tick = 74;
+    optional uint32 dec_seek_start_tick = 75;
+    optional uint32 dec_seek_end_tick = 76;
+    optional uint32 dec_parse_start_tick = 77;
+    optional uint32 dec_parse_end_tick = 78;
+    optional uint32 dec_decode_start_tick = 79;
+    optional uint32 dec_decode_end_tick = 80;
+    optional uint32 seek_cycle = 81;
+    optional uint32 parse_cycle = 82;
+    optional uint32 decoded_cycle = 83;
+    optional int32 ctu_size = 84;
+    optional int32 output_flag = 85;
+
+    oneof DecCodecInfo {
+        DecVp8Info vp8_info = 86;
+        DecAvcInfo avc_info = 87;
+        DecHevcInfo hevc_info = 88;
+        DecMP2Info mp2_info = 89;
+        SvacInfo svac_info = 90;
+        Avs2Info avs2_info = 91;
+        Av1Info av1_info = 92;
+    }
+    optional bool vp9_inter_res_change = 93;
+    optional uint32 vp9_inter_res_change_frame_idx = 94;
+}
+
+message DecOneFrame {
+    required DecHandle handle = 1;
+    optional DecParam dec_param = 2;
+    optional DecOutputInfo dec_output_info = 3;
+    optional sint32 interrupt_reaseon = 4;
+    optional RetCode ret_code = 5;
+}
+
+message DecClrDispFlag {
+    required DecHandle handle = 1;
+    optional int32 index = 2;
+    optional RetCode ret_code = 3;
+}
+
+message DecFlush {
+    required DecHandle handle = 1;
+    optional RetCode ret_code = 2;
+    optional uint32 clr_disp_flag = 3;
+    optional uint32 set_disp_flag = 4;
+}
+
+message DecClose {
+    required DecHandle handle = 1;
+    optional RetCode ret_code = 2;
+}
+
+
+// enc
+message EncHandle {
+    required uint32 handle = 1;
+}
+
+message EncSliceMode {
+    optional int32 slice_mode = 1;
+    optional int32 slice_size_mode = 2;
+    optional int32 slice_size = 3;
+}
+
+message AvcPpsParam {
+    optional int32 pps_id = 1;
+    optional int32 entropy_coding_mode = 2;
+    optional int32 cabac_init_idc = 3;
+    optional int32 transform8x8_mode = 4;
+}
+
+message HevcVuiParam {
+    optional uint32 vui_param_flags = 1;
+    optional uint32 vui_aspect_ratio_idc = 2;
+    optional uint32 vui_sar_size = 3;
+    optional uint32 vui_over_scan_appropriate = 4;
+    optional uint32 video_signal = 5;
+    optional uint32 vui_chroma_sample_loc = 6;
+    optional uint32 vui_disp_win_left_right = 7;
+    optional uint32 vui_disp_win_top_bottom = 8;
+}
+
+message CustomGopPicParam {
+    optional int32 pic_type = 1;
+    optional int32 poc_offset = 2;
+    optional int32 pic_qp = 3;
+    optional int32 use_multi_ref_p = 4;
+    optional int32 ref_poc_l0 = 5;
+    optional int32 ref_poc_l1 = 6;
+    optional int32 temporal_id = 7;
+}
+
+message CustomGopParam {
+    optional int32 custom_gop_size = 1;
+    optional int32 use_derive_lambda_weight = 2;
+    repeated CustomGopPicParam pic_param = 3;
+    repeated int32 gop_pic_lambda = 4 [packed = true];
+}
+
+message EncStdParam {
+    message EncMp4Param {
+        optional int32 mp4_data_partition_enable = 1;
+        optional int32 mp4_reversible_vlc_enable = 2;
+        optional int32 mp4_intra_dc_vlc_thr = 3;
+        optional int32 mp4_hec_enable = 4;
+        optional int32 mp4_verid = 5;
+    }
+    message EncH263Param {
+        optional int32 h263_annex_i_enable = 1;
+        optional int32 h263_annex_j_enable = 2;
+        optional int32 h263_annex_k_enable = 3;
+        optional int32 h263_annex_t_enable = 4;
+    }
+    message EncAvcParam {
+        optional int32 constrained_intra_pred_flag = 1;
+        optional int32 disable_deblk = 2;
+        optional int32 deblk_filter_offset_alpha = 3;
+        optional int32 deblk_filter_offset_beta = 4;
+        optional int32 chroma_qp_offset = 5;
+        optional int32 aud_enable = 6;
+        optional int32 frame_cropping_flag = 7;
+        optional int32 frame_crop_left = 8;
+        optional int32 frame_crop_right = 9;
+        optional int32 frame_crop_top = 10;
+        optional int32 frame_crop_bottom = 11;
+        optional int32 level = 12;
+        optional int32 profile = 13;
+        optional int32 field_flag = 14;
+        optional int32 field_ref_mode = 15;
+        optional int32 chroma_format400 = 16;
+        optional int32 pps_num = 17;
+        optional AvcPpsParam pps_param_1 = 18;
+        optional AvcPpsParam pps_param_2 = 19;
+    }
+    message EncHevcParam {
+        optional int32 profile = 1;
+        optional int32 level = 2;
+        //TODO: add complete hevc param
+    }
+    message EncWaveParam{
+        optional int32 profile = 1;
+        optional int32 en_still_picture = 2;
+        optional int32 level = 3;
+        optional int32 tier = 4;
+        optional int32 internal_bit_depth = 5;
+        optional int32 lossless_enable = 6;
+        optional int32 const_intra_pred_flag = 7;
+        optional int32 gop_preset_idx = 8;
+        optional int32 decoding_refresh_type = 9;
+        optional int32 intra_qp = 10;
+        optional int32 intra_period = 11;
+        optional int32 forced_idr_header_enable = 12;
+        optional int32 conf_win_top = 13;
+        optional int32 conf_win_bot = 14;
+        optional int32 conf_win_left = 15;
+        optional int32 conf_win_right = 16;
+        optional int32 independ_slice_mode = 17;
+        optional int32 independ_slice_mode_arg = 18;
+        optional int32 depend_slice_mode = 19;
+        optional int32 depend_slice_mode_arg = 20;
+        optional int32 intra_refresh_mode = 21;
+        optional int32 intra_refresh_arg = 22;
+        optional int32 use_recommend_enc_param = 23;
+        optional int32 scaling_list_enable = 24;
+        optional int32 cu_size_mode = 25;
+        optional int32 tmvp_enable = 26;
+        optional int32 wpp_enable = 27;
+        optional int32 max_num_merge = 28;
+        optional int32 disable_deblk = 29;
+        optional int32 lf_cross_slice_boundary_enable = 30;
+        optional int32 beta_offset_div2 = 31;
+        optional int32 tc_offset_div2 = 32;
+        optional int32 skip_intra_trans = 33;
+        optional int32 sao_enable = 34;
+        optional int32 intra_nx_n_enable = 35;
+        optional int32 bit_alloc_mode = 36;
+        repeated int32 fixed_bit_ratio = 37 [packed = true];
+        optional int32 cu_level_rc_enable = 38;
+        optional int32 hvs_qp_enable = 39;
+        optional int32 hvs_qp_scale = 40;
+        optional int32 hvs_max_delta_qp = 41;
+        optional CustomGopParam gop_param = 42;
+        optional int32 roi_enable = 43;
+        optional uint32 num_units_in_tick = 44;
+        optional uint32 time_scale = 45;
+        optional uint32 num_ticks_poc_diff_one = 46;
+        optional int32 chroma_cb_qp_offset = 47;
+        optional int32 chroma_cr_qp_offset = 48;
+        optional int32 initial_rc_qp = 49;
+        optional uint32 nr_y_enable = 50;
+        optional uint32 nr_cb_enable = 51;
+        optional uint32 nr_cr_enable = 52;
+        optional uint32 nr_intra_weight_y = 53;
+        optional uint32 nr_intra_weight_cb = 54;
+        optional uint32 nr_intra_weight_cr = 55;
+        optional uint32 nr_inter_weight_y = 56;
+        optional uint32 nr_inter_weight_cb = 57;
+        optional uint32 nr_inter_weight_cr = 58;
+        optional uint32 nr_noise_est_enable = 59;
+        optional uint32 nr_noise_sigma_y = 60;
+        optional uint32 nr_noise_sigma_cb = 61;
+        optional uint32 nr_noise_sigma_cr = 62;
+        optional uint32 use_long_term = 63;
+        optional uint32 monochrome_enable = 64;
+        optional uint32 strong_intra_smooth_enable = 65;
+        optional uint32 weight_pred_enable = 66;
+        optional uint32 bg_detect_enable = 67;
+        optional uint32 bg_thr_diff = 68;
+        optional uint32 bg_thr_mean_diff = 69;
+        optional uint32 bg_lambda_qp = 70;
+        optional int32 bg_delta_qp = 71;
+        optional uint32 custom_lambda_enable = 72;
+        optional uint32 custom_md_enable = 73;
+        optional int32 pu04_delta_rate = 74;
+        optional int32 pu08_delta_rate = 75;
+        optional int32 pu16_delta_rate = 76;
+        optional int32 pu32_delta_rate = 77;
+        optional int32 pu04_intra_planar_delta_rate = 78;
+        optional int32 pu04_intra_dc_delta_rate = 79;
+        optional int32 pu04_intra_angle_delta_rate = 80;
+        optional int32 pu08_intra_planar_delta_rate = 81;
+        optional int32 pu08_intra_dc_delta_rate = 82;
+        optional int32 pu08_intra_angle_delta_rate = 83;
+        optional int32 pu16_intra_planar_delta_rate = 84;
+        optional int32 pu16_intra_dc_delta_rate = 85;
+        optional int32 pu16_intra_angle_delta_rate = 86;
+        optional int32 pu32_intra_planar_delta_rate = 87;
+        optional int32 pu32_intra_dc_delta_rate = 88;
+        optional int32 pu32_intra_angle_delta_rate = 89;
+        optional int32 cu08_intra_delta_rate = 90;
+        optional int32 cu08_inter_delta_rate = 91;
+        optional int32 cu08_merge_delta_rate = 92;
+        optional int32 cu16_intra_delta_rate = 93;
+        optional int32 cu16_inter_delta_rate = 94;
+        optional int32 cu16_merge_delta_rate = 95;
+        optional int32 cu32_intra_delta_rate = 96;
+        optional int32 cu32_inter_delta_rate = 97;
+        optional int32 cu32_merge_delta_rate = 98;
+        optional int32 coef_clear_disable = 99;
+        optional int32 min_qp_i = 100;
+        optional int32 max_qp_i = 101;
+        optional int32 min_qp_p = 102;
+        optional int32 max_qp_p = 103;
+        optional int32 min_qp_b = 104;
+        optional int32 max_qp_b = 105;
+        optional uint32 custom_lambda_addr = 106;
+        optional uint32 user_scaling_list_addr = 107;
+        optional int32 svc_enable = 108;
+        optional int32 svc_mode = 109;
+        optional int32 luma_dc_qp_offset = 110;
+        optional int32 chroma_dc_qp_offset = 111;
+        optional int32 chroma_ac_qp_offset = 112;
+        optional int32 avc_idr_period = 113;
+        optional int32 rdo_skip = 114;
+        optional int32 lambda_scaling_enable = 115;
+        optional int32 transform8x8_enable = 116;
+        optional int32 avc_slice_mode = 117;
+        optional int32 avc_slice_arg = 118;
+        optional int32 intra_mb_refresh_mode = 119;
+        optional int32 intra_mb_refresh_arg = 120;
+        optional int32 mb_level_rc_enable = 121;
+        optional int32 entropy_coding_mode = 122;
+        optional int32 s2fme_disable = 123;
+        optional uint32 rc_weight_param = 124;
+        optional uint32 rc_weight_buf = 125;
+        optional HevcVuiParam vui_param = 126;
+    }
+    oneof param {
+        EncMp4Param mp4_param = 1;
+        EncH263Param h263_param = 2;
+        EncAvcParam avc_param = 3;
+        EncHevcParam hevc_param = 4;
+        EncWaveParam wave_param = 5;
+    }
+}
+
+message EncOpenParam {
+    optional uint32 bitstream_buffer = 1;
+    optional uint32 bitstream_buffer_size = 2;
+    optional CodStd bitstream_format = 3;
+    optional int32 ring_buffer_enable = 4;
+    optional int32 pic_width = 5;
+    optional int32 pic_height = 6;
+    optional int32 linear2_tiled_enable = 7;
+    optional int32 linear2_tiled_mode = 8;
+    optional int32 frame_rate_info = 9;
+    optional int32 me_search_range_x = 10;
+    optional int32 me_search_range_y = 11;
+    optional int32 rc_gop_i_qp_offset_en = 12;
+    optional int32 rc_gop_i_qp_offset = 13;
+    optional int32 me_search_range = 14;
+    optional int32 vbv_buffer_size = 15;
+    optional int32 frame_skip_disable = 16;
+    optional int32 gop_size = 17;
+    optional int32 idr_interval = 18;
+    optional int32 me_blk_mode = 19;
+    optional EncSliceMode slice_mode = 20;
+    optional int32 intra_refresh = 21;
+    optional int32 consc_intra_refresh_enable = 22;
+    optional int32 count_intra_mb_enable = 23;
+    optional int32 field_seq_intra_refresh_enable = 24;
+    optional int32 user_qp_max = 25;
+    optional int32 max_intra_size = 26;
+    optional int32 user_max_delta_qp = 27;
+    optional int32 user_qp_min = 28;
+    optional int32 user_min_delta_qp = 29;
+    optional int32 me_use_zero_pmv = 30;
+    optional int32 intra_cost_weight = 31;
+    optional int32 rc_intra_qp = 32;
+    optional int32 user_gamma = 33;
+    optional int32 rc_interval_mode = 34;
+    optional int32 mb_interval = 35;
+    optional int32 bit_rate = 36;
+    optional int32 bit_rate_bl = 37;
+    optional int32 initial_delay = 38;
+    optional int32 rc_enable = 39;
+    optional EncStdParam enc_std_param = 40;
+    optional int32 frame_cache_bypass = 41;
+    optional int32 frame_cache_burst = 42;
+    optional int32 frame_cache_merge = 43;
+    optional int32 frame_cache_way_shape = 44;
+    optional int32 cache_bypass = 45;
+    optional int32 cbcr_interleave = 46;
+    optional int32 cbcr_order = 47;
+    optional int32 frame_endian = 48;
+    optional int32 stream_endian = 49;
+    optional int32 source_endian = 50;
+    optional int32 bwb_enable = 51;
+    optional int32 line_buf_int_en = 52;
+    optional int32 packed_format = 53;
+    optional FrameBufferFormat src_format = 54;
+    optional FrameBufferFormat output_format = 55;
+    optional int32 src_bit_depth = 56;
+    optional uint32 core_idx = 57;
+    optional int32 nv21 = 58;
+    optional uint32 encode_hrd_rbsp_in_vps = 59;
+    optional uint32 encode_hrd_rbsp_in_vui = 60;
+    optional uint32 hrd_rbsp_data_size = 61;
+    optional uint32 hrd_rbsp_data_addr = 62;
+    optional uint32 encode_vui_rbsp = 63;
+    optional uint32 vui_rbsp_data_size = 64;
+    optional uint32 vui_rbsp_data_addr = 65;
+    optional uint32 virt_axi_id = 66;
+    optional bool enable_pts = 67;
+    optional bool enable_non_ref_fbc_write = 68;
+    optional int32 pic_width_bl = 69;
+    optional int32 pic_height_bl = 70;
+    optional int32 source_buf_count = 71;
+    optional int32 stream_buf_count = 72;
+    optional int32 stream_buf_size = 73;
+    optional int32 rc_weight_factor = 74;
+    optional int32 src_release_int_enable = 75;
+    optional int32 ring_buffer_wrap_enable = 76;
+    optional int32 map_type = 77;
+    optional bool sram_enable = 78;
+}
+
+message EncOpen {
+    required EncHandle handle = 1;
+    optional EncOpenParam enc_op = 2;
+    optional RetCode ret_code = 3;
+}
+
+message EncHeaderParam {
+    optional uint32 buf_addr = 1;
+    optional uint32 size = 2;
+    optional int32 header_type = 3;
+    optional bool zero_padding_enable = 4;
+    optional int32 fail_reason_code = 5;
+    optional bool encode_aud = 6;
+}
+
+message EncGiveCommand {
+    required EncHandle handle = 1;
+    optional CodecCommand cmd = 2;
+    optional RetCode ret_code = 3;
+    oneof Param {
+        EncHeaderParam enc_header_param = 4;
+    }
+}
+
+message EncGetHead {
+    required EncHandle handle = 1;
+    optional CodStd bitstream_format = 2;
+    optional uint32 input_buf_addr = 3;
+    optional uint32 input_buf_size = 4;
+    repeated uint32 output_buf_addr = 5 [packed = true];
+    repeated uint32 output_buf_size = 6 [packed = true];
+    optional RetCode ret_code = 7;
+}
+
+message EncInitialInfo {
+    optional int32 min_frame_buffer_count = 1;
+    optional int32 min_src_frame_count = 2;
+    optional int32 max_latency_pictures = 3;
+    optional int32 seq_init_err_reason = 4;
+    optional int32 warn_info = 5;
+    optional uint32 vlc_buf_size = 6;
+    optional uint32 param_buf_size = 7;
+}
+
+message EncGetInitialInfo {
+    required EncHandle handle = 1;
+    optional EncInitialInfo initial_info = 2;
+    optional RetCode ret_code = 3;
+}
+
+message EncRegisterEncodeBuffer {
+    required EncHandle handle = 1;
+    optional RetCode ret_code = 2;
+    optional FrameBufferAllocInfo fb_alloc_info = 3;
+    optional int32 vb_frame_buf_size = 4;
+    repeated uint32 vb_frame_buf_phys_addr = 5 [packed = true];
+}
+
+message AvcRoiParam {
+    optional int32 mode = 1;
+    optional int32 number = 2;
+    repeated VpuRect region = 3;
+    repeated int32 qp = 4 [packed = true];
+}
+
+message HevcCtuOptParam {
+    optional int32 roi_enable = 1;
+    optional int32 roi_delta_qp = 2;
+    optional int32 map_endian = 3;
+    optional int32 map_stride = 4;
+    optional uint32 addr_roi_ctu_map = 5;
+}
+
+message EncCodeOpt {
+    optional int32 implicit_header_encode = 1;
+    optional int32 encode_vcl = 2;
+    optional int32 encode_vps = 3;
+    optional int32 encode_sps = 4;
+    optional int32 encode_pps = 5;
+    optional int32 encode_aud = 6;
+    optional int32 encode_eos = 7;
+    optional int32 encode_eob = 8;
+    optional int32 encode_vui = 9;
+}
+
+message WaveCustomMapOpt {
+    optional int32 roi_avg_qp = 1;
+    optional int32 custom_roi_map_enable = 2;
+    optional int32 custom_lambda_map_enable = 3;
+    optional int32 custom_mode_map_enable = 4;
+    optional int32 custom_coef_drop_enable = 5;
+    optional uint32 addr_custom_map = 6;
+}
+
+message EncParam {
+    optional FrameBuffer source_frame = 1;
+    optional int32 force_i_picture = 2;
+    optional int32 skip_picture = 3;
+    optional int32 quant_param = 4;
+    optional uint32 pic_stream_buffer_addr = 5;
+    optional int32 pic_stream_buffer_size = 6;
+    optional int32 field_run = 7;
+    optional AvcRoiParam set_roi = 8;
+    optional HevcCtuOptParam ctu_opt_param = 9;
+    optional int32 force_pic_qp_enable = 10;
+    optional int32 force_pic_qp_i = 11;
+    optional int32 force_pic_qp_p = 12;
+    optional int32 force_pic_qp_b = 13;
+    optional int32 force_pic_type_enable = 14;
+    optional int32 force_pic_type = 15;
+    optional int32 src_idx = 16;
+    optional int32 src_end_flag = 17;
+    optional EncCodeOpt code_option = 18;
+    optional uint32 use_cur_src_as_longterm_pic = 19;
+    optional uint32 use_longterm_ref = 20;
+    optional uint64 pts = 21;
+    optional SramMode sram_mode = 22;
+    optional uint32 coda9_roi_enable = 23;
+    optional uint32 coda9_roi_pic_avg_qp = 24;
+    optional uint32 roi_qp_map_addr = 25;
+    optional uint32 non_roi_qp = 26;
+    optional WaveCustomMapOpt custom_map_opt = 27;
+    optional uint32 wp_pix_sigma_y = 28;
+    optional uint32 wp_pix_sigma_cb = 29;
+    optional uint32 wp_pix_sigma_cr = 30;
+    optional uint32 wp_pix_mean_y = 31;
+    optional uint32 wp_pix_mean_cb = 32;
+    optional uint32 wp_pix_mean_cr = 33;
+    optional uint32 force_all_ctu_coef_drop_enable = 34;
+    optional int32 user_filter_level_enable = 35;
+    optional int32 lf_filter_level = 36;
+    optional int32 sharp_level = 37;
+    optional int32 lf_ref_delta_intra = 38;
+    optional int32 lf_ref_delta_ref0 = 39;
+    optional int32 lf_ref_delta_ref1 = 40;
+    optional int32 lf_mode_delta = 41;
+    optional int32 svc_layer_flag = 42;
+    optional FrameBuffer offset_tbl_buffer = 43;
+    optional uint32 new_bit_rate = 44;
+    optional uint32 new_frame_rate = 45;
+    optional uint32 new_gop_size = 46;
+}
+
+message EncReportInfo {
+    optional int32 enable = 1;
+    optional int32 type = 2;
+    optional int32 sz = 3;
+    optional uint32 addr = 4;
+}
+
+message EncOutputInfo {
+    optional uint32 bitstream_buffer = 1;
+    optional uint32 bitstream_size = 2;
+    optional int32 bitstream_wrap_around = 3;
+    optional int32 pic_type = 4;
+    optional int32 num_of_slices = 5;
+    optional int32 recon_frame_index = 6;
+    optional FrameBuffer recon_frame = 7;
+    optional uint32 rd_ptr = 8;
+    optional uint32 wr_ptr = 9;
+    optional int32 pic_skipped = 10;
+    optional int32 num_of_intra = 11;
+    optional int32 num_of_merge = 12;
+    optional int32 num_of_skip_block = 13;
+    optional int32 avg_ctu_qp = 14;
+    optional int32 enc_pic_byte = 15;
+    optional int32 enc_gop_pic_idx = 16;
+    optional int32 enc_pic_poc = 17;
+    optional int32 enc_src_idx = 18;
+    optional int32 enc_vcl_nal = 19;
+    optional int32 enc_pic_cnt = 20;
+    optional int32 release_src_flag = 21;
+    optional EncReportInfo mb_info = 22;
+    optional EncReportInfo mv_info = 23;
+    optional EncReportInfo slice_info = 24;
+    optional int32 frame_cycle = 25;
+    optional uint64 pts = 26;
+    optional uint32 enc_inst_idx = 27;
+    optional int32 error_reason = 28;
+    optional int32 warn_info = 29;
+    optional uint32 cycle_per_tick = 30;
+    optional uint32 enc_host_cmd_tick = 31;
+    optional uint32 enc_prepare_start_tick = 32;
+    optional uint32 enc_prepare_end_tick = 33;
+    optional uint32 enc_processing_start_tick = 34;
+    optional uint32 enc_processing_end_tick = 35;
+    optional uint32 enc_encode_start_tick = 36;
+    optional uint32 enc_encode_end_tick = 37;
+    optional uint32 prepare_cycle = 38;
+    optional uint32 processing = 39;
+    optional uint32 encoded_cycle = 40;
+    optional uint32 pic_distortion_low = 41;
+    optional uint32 pic_distortion_high = 42;
+    optional uint32 is_svc_layer_el = 43;
+}
+
+message EncOneFrame {
+    required EncHandle handle = 1;
+    optional EncParam enc_param = 2;
+    optional EncOutputInfo enc_output_info = 3;
+    optional sint32 interrupt_reaseon = 4;
+    optional RetCode ret_code = 5;
+}
+
+message EncClose {
+    required EncHandle handle = 1;
+    optional RetCode ret_code = 2;
+}

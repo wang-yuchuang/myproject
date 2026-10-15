@@ -1,0 +1,129 @@
+#!/bin/sh
+
+function show_debug_usage()
+{
+	echo
+	echo "--------------This is debug mode---------------"
+	echo '+++++ please use "run_app -debug" instead +++++'
+	echo "-----------------------------------------------"
+	echo
+}
+
+###set environmntal variables
+NCCU_RUN_PATH="/app"
+#NCCU_RUN_PATH="/var"
+#NCCU_RUN_PATH=$PWD
+export NCCU_RUN_PATH
+
+NCCU_DATA_PATH="/data"
+export NCCU_DATA_PATH
+
+LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/lib:$NCCU_RUN_PATH/lib:$NCCU_RUN_PATH/comm_port:$NCCU_RUN_PATH/extensions
+export LD_LIBRARY_PATH
+
+EXTENS_MARK_FILE="/var/.ext_mark"
+export EXTENS_MARK_FILE
+
+#goto the current dir
+cd $NCCU_RUN_PATH
+
+VAR_DIR="/opt/appdata/data" #NCCU board
+export VAR_DIR
+
+#install USB serial driver, added by Jimmy 20190419
+# RTN=`lsmod | grep usb_wwan`
+# if [ "$RTN" = "" ]
+# then
+# 	insmod /home/driver/usb_wwan.ko	
+# 	#OPTION_KO_FILE=$NCCU_RUN_PATH/option.ko
+# 	#if [ -f $OPTION_KO_FILE ]; then
+# 	#	echo "Now use [option.ko] in app"
+# 	#	insmod $OPTION_KO_FILE
+# 	#else
+# 		#insmod /home/driver/option.ko
+# 	#fi
+# 	insmod /home/driver/option.ko
+# fi
+
+if [ $# -gt 0 ];then
+	if [ $1 == "-debug" ];then
+		echo "--------------DEBUG start_app now----------"
+	else
+		show_debug_usage
+		exit 0;
+	fi
+else
+	show_debug_usage
+	exit 0;
+fi
+
+#set PID files
+APP_PID_FILE=$VAR_DIR/nccu.pid
+SYSHAND_PID_FILE=$VAR_DIR/syshand.pid
+
+########### add log4c lib ######
+test -e /app/extensions/log4crc && cp -f /app/extensions/log4crc /opt/appdata/config/log4crc 2>/dev/null || true
+# 如果 /opt/appdata/config/log4crc 不存在，兜底拷贝到 /etc
+test -e /opt/appdata/config/log4crc || { test -e /app/extensions/log4crc && cp -f /app/extensions/log4crc /etc/log4crc 2>/dev/null || true; }
+
+#--------------------------------add by Jimmy Wu for starting another process 'systemhandler'
+if ps | grep -q '[s]yshand'; then
+	echo
+	echo !!!!!!!The sys_hand is ALREADY running!!!!!!!!
+	echo
+else
+	echo
+	echo Starting SYSTEM_HANDLER...
+	echo
+	./bin/syshand &
+	sleep 1
+fi
+
+#wait install done
+IS_EXT_INSTALLING=`ps | grep /app/extensions/install.sh | grep -v grep`
+if [[ -n "$IS_EXT_INSTALLING" ]]; then
+	wait=1
+	while [ $wait -le 5 ]
+	do
+		IS_EXT_INSTALLING=`ps | grep /app/extensions/install.sh | grep -v grep`
+		if [[ -z "$IS_EXT_INSTALLING" ]]; then
+			echo "install ext done........"
+			break
+		else
+			echo "installing ext.........."
+		fi
+		let wait++
+		sleep 1
+	done
+fi
+
+IS_SYSHAND_ALIVE=`ps | grep bin/syshand | grep -v grep`
+if [[ -z "$IS_SYSHAND_ALIVE" ]]; then
+	###if sys_hand not started OK, then we quit
+	exit 0;
+fi
+
+#sleep 2 #IMAU only can sleep sec
+#if ! [ -f $SYSHAND_PID_FILE ]; then
+#	echo
+#	echo The syshand process start ERROR!!! now restart system...
+#	echo
+#	#/sbin/reboot
+#	#exit 1;
+#fi
+
+#-----------------------------------end add by Jimmmy
+
+if [ -f $APP_PID_FILE ]; then
+	echo
+	echo The application is already running. Please stop it and then restart.
+	echo
+	exit 1;
+fi
+
+./bin/nccu_app  -pid=$APP_PID_FILE &
+#./bin/nccu_app &
+#NCCU_EXIT_CODE=$?
+
+
+

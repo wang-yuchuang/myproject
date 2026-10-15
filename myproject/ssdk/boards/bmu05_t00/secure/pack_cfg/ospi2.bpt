@@ -1,0 +1,104 @@
+{
+    "settings": {
+        "disk_size": "4096 KiB",
+        "disk_alignment": 4096,
+        "partitions_offset_begin": "0"
+    },
+    "partitions": [
+        {
+            "ab": false,
+            "label": "dil",
+            "size": "160 KiB",
+            "guid": "auto",
+            "type_guid": "cc0cb090-a2e4-459f-9f5f-b61daf95e39d",
+            "downloadfile": "dil.img"
+        },
+        {
+            "ab": false,
+            "label": "dil_bak",
+            "size": "160 KiB",
+            "guid": "auto",
+            "type_guid": "cc0cb090-a2e4-459f-9f5f-b61daf95e39a",
+            "downloadfile": "dil.img"
+        },
+        {
+            "ab": true,
+            "label": "dil2",
+            "size": "128 KiB",
+            "guid": "auto",
+            "type_guid": "cc0cb090-a2e4-459f-9f5f-b61daf95e39b",
+            "downloadfile": ""
+        },
+        {
+            "ab": false,
+            "label": "ddr_ioretention",
+            "size": "16 KiB",
+            "guid": "auto",
+            "type_guid": "cc0cb090-a2e4-459f-9f5f-b61daf95e39a"
+        },
+        {
+            "ab": true,
+            "label": "ddr_init_seq",
+            "size": "32 KiB",
+            "guid": "auto",
+            "type_guid": "cc0cb090-a2e4-459f-9f5f-b61daf95e39a",
+            "downloadfile": "ddr_init_seq.img"
+        },
+        {
+            "ab": true,
+            "label": "ddr_fw",
+            "size": "128 KiB",
+            "guid": "auto",
+            "type_guid": "cc0cb090-a2e4-459f-9f5f-b61daf95e39a",
+            "downloadfile": "ddr_fw.img"
+        },
+        {
+            "ab": true,
+            "label": "system_config",
+            "size": "64 KiB",
+            "guid": "auto",
+            "type_guid": "cc0cb090-a2e4-459f-9f5f-b61daf95e39a",
+            "downloadfile": ""
+        },
+        {
+            "ab": true,
+            "label": "hsm_fw",
+            "size": "64 KiB",
+            "guid": "auto",
+            "type_guid": "cc0cb090-a2e4-459f-9f5f-b61daf95e39a",
+            "downloadfile": ""
+        },
+        {
+            "ab": true,
+            "label": "preloader",
+            "size": "256 KiB",
+            "guid": "auto",
+            "type_guid": "cc0cb090-a2e4-459f-9f5f-b61daf95e39a",
+            "downloadfile": "preloader.img"
+        },
+        {
+            "ab": true,
+            "label": "vbmeta",
+            "size": "64 KiB",
+            "guid": "auto",
+            "type_guid": "cc0cb090-a2e4-459f-9f5f-b61daf95e39a",
+      "downloadfile": "vbmeta-ospi.img"
+        },
+        {
+            "ab": true,
+            "label": "vbmeta-ssdk",
+            "size": "64 KiB",
+            "guid": "auto",
+            "type_guid": "cc0cb090-a2e4-459f-9f5f-b61daf95e39a",
+      "downloadfile": "vbmeta-ssdk.img"
+        },
+        {
+            "ab": true,
+            "label": "ssystem",
+            "size": "960 KiB",
+            "guid": "auto",
+            "type_guid": "cc0cb090-a2e4-459f-9f5f-b61daf95e39a",
+            "downloadfile": "ssystem.img"
+        }
+    ]
+}

@@ -1,0 +1,4 @@
+config XLI_UART
+    bool "Xilinx UART Driver"
+    select UART
+    default n

@@ -1,0 +1,31 @@
+menuconfig OSR_CRYPTO
+    bool "OSR CRYPTO Driver Support"
+    default n
+
+if OSR_CRYPTO
+
+config OSR_CRYPTO_DRIVER
+    bool "osr crypto driver"
+    default n
+
+config OSR_CRYPTO_DRIVER_AES
+    bool "osr crypto aes driver"
+    default n
+    depends on OSR_CRYPTO_DRIVER
+
+config OSR_CRYPTO_DRIVER_PKE
+    bool "osr crypto pke driver"
+    default n
+    depends on OSR_CRYPTO_DRIVER
+
+config OSR_CRYPTO_DRIVER_HASH
+    bool "osr crypto hash driver"
+    default n
+    depends on OSR_CRYPTO_DRIVER
+
+config OSR_CRYPTO_DRIVER_MAILBOX
+    bool "osr crypto mailbox driver"
+    default n
+    depends on OSR_CRYPTO_DRIVER
+
+endif # OSR_CRYPTO

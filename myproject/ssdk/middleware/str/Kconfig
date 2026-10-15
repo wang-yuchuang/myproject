@@ -1,0 +1,15 @@
+config STR_STORE_SUPPORT
+    bool
+
+config LOWER_POWER_OS
+    bool "Lower Power System Support"
+    select STR_STORE_SUPPORT
+    select DW_UMCTL2
+    select SCR
+    select SD_BOOT_PIN
+    default n
+
+config SAVE_DDR_INFO_IN_EMMC
+    bool "Save DDR Info In EMMC Support"
+    select STR_STORE_SUPPORT
+    default n

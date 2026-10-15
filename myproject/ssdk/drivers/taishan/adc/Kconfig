@@ -1,0 +1,4 @@
+config TAISHAN_ADC
+    bool "Taishan ADC Driver Support"
+    select ADC
+    default n

@@ -1,0 +1,39 @@
+#!/bin/sh
+
+###kill previous dhcp process
+UDHCP_STA=`ps|grep udhcp|grep -v grep`
+if [ "$UDHCP_STA" != "" ]
+then
+	ps|grep udhcp|grep -v grep|cut -c 0-5|xargs kill -9
+fi
+
+#judge if modem is installed
+MODEM_TTY=`ls /dev | grep ttyUSB2`
+if [ "$MODEM_TTY" = "" ]
+then
+	exit 2
+fi
+
+echo -e "\r\nAT+ZECMCALL=0\r\n" > /dev/ttyUSB2
+
+sleep 3
+
+#echo "AT+ZECMCALL=1" > /dev/ttyUSB2
+AT_CMD="AT+ZECMCALL=1"
+if [ -n "$1" ]; then
+	AT_CMD="AT+ZECMCALL=1,\"$1\",1"
+	if [ -n "$2" ]; then
+		AT_CMD="AT+ZECMCALL=1,\"$1\",1,\"$2\""
+		if [ -n "$3" ]; then
+			AT_CMD="AT+ZECMCALL=1,\"$1\",1,\"$2\",\"$3\""
+		fi
+	fi
+fi
+
+######echo $AT_CMD
+
+echo -e "\r\n$AT_CMD\r\n" > /dev/ttyUSB2
+
+sleep 3
+
+udhcpc -b -i usb0&

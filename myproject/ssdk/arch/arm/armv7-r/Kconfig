@@ -1,0 +1,42 @@
+menu "ARMv7-R Configuration Options"
+
+config ARMV7R_USE_TCMA
+    bool "Use TCMA"
+    default y
+    depends on ARM_WITH_TCM
+
+if ARMV7R_USE_TCMA
+
+config ARMV7R_TCMA_BASE
+    hex "TCMA base address"
+    default 0x4C0000
+
+config ARMV7R_TCMA_ECC
+    bool "Enable TCMA ECC"
+    default n
+
+endif # ARMV7R_USE_TCMA
+
+config ARMV7R_USE_TCMB
+    bool "Use TCMB"
+    default y
+    depends on ARM_WITH_TCM
+
+if ARMV7R_USE_TCMB
+
+config ARMV7R_TCMB_BASE
+    hex "TCMB base address"
+    default 0x4B0000
+
+config ARMV7R_TCMB_ECC
+    bool "Enable TCMB ECC"
+    default n
+
+endif # ARMV7R_USE_TCMB
+
+config ARMV7R_MPU_CACHE_ALIGN_CHECK
+    bool "Enable cache align check"
+    default n
+    depends on ARCH_WITH_MPU
+
+endmenu

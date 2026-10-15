@@ -1,0 +1,4 @@
+config TAISHAN_RESETGEN
+    bool "Taishan reset gen Driver Support"
+    select RESETGEN
+    default n

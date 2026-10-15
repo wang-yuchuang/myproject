@@ -1,0 +1,19 @@
+comment "Norflash Tester Options"
+
+config KUNLUN_SNOR_TEST
+    bool "Kunlun ospi Test"
+    default n
+
+config OSPI1_TEST
+    bool "Kunlun ospi1 Test"
+    default n
+    depends on KUNLUN_SNOR_TEST
+
+config OSPI2_TEST
+    bool "Kunlun ospi2 Test"
+    default n
+    depends on KUNLUN_SNOR_TEST
+
+config SPI_NOR_VALIDATION
+    bool "Kunlun validation Test"
+    default n

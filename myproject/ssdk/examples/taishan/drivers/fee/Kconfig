@@ -1,0 +1,9 @@
+comment "FEE Demo Options"
+
+config FEE_BLOCK_DEMO
+    bool "FEE demo access base on block"
+    default n
+
+config FEE_EEPROM_DEMO
+    bool "FEE demo access base on eepromc addr"
+    default y

@@ -1,0 +1,12 @@
+menuconfig TAISHAN_SCR
+    bool "Taishan SCR Driver Support"
+    select SCR
+    default n
+
+if TAISHAN_SCR
+
+config SCR_FUSA
+    bool "SCR Function Safety Support"
+    default n
+
+endif # TAISHAN_SCR

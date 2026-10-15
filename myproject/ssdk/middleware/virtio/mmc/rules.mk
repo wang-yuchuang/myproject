@@ -1,0 +1,13 @@
+LOCAL_DIR := $(GET_LOCAL_DIR)
+
+MODULE := $(LOCAL_DIR)
+
+# ifeq ($(CONFIG_VIRTIO_MMC_FRONTEND),y)
+# MODULE_DEPS += $(LOCAL_DIR)/frontend
+# endif
+
+MODULE_DEPS += drivers/kunlun/mmc
+
+MODULE_DEPS += $(LOCAL_DIR)/lib
+
+GLOBAL_DEFINES += SUPPORT_VIRTIO_MMC=1

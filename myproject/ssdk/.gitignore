@@ -1,0 +1,25 @@
+/out
+/build_iar
+__pycache__/
+.config*
+/.repo
+/validation
+/ssdk-test
+/.history/
+/.vscode/
+.vscode-ctags
+/tools/sdtools/bin/
+/tools/sdtools/pac/
+/tools/sdtools/pactool/*.pyc
+/tools/sdtools/temp/
+*.swp
+config_*
+include/ssdk_version.h
+# Build outputs (gcc)
+boards/*/build/*/gcc/
+.sisyphus/
+# Generated board files
+*secure_board.c
+
+# agent workspace
+.omo/

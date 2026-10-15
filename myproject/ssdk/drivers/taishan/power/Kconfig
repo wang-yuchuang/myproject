@@ -1,0 +1,24 @@
+menuconfig TAISHAN_PM
+    bool "Taishan Power manager driver Support"
+    select PM
+    select MBOX
+    select RESETGEN
+    select TAISHAN_MBOX
+    select TAISHAN_RESETGEN
+    default n
+
+if TAISHAN_PM
+
+config DEFAULT_TAISHAN_PM_STATE
+    int "Taishan default PM state"
+    default 1
+
+config DEBUG_TAISHAN_PM
+    bool "Debug taishan power manager driver"
+    default n
+
+config TRACE_TAISHAN_PM
+    bool "Trace taishan power manager driver"
+    default n
+
+endif

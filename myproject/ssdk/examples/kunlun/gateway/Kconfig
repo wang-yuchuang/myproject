@@ -1,0 +1,45 @@
+comment "Driver and Application Example Options"
+
+menuconfig SDPE_CTRL
+    bool "SDPE Control Example"
+    default n
+    ---help---
+        Enable SDPE controller functions, such as start/stop routing,
+        and gateway event monitors.
+
+if SDPE_CTRL
+rsource "sdpe_ctrl/Kconfig"
+endif # sdpe_ctrl
+
+menuconfig SDPE_MGR
+    bool "SDPE Manager Support"
+    select SDPE_CTRL
+    select SDPE_RPC
+    select SDPE_RPC_MBOX_TRANSPORT
+    select VLIN
+    select VCAN
+    depends on DW_I2C
+    depends on TCA9539
+    default n
+
+if SDPE_MGR
+rsource "sdpe_mgr/Kconfig"
+endif # SDPE_MGR
+
+menuconfig SIG_ROUTE
+    bool "Sig route Support"
+    select SDPE_MGR
+    default n
+
+if SIG_ROUTE
+rsource "sig_route/Kconfig"
+endif # SIG_ROUTE
+
+menuconfig LIN_SCHED
+    bool "LIN Scheduler Support"
+    select SIG_ROUTE
+    default n
+
+if LIN_SCHED
+rsource "lin_sched/Kconfig"
+endif # LIN_SCHED

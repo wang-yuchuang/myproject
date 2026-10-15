@@ -1,0 +1,5 @@
+config TAISHAN_HWMUTEX
+    bool "Taishan HWMUTEX Driver Support"
+    select HWMUTEX
+    select TAISHAN_MBOX
+    default n

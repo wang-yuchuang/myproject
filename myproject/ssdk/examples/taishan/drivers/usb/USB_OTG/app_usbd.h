@@ -1,0 +1,28 @@
+/**
+ * @file app_usbd.h
+ *
+ * Copyright (c) 2021 Semidrive Semiconductor.
+ * All rights reserved.
+ *
+ * Description: usb device HID application of OTG demo.
+ *
+ * Revision History:
+ * -----------------
+ */
+
+
+#ifndef  APP_USBD_MODULE_PRESENT
+#define  APP_USBD_MODULE_PRESENT
+
+
+#include  <stdbool.h>
+
+
+bool  App_USBD_HID_Init(unsigned char   dev_nbr,
+                        unsigned char   cfg_hs,
+                        unsigned char   cfg_fs);
+int   App_USBD_Init    (void);
+
+
+#endif
+

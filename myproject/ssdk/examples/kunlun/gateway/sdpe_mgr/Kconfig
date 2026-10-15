@@ -1,0 +1,9 @@
+comment "SDPE Manager Options"
+
+config ROUTE_TABLE_MEMBASE
+    hex "SDPE route table memory base"
+    default 0x1E7000
+
+config ROUTE_TABLE_MEMSIZE
+    hex "SDPE route table memory size"
+    default 0x10000

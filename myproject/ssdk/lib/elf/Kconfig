@@ -1,0 +1,27 @@
+comment "ELF loader config option"
+
+config ELF_LOADER_ADDR_CONVERT
+    bool "elf loader memory addr trans to safety domain from ap domain"
+    default n
+
+choice
+    prompt "byte order selection"
+    default LITTLE_ENDIAN
+
+config LITTLE_ENDIAN
+    bool "LITTLE_ENDIAN"
+
+config BIG_ENDIAN
+    bool "BIG_ENDIAN"
+endchoice
+
+choice
+    prompt "ELF file format select"
+    default ELF32
+
+config ELF32
+    bool "ELF32 file format"
+
+config ELF64
+    bool "ELF64 file format"
+endchoice

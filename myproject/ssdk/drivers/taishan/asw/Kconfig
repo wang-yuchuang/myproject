@@ -1,0 +1,7 @@
+config ASW
+    bool "Taishan ASW Driver Support"
+    select G2DLITE
+    default n
+    ---help---
+    Enable Any Shape Warp (ASW) hardware controller, which performs image
+    de-warping in between system memory, camera and display controllers.

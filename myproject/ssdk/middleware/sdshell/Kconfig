@@ -1,0 +1,11 @@
+comment "Virt-Console Options"
+
+config VIRT_CONSOLE_AP1_BE
+    bool "Support virt console ap1 as backend"
+    depends on SDRV_VIRT_CONSOLE
+    default y
+
+config VIRT_CONSOLE_MP_BE
+    bool "Support virt console mp as backend"
+    depends on SDRV_VIRT_CONSOLE
+    default n

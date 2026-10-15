@@ -1,0 +1,42 @@
+comment "RTOS Options"
+
+choice
+    prompt "RTOS type"
+    default OS_FREERTOS
+
+config OS_FREERTOS
+    bool "Use FreeRTOS"
+
+config OS_BAREMETAL
+    bool "Use BareMetal"
+    select STD_HEAP
+
+endchoice
+
+config OS_TICK
+    int "OS tick (ms)"
+    default 1
+
+config OS_DEFAULT_STACK_SIZE
+    int "OS default statck size"
+    default 1024
+
+config OS_MIN_STACK_SIZE
+    int "OS minimal statck size"
+    default 512
+
+config OS_MIN_THREAD_PRIO
+    int "OS minimal thread priorities"
+    default 1
+
+config OS_MAX_THREAD_PRIO
+    int "OS max thread priorities"
+    default 32
+
+if OS_FREERTOS
+rsource "FreeRTOS/Kconfig"
+endif # OS_FREERTOS
+
+if OS_BAREMETAL
+rsource "BareMetal/Kconfig"
+endif # OS_BAREMETAL

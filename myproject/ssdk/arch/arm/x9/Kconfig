@@ -1,0 +1,23 @@
+comment "X9 Chip Options"
+
+choice
+    prompt "Select target core"
+    default ARCH_CHIP_X9_SAF
+    help
+        Select the target core.
+
+config ARCH_CHIP_X9_SAF
+    bool "X9 Saftey Core"
+
+config ARCH_CHIP_X9_SEC
+    bool "X9 Secure Core"
+
+endchoice
+
+
+config ARCH_CHIP_X9_THANG
+    bool "Semidrive X9 Chip version thang"
+    depends on ARCH_CHIP_X9
+    default n
+    help
+        Semidrive X9  thang architectures

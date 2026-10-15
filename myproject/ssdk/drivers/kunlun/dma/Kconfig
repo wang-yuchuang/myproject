@@ -1,0 +1,10 @@
+config DW_DMA
+    bool "DesignWare DMA Driver Support"
+	select DMA
+    default n
+
+config DW_PCIE_DMA
+    bool "DesignWare PCIe DMA Driver Support"
+	select DMA
+    default n
+    depends on DWC_PCIE

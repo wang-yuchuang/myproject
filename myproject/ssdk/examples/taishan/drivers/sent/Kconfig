@@ -1,0 +1,10 @@
+comment "SENT Example Application Options"
+
+config TAISHAN_SENT_DEMO
+    bool "Taishan sent example"
+    select SENT
+    select SDRV_SENT
+    select XTRG
+    default n
+
+

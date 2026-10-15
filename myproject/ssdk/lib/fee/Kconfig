@@ -1,0 +1,9 @@
+comment "FEE Options"
+
+config FEE_BLOCK
+    bool "Flash EEPROM Emulation access base on block"
+    default n
+
+config FEE_EEPROM
+    bool "Flash EEPROM Emulation access base on eeprom addr"
+    default y

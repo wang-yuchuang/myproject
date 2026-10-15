@@ -1,0 +1,5 @@
+comment "Flops Options"
+
+config DP
+    bool "Double Precision"
+    default n

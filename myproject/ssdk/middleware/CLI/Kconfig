@@ -1,0 +1,13 @@
+comment "CLI Options"
+
+config CLI_STACK_SIZE
+    int "CLI Thread Stack Size"
+    default 4096
+
+config CLI_PRIORITY
+    int "CLI Thread Prioriy"
+    default 24
+
+config CLI_SYNC_MODE
+    bool "CLI work in sync mode"
+    default n

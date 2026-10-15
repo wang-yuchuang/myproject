@@ -1,0 +1,5 @@
+comment "PWM Example Application Options"
+
+config SDRV_PWM_DEMO
+    bool "Taishan PWM Demo"
+    default n

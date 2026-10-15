@@ -1,0 +1,4 @@
+config TAISHAN_FUSE
+    bool "Taishan FUSE Driver Support"
+    select FUSE
+    default n

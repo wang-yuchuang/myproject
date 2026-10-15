@@ -1,0 +1,163 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 1235" role="img" aria-labelledby="ttl desc" style="max-width:1160px;width:100%;height:auto;background:#fff">
+  <title id="ttl">运行时目录与挂载拓扑</title>
+  <desc id="desc">设备运行时目录树：/ 根文件系统与 /app 应用分区均为 dm-verity 只读（/app 由 RAUC app_a/app_b 槽提供，S92app_mount 选槽校验挂载）；/data 为可写数据分区（/dev/mmcblk0p45），四个 SQLite 数据库（nccu.data、AppLog.data、BmsRunData.data、CloudData.data）与 loginfo.N 位于 /data 顶层；/opt/appdata 不是 /data 下的普通目录，而是自 /data/rootfs/opt/appdata 的 bind mount，内含 log/、config/、data/ 三个子目录（PID、锁文件、syshand.run、升级临时件）；/var/volatile 为 tmpfs；/var/run/app.pid 是死 PID（app_entry 写入后脚本即退出）。经典陷阱：DB 文件在 /data 顶层而其锁与索引在 /opt/appdata/data/，两者不同目录，/opt/appdata/data/nccu.data 不存在。右侧为 run_app 设置的环境变量面板与只读/可写一览。</desc>
+  <defs>
+    <marker id="arw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#5F6368"/></marker>
+    <marker id="arw-broken" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#C5221F"/></marker>
+    <marker id="arw-green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#137333"/></marker>
+  </defs>
+
+  <!-- ══════════ 标题区 ══════════ -->
+  <text x="16" y="36" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="22" font-weight="700" fill="#202124">运行时目录与挂载拓扑</text>
+  <text x="16" y="60" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="13" fill="#5F6368">只读 / 可写分界 · /opt/appdata 是 bind mount（非普通目录）· DB 在 /data 顶层而锁在 /opt/appdata/data</text>
+
+  <!-- ══════════ 树状导轨 ══════════ -->
+  <line x1="64" y1="176" x2="64" y2="944" stroke="#DADCE0" stroke-width="1.2"/>
+  <line x1="64" y1="321" x2="80" y2="321" stroke="#DADCE0" stroke-width="1.2"/>
+  <line x1="64" y1="556" x2="80" y2="556" stroke="#DADCE0" stroke-width="1.2"/>
+  <line x1="64" y1="774" x2="80" y2="774" stroke="#DADCE0" stroke-width="1.2"/>
+  <line x1="64" y1="944" x2="80" y2="944" stroke="#DADCE0" stroke-width="1.2"/>
+
+  <!-- ══════════ / 根文件系统（只读） ══════════ -->
+  <rect x="40" y="100" width="700" height="76" rx="8" fill="#E8F0FE" stroke="#1A73E8" stroke-width="2"/>
+  <text x="56" y="128" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">/ 根文件系统 —— dm-verity 只读</text>
+  <text x="56" y="150" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">挂载源 /dev/dm-0 · 系统库与服务 · 任何改写破坏 verity 校验 → 拒绝写入</text>
+  <text x="56" y="168" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">来源：AGENTS.md「运行时可写目录」· 快照「挂载拓扑」（真机 /proc/mounts）</text>
+
+  <!-- ══════════ /app 应用分区（只读） ══════════ -->
+  <rect x="80" y="216" width="660" height="210" rx="8" fill="#E8F0FE" stroke="#1A73E8" stroke-width="1.5"/>
+  <text x="96" y="242" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">/app —— 应用分区 · 独立 dm-verity 只读 ext4（RAUC app_a/app_b 槽）</text>
+  <text x="96" y="264" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">bin/：nccu_app · syshand · app_update · log_view · vcon_client</text>
+  <text x="96" y="282" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">comm_port/ · sampler/ · reporter/ · extensions/ · lib/ · web/</text>
+  <text x="96" y="300" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">config/：System.cfg · cacert.pem（首启复制 → /opt/appdata/config，run_app:54）</text>
+  <text x="96" y="318" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">脚本：app_entry · startrun · run_app · stoprun · app_exit · start_ui · log_cat</text>
+  <text x="96" y="336" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">挂载：S92app_mount 选槽 + 验 D9APPMD1 + dm-verity 校验（boot-chain 图 1）</text>
+  <text x="96" y="354" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">只读含义：配置覆写 / 日志 / DB 一律落在可写区，不写 /app</text>
+  <text x="96" y="376" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">动态库搜索：LD_LIBRARY_PATH 含 /app/lib|comm_port|extensions</text>
+  <text x="96" y="404" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">来源：out/ 产物树 · scripts/create_ext4.sh · app-lifecycle spec R7/R12</text>
+
+  <!-- ══════════ /data 可写数据分区 ══════════ -->
+  <rect x="80" y="466" width="660" height="180" rx="8" fill="#E6F4EA" stroke="#137333" stroke-width="1.5"/>
+  <text x="96" y="492" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">/data —— 可写数据分区（/dev/mmcblk0p45，USERDATA_POINT）</text>
+  <text x="96" y="512" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">SQLite 数据库（NCCU_DATA_PATH）：</text>
+  <text x="480" y="512" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">iDataBase.c:66（六处 getenv）</text>
+  <path d="M 96 529 a 56 9 0 0 1 112 0 v 38 a 56 9 0 0 1 -112 0 z" fill="#F1F3F4" stroke="#5F6368" stroke-width="1.5"/>
+  <path d="M 96 529 a 56 9 0 0 0 112 0" fill="none" stroke="#5F6368" stroke-width="1.5"/>
+  <text x="152" y="554" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#202124">nccu.data</text>
+  <path d="M 222 529 a 56 9 0 0 1 112 0 v 38 a 56 9 0 0 1 -112 0 z" fill="#F1F3F4" stroke="#5F6368" stroke-width="1.5"/>
+  <path d="M 222 529 a 56 9 0 0 0 112 0" fill="none" stroke="#5F6368" stroke-width="1.5"/>
+  <text x="278" y="554" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#202124">AppLog.data</text>
+  <path d="M 348 529 a 56 9 0 0 1 112 0 v 38 a 56 9 0 0 1 -112 0 z" fill="#F1F3F4" stroke="#5F6368" stroke-width="1.5"/>
+  <path d="M 348 529 a 56 9 0 0 0 112 0" fill="none" stroke="#5F6368" stroke-width="1.5"/>
+  <text x="404" y="554" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#202124">BmsRunData.data</text>
+  <path d="M 474 529 a 56 9 0 0 1 112 0 v 38 a 56 9 0 0 1 -112 0 z" fill="#F1F3F4" stroke="#5F6368" stroke-width="1.5"/>
+  <path d="M 474 529 a 56 9 0 0 0 112 0" fill="none" stroke="#5F6368" stroke-width="1.5"/>
+  <text x="530" y="554" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#202124">CloudData.data</text>
+  <path d="M 600 529 a 56 9 0 0 1 112 0 v 38 a 56 9 0 0 1 -112 0 z" fill="#F1F3F4" stroke="#5F6368" stroke-width="1.5"/>
+  <path d="M 600 529 a 56 9 0 0 0 112 0" fill="none" stroke="#5F6368" stroke-width="1.5"/>
+  <text x="656" y="554" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#202124">loginfo.N</text>
+  <rect x="96" y="594" width="360" height="40" rx="6" fill="none" stroke="#137333" stroke-width="1.5" stroke-dasharray="6 3"/>
+  <text x="112" y="610" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" font-weight="600" fill="#137333">rootfs/opt/appdata/</text>
+  <text x="112" y="627" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">bind mount 源（S00data_mount BIND_MOUNTS）</text>
+  <text x="480" y="620" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">与 /opt/appdata 同分区（mmcblk0p45）· 不同目录</text>
+
+  <!-- bind mount 箭头 -->
+  <line x1="276" y1="634" x2="276" y2="682" stroke="#137333" stroke-width="1.6" stroke-dasharray="6 3" marker-end="url(#arw-green)"/>
+  <text x="288" y="662" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="11" fill="#137333">bind mount</text>
+
+  <!-- ══════════ /opt/appdata bind mount ══════════ -->
+  <rect x="80" y="686" width="660" height="176" rx="8" fill="#E6F4EA" stroke="#137333" stroke-width="2"/>
+  <text x="96" y="712" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">/opt/appdata —— bind mount ← /data/rootfs/opt/appdata（同分区 · 不同目录）</text>
+  <rect x="96" y="724" width="180" height="104" rx="6" fill="#F8F9FA" stroke="#DADCE0" stroke-width="1.2"/>
+  <text x="108" y="744" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" font-weight="600" fill="#202124">log/</text>
+  <text x="108" y="762" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">业务日志 trace.log</text>
+  <text x="108" y="780" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">stdout/stderr 重定向</text>
+  <text x="108" y="798" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">(fd 1,2) iLog4c 追踪</text>
+  <rect x="288" y="724" width="180" height="104" rx="6" fill="#F8F9FA" stroke="#DADCE0" stroke-width="1.2"/>
+  <text x="300" y="744" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" font-weight="600" fill="#202124">config/</text>
+  <text x="300" y="762" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">配置覆写 + log4crc</text>
+  <text x="300" y="780" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">首启复制自 /app/config</text>
+  <rect x="480" y="724" width="240" height="104" rx="6" fill="#F8F9FA" stroke="#DADCE0" stroke-width="1.2"/>
+  <text x="492" y="744" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" font-weight="600" fill="#202124">data/</text>
+  <text x="492" y="762" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">syshand.pid · nccu.pid</text>
+  <text x="492" y="780" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">syshand.run · .logIdx</text>
+  <text x="492" y="798" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">.{applog,bmsrundata,</text>
+  <text x="492" y="816" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">  clouddata}.lock ×3 · 升级临时件</text>
+  <text x="96" y="840" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">来源：mkdir：run_app:50-54 · 锁文件：iDataBase.c:34/39/44</text>
+  <text x="96" y="856" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">bind 判定看 /proc/mounts（readlink 检测不出，快照 2026-09-16）</text>
+
+  <!-- ══════════ /var/volatile（tmpfs） ══════════ -->
+  <rect x="80" y="902" width="320" height="84" rx="8" fill="#FEF7E0" stroke="#F9AB00" stroke-width="1.5"/>
+  <text x="96" y="928" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">/var/volatile —— tmpfs</text>
+  <text x="96" y="950" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">运行时临时文件 · 重启即失</text>
+  <text x="96" y="970" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">来源：旧 PID 清理：app_entry:55</text>
+
+  <!-- ══════════ /var/run/app.pid 死 PID（警示） ══════════ -->
+  <rect x="430" y="902" width="310" height="84" rx="8" fill="#FCE8E6" stroke="#C5221F" stroke-width="1.5" stroke-dasharray="6 3"/>
+  <text x="446" y="928" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#C5221F">/var/run/app.pid = 死 PID ⚠</text>
+  <text x="446" y="950" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">脚本后台运行后即退出，PID 实为死值</text>
+  <text x="446" y="970" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">来源：src/shells/app_entry:58</text>
+
+  <!-- ══════════ 陷阱警示卡 ══════════ -->
+  <rect x="80" y="1016" width="660" height="130" rx="8" fill="#FCE8E6" stroke="#C5221F" stroke-width="2"/>
+  <text x="100" y="1042" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="13" font-weight="600" fill="#202124">⚠ 经典陷阱：DB 文件在 /data/ 顶层，其锁与索引却在 /opt/appdata/data/</text>
+  <text x="100" y="1072" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">查 /opt/appdata/data/nccu.data</text>
+  <line x1="316" y1="1068" x2="420" y2="1068" stroke="#C5221F" stroke-width="1.6" stroke-dasharray="7 4" marker-end="url(#arw-broken)"/>
+  <text x="432" y="1072" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#C5221F">✗ No such file or directory</text>
+  <text x="100" y="1100" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">DB 路径由 NCCU_DATA_PATH 决定：iDataBase.c 六处 getenv · 各启动脚本无一例外设 /data</text>
+  <text x="100" y="1122" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">来源：openspec/.code-facts-snapshot.md「运行时可写路径与 DB/锁文件」（真机取证 2026-09-16）</text>
+
+  <!-- ══════════ 右栏：环境变量面板 ══════════ -->
+  <rect x="800" y="100" width="320" height="232" rx="8" fill="#F8F9FA" stroke="#DADCE0" stroke-width="1.2"/>
+  <text x="816" y="126" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">run_app 环境变量</text>
+  <text x="816" y="150" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">NCCU_RUN_PATH="/app"</text>
+  <text x="816" y="168" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">NCCU_DATA_PATH="/data"</text>
+  <text x="816" y="186" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">TRACE_LOG=/opt/appdata/log/</text>
+  <text x="828" y="204" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">trace.log</text>
+  <text x="816" y="222" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">LD_LIBRARY_PATH += /lib:</text>
+  <text x="828" y="240" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">/app/lib:/app/comm_port</text>
+  <text x="828" y="258" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">:/app/extensions</text>
+  <text x="816" y="276" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">EXTENS_MARK_FILE=/var/.ext_mark</text>
+  <text x="816" y="300" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">来源：src/shells/run_app:4-17</text>
+  <text x="816" y="316" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">VAR_DIR 按 hostname 分支：run_app:36-46</text>
+
+  <!-- ══════════ 右栏：只读/可写一览 ══════════ -->
+  <rect x="800" y="372" width="320" height="210" rx="8" fill="#F8F9FA" stroke="#DADCE0" stroke-width="1.2"/>
+  <text x="816" y="398" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">只读 / 可写 / 易失 一览</text>
+  <rect x="816" y="414" width="14" height="14" fill="#E8F0FE" stroke="#1A73E8" stroke-width="1.5"/>
+  <text x="838" y="425" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#202124">只读：/ 与 /app（dm-verity 校验）</text>
+  <text x="838" y="443" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">改写唯一途径 = OTA 升级换槽</text>
+  <rect x="816" y="458" width="14" height="14" fill="#E6F4EA" stroke="#137333" stroke-width="1.5"/>
+  <text x="838" y="469" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#202124">可写：/data · /opt/appdata</text>
+  <text x="838" y="487" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">同一分区 mmcblk0p45，目录不同</text>
+  <rect x="816" y="502" width="14" height="14" fill="#FEF7E0" stroke="#F9AB00" stroke-width="1.5"/>
+  <text x="838" y="513" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#202124">易失：/var/volatile · /var/run</text>
+  <text x="838" y="531" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">tmpfs，重启即失</text>
+  <rect x="816" y="546" width="14" height="14" fill="#FCE8E6" stroke="#C5221F" stroke-width="1.5" stroke-dasharray="4 2"/>
+  <text x="838" y="557" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#202124">陷阱：/var/run/app.pid 死 PID</text>
+
+  <!-- ══════════ 右栏：排障速查 ══════════ -->
+  <rect x="800" y="622" width="320" height="140" rx="8" fill="#F8F9FA" stroke="#DADCE0" stroke-width="1.2"/>
+  <text x="816" y="648" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">排障速查：日志与 DB 在哪？</text>
+  <text x="816" y="670" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">trace.log → /opt/appdata/log/</text>
+  <text x="816" y="690" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">四个 SQLite DB → /data/ 顶层</text>
+  <text x="816" y="710" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">锁与索引 → /opt/appdata/data/</text>
+  <text x="816" y="730" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">AppLog.data 是 DB，非文本日志</text>
+  <text x="816" y="752" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">来源：iDataBase.c · 快照「运行时可写路径」</text>
+
+  <!-- ══════════ 图例 ══════════ -->
+  <rect x="80" y="1178" width="14" height="14" fill="#E8F0FE" stroke="#1A73E8" stroke-width="1.5"/>
+  <text x="100" y="1189" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#202124">只读挂载</text>
+  <rect x="190" y="1178" width="14" height="14" fill="#E6F4EA" stroke="#137333" stroke-width="1.5"/>
+  <text x="210" y="1189" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#202124">可写分区</text>
+  <rect x="300" y="1178" width="14" height="14" fill="#FEF7E0" stroke="#F9AB00" stroke-width="1.5"/>
+  <text x="320" y="1189" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#202124">tmpfs 易失</text>
+  <rect x="420" y="1178" width="14" height="14" fill="#FCE8E6" stroke="#C5221F" stroke-width="1.5" stroke-dasharray="4 2"/>
+  <text x="440" y="1189" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#202124">陷阱 / 失效</text>
+  <path d="M 540 1180 a 10 4 0 0 1 20 0 v 8 a 10 4 0 0 1 -20 0 z" fill="#F1F3F4" stroke="#5F6368" stroke-width="1.2"/>
+  <path d="M 540 1180 a 10 4 0 0 0 20 0" fill="none" stroke="#5F6368" stroke-width="1.2"/>
+  <text x="568" y="1189" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#202124">SQLite DB / 数据文件</text>
+  <line x1="720" y1="1185" x2="760" y2="1185" stroke="#137333" stroke-width="1.6" stroke-dasharray="6 3" marker-end="url(#arw-green)"/>
+  <text x="770" y="1189" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#202124">bind mount</text>
+  <text x="1120" y="1218" text-anchor="end" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">来源：src/shells/{run_app,app_entry} · scripts（S00data_mount 语义见快照）· openspec/.code-facts-snapshot.md · 提交 e24d2863</text>
+</svg>

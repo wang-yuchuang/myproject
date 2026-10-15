@@ -1,0 +1,10 @@
+comment "USB Host Class Driver Options"
+
+config USB_HOST_HID
+    bool "USB Host Class Driver for Human Interface Device"
+    default n
+
+config USB_HOST_MSC
+    bool "USB Host Class Driver for Mass Storage Device"
+    default n
+

@@ -1,0 +1,17 @@
+comment "Module Helper Options"
+
+config MODULE_HELPER_PER_DDR
+    bool "peripheral DDR module demo"
+    default n
+
+config MODULE_HELPER_PER_SYS
+    bool "peripheral SYS module demo"
+    default n
+
+config MODULE_HELPER_PER_TEST
+    bool "peripheral TEST module demo"
+    default n
+
+config MODULE_HELPER_PER_DISP
+    bool "peripheral DISP module demo"
+    default n

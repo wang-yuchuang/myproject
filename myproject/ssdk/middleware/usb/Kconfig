@@ -1,0 +1,28 @@
+comment "USB Driver Options"
+
+config USB_DEVICE
+    bool "USB Device Driver Support"
+    default n
+
+if USB_DEVICE
+rsource "uC-USBD/Kconfig"
+endif # USB_DEVICE
+
+config USB_HOST
+    bool "USB Host Driver Support"
+    default n
+
+if USB_HOST
+rsource "uC-USBH/Kconfig"
+endif # USB_HOST
+
+config USB_OTG
+    bool "USB OTG Function Support"
+    depends on USB_DEVICE && USB_HOST
+    default n
+
+config RNSS_USB
+    bool
+    default y
+    help
+      Renesas USB HS IP Driver Support.

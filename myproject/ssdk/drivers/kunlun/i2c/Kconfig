@@ -1,0 +1,4 @@
+config DW_I2C
+    bool "DesignWare I2C Driver support"
+    select I2C
+    default n

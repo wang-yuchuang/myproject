@@ -1,0 +1,38 @@
+#!/bin/sh
+##insure only one instance is running
+WEBSERVER_PID_FILE=/var/volatile/webserver.pid
+if [ -f $WEBSERVER_PID_FILE ]; then
+	echo
+	echo The web_server is already running! Please stop it and then restart.
+	echo
+	exit 1;
+fi
+
+#set WEB_ROOTPATH => env so that server.conf can recgnize it
+#export WEB_SERVER_ROOTPATH=/app/web
+export WEB_SERVER_ROOTPATH=/var/volatile
+WWW_PATH=$WEB_SERVER_ROOTPATH/www
+mkdir -p $WWW_PATH
+#copy stuff into www folder 
+cd /app/web/www/pcs
+#FRONT_ZIP_FILE=`find -name '*.zip'`
+FRONT_ZIP_FILE="dep-frontend.zip"
+if [ -f $FRONT_ZIP_FILE ]; then
+	rm -rf /var/volatile/www/*
+	unzip -qo $FRONT_ZIP_FILE -d $WWW_PATH
+	cp -f /app/web/www/web_main.api $WWW_PATH
+fi
+
+#set PATH and LIB_PATH => env
+WEB_SERVER_PATH=/app/web/server
+if [ $NCCU_RUN_PATH ];then
+	export LD_LIBRARY_PATH="$WEB_SERVER_PATH/lib:$LD_LIBRARY_PATH" 
+else
+	export LD_LIBRARY_PATH="$WEB_SERVER_PATH/lib:/app/lib:/app/comm_port:$LD_LIBRARY_PATH" 
+fi
+export PATH="$WEB_SERVER_PATH/bin:$PATH"
+#added this so the env can be used for log
+export NCCU_DATA_PATH="/data"
+
+##now run the server
+web_server_main -f $WEB_SERVER_PATH/server_main.conf -m $WEB_SERVER_PATH/lib &

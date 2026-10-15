@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<flash_device>
+  <exe>../../../boards/e3_gateway/sf/scripts/iar/flashloader/flashloader.out</exe>
+  <macro>iar_flashmacro.mac</macro>
+  <page>256</page>
+  <block>100 0x40000</block>
+  <flash_base>0x10000000</flash_base>
+  <aggregate>1</aggregate>
+</flash_device>

@@ -1,0 +1,4 @@
+config SDRV_UART
+    bool "Taihang semidrive uart driver Support"
+    select UART
+    default n

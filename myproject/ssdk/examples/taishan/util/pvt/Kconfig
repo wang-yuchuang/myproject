@@ -1,0 +1,6 @@
+comment "Process-Voltage-Temperature sensor Example"
+
+config TAISHAN_TEMPERATURE_EXAMPLE
+    bool "Taishan Temperature Sensor example"
+    default n
+    depends on TAISHAN_TEMPERATURE_SENSOR

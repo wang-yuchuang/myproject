@@ -1,0 +1,5 @@
+comment "CoreMark Options"
+
+config ITERATIONS
+    int "CoreMark iterations"
+    default 30000

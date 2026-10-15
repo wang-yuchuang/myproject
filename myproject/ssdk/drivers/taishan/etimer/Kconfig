@@ -1,0 +1,16 @@
+menuconfig SDRV_ETIMER
+    bool "Taishan Etimer Driver Support"
+    select TIMER
+    default n
+
+if SDRV_ETIMER
+
+config SDRV_ETIMER_PWM
+    bool "Taishan ETIMER Driver"
+    default n
+
+config SDRV_ETIMER_PWM_LITE
+    bool "Taishan Lite ETIMER Driver"
+    default n
+
+endif # SDRV_ETIMER

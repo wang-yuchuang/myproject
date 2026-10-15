@@ -1,0 +1,24 @@
+
+#*****************************************************************************
+#
+# WARNING: Automatically generated file, don't modify anymore!!!
+#
+# Copyright (c) 2021-2029 Semidrive Incorporated.  All rights reserved.
+# Software License Agreement
+#
+#*****************************************************************************
+choice
+    prompt "Select Core ID"
+    default D3248 if PACKAGE_BGA324
+        config D3248
+        bool "D3248"
+        depends on PACKAGE_BGA324
+
+    config D3246
+        bool "D3246"
+        depends on PACKAGE_BGA324
+endchoice
+
+
+rsource "D3248.Kconfig"
+rsource "D3246.Kconfig"

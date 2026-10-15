@@ -1,0 +1,15 @@
+#!/bin/sh
+# app_exit — App 分区退出脚本
+# 被 S91app_mount stop 通过 SIGTERM → app_entry trap → stoprun 间接调用
+# 也可独立执行: /app/app_exit /app
+
+APP_SHELL_PATH=$1
+echo "$0: Stopping app..."
+
+# 调用 stoprun 关闭业务进程
+"${APP_SHELL_PATH}/stoprun"
+
+# 清理 PID 文件
+rm -f /var/run/app.pid
+
+echo "$0: App stopped."

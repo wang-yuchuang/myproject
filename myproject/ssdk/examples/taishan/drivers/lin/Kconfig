@@ -1,0 +1,7 @@
+comment "LIN Example Application Options"
+
+config SDRV_LIN_DEMO
+    bool "Taishan LIN Demo"
+    select LIN
+    select SDRV_LIN
+    default n

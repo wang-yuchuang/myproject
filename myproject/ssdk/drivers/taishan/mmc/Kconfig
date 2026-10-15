@@ -1,0 +1,9 @@
+config DWCMSHC
+    bool "DWCMSHC Driver Support"
+    select MMC
+    default n
+
+config SEHC
+    bool "SEHC Driver Support"
+    select MMC
+    default n

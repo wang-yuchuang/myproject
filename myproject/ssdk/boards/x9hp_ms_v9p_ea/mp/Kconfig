@@ -1,0 +1,20 @@
+comment "X9 MP Core Options"
+
+config MEM_BASE
+    hex "Memory Start Address"
+    default 0x38000000
+
+config MEM_SIZE
+    hex "Memory Size"
+    default 0x10000000
+
+config RES_SIZE
+    hex "Res Size"
+    default 0x1800000
+
+config BOARD_REMAP
+    bool "Enable Kunlun board remap"
+    select SCR
+    select RESETGEN
+    select KUNLUN_RESETGEN
+    default n

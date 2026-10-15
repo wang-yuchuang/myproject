@@ -1,0 +1,3 @@
+config SEM
+    bool "Taishan SEM Driver Support"
+    default n

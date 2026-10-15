@@ -1,0 +1,5 @@
+comment "Display Tester Options"
+
+config DISP_PQ_TESTER
+    bool "display pq tester"
+    default n

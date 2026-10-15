@@ -1,0 +1,5 @@
+comment "Application Options"
+
+menuconfig SLT_TEST_DEMO
+    bool "slt test demo"
+    default n

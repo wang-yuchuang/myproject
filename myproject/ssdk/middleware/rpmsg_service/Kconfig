@@ -1,0 +1,24 @@
+comment "RPMSG Service Options"
+
+config RPMSG_RPROC_NUM
+    int "RPMSG Max Proc Number"
+    default 8
+
+config RPMSG_WITH_LK
+    bool "RPMSG communicate with LK"
+    select WORKQUEUE
+    default n
+
+config USE_IPCC_RPC
+    bool "enable rpmsg ipcc rp call(rpc)"
+    default n
+
+if ARCH_CHIP_D9 || ARCH_CHIP_G9 || ARCH_CHIP_X9
+config OBSERVE_AP1
+    bool "enbale observe AP1 domain reboot and recovery the communication"
+    default n
+
+config OBSERVE_AP2
+    bool "enbale observe AP2 domain reboot and recovery the communication"
+    default n
+endif # ARCH_CHIP_D9 || ARCH_CHIP_G9 || ARCH_CHIP_X9

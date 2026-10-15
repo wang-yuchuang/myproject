@@ -1,0 +1,10 @@
+comment "Iccmsg Driver Options"
+
+config ICCMSG_TRACE
+	bool "Enable iccmsg RX/TX frame trace recording"
+	default y
+	help
+	  Enable recording of received and transmitted protocol frames
+	  in per-instance trace buffers. Useful for debugging but
+	  adds memory and CPU overhead in high-frequency data paths.
+	  Disable for production builds to improve performance.

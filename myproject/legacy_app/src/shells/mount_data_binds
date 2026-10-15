@@ -1,0 +1,487 @@
+#!/bin/sh
+#
+# mount_data_binds — 把 /data/rootfs/<path> 绑定挂载到只读 rootfs 的对应路径
+#
+# 背景
+#   rootfs (/) 由 dm-verity 保护, 结构上永远只读 (dm-verity 设备没有写路径,
+#   `mount -o remount,rw /` 必然失败)。产品设计里所有"运行时需要可写"的目录
+#   都由 d9_sdk 的 S00data_mount 从 /data/rootfs 绑定挂载出来 (BIND_MOUNTS +
+#   CONFIG_FILES)。当这部分 provisioning 缺失或未生效时, 例如 /opt/appdata
+#   会退回只读 rootfs, 于是:
+#       mkdir: can't create directory '/opt/appdata/log': Read-only file system
+#
+#   本脚本是 S00data_mount 那部分行为的幂等复刻, 并且额外带三个安全守卫
+#   (原版没有, 在原版那个"开机极早期"的时序下不需要, 但运行中手挂时必须要有):
+#
+#     [1] 遮蔽守卫   目标目录下若已有其它挂载点, 拒绝 bind。
+#                    例: /var/lib 下有 /var/lib/rauc (RAUC 状态分区),
+#                    bind /var/lib 会把它遮蔽 -> RAUC 读到错的状态目录。
+#     [2] 软链守卫   目标是符号链接则跳过 (bind 到 symlink 语义不可靠)。
+#                    例: /var/lock -> /run/lock, /etc/localtime -> zoneinfo。
+#     [3] 只读守卫   只在 /data 已挂载且为 rw 时才执行, 否则 exit 2。
+#
+# 用法
+#   mount_data_binds [apply|status|stop] [--dry-run]
+#
+#     apply      (默认) 创建源目录 + 挂载全部 bind
+#     status     只报告当前状态, 不做任何改动
+#     stop       卸载本脚本负责的全部 bind
+#     --dry-run  与 apply 一起用: 只报告计划 (PLAN/DRY), 不做任何改动。
+#                第 1/2 步本会创建的项不再计为失败 —— 失败只表示"脚本修不了"
+#                (如 rootfs 缺少挂载点、目标下有遮蔽挂载)。
+#     -h|--help  显示本帮助
+#
+# 退出码
+#   0  全部成功
+#   1  至少一项失败 / (status) 存在未挂载项
+#   2  前置条件不满足 (/data 未挂载或非 rw) / 参数错误
+#
+# 注意
+#   * 挂载是运行时的, 重启即失效。持久生效需修 rootfs 侧的 S00data_mount
+#     或把本脚本接入启动链。
+#   * 不修改 rootfs 内容, 只做挂载。
+#   * /etc/passwd /etc/shadow /etc/group /etc/hostname 按设计保持只读, 不在此列。
+#
+
+PROG=$(basename "$0")
+
+USERDATA_POINT="/data"
+ROOTFS_BASE="${USERDATA_POINT}/rootfs"
+
+# 目录 bind: 源相对路径|目标绝对路径 (与 d9_sdk S00data_mount 的 BIND_MOUNTS 一致)
+BIND_MOUNTS="var/log|/var/log
+var/lib|/var/lib
+home|/home
+media|/media
+opt/appdata|/opt/appdata
+etc/xdg/weston|/etc/xdg/weston
+etc/hostap|/etc/hostap
+var/lock|/var/lock
+var/volatile|/var/volatile"
+
+# 文件 bind: 目标绝对路径 (源 = ${ROOTFS_BASE}${目标})
+CONFIG_FILES="/etc/resolv.conf
+/etc/adjtime
+/etc/localtime
+/etc/xdg/weston/weston.ini
+/etc/wpa_supplicant.conf
+/etc/network/interfaces
+/etc/ts.conf
+/etc/pointercal"
+
+# 需要在 ${ROOTFS_BASE} 下预建的目录 (与 S00data_mount create_bind_targets 对齐)
+CREATE_DIRS="var
+var/log
+var/lib
+var/lib/misc
+var/lock
+var/lock/subsys
+home
+media
+var/volatile
+opt
+opt/appdata
+etc
+etc/xdg
+etc/xdg/weston
+etc/hostap"
+
+OK_CNT=0
+SKIP_CNT=0
+FAIL_CNT=0
+PLAN_CNT=0
+DRY_RUN=0
+ACTION="apply"
+
+usage() {
+	cat <<EOF
+$PROG — 让只读 dm-verity rootfs 上的关键目录可写 (bind from ${ROOTFS_BASE})
+
+用法: $PROG [apply|status|stop] [--dry-run]
+
+  apply       (默认) 创建源目录 + 挂载全部 bind, 幂等, 可反复执行
+  status      只报告当前状态, 不做任何改动 (有未挂载项则退出码 1)
+  stop        卸载本脚本负责的全部 bind
+  --dry-run   与 apply 一起用: 只报告计划(PLAN/DRY), 不做任何改动
+  -h, --help  显示本帮助
+
+退出码: 0 全成功 / 1 有失败 / 2 前置条件不满足
+EOF
+}
+
+info() { printf '%s\n' "$*"; }
+warn() { printf 'WARN  %s\n' "$*" >&2; }
+ok()   { printf 'OK    %s\n' "$*"; OK_CNT=$((OK_CNT + 1)); }
+skip() { printf 'SKIP  %s\n' "$*"; SKIP_CNT=$((SKIP_CNT + 1)); }
+plan() { printf 'PLAN  %s\n' "$*"; PLAN_CNT=$((PLAN_CNT + 1)); }
+fail() { printf 'FAIL  %s\n' "$*" >&2; FAIL_CNT=$((FAIL_CNT + 1)); }
+
+mode_for() {
+	case "$1" in
+		media|var/lib/misc) echo 700 ;;
+		*)                  echo 755 ;;
+	esac
+}
+
+# 精确匹配 /proc/mounts 第 2 列; 对目录和文件都适用。
+# 比 mountpoint(1) 可靠 —— busybox 的 mountpoint 对文件支持不一致。
+is_mounted() {
+	[ -n "$(awk -v p="$1" '$2 == p { print $1; exit }' /proc/mounts 2>/dev/null)" ]
+}
+
+mount_opts() {
+	awk -v p="$1" '$2 == p { print $4; exit }' /proc/mounts 2>/dev/null
+}
+
+mount_src() {
+	awk -v p="$1" '$2 == p { print $1; exit }' /proc/mounts 2>/dev/null
+}
+
+# 守卫[1]: 列出目标路径之下已存在的挂载点 (bind 会遮蔽它们)
+shadowed_mounts() {
+	awk -v t="$1" 'index($2, t "/") == 1 { print $2 }' /proc/mounts 2>/dev/null
+}
+
+# dry-run 用: 该源目录是否会被第 1 步创建
+planned_dir() {
+	for _pd in $CREATE_DIRS; do
+		[ "$_pd" = "$1" ] && return 0
+	done
+	return 1
+}
+
+# dry-run 用: 该路径是否是某个目录 bind 的目标 (即会被 bind 覆盖)
+planned_bind_target() {
+	_pbt_want="$1"
+	while IFS='|' read -r _pbt_s _pbt_t; do
+		[ -n "$_pbt_t" ] || continue
+		[ "$_pbt_t" = "$_pbt_want" ] && return 0
+	done <<EOF
+$BIND_MOUNTS
+EOF
+	return 1
+}
+
+run() {
+	if [ "$DRY_RUN" -eq 1 ]; then
+		printf 'DRY   %s\n' "$*"
+		return 0
+	fi
+	"$@"
+}
+
+require_data_rw() {
+	if [ ! -d "$USERDATA_POINT" ]; then
+		fail "$USERDATA_POINT 目录不存在"
+		return 1
+	fi
+	if ! is_mounted "$USERDATA_POINT"; then
+		fail "$USERDATA_POINT 未挂载"
+		return 1
+	fi
+	_opts=$(mount_opts "$USERDATA_POINT")
+	case ",${_opts}," in
+		*,rw,*) : ;;
+		*) fail "$USERDATA_POINT 不是可写挂载 (opts=${_opts})"; return 1 ;;
+	esac
+	return 0
+}
+
+# ---------- apply ----------
+
+create_dirs() {
+	info "== [1/3] 准备 bind 源目录: $ROOTFS_BASE"
+	if [ ! -d "$ROOTFS_BASE" ]; then
+		if ! run mkdir -p "$ROOTFS_BASE"; then
+			fail "无法创建 $ROOTFS_BASE"
+			return 1
+		fi
+		[ "$DRY_RUN" -eq 1 ] || info "  mk    $ROOTFS_BASE"
+	fi
+
+	for _d in $CREATE_DIRS; do
+		_p="${ROOTFS_BASE}/${_d}"
+		_m=$(mode_for "$_d")
+		if [ -d "$_p" ]; then
+			run chmod "$_m" "$_p" 2>/dev/null || true
+			continue
+		fi
+		if run mkdir -p "$_p"; then
+			run chmod "$_m" "$_p" 2>/dev/null || true
+			[ "$DRY_RUN" -eq 1 ] || info "  mk    $_p (mode $_m)"
+		else
+			fail "创建目录失败: $_p"
+		fi
+	done
+	return 0
+}
+
+# 与 S00data_mount 一致: 用 -s 语义, 空文件也重新播种
+seed_configs() {
+	info ""
+	info "== [2/3] 播种默认配置文件"
+	while IFS= read -r _f; do
+		[ -n "$_f" ] || continue
+		_dst="${ROOTFS_BASE}${_f}"
+
+		if [ -s "$_dst" ]; then
+			continue
+		fi
+		if [ ! -e "$_f" ]; then
+			warn "rootfs 无默认配置 $_f, 跳过播种"
+			continue
+		fi
+		if [ ! -d "$(dirname "$_dst")" ]; then
+			if ! run mkdir -p "$(dirname "$_dst")"; then
+				fail "创建配置目录失败: $(dirname "$_dst")"
+				continue
+			fi
+		fi
+		if run cp -a "$_f" "$_dst"; then
+			[ "$DRY_RUN" -eq 1 ] || info "  seed  $_f -> $_dst"
+		else
+			fail "复制默认配置失败: $_f -> $_dst"
+		fi
+	done <<EOF
+$CONFIG_FILES
+EOF
+	return 0
+}
+
+bind_dirs() {
+	info ""
+	info "== [3/3] 绑定挂载"
+	info "-- 目录 --"
+	while IFS='|' read -r _src_rel _target; do
+		[ -n "$_src_rel" ] || continue
+		[ -n "$_target" ] || continue
+		_src="${ROOTFS_BASE}/${_src_rel}"
+
+		# 守卫[2] 软链
+		if [ -L "$_target" ]; then
+			skip "$_target 是符号链接 (-> $(readlink "$_target" 2>/dev/null)), bind 语义不可靠 — 跳过"
+			continue
+		fi
+		if [ ! -d "$_target" ]; then
+			fail "rootfs 中缺少挂载点 $_target (只读, 无法创建)"
+			continue
+		fi
+		if is_mounted "$_target"; then
+			skip "已挂载, 保持不动: $_target (src=$(mount_src "$_target"))"
+			continue
+		fi
+		# 守卫[1] 遮蔽
+		_shadow=$(shadowed_mounts "$_target")
+		if [ -n "$_shadow" ]; then
+			warn "拒绝 bind $_target —— 其下已有挂载点会被遮蔽: $(printf '%s ' $_shadow)"
+			SKIP_CNT=$((SKIP_CNT + 1))
+			continue
+		fi
+
+		if [ "$DRY_RUN" -eq 1 ]; then
+			if [ -d "$_src" ] || planned_dir "$_src_rel"; then
+				plan "mount --bind $_src $_target"
+			else
+				fail "源目录不存在且不会被创建: $_src"
+			fi
+			continue
+		fi
+
+		if [ ! -d "$_src" ]; then
+			fail "源目录不存在: $_src"
+			continue
+		fi
+		if run mount --bind "$_src" "$_target"; then
+			ok "$_src -> $_target"
+		else
+			fail "bind 失败: $_src -> $_target"
+		fi
+	done <<EOF
+$BIND_MOUNTS
+EOF
+
+	info "-- 文件 --"
+	while IFS= read -r _f; do
+		[ -n "$_f" ] || continue
+		_dst="${ROOTFS_BASE}${_f}"
+
+		# 守卫[2] 软链
+		if [ -L "$_f" ]; then
+			skip "$_f 是符号链接 (-> $(readlink "$_f" 2>/dev/null)) — 跳过"
+			continue
+		fi
+		if [ ! -f "$_f" ]; then
+			fail "rootfs 中缺少目标文件 $_f (只读, 无法创建)"
+			continue
+		fi
+		if is_mounted "$_f"; then
+			skip "已挂载, 保持不动: $_f (src=$(mount_src "$_f"))"
+			continue
+		fi
+
+		# 父目录若已由目录 bind 覆盖, 该文件已在可写视图中, 无需重复绑定
+		_parent=$(dirname "$_f")
+		if is_mounted "$_parent"; then
+			skip "$_f 已由父目录 bind 覆盖 ($_parent)"
+			continue
+		fi
+		if [ "$DRY_RUN" -eq 1 ]; then
+			if planned_bind_target "$_parent"; then
+				skip "$_f 将由父目录 bind 覆盖 ($_parent)"
+			else
+				plan "mount --bind $_dst $_f"
+			fi
+			continue
+		fi
+
+		if [ ! -f "$_dst" ]; then
+			warn "无 bind 源文件: $_dst — 跳过"
+			SKIP_CNT=$((SKIP_CNT + 1))
+			continue
+		fi
+		if run mount --bind "$_dst" "$_f"; then
+			ok "$_dst -> $_f"
+		else
+			fail "bind 失败: $_dst -> $_f"
+		fi
+	done <<EOF
+$CONFIG_FILES
+EOF
+	return 0
+}
+
+do_apply() {
+	create_dirs || return 1
+	seed_configs
+	bind_dirs
+	return 0
+}
+
+# ---------- stop ----------
+
+umount_one() {
+	if is_mounted "$1"; then
+		if run umount "$1"; then
+			ok "umount $1"
+		else
+			fail "umount 失败: $1"
+		fi
+	else
+		skip "未挂载: $1"
+	fi
+	return 0
+}
+
+do_stop() {
+	info "== 卸载文件 bind"
+	while IFS= read -r _f; do
+		[ -n "$_f" ] || continue
+		umount_one "$_f"
+	done <<EOF
+$CONFIG_FILES
+EOF
+
+	info "== 卸载目录 bind"
+	while IFS='|' read -r _src_rel _target; do
+		[ -n "$_target" ] || continue
+		umount_one "$_target"
+	done <<EOF
+$BIND_MOUNTS
+EOF
+	return 0
+}
+
+# ---------- status ----------
+
+do_status() {
+	if is_mounted "$USERDATA_POINT"; then
+		info "$USERDATA_POINT: mounted, opts=$(mount_opts "$USERDATA_POINT")"
+	else
+		warn "$USERDATA_POINT: NOT mounted"
+		FAIL_CNT=$((FAIL_CNT + 1))
+	fi
+
+	info ""
+	info "== 目录 bind =="
+	while IFS='|' read -r _src_rel _target; do
+		[ -n "$_src_rel" ] || continue
+		[ -n "$_target" ] || continue
+		_src="${ROOTFS_BASE}/${_src_rel}"
+
+		if is_mounted "$_target"; then
+			ok "$_target  (mounted from $(mount_src "$_target"))"
+		elif [ -L "$_target" ]; then
+			printf 'SYML  %s  (符号链接 -> %s)\n' "$_target" "$(readlink "$_target" 2>/dev/null)"
+		elif [ ! -d "$_target" ]; then
+			printf 'MISS  %s  (rootfs 中不存在)\n' "$_target"
+			FAIL_CNT=$((FAIL_CNT + 1))
+		elif [ ! -d "$_src" ]; then
+			printf 'SRC!  %s  (源目录不存在: %s)\n' "$_target" "$_src"
+			FAIL_CNT=$((FAIL_CNT + 1))
+		elif [ -n "$(shadowed_mounts "$_target")" ]; then
+			# 遮蔽守卫是刻意拒绝, 属设计行为, 不计为失败
+			printf 'SHAD  %s  (其下有挂载点, 刻意不挂)\n' "$_target"
+		else
+			printf 'DOWN  %s  (未挂载)\n' "$_target"
+			FAIL_CNT=$((FAIL_CNT + 1))
+		fi
+	done <<EOF
+$BIND_MOUNTS
+EOF
+
+	info ""
+	info "== 文件 bind =="
+	while IFS= read -r _f; do
+		[ -n "$_f" ] || continue
+		_parent=$(dirname "$_f")
+		if is_mounted "$_f"; then
+			ok "$_f  (mounted from $(mount_src "$_f"))"
+		elif [ -L "$_f" ]; then
+			printf 'SYML  %s  (符号链接 -> %s)\n' "$_f" "$(readlink "$_f" 2>/dev/null)"
+		elif is_mounted "$_parent"; then
+			printf 'COVR  %s  (由父目录 %s 覆盖)\n' "$_f" "$_parent"
+		elif [ -f "${ROOTFS_BASE}${_f}" ]; then
+			printf 'DOWN  %s  (未挂载)\n' "$_f"
+			FAIL_CNT=$((FAIL_CNT + 1))
+		else
+			printf 'SRC!  %s  (无 bind 源)\n' "$_f"
+			FAIL_CNT=$((FAIL_CNT + 1))
+		fi
+	done <<EOF
+$CONFIG_FILES
+EOF
+	return 0
+}
+
+# ---------- main ----------
+
+for _arg in "$@"; do
+	case "$_arg" in
+		apply|status|stop) ACTION="$_arg" ;;
+		--dry-run)         DRY_RUN=1 ;;
+		-h|--help)         usage; exit 0 ;;
+		*) printf 'unknown argument: %s\n' "$_arg" >&2; usage >&2; exit 2 ;;
+	esac
+done
+
+case "$ACTION" in
+	status)
+		do_status
+		;;
+	stop)
+		require_data_rw || exit 2
+		do_stop
+		;;
+	apply)
+		require_data_rw || exit 2
+		do_apply || exit 1
+		;;
+esac
+
+info ""
+info "summary: ok=$OK_CNT skip=$SKIP_CNT fail=$FAIL_CNT plan=$PLAN_CNT (dry_run=$DRY_RUN)"
+
+if [ "$FAIL_CNT" -gt 0 ]; then
+	exit 1
+fi
+exit 0

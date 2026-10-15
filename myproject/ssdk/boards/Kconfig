@@ -1,0 +1,59 @@
+comment "Board Common Features"
+
+config MAIN_THREAD_STACK_SIZE
+    int "main thread stack size"
+    default 8192
+
+config MAIN_THREAD_PRIORITY
+    int "main thread priority"
+    default 24
+
+config AUTO_SIGN_BOARD_IMG
+    bool "after board build, auto sign board img, output xxx_signed.bin"
+    default n
+
+config CHIP_ID_DISPLAY
+    bool "read and display chip id form fuse , and compare with ssdk chip id configration."
+    select FUSE
+    select TAISHAN_FUSE
+    default n
+
+config BOARD_LOOPSPERUSEC
+    int "loop count per usec"
+    default 300
+
+config BOARD
+    string
+    option env="BOARD"
+
+config BOARD_NAME_STR
+    string
+    default BOARD
+
+# menuconfig BOARD_CORE_SELECT
+choice
+    prompt "select name for SoC core"
+    default SAFETY
+
+config SAFETY
+    bool "SAFETY"
+
+config SECURE
+    bool "SECURE"
+
+config MP
+    bool "MP"
+
+config AP
+    bool "AP"
+endchoice
+
+config HAS_AP1
+    def_bool y if BOARD_X9HP_MS || BOARD_X9HP_SP || BOARD_X9H_REF || BOARD_X9SP
+
+config HAS_AP2
+    def_bool y if BOARD_X9HP_MS || BOARD_X9HP_SP || BOARD_X9SP
+
+menu "Board Special Features"
+rsource "$(BOARD)/Kconfig"
+endmenu

@@ -1,0 +1,6 @@
+config XTRG
+    bool "Cross Trigger Driver Support"
+    default n
+    ---help---
+    Enable the Cross Trigger module, which manages internal trigger and
+    signal networks between eTimer, ePWM, ADC, ACMP modules and I/O pads.

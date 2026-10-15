@@ -1,0 +1,34 @@
+LOCAL_DIR := $(GET_LOCAL_DIR)
+
+IAR_GLB_DEF += $(GLOBAL_DEFINES)
+
+CFLAGS_DEFS := $(IAR_GLB_DEF)
+CFLAGS_INC := $(GLOBAL_INCLUDES) $(IAR_MODULE_INCLUDE)
+IAR_SRCS := $(ALLSRCS) $(IAR_MODULE_SRCS)
+
+TOP_ROOT := $(realpath $(SSDK_ROOT))
+IAR_PRJ_DIR := $(BUILDDIR)
+IAR_LINK_DIR := $(COREDIR)/scripts/iar
+
+IAR_WORKSPACE_TEMPLATE ?= $(LOCAL_DIR)/iar_workspace.template
+IAR_PROJECT_TEMPLATE ?= $(LOCAL_DIR)/iar_project.template
+IAR_DEBUG_TEMPLATE ?= $(LOCAL_DIR)/iar_debug.template
+IAR_PROGRAM_ENTRY ?= _start
+IAR_LINKER_OPTIONS ?=
+
+iar: $(IAR_LINKCFG) $(CONFIG_OUT_FILES)
+	if [ ! -d $(IAR_PRJ_DIR) ]; then mkdir -p $(IAR_PRJ_DIR); fi
+	rm -f $(IAR_PRJ_DIR)/.env_gen.sh
+
+	+$(Q)bash $(LOCAL_DIR)/iar_predef.sh "$(IAR_SRCS)" "$(TOP_ROOT)" "$(CFLAGS_DEFS)" "$(CFLAGS_INC)" \
+		"$(GLOBAL_MODULE_LDFLAGS)" "$(IAR_PROGRAM_ENTRY)" \
+		"$(IAR_LINKCFG)" "$(IAR_LINKER_OPTIONS)" "$(IAR_DEBUG_MACRO)" \
+		"$(IAR_PRJ_DIR)"
+
+	+$(Q)bash $(LOCAL_DIR)/iar_project.sh "$(shell pwd)" "$(TOP_ROOT)" "$(PRJDIR)" "$(BOARD)" "$(PROJECT)" "$(CORE)" \
+		"$(IAR_WORKSPACE_TEMPLATE)" "$(IAR_PROJECT_TEMPLATE)" "$(IAR_DEBUG_TEMPLATE)" \
+		"$(IAR_PRJ_DIR)" "$(IAR_LINK_DIR)"
+
+clean-env:
+	rm -f $(IAR_PRJ_DIR)/.env_gen.sh
+

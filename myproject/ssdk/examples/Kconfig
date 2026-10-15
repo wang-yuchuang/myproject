@@ -1,0 +1,19 @@
+if ARCH_CHIP_E3 || ARCH_CHIP_D3
+rsource "taishan/Kconfig"
+endif
+
+if ARCH_CHIP_D9 || ARCH_CHIP_G9 || ARCH_CHIP_X9 || ARCH_ARM64
+rsource "kunlun/Kconfig"
+endif
+
+if ARCH_CHIP_X9
+rsource "taihang/Kconfig"
+endif
+
+menuconfig BMS
+    bool "bms"
+    default n
+
+if BMS
+orsource "bms/Kconfig"
+endif # BMS

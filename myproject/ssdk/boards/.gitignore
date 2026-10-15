@@ -1,0 +1,10 @@
+.config
+config.h
+*/build/*/gcc/*
+*/build/*/iar/*
+!*/build/*/iar/*.eww
+!*/build/*/iar/*/
+*/build/*/iar/*/*
+!*/build/*/iar/*/*.eww
+!*/build/*/iar/*/*.ewp
+!*/build/*/iar/*/*.ewd

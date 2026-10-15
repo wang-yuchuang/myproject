@@ -1,0 +1,5 @@
+comment "Xilinx Device Drivers"
+
+rsource "ttc/Kconfig"
+rsource "uart/Kconfig"
+rsource "gic/Kconfig"

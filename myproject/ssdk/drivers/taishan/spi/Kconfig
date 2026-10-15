@@ -1,0 +1,6 @@
+config SD_SPI
+    bool "Taishan SPI Driver Support"
+    select SPI
+    select DMA
+    select SDRV_DMA
+    default n

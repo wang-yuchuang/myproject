@@ -1,0 +1,107 @@
+# emu01_a00 secure 模板 defconfig (ssdk-standalone-boot-mode Stage-3)
+#
+# 内容 = 公共集 + bool 型模式差异项(y 态，以 ref/xip 两侧并集)。模式差异行由构建期
+# 变体 defconfig 生成覆盖 (见 variants/{emmc_only,xip}.conf, gen_variant_defconfig.sh)：
+#   - 变体专属 int 行 (MEM_BASE/MEM_SIZE/RAM_BASE/RAM_SIZE/TCM/IRAM) 不落模板
+#     (int 无法 'is not set' 关闭，必须由 fragment 追加/覆盖；xip 的 MEM_BASE 由
+#     calc_xip_membase.sh 从 ospi2.bpt 派生注入)
+#   - bool 差异项模板置 y：
+#       ref 侧 8 项 (DISPSS/DISPSS_KUNLUN/DW_I2C/DISPLAY_SERVICE/DISP_TESTER/
+#                    DISP_PQ_TESTER/DDR_EXEC_TEST/DDR_LOADER)
+#       xip 侧 3 项 (XIP_MODE/EARLYCOPY/UPDATE_FLASH)
+#     emmc_only.conf 关 xip 侧 3 项；xip.conf 关 ref 侧 8 项
+#   - UPDATE_MONITOR 两侧均关 (P0-2, 对齐 bmu05): NOR 间接读 soft_init 未完备,
+#     xip_mode 下运行 update_monitor_start() 有启动砖板风险; 关闭后 CDNS_OSPI 需显式保留 (P0-1)。
+#   - SUPPORT_STR_MODE 两侧均 y (emmc 不关闭)
+#   - emmc_only 产物 = 模板 + emmc_only.conf；xip(-s A/B) 产物 = 模板 + xip.conf + calc MEM_BASE
+CONFIG_ARCH_EARLY_ENABLE_ICACHE=y
+CONFIG_ARCH_EARLY_ENABLE_DCACHE=y
+CONFIG_ARCH_USE_FPU=y
+CONFIG_ARCH_USE_MPU=y
+CONFIG_ARCH_FIQ_STACK_SIZE=256
+CONFIG_ARCH_SVC_STACK_SIZE=2048
+CONFIG_ARM_WITH_PMU=y
+CONFIG_ARCH_CHIP_D9_SEC=y
+CONFIG_ARCH_CHIP_D9=y
+CONFIG_MAIN_THREAD_STACK_SIZE=4096
+CONFIG_MAIN_THREAD_PRIORITY=2
+CONFIG_SECURE=y
+
+# === XIP 模式核心配置 (xip 侧 bool 差异项, emmc_only.conf 关闭) ===
+CONFIG_XIP_MODE=y
+CONFIG_EARLYCOPY=y
+
+# === 内存布局/链接参数: 由 variants fragment + calc 派生, 不落模板 ===
+# xip.conf:      CONFIG_MEM_SIZE=0x100000 + RAM_BASE/RAM_SIZE/TCMA/TCMB/IRAM 行 + calc 注入 MEM_BASE
+# emmc_only.conf: CONFIG_MEM_BASE=0x140000 + CONFIG_MEM_SIZE=0xC0000 (ddr.ld 仅需 MEMBASE/MEMSIZE)
+
+CONFIG_BOARD_REMAP=y
+CONFIG_SUPPORT_STR_MODE=y
+CONFIG_PROJECT_VERSION="V0.0.2"
+CONFIG_FLEXCAN=y
+CONFIG_KUNLUN_CKGEN=y
+CONFIG_DISPSS=y
+CONFIG_DISPSS_KUNLUN=y
+CONFIG_DW_DMA=y
+CONFIG_ARM_GIC=y
+CONFIG_KUNLUN_PINCTRL=y
+CONFIG_SDRV_KUNLUN_PMU=y
+CONFIG_DW_RTC=y
+CONFIG_KUNLUN_SEM=y
+CONFIG_SDRV_SYSCNT=y
+CONFIG_SDRV_TMR=y
+CONFIG_DW_UART=y
+CONFIG_SDRV_WDOG_KUNLUN=y
+CONFIG_KUNLUN_MMC=y
+CONFIG_PFM=y
+CONFIG_MEMMAP=y
+CONFIG_BUFFQUEUE_VRING_ALIGN=32
+CONFIG_SD_CRC32=y
+CONFIG_DEBUG_LEVEL=6
+CONFIG_DISK_MMC=y
+CONFIG_PARTITION=y
+CONFIG_CLI_STACK_SIZE=10240
+CONFIG_CLI_SYNC_MODE=y
+CONFIG_MEM_RW=y
+CONFIG_RPMSG_WITH_LK=y
+CONFIG_USE_IPCC_RPC=y
+CONFIG_OBSERVE_AP1=y
+CONFIG_OBSERVE_AP2=y
+CONFIG_KUNLUN_REBOOT=y
+CONFIG_APP_REBOOT_SS=y
+CONFIG_ICCMSG=y
+CONFIG_DRIVERS_EXAMPLE=y
+CONFIG_MBOX_DEMO=y
+CONFIG_RPMSG_DEMO=y
+CONFIG_APPLICATION=y
+CONFIG_APP_DEMO1=y
+CONFIG_ICCMSG_DEMO=y
+CONFIG_SYS_MON=y
+CONFIG_KUNLUN_MBOX_DEMO=y
+CONFIG_IRQ_TESTER=y
+CONFIG_CAN_TESTER=y
+CONFIG_PIN_TESTER=y
+CONFIG_DW_UART_TEST=y
+CONFIG_DW_I2C=y
+CONFIG_DISPLAY_SERVICE=y
+CONFIG_DISP_TESTER=y
+CONFIG_DISP_PQ_TESTER=y
+CONFIG_DDR_EXEC_TEST=y
+CONFIG_DDR_LOADER=y
+
+# === NOR OTA (xip 侧; UPDATE_MONITOR 两侧关, 见上) ===
+# CONFIG_UPDATE_MONITOR is not set
+# 注: UPDATE_FLASH 是 UPDATE_MONITOR choice 子项, UPDATE_MONITOR 关后符号不存在;
+#     OSPI/CDNS_OSPI/DISK_NOR_FLASH 改由下方 CDNS_OSPI + FLASH_TEST 显式承载。
+
+# === A/B NOR 槽切换能力 (option B, 2026-09-12): 对齐 bmu05 模板 ===
+# APPLICATION_SYS_MONITOR: R 核 sys_monitor (iccmsg 心跳/WDT/GPT OTA), 两侧均 y;
+# GPT_SLOT_SWITCH + SYSMON_BOOT_MEDIA_NOR_XIP: xip 侧能力, emmc_only.conf 关闭。
+CONFIG_APPLICATION_SYS_MONITOR=y
+CONFIG_GPT_SLOT_SWITCH=y
+CONFIG_SYSMON_BOOT_MEDIA_NOR_XIP=y
+# FLASH_TEST: gpt_slot_switch.c and sys_monitor_ota.c require the flash_test module (xip-side)
+CONFIG_FLASH_TEST=y
+# CDNS_OSPI: 显式启用 OSPI 驱动 (P0-1): 原先仅经 UPDATE_MONITOR 传递 select,
+# 关闭 UPDATE_MONITOR 后必须显式保留, 否则 NOR 驱动静默编译出去 (board_norflash_init 失效)。
+CONFIG_CDNS_OSPI=y

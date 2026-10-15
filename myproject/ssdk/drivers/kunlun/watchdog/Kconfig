@@ -1,0 +1,4 @@
+config SDRV_WDOG_KUNLUN
+    bool "Kunlun WDOG Driver Support"
+    select WDOG
+    default n

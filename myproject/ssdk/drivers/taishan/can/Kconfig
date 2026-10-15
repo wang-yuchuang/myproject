@@ -1,0 +1,12 @@
+menuconfig FLEXCAN
+    bool "Flexcan Driver Support"
+    select CAN
+    default n
+
+if FLEXCAN
+
+config SDRV_FLEXCAN_ENH
+    bool "SemiDrive enhancements for Flexcan"
+    default n
+
+endif # FLEXCAN

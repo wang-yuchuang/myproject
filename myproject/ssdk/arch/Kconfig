@@ -1,0 +1,248 @@
+comment "Architecture Options"
+
+choice
+    prompt "CPU Architecture"
+    default ARCH_ARM
+
+config ARCH_ARM
+    bool "ARM"
+    ---help---
+        The ARM architectures
+
+config ARCH_ARM64
+    bool "ARM64"
+    ---help---
+        The ARM64 architectures
+
+endchoice
+
+if ARCH_ARM
+config ARCH
+    string
+    default "arm"
+endif
+
+if ARCH_ARM64
+config ARCH
+    string
+    default "arm64"
+endif
+
+
+menu "ARCH Common Options"
+
+config ARCH_WITH_SMP
+    bool "ARCH SMP"
+    default n
+
+if ARCH_WITH_SMP
+
+config SMP_MAX_CPUS
+    int "max cpu num"
+    default 4
+
+config SMP_CPU_CLUSTER_SHIFT
+    int "smp cluster offset"
+    default 8
+
+config SMP_CPU_ID_BITS
+    int "smp bit offset"
+    default 24
+
+endif
+
+if !ARCH_WITH_SMP
+
+config SMP_MAX_CPUS
+    int "max cpu num"
+    default 1
+endif
+
+config ARCH_WITH_CACHE
+    bool "ARCH with cache"
+    default n
+
+config ARCH_CACHE_LINE
+    int "cache line size"
+    default 32
+
+if ARCH_WITH_CACHE
+
+config ARCH_ICACHE
+    bool "ARCH with I-Cache"
+    default n
+
+config ARCH_DCACHE
+    bool "ARCH with D-Cache"
+    default n
+
+config ARCH_L2CACHE
+    bool "ARCH with L2 Cache"
+    default n
+
+config ARCH_DISABLE_ICACHE
+    bool "ARCH disable I-Cache in arch init"
+    default n
+    depends on ARCH_ICACHE
+
+config ARCH_DISABLE_DCACHE
+    bool "ARCH disable D-Cache in arch init"
+    default n
+    depends on ARCH_DCACHE
+
+if !ARCH_DISABLE_ICACHE
+
+config ARCH_EARLY_ENABLE_ICACHE
+    bool "ARCH early enable I-Cache"
+    default n
+    depends on ARCH_ICACHE
+
+endif
+
+if !ARCH_DISABLE_DCACHE
+
+config ARCH_EARLY_ENABLE_DCACHE
+    bool "ARCH early enable D-Cache"
+    default n
+    depends on ARCH_DCACHE
+
+endif
+
+endif # ARCH_WITH_CACHE
+
+config ARCH_WITH_FPU
+    bool "ARCH with FPU"
+    default n
+
+config ARCH_USE_FPU
+    bool "ARCH enable FPU"
+    default n
+    depends on ARCH_WITH_FPU
+
+config ARCH_WITH_MMU
+    bool "ARCH with MMU"
+    default n
+
+config ARCH_USE_MMU
+    bool "ARCH enable MMU"
+    default n
+    depends on ARCH_WITH_MMU
+
+config ARCH_WITH_MPU
+    bool "ARCH with MPU"
+    default n
+
+config ARCH_USE_MPU
+    bool "ARCH enable MPU"
+    default n
+    depends on ARCH_WITH_MPU
+
+config ARCH_STACK_DYNAMIC
+    bool "Dynamic user stack"
+    default y
+    ---help---
+        Select this option if the user process stack resides in its own
+        address space.
+if ARCH_ARM
+if ARCH_STACK_DYNAMIC
+
+config ARCH_STACK_COLORATION
+    bool "Add stack coloration"
+    default y
+
+config ARCH_ABT_STACK_SIZE
+    int "Abort stack size"
+    default 128
+
+config ARCH_IRQ_STACK_SIZE
+    int "IRQ stack size"
+    default 512
+
+config ARCH_FIQ_STACK_SIZE
+    int "FIQ stack size"
+    default 1024
+
+config ARCH_SYS_STACK_SIZE
+    int "System stack size"
+    default 2048
+
+config ARCH_UND_STACK_SIZE
+    int "Undefined stack size"
+    default 128
+
+config ARCH_SVC_STACK_SIZE
+    int "Supervisor stack size"
+    default 4096
+
+endif # ARCH_STACK_DYNAMIC
+endif
+endmenu
+
+if ARCH_ARM64
+
+config ARCH_STACK_SIZE
+    int "System stack size"
+    default 4096
+
+config ARCH_TLB_SIZE
+    int "System tlb reserve size for mmu page table"
+    default 131072
+
+endif # ARCH_ARM64
+
+if ARCH_ARM64
+menu "ARM64 Specific Options"
+rsource "arm64/Kconfig"
+endmenu
+endif
+
+if ARCH_ARM
+menu "ARM Specific Options"
+rsource "arm/Kconfig"
+endmenu
+endif
+
+comment "ARM Chip Options"
+
+choice
+    prompt "ARM MCU selection"
+    default ARCH_CHIP_E3
+
+config ARCH_CHIP_G9
+    bool "Semidrive G9 Chip"
+    select ARCH_CORTEXR5 if ARCH_ARM
+    help
+        Semidrive G9 Chip architectures
+
+config ARCH_CHIP_X9
+    bool "Semidrive X9 Chip"
+    select ARCH_CORTEXR5 if ARCH_ARM
+    help
+        Semidrive X9 Chip architectures
+
+config ARCH_CHIP_D9
+    bool "Semidrive D9 Chip"
+    select ARCH_CORTEXR5 if ARCH_ARM
+    help
+        Semidrive D9 Chip architectures
+
+config ARCH_CHIP_E3
+    bool "Semidrive E3 Chip"
+    select ARCH_CORTEXR5
+    help
+        Semidrive E3 Chip architectures
+
+config ARCH_CHIP_D3
+    bool "Semidrive D3 Chip"
+    select ARCH_CORTEXR5
+    help
+        Semidrive D3 Chip architectures
+
+config ARCH_CHIP_OTHER
+    bool "Semidrive Other Chip"
+    select ARCH_CORTEXR5
+    help
+        Semidrive Other Chip architectures
+
+endchoice
+

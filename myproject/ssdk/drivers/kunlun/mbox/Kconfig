@@ -1,0 +1,12 @@
+menuconfig KUNLUN_MBOX
+    bool "Kunlun Mailbox driver Support"
+    select MBOX
+    default n
+
+if KUNLUN_MBOX
+
+config MBOX_TX_POLL
+    int "Mailbox tx polling timer(us)"
+    default 2
+
+endif # KUNLUN_MBOX

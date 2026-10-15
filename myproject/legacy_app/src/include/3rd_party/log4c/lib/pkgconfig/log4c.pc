@@ -1,0 +1,11 @@
+prefix=/home/zhang_jie/old_prj/solarisbackupmagmtsystem_ilc_a2415/code/src/include/3rd_party/packages/log4c-1.2.4/output
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: log4c
+Description: Library of C for flexible logging to files, syslog and other destinations
+Version: 1.2.4
+Requires:
+Libs: -L${libdir} -llog4c
+Cflags: -I${includedir}

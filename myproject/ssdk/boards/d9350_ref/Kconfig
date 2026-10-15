@@ -1,0 +1,8 @@
+config BOARD_D9350_REF
+    bool
+    select HAS_AP1
+    select HAS_AP2
+    depends on ARCH_CHIP_D9
+    default y
+
+rsource "$(CORE)/Kconfig"

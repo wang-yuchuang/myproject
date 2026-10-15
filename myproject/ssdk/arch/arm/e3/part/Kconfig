@@ -1,0 +1,60 @@
+
+#*****************************************************************************
+#
+# WARNING: Automatically generated file, don't modify anymore!!!
+#
+# Copyright (c) 2021-2029 Semidrive Incorporated.  All rights reserved.
+# Software License Agreement
+#
+#*****************************************************************************
+choice 
+	prompt "Select Core ID"
+	default E3640 if PACKAGE_BGA324
+	default E3210 if PACKAGE_LQFP176
+	default E3105 if PACKAGE_LQFP144
+		config E3104
+		bool "E3104"
+		depends on PACKAGE_LQFP176
+		config E3105
+		bool "E3105"
+		depends on PACKAGE_LQFP144
+		config E3106
+		bool "E3106"
+		depends on PACKAGE_LQFP176
+		config E3210
+		bool "E3210"
+		depends on PACKAGE_LQFP176
+		config E3420
+		bool "E3420"
+		depends on PACKAGE_BGA324
+		config E3648
+		bool "E3648"
+		depends on PACKAGE_BGA324
+		config E3110
+		bool "E3110"
+		depends on PACKAGE_LQFP176
+		config E3640
+		bool "E3640"
+		depends on PACKAGE_BGA324
+		config E3206
+		bool "E3206"
+		depends on PACKAGE_LQFP176
+		config E3340
+		bool "E3340"
+		depends on PACKAGE_BGA324
+		config E3430
+		bool "E3430"
+		depends on PACKAGE_BGA324
+endchoice
+
+rsource "E3104.Kconfig"
+rsource "E3105.Kconfig"
+rsource "E3106.Kconfig"
+rsource "E3210.Kconfig"
+rsource "E3420.Kconfig"
+rsource "E3648.Kconfig"
+rsource "E3110.Kconfig"
+rsource "E3640.Kconfig"
+rsource "E3206.Kconfig"
+rsource "E3340.Kconfig"
+rsource "E3430.Kconfig"

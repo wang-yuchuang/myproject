@@ -1,0 +1,15 @@
+comment "FUSA monitor configuration"
+
+config SEM_ERROR_INTR
+    bool "Enable SEM error interrupt"
+    default n
+
+if !SEM_ERROR_INTR
+config SEM_ERROR_CHECK_PERIOD
+    int "SEM error check period, in milli-seconds."
+    default 0
+    --help--
+    SEM error check period in milli-seconds. Set to 0 to disable
+    period SEM error check.
+endif
+

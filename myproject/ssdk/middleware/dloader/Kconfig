@@ -1,0 +1,63 @@
+comment "dloader for update"
+
+config DLOADER
+    bool "dloader"
+    default y
+
+config DLODER_USE_RAM_AS_DISK
+    bool "Select Ram as disk"
+    default n
+
+config SDCARD_SLOT_NUMBER
+    int "Select sdcard in slot 0 or 1"
+    default 1
+
+config DL_DATA_BUF_SIZE
+    hex "Download data buffer size"
+    default 0x100000
+
+config DL_SCRATCH_SIZE
+    hex "Download data scratch buffer size"
+    default 0x20000
+
+config DLOADER_BLOCK_IO_MODE
+    bool "Block read write Mode"
+    default n
+
+config DLOADER_DISK_BLOCK_SIZE
+    hex "Dloader disk block size"
+    default 0x200
+
+config DLOADER_PROG_HYPER_FLASH_FUSE
+    bool "Prog Hyper Flash Fuse"
+    default n
+    depends on HYPERBUS_MODE
+    depends on TAISHAN_XSPI
+
+choice
+    prompt "Dloader Communication Mode"
+    default DLOADER_WITH_USB
+
+config DLOADER_WITH_USB
+    bool "Select USB fastboot for dloader"
+    select USB
+    select USB_DEVICE
+    select USB_DEVICE_FB
+
+config DLOADER_WITH_TRACE
+    bool "Select Trace for dloader"
+    select BOARD_REMAP
+    select BOARD_DEBUG
+    select ARCH_DISABLE_ICACHE
+    select ARCH_DISABLE_DCACHE
+endchoice
+
+config TRACE_PROG_STATUS_BASE
+    hex "Dloader Trace Program Status Memory Base"
+    depends on DLOADER_WITH_TRACE
+    default 0x1900000
+
+config TRACE_CMD_BASE
+    hex "Dloader Trace Command Memory Base"
+    depends on DLOADER_WITH_TRACE
+    default 0x1901000

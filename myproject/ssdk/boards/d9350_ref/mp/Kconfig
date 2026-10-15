@@ -1,0 +1,24 @@
+comment "D9 MP Core Options"
+
+config MEM_BASE
+    hex "Memory Start Address"
+    default 0x37800000
+
+config MEM_SIZE
+    hex "Memory Size"
+    default 0x10000000x1000000
+
+config BOARD_REMAP
+    bool "Enable Kunlun board remap"
+    select SCR
+    select RESETGEN
+    select KUNLUN_RESETGEN
+    default n
+
+config FIREWALL_DISABLE
+    bool "disable firewall function"
+    default y
+
+config EARLYCOPY
+    bool "early copy"
+    default n

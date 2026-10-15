@@ -1,0 +1,200 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 1660" role="img" aria-labelledby="ttl desc" style="max-width:1160px;width:100%;height:auto;background:#fff" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif">
+  <title id="ttl">nccu_app 启动初始化序列</title>
+  <desc id="desc">nccu_app 主进程初始化序列（src/main/main.c）：预初始化步骤 1-15（代码无 step 11 打印），其中 step 8 等待 syshand.run 展开，step 13 LoadModuals 容器展开 6 个模块加载子步骤，随后 Main_Run 进入事件循环，每个循环执行 Do_Proc_HeartBeat 直至业务就绪。</desc>
+
+  <defs>
+    <marker id="arw" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0L10,5L0,10Z" fill="#5F6368"/>
+    </marker>
+    <marker id="arwRed" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0L10,5L0,10Z" fill="#C5221F"/>
+    </marker>
+  </defs>
+
+  <!-- ===== header ===== -->
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="32" y="44" font-size="22" font-weight="700" fill="#202124">nccu_app 启动初始化序列</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="32" y="68" font-size="13" fill="#5F6368">AP 核主进程启动步骤与来源行号 · app_entry → run_app → nccu_app（dev 分支）</text>
+
+  <!-- ===== section 1 header ===== -->
+  <rect x="32" y="86" width="1096" height="36" rx="8" fill="#F8F9FA" stroke="#DADCE0"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="48" y="110" font-size="14" font-weight="700" fill="#202124">SECTION 1 · 预初始化（main.c:239-410）</text>
+
+  <!-- ===== timeline spine ===== -->
+  <line x1="72" y1="160" x2="72" y2="1490" stroke="#DADCE0" stroke-width="2"/>
+
+  <!-- step 1 :239 -->
+  <circle cx="72" cy="160" r="16" fill="#5F6368"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="72" y="165" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">1</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="108" y="165" font-size="14" font-weight="600" fill="#202124">sqlite init</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="420" y="165" font-size="10.5" fill="#80868B">(:239)</text>
+
+  <!-- step 2 :245 -->
+  <circle cx="72" cy="216" r="16" fill="#5F6368"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="72" y="221" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">2</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="108" y="221" font-size="14" font-weight="600" fill="#202124">open/create database</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="420" y="221" font-size="10.5" fill="#80868B">(:245)</text>
+
+  <!-- step 3 :268 -->
+  <circle cx="72" cy="272" r="16" fill="#5F6368"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="72" y="277" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">3</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="108" y="277" font-size="14" font-weight="600" fill="#202124">InitCreatDataBase</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="420" y="277" font-size="10.5" fill="#80868B">(:268)</text>
+
+  <!-- step 4 :274 -->
+  <circle cx="72" cy="328" r="16" fill="#5F6368"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="72" y="333" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">4</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="108" y="333" font-size="14" font-weight="600" fill="#202124">Init_Database</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="420" y="333" font-size="10.5" fill="#80868B">(:274)</text>
+
+  <!-- step 5 :282 -->
+  <circle cx="72" cy="384" r="16" fill="#5F6368"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="72" y="389" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">5</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="108" y="389" font-size="14" font-weight="600" fill="#202124">Init_CreadDataDB</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="420" y="389" font-size="10.5" fill="#80868B">(:282)</text>
+
+  <!-- step 6 :290 + failure branch -->
+  <circle cx="72" cy="440" r="16" fill="#80868B"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="72" y="445" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">6</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="108" y="445" font-size="14" font-weight="600" fill="#202124">test_log_init</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="420" y="445" font-size="10.5" fill="#80868B">(:290)</text>
+  <path d="M84,448 C92,460 96,468 104,476" fill="none" stroke="#C5221F" stroke-width="1.6" stroke-dasharray="5 3" marker-end="url(#arwRed)"/>
+  <rect x="108" y="464" width="262" height="32" rx="8" fill="#FCE8E6" stroke="#C5221F" stroke-dasharray="5 3"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="122" y="485" font-size="12" font-weight="700" fill="#C5221F">FAILED → return FALSE <tspan font-size="10.5" font-weight="700">(:293)</tspan></text>
+
+  <!-- step 7 :301 -->
+  <circle cx="72" cy="536" r="16" fill="#8430CE"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="72" y="541" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">7</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="108" y="541" font-size="14" font-weight="600" fill="#202124">Create_Charger</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="420" y="541" font-size="10.5" fill="#80868B">(:301)</text>
+
+  <!-- step 8 :315 + wait callout -->
+  <circle cx="72" cy="592" r="16" fill="#8430CE"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="72" y="597" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">8</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="108" y="597" font-size="14" font-weight="600" fill="#202124">waiting syshand.run</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="420" y="597" font-size="10.5" fill="#80868B">(:315)</text>
+  <rect x="104" y="610" width="1000" height="122" rx="8" fill="#F8F9FA" stroke="#DADCE0"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="122" y="634" font-size="12" fill="#5F6368">• 轮询 /opt/appdata/data/syshand.run</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="122" y="658" font-size="12" fill="#5F6368">• 每 100ms 一次，上限 100 次 ≈ 10.1s</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="122" y="682" font-size="12" fill="#5F6368">• 超时 → 打印 <tspan fill="#C5221F" font-weight="700">FAILED 并 return 0</tspan>（:316-326）</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="122" y="708" font-size="12" fill="#80868B">注：run_app 的 pidof 存活检查可能先于 syshand 写完标记通过，故上限从 1.1s 放宽到 10.1s（:320-321）</text>
+
+  <!-- step 9 :331 disabled -->
+  <circle cx="72" cy="792" r="16" fill="#80868B"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="72" y="797" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">9</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="108" y="797" font-size="14" font-weight="600" fill="#202124">WatchDog_Open</text>
+  <rect x="222" y="781" width="76" height="22" rx="11" fill="#FCE8E6" stroke="#C5221F"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="260" y="796" font-size="11" font-weight="700" fill="#C5221F" text-anchor="middle">disabled</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="420" y="797" font-size="10.5" fill="#80868B">(:331)</text>
+
+  <!-- step 10 :335 -->
+  <circle cx="72" cy="848" r="16" fill="#8430CE"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="72" y="853" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">10</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="108" y="853" font-size="14" font-weight="600" fill="#202124">Install_SigHandlers</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="420" y="853" font-size="10.5" fill="#80868B">(:335)</text>
+
+  <!-- missing step 11 -->
+  <circle cx="72" cy="906" r="16" fill="#FFFFFF" stroke="#C5221F" stroke-width="1.6" stroke-dasharray="4 3"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="72" y="911" font-size="13" font-weight="700" fill="#C5221F" text-anchor="middle">11</text>
+  <rect x="104" y="888" width="310" height="36" rx="8" fill="#FCE8E6" stroke="#C5221F" stroke-dasharray="5 3"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="122" y="911" font-size="12.5" font-weight="700" fill="#C5221F">编号缺 11（代码中无 step 11 打印）</text>
+
+  <!-- step 12 :382 -->
+  <circle cx="72" cy="968" r="16" fill="#8430CE"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="72" y="973" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">12</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="108" y="973" font-size="14" font-weight="600" fill="#202124">Init ThreadManager</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="420" y="973" font-size="10.5" fill="#80868B">(:382)</text>
+
+  <!-- step 13 :391 container -->
+  <circle cx="72" cy="1028" r="16" fill="#8430CE"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="72" y="1033" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">13</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="108" y="1033" font-size="14" font-weight="600" fill="#202124">LoadModuals</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="420" y="1033" font-size="10.5" fill="#80868B">(:391)</text>
+
+  <rect x="104" y="1048" width="1000" height="338" rx="10" fill="#FFFFFF" stroke="#8430CE" stroke-opacity="0.5" stroke-width="1.4"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="122" y="1072" font-size="12.5" font-weight="700" fill="#8430CE">SECTION 2 · LoadModuals 内部六步（main.c:147-202）</text>
+
+  <!-- 1/6 :149 -->
+  <rect x="120" y="1086" width="968" height="38" rx="6" fill="#E6F4EA"/>
+  <rect x="132" y="1094" width="36" height="22" rx="11" fill="#137333"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="150" y="1109" font-size="11" font-weight="700" fill="#FFFFFF" text-anchor="middle">1/6</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="180" y="1110" font-size="14" font-weight="600" fill="#137333">Init_CreateDataProcessor</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="560" y="1110" font-size="12" fill="#5F6368">DPR 核心</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="1072" y="1109" font-size="10.5" fill="#80868B" text-anchor="end">(:149)</text>
+
+  <!-- 2/6 :157 -->
+  <rect x="120" y="1128" width="968" height="38" rx="6" fill="#E6F4EA"/>
+  <rect x="132" y="1136" width="36" height="22" rx="11" fill="#137333"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="150" y="1151" font-size="11" font-weight="700" fill="#FFFFFF" text-anchor="middle">2/6</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="180" y="1152" font-size="14" font-weight="600" fill="#137333">LoadConfigAndData</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="560" y="1152" font-size="12" fill="#5F6368">SQLite System.cfg</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="1072" y="1151" font-size="10.5" fill="#80868B" text-anchor="end">(:157)</text>
+
+  <!-- 3/6 :165 -->
+  <rect x="120" y="1170" width="968" height="38" rx="6" fill="#E6F4EA"/>
+  <rect x="132" y="1178" width="36" height="22" rx="11" fill="#137333"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="150" y="1193" font-size="11" font-weight="700" fill="#FFFFFF" text-anchor="middle">3/6</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="180" y="1194" font-size="14" font-weight="600" fill="#137333">Init_LoadDAI</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="560" y="1194" font-size="12" fill="#5F6368">数据访问接口</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="1072" y="1193" font-size="10.5" fill="#80868B" text-anchor="end">(:165)</text>
+
+  <!-- 4/6 :173 -->
+  <rect x="120" y="1212" width="968" height="38" rx="6" fill="#E6F4EA"/>
+  <rect x="132" y="1220" width="36" height="22" rx="11" fill="#137333"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="150" y="1235" font-size="11" font-weight="700" fill="#FFFFFF" text-anchor="middle">4/6</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="180" y="1236" font-size="14" font-weight="600" fill="#137333">Init_Load_AllCommPorts</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="560" y="1236" font-size="12" fill="#5F6368">9 个通信模块</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="1072" y="1235" font-size="10.5" fill="#80868B" text-anchor="end">(:173)</text>
+
+  <!-- 5/6 :184 -->
+  <rect x="120" y="1254" width="968" height="38" rx="6" fill="#E6F4EA"/>
+  <rect x="132" y="1262" width="36" height="22" rx="11" fill="#137333"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="150" y="1277" font-size="11" font-weight="700" fill="#FFFFFF" text-anchor="middle">5/6</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="180" y="1278" font-size="14" font-weight="600" fill="#137333">Init_Load_AllSamplers</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="560" y="1278" font-size="12" fill="#5F6368">10 个采样器</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="1072" y="1277" font-size="10.5" fill="#80868B" text-anchor="end">(:184)</text>
+
+  <!-- 6/6 :192 -->
+  <rect x="120" y="1296" width="968" height="38" rx="6" fill="#E6F4EA"/>
+  <rect x="132" y="1304" width="36" height="22" rx="11" fill="#137333"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="150" y="1319" font-size="11" font-weight="700" fill="#FFFFFF" text-anchor="middle">6/6</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="180" y="1320" font-size="14" font-weight="600" fill="#137333">Init_Load_AllReporters</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="560" y="1320" font-size="12" fill="#5F6368">8 个上报器</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="1072" y="1319" font-size="10.5" fill="#80868B" text-anchor="end">(:192)</text>
+
+  <!-- container footer -->
+  <line x1="120" y1="1350" x2="1088" y2="1350" stroke="#DADCE0"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="122" y="1372" font-size="12" font-weight="700" fill="#137333">all done <tspan font-size="10.5" font-weight="400" fill="#80868B">(:200)</tspan></text>
+
+  <!-- step 14 :405 -->
+  <circle cx="72" cy="1434" r="16" fill="#8430CE"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="72" y="1439" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">14</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="108" y="1439" font-size="14" font-weight="600" fill="#202124">Main_Run</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="420" y="1439" font-size="10.5" fill="#80868B">(:405)</text>
+
+  <!-- step 15 :410 -->
+  <circle cx="72" cy="1490" r="16" fill="#8430CE"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="72" y="1495" font-size="13" font-weight="700" fill="#FFFFFF" text-anchor="middle">15</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="108" y="1495" font-size="14" font-weight="600" fill="#202124">entering event loop</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="420" y="1495" font-size="10.5" fill="#80868B">(:410)</text>
+
+  <!-- heartbeat loop → ready -->
+  <path d="M72,1506 L72,1547 L96,1547" fill="none" stroke="#5F6368" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="104" y="1526" width="400" height="42" rx="8" fill="#F3E8FD" stroke="#8430CE"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="122" y="1552" font-size="13" font-weight="600" fill="#202124">Do_Proc_HeartBeat（每个事件循环）<tspan font-size="10.5" font-weight="400" fill="#80868B"> (:423-425)</tspan></text>
+  <path d="M504,1547 L552,1547" fill="none" stroke="#5F6368" stroke-width="1.6" marker-end="url(#arw)"/>
+  <rect x="560" y="1526" width="150" height="42" rx="21" fill="#E6F4EA" stroke="#137333" stroke-width="1.6"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="635" y="1553" font-size="14" font-weight="700" fill="#137333" text-anchor="middle">业务就绪</text>
+
+  <!-- ===== legend ===== -->
+  <rect x="32" y="1606" width="22" height="14" rx="3" fill="#F3E8FD" stroke="#8430CE"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="60" y="1618" font-size="12" fill="#5F6368">流程/初始化</text>
+  <rect x="180" y="1606" width="22" height="14" rx="3" fill="#F1F3F4" stroke="#5F6368"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="208" y="1618" font-size="12" fill="#5F6368">配置/数据库</text>
+  <rect x="320" y="1606" width="22" height="14" rx="3" fill="#E6F4EA" stroke="#137333"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="348" y="1618" font-size="12" fill="#5F6368">模块加载</text>
+  <rect x="460" y="1606" width="22" height="14" rx="3" fill="#FCE8E6" stroke="#C5221F"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="488" y="1618" font-size="12" fill="#5F6368">警告/禁用/失败</text>
+  <line x1="640" y1="1613" x2="662" y2="1613" stroke="#C5221F" stroke-width="1.6" stroke-dasharray="5 3" marker-end="url(#arwRed)"/>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="674" y="1618" font-size="12" fill="#5F6368">失败分支（红虚线）</text>
+  <text font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" x="1128" y="1618" font-size="10.5" fill="#80868B" text-anchor="end">Source: src/main/main.c（dev 分支）· 行号对应当前代码</text>
+</svg>

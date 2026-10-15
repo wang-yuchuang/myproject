@@ -1,0 +1,3 @@
+comment "bms functions"
+
+rsource "OSUser/Kconfig"

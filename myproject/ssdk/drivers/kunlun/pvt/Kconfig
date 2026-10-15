@@ -1,0 +1,8 @@
+menuconfig SDRV_KUNLUN_PVT
+    bool "kunlun PVT Driver"
+    select PVT
+    default n
+
+if SDRV_KUNLUN_PVT
+    comment "kunlun pvt driver config option"
+endif

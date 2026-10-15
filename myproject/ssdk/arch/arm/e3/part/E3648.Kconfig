@@ -1,0 +1,333 @@
+config PART_CAN1
+	bool
+	default y if E3648
+config PART_CAN2
+	bool
+	default y if E3648
+config PART_CAN3
+	bool
+	default y if E3648
+config PART_CAN4
+	bool
+	default y if E3648
+config PART_CAN5
+	bool
+	default y if E3648
+config PART_CAN6
+	bool
+	default y if E3648
+config PART_CAN7
+	bool
+	default y if E3648
+config PART_CAN8
+	bool
+	default y if E3648
+config PART_CAN9
+	bool
+	default y if E3648
+config PART_CAN10
+	bool
+	default y if E3648
+config PART_CAN11
+	bool
+	default y if E3648
+config PART_CAN12
+	bool
+	default y if E3648
+config PART_CAN13
+	bool
+	default y if E3648
+config PART_CAN14
+	bool
+	default y if E3648
+config PART_CAN15
+	bool
+	default y if E3648
+config PART_CAN16
+	bool
+	default y if E3648
+config PART_CAN17
+	bool
+	default y if E3648
+config PART_CAN18
+	bool
+	default y if E3648
+config PART_CAN19
+	bool
+	default y if E3648
+config PART_CAN20
+	bool
+	default y if E3648
+config PART_CAN21
+	bool
+	default y if E3648
+config PART_CAN23
+	bool
+	default y if E3648
+config PART_CAN22
+	bool
+	default y if E3648
+config PART_CAN24
+	bool
+	default y if E3648
+config PART_UART1
+	bool
+	default y if E3648
+config PART_UART2
+	bool
+	default y if E3648
+config PART_UART3
+	bool
+	default y if E3648
+config PART_UART4
+	bool
+	default y if E3648
+config PART_UART5
+	bool
+	default y if E3648
+config PART_UART6
+	bool
+	default y if E3648
+config PART_UART7
+	bool
+	default y if E3648
+config PART_UART8
+	bool
+	default y if E3648
+config PART_UART9
+	bool
+	default y if E3648
+config PART_UART10
+	bool
+	default y if E3648
+config PART_UART11
+	bool
+	default y if E3648
+config PART_UART12
+	bool
+	default y if E3648
+config PART_UART13
+	bool
+	default y if E3648
+config PART_UART14
+	bool
+	default y if E3648
+config PART_UART15
+	bool
+	default y if E3648
+config PART_UART16
+	bool
+	default y if E3648
+config PART_ETH1
+	bool
+	default y if E3648
+config PART_ETH2
+	bool
+	default y if E3648
+config PART_USB1
+	bool
+	default y if E3648
+config PART_XSPI1
+	bool
+	default y if E3648
+config PART_XSPI2
+	bool
+	default y if E3648
+config PART_SPI3
+	bool
+	default y if E3648
+config PART_SPI4
+	bool
+	default y if E3648
+config PART_SPI2
+	bool
+	default y if E3648
+config PART_SPI6
+	bool
+	default y if E3648
+config PART_SPI1
+	bool
+	default y if E3648
+config PART_SPI5
+	bool
+	default y if E3648
+config PART_SPI7
+	bool
+	default y if E3648
+config PART_SPI8
+	bool
+	default y if E3648
+config PART_I2S2
+	bool
+	default y if E3648
+config PART_I2S1
+	bool
+	default y if E3648
+config PART_I2C1
+	bool
+	default y if E3648
+config PART_I2C2
+	bool
+	default y if E3648
+config PART_I2C3
+	bool
+	default y if E3648
+config PART_I2C4
+	bool
+	default y if E3648
+config PART_I2C5
+	bool
+	default y if E3648
+config PART_I2C6
+	bool
+	default y if E3648
+config PART_I2C7
+	bool
+	default y if E3648
+config PART_I2C8
+	bool
+	default y if E3648
+config PART_ADC1
+	bool
+	default y if E3648
+config PART_ADC2
+	bool
+	default y if E3648
+config PART_ADC3
+	bool
+	default y if E3648
+config PART_ACMP1
+	bool
+	default y if E3648
+config PART_ACMP2
+	bool
+	default y if E3648
+config PART_ACMP3
+	bool
+	default y if E3648
+config PART_ACMP4
+	bool
+	default y if E3648
+config PART_ETMR1
+	bool
+	default y if E3648
+config PART_ETMR2
+	bool
+	default y if E3648
+config PART_ETMR3
+	bool
+	default y if E3648
+config PART_ETMR4
+	bool
+	default y if E3648
+config PART_EPWM1
+	bool
+	default y if E3648
+config PART_EPWM2
+	bool
+	default y if E3648
+config PART_EPWM3
+	bool
+	default y if E3648
+config PART_EPWM4
+	bool
+	default y if E3648
+config PART_WDT1
+	bool
+	default y if E3648
+config PART_WDT2
+	bool
+	default y if E3648
+config PART_WDT8
+	bool
+	default y if E3648
+config PART_WDT3
+	bool
+	default y if E3648
+config PART_WDT4
+	bool
+	default y if E3648
+config PART_WDT5
+	bool
+	default y if E3648
+config PART_WDT6
+	bool
+	default y if E3648
+config IRAM_LIMIT
+	hex
+	default 0x400000 if E3648
+config PART_ID
+	hex
+	default 0x3648 if E3648
+config PART_SF
+	bool
+	default y if E3648
+config PART_SX
+	bool
+	default y if E3648
+config PART_SP
+	bool
+	default y if E3648
+config PART_SF_LS_DISABLE
+	bool
+	default n if E3648
+config PART_SX_LS_DISABLE
+	bool
+	default n if E3648
+config PART_SP_LS_DISABLE
+	bool
+	default n if E3648
+config PART_CSI
+	bool
+	default n if E3648
+config PART_G2D
+	bool
+	default n if E3648
+config PART_LVDS
+	bool
+	default n if E3648
+config PART_RGB
+	bool
+	default n if E3648
+config PART_SDRAM
+	bool
+	default n if E3648
+config PART_GAMA
+	bool
+	default y if E3648
+config PART_SDIO_SEHC2
+	bool
+	default y if E3648
+config PART_SDIO_SEHC1
+	bool
+	default y if E3648
+config PART_CAN_NUM
+	hex
+	default 0x18 if E3648
+config PART_UART_NUM
+	hex
+	default 0x10 if E3648
+config PART_ETH_NUM
+	hex
+	default 0x2 if E3648
+config PART_USB_NUM
+	hex
+	default 0x1 if E3648
+config PART_SPI_NUM
+	hex
+	default 0x8 if E3648
+config PART_I2S_NUM
+	hex
+	default 0x2 if E3648
+config PART_AIN_NUM
+	hex
+	default 0x30 if E3648
+config PART_ADC_NUM
+	hex
+	default 0x3 if E3648
+config PART_ACMP_NUM
+	hex
+	default 0x4 if E3648
+config MAX_FREQ
+	hex
+	default 0x2faf0800 if E3648

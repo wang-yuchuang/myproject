@@ -1,0 +1,42 @@
+menuconfig CSI
+    bool "Taishan CSI Support"
+    default n
+
+if CSI
+
+config CSI_NUM
+    int
+    default 1
+
+config CSI_CH_NUM
+    int
+    default 2
+
+config CSI_VERSION
+    int
+    default 1
+
+config CSI_IOMUX
+    bool "csi iomux for pin to external devices"
+    default n
+
+config OV5640
+    bool "sensor ov5640 driver"
+    default n
+    depends on I2C
+
+config MAX96706
+    bool "camera deser max96706 driver"
+    default n
+    depends on I2C
+
+config TI926
+    bool "video in deser ti926 driver"
+    default n
+    depends on I2C
+
+config VIRTUAL_CAMERA
+    bool "virtual camera driver"
+    default n
+
+endif #CSI

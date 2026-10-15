@@ -1,0 +1,57 @@
+{
+	"description": "d3 pac information file",
+	"pac": [
+		{
+			"type": "ospi",
+			"sec_ver": "0",
+			"partition": "false",
+			"partition_file": "ospi_inner_16m.bpt",
+			"xip_mode": "false",
+			"sf_only_mode": "false",
+			"boot_package_num": "2",
+			"key": "TestRSA2048_ossl.pem",
+			"ctl": "none",
+			"uuid": "none",
+			"core": {
+				"bootloader_mode": "false",
+				"bootloader_entry": "0x404000",
+				"bootloader_pad_size": "0x40000"
+			},
+			"sfs": {
+				"name": "is25-1-1-4.json",
+				"boot0_addr": "0x7000",
+				"boot1_addr": "0x407000",
+				"boot2_addr": "0x807000"
+			},
+			"encryption": {
+				"encryption_on": "false",
+				"rfd": [
+					{
+						"pvk3": "112233445566778899aabbccddeeff00",
+						"iv": "0d090d09",
+						"start": "0xc0000",
+						"end": "0x4c0000",
+						"boot":"true"
+					}
+				]
+			},
+			"rfd": "xspi_wrap_rfd_blk_pvk1_ks.rfd"
+		},
+		{
+			"type": "emmc",
+			"sec_ver": "0",
+			"partition": "false",
+			"partition_file": "emmc.bpt",
+			"sf_only_mode": "false",
+			"boot_package_num": "3",
+			"key": "none",
+			"ctl": "none",
+			"uuid": "none",
+			"core": {
+				"bootloader_mode": "false",
+				"bootloader_entry": "0x404000",
+				"bootloader_pad_size": "0x40000"
+			}
+		}
+	]
+}

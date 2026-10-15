@@ -1,0 +1,9 @@
+comment "UART Example Application Options"
+
+config TAISHAN_UART_DEMO
+    bool "Taishan uart example"
+    select UART
+    select SDRV_UART
+    default n
+
+

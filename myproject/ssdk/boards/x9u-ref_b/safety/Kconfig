@@ -1,0 +1,39 @@
+comment "X9 Safety Core Options"
+
+config MEM_BASE
+    hex "Memory Start Address"
+    default 0x37200000
+
+config MEM_SIZE
+    hex "Memory Size"
+    default 0x10000000
+
+config BOARD_REMAP
+    bool "Enable Kunlun board remap"
+    select SCR
+    select RESETGEN
+    select KUNLUN_RESETGEN
+    default n
+
+config XIP_MODE
+    bool "Run in XIP mode"
+    default n
+
+config RAM_BASE
+    hex "RAM base for XIP mode"
+    depends on XIP_MODE
+    default 0x404000
+
+config RAM_SIZE
+    hex "RAM size for XIP mode"
+    depends on XIP_MODE
+    default 0x5C000
+
+config EARLYCOPY
+    bool "Early Copy sections from LMA to VMA"
+    default y
+
+config ULINK_SIDE_B
+    bool "ULINK FOR X9U SSB"
+    default y
+

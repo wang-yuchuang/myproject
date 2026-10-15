@@ -1,0 +1,5 @@
+comment "APP reboot service option"
+
+menuconfig NOTIFY_SEC_REBOOT
+    bool "notify secure to reboot"
+    default n

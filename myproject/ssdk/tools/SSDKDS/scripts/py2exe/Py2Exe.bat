@@ -1,0 +1,1 @@
+pyinstaller --onefile --hidden-import=queue --icon="SSDKDS.ico" --path="..\Kconfiglib" "..\menuconfig.py"

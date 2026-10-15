@@ -1,0 +1,18 @@
+comment "DISK Demo Options"
+
+config DISK_RAM_DEMO
+    bool "block device disk ram demo"
+    default n
+
+config DISK_MMC_DEMO
+    bool "block device disk mmc demo"
+    default n
+
+config DISK_NOR_FLASH_DEMO
+    bool "block device disk nor flash demo"
+    default n
+
+config DISK_USB_DEMO
+    bool "block device disk usb demo"
+    default n
+

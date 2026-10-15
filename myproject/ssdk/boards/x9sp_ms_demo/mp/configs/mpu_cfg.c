@@ -1,0 +1,75 @@
+/*
+ * Copyright (c) 2021-2029 Semidrive Incorporated.
+ * All rights reserved.
+ * Software License Agreement.
+ */
+#ifdef CONFIG_ARCH_USE_MPU
+
+#include <types.h>
+#include <param.h>
+#include <arch/armv7-r/mpu.h>
+#include <image_cfg.h>
+#include <memmap.h>
+
+#include "mpu_cfg.h"
+#include "driver/kunlun/virt_uart/logbuf.h"
+
+#define round_up(a,b) (((a - 1) | (b - 1)) + 1)
+#define round_down(a,b) ((a) & ~(b - 1))
+#define DDR1ST_BASE round_down(MP_MEMBASE, MP_MEMSIZE)
+#define DDR2ND_BASE (DDR1ST_BASE + MP_MEMSIZE)
+
+
+const mpu_config_t board_mpu_config[] = {
+    {DDR1ST_BASE, MP_MEMSIZE, MPU_REGION_NORMAL},
+    {DDR2ND_BASE, MP_MEMSIZE, MPU_REGION_NORMAL},
+    {0, 0x40, MPU_REGION_NORMAL_RO},
+    {CONFIG_MEM_BASE, 0x40, MPU_REGION_NORMAL_RO},
+    /* ospi1 indirect address space */
+    {0x7FFFE00, 0x200, MPU_REGION_DEVICE},
+    /* pcie1 space */
+    {0x10000000, 0x10000000, MPU_REGION_DEVICE},
+    /* pcie2 space */
+    {0x20000000, 0x10000000, MPU_REGION_DEVICE},
+    {SAF_MP_MEMBASE, SAF_MP_MEMSIZE, MPU_REGION_STRONGORDERED},
+    {SEC_MP_MEMBASE, SEC_MP_MEMSIZE, MPU_REGION_STRONGORDERED},
+    {MP_AP1_MEMBASE, MP_AP1_MEMSIZE, MPU_REGION_STRONGORDERED},
+    {MP_AP2_MEMBASE, MP_AP2_MEMSIZE, MPU_REGION_STRONGORDERED},
+    /* logbuf sapce */
+    {SEC_MEMBASE, SDRV_LOGBUF_SIZE, MPU_REGION_NORMAL_NONCACHEABLE},
+    /* ramoops size */
+    {SEC_MEMBASE + SDRV_LOGBUF_SIZE, SDRV_RAMOOPS_SIZE, MPU_REGION_NORMAL_NONCACHEABLE},
+};
+#if 0
+void board_mpu_init(void)
+{
+    uint32_t index = 0;
+
+    mpu_enable(false);
+
+    mpu_add_region(index++, 0xF0000000U, 0x2000000U,
+                   MPU_REGION_DEVICE);
+
+    if (index > 0) {
+        mpu_enable(true);
+    }
+}
+#endif
+void board_mpu_init(void)
+{
+    uint32_t index = 0;
+
+    mpu_enable(false);
+
+    for (uint32_t i = 0; i < ARRAY_SIZE(board_mpu_config); i++) {
+        const mpu_config_t *config = &board_mpu_config[i];
+        if (config->size > 0) {
+            mpu_add_region(index++, config->addr, config->size, config->type);
+        }
+    }
+
+    if (index > 0) {
+        mpu_enable(true);
+    }
+}
+#endif

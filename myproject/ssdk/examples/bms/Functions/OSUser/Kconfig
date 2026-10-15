@@ -1,0 +1,24 @@
+config TASK_MONITOR
+    bool "Task Monitor (Debug Only)"
+    default n
+    help
+      Enable periodic task monitoring thread that prints
+      all task stats (CPU%, runtime, stack, state, timeouts)
+      to serial console every N seconds.
+
+config TASKMONITOR_PERIOD_MS
+    int "Monitor print interval (ms)"
+    default 60000
+    range 1000 60000
+    depends on TASK_MONITOR
+
+config TASKMONITOR_THREAD_STACK_SIZE
+    int "Monitor thread stack size (bytes)"
+    default 2048
+    depends on TASK_MONITOR
+
+config TASKMONITOR_THREAD_PRIORITY
+    int "Monitor thread priority"
+    default 28
+    range 0 31
+    depends on TASK_MONITOR

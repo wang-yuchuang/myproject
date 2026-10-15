@@ -1,0 +1,37 @@
+comment "X9 Safety Core Options"
+
+config MEM_BASE
+    hex "Memory Start Address"
+    default 0x37200000
+
+config MEM_SIZE
+    hex "Memory Size"
+    default 0x10000000
+
+config RES_SIZE
+    hex "Res Size"
+    default 0x0
+
+config BOARD_REMAP
+    bool "Enable Kunlun board remap"
+    select SCR
+    select RESETGEN
+    select KUNLUN_RESETGEN
+    default n
+
+config KUNLUN_BOOT_MP
+    bool "Boot MP Core"
+    default n
+
+config SUPPORT_STR_MODE
+    bool "support str mode"
+    default n
+
+config STR_CORE_COMMU
+    bool "str communication between saf and sec"
+    default n
+
+config ULINK_SINGLE_SIDE_SAF
+    bool "ULINK for single side safety R5 core"
+    default n
+

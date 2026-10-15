@@ -1,0 +1,9 @@
+comment "Rpmsg IPCC Options"
+
+config IPCC_BUFF_NUM
+    int "Rpmsg ipcc buffer number"
+    default 4
+
+config IPCC_PAYLOAD_SIZE
+    int "Rpmsg ipcc payload size"
+    default 512

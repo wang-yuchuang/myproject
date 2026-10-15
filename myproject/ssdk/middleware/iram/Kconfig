@@ -1,0 +1,6 @@
+comment "IRAM NONE-ECC Options"
+
+config TAISHAN_IRAM_NONE_ECC
+    bool "Taishan Disable IRAM ECC"
+    select SCR
+    default n

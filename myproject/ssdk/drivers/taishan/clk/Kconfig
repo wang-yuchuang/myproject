@@ -1,0 +1,20 @@
+menuconfig TAISHAN_CKGEN
+    bool "Taishan Clock Generator Driver Support"
+    select CLK
+    select TAISHAN_PLL
+    default n
+
+if TAISHAN_CKGEN
+
+config TAISHAN_PLL
+    bool
+
+config CLK_MONITOR
+    bool "Enable Clock Monitor"
+    default n
+
+config CLK_PARENTS_NUM
+    int
+    default 5
+
+endif # TAISHAN_CKGEN

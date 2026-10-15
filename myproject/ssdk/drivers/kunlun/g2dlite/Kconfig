@@ -1,0 +1,5 @@
+comment "Kunlun g2dlite Options"
+
+menuconfig G2DLITE
+    bool "kunlun g2dlite driver"
+    default n

@@ -1,0 +1,5 @@
+config UART_LIN
+    bool "Kunlun Lin driver Support"
+    select UART
+    select DW_UART
+    default n

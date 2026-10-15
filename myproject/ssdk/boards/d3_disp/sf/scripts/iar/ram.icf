@@ -1,0 +1,46 @@
+define memory mem with size = 4G;
+define region RAM_region =
+    mem:[from MEMBASE to MEMBASE + MEMSIZE - 1];
+define region NONEECC_region =
+    mem:[from NONEECCBASE to NONEECCBASE + NONEECCSIZE - 1];
+define region TCM_region =
+    mem:[from TCMBASE to TCMBASE + TCMSIZE - 1];
+
+define block _DATA with alignment = 4 { section .data, section .data.* };
+define block BSS with alignment = 4 { section .bss };
+define block EXCEPTION_STACK with alignment = 4 { section .except.stack };
+define block FAULT_TABLE { section .rodata.fault_handler_table };
+define block COMMANDS { section .commands };
+define block RODATA with alignment = 4 {
+    block FAULT_TABLE,
+    section .rodata
+};
+define block DATA {
+    block _DATA,
+    block COMMANDS
+};
+define block APDATA with alignment = 4 { section .apdata};
+define block NONEECCDATA with alignment = 4 { section .noneeccdata};
+define block HEAP with alignment = 4,
+    expanding size { section .heap };
+define block TCMCODE with alignment = 4 { section .tcmcode};
+define block TCMDATA with alignment = 4 { section .tcmdata};
+
+do not initialize { section .except.stack, section .apdata, section .noneeccdata};
+
+place at start of RAM_region { section .boot };
+place in RAM_region { section .intvec };
+place in RAM_region { section .iar.init_table };
+place in RAM_region { section .text };
+place in RAM_region { zi };
+place in RAM_region { section SemiDrive };
+place in RAM_region { block DATA };
+place in RAM_region { block BSS };
+place in RAM_region { block EXCEPTION_STACK };
+place in RAM_region { block APDATA };
+place in RAM_region { block RODATA };
+place in RAM_region { block HEAP };
+place in RAM_region { readonly };
+place in NONEECC_region { block NONEECCDATA};
+place in TCM_region { block TCMCODE, block TCMDATA};
+initialize by copy { section .tcmcode, section .tcmdata};

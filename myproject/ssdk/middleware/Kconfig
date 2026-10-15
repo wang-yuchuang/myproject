@@ -1,0 +1,523 @@
+comment "Middleware Options"
+
+menuconfig CLI
+    bool "CLI Support"
+    select UART
+    default n
+
+if CLI
+rsource "CLI/Kconfig"
+endif # CLI
+
+menuconfig MEM_RW
+    bool "Memory RW Command Support"
+    select CLI
+    default n
+
+if MEM_RW
+rsource "mem_rw/Kconfig"
+endif # MEM_RW
+
+menuconfig DHRYSTONE
+    bool "Dhrystone Support"
+    default n
+
+if DHRYSTONE
+rsource "dhrystone/Kconfig"
+endif # DHRYSTONE
+
+menuconfig COREMARK
+    bool "CoreMark Benchmark Support"
+    depends on TIMER
+    default n
+
+if COREMARK
+rsource "coremark/Kconfig"
+endif # COREMARK
+
+menuconfig FLASH_LOADER
+    bool "Flashloader Support"
+    select OSPI
+    default n
+
+if FLASH_LOADER
+rsource "flashloader/Kconfig"
+endif # FLASH_LOADER
+
+menuconfig MEM_TESTER
+    bool "Memory Tester Support"
+    default n
+
+if MEM_TESTER
+rsource "memtester/Kconfig"
+endif # MEM_TESTER
+
+menuconfig RPMSG
+    bool "Rpmsg Driver Support"
+    select MBOX
+    default n
+
+if RPMSG
+rsource "rpmsg/Kconfig"
+endif # RPMSG
+
+menuconfig RPMSG_SERVICE
+    bool "RPMSG Service Support"
+    select RPMSG
+    default n
+
+if RPMSG_SERVICE
+rsource "rpmsg_service/Kconfig"
+endif # RPMSG_SERVICE
+
+config AUDIO_MANAGER
+    bool "audio manager Support"
+    default n
+# audio_manager
+
+config AUDIO_HUB
+    bool "audio hub Support"
+    default n
+# audio_hub
+
+menuconfig SDPE_RPC
+    bool "SDPE RPC Support"
+    select RING_BUFFER
+    select ERING_BUFFER
+    default n
+
+if SDPE_RPC
+rsource "sdpe_rpc/Kconfig"
+endif # SDPE_RPC
+
+menuconfig MEM_IMAGE
+    bool "Memory Image for boot"
+    default n
+
+menuconfig REBOOT
+    bool "Reboot Support"
+    default n
+
+if REBOOT
+rsource "reboot/Kconfig"
+endif # REBOOT
+
+menuconfig FATFS
+    bool "FAT filesystem Support"
+    select DISK
+    default n
+
+menuconfig UPDATE_MONITOR
+    bool "Update Monitor Support"
+    select RPMSG
+    select RPMSG_SERVICE
+    select CHECKSUM
+    select RESETGEN
+    select KUNLUN_RESETGEN
+    select SCR
+    select SD_BOOT_PIN
+    select PARTITION
+    select DISK
+    default n
+
+if UPDATE_MONITOR
+rsource "update_monitor/Kconfig"
+endif # UPDATE_MONITOR
+
+menuconfig GPU_HAL
+    bool "GPU HAL Support"
+    select G2DLITE
+    default n
+
+if GPU_HAL
+rsource "gpu_hal/Kconfig"
+endif # GPU_HAL
+
+menuconfig GUI_LVGL
+    bool "LVGL Gui Engine Support"
+    default n
+
+if GUI_LVGL
+rsource "littlevgl/Kconfig"
+endif # GUI_LVGL
+
+menuconfig DLOADER_TESTER
+    bool "Dloader Support"
+    select DLOADER
+    select MD5
+    select PARTITION
+    select DISK
+    select FUSE
+    select SD_BOOT_IMG
+    select REBOOT
+    select BOOT_EXAMPLE
+    select TAISHAN_REBOOT_GLOBAL
+    select GLOBAL_REBOOT_EXAMPLE
+    default n
+
+if DLOADER_TESTER
+rsource "dloader/Kconfig"
+endif
+
+menuconfig CU
+    bool "CU Service Support"
+    select HWMUTEX
+    select TAISHAN_HWMUTEX
+    select RESETGEN
+    select TAISHAN_RESETGEN
+    select CORE_SHM
+    default n
+
+if CU
+rsource "cu/Kconfig"
+endif # CU
+
+menuconfig TJPGDEC
+    bool "Jpeg Dec"
+    default n
+
+if TJPGDEC
+rsource "tjpgdec/Kconfig"
+endif
+
+menuconfig MJPEG
+    bool "Mjpeg Dec"
+    select FATFS
+    select TJPGDEC
+    default n
+
+if MJPEG
+rsource "mjpeg/Kconfig"
+endif
+
+menuconfig MP3_DEC
+    bool "MP3 Dec"
+    select FATFS
+    default n
+
+if MP3_DEC
+rsource "minimp3/Kconfig"
+endif
+
+menuconfig FLOPS
+    bool "Floating Point MFLOPS Support"
+    select FPU
+    default n
+
+if FLOPS
+rsource "flops/Kconfig"
+endif # FLOPS
+
+menuconfig DECODER_LODEPNG
+    bool "PNG decoder lib"
+    default n
+
+if DECODER_LODEPNG
+rsource "lodepng/Kconfig"
+endif # DECODER_LODEPNG
+
+menuconfig FUSA_MONITOR
+    bool "FUSA error monitor"
+    depends on SEM
+    default n
+
+if FUSA_MONITOR
+rsource "fusa_monitor/Kconfig"
+endif # SEM_MONITOR
+
+menuconfig CPU_FREQ
+    bool "CPU frequency"
+    default n
+
+if CPU_FREQ
+rsource "cpufreq/Kconfig"
+endif # CPU_FREQ
+
+menuconfig VLIN
+    bool "VLIN Driver Support"
+    default n
+
+if VLIN
+rsource "vlin/Kconfig"
+endif # VLIN
+
+menuconfig VCAN
+    bool "VCAN Driver Support"
+    default n
+
+if VCAN
+rsource "vcan/Kconfig"
+endif # VCAN
+
+menuconfig VI2C
+    bool "VI2C Driver Support"
+    default n
+
+if VI2C
+rsource "vi2c/Kconfig"
+endif # VI2C
+
+menuconfig USB
+    bool "USB Driver Support"
+    default n
+
+if USB
+rsource "usb/Kconfig"
+endif # USB
+
+menuconfig BOARDINFO
+    bool "Kunlun BoardInfo Suppport"
+    default n
+
+if BOARDINFO
+rsource "boardinfo/Kconfig"
+endif # BOARDINFO
+
+menuconfig CORE_DEBUG
+    bool "Set Core Debug Information"
+    default n
+
+if CORE_DEBUG
+rsource "coredbg/Kconfig"
+endif # CORE_DEBUG
+
+menuconfig IRAM_NONE_ECC
+    bool "IRAM NONE-ECC"
+    default n
+
+if IRAM_NONE_ECC
+rsource "iram/Kconfig"
+endif # IRAM_NONE_ECC
+
+if ARCH_CHIP_D9 || ARCH_CHIP_G9 || ARCH_CHIP_X9
+menuconfig APP_REBOOT_SS
+    bool "system reboot application service"
+    select SYS_DIAGNOSIS
+    select REBOOT
+    default n
+
+if APP_REBOOT_SS
+rsource "app_reboot_ss/Kconfig"
+endif # APP_REBOOT_SS
+
+menuconfig BACKLIGHT_SERVICE
+    bool "backlight service"
+    depends on KUNLUN_PWM
+    default n
+
+if BACKLIGHT_SERVICE
+rsource "backlight/Kconfig"
+endif # BACKLIGHT_SERVICE
+
+menuconfig KUNLUN_CAMERA_SERVICE
+    bool "kunlun camera servie"
+    select CONFIG_CSI
+    default n
+
+if KUNLUN_CAMERA_SERVICE
+    rsource "camera/Kconfig"
+endif
+
+menuconfig CAN_PROXY
+    bool "can proxy service"
+    default n
+
+if CAN_PROXY
+rsource "can_proxy/Kconfig"
+endif # CAN_PROXY
+
+menuconfig CLUSTER_BRIDGE
+    bool "cluster bridge service"
+    default n
+
+if CLUSTER_BRIDGE
+rsource "cluster_bridge/Kconfig"
+endif # CLUSTER_BRIDGE
+
+menuconfig DISP_CLIENT
+    bool "display client service"
+    default n
+if DISP_CLIENT
+rsource "disp_client/Kconfig"
+endif # DISP_CLIENT
+
+menuconfig DISPLAY_SERVICE
+    bool "display servie"
+    default n
+
+if DISPLAY_SERVICE
+    rsource "display/Kconfig"
+endif
+
+menuconfig AVMCAST_SERVICE
+    bool "avm cast servie"
+    default n
+
+if AVMCAST_SERVICE
+    rsource "avmcast/Kconfig"
+endif
+
+menuconfig INPUT_SERVICE
+    bool "input service"
+    select TOUCH_KUNLUN_PLATFORM
+    default n
+
+if INPUT_SERVICE
+rsource "input/Kconfig"
+endif
+
+menuconfig LWIP
+    bool "lwip"
+    default n
+# LWIP
+
+menuconfig NFS_CLIENT
+    bool "nfs_client"
+    default n
+# NFS_CLIENT
+
+menuconfig PROPERTY
+    bool "property service"
+    default n
+
+if PROPERTY
+rsource "sd_property/Kconfig"
+endif # PROPERTY
+
+menuconfig ERRCODE
+    bool "errcode service"
+    default n
+
+if ERRCODE
+rsource "sd_errcode/Kconfig"
+endif # ERRCODE
+
+menuconfig MODULE_HELPER
+    bool "module help service"
+    depends on CLI
+    default n
+
+if MODULE_HELPER
+rsource "module_helper/Kconfig"
+endif # MODULE_HELPER
+
+menuconfig SYS_DIAGNOSIS
+    bool "sys error monitor"
+    depends on SEM
+    default n
+if SYS_DIAGNOSIS
+rsource "sys_diagnosis/Kconfig"
+endif # SYS_DIAGNOSIS
+
+menuconfig QT_FOR_MCU
+    bool "qt for mcu"
+    default n
+
+menuconfig SDRV_VIRT_CONSOLE
+    bool "virt console"
+    select SDRV_VIRT_UART
+    default n
+
+if SDRV_VIRT_CONSOLE
+rsource "sdshell/Kconfig"
+endif #SDRV_VIRT_CONSOLE
+
+menuconfig SDRV_THERMAL_SERVICE
+    bool "thermal service, system shutdown or reboot"
+    default n
+
+menuconfig VPU_SRV
+    bool "vpu hal & service"
+    select VIRTIO
+    select VIRTIO_BACKEND
+    default n
+
+menuconfig VPU_CLIENT
+    bool "vpu client"
+    select VIRTIO
+    select VIRTIO_FRONTEND
+    default n
+
+if VPU_SRV
+rsource "vpu_hal/vpu_instance/Kconfig"
+rsource "vpu_service/Kconfig"
+endif # VPU_SRV
+
+if VPU_CLIENT
+rsource "vpu_hal/vpu_client/Kconfig"
+endif
+
+config SUPPORT_CRASHDUMP_FEATURE
+    bool "support crashdump"
+    select ENABLE_EXCEPTION_LOG_FLAG
+    depends on SDRV_WDOG_KUNLUN
+    default n
+
+config ENABLE_EXCEPTION_LOG_FLAG
+    bool "add logflag"
+    default n
+
+menuconfig STR_CORE
+    bool "str operation support"
+    default n
+
+if STR_CORE
+rsource "str/Kconfig"
+endif # STR_CORE
+
+config DW_UMCTL2
+    bool "ddr dw umctl2"
+    default n
+
+menuconfig GRAPHICS
+    bool "sd graphics lib"
+    default n
+
+config VIRTIO
+    bool "VirtIO Device Support"
+    select MBOX
+    default n
+
+if VIRTIO
+rsource "virtio/Kconfig"
+endif # VIRTIO
+
+menuconfig TIME_SYNC
+    bool "time sync"
+    default n
+
+config SDRV_SHM
+    bool "Semidrive Share Memory Support"
+    select RPMSG
+    default n
+
+menuconfig FuncSafetyPkg
+    bool "Support Fusalib"
+    default n
+
+menuconfig FUSALIB_DDR
+    bool "Support Fusalib DDR"
+    select FuncSafetyPkg
+    default n
+endif # ARCH_CHIP_D9 || ARCH_CHIP_G9 || ARCH_CHIP_X9
+
+menu "Support FuncSafetyPkg"
+rsource "FuncSafetyPkg/Kconfig"
+endmenu
+
+config MARK_SUCCESS
+    bool "Mark system startup by setting a property"
+    depends on PROPERTY
+    default y
+
+if MARK_SUCCESS
+    rsource "mark_success/Kconfig"
+endif # MARK_SUCCESS
+
+menuconfig ICCMSG
+    bool "iccmsg Driver Support"
+    default n
+
+if ICCMSG
+rsource "iccmsg/Kconfig"
+endif # ICCMSG

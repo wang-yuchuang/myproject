@@ -1,0 +1,164 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 960" role="img" aria-labelledby="ttl desc" style="max-width:1160px;width:100%;height:auto;background:#fff">
+  <title id="ttl">上报功能：DPR/DAI → 上报器 → 云平台/本地</title>
+  <desc id="desc">nccu_app 启动第 6 步 Init_Load_AllReporters 按 SQLite Charger_Reporter 表加载 8 个已编译上报器 .so（reporter_es_iocpp / reporter_mqtt / reporter_es_ify / reporter_modbustcp / reporter_webapi / reporter_mbe_new / reporter_ess_maintenance / reporter_slaveEms），经 DAI 读 DPR 数据、订阅事件后上报到云平台与本地客户端；另列 7 个存在源码但未编译的 reporter（iec104/iec101/iec61850/ocpp/inter_master/modbustcp2/maintainbe），以及 nPlatformType 互斥与 DAI 独立开关两类加载门控规则。</desc>
+
+  <defs>
+    <marker id="arw" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#5F6368"/>
+    </marker>
+    <marker id="arw-broken" viewBox="0 0 8 8" refX="8" refY="4" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#C5221F"/>
+    </marker>
+  </defs>
+
+  <!-- 标题 -->
+  <text x="30" y="40" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="22" font-weight="700" fill="#202124">上报功能：DPR/DAI → 上报器 → 云平台/本地</text>
+  <text x="30" y="66" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="13" fill="#5F6368">nccu_app 启动第 6 步 Init_Load_AllReporters()：按 System.cfg（SQLite Charger_Reporter 表）逐行加载 .so，每行注入 pDAI（spec R1）</text>
+
+  <!-- DPR 数据中心 -->
+  <rect x="40" y="100" width="310" height="120" rx="8" fill="#F3E8FD" stroke="#8430CE" stroke-width="1.5"/>
+  <text x="54" y="126" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">DPR 数据中心（nccu_app 进程内）</text>
+  <text x="54" y="150" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">配置 / 事件 / 告警 / 表达式 / 运行数据</text>
+  <text x="54" y="168" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">Intern_Get/Set 统一跨模块访问（spec R6）</text>
+  <text x="54" y="190" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">data-processor spec R6 · dpr_loader.c</text>
+
+  <!-- DPR ← DAI -->
+  <line x1="195" y1="260" x2="195" y2="224" stroke="#5F6368" stroke-width="1.6" marker-end="url(#arw)"/>
+  <text x="207" y="246" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="11" fill="#5F6368">Get/Set/Query/Signal 转发</text>
+
+  <!-- DAI -->
+  <rect x="40" y="260" width="310" height="170" rx="8" fill="#F3E8FD" stroke="#8430CE" stroke-width="1.5"/>
+  <text x="54" y="286" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">DAI（数据访问接口）</text>
+  <text x="54" y="308" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">pReporter->pDAI 注入（reporters_loader.c:48）</text>
+  <text x="54" y="326" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">Get/Set → DPR Intern_Get/Set</text>
+  <text x="54" y="344" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">（dai_loader.c:94 / :576）</text>
+  <text x="54" y="362" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">Query → SQLite 历史库（:818）</text>
+  <text x="54" y="380" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">Regsiter_EvHandler 订阅事件：</text>
+  <text x="54" y="398" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">ALARM·CFG_CHANGED·FIRMWARE_UPDATE…</text>
+  <text x="54" y="418" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">docs/30-interfaces/dai.md · dai_model.h:141-153</text>
+
+  <!-- DAI → 上报器容器 -->
+  <line x1="350" y1="345" x2="406" y2="345" stroke="#5F6368" stroke-width="1.6" marker-end="url(#arw)"/>
+
+  <!-- 已编译上报器容器 -->
+  <rect x="410" y="86" width="730" height="388" rx="8" fill="#F8F9FA" stroke="#DADCE0" stroke-width="1.2"/>
+  <text x="430" y="112" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">已编译 8 个 reporter（.so 动态加载，dlsym "Initialize"）</text>
+  <text x="1120" y="112" text-anchor="end" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">reporters_loader.c:235-245 · src/Makefile:60-74</text>
+
+  <!-- pill 1: es_iocpp -->
+  <rect x="430" y="124" width="320" height="64" rx="18" fill="#E8F0FE" stroke="#1A73E8" stroke-width="1.5"/>
+  <text x="446" y="148" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">reporter_es_iocpp.so</text>
+  <text x="446" y="166" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">Infypower iOCPP · ID 2 · 开关 1/47（平台≠0）</text>
+  <text x="446" y="180" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">es_iocpp_reporter/Makefile:5 · reporters_loader.c:180</text>
+
+  <!-- pill 2: mqtt -->
+  <rect x="790" y="124" width="320" height="64" rx="18" fill="#E8F0FE" stroke="#1A73E8" stroke-width="1.5"/>
+  <text x="806" y="148" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">reporter_mqtt.so</text>
+  <text x="806" y="166" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">MQTT · ID 6 · 平台互斥 · 内置 paho+TLS</text>
+  <text x="806" y="180" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">es_mqtt_reporter/Makefile:5 · paho-mqtt3as/3a:24</text>
+
+  <!-- pill 3: es_ify -->
+  <rect x="430" y="214" width="320" height="64" rx="18" fill="#E8F0FE" stroke="#1A73E8" stroke-width="1.5"/>
+  <text x="446" y="238" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">reporter_es_ify.so</text>
+  <text x="446" y="256" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">英飞源云私有协议 · ID 10 · 开关 DAI 1/16</text>
+  <text x="446" y="270" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">ify_cloud_reporter/Makefile:5 · spec R3 · :168</text>
+
+  <!-- pill 4: modbustcp -->
+  <rect x="790" y="214" width="320" height="64" rx="18" fill="#E8F0FE" stroke="#1A73E8" stroke-width="1.5"/>
+  <text x="806" y="238" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">reporter_modbustcp.so</text>
+  <text x="806" y="256" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">Modbus TCP Server · ID 11 · 开关 1/50</text>
+  <text x="806" y="270" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">modbus_reporter/Makefile:4 · spec R4 · :194</text>
+
+  <!-- pill 5: webapi + web -->
+  <rect x="430" y="304" width="320" height="64" rx="18" fill="#E8F0FE" stroke="#1A73E8" stroke-width="1.5"/>
+  <text x="446" y="328" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">reporter_webapi.so + web</text>
+  <text x="446" y="346" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">HTTP+FastCGI · ID 4 · 4 子目录随 DIRS 编译</text>
+  <text x="446" y="360" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">src/Makefile:65-68 · web_api_reporter/Makefile:4</text>
+
+  <!-- pill 6: mbe_new -->
+  <rect x="790" y="304" width="320" height="64" rx="18" fill="#E8F0FE" stroke="#1A73E8" stroke-width="1.5"/>
+  <text x="806" y="328" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">reporter_mbe_new.so</text>
+  <text x="806" y="346" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">MQTT 维护后端（mbe-mqtt）· ID 3</text>
+  <text x="806" y="360" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">maintain_backend_reporter/mbe-mqtt/Makefile:5 · R10</text>
+
+  <!-- pill 7: ess_maintenance -->
+  <rect x="430" y="394" width="320" height="64" rx="18" fill="#E8F0FE" stroke="#1A73E8" stroke-width="1.5"/>
+  <text x="446" y="418" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">reporter_ess_maintenance.so</text>
+  <text x="446" y="436" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">ESS 运维平台 · ID 12 · 开关 1/51</text>
+  <text x="446" y="450" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">ess_maintenance_reporter/Makefile:4 · :204</text>
+
+  <!-- pill 8: slaveEms -->
+  <rect x="790" y="394" width="320" height="64" rx="18" fill="#E8F0FE" stroke="#1A73E8" stroke-width="1.5"/>
+  <text x="806" y="418" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">reporter_slaveEms.so</text>
+  <text x="806" y="436" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">从站 EMS · ID 13 · 开关 DAI 1/42</text>
+  <text x="806" y="450" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">slaveEMS_reporter/Makefile:4 · spec R11 · :214</text>
+
+  <!-- 容器 → 外部目标 -->
+  <line x1="775" y1="474" x2="775" y2="510" stroke="#5F6368" stroke-width="1.6" marker-end="url(#arw)"/>
+  <text x="787" y="496" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="11" fill="#5F6368">事件驱动 / 周期上报（内部线程）</text>
+
+  <!-- 外部目标 -->
+  <rect x="430" y="514" width="690" height="110" rx="10" fill="#F1F3F4" stroke="#5F6368" stroke-width="1.5" stroke-dasharray="6 3"/>
+  <text x="450" y="542" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">外部目标（云平台 / 本地）</text>
+  <text x="450" y="564" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">MQTT 云（含国鸿）· 英飞源云 · iOCPP 服务端 · ESS 运维 · mbe 维护后端</text>
+  <text x="450" y="582" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">本地浏览器 + REST API（web_server/back_api/front）· Modbus TCP 主站 · 从站 EMS 主站</text>
+  <text x="450" y="606" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">spec R2-R5 / R10-R12</text>
+
+  <!-- 加载门控 -->
+  <rect x="40" y="470" width="350" height="250" rx="8" fill="#F8F9FA" stroke="#DADCE0" stroke-width="1.5"/>
+  <text x="56" y="494" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">加载门控（条件加载）</text>
+  <text x="56" y="510" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">reporters_loader.c:36-235</text>
+  <text x="56" y="530" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">ID 1 Qt GUI：永久跳过（:51）</text>
+  <text x="56" y="548" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">nPlatformType = DAI 1/10，互斥（:83-158）：</text>
+  <text x="56" y="566" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">0→跳 6/7/8/9 · 1/2→7/8/9 · 3→6/8/9</text>
+  <text x="56" y="584" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">4→6/7/9 · 5→6/7/8 · 6→全跳（未安装）</text>
+  <text x="56" y="602" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">独立开关 DAI（为 0 跳过）：</text>
+  <text x="56" y="620" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">1/16→10·ify（:168）· 1/47→2·iOCPP（:180）</text>
+  <text x="56" y="638" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">1/50→11·mbtcp（:194）· 1/51→12·ess（:204）</text>
+  <text x="56" y="656" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">1/42→13·slaveEms（:214）· 1/57→14（:224）</text>
+  <text x="56" y="674" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">（1/57 按 ulValue 判断；ID14 为未编译模块）</text>
+  <text x="56" y="692" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">任一加载/初始化失败 → 立即 FALSE（:235）</text>
+  <text x="56" y="710" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">* 1/47 仅当 nPlatformType ≠ 0 时生效</text>
+
+  <!-- 门控 → 未编译簇（不加载） -->
+  <line x1="390" y1="700" x2="426" y2="700" stroke="#C5221F" stroke-width="1.6" stroke-dasharray="7 4" marker-end="url(#arw-broken)"/>
+  <text x="392" y="688" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="11" fill="#C5221F">未纳入构建</text>
+
+  <!-- 未编译簇 -->
+  <rect x="430" y="670" width="690" height="214" rx="8" fill="#FCE8E6" stroke="#C5221F" stroke-width="1.5" stroke-dasharray="6 3"/>
+  <text x="450" y="696" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">未编译：目录存在，但不在 src/Makefile DIRS（无 .so 产物）</text>
+  <text x="450" y="718" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">reporter_iec104.so — ID 7 · iec_104_reporter/（Makefile 注释）</text>
+  <text x="450" y="737" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">reporter_iec101.so — ID 9 · iec_101_reporter/（注释）</text>
+  <text x="450" y="756" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">reporter_iec61850.so — ID 8 · iec_61850_reporter/（注释）</text>
+  <text x="450" y="775" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">reporter_ocpp.so — occp_reporter/ · EV 充电遗留 · 不在 DIRS</text>
+  <text x="450" y="794" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">reporter_inter_master.so — inter_master_reporter/（注释）</text>
+  <text x="450" y="813" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">reporter_modbustcp2.so — modbustcp2_reporter/ · 死代码</text>
+  <text x="450" y="832" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">reporter_maintainbe.so — mbe-websocket-old/ · phased-out</text>
+  <text x="450" y="862" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">src/Makefile:56-59,71 · 各 Makefile EXEC 行 · spec Modules 表（Reporter_ID 真值：System.sql:4320-4333）</text>
+
+  <!-- 单一导出点 callout -->
+  <rect x="40" y="760" width="350" height="124" rx="8" fill="#F8F9FA" stroke="#DADCE0" stroke-width="1.5"/>
+  <rect x="40" y="760" width="4" height="124" fill="#1A73E8"/>
+  <text x="60" y="786" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">单一导出点</text>
+  <text x="60" y="808" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">每个 reporter 仅导出 Initialize</text>
+  <text x="60" y="826" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">（reporters_base.h:27）；加载完成后由</text>
+  <text x="60" y="844" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">内部线程/回调驱动上报（Event_Handler）</text>
+  <text x="60" y="868" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">spec R1 · samplers 对比为 4 个导出点</text>
+
+  <!-- 图例 -->
+  <rect x="40" y="908" width="36" height="20" rx="18" fill="#E8F0FE" stroke="#1A73E8" stroke-width="1.5"/>
+  <text x="84" y="923" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#202124">已编译 reporter（8 个 .so）</text>
+  <rect x="270" y="908" width="36" height="20" rx="8" fill="#F3E8FD" stroke="#8430CE" stroke-width="1.5"/>
+  <text x="314" y="923" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#202124">DPR / DAI（进程内）</text>
+  <rect x="470" y="908" width="36" height="20" rx="10" fill="#F1F3F4" stroke="#5F6368" stroke-width="1.5" stroke-dasharray="6 3"/>
+  <text x="514" y="923" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#202124">外部系统</text>
+  <rect x="610" y="908" width="36" height="20" rx="8" fill="#FCE8E6" stroke="#C5221F" stroke-width="1.5" stroke-dasharray="6 3"/>
+  <text x="654" y="923" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#202124">未编译 / 跳过</text>
+  <line x1="790" y1="918" x2="826" y2="918" stroke="#5F6368" stroke-width="1.6" marker-end="url(#arw)"/>
+  <text x="838" y="923" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#202124">正常流</text>
+  <line x1="910" y1="918" x2="946" y2="918" stroke="#C5221F" stroke-width="1.6" stroke-dasharray="7 4" marker-end="url(#arw-broken)"/>
+  <text x="958" y="923" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#202124">未编译流</text>
+
+  <!-- 来源注记 -->
+  <text x="1120" y="950" text-anchor="end" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">来源：openspec/specs/reporters/spec.md（R1-R12）· openspec/.code-facts-snapshot.md · 核对提交 86f803b5</text>
+</svg>

@@ -1,0 +1,49 @@
+comment "ARM64 Options"
+
+choice
+    prompt "ARM64 CPU selection"
+    default ARCH_CORTEXA55
+
+config ARCH_CORTEXA55
+    bool "ARM CORTEXA55"
+    select ARCH_WITH_CACHE
+    select ARCH_DCACHE
+    select ARCH_ICACHE
+    select ARM_WITH_CP15
+    select ARM_THUMB
+    ---help---
+        The ARM CORTEXA55 CPU
+
+endchoice
+
+config ARCH_FAMILY
+    string
+    default "armv8-a"   if ARCH_CORTEXA55
+
+config ARM_THUMB
+    bool "Enable ARM Thumb"
+    default n
+
+if ARM_THUMB
+
+config ARM_THUMB2
+    bool "Enable ARM Thumb2"
+    default n
+
+endif # ARM_THUMB
+
+config ARM_WITH_CP15
+    bool "ARM with CP15"
+    default y
+
+config ARM_WITH_PMU
+    bool "ARM with PMU"
+    default n
+    select ARM_WITH_CP15
+
+config ENABLE_CYCLE_COUNTER
+    bool "Enable cycle counter"
+    default n
+    depends on ARM_WITH_PMU
+
+rsource d9/Kconfig

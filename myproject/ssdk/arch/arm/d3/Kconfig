@@ -1,0 +1,44 @@
+comment "D3 Chip Options"
+
+choice
+    prompt "Select Target Core"
+    default ARCH_CHIP_D3_SF
+    help
+        Select the target core.
+
+config ARCH_CHIP_D3_SF
+    bool "D3 SF Core"
+
+config ARCH_CHIP_D3_SP0
+    bool "D3 SP0 Core"
+    help
+        D3 SP0 core in split mode or SP core in lockstep mode
+
+config ARCH_CHIP_D3_SP1
+    bool "D3 SP1 Core"
+    help
+        D3 SP1 core in split mode
+
+config ARCH_CHIP_D3_SX0
+    bool "D3 SX0 Core"
+    help
+        D3 SX0 core in split mode or SX core in lockstep mode
+
+config ARCH_CHIP_D3_SX1
+    bool "D3 SX1 Core"
+    help
+        D3 SX1 core in split mode
+
+endchoice
+
+config CORE
+    string
+    option env="CORE"
+
+rsource "part/Kconfig"
+
+config MULTI_CORE
+    bool "D3 multi-core environment"
+    default n
+    help
+        Enable multi-core environment

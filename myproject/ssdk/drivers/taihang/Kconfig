@@ -1,0 +1,4 @@
+
+rsource "spi_nor/Kconfig"
+rsource "sdrv_lin/Kconfig"
+rsource "sdrv_uart/Kconfig"

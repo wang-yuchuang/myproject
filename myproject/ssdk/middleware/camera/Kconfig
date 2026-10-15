@@ -1,0 +1,6 @@
+comment "Camera Service Options"
+
+menuconfig CSI_SVC_VIA_UNILINK
+    bool "kunlun camera service via unilink"
+    select CONFIG_KUNLUN_CAMERA_SERVICE
+    default n

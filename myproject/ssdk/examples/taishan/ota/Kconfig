@@ -1,0 +1,19 @@
+comment "OTA Example Option"
+
+config OTA_FROM_UDISK
+    bool "Ota From Udisk file"
+    select USB
+    select USB_HOST
+    select USB_HOST_MSC
+    default n
+
+config OTA_FROM_ETH_TFTP
+    bool "Ota from Ethernet via tftp"
+    select ETH
+    select DWC_ETH
+    default n
+
+config OTA_TFTP_SERVER_IP
+    depends on OTA_FROM_ETH_TFTP
+    string "Ota Tftp Server Ip"
+    default "10.18.252.75"

@@ -1,0 +1,14 @@
+LOCAL_DIR := $(GET_LOCAL_DIR)
+
+MODULE := $(LOCAL_DIR)
+
+MODULE_STATIC_LIB := true
+
+MODULE_SRCS += $(LOCAL_DIR)/mmc_virtio.c
+MODULE_SRCS += $(LOCAL_DIR)/virtio_sdhci.c
+
+MODULE_INCLUDES += $(LOCAL_DIR)/
+
+GLOBAL_INCLUDES += $(LOCAL_DIR)/
+
+include $(MKROOT)/module.mk

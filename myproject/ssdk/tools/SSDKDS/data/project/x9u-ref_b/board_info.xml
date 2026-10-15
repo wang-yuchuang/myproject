@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<board_info>
+	<platform>kunlun</platform>
+	<board>x9u-ref_b</board>
+	<core>safety</core>
+	<arch>arm</arch>
+	<gic>GIC1</gic>
+</board_info>

@@ -1,0 +1,153 @@
+#!/bin/sh
+
+# Configuration
+UPGRADE_LOG="/data/log/nccu_upgrade.log"
+TEMP_DIR="/data/volatile/nccu_upgrade"
+APP_DIR="/app"
+STATE_FILE="/tmp/nccu_upgrade.state"
+IMAGE_FILE_NAME="app_nccu.img"
+UPGRADE_FILE_NAME="app_nccu.rpkg"
+CHECKSUM_FILE_NAME="pkg.sum"
+APP_PARTITION="/dev/by-name/data"
+
+
+# Initialize environment
+init_env() {
+    mkdir -p "$(dirname "$UPGRADE_LOG")" || return 1
+    echo "====== $(date) Upgrade Process Started ======" > "$UPGRADE_LOG"
+    return 0
+}
+
+# Secure logging
+log() {
+    _msg="$1"
+    _timestamp=$(date +'%Y-%m-%d %H:%M:%S')
+    echo "[$_timestamp] $_msg" >> "$UPGRADE_LOG"
+    echo "[$_timestamp] $_msg" >&2
+}
+
+# State tracking
+set_state() {
+    echo "$1" > "$STATE_FILE"
+}
+
+# Error handling
+error_exit() {
+    _msg="$1"
+    log "CRITICAL ERROR: $_msg"
+    [ -f "$STATE_FILE" ] && log "Last State: $(cat "$STATE_FILE")"
+    cleanup
+    exit 1
+}
+
+# Cleanup
+cleanup() {
+    log "Performing cleanup..."
+    rm -f "$STATE_FILE"
+    [ -d "$TEMP_DIR" ] && rm -rf "$TEMP_DIR"
+}
+
+find_physical_mounts() {
+    # 匹配mmcblk[1-9],避开mmcblk0，此设备实际为EMMC，非外挂设备。
+    awk '
+    $1 ~ /^\/dev\/(sd[a-z][0-9]*|mmcblk[1-9]+p[0-9]+|hd[a-z][0-9]*)/ {
+        print $2
+    }' /proc/mounts
+}
+
+find_upgrade_pkg() {
+    set_state "Scanning storage devices"
+    
+    for mount_point in $(find_physical_mounts); do
+        log "Checking: $mount_point"
+        
+        for pkg in $(find "$mount_point" -maxdepth 3 -name "$UPGRADE_FILE_NAME" -type f 2>/dev/null); do
+            [ -f "$pkg" ] && {
+                log "Found valid package: $pkg"
+                echo "$pkg"
+                return 0
+            }
+        done
+    done
+    
+    error_exit "No upgrade package found"
+}
+
+# Reliable package discovery
+find_upgrade_pkg2() {
+  set_state "Scanning storage devices"
+  
+  _found_pkg=""
+
+  for mount_point in /media/* /mnt/* /run/media/*; do
+    [ ! -d "$mount_point" ] && continue
+    
+    log "Checking: $mount_point"
+    
+    for pkg in $(find "$mount_point" -name '$UPGRADE_FILE_NAME' -type f 2>/dev/null); do
+      [ -f "$pkg" ] && { 
+        log "Found valid package: $pkg"
+        _found_pkg="$pkg"
+        break 2
+      }
+    done
+  done
+  
+  [ -n "$_found_pkg" ] && echo "$_found_pkg" && return 0
+  error_exit "No valid upgrade package found"
+}
+
+# 解压.rpkg
+safe_extract() {
+    set_state "Extracting package"
+    pkg="$1"
+    
+    [ -f "$pkg" ] || error_exit "Invalid package: $pkg"
+    
+    mkdir -p "$TEMP_DIR" || error_exit "Cannot create temp dir"
+    cd "$TEMP_DIR" || error_exit "Cannot enter temp dir"
+    
+    log "Extracting: $pkg"
+    tar -xzf "$pkg" || error_exit "Extract failed"
+    
+    [ -f "$IMAGE_FILE_NAME" ] || error_exit "Missing app package"
+    [ -f "$CHECKSUM_FILE_NAME" ] || error_exit "Missing checksum file"
+}
+
+# Integrity check
+validate_package() {
+    set_state "Verifying integrity"
+    
+    # 检查校验文件是否存在
+    [ ! -f "$CHECKSUM_FILE_NAME" ] && error_exit "Checksum file missing"
+    
+    # 用标准方法验证（自动检查文件名与哈希是否匹配）
+    if ! md5sum -c "$CHECKSUM_FILE_NAME" >/dev/null 2>&1; then
+        error_exit "Checksum verification failed"
+    fi
+}
+
+# Deployment
+deploy_application() {
+    set_state "Deploying application"
+    
+    # log "Removing old version..."
+    # rm -rf "${APP_DIR:?}"/* || error_exit "Failed to clean app dir"
+    
+    log "Installing new version..."
+    # tar -xzf "$IMAGE_FILE_NAME" -C "$APP_DIR" || error_exit "Deployment failed"
+    dd if="$IMAGE_FILE_NAME" of="$APP_PARTITION"_a bs=4k status=progress conv=fsync
+    dd if="$IMAGE_FILE_NAME" of="$APP_PARTITION"_b bs=4k status=progress conv=fsync
+}
+
+#################### Main Process ####################
+init_env || error_exit "Initialization failed"
+
+upgrade_file=$(find_upgrade_pkg) || error_exit
+safe_extract "$upgrade_file"
+validate_package
+deploy_application
+
+log "Upgrade completed successfully"
+cleanup
+exit 0

@@ -1,0 +1,10 @@
+comment "I2C Tester Options"
+choice
+    prompt "select i2c tools type"
+    default I2C_TOOLS_VALIDATION
+
+    config I2C_TOOLS_VALIDATION
+        bool "i2c tools for validation"
+    config I2C_TOOLS_CMD
+        bool "i2c tools for command"
+endchoice

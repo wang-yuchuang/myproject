@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 660" role="img" aria-labelledby="ttl desc" style="max-width:1160px;width:100%;height:auto;background:#fff">
+  <title id="ttl">平台变体矩阵：BMU05 / EMU01 / IMMU3</title>
+  <desc id="desc">按维度对比 BMU05、EMU01、IMMU3 在构建宏、shell 脚本、stoprun 进程名、RAUC compatible、hostname 判定上的差异；带 ? 的单元格表示尚未核实。依据：openspec/specs/app-lifecycle/spec.md R12、src/include.mk:36-40、src/shells/。</desc>
+
+  <text x="16" y="36" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="22" font-weight="700" fill="#202124">平台变体矩阵（BMU05 / EMU01 / IMMU3）</text>
+  <text x="16" y="60" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="13" fill="#5F6368">带 ? 的单元格表示尚未核实（⚠️ 需向 BSP / 现场确认）；依据见最后一列</text>
+
+  <rect x="16" y="88" width="1128" height="36" rx="6" fill="#F8F9FA" stroke="#DADCE0" stroke-width="1.2"/>
+  <text x="28" y="112" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">维度</text>
+  <text x="278" y="112" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">BMU05</text>
+  <text x="500" y="112" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">EMU01</text>
+  <text x="722" y="112" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">IMMU3</text>
+  <text x="944" y="112" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">依据</text>
+
+  <rect x="16" y="124" width="1128" height="360" fill="none" stroke="#DADCE0" stroke-width="1"/>
+  <line x1="16" y1="196" x2="1144" y2="196" stroke="#DADCE0" stroke-width="1"/>
+  <line x1="16" y1="268" x2="1144" y2="268" stroke="#DADCE0" stroke-width="1"/>
+  <line x1="16" y1="340" x2="1144" y2="340" stroke="#DADCE0" stroke-width="1"/>
+  <line x1="16" y1="412" x2="1144" y2="412" stroke="#DADCE0" stroke-width="1"/>
+  <line x1="266" y1="88" x2="266" y2="484" stroke="#DADCE0" stroke-width="1"/>
+  <line x1="488" y1="88" x2="488" y2="484" stroke="#DADCE0" stroke-width="1"/>
+  <line x1="710" y1="88" x2="710" y2="484" stroke="#DADCE0" stroke-width="1"/>
+  <line x1="932" y1="88" x2="932" y2="484" stroke="#DADCE0" stroke-width="1"/>
+
+  <text x="28" y="152" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="13" fill="#202124">构建 MU_TYPE / 编译宏</text>
+  <text x="28" y="172" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="11.5" fill="#5F6368">决定 C 代码分支</text>
+  <text x="278" y="160" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#202124">mu3 → -DIMMU3</text>
+  <text x="500" y="160" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">?（待核实）</text>
+  <text x="722" y="160" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#202124">-DIMMU2（历史）</text>
+  <text x="944" y="160" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="11.5" fill="#5F6368">include.mk:36-40</text>
+
+  <text x="28" y="224" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="13" fill="#202124">shell 脚本变体</text>
+  <text x="28" y="244" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="11.5" fill="#5F6368">构建期选择</text>
+  <text x="278" y="232" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#202124">src/shells/mu3/*</text>
+  <text x="500" y="232" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">?（待核实）</text>
+  <text x="722" y="232" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#202124">src/shells/*</text>
+  <text x="944" y="232" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="11.5" fill="#5F6368">app-lifecycle R12</text>
+
+  <text x="28" y="296" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="13" fill="#202124">stoprun 结束的 UI 进程</text>
+  <text x="28" y="316" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="11.5" fill="#5F6368">进程名不同</text>
+  <text x="278" y="304" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#202124">nccu_ui</text>
+  <text x="500" y="304" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">?（待核实）</text>
+  <text x="722" y="304" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#202124">nccu_ui_mm</text>
+  <text x="944" y="304" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="11.5" fill="#5F6368">mu3/stoprun:7 · stoprun:13</text>
+
+  <text x="28" y="368" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="13" fill="#202124">RAUC compatible</text>
+  <text x="28" y="388" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="11.5" fill="#5F6368">bundle 与设备须一致</text>
+  <text x="278" y="364" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#202124">设备 bmu05_a00</text>
+  <text x="278" y="382" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="11.5" fill="#5F6368">默认 bmu02_a00</text>
+  <text x="500" y="372" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">bmu02_a00（?）</text>
+  <text x="722" y="372" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">?</text>
+  <text x="944" y="372" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="11.5" fill="#5F6368">build.sh · README</text>
+
+  <text x="28" y="440" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="13" fill="#202124">hostname 判平台</text>
+  <text x="28" y="460" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="11.5" fill="#5F6368">运行时判断</text>
+  <text x="278" y="436" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#202124">bmu* →</text>
+  <text x="278" y="454" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="11.5" fill="#5F6368">VAR_DIR=/opt/appdata/data</text>
+  <text x="500" y="444" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">同左（?）</text>
+  <text x="722" y="444" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">同左（?）</text>
+  <text x="944" y="444" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="11.5" fill="#5F6368">run_app:36-44</text>
+
+  <rect x="16" y="500" width="1128" height="64" rx="8" fill="#FCE8E6" stroke="#C5221F" stroke-width="1.5"/>
+  <text x="32" y="526" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="13" font-weight="600" fill="#C5221F">⚠️ 变体靠「编译期宏 + 双份 shell 脚本」实现，尚未配置化</text>
+  <text x="32" y="548" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">同一逻辑改一处易漏另一处（债务 A1）；详见 immu3-to-bmu05-migration.md</text>
+
+  <text x="16" y="600" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#80868B">来源：openspec/specs/app-lifecycle/spec.md（R12）· src/include.mk:36-40 · src/shells/ · 快照 ## app-lifecycle</text>
+</svg>

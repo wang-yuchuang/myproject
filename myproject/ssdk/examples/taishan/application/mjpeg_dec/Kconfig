@@ -1,0 +1,9 @@
+comment "Mjpeg Test Options"
+
+config MJPEG_LOAD_METHOD
+    int "Specifies the test mjpeg load method"
+    default 0
+    ---help---
+        Specifies mjpeg load method.
+            0: from file system
+            1: from data array

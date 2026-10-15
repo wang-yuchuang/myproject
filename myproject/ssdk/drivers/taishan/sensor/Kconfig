@@ -1,0 +1,11 @@
+menuconfig SENSOR
+    bool "Taishan Sensor Drivers Support"
+    default n
+
+if SENSOR
+
+config TAISHAN_TEMPERATURE_SENSOR
+    bool "Taishan Temperature Sensor Driver"
+    default n
+
+endif # SENSOR

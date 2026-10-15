@@ -1,0 +1,30 @@
+comment "Utility Example Options"
+
+config POWER_MONITOR
+    bool "E3 Board Power Voltage/Current Monitor Example"
+    depends on TAISHAN_ADC
+    depends on CLI
+    default n
+
+config POWER_CLOCK_GATE
+    bool "Examples to enable E3 power/clock gating"
+    depends on CLI
+    default n
+
+if POWER_CLOCK_GATE
+rsource "gating/Kconfig"
+endif # POWER_CLOCK_GATE
+
+config MEM_SECTION_EXAMPLE
+    bool "Example to place code and data in different memory sections"
+    depends on EARLYCOPY
+    default n
+
+config PVT_EXAMPLE
+    bool "Process-Voltage-Temperature example"
+    depends on CLI
+    default n
+
+if PVT_EXAMPLE
+rsource "pvt/Kconfig"
+endif # PVT_EXAMPLE

@@ -1,0 +1,184 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 1780" role="img" aria-labelledby="ttl desc" style="max-width:1160px;width:100%;height:auto;background:#fff">
+  <title id="ttl">应用启动全链路（上电 → 业务就绪）</title>
+  <desc id="desc">上电后 BSP 侧 S91app_sysmgr 拉起 app_sysmgr；SDK 侧 S92app_mount 选槽校验并只读挂载 /app。冷重启场景存在启动责任真空：无人调用 app_entry（理想路径为 BSP 在途变更 R2，未交付；S92 内 run_app() 为死代码）。当前唯一启动入口是 OTA 安装路径 app-post-install。app_entry → startrun → run_app 依次执行，启动 syshand 与 nccu_app；nccu_app 等待 syshand.run 后六步加载并进入事件主循环，业务就绪。</desc>
+  <defs>
+    <marker id="arw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#5F6368"/></marker>
+    <marker id="arw-broken" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#C5221F"/></marker>
+    <marker id="arw-green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#137333"/></marker>
+  </defs>
+
+  <!-- ══════════ 泳道背景 ══════════ -->
+  <rect x="16" y="96" width="252" height="1624" rx="6" fill="#F8F9FA" stroke="#DADCE0" stroke-width="1"/>
+  <rect x="278" y="96" width="262" height="1624" rx="6" fill="#F8F9FA" stroke="#DADCE0" stroke-width="1"/>
+  <rect x="550" y="96" width="310" height="1624" rx="6" fill="#F8F9FA" stroke="#DADCE0" stroke-width="1"/>
+  <rect x="870" y="96" width="274" height="1624" rx="6" fill="#F8F9FA" stroke="#DADCE0" stroke-width="1"/>
+
+  <!-- ══════════ 标题区 ══════════ -->
+  <text x="16" y="36" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="22" font-weight="700" fill="#202124">应用启动全链路（上电 → 业务就绪）</text>
+  <text x="16" y="60" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="13" fill="#5F6368">BSP → SDK → /app 脚本 → 运行时 · 冷重启：启动责任真空（无人调用 app_entry）· 当前唯一启动入口：OTA 安装</text>
+
+  <!-- 对比小卡（右上） -->
+  <rect x="878" y="16" width="266" height="56" rx="8" fill="#F8F9FA" stroke="#DADCE0" stroke-width="1"/>
+  <text x="894" y="38" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="13" fill="#202124">冷重启：<tspan fill="#C5221F">✗</tspan> 无人启动</text>
+  <text x="894" y="60" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="13" fill="#202124">OTA 安装：<tspan fill="#137333">✓</tspan> 可启动</text>
+
+  <!-- 泳道表头 -->
+  <text x="142" y="119" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">① BSP 系统侧</text>
+  <text x="409" y="119" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">② SDK 挂载侧</text>
+  <text x="705" y="119" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">③ /app 应用分区（脚本）</text>
+  <text x="1007" y="119" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">④ 运行时进程</text>
+
+  <!-- ══════════ 箭头（画在节点之下） ══════════ -->
+  <g fill="none" stroke="#5F6368" stroke-width="1.6" stroke-linejoin="round">
+    <path d="M142,186 L142,202" marker-end="url(#arw)"/>
+    <path d="M262,239 L284,239" marker-end="url(#arw)"/>
+    <path d="M142,272 L142,304" marker-end="url(#arw)"/>
+    <path d="M705,806 L705,838" marker-end="url(#arw)"/>
+    <path d="M705,968 L705,1000" marker-end="url(#arw)"/>
+    <path d="M705,1162 L705,1178 L1007,1178 L1007,1202" marker-end="url(#arw)"/>
+    <path d="M1007,1294 L1007,1326" marker-end="url(#arw)"/>
+    <path d="M1007,1400 L1007,1432" marker-end="url(#arw)"/>
+    <path d="M1007,1498 L1007,1524" marker-end="url(#arw)"/>
+    <path d="M1007,1572 L1007,1598" marker-end="url(#arw)"/>
+    <path d="M1007,1646 L1007,1664" marker-end="url(#arw)"/>
+  </g>
+  <!-- 断链（红虚线） -->
+  <g fill="none" stroke="#C5221F" stroke-width="1.6" stroke-dasharray="7 4" stroke-linejoin="round">
+    <path d="M409,340 L409,378" marker-end="url(#arw-broken)"/>
+    <path d="M409,458 L409,498" marker-end="url(#arw-broken)"/>
+  </g>
+  <!-- ✕ 断点符号 + 未接线 -->
+  <g stroke="#C5221F" stroke-width="2" stroke-linecap="round">
+    <path d="M402,352 L416,366"/>
+    <path d="M416,352 L402,366"/>
+  </g>
+  <text x="424" y="364" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="11" font-weight="600" fill="#C5221F">未接线</text>
+  <!-- OTA 备用入口（绿虚线） -->
+  <path d="M540,690 L558,690" fill="none" stroke="#137333" stroke-width="1.6" stroke-dasharray="7 4" marker-end="url(#arw-green)"/>
+
+  <!-- ══════════ 泳道① BSP 系统侧 ══════════ -->
+  <rect x="72" y="150" width="140" height="36" rx="18" fill="#F1F3F4" stroke="#5F6368" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <text x="142" y="172" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="13" font-weight="600" fill="#202124">设备上电</text>
+
+  <rect x="22" y="206" width="240" height="66" rx="3" fill="#E8F0FE" stroke="#1A73E8" stroke-width="1.5"/>
+  <rect x="22" y="206" width="4" height="66" rx="2" fill="#1A73E8"/>
+  <text x="36" y="227" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">S91app_sysmgr（脚本）</text>
+  <text x="36" y="247" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">→ /usr/sbin/app_sysmgr</text>
+  <text x="36" y="263" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">/etc/init.d/S91app_sysmgr</text>
+
+  <rect x="22" y="312" width="240" height="124" rx="10" fill="#E8F0FE" stroke="#1A73E8" stroke-width="1.5"/>
+  <text x="36" y="333" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">app_sysmgr（进程）</text>
+  <text x="36" y="353" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">BOOT_READY×3 握手</text>
+  <text x="36" y="370" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">SSDK 版本 / AP-R form 校验</text>
+  <text x="36" y="387" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">R 核 active slot → RAUC MARK_GOOD</text>
+  <text x="36" y="404" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">AP↔R 跨核心跳 PING/PONG</text>
+  <text x="36" y="424" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">快照 ## app-sysmgr</text>
+
+  <rect x="26" y="450" width="236" height="24" rx="6" fill="#FCE8E6" stroke="#C5221F" stroke-width="1"/>
+  <text x="144" y="466" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="11.5" font-weight="600" fill="#C5221F">⚠️ v2 已移除「启动 app_entry」能力</text>
+
+  <!-- ══════════ 泳道② SDK 挂载侧 ══════════ -->
+  <rect x="292" y="206" width="234" height="134" rx="3" fill="#FEF7E0" stroke="#F9AB00" stroke-width="1.5"/>
+  <rect x="292" y="206" width="4" height="134" rx="2" fill="#F9AB00"/>
+  <text x="306" y="227" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">S92app_mount（脚本）</text>
+  <text x="306" y="247" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">① 选槽 app_a / app_b</text>
+  <text x="306" y="264" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">② 验 D9APPMD1</text>
+  <text x="306" y="281" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">③ dm-verity open</text>
+  <text x="306" y="298" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">④ mount /app (ro)</text>
+  <text x="306" y="318" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">/etc/init.d/S92app_mount</text>
+  <text x="306" y="332" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">快照 :226-229</text>
+
+  <rect x="299" y="386" width="220" height="72" rx="10" fill="#FCE8E6" stroke="#C5221F" stroke-width="1.5" stroke-dasharray="5 3"/>
+  <text x="313" y="407" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#C5221F">run_app()（死代码）</text>
+  <text x="313" y="427" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">定义 :436，启动体 :454-456</text>
+  <text x="313" y="444" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">调用点 0 处</text>
+
+  <!-- ⛔ 启动责任真空（关键断链） -->
+  <rect x="375" y="506" width="380" height="100" rx="8" fill="#FCE8E6" stroke="#C5221F" stroke-width="2" stroke-dasharray="8 5"/>
+  <text x="393" y="530" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="13.5" font-weight="700" fill="#C5221F">⛔ 启动责任真空 · 冷重启后无人调用 app_entry</text>
+  <text x="393" y="552" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">理想路径：app_sysmgr 门控启动</text>
+  <text x="393" y="570" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">（BSP 在途变更 R2，未交付）</text>
+  <text x="393" y="592" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">keep-app-alive-on-bmu05/design.md D8</text>
+
+  <!-- OTA 备用入口 -->
+  <rect x="310" y="648" width="230" height="86" rx="6" fill="#E6F4EA" stroke="#137333" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <text x="324" y="670" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12.5" font-weight="600" fill="#137333">RAUC app-post-install</text>
+  <text x="324" y="689" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">"$APP_POINT/app_entry" &amp;</text>
+  <text x="324" y="707" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="11" font-weight="600" fill="#137333">仅 OTA 安装时可用</text>
+  <text x="324" y="725" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">快照 :232</text>
+
+  <!-- ══════════ 泳道③ /app 应用分区（脚本） ══════════ -->
+  <rect x="566" y="684" width="278" height="122" rx="3" fill="#E6F4EA" stroke="#137333" stroke-width="1.5"/>
+  <rect x="566" y="684" width="4" height="122" rx="2" fill="#137333"/>
+  <text x="580" y="705" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">app_entry（脚本）</text>
+  <text x="580" y="725" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">幂等守卫 :21-24</text>
+  <text x="580" y="742" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">清理残留 PID :39-55</text>
+  <text x="580" y="759" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">写 /var/run/app.pid :58 ⚠️ 死PID</text>
+  <text x="580" y="776" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">trap SIGTERM→stoprun :61 ⚠️ 不可达</text>
+  <text x="580" y="794" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">src/shells/app_entry</text>
+
+  <rect x="566" y="846" width="278" height="122" rx="3" fill="#E6F4EA" stroke="#137333" stroke-width="1.5"/>
+  <rect x="566" y="846" width="4" height="122" rx="2" fill="#137333"/>
+  <text x="580" y="867" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">startrun（脚本）</text>
+  <text x="580" y="887" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">USB/SD 检测 :52-53</text>
+  <text x="580" y="904" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">有介质 → app_update :99,105</text>
+  <text x="580" y="921" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">无介质 → skip :107</text>
+  <text x="580" y="938" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">调 /app/run_app :119</text>
+  <text x="580" y="956" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">src/shells/startrun</text>
+
+  <rect x="566" y="1008" width="278" height="154" rx="3" fill="#E6F4EA" stroke="#137333" stroke-width="1.5"/>
+  <rect x="566" y="1008" width="4" height="154" rx="2" fill="#137333"/>
+  <text x="580" y="1029" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">run_app（脚本）</text>
+  <text x="580" y="1049" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">env :4-14</text>
+  <text x="580" y="1066" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">hostname 判平台 :36-44</text>
+  <text x="580" y="1083" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">mkdir + 复制配置 :50-54</text>
+  <text x="580" y="1100" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">syshand 已运行? :129-145</text>
+  <text x="580" y="1117" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">extensions/install.sh :147-165</text>
+  <text x="580" y="1134" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">syshand 存活检查 :167-179</text>
+  <text x="580" y="1152" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">src/shells/run_app</text>
+
+  <!-- ══════════ 泳道④ 运行时进程 ══════════ -->
+  <rect x="886" y="1210" width="242" height="84" rx="10" fill="#F3E8FD" stroke="#8430CE" stroke-width="1.5"/>
+  <text x="900" y="1231" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">syshand（进程）</text>
+  <rect x="900" y="1241" width="74" height="18" rx="9" fill="#FFFFFF" stroke="#8430CE" stroke-width="1"/>
+  <text x="937" y="1254" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10" fill="#8430CE">bin/syshand</text>
+  <text x="982" y="1254" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">run_app:136</text>
+  <text x="900" y="1278" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">OS HAL · System V IPC</text>
+
+  <rect x="886" y="1334" width="242" height="66" rx="10" fill="#F3E8FD" stroke="#8430CE" stroke-width="1.5"/>
+  <text x="900" y="1355" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">nccu_app（进程）</text>
+  <rect x="900" y="1365" width="82" height="18" rx="9" fill="#FFFFFF" stroke="#8430CE" stroke-width="1"/>
+  <text x="941" y="1378" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10" fill="#8430CE">bin/nccu_app</text>
+  <text x="990" y="1378" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">run_app:191</text>
+
+  <rect x="886" y="1440" width="242" height="58" rx="8" fill="#F3E8FD" stroke="#8430CE" stroke-width="1.2"/>
+  <text x="900" y="1462" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">启动后等 /opt/appdata/data/</text>
+  <text x="900" y="1480" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">syshand.run（≈10.1s，main.c:316）</text>
+
+  <rect x="886" y="1532" width="242" height="40" rx="8" fill="#F3E8FD" stroke="#8430CE" stroke-width="1.2"/>
+  <text x="900" y="1557" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">LoadModuals 6 步（main.c:147-202）</text>
+
+  <rect x="886" y="1606" width="242" height="40" rx="8" fill="#F3E8FD" stroke="#8430CE" stroke-width="1.2"/>
+  <text x="900" y="1631" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">事件主循环（main.c:410+）</text>
+
+  <rect x="927" y="1672" width="160" height="36" rx="18" fill="#E6F4EA" stroke="#137333" stroke-width="1.5"/>
+  <text x="1007" y="1695" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="13" font-weight="700" fill="#137333">业务就绪</text>
+
+  <!-- ══════════ 图例（左下） ══════════ -->
+  <text x="16" y="1745" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" font-weight="600" fill="#202124">图例</text>
+  <rect x="52" y="1734" width="18" height="13" rx="3" fill="#E8F0FE" stroke="#1A73E8" stroke-width="1.2"/>
+  <text x="76" y="1745" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">BSP</text>
+  <rect x="124" y="1734" width="18" height="13" rx="3" fill="#FEF7E0" stroke="#F9AB00" stroke-width="1.2"/>
+  <text x="148" y="1745" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">SDK</text>
+  <rect x="196" y="1734" width="18" height="13" rx="3" fill="#E6F4EA" stroke="#137333" stroke-width="1.2"/>
+  <text x="220" y="1745" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">脚本</text>
+  <rect x="268" y="1734" width="18" height="13" rx="8" fill="#F3E8FD" stroke="#8430CE" stroke-width="1.2"/>
+  <text x="292" y="1745" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">进程</text>
+  <rect x="340" y="1734" width="18" height="13" rx="3" fill="#FCE8E6" stroke="#C5221F" stroke-width="1.2" stroke-dasharray="3 2"/>
+  <text x="364" y="1745" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">死代码</text>
+  <rect x="424" y="1734" width="18" height="13" rx="3" fill="#FCE8E6" stroke="#C5221F" stroke-width="2" stroke-dasharray="4 2"/>
+  <text x="448" y="1745" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">责任真空</text>
+
+  <!-- 来源注（右下） -->
+  <text x="1144" y="1745" text-anchor="end" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">事实依据：openspec/.code-facts-snapshot.md · openspec/changes/keep-app-alive-on-bmu05/design.md D8</text>
+</svg>

@@ -1,0 +1,99 @@
+config ARCH_CORTEXR5
+    bool
+    select ARCH_WITH_CACHE
+    select ARCH_DCACHE
+    select ARCH_ICACHE
+    select ARCH_WITH_MPU
+    select ARM_WITH_CP15
+    select ARM_THUMB
+    select ARCH_WITH_FPU
+    select ARM_FPU_D16
+    ---help---
+        The ARM CORTEXR5 architectures
+
+config ARCH_FAMILY
+    string
+    default "armv7-r"   if ARCH_CORTEXR5
+
+menu "ARM Chip Common Options"
+
+config ARM_THUMB
+    bool "Enable ARM Thumb"
+    default n
+
+if ARM_THUMB
+
+config ARM_THUMB2
+    bool "Enable ARM Thumb2"
+    default n
+
+endif # ARM_THUMB
+
+config ARM_HIGHVECTORS
+    bool "Vectors in high memory"
+    default n
+
+config ARM_WITH_TCM
+    bool "ARM with TCM"
+    default y
+
+config ARM_WITH_CP15
+    bool "ARM with CP15"
+    default y
+
+config ARM_WITH_PMU
+    bool "ARM with PMU"
+    default n
+    select ARM_WITH_CP15
+
+config ENABLE_CYCLE_COUNTER
+    bool "Enable cycle counter"
+    default n
+    depends on ARM_WITH_PMU
+
+config ARM_FPU_D16
+    bool "ARM FPU D16"
+    default n
+    select ARCH_WITH_FPU
+
+endmenu
+
+config PHYS_RELOCATION
+    bool "physical address relocation"
+    default n
+
+config SKIP_REMAP_DONE_RELOCATION
+    bool "no relocation if remap is done"
+    default y
+
+if ARCH_CORTEXR5
+
+menu "ARMV7-R Specific Options"
+rsource "armv7-r/Kconfig"
+endmenu
+
+endif # ARCH_CORTEXR5
+
+menu "Chip Specific Options"
+
+if ARCH_CHIP_G9
+orsource "g9/Kconfig"
+endif # ARCH_CHIP_G9
+
+if ARCH_CHIP_X9
+orsource "x9/Kconfig"
+endif # ARCH_CHIP_X9
+
+if ARCH_CHIP_D9
+orsource "d9/Kconfig"
+endif # ARCH_CHIP_D9
+
+if ARCH_CHIP_E3
+orsource "e3/Kconfig"
+endif # ARCH_CHIP_E3
+
+if ARCH_CHIP_D3
+orsource "d3/Kconfig"
+endif # ARCH_CHIP_D3
+
+endmenu

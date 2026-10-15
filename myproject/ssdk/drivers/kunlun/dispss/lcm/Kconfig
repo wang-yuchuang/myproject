@@ -1,0 +1,53 @@
+comment "LCM Driver Options"
+
+menuconfig LVDS_HSD123_SERDES_1920x720_LCD
+    bool "lvds_hsd123_serdes_1920x720_lcd driver"
+    default n
+
+menuconfig MIPI_HSD123_SERDES_1920x720_LCD
+    bool "mipi_hsd123_serdes_1920x720_lcd driver"
+    default n
+
+menuconfig MIPI_HSD123_SERDES_1920x720_2_LCD
+    bool "mipi_hsd123_serdes_1920x720_2_lcd driver"
+    default n
+
+menuconfig LVDS_HSD123_SERDES_1920x720_x9u_b_LCD
+    bool "lvds_hsd123_serdes_1920x720_x9u_b_lcd serdes_1920x720_lcd driver"
+    default n
+
+menuconfig LVDS_HSD101_SERDES_1280x800_LCD
+    bool "lvds_hsd101_serdes_1280x800_lcd driver"
+    default n
+
+menuconfig LVDS_KD070_SERDES_1024x600_LCD
+    bool "lvds_kd070_serdes_1024x600_lcd driver"
+
+menuconfig LVDS_LMT070_SERDES_800x480_LCD
+    bool "lvds_lmt070_serdes_800x480_lcd driver"
+
+menuconfig LVDS_WALLFACERA2_HSD123_SERDES_1920x720_LCD
+    bool "lvds_WallfacerA2_hsd123_serdes_1920x720_lcd driver"
+
+menuconfig LVDS_WALLFACERA2_HSD123_SERDES_1920x720_2_LCD
+    bool "lvds_WallfacerA2_hsd123_serdes_1920x720_2_lcd driver"
+
+menuconfig MIPI_WALLFACERA2_HSD123_SERDES_1920x720_LCD
+    bool "mipi_WallfacerA2_hsd123_serdes_1920x720_lcd driver"
+
+menuconfig MIPI_WALLFACERA2_HSD123_SERDES_1920x720_2_LCD
+    bool "mipi_WallfacerA2_hsd123_serdes_1920x720_2_lcd driver"
+
+menuconfig MIPI_WALLFACERA_HSD160_SERDES_2560x1600_LCD
+    bool "mipi_WallfacerA_hsd160_serdes_2560x1600_lcd driver"
+
+menuconfig LVDS_KD070_MAX_SERDES_1024x600_LCD
+    bool "lvds_kd070_max_serdes_1024x600_lcd driver"
+
+menuconfig DS90UB9XX
+    bool "ds90ub9xx driver"
+    default n
+
+menuconfig MAXIM_DISP
+    bool "maxim display serdes driver"
+    default n

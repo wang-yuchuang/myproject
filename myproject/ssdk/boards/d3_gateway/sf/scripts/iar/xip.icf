@@ -1,0 +1,51 @@
+define memory mem with size = 4G;
+define region ROM_region =
+    mem:[from MEMBASE to MEMBASE + MEMSIZE - 1];
+
+define region RAM_region =
+    mem:[from RAM_BASE to RAM_BASE + RAM_SIZE - 1];
+
+define region NONEECC_region =
+    mem:[from NONEECCBASE to NONEECCBASE + NONEECCSIZE - 1];
+
+define region TCM_region =
+    mem:[from TCMBASE to TCMBASE + TCMSIZE - 1];
+
+define block RAM_TEXT with alignment = 4 { section .ram.text };
+define block BSS with alignment = 4 { section .bss, section .tbss };
+define block EXCEPTION_STACK with alignment = 4 { section .except.stack };
+define block FAULT_TABLE { section .rodata.fault_handler_table };
+define block COMMANDS { section .commands };
+define block RODATA with alignment = 4 {
+    block FAULT_TABLE,
+    section .rodata
+};
+define block NONEECCDATA with alignment = 4 { section .noneeccdata};
+define block HEAP with alignment = 4, maximum size = 0x80000,
+    expanding size { section .heap };
+define block TCMCODE with alignment = 4 { section .tcmcode};
+define block TCMDATA with alignment = 4 { section .tcmdata};
+
+do not initialize { section .except.stack, section .noneeccdata };
+do not initialize { section .heap };
+
+place at start of ROM_region { section .boot };
+place in ROM_region { section .text };
+place in ROM_region { block RODATA };
+place in ROM_region { section .intvec };
+place in ROM_region { section .iar.init_table };
+place in ROM_region { zi };
+place in ROM_region { section SemiDrive };
+place in ROM_region { block COMMANDS };
+place in ROM_region { readonly };
+
+place in RAM_region { block RAM_TEXT };
+place in RAM_region { block BSS };
+place in RAM_region { block EXCEPTION_STACK };
+place in RAM_region { readwrite };
+place in RAM_region { block HEAP };
+place in NONEECC_region { block NONEECCDATA};
+place in TCM_region { block TCMCODE, block TCMDATA};
+
+initialize by copy { section .tcmcode, section .tcmdata, section .ram.text };
+initialize by copy { readwrite };

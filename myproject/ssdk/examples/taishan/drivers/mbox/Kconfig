@@ -1,0 +1,12 @@
+comment "MBOX Demo Options"
+
+config TAISHAN_MBOX_DEMO
+    bool "Taishan mbox demo"
+    select TAISHAN_MBOX
+    depends on CLI
+    default n
+
+config BAREMETAL_MBOX_DEMO
+    bool "baremetal mbox demo"
+    select TAISHAN_MBOX
+    default n

@@ -1,0 +1,25 @@
+
+export NCCU_CROSS_PLATFORM=arm
+export GCC_PREFIX= 
+
+
+export NCCU_SOURCE_DIR=`pwd`
+export NCCU_TARGET_DIR=$NCCU_SOURCE_DIR/../out
+export NCCU_PKG_DIR=$NCCU_SOURCE_DIR/../pkg
+export NCCU_IMG_DIR=$NCCU_SOURCE_DIR/../remote_pkg
+
+alias mf=$NCCU_SOURCE_DIR/mk_define
+alias mkc='mf clean mu2';  alias mkr='mf release mu2';  alias inst='mf install mu2'; alias mkd='mf debug mu2'; alias mkt='mf test'
+alias instbsp='mf install_with_bsp'; alias instsh='mf install_with_bsp_sh'; alias instfont='mf install_with_bsp_font'
+alias instccu='mf install_with_ccubin'
+# LJH241101 MU3 # alias mkd3='mf debug.mu3'
+alias mkc3='mf clean mu3'; alias mkr3='mf release mu3'; alias inst3='mf install mu3'; alias mkd3='mf debug mu3'
+
+# WLD01206  Compile a 10 inch LCD screen QT UI
+alias mkc2l='mf clean mu2 mu2_10lcd'; alias mkr2l='mf release mu2 mu2_10lcd'; alias inst2l='mf install mu2 mu2_10lcd'; alias mkd2l='mf debug mu2 mu2_10lcd'
+
+
+#export NCCU_ROOT_DIR=`pwd`
+#export NCCU_MAKE_VERSION_N=debug
+#ST=standard
+export NCCU_MAKE_MANIF=ST

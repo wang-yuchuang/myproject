@@ -1,0 +1,45 @@
+{
+    "settings": {
+        "disk_size": "32760 KiB",
+        "disk_alignment":262144,
+        "partitions_offset_begin": "0"
+    },
+    "partitions": [
+        {
+            "ab": false,
+            "label": "boot0",
+            "size": "4 MiB",
+            "guid": "auto",
+            "type_guid": "cc0cb090-a2e4-459f-9f5f-b61daf95e39d"
+        },
+        {
+            "ab": false,
+            "label": "boot1",
+            "size": "4 MiB",
+            "guid": "auto",
+            "type_guid": "cc0cb090-a2e4-459f-9f5f-b61daf95e39a"
+        },
+        {
+            "ab": false,
+            "label": "boot2",
+            "size": "4 MiB",
+            "guid": "auto",
+            "type_guid": "cc0cb090-a2e4-459f-9f5f-b61daf95e39b"
+        },
+        {
+            "ab": false,
+            "label": "res",
+            "size": "12 MiB",
+            "guid": "auto",
+            "type_guid": "EBD0A0A2-B9E5-4433-87C0-68B6B72699C7"
+        },
+        {
+            "ab": false,
+            "label": "data",
+            "size": "512 KiB",
+            "grow": true,
+            "guid": "auto",
+            "type_guid": "2568845D-2332-4675-BC39-8FA5A4748D15"
+        }
+    ]
+}

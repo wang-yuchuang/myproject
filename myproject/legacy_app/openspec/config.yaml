@@ -1,0 +1,33 @@
+schema: spec-driven
+
+# Project context — injected into every artifact instruction (proposal / specs / design / tasks).
+context: |
+  # legacy_app — Solaris 储能后备管理系统（App 层）
+
+  Tech stack: C99, Linux 5.10 PREEMPT-RT, aarch64 (SemiDrive D9360), BusyBox init, SQLite, dm-verity, RAUC A/B OTA.
+  Build: ./build.sh → compile → ext4 → dm-verity hashtree → D9APPMD1 metadata + remote CMS sign → assemble 256MB img → RAUC bundle.
+  Platform variants: BMU05 / EMU01 / IMMU3 (compile-time -DIMMU3 plus src/shells/mu3 shell variants).
+  Domain: 储能后备管理（BMS / PCS / CCU / 空调 / 热管理）。设备行为由 SQLite 配置驱动：
+  System.cfg 含 4157 个 DeviceModel、1958 个状态量、1119 条告警、5205 条 i18n 文案。
+  Runtime: syshand（OS HAL，System V IPC）+ nccu_app（DPR 数据中心 → 10 samplers / 8 reporters / 9 comm HAL）。
+
+  Conventions:
+  - Canonical specs live in openspec/specs/<capability>/spec.md.
+  - Every Requirement MUST include at least one "#### Scenario:" block with WHEN / THEN.
+  - Requirement names carry an "R<n>" prefix and are APPEND-ONLY (never renumber; renaming needs a RENAMED delta).
+  - Canonical specs are updated ONLY via change proposals + "openspec archive" — never hand-edited.
+  - Cite file:line evidence for every documented behavior.
+  - Prose in Chinese; identifiers and paths in English.
+
+  Key constraints:
+  - /app is a dm-verity read-only mount; runtime writes go to /opt/appdata or /data.
+  - No process supervision today: app_entry is a shell script, no fork+waitpid, no restart on crash.
+  - The hardware watchdog is disabled in the current build (watch_dog.c:44-49).
+  - Board RTC can be stale; RAUC signature verification fails ("certificate is not yet valid") until the clock is synced.
+
+rules:
+  specs:
+    - Each Requirement MUST have at least one #### Scenario: block.
+    - Never renumber existing R<n> requirement names.
+  tasks:
+    - Split work into numbered groups with checkbox items.

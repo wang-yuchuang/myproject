@@ -1,0 +1,133 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 750" role="img" aria-labelledby="ttl desc" style="max-width:1160px;width:100%;height:auto;background:#fff">
+  <title id="ttl">DPR 内部结构与两条跨模块访问通道</title>
+  <desc id="desc">data_processor 目录内 libdpr.so 的 4 个子模块（config_mangmt / event_manager / data_processing / run_expression）与桥接层 dpr_loader.c（编译进 nccu_app）。通道 A：samplers 持 hDPR 直连 Intern_Set 写入（SETTYPE_* 共 13 种）。通道 B：reporters 经 DAI（dai_loader.c）转发 dataprocessor.Get/Set，DAI_Query 直接读 SQLite。DPR 持久化到 /data/nccu.data，锁与索引在 /opt/appdata/data/。DAI 不是 DPR 的一部分，契约见 docs/30-interfaces/dai.md。</desc>
+
+  <defs>
+    <marker id="arw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#5F6368"/>
+    </marker>
+    <marker id="arw-broken" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#C5221F"/>
+    </marker>
+  </defs>
+
+  <!-- ===== 标题区 ===== -->
+  <text x="40" y="36" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="22" font-weight="700" fill="#202124">DPR 内部结构与两条跨模块访问通道</text>
+  <text x="40" y="58" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">证据：src/moduals/data_processor/{dpr/, dpr_loader.c} · src/data_interfaces/dai_loader.c · src/include/data_model/dataprocessor_model.h · docs/30-interfaces/dai.md</text>
+
+  <!-- ===== 图例 ===== -->
+  <rect x="790" y="32" width="14" height="12" rx="2" fill="#F3E8FD" stroke="#8430CE" stroke-width="1"/>
+  <text x="808" y="42" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#202124">DPR核心</text>
+  <rect x="884" y="32" width="14" height="12" rx="2" fill="#E6F4EA" stroke="#137333" stroke-width="1"/>
+  <text x="902" y="42" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#202124">子模块</text>
+  <rect x="946" y="32" width="14" height="12" rx="2" fill="#E8F0FE" stroke="#1A73E8" stroke-width="1"/>
+  <text x="964" y="42" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#202124">接口层</text>
+  <rect x="1008" y="32" width="14" height="12" rx="2" fill="#FEF7E0" stroke="#F9AB00" stroke-width="1"/>
+  <text x="1026" y="42" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#202124">消费方</text>
+  <rect x="1070" y="32" width="14" height="12" rx="2" fill="#F1F3F4" stroke="#5F6368" stroke-width="1"/>
+  <text x="1088" y="42" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#202124">存储</text>
+
+  <!-- ===== DPR 容器：src/moduals/data_processor/ ===== -->
+  <rect x="40" y="76" width="630" height="470" rx="10" fill="#F3E8FD" stroke="#8430CE" stroke-width="2"/>
+  <text x="60" y="102" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">src/moduals/data_processor/ — DPR 数据处理中心（libdpr.so + 桥接层）</text>
+
+  <!-- libdpr.so 胶囊 -->
+  <rect x="60" y="118" width="170" height="28" rx="14" fill="#8430CE"/>
+  <text x="145" y="137" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12.5" font-weight="600" fill="#FFFFFF">libdpr.so（dpr/）</text>
+  <text x="245" y="136" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">构建产物：dpr/ 下 4 个模块（dpr/Makefile OBJS）</text>
+
+  <!-- config_mangmt.c -->
+  <rect x="60" y="160" width="290" height="112" rx="8" fill="#E6F4EA" stroke="#137333" stroke-width="1.5"/>
+  <text x="74" y="182" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">config_mangmt.c</text>
+  <text x="74" y="202" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">配置加载：SQLite System.cfg</text>
+  <text x="74" y="218" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">GetParam_ByPR（PARAM_TYPE 分发）</text>
+  <text x="74" y="234" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">GetAlarm_ByPR 查找（R1）</text>
+
+  <!-- event_manager.c -->
+  <rect x="365" y="160" width="290" height="112" rx="8" fill="#E6F4EA" stroke="#137333" stroke-width="1.5"/>
+  <text x="379" y="182" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">event_manager.c</text>
+  <text x="379" y="202" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">Register_EventHandler（:19）</text>
+  <text x="379" y="218" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">256 槽位表 + 互斥锁保护</text>
+  <text x="379" y="234" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">HandleEvent 派发 + SQLite 持久化（:404）</text>
+  <text x="379" y="256" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">R2 / R7</text>
+
+  <!-- data_processing.c -->
+  <rect x="60" y="284" width="290" height="112" rx="8" fill="#E6F4EA" stroke="#137333" stroke-width="1.5"/>
+  <text x="74" y="306" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">data_processing.c</text>
+  <text x="74" y="326" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">Alarm_Begin / Cease / Suppress</text>
+  <text x="74" y="342" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">Refresh_* · 主循环 Sleep(200)</text>
+  <text x="74" y="358" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">表达式驱动的告警状态机（R3/R5）</text>
+
+  <!-- run_expression.c -->
+  <rect x="365" y="284" width="290" height="112" rx="8" fill="#E6F4EA" stroke="#137333" stroke-width="1.5"/>
+  <text x="379" y="306" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">run_expression.c</text>
+  <text x="379" y="326" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">Exp_Calculate（宏 → D/R 两实现）</text>
+  <text x="379" y="342" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">变量查找 + 运算符栈式求值（R4）</text>
+  <text x="379" y="364" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">Exp_CalculateD :679 / Exp_CalculateR :684</text>
+  <text x="379" y="379" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">宏定义 run_expression.h:11</text>
+
+  <!-- dpr_loader.c 桥接层 -->
+  <rect x="60" y="408" width="595" height="110" rx="6" fill="#E8F0FE" stroke="#1A73E8" stroke-width="1.5"/>
+  <text x="74" y="432" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">dpr_loader.c — 对外桥接层（src/moduals/data_processor/ 根目录）</text>
+  <text x="74" y="452" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">Intern_Get / Intern_Set → dataprocessor.Get/Set 函数指针（R6）</text>
+  <text x="74" y="468" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">定义 :26 / :648，绑定 pThis-&gt;Get/Set :1486-1487</text>
+  <text x="74" y="502" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">⚠ 编译进 nccu_app（src/main/Makefile:11）— 不属于 libdpr.so</text>
+
+  <!-- ===== 消费方：samplers ===== -->
+  <rect x="770" y="140" width="350" height="105" rx="10" fill="#FEF7E0" stroke="#F9AB00" stroke-width="1.5"/>
+  <text x="784" y="162" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">samplers — 7 个采样器 .so</text>
+  <text x="784" y="182" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">采集线程持 pSampler-&gt;hDPR 直连 DPR</text>
+  <text x="784" y="198" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">写通道：Intern_Set（SETTYPE_*，13 种）</text>
+  <text x="784" y="226" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">dataprocessor_model.h:70-85 · 不经 DAI</text>
+
+  <!-- ===== 消费方：reporters ===== -->
+  <rect x="770" y="295" width="350" height="105" rx="10" fill="#FEF7E0" stroke="#F9AB00" stroke-width="1.5"/>
+  <text x="784" y="317" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">reporters — 8 个上报器 .so</text>
+  <text x="784" y="337" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">读通道：pReporter-&gt;pDAI = &amp;pCharger-&gt;dai</text>
+  <text x="784" y="353" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">Get / Set / Query / Regsiter_EvHandler 等 5 个</text>
+  <text x="784" y="381" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">reporters_loader.c:48 注入接口指针</text>
+
+  <!-- ===== 接口层：DAI ===== -->
+  <rect x="770" y="450" width="350" height="105" rx="6" fill="#E8F0FE" stroke="#1A73E8" stroke-width="1.5"/>
+  <text x="784" y="472" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">DAI — src/data_interfaces/dai_loader.c</text>
+  <text x="784" y="492" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">Get/Set：转发 dataprocessor.Get/Set（:94 / :576）</text>
+  <text x="784" y="508" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">Query：直接读 SQLite 历史表（:818 起）</text>
+  <text x="784" y="536" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">装配：Init_LoadDAI（六步加载第 3 步，仅指针装配，不加载 .so）</text>
+
+  <!-- ===== 通道 A：samplers → Intern_Set ===== -->
+  <path d="M770,192 L736,192 L736,460 L659,460" fill="none" stroke="#5F6368" stroke-width="1.6" marker-end="url(#arw)"/>
+  <text x="703" y="228" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="11" font-weight="600" fill="#202124">通道A（写）</text>
+  <text x="703" y="244" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="11" fill="#5F6368">Intern_Set</text>
+  <text x="703" y="260" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="11" fill="#5F6368">SETTYPE_*</text>
+  <text x="703" y="276" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="11" fill="#5F6368">13 种</text>
+
+  <!-- ===== 通道 B：reporters → DAI → DPR ===== -->
+  <path d="M945,400 L945,446" fill="none" stroke="#5F6368" stroke-width="1.6" marker-end="url(#arw)"/>
+  <text x="955" y="428" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="11" fill="#5F6368">pReporter-&gt;pDAI</text>
+  <path d="M770,495 L659,495" fill="none" stroke="#5F6368" stroke-width="1.6" marker-end="url(#arw)"/>
+  <text x="680" y="517" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="11" fill="#5F6368">转发 Get/Set</text>
+
+  <!-- ===== 存储：SQLite 圆柱 ===== -->
+  <path d="M770,614 A170,14 0 0 1 1110,614 L1110,696 A170,14 0 0 1 770,696 Z" fill="#F1F3F4" stroke="#5F6368" stroke-width="1.5"/>
+  <path d="M770,614 A170,14 0 0 1 1110,614" fill="none" stroke="#5F6368" stroke-width="1.5"/>
+  <text x="940" y="650" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">SQLite /data/nccu.data</text>
+  <text x="940" y="668" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">运行数据：Data_Events / Data_Alarms 等表</text>
+  <text x="940" y="685" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">锁/索引文件在 /opt/appdata/data/（同分区不同目录）</text>
+
+  <!-- DAI Query 直读 -->
+  <path d="M945,555 L945,596" fill="none" stroke="#5F6368" stroke-width="1.6" marker-end="url(#arw)"/>
+  <text x="953" y="580" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="11" fill="#5F6368">DAI_Query 直读（:818 起）</text>
+
+  <!-- DPR 持久化 -->
+  <path d="M240,546 L240,650 L766,650" fill="none" stroke="#5F6368" stroke-width="1.6" marker-end="url(#arw)"/>
+  <text x="250" y="641" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="11" fill="#5F6368">事件/告警/历史持久化（HandleEvent → Data_Alarms 等，9 个循环索引）</text>
+
+  <!-- ===== 双层接口说明 ===== -->
+  <text x="40" y="588" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">注意区分：DPR 的 Intern_Get/Set 与 DAI 的 Get/Set 是两层不同接口</text>
+  <text x="40" y="606" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">samplers 不经 DAI，直连 DPR；DAI 仅服务 reporters 等动态加载模块</text>
+
+  <!-- ===== 告警提示框 ===== -->
+  <rect x="40" y="690" width="660" height="52" rx="8" fill="#FCE8E6" stroke="#C5221F" stroke-width="1.5"/>
+  <text x="58" y="711" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12.5" font-weight="600" fill="#C5221F">⚠ DAI 不是 DPR 的一部分，也尚无 capability spec</text>
+  <text x="58" y="730" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#202124">接口契约文档：docs/30-interfaces/dai.md</text>
+</svg>

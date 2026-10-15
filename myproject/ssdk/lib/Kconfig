@@ -1,0 +1,176 @@
+comment "LIB Options"
+
+menuconfig BUFFQUEUE
+    bool "Buffer Queue Support"
+    default n
+
+if BUFFQUEUE
+rsource "buffqueue/Kconfig"
+endif # BUFFQUEUE
+
+menuconfig CHECKSUM
+    bool "Enable Checksum Library"
+    default n
+
+if CHECKSUM
+rsource "checksum/Kconfig"
+endif # CHECKSUM
+
+menuconfig SD_CRC32
+    bool "Enable Sd_crc32 Library"
+    default n
+
+if SD_CRC32
+rsource "sd_crc32/Kconfig"
+endif
+
+menuconfig SD_X509
+    bool "Enable Sd_x509 Library"
+    default n
+
+if SD_X509
+rsource "sd_x509/Kconfig"
+endif
+
+menuconfig SLIMFS
+    bool "Enable slimfs Library"
+    select DISK_MMC
+    select PARTITION
+    default n
+
+if SLIMFS
+rsource "slimfs/Kconfig"
+endif
+
+menuconfig LIBAVB
+    bool "Enable avb Library"
+    default n
+
+if LIBAVB
+rsource "libavb/Kconfig"
+endif
+
+menuconfig PART_LOAD_UTIL
+    bool "utility for loading partition data"
+    depends on PARTITION
+    default n
+
+if PART_LOAD_UTIL
+rsource "partition_load/Kconfig"
+endif # PART_LOAD_UTIL
+
+menuconfig VERIFIED_BOOT
+    bool "Enable verified_boot Library"
+    select SD_X509
+    select LIBAVB
+    select CRYPTO
+    select SD_CRC32
+    select SILEX_CRYPTO
+    select KUNLUN_FUSE
+    select PARTITION
+    select PART_LOAD_UTIL
+    default n
+
+if VERIFIED_BOOT
+rsource "verified_boot/Kconfig"
+endif
+
+menuconfig DEBUG
+    bool "Debug Support"
+    default y
+
+if DEBUG
+rsource "debug/Kconfig"
+endif # DEBUG
+
+menuconfig DEBUG_COMMANDS
+    bool "Debug Commands Support"
+    default y
+
+if DEBUG_COMMANDS
+rsource "debugcommands/Kconfig"
+endif # DEBUG_COMMANDS
+
+menuconfig DISK
+    bool "Enable common disk layer for storage devices"
+    default n
+
+if DISK
+rsource "disk/Kconfig"
+endif # DISK
+
+if DISK_NOR_FLASH
+menuconfig FEE
+    bool "Enable Flash EEPROM Emulation"
+    depends on (CDNS_OSPI || TAISHAN_XSPI) && DISK_NOR_FLASH
+    default y
+
+if FEE
+rsource "fee/Kconfig"
+endif # FEE
+endif # NOR_FLASH
+
+menuconfig LIBC
+    bool "Enable libc"
+    default y
+
+if LIBC
+rsource "libc/Kconfig"
+endif # LIBC
+
+menuconfig PARTITION
+    bool "Partition Support"
+    select CHECKSUM
+    select DISK
+    default n
+
+if PARTITION
+rsource "partition/Kconfig"
+endif # PARTITION
+
+menuconfig RES_LOADER
+    bool "resource loader support"
+    default n
+    select DISK
+    select FATFS
+    select PARTITION
+
+if RES_LOADER
+rsource "res_loader/Kconfig"
+endif # RES_LOADER
+
+menuconfig RING_BUFFER
+    bool "Enable Ring Buffer"
+    default n
+
+if RING_BUFFER
+rsource "ring_buffer/Kconfig"
+endif # RING_BUFFER
+
+menuconfig SD_BOOT_IMG
+    bool "Semidrive Boot Image Parsing Support"
+    default n
+
+menuconfig SD_BOOT_PIN
+    bool "Semidrive Boot Pin Parsing Support"
+    default n
+
+menuconfig WORKQUEUE
+    bool "Worker Queue Support"
+    default n
+
+if WORKQUEUE
+rsource "workqueue/Kconfig"
+endif # WORKQUEUE
+
+menuconfig ELF_LOADER
+    bool "ELF file loader support"
+    default n
+
+if ELF_LOADER
+rsource "elf/Kconfig"
+endif # ELF_LOADER
+
+config VERIFIED_BOOT
+    bool "verified bootimage"
+    default n

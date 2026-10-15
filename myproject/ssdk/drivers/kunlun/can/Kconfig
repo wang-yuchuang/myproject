@@ -1,0 +1,4 @@
+config FLEXCAN
+    bool "Flexcan Driver Support"
+    select CAN
+    default n

@@ -1,0 +1,12 @@
+menuconfig KUNLUN_SCR
+    bool "Kunlun SCR Driver Support"
+    select SCR
+    default n
+
+if KUNLUN_SCR
+
+config SCR_FUSA
+    bool "SCR Function Safety"
+    default n
+
+endif # KUNLUN_SCR

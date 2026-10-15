@@ -1,0 +1,9 @@
+comment "Audio manager Board Options"
+
+menuconfig AUDIO_BOARD
+    bool "audio manager board select"
+    default n
+
+if AUDIO_BOARD
+rsource "am_board/Kconfig"
+endif

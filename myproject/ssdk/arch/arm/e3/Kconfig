@@ -1,0 +1,73 @@
+comment "E3 Chip Options"
+
+choice
+    prompt "Select Target Core"
+    default ARCH_CHIP_E3_SF
+    help
+        Select the target core.
+
+config ARCH_CHIP_E3_SF
+    bool "E3 SF Core"
+
+config ARCH_CHIP_E3_SP0
+    bool "E3 SP0 Core"
+    help
+        E3 SP0 core in split mode or SP core in lockstep mode
+
+config ARCH_CHIP_E3_SP1
+    bool "E3 SP1 Core"
+    help
+        E3 SP1 core in split mode
+
+config ARCH_CHIP_E3_SX0
+    bool "E3 SX0 Core"
+    help
+        E3 SX0 core in split mode or SX core in lockstep mode
+
+config ARCH_CHIP_E3_SX1
+    bool "E3 SX1 Core"
+    help
+        E3 SX1 core in split mode
+
+endchoice
+
+config CORE
+    string
+    option env="CORE"
+
+rsource "part/Kconfig" 
+if ("${CORE}" != 'sx0' && "${CORE}" != 'sx1' && "${CORE}" != 'sp0' && "${CORE}" != 'sp1')
+    menu "Select Core Mode"
+        choice
+        depends on PART_SP
+            prompt "SP Core Mode"
+            default SP_Split
+                config SP_Lockstep
+                bool "SP Core Lockstep"
+                config SP_Split
+                bool "SP Core Split"
+                depends on !PART_SP_LS_DISABLE
+                config SP_OFF
+                bool "SP Core OFF"
+        endchoice
+
+        choice 
+        depends on PART_SX
+            prompt "SX Core Mode"
+            default SX_Split
+                config SX_Lockstep
+                bool "SX Core Lockstep"
+                config SX_Split
+                bool "SX Core Split"
+                depends on !PART_SX_LS_DISABLE
+                config SX_OFF
+                bool "SX Core OFF"
+        endchoice
+    endmenu
+endif
+
+config MULTI_CORE
+    bool "E3 multi-core environment"
+    default n
+    help
+        Enable multi-core environment

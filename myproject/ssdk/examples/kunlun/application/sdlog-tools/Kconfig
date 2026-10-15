@@ -1,0 +1,69 @@
+comment "sdlog command support options"
+
+config SDLOGC
+    bool "supoort sdlogc"
+    select SDRV_VIRT_UART
+    default n
+
+config SDLOGD
+    bool "supoort sdlogd"
+    select SDRV_VIRT_UART
+    default n
+
+config BOARD_SDLOGD
+    bool "support board sdlogd"
+    depends on SDLOGD
+    default n
+
+config SDLOGD_POLL_SAF
+    bool "supoort polling safety logbuf"
+    depends on SDLOGD
+    default n
+
+config SDLOGD_POLL_SEC
+    bool "supoort polling secure logbuf"
+    depends on SDLOGD
+    default n
+
+config SDLOGD_POLL_MP
+    bool "supoort polling mp logbuf"
+    depends on SDLOGD
+    default n
+
+config SDLOGD_POLL_AP1
+    bool "supoort polling ap1 logbuf"
+    depends on SDLOGD
+    default n
+
+config SDLOGD_POLL_AP2
+    bool "supoort polling ap2 logbuf"
+    depends on SDLOGD
+    default n
+
+config SDLOGD_OUTPUT_UART
+    bool "support sdlogd uart output"
+    depends on SDLOGD
+    default n
+
+config SDLOGD_UPDATE_THRESHOLD
+    string "sdlogd update threshold"
+    default "50"
+
+config SDLOGD_POLL_INTERVAL_MS
+    string "sdlogd polling interval"
+    default "5000"
+
+config SDSHELL_BACKEND
+    bool "support sdshell backend"
+    select SDRV_VIRT_UART
+    default n
+
+config SDSHELL_AP1_FRONTEND
+    bool "support ap1 as sdshell frontend"
+    depends on SDSHELL_BACKEND
+    default n
+
+config SDSHELL_AP2_FRONTEND
+    bool "support ap2 as sdshell frontend"
+    depends on SDSHELL_BACKEND
+    default n

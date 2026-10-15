@@ -1,0 +1,4 @@
+config KUNLUN_ADC
+    bool "Kunlun ADC Driver Support"
+    select ADC
+    default n

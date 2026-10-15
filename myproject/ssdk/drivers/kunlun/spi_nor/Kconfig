@@ -1,0 +1,12 @@
+menuconfig CDNS_OSPI
+    bool "CDNS OSPI Driver Support"
+    select OSPI
+    default n
+
+if CDNS_OSPI
+
+config CDNS_OSPI_WR_DIRECT_EN
+    bool "CDNS OSPI direct write enable"
+    default n
+
+endif # CDNS_OSPI

@@ -1,0 +1,4 @@
+config SDRV_PMU
+    bool "Taishan PMU Driver Support"
+    select PMU
+    default n

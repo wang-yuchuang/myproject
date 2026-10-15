@@ -1,0 +1,17 @@
+comment "CoreMark Benchmark (EEMBC 1.0) Support"
+
+config COREMARK_CMD
+    bool "CoreMark Benchmark CLI Cmd"
+    depends on APP_COREMARK
+    default y
+
+config COREMARK_CPU_FREQ
+    int "Assumed R5 CPU frequency in Hz (PMU tick to seconds conversion)"
+    depends on APP_COREMARK
+    default 400000000
+    help
+      Used to convert PMU cycle-counter ticks (/64 prescale) into seconds
+      for the CoreMark score. Verify on target: the PMU-derived
+      "Total time (secs)" printed by coremark must match the independent
+      OS tick seconds; if not, adjust this value
+      (real_freq = configured_freq * os_tick_secs / pmu_secs).

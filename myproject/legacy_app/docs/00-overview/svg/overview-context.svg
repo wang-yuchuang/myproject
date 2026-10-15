@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 830" role="img" aria-labelledby="ttl desc" style="max-width:1160px;width:100%;height:auto;background:#fff">
+  <title id="ttl">系统上下文图 — legacy_app</title>
+  <desc id="desc">C4 上下文视角。中心紫色块为本仓库交付的系统本体 legacy_app：运行在 SemiDrive D9360 上的储能后备管理 App 层业务程序，由 syshand（OS HAL 守护进程）与 nccu_app（DPR 数据中心）两个进程组成，行为由 SQLite 配置驱动。左侧绿色虚线框为现场设备（采集来源）：电表（RS485）、BMS、PCS、CCU、空调、辅助设备、热管理，数据经采样器（samplers ×10）进入系统，物理通道为 RS485 / CAN / TCP / UDP。右侧蓝色虚线框为云平台（上报去向）：运维云、客户平台、维护后端，数据经上报器（reporters ×8）发出，协议为 MQTT / WebSocket / HTTP。本地用户通过 web 页面与触摸屏 UI 与系统交互（web_reporter / start_ui）。下方灰色带为 BSP / OS 运行基座（Linux 5.10 PREEMPT-RT、BusyBox init、dm-verity 只读挂载 /app、RAUC A/B OTA、app_sysmgr 设计上的启动门控）与存储（/app 只读、/data SQLite、/opt/appdata 可写）。底部注释：部署形态为 256MB app 分区 A/B + RAUC OTA，平台变体 BMU05 / EMU01 / IMMU3。</desc>
+  <defs>
+    <marker id="arw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#5F6368"/></marker>
+    <marker id="arw-broken" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#C5221F"/></marker>
+  </defs>
+
+  <!-- ══════════ 标题区 ══════════ -->
+  <text x="30" y="36" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="22" font-weight="700" fill="#202124">系统上下文图 — legacy_app</text>
+  <text x="30" y="60" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="13" fill="#5F6368">C4 上下文视角：现场设备采集 → DPR 处理 → 云平台 / 本地上报；运行于 D9360 的 BSP / OS 基座之上</text>
+
+  <!-- ══════════ 左：现场设备（外部，采集来源） ══════════ -->
+  <rect x="30" y="110" width="280" height="372" rx="10" fill="#E6F4EA" stroke="#137333" stroke-width="1.5" stroke-dasharray="6 3"/>
+  <text x="50" y="138" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">现场设备（采集来源）</text>
+  <rect x="50" y="156" width="240" height="36" rx="8" fill="#FFFFFF" stroke="#137333" stroke-width="1.2"/>
+  <text x="170" y="179" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">电表（RS485）</text>
+  <rect x="50" y="200" width="240" height="36" rx="8" fill="#FFFFFF" stroke="#137333" stroke-width="1.2"/>
+  <text x="170" y="223" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">BMS 电池管理</text>
+  <rect x="50" y="244" width="240" height="36" rx="8" fill="#FFFFFF" stroke="#137333" stroke-width="1.2"/>
+  <text x="170" y="267" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">PCS 储能变流器</text>
+  <rect x="50" y="288" width="240" height="36" rx="8" fill="#FFFFFF" stroke="#137333" stroke-width="1.2"/>
+  <text x="170" y="311" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">CCU</text>
+  <rect x="50" y="332" width="240" height="36" rx="8" fill="#FFFFFF" stroke="#137333" stroke-width="1.2"/>
+  <text x="170" y="355" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">空调</text>
+  <rect x="50" y="376" width="240" height="36" rx="8" fill="#FFFFFF" stroke="#137333" stroke-width="1.2"/>
+  <text x="170" y="399" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">辅助设备</text>
+  <rect x="50" y="420" width="240" height="36" rx="8" fill="#FFFFFF" stroke="#137333" stroke-width="1.2"/>
+  <text x="170" y="443" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">热管理</text>
+
+  <!-- ══════════ 中：legacy_app（系统本体） ══════════ -->
+  <rect x="430" y="200" width="300" height="220" rx="10" fill="#F3E8FD" stroke="#8430CE" stroke-width="2"/>
+  <text x="450" y="228" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">legacy_app（系统本体）</text>
+  <text x="450" y="250" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">SemiDrive D9360 · 储能后备管理</text>
+  <line x1="450" y1="262" x2="710" y2="262" stroke="#DADCE0" stroke-width="1.2"/>
+  <text x="450" y="284" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">syshand — OS HAL 守护进程</text>
+  <text x="450" y="304" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">nccu_app — DPR 数据中心</text>
+  <text x="450" y="324" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">SQLite 配置驱动（System.cfg）</text>
+  <text x="450" y="344" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">采集 ×10 · 上报 ×8 · 通信 HAL ×9</text>
+  <text x="450" y="364" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">业务：配置 · 事件 · 告警 · 表达式</text>
+  <text x="450" y="398" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">src/main · src/moduals</text>
+
+  <!-- ══════════ 右上：云平台（外部，上报去向） ══════════ -->
+  <rect x="850" y="110" width="280" height="210" rx="10" fill="#E8F0FE" stroke="#1A73E8" stroke-width="1.5" stroke-dasharray="6 3"/>
+  <text x="870" y="138" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">云平台（上报去向）</text>
+  <rect x="870" y="156" width="240" height="36" rx="8" fill="#FFFFFF" stroke="#1A73E8" stroke-width="1.2"/>
+  <text x="990" y="179" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">运维云</text>
+  <rect x="870" y="200" width="240" height="36" rx="8" fill="#FFFFFF" stroke="#1A73E8" stroke-width="1.2"/>
+  <text x="990" y="223" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">客户平台</text>
+  <rect x="870" y="244" width="240" height="36" rx="8" fill="#FFFFFF" stroke="#1A73E8" stroke-width="1.2"/>
+  <text x="990" y="267" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">维护后端</text>
+
+  <!-- ══════════ 右下：本地用户（外部，虚线） ══════════ -->
+  <rect x="850" y="360" width="280" height="90" rx="10" fill="#F8F9FA" stroke="#5F6368" stroke-width="1.5" stroke-dasharray="6 3"/>
+  <text x="870" y="388" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">本地用户</text>
+  <text x="870" y="410" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">web 页面 / 触摸屏 UI</text>
+  <text x="870" y="432" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">web_reporter · start_ui</text>
+
+  <!-- ══════════ 连线 ══════════ -->
+  <path d="M310,310 L424,310" fill="none" stroke="#5F6368" stroke-width="1.6" marker-end="url(#arw)"/>
+  <text x="367" y="298" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="11" fill="#5F6368">采集（samplers ×10）</text>
+  <text x="367" y="328" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="11" fill="#5F6368">RS485 / CAN / TCP / UDP</text>
+
+  <path d="M730,225 L844,225" fill="none" stroke="#5F6368" stroke-width="1.6" marker-end="url(#arw)"/>
+  <text x="787" y="213" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="11" fill="#5F6368">上报（reporters ×8）</text>
+  <text x="787" y="243" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="11" fill="#5F6368">MQTT / WebSocket / HTTP</text>
+
+  <path d="M730,385 L790,385 L790,405 L844,405" fill="none" stroke="#5F6368" stroke-width="1.6" marker-end="url(#arw)"/>
+  <text x="790" y="373" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="11" fill="#5F6368">本地 web / UI</text>
+
+  <path d="M470,420 L470,554" fill="none" stroke="#5F6368" stroke-width="1.6" marker-end="url(#arw)"/>
+  <text x="480" y="490" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="11" fill="#5F6368">进程运行 · 挂载 /app</text>
+
+  <path d="M660,420 L660,490 L800,490 L800,554" fill="none" stroke="#5F6368" stroke-width="1.6" marker-end="url(#arw)"/>
+  <text x="672" y="460" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="11" fill="#5F6368">读写</text>
+
+  <!-- ══════════ 下左：BSP / OS 运行基座 ══════════ -->
+  <rect x="30" y="560" width="690" height="130" rx="10" fill="#F1F3F4" stroke="#5F6368" stroke-width="1.5"/>
+  <text x="50" y="590" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">BSP / OS（运行基座）</text>
+  <text x="50" y="618" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">Linux 5.10 PREEMPT-RT · BusyBox init · dm-verity（只读挂载 /app）</text>
+  <text x="50" y="640" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">RAUC A/B OTA · app_sysmgr（设计上的启动门控 · 在途交付）</text>
+  <text x="50" y="668" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">S92app_mount（SDK）· /etc/rauc/system.conf</text>
+
+  <!-- ══════════ 下右：存储 ══════════ -->
+  <rect x="740" y="560" width="390" height="130" rx="10" fill="#F1F3F4" stroke="#5F6368" stroke-width="1.5"/>
+  <text x="760" y="590" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="14" font-weight="600" fill="#202124">存储</text>
+  <text x="760" y="614" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">/app — 程序与配置（dm-verity 只读）</text>
+  <text x="760" y="636" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">/data — SQLite 业务数据库</text>
+  <text x="760" y="658" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#5F6368">/opt/appdata — 可写区（日志 / 配置 / 运行数据）</text>
+  <text x="760" y="682" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="10.5" fill="#80868B">NCCU_DATA_PATH=/data</text>
+
+  <!-- ══════════ 注释条 ══════════ -->
+  <rect x="30" y="714" width="1100" height="40" rx="8" fill="#F8F9FA" stroke="#DADCE0" stroke-width="1.2"/>
+  <text x="580" y="739" text-anchor="middle" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="13" fill="#5F6368">部署形态：256MB app 分区 A/B + RAUC OTA；平台变体 BMU05 / EMU01 / IMMU3</text>
+
+  <!-- ══════════ 图例 ══════════ -->
+  <rect x="30" y="770" width="20" height="14" rx="3" fill="#E6F4EA" stroke="#137333" stroke-width="1.2"/>
+  <text x="58" y="782" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#202124">设备 / 业务域</text>
+  <rect x="250" y="770" width="20" height="14" rx="3" fill="#F3E8FD" stroke="#8430CE" stroke-width="1.2"/>
+  <text x="278" y="782" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#202124">legacy_app</text>
+  <rect x="440" y="770" width="20" height="14" rx="3" fill="#E8F0FE" stroke="#1A73E8" stroke-width="1.2"/>
+  <text x="468" y="782" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#202124">云平台</text>
+  <rect x="610" y="770" width="20" height="14" rx="3" fill="#F1F3F4" stroke="#5F6368" stroke-width="1.2"/>
+  <text x="638" y="782" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#202124">BSP / OS · 存储</text>
+  <rect x="830" y="770" width="26" height="14" rx="3" fill="#FFFFFF" stroke="#5F6368" stroke-width="1.2" stroke-dasharray="6 3"/>
+  <text x="864" y="782" font-family="'Noto Sans CJK SC','Source Han Sans SC','PingFang SC','Microsoft YaHei','Droid Sans Fallback',sans-serif" font-size="12" fill="#202124">外部系统（虚线）</text>
+</svg>

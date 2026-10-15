@@ -1,0 +1,7 @@
+config BOARD_D9360_REF
+    bool
+    select HAS_AP1
+    depends on ARCH_CHIP_D9
+    default y
+
+rsource "$(CORE)/Kconfig"

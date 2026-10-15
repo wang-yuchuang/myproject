@@ -1,0 +1,7 @@
+comment "MBOX Demo Options"
+
+config KUNLUN_MBOX_DEMO
+    bool "Kunlun mbox demo"
+    select KUNLUN_MBOX
+    depends on CLI
+    default n

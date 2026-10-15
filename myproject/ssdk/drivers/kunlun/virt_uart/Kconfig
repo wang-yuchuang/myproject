@@ -1,0 +1,3 @@
+config SDRV_VIRT_UART
+    bool "semidrive virtual serial port support"
+    default n

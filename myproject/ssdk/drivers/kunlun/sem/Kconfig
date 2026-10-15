@@ -1,0 +1,8 @@
+menuconfig KUNLUN_SEM
+	bool "Kunlun SEM Driver"
+	select SEM
+	default n
+
+if KUNLUN_SEM
+	comment "kunlun sem driver config option"
+endif

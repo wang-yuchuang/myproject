@@ -1,0 +1,5 @@
+comment "Dhrystone Options"
+
+config CR5_CLOCK_MHZ
+    int "CR5 Clock MHz"
+    default 600

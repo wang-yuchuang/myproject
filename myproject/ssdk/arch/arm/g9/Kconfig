@@ -1,0 +1,12 @@
+comment "G9 Chip Options"
+
+choice
+    prompt "Select target core"
+    default ARCH_CHIP_G9_SAF
+    help
+        Select the target core.
+
+config ARCH_CHIP_G9_SAF
+    bool "G9 Saftey Core"
+
+endchoice

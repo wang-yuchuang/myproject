@@ -1,0 +1,6 @@
+comment "audio hub service"
+
+config AUDIO_HUB_SVC
+    bool "audio hub service"
+    depends on AUDIO_HUB
+    default n

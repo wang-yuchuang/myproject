@@ -1,0 +1,12 @@
+menuconfig KUNLUN_MMC
+    bool "Kunlun MMC Driver Options"
+    select MBOX
+    default n
+if KUNLUN_MMC
+config DWCMSHC
+    bool "DWCMSHC Driver"
+    default n
+config SEHC
+    bool "SEHC Driver"
+    default n
+endif # KUNLUN_MMC

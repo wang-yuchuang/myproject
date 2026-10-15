@@ -1,0 +1,7 @@
+comment "Can Proxy Options"
+
+menuconfig VCAN_CLIENT
+    bool "support vcan client for kunlun"
+    default n
+
+rsource "can/Kconfig"

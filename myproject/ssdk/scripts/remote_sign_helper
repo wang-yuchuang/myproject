@@ -1,0 +1,62 @@
+#!/bin/bash
+# avbtool signing_helper protocol (stdin variant):
+# Called as: remote_sign_helper <algorithm_name> <key_path>
+# Reads data to sign from stdin, outputs raw RSA signature to stdout
+#
+# Environment variables:
+#   REMOTE_SIGN_URL   - signing server base URL (default: http://localhost:8900)
+#   REMOTE_SIGN_TOKEN - bearer token for authentication
+#   REMOTE_SIGN_KEY_ID - key identifier on server (default: derived from key_path)
+
+set -euo pipefail
+
+ALGORITHM_NAME="$1"
+KEY_PATH="$2"
+
+REMOTE_SIGN_URL="${REMOTE_SIGN_URL:-http://localhost:8900}"
+CURL_TIMEOUT="${REMOTE_SIGN_TIMEOUT:-30}"
+
+# Resolve key_id: explicit env var takes precedence, else derive from key_path basename
+if [ -z "${REMOTE_SIGN_KEY_ID:-}" ]; then
+    KEY_BASENAME=$(basename "${KEY_PATH}")
+    REMOTE_SIGN_KEY_ID="${KEY_BASENAME%.*}"
+fi
+
+echo "[remote-sign] Signing with key_id=${REMOTE_SIGN_KEY_ID} algorithm=${ALGORITHM_NAME}" >&2
+
+# Health check - quick connectivity test
+HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" --connect-timeout 5 \
+    "${REMOTE_SIGN_URL}/api/v1/health" 2>/dev/null || true)
+if [ "${HTTP_CODE}" != "200" ]; then
+    echo "ERROR: Signing server at ${REMOTE_SIGN_URL} is not reachable (health check returned: ${HTTP_CODE:-no response})" >&2
+    exit 1
+fi
+
+# Read all stdin data and base64-encode
+DATA=$(cat | base64 -w0)
+
+# Call remote signing server
+RESPONSE=$(curl -s --max-time "${CURL_TIMEOUT}" -X POST \
+    "${REMOTE_SIGN_URL}/api/v1/sign/raw" \
+    -H "Authorization: Bearer ${REMOTE_SIGN_TOKEN:-}" \
+    -H "Content-Type: application/json" \
+    -d "{\"project\":\"d9_sdk\",\"key_id\":\"${REMOTE_SIGN_KEY_ID}\",\"data\":\"${DATA}\",\"algorithm\":\"${ALGORITHM_NAME}\"}" \
+    -w "\n%{http_code}")
+
+HTTP_STATUS=$(echo "${RESPONSE}" | tail -1)
+BODY=$(echo "${RESPONSE}" | sed '$d')
+
+if [ "${HTTP_STATUS}" != "200" ]; then
+    echo "ERROR: Signing server returned HTTP ${HTTP_STATUS}: ${BODY}" >&2
+    exit 1
+fi
+
+# Check for error in response body
+ERROR=$(echo "${BODY}" | python3 -c "import sys,json; d=json.load(sys.stdin); print(d.get('error',''))" 2>/dev/null || true)
+if [ -n "${ERROR}" ]; then
+    echo "ERROR: Signing server returned: ${ERROR}" >&2
+    exit 1
+fi
+
+# Decode base64 signature to raw bytes on stdout
+echo "${BODY}" | python3 -c "import sys,json,base64; sys.stdout.buffer.write(base64.b64decode(json.load(sys.stdin)['signature']))"

@@ -1,0 +1,26 @@
+comment "FreeRTOS Options"
+
+config API_CALL_INTERRUPT_PRIORITY
+    int "FreeRTOS API call interrupt priority"
+    default 18
+
+config IDLE_TASK_STACK_SIZE
+    int "FreeRTOS idle task stack size"
+    default 128
+
+choice
+    prompt "Select FreeRTOS idle task function"
+    default USE_IDLE_HOOK
+
+    config USE_TICKLESS_IDLE
+        bool "Use tickless idle"
+
+    config USE_IDLE_HOOK
+        bool "Use idle hook"
+endchoice
+
+if USE_TICKLESS_IDLE
+    config EXPECTED_IDLE_TIME_BEFORE_SLEEP
+        int "Expected idle time before sleep(Tick)"
+        default 2
+endif

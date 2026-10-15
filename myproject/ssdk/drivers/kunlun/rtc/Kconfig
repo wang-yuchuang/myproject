@@ -1,0 +1,4 @@
+config DW_RTC
+    bool "DW RTC Driver Support"
+    select RTC
+    default n

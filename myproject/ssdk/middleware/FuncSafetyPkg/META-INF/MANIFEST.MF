@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: FuncSafetyPkg
+Bundle-SymbolicName: FuncSafetyPkg_TS_T01D1M0I0R0;singleton:=true
+Bundle-Version: 1.0.0
+Bundle-Localization: plugin
+Bundle-Vendor: Semidrive
+Require-Bundle: dreisoft.tresos.autosar2.plugin,
+ dreisoft.tresos.launcher2.plugin,
+ dreisoft.tresos.generator.api.plugin;bundle-version="26.2.0"
+
+

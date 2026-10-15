@@ -1,0 +1,26 @@
+#!/bin/sh
+
+SRC_FILE=$1
+
+DST_FILE=$2
+
+
+var=`md5sum -b $SRC_FILE`
+
+varTmp1=${var:1:6}
+varTmp2=${var:13:10}
+varTmp3=${var:20:8}
+varID1="4da1"
+varID2="f2c5"
+#added by Jimmy 20231024 for immu3 // LJH240730 IMMU3
+# varID3="imu3" V2G
+varID3="mu03"
+
+varSum=${varTmp2}${varID1}${varTmp3}${varID2}${varTmp1}${varID3}
+
+echo "The MD5 of '$1' is:"
+echo "$varSum"
+
+echo "$varSum" >> $DST_FILE
+
+exit 0;

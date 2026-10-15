@@ -1,0 +1,16 @@
+menuconfig SDRV_SDRAMC
+    bool "Taishan SDRAMC Driver Support"
+    select SDRAMC
+    default n
+
+if SDRV_SDRAMC
+
+config SDRAM_BASE
+    hex "SDRAM Start Address"
+    default 0x30000000
+
+config SDRAM_SIZE
+    hex "SDRAM Size"
+    default 0x4000000
+
+endif # SDRV_SDRAMC

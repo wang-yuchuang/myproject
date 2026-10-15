@@ -1,0 +1,5 @@
+config SDRV_LIN
+    bool "Taishan Lin driver Support"
+    select UART
+    select SDRV_UART
+    default n

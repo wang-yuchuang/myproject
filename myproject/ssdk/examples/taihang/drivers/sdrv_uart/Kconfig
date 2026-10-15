@@ -1,0 +1,9 @@
+comment "UART Example Application Options"
+
+config SDRV_UART_LIN_DEMO
+    bool "Taihang Semidrive Uart example"
+    select UART
+    select SDRV_UART
+    default n
+
+

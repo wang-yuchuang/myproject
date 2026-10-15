@@ -1,0 +1,9 @@
+comment "Kunlun Silex Crypto Driver Options"
+
+menuconfig SILEX_CRYPTO
+    bool "Silex CRYPTO Driver Support"
+    default n
+
+menuconfig SILEX_CRYPTO_CPUID
+    int "Silex CRYPTO Driver for which core"
+    default 0

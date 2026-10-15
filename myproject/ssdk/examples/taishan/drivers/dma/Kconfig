@@ -1,0 +1,4 @@
+
+config DMA_UART_PREPARED
+    bool "DMA to Prepared Uart"
+    default y

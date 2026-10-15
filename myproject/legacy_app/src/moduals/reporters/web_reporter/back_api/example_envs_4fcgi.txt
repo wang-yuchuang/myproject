@@ -1,0 +1,61 @@
+FastCGI echo
+Request number 10, Process ID: 7206
+No data from standard input.
+
+Request environment:
+FCGI_ROLE=RESPONDER
+CONTENT_LENGTH=0
+QUERY_STRING=page=set_param&aaffffff=2&bb=1
+REQUEST_URI=/api/set_param?aaffffff=2&bb=1
+REDIRECT_URI=/web_main.api?page=set_param&aaffffff=2&bb=1
+REDIRECT_STATUS=200
+SCRIPT_NAME=/web_main.api
+SCRIPT_FILENAME=/app/web-server-test/lighthttpd_1.4.55/tests/docroot/web_main.api
+DOCUMENT_ROOT=/app/web-server-test/lighthttpd_1.4.55/tests/docroot
+REQUEST_METHOD=GET
+SERVER_PROTOCOL=HTTP/1.1
+SERVER_SOFTWARE=lightHttpd/1.4.55
+GATEWAY_INTERFACE=CGI/1.1
+REQUEST_SCHEME=http
+SERVER_PORT=80
+SERVER_ADDR=192.168.137.100
+SERVER_NAME=192.168.137.100
+REMOTE_ADDR=192.168.137.1
+REMOTE_PORT=64245
+HTTP_HOST=192.168.137.100
+HTTP_CONNECTION=keep-alive
+HTTP_CACHE_CONTROL=max-age=0
+HTTP_UPGRADE_INSECURE_REQUESTS=1
+HTTP_USER_AGENT=Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36
+HTTP_ACCEPT=text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3
+HTTP_ACCEPT_ENCODING=gzip, deflate
+HTTP_ACCEPT_LANGUAGE=zh-CN,zh;q=0.9
+Initial environment:
+SHELL=/bin/sh
+TERM=linux
+TSLIB_CONFFILE=/usr/lib/tslib/etc/ts.conf
+SSH_CLIENT=192.168.137.1 55831 22
+QTDIR=/usr/lib/qt4
+SSH_TTY=/dev/pts/0
+TSLIB_CALIBFILE=/etc/pointercal
+USER=root
+LD_LIBRARY_PATH=/app/web-server-test/lighthttpd_1.4.55/lib:/app/web-server-test:/app/web-server-test:LD_LIBRARY_PATH
+QWS_MOUSE_PROTO=Tslib:/dev/input/event0
+TSLIB_CONSOLEDEVICE=none
+QT_QWS_FONTDIR=/usr/lib/qt4/lib/fonts
+PATH=/usr/lib/tslib/bin:/usr/local/bin:/usr/bin:/bin:/sbin:/usr/sbin:/usr/sbin
+MAIL=/var/mail/root
+PWD=/app/web-server-test/lighthttpd_1.4.55
+EDITOR=/bin/vi
+LANG=en_US.UTF-8
+TSDIR=/usr/lib/tslib
+HOME=/home/root
+SHLVL=2
+TSLIB_FBDEVICE=/dev/fb0
+LOGNAME=root
+SSH_CONNECTION=192.168.137.1 55831 192.168.137.100 22
+TSLIB_TSDEVICE=/dev/input/event0
+QT_PLUGIN_PATH=/usr/lib/qt4/plugins/
+TSLIB_PLUGINDIR=/usr/lib/tslib/lib/ts
+_=/app/web-server-test/lighthttpd_1.4.55/sbin/lighttpd
+PHP_FCGI_CHILDREN=1

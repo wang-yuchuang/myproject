@@ -1,0 +1,15 @@
+comment "Taishan Board Options"
+
+config MEM_BASE
+    hex "Memory Start Address"
+    default 0x410000
+
+config MEM_SIZE
+    hex "Memory Size"
+    default 0x80000
+
+config CLOCK_OVER_DRIVE_MODE
+    bool "Clock run in over driver mode"
+    default n
+
+rsource "../../Kconfig"

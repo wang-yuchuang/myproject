@@ -1,0 +1,4 @@
+config DWC_PCIE
+    bool "DWC PCIE Driver Support"
+    select PCIE
+    default n

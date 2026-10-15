@@ -1,0 +1,186 @@
+config PART_CAN3
+	bool
+	default y if D3246
+config PART_CAN4
+	bool
+	default y if D3246
+config PART_CAN16
+	bool
+	default y if D3246
+config PART_CAN21
+	bool
+	default y if D3246
+config PART_UART1
+	bool
+	default y if D3246
+config PART_UART2
+	bool
+	default y if D3246
+config PART_UART3
+	bool
+	default y if D3246
+config PART_UART4
+	bool
+	default y if D3246
+config PART_UART5
+	bool
+	default y if D3246
+config PART_UART6
+	bool
+	default y if D3246
+config PART_UART7
+	bool
+	default y if D3246
+config PART_UART8
+	bool
+	default y if D3246
+config PART_ETH1
+	bool
+	default y if D3246
+config PART_USB1
+	bool
+	default y if D3246
+config PART_XSPI1
+	bool
+	default y if D3246
+config PART_XSPI2
+	bool
+	default y if D3246
+config PART_SPI3
+	bool
+	default y if D3246
+config PART_SPI4
+	bool
+	default y if D3246
+config PART_SPI2
+	bool
+	default y if D3246
+config PART_SPI6
+	bool
+	default y if D3246
+config PART_I2S2
+	bool
+	default y if D3246
+config PART_I2S1
+	bool
+	default y if D3246
+config PART_I2C3
+	bool
+	default y if D3246
+config PART_I2C4
+	bool
+	default y if D3246
+config PART_I2C5
+	bool
+	default y if D3246
+config PART_I2C6
+	bool
+	default y if D3246
+config PART_ADC1
+	bool
+	default y if D3246
+config PART_ADC2
+	bool
+	default y if D3246
+config PART_ACMP1
+	bool
+	default y if D3246
+config PART_ACMP2
+	bool
+	default y if D3246
+config PART_ETMR1
+	bool
+	default y if D3246
+config PART_ETMR2
+	bool
+	default y if D3246
+config PART_ETMR3
+	bool
+	default y if D3246
+config PART_ETMR4
+	bool
+	default y if D3246
+config PART_EPWM1
+	bool
+	default y if D3246
+config PART_EPWM2
+	bool
+	default y if D3246
+config PART_EPWM3
+	bool
+	default y if D3246
+config PART_EPWM4
+	bool
+	default y if D3246
+config PART_WDT1
+	bool
+	default y if D3246
+config PART_WDT2
+	bool
+	default y if D3246
+config PART_WDT8
+	bool
+	default y if D3246
+config IRAM_LIMIT
+	hex
+	default 0x400000 if D3246
+config PART_ID
+	hex
+	default 0x3340 if D3246
+config PART_SF
+	bool
+	default y if D3246
+config PART_SX
+	bool
+	default n if D3246
+config PART_SP
+	bool
+	default n if D3246
+config PART_SF_LS_DISABLE
+	bool
+	default n if D3246
+config PART_SX_LS_DISABLE
+	bool
+	default n if D3246
+config PART_SP_LS_DISABLE
+	bool
+	default n if D3246
+config PART_SDRAM
+	bool
+	default n if D3246
+config PART_SDIO_SEHC2
+	bool
+	default y if D3246
+config PART_SDIO_SEHC1
+	bool
+	default y if D3246
+config PART_CAN_NUM
+	hex
+	default 0x4 if D3246
+config PART_UART_NUM
+	hex
+	default 0x8 if D3246
+config PART_ETH_NUM
+	hex
+	default 0x2 if D3246
+config PART_USB_NUM
+	hex
+	default 0x1 if D3246
+config PART_SPI_NUM
+	hex
+	default 0x4 if D3246
+config PART_I2S_NUM
+	hex
+	default 0x2 if D3246
+config PART_AIN_NUM
+	hex
+	default 0x20 if D3246
+config PART_ADC_NUM
+	hex
+	default 0x2 if D3246
+config PART_ACMP_NUM
+	hex
+	default 0x2 if D3246
+config MAX_FREQ
+	hex
+	default 0x23c34600 if D3246

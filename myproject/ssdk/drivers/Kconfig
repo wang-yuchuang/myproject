@@ -1,0 +1,174 @@
+comment "Drivers Options"
+
+if ARCH_CHIP_E3 || ARCH_CHIP_D3
+rsource "taishan/Kconfig"
+endif
+
+if ARCH_CHIP_D9 || ARCH_CHIP_G9 || ARCH_CHIP_X9
+rsource "kunlun/Kconfig"
+rsource "taihang/Kconfig"
+endif
+
+if BOARD_TAISHAN_TIANJIE
+rsource "xilinx/Kconfig"
+endif
+
+config ADC
+    bool
+
+config CAN
+    bool
+
+config CLK
+    bool
+
+config FUSE
+    bool
+
+config GPIO
+    bool
+
+config DMA
+    bool
+
+config ETH
+    bool
+
+config PINCTRL
+    bool
+
+config HWMUTEX
+    bool
+
+config I2C
+    bool
+
+config IRDA
+    bool
+
+config IRQ
+    bool
+
+config LIN
+    bool
+
+config MBOX
+    bool
+
+config MEMMAP
+    bool "Memory Map Driver Support"
+    default n
+
+config MMC
+    bool
+
+config OSPI
+    bool
+
+config XSPI
+    bool
+
+config HYPERBUS_MODE
+    bool "Norflash Hyperbus Driver"
+    default n
+
+config HYPERBUS_DIFFERENTIAL_CLK_EN
+    bool "hyperbus differnetial clock enable"
+    default n
+    depends on HYPERBUS_MODE
+
+config HYPERBUS_INCREMENTAL_PROGRAM_EN
+    bool "hyperbus incremental program enable, support program a single bit"
+    default n
+    depends on HYPERBUS_MODE
+
+config PCIE
+    bool
+
+config PM
+    bool
+
+config PMU
+    bool
+
+config PWM
+    bool
+
+config RESETGEN
+    bool
+
+config RTC
+    bool
+
+config SCR
+    bool
+
+config SDRAMC
+    bool
+
+config SEM
+    bool
+
+config SENT
+    bool
+
+config SMC
+    bool
+
+config SND
+    bool
+
+config SPI
+    bool
+
+config TIMER
+    bool
+
+config TOUCH
+    bool
+
+config UART
+    bool
+
+config WDOG
+    bool
+
+config PVT
+    bool
+
+config VPU
+    bool
+
+config SERDES
+    bool
+
+config CDNS_OSPI_MST_SLV
+    bool "CDNS OSPI MST SLV Driver Support"
+    default n
+
+if CDNS_OSPI_MST_SLV
+choice
+    prompt "CDNS OSPI MST SLV MODE Options"
+    default MST_SLV_OCTAL_LINE_SDR_MODE
+
+config MST_SLV_OCTAL_LINE_DTR_MODE
+    bool "Use octal dtr mode"
+
+config MST_SLV_OCTAL_LINE_SDR_MODE
+    bool "Use octal sdr mode"
+
+config MST_SLV_QUAD_LINE_DTR_MODE
+    bool "Use quad dtr mode"
+
+config MST_SLV_QUAD_LINE_SDR_MODE
+    bool "Use quad sdr mode"
+
+config MST_SLV_SINGLE_LINE_DTR_MODE
+    bool "Use single dtr mode"
+
+config MST_SLV_SINGLE_LINE_STR_MODE
+    bool "Use single sdr mode"
+
+endchoice
+
+endif # CDNS_OSPI_MST_SLV

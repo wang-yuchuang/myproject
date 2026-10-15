@@ -1,0 +1,6 @@
+*.tar.gz
+*.qch
+myproject/legacy_app/src/include/3rd_party/packages/
+myproject/ssdk/prebuilts/
+build/
+dist/
